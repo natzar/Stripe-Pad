@@ -28,6 +28,6 @@ Stripe Pad is open-sourced software licensed under the GPL-3.0 license
 
 ## Contact 
 
-If you have any questions or need support, please don't hesitate to reach out to us at <your-email-address> .
+If you have any questions or need support, please don't hesitate to reach me at Twitter @betoayesa
 
 Thank you for using Stripe Pad!
