@@ -8,9 +8,9 @@ To get started with Stripe Pad, simply clone the repository and install the nece
 
 You will also need to configure your Stripe account and add your API keys to the `.env` file.
 
-git clone https://github.com/natzar/stripe-pad.git
-cd stripe-pad
-composer install
+  git clone https://github.com/natzar/stripe-pad.git
+  cd stripe-pad
+  composer install
   
 ## Usage
 
