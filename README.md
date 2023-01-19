@@ -24,7 +24,7 @@ We welcome any contributions to Stripe Pad. If you have any ideas or suggestions
 
 ## License
 
-Stripe Pad is open-sourced software licensed under the MIT license.
+Stripe Pad is open-sourced software licensed under the GPL-3.0 license
 
 ## Contact 
 
