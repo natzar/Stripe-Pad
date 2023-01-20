@@ -1,6 +1,7 @@
 <?
 /* 
 	Stripe Pad - Micro SaaS boilerplate
+	API - Internal and webhook calls from Stripe
     Copyright (C) 2023 Beto Ayesa
 
     This program is free software: you can redistribute it and/or modify
@@ -21,19 +22,36 @@
 
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
-define('ProjectTitle','Stripe Pad');
-define('Theme','grid');
-define('AdminEmail','youremail@domain.com');
-define('StripeKey','');
-define('StripeSecret','');
-define('DebugMode',true);
-define('CacheFilename','cache/data.json');
 
-define('SiteHeader','Stripe Pad');
-define('SiteSubHeader','lorem ipsum');
+use Stripe\Invoice;
+use Stripe\StripeClient;
 
+require __DIR__ . '/vendor/autoload.php';
+require ('../config.php');
 
-if (DebugMode){
-	error_reporting(E_ALL);
-	ini_set('display_errors', '1');
+$stripe = new StripeClient(StripeSecret);
+			
+$json = file_get_contents('php://input');	
+$event = json_decode($json);
+
+// TO-DO: Webhook key check
+
+$event_id = $event->{'id'};
+$event = $stripe->event->retrieve($event_id);
+if (!isset($event->type)) die("Stripe Response Error: No event to retrieve"):
+
+$emailCustomer = $event->data->object->receipt_email;
+
+if ($event->type == 'charge.succeeded') {
+
+}else if ($event->type == 'invoice.payment_succeeded') {
+
+}else if ($event->type == "customer.subscription.created"){
+    	
 }
+
+mail(AdminEmail, ProjectTitle." · ".$event->type, $json):
+
+
+
+
