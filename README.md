@@ -31,6 +31,10 @@ We welcome any contributions to Stripe Pad. If you have any ideas or suggestions
 
 Stripe Pad is open-sourced software licensed under the GPL-3.0 license
 
+## Disclaimer
+
+Not affiliated in any way with Stripe.com
+
 ## Contact 
 
 If you have any questions or need support, please don't hesitate to reach me at Twitter @betoayesa
