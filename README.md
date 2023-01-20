@@ -1,6 +1,6 @@
-# ![Stripe Pad Storefront](logo-small.png "Stripe Pad Sample Image") Stripe Pad
+#  Stripe Pad
 
-Stripe Pad is a micro SaaS boilerplate that allows you to quickly build projects and integrate Stripe payments from the beginning. It is a fast and efficient way to sell your products configured in Stripe, acting as a front-end for your Stripe account.
+![Stripe Pad Storefront](logo-small.png "Stripe Pad Sample Image") Stripe Pad is a micro SaaS boilerplate that allows you to quickly build projects and integrate Stripe payments from the beginning. It is a fast and efficient way to sell your products configured in Stripe, acting as a front-end for your Stripe account.
 
 
 Project URL: [www.stripepad.com](https://www.stripepad.com)
