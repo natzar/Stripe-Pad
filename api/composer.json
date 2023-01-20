@@ -1,0 +1,16 @@
+{
+    "name": "natzar/stripe-pad",
+    "description": "A Micro SaaS boilerplate to launch fast with Stripe",
+    "type": "project",
+    "require": {
+        "ext-curl": "*",
+        "stripe/stripe-php": "^7.67"
+    },
+    "license": "GPL3",
+    "authors": [
+        {
+            "name": "Beto Ayesa",
+            "email": "betolopezayesa@gmail.com"
+        }
+    ]
+}
