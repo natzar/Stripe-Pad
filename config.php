@@ -1,3 +1,4 @@
+<?
 /* 
 	Stripe Pad - Micro SaaS boilerplate
     Copyright (C) 2023 Beto Ayesa
@@ -21,16 +22,17 @@
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
 
-[General]
-GoogleAnalyticsUA = "UA-XXXXX"
-AdminEmail = "youremail@domain.com"
-StripeKey = "/usr/local/bin"
-StripeSecret = "http://www.example.com/~username"
-Theme = "front"
+define('Theme','grid');
+define('AdminEmail','youremail@domain.com');
+define('StripeKey','');
+define('StripeSecret','');
+define('DebugMode',true);
 
-[database]
-MysqlHost = "5.0"
-MysqlDb = "5.1"
-MysqlUser = "5.2"
-MysqlPassword = "5.3"
+define('SiteHeader','Stripe Pad');
+define('SiteSubHeader','lorem ipsum');
 
+
+if (DebugMode){
+	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
+}

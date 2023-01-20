@@ -14,37 +14,41 @@ Git Repository: [Git repo](https://github.com/natzar/Stripe-Pad)
 
 ## Getting Started
 
-To get started with Stripe Pad, simply clone the repository and install the necessary dependencies.
+To get started with Stripe Pad, follow these steps:
 
-### Php
-
-You will also need to configure your Stripe account and add your API keys to the `config.php` file.
 ```
   git clone https://github.com/natzar/stripe-pad.git
-  cd stripe-pad
+  cd stripe-pad/api
   composer install
   ```
 
+1. clone the repository and install the necessary dependencies with `cd api; composer install`
+2. edit config.php, set your stripe credentials and the folder name of the theme you will be using `define('Theme','[THEME FOLDER NAME]')`
+3. Open your browser http://localhost/stripe-pad ?
 
-### Nodejs
+If you did everything well, you will see your products here.
 
-:TO-DO:
+## Usage & Customization
 
-## Usage
-
-Once your Stripe account is configured, you can easily create and manage products within the Stripe Pad interface. The boilerplate also includes basic checkout functionality and a sample thank-you page.
+Once your Stripe account is configured, you can easily retrieve products and other details from your Stripe Account. The boilerplate also includes basic checkout functionality and a sample thank-you page.
 
 You can also customize the look and feel of the front-end as per your need.
 
+- Clone one of the 2 basic themes inside *themes* folder.
+- Basic themes include Tailwind via CDN, no other CSS or JS
+
+
 ## Dependencies
+Dependencies are managed via composer
+
+- Stripe
 
 
 
 ## Roadmap
 
-- Base template to show your products and settings configured in your config file
-- PHP API
-- Nodejs API 
+- Gather feedback
+- Nodejs API ?
 
 ## Milestones
 
