@@ -1,7 +1,12 @@
 # Stripe Pad
 
 Stripe Pad is a micro SaaS boilerplate that allows you to quickly build projects and integrate Stripe payments from the beginning. It is a fast and efficient way to sell your products configured in Stripe, acting as a front-end for your Stripe account.
+* Sample1 *
 ![Stripe Pad Storefront](sample.png "Stripe Pad Sample Image")
+
+* Sample2 ** It was the landing for stripepad.com
+![Stripe Pad Storefront](sample2.png "Stripe Pad Sample Image")
+
 ## Getting Started
 
 To get started with Stripe Pad, simply clone the repository and install the necessary dependencies.
