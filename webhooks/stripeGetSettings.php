@@ -38,25 +38,25 @@ $products =  $stripe->products->all(['limit' => 300])->data;
 
 // Create Payment Links, if they don't exist
 
-for ($i=0;$i<count($products);$i++){
-	$products[$i]->price= array();
-	if($products[$i]->default_price){
-		$price = $stripe->prices->retrieve($products[$i]->default_price);
+// for ($i=0;$i<count($products);$i++){
+// 	$products[$i]->price= array();
+// 	if($products[$i]->default_price){
+// 		$price = $stripe->prices->retrieve($products[$i]->default_price);
 		
-		$products[$i]->price[] = array("amount" => $price->unit_amount, "link" => $stripe->paymentLinks->create(
-			['line_items' => [['price' => $products[$i]->default_price, 'quantity' => 1]]]
-			));
+// 		$products[$i]->price[] = array("amount" => $price->unit_amount, "link" => $stripe->paymentLinks->create(
+// 			['line_items' => [['price' => $products[$i]->default_price, 'quantity' => 1]]]
+// 			));
 		
-	}else{
+// 	}else{
 		
-		$prices = $stripe->prices->all(['limit' => 3, 'product' => $products[$i]->id]);
-		foreach($prices->data as $price){
-			$products[$i]->price[] = array("amount" => $price->unit_amount, "link" => $stripe->paymentLinks->create(
-			['line_items' => [['price' => $price->id, 'quantity' => 1]]]
-			));
-		}
-	}
-}
+// 		$prices = $stripe->prices->all(['limit' => 3, 'product' => $products[$i]->id]);
+// 		foreach($prices->data as $price){
+// 			$products[$i]->price[] = array("amount" => $price->unit_amount, "link" => $stripe->paymentLinks->create(
+// 			['line_items' => [['price' => $price->id, 'quantity' => 1]]]
+// 			));
+// 		}
+// 	}
+// }
 	
 $settings = [];
 $settings['products'] = $products;

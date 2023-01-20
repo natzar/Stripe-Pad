@@ -1,6 +1,7 @@
 <?
 /* 
 	Stripe Pad - Micro SaaS boilerplate
+    Config file
     Copyright (C) 2023 Beto Ayesa
 
     This program is free software: you can redistribute it and/or modify
@@ -21,19 +22,27 @@
 
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
+# Debug Mode
+define('DebugMode',true);
+error_reporting(DebugMode ? E_ALL : E_NONE);
+ini_set('display_errors', DebugMode ? 0 : 1);
+
+# General
 define('ProjectTitle','Stripe Pad');
 define('Theme','grid');
 define('AdminEmail','youremail@domain.com');
-define('StripeKey','');
-define('StripeSecret','');
-define('DebugMode',true);
-define('CacheFilename','cache/data.json');
 
+# Text
 define('SiteHeader','Stripe Pad');
 define('SiteSubHeader','lorem ipsum');
 
+#Stripe
+define('StripeKeyProd',''); // Production
+define('StripeSecretProd',''); // Production
+define('StripeKeyDev',''); // Development
+define('StripeSecretDev',''); // Development
+define('StripeKey',DebugMode ? StripeKeyDev : StripeKeyProd);
+define('StripeSecret',DebugMode ? StripeSecretDev : StripeSecretProd);
+define('CacheFilename',dirname(__FILE__).'/cache/data.json');
 
-if (DebugMode){
-	error_reporting(E_ALL);
-	ini_set('display_errors', '1');
-}
+
