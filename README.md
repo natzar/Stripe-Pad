@@ -50,6 +50,8 @@ You can also customize the look and feel of the front-end as per your need.
 
 Any contributions to Stripe Pad are welcomed. If you have any ideas or suggestions for new features, please feel free to open an issue or submit a pull request.
 
+IMPORTANT: The main advantage of Stripe Pad is being an unopionated package, the challenge is to maintain every component decoupled from others, there is no js library, no CSS framework. I don't guarantee that it will be like this in the future, but the effort will go always in this direction.
+
 ## License
 
 Stripe Pad is open-sourced software licensed under the GPL-3.0 license
