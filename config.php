@@ -27,6 +27,7 @@ define('AdminEmail','youremail@domain.com');
 define('StripeKey','');
 define('StripeSecret','');
 define('DebugMode',true);
+define('CacheFilename','cache/data.json');
 
 define('SiteHeader','Stripe Pad');
 define('SiteSubHeader','lorem ipsum');

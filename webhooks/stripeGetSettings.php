@@ -1,7 +1,7 @@
 <?
 /* 
 	Stripe Pad - Micro SaaS boilerplate
-	Main Controller
+	API - Internal and webhook calls from Stripe
     Copyright (C) 2023 Beto Ayesa
 
     This program is free software: you can redistribute it and/or modify
@@ -23,12 +23,44 @@
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
 
-require('config.php');
+use Stripe\Invoice;
+use Stripe\StripeClient;
 
-if(!file_exists(CacheFilename)){ // Defined in config
-	$data = file_get_contents('/webhooks/stripeGetSettings.php');
-	file_put_contents(CacheFilename, $data);
+require __DIR__ . '/vendor/autoload.php';
+require ('../config.php');
+
+$stripe = new StripeClient(StripeSecret);
+
+
+// Retrieve all products
+
+$products =  $stripe->products->all(['limit' => 300])->data;
+
+// Create Payment Links, if they don't exist
+
+for ($i=0;$i<count($products);$i++){
+	$products[$i]->price= array();
+	if($products[$i]->default_price){
+		$price = $stripe->prices->retrieve($products[$i]->default_price);
+		
+		$products[$i]->price[] = array("amount" => $price->unit_amount, "link" => $stripe->paymentLinks->create(
+			['line_items' => [['price' => $products[$i]->default_price, 'quantity' => 1]]]
+			));
+		
+	}else{
+		
+		$prices = $stripe->prices->all(['limit' => 3, 'product' => $products[$i]->id]);
+		foreach($prices->data as $price){
+			$products[$i]->price[] = array("amount" => $price->unit_amount, "link" => $stripe->paymentLinks->create(
+			['line_items' => [['price' => $price->id, 'quantity' => 1]]]
+			));
+		}
+	}
 }
+	
+$settings = [];
+$settings['products'] = $products;
 
-$settings = json_decode(file_get_contents(CacheFilename)); //data read from json file	
-include "themes/".Theme."/index.php";
+// Json Output
+
+echo json_encode($settings);
