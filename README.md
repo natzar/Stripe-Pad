@@ -1,6 +1,11 @@
-# Stripe Pad
+# ![Stripe Pad Storefront](logo-small.png "Stripe Pad Sample Image") Stripe Pad
 
 Stripe Pad is a micro SaaS boilerplate that allows you to quickly build projects and integrate Stripe payments from the beginning. It is a fast and efficient way to sell your products configured in Stripe, acting as a front-end for your Stripe account.
+
+
+Project URL: [www.stripepad.com](https://www.stripepad.com)
+Git Repository: [Git repo](https://github.com/natzar/Stripe-Pad)
+
 * Sample1 *
 ![Stripe Pad Storefront](sample.png "Stripe Pad Sample Image")
 
@@ -11,13 +16,20 @@ Stripe Pad is a micro SaaS boilerplate that allows you to quickly build projects
 
 To get started with Stripe Pad, simply clone the repository and install the necessary dependencies.
 
-You will also need to configure your Stripe account and add your API keys to the `.env` file.
+### Php
+
+You will also need to configure your Stripe account and add your API keys to the `config.php` file.
 ```
   git clone https://github.com/natzar/stripe-pad.git
   cd stripe-pad
   composer install
   ```
-  
+
+
+### Nodejs
+
+:TO-DO:
+
 ## Usage
 
 Once your Stripe account is configured, you can easily create and manage products within the Stripe Pad interface. The boilerplate also includes basic checkout functionality and a sample thank-you page.
