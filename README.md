@@ -12,10 +12,11 @@ Stripe Pad is a micro SaaS boilerplate that allows you to quickly build projects
 To get started with Stripe Pad, simply clone the repository and install the necessary dependencies.
 
 You will also need to configure your Stripe account and add your API keys to the `.env` file.
-
-  `git clone https://github.com/natzar/stripe-pad.git
+```
+  git clone https://github.com/natzar/stripe-pad.git
   cd stripe-pad
-  composer install`
+  composer install
+  ```
   
 ## Usage
 
@@ -23,9 +24,19 @@ Once your Stripe account is configured, you can easily create and manage product
 
 You can also customize the look and feel of the front-end as per your need.
 
+## Dependencies
+
+
+
+## Roadmap
+
+- Base template to show your products and settings configured in your config file
+- PHP API
+- Nodejs API 
+
 ## Contributing
 
-We welcome any contributions to Stripe Pad. If you have any ideas or suggestions for new features, please feel free to open an issue or submit a pull request.
+Any contributions to Stripe Pad are welcomed. If you have any ideas or suggestions for new features, please feel free to open an issue or submit a pull request.
 
 ## License
 
@@ -33,10 +44,10 @@ Stripe Pad is open-sourced software licensed under the GPL-3.0 license
 
 ## Disclaimer
 
-Not affiliated in any way with Stripe.com
+> Not affiliated in any way with Stripe.com
 
 ## Contact 
 
-If you have any questions or need support, please don't hesitate to reach me at Twitter @betoayesa
+If you have any questions or need support, please don't hesitate to reach me Twitter [ @betoayesa](https://www.twitter.com/betoayesa)
 
 Thank you for using Stripe Pad!
