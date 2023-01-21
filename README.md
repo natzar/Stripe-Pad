@@ -1,6 +1,6 @@
 #  Stripe Pad v.0.0.1
 ![Stripe Pad Storefront](sample2.png "Stripe Pad Sample Image")
-January 20th, 2023. Stripe Pad is a micro SaaS boilerplate that allows you to quickly build projects and integrate Stripe payments from the beginning. It is a fast and efficient way to sell your products configured in Stripe, acting as a front-end for your Stripe account.
+January 20th, 2023. Stripe Pad is a fast and efficient way to sell your products configured in Stripe, acting as a front-end for your Stripe account. Maybe one day it gets to micro SaaS boilerplate category, anyway it allows you to quickly launch and validate new ideas while integrating Stripe payments from the beginning.
 
 
 Project URL: [www.stripepad.com](https://www.stripepad.com)
