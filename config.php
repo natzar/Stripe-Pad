@@ -22,6 +22,7 @@
 
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
+
 # Debug Mode
 define('DebugMode',true);
 error_reporting(DebugMode ? E_ALL : E_NONE);
@@ -31,10 +32,9 @@ ini_set('display_errors', DebugMode ? 0 : 1);
 define('ProjectTitle','Stripe Pad');
 define('Theme','grid');
 define('AdminEmail','youremail@domain.com');
-
-# Text
-define('SiteHeader','Stripe Pad');
-define('SiteSubHeader','lorem ipsum');
+define('BaseUrl','http://localhost/stripe-pad/');
+define('WebhooksUrl',BaseUrl.'webhooks/');
+define('CacheFilename',dirname(__FILE__).'/cache/data.json'); 
 
 #Stripe
 define('StripeKeyProd',''); // Production
@@ -43,6 +43,7 @@ define('StripeKeyDev',''); // Development
 define('StripeSecretDev',''); // Development
 define('StripeKey',DebugMode ? StripeKeyDev : StripeKeyProd);
 define('StripeSecret',DebugMode ? StripeSecretDev : StripeSecretProd);
-define('CacheFilename',dirname(__FILE__).'/cache/data.json');
+
+
 
 
