@@ -1,7 +1,7 @@
 ![Stripe Pad Storefront](open-graph.png "Stripe Pad Logo Image")
   
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
-[![License: GPL3](https://img.shields.io/github/stars/natzar/Stripe-Pad?style=social`)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
+
 
 
 
