@@ -1,9 +1,8 @@
 ![Stripe Pad Storefront](open-graph.png "Stripe Pad Logo Image")
   
-[![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/slinkity/slinkity/blob/main/LICENSE.md)
+[![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
 [![License: GPL3](https://img.shields.io/github/stars/natzar/Stripe-Pad?style=social`)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
- By 
-[Beto Ayesa](https://github.com/betoayesa) ([@betoayesa](https://twitter.com/betoayesa)), looking for contributors!
+
 
 
 
@@ -97,12 +96,9 @@ When you are ready to publish it online:
 ## Development Internals
 
 cache/data.json is what allows Stripe Pad to maintain the different components 100% decoupled and no database involved.
-
-
-The main index.php includes the theme files defined in config.php, in case cache folder is empty, data will be retrieved from webhooks/stripeGetDetails.php and store the json in cache/data.json right before including index.php file from selected theme, which will receive $stripeData array with all account and product details.
-
-
 In case you want to clean cache, just remove the file.
+
+The main index.html retrieves data from webhooks/stripeGetDetails.php, if cache/data.json exists it will just return it, if not it will communicate with Stripe and then store the result in cache/data.json for future calls.
 
 
 ### Themes 
@@ -135,7 +131,7 @@ This project is still in early alpha, so we have many features soon to come! Sta
 | Php Webhooks to communicate with Stripe                                               |  ✅     |
 | Basic Starter theme to show products from Stripe                                               |  ✅     |
 | Load data.json via Js from themes                                               | ⏳      |
-| Add typical sections to start themes (features, faq, contact...)                                                                       | ⏳        |
+| Make Starter theme like Gumroad                                                                      | ⏳        |
 | Add link to Stripe's customer portal                                                                       | ⏳        |
 | User Private Area (after successful signup & login), the gateway to become a new ideas boilerplate to launch fast                                                                 | ⏳         |
 | Admin Private Area (user & payments management)                                                                     | ⏳         |
@@ -150,7 +146,7 @@ This project is still in early alpha, so we have many features soon to come! Sta
 
 
 ## How to contribute
-If you haven't contributed to any open source project this is the perfect opportunity. 
+If you haven't contributed to any open source project this is the perfect opportunity. The project is very simple and it is in early stage. 
 
 To contribute via pull request, follow these steps:
 
@@ -163,6 +159,8 @@ For more detailed instructions on how to contribute code, check out these [code 
 ## License
 Licensed under the GPL License, Version 3.0 [Copy of the license](LICENSE.txt).
 
+## Author 
+[Beto Ayesa](https://github.com/betoayesa) ([@betoayesa](https://twitter.com/betoayesa)), looking for contributors!
 ## Disclaimer
 
 ``` Not affiliated in any way with Stripe.com ```
