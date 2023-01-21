@@ -26,8 +26,8 @@
 use Stripe\Invoice;
 use Stripe\StripeClient;
 
-require '../vendor/autoload.php';
-require ('../config.php');
+require './vendor/autoload.php';
+require ('config.php');
 
 # Checking if minimum settings are ready
 
