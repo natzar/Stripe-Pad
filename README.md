@@ -1,12 +1,12 @@
 
 #  Stripe Pad
-
+![Stripe Pad Storefront](open-graph.png "Stripe Pad Sample Image")
 Stripe Pad is a fast and efficient way to sell your products configured in Stripe, acting as a front-end for your Stripe account. 
-![Stripe Pad Storefront](sample2.png "Stripe Pad Sample Image")
+![Stripe Pad Storefront](sample2.png "Grid Theme")
 
-![Stripe Pad Storefront](sample.png "Stripe Pad Sample Image")
+![Stripe Pad Storefront](sample.png "List Theme")
 
-Project URL: [www.stripepad.com](https://www.stripepad.com)
+
 
 
 ## Getting Started
@@ -92,7 +92,8 @@ Any contributions to Stripe Pad are welcomed. If you have any ideas or suggestio
 
 ## License
 
-Stripe Pad is open-sourced software licensed under the GPL-3.0 license
+Stripe Pad is open-sourced software licensed under the GPL-3.0 license.
+Project URL: [www.stripepad.com](https://www.stripepad.com)
 
 ## Disclaimer
 
