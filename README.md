@@ -46,11 +46,11 @@ You just need Php and [Composer](https://getcomposer.org/download/) to install d
 
 ```
   git clone https://github.com/natzar/stripe-pad.git
-  cd stripe-pad
+  cd stripe-pad/webhooks
   composer install
 ```
 
-**Edit config.php** file to match your environment settings.
+**Edit webhooks/config.php** file to match your environment settings.
 
 ```php
 define('BaseUrl','//localhost/stripe-pad');
@@ -63,7 +63,7 @@ define('Theme','list|grid');
 This demos the core functionality while staying as lean as possible, making it the perfect launchpad for new projects 🚀
 
 ```php
-Browser: //localhost/stripe-pad
+Browser: //localhost/stripe-pad/web
 ```
 In the first run, cache/data.json won't exist, so your account details and products from your Stripe Account will be gathered and saved in /cache/data.json via webhooks/getStripeDetails.php. Keep reading to now more about [development internals](#development-internals)
 
