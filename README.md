@@ -1,13 +1,8 @@
-
-
+![Stripe Pad Storefront](open-graph.png "Stripe Pad Logo Image")
   
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/slinkity/slinkity/blob/main/LICENSE.md)
 [![License: GPL3](https://img.shields.io/github/stars/natzar/Stripe-Pad?style=social`)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
-
-
-[![Twitter: betoayesa](https://img.shields.io/twitter/follow/betoayesa?label=Follow)](https://twitter.com/betoayesa)
-![Stripe Pad Storefront](open-graph.png "Stripe Pad Sample Image")
-By 
+ By 
 [Beto Ayesa](https://github.com/betoayesa) ([@betoayesa](https://twitter.com/betoayesa)), looking for contributors!
 
 
@@ -17,13 +12,13 @@ By
 
 > 🚧 **This project is heavily under construction!** 🚧 As excited as you may be, we don't recommend this early alpha for production use. Still, give it a try if you want to have some fun and don't mind.
 
-[Stripe Pad](https://stripepad.com) is the simplest way to start selling your Stripe products and subscriptions. A simple storefront solution that wants to become a Stripe based Micro SaaS boilerplatefor faster launching. Show and sell your products today, effortlessly. It connects to your Stripe account and acts as an UI, there is no database, just a Json file. 
+[Stripe Pad](https://stripepad.com) is the simplest way to start selling your Stripe products and subscriptions. A simple storefront solution that wants to become a Stripe based Micro SaaS boilerplate for faster launching. Show and sell your products today, effortlessly. It connects to your Stripe account and acts as an UI, there is no database, just a Json file. 
 
 ` You can think of Stripe pad as a public UI for your Stripe Account. `
 
-The main objective is to be an ideal option to launch fast and validate ideas without being attached to any framework or library so you can work with your favorite stack. Themes can be build in any way you need, being independent of the core. 
+The main objective is to be an ideal option to launch fast and validate ideas without being attached to any framework or library so you can work with your favorite stack. 
 
-Once installed, your frontstore will be ready to:
+Once installed, your storefront will be ready to:
 
 - 🚀 **Show your products to visitors with direct links to Stripe.** and customize it later.
 - 🔖 **Manage webhooks calls from Stripe** to hook actions after a new subscription or a new payment is received.
