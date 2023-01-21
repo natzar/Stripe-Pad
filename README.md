@@ -1,11 +1,11 @@
 
 
   
-[![License: GPL3](https://img.shields.io/badge/License-GPL3-yellow.svg)](https://github.com/slinkity/slinkity/blob/main/LICENSE.md)
+[![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/slinkity/slinkity/blob/main/LICENSE.md)
 [![License: GPL3](https://img.shields.io/github/stars/natzar/Stripe-Pad?style=social`)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
 
 
-![Twitter: betoayesa](https://img.shields.io/twitter/follow/betoayesa?label=Follow)](https://twitter.com/betoayesa)
+[![Twitter: betoayesa](https://img.shields.io/twitter/follow/betoayesa?label=Follow)](https://twitter.com/betoayesa)
 ![Stripe Pad Storefront](open-graph.png "Stripe Pad Sample Image")
 By 
 [Beto Ayesa](https://github.com/betoayesa) ([@betoayesa](https://twitter.com/betoayesa)), looking for contributors!
@@ -17,13 +17,17 @@ By
 
 > 🚧 **This project is heavily under construction!** 🚧 As excited as you may be, we don't recommend this early alpha for production use. Still, give it a try if you want to have some fun and don't mind.
 
-[Stripe Pad](https://stripepad.com) is the simplest way to start selling your Stripe products and subscriptions. It is a Php package that helps you sell your products quickly and easily. It connects to your Stripe account and acts as an UI for selling your products. The main objective is to be an ideal option to launch fast and validate ideas without being attached to any framework or library so if your idea is succesful you don't have to rewrite much. Themes can be build in any way you need, being independent of the core. There is no database, just a Json file.You can think of Stripe pad as a public UI for your Stripe Account. 
+[Stripe Pad](https://stripepad.com) is the simplest way to start selling your Stripe products and subscriptions. It is a Php package that helps you sell your products quickly and easily. It connects to your Stripe account and acts as an UI, there is no database, just a Json file. 
+
+` You can think of Stripe pad as a public UI for your Stripe Account. `
+
+The main objective is to be an ideal option to launch fast and validate ideas without being attached to any framework or library so you can work with your favorite stack. Themes can be build in any way you need, being independent of the core. 
 
 Once installed, your frontstore will be ready to:
 
-- 🚀 **Show your products to visitors with direct links to Stripe.** like React for writing page templates and layout templates. Turn an existing `.html` or `.liquid` file into a `.jsx` file, and you're off to the componentized races.
-- 🔖 **Manage webhooks calls from Stripe** in case you want to hook actions after a new subscription or payment is done.
-- 💧 **Customization** clone any of the starter themes to build your landing page. The Signup button could link directly to a product payment process at Stripe.
+- 🚀 **Show your products to visitors with direct links to Stripe.** and customize it later.
+- 🔖 **Manage webhooks calls from Stripe** to hook actions after a new subscription or a new payment is received.
+- 💧 **Ready to build** clone any of the starter themes to build your landing page. The Signup button could link directly to a product payment process at Stripe.
 
 ### [📣 Find our full announcement post here →](https://www.indiehackers.com/post/stripe-pad-a-storefront-a-micro-saas-boilerplate-for-your-stripe-php-or-nodejs-2579dd2504)
 
@@ -33,17 +37,9 @@ It's a very simple and rudimentary architecture on purpose, less code, less debt
 
 1. Php
 2. Vanilla Js
-
-*Starter themes use Tailwind CSS via CDN*.
+3. Dependencies: Stripe Php Wrapper & Php Mailer only.
+5. *Starter themes use Tailwind CSS via CDN*.
  
-### Dependencies
-Dependencies are managed via composer. The challenge is maintain it with as less dependencies as posible.
-
-- Stripe Php Wrapper
-- Php Mailer
-
-
-
 ## Starter Themes Samples
 ![Stripe Pad Storefront](sample2.png "Grid Theme")
 
@@ -137,10 +133,11 @@ This project is still in early alpha, so we have many features soon to come! Sta
 | Feature                                                                               | Status    |
 |---------------------------------------------------------------------------------------|-----------|
 | Complete README.md file |  ✅     |
-| Basic Php Webhooks to gather data from Stripe                                               |  ✅     |
+| Php Webhooks to communicate with Stripe                                               |  ✅     |
 | Basic Starter theme to show products from Stripe                                               |  ✅     |
 | Load data.json via Js from themes                                               | ⏳      |
 | Add typical sections to start themes (features, faq, contact...)                                                                       | ⏳        |
+| Add link to Stripe's customer portal                                                                       | ⏳        |
 | User Private Area (after successful signup & login), the gateway to become a new ideas boilerplate to launch fast                                                                 | ⏳         |
 | Admin Private Area (user & payments management)                                                                     | ⏳         |
 | Add Default Transactional Emails. Payments, Sign up, ...                                                        |⏳        |
@@ -165,8 +162,7 @@ To contribute via pull request, follow these steps:
 For more detailed instructions on how to contribute code, check out these [code contributor guidelines](CONTRIBUTING.md).
 
 ## License
-Licensed under the GPL License, Version 3.0
-Copyright 2023 Beto Ayesa. [Copy of the license](LICENSE.txt).
+Licensed under the GPL License, Version 3.0 [Copy of the license](LICENSE.txt).
 
 ## Disclaimer
 
