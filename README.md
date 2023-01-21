@@ -17,7 +17,7 @@ By
 
 > 🚧 **This project is heavily under construction!** 🚧 As excited as you may be, we don't recommend this early alpha for production use. Still, give it a try if you want to have some fun and don't mind.
 
-[Stripe Pad](https://stripepad.com) is the simplest way to start selling your Stripe products and subscriptions. It is a Php package that helps you sell your products quickly and easily. It connects to your Stripe account and acts as an UI, there is no database, just a Json file. 
+[Stripe Pad](https://stripepad.com) is the simplest way to start selling your Stripe products and subscriptions. A simple storefront solution that wants to become a Stripe based Micro SaaS boilerplatefor faster launching. Show and sell your products today, effortlessly. It connects to your Stripe account and acts as an UI, there is no database, just a Json file. 
 
 ` You can think of Stripe pad as a public UI for your Stripe Account. `
 
@@ -27,13 +27,13 @@ Once installed, your frontstore will be ready to:
 
 - 🚀 **Show your products to visitors with direct links to Stripe.** and customize it later.
 - 🔖 **Manage webhooks calls from Stripe** to hook actions after a new subscription or a new payment is received.
-- 💧 **Ready to build** clone any of the starter themes to build your landing page. The Signup button could link directly to a product payment process at Stripe.
+- 💧 **Ready to make money** clone any of the starter themes to build your landing page. The Signup button could link directly to a product payment process at Stripe.
 
 ### [📣 Find our full announcement post here →](https://www.indiehackers.com/post/stripe-pad-a-storefront-a-micro-saas-boilerplate-for-your-stripe-php-or-nodejs-2579dd2504)
 
 ## Technologies used
 
-It's a very simple and rudimentary architecture on purpose, less code, less debt, less long-term commitment. The focus is on the short-term, in providing a fast website with Stripe integration to validate a business or product idea, while having a starting point that doesn't make you lose time, when starting up or later.
+It's a very simple and rudimentary architecture on purpose, less code, less debt, less long-term commitment. The focus is on the short-term, in generating a website with Stripe integration to validate a business or product idea fast, while having a starting point that doesn't make you lose time, when starting up or later.
 
 1. Php
 2. Vanilla Js
@@ -82,10 +82,9 @@ define('Theme','[Folder name of your new theme]');
 ```
 You can fully edit the look and feel of the front-end as per your need. Best of luck validating your product idea, take in mind:
 
-- Any customization should be done by editing the files directly.
-- If you modify code outside of /themes folder please create a pull request.
-- If you create a new theme, please share it! Create a pull request.
-- Don't modify basic themes, clone one of them and start your "landing" from there.
+- Any customization should be done by editing themes files directly.
+- If you modify code outside of /themes folder, please create a pull request.
+- If you create a new theme, please share it creating a pull request.
 - DebugMode also acts like a switch between Stripe Keys (live/test)
 - Don't modify data.json as it will be overwritten if you ever add new products for example.
 
@@ -101,7 +100,12 @@ When you are ready to publish it online:
 
 
 ## Development Internals
+
+cache/data.json is what allows Stripe Pad to maintain the different components 100% decoupled and no database involved.
+
+
 The main index.php includes the theme files defined in config.php, in case cache folder is empty, data will be retrieved from webhooks/stripeGetDetails.php and store the json in cache/data.json right before including index.php file from selected theme, which will receive $stripeData array with all account and product details.
+
 
 In case you want to clean cache, just remove the file.
 
