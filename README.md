@@ -3,7 +3,9 @@
 ![Stripe Pad Storefront](open-graph.png "Stripe Pad Sample Image")
 Stripe Pad is a Php package that helps you sell your products quickly and easily. It connects to your Stripe account and acts as an UI for selling your products.
 
-The main objective is to be an ideal option to launch fast and validate ideas without being attached to any framework or library. Themes can be build in any way you need, being independent of the core.
+The main objective is to be an ideal option to launch fast and validate ideas without being attached to any framework or library so if your idea is succesful you don't have to rewrite much. Themes can be build in any way you need, being independent of the core. There is no database, just a Json file.
+
+It's a very simple architecture on purpose, less code, less debt, less comitment. The important thing is to validate ideas and have a starting point that doesn't make you lose time when starting up or later when you succesfully validate your idea.
 
 ### Starter Themes
 ![Stripe Pad Storefront](sample2.png "Grid Theme")
@@ -22,45 +24,47 @@ To get started with Stripe Pad, follow these steps:
   cd stripe-pad
   composer install
 ```
+**Edit config.php** file to match your environment settings.
 
-Open localhost/stripe-pad from your browser. In the first run, your account details and products from your Stripe Account will be gathered and saved in /cache/data.json
+**Open localhost/stripe-pad from your browser**. In the first run, cache/data.json won't exist, so your account details and products from your Stripe Account will be gathered and saved in /cache/data.json via webhooks/getStripeDetails.php
+
+If everything went well you will see your products, if not you will see the error message.
 
 
 ## Main components
+The main index.php includes the theme files defined in config.php, in case cache folder is empty, data will be retrieved from webhooks/stripeGetDetails.php and store the json in cache/data.json right before including index.php file from selected theme, which will receive $stripeData array with all account and product details.
 
-### Config.php
-General settings, base urls, stripe credentials
-
-### Cache
-Data gathered from Stripe is stored in cache/data.json. In case you want to clean cache, just remove the file.
-
-### Main controller Index.php
-It includes the theme files defined in config.php, in case cache folder is empty,  it retrieves data from webhooks/stripeGetDetails.php and store the json in cache/data.json right before including index.php file from selected theme.
-
-### Themes
-The html/css for the landing that will showcase your offerings.
-Inside /themes folder.
-$stripeData array is passed to all themes, it is the array to make data from Stripe available to theme files.
-- $stripeData['account']: Account details depends on your settings and type of Stripe account
-- $stripeData['products']: Array with your products
-
-### Webhooks
-#### stripeGetDetails.php
-This file is called by index.php when cache/data.json is not found
-
-#### stripeNotifications.php
-Manage notifications from Stripe after setting up a new webhook in your Stripe account. Payment received, subscription creation, invoice paid, ...
+In case you want to clean cache, just remove the file.
 
 
-Usage & Customization
+### Themes 
+The front, html/css for the landing that will showcase your offerings are inside /themes folder. Each theme uses the $stripeData array that is the result of decoding cache/data.json. There are 2 themes to showcase functionality, both use tailwind CDN for the CSS.
+
+**$stripeData** associative array is passed to all themes, it is the array to make data from Stripe available to theme files.
+- $stripeData['**account**']: Account details depends on your settings and type of Stripe account
+- $stripeData['**products**']: Array with your products
+
+Nothing more, from here is up to you.
+
+### Webhooks - Back
+To keep it simple, the cache/data.json is all the back the front needs. Any data gathered from Stripe will be stored in that file. Data from is Stripe is processed via the webhooks. No database.
+
+- **stripeGetDetails.php**, this file is called by index.php when cache/data.json is not found, before loading theme's files.
+- **stripeNotifications.php**, Manage notifications from Stripe after setting up a new webhook in your Stripe account. Payment received, subscription creation, invoice paid, ...
 
 
-Once your Stripe account is configured, you can easily retrieve products and other details from your Stripe Account. The boilerplate also includes basic checkout functionality and a sample thank-you page.
-
+## Usage & Customization
 You can also customize the look and feel of the front-end as per your need.
 
-- Clone one of the 2 basic themes inside *themes* folder.
-- Basic themes include Tailwind via CDN, no other CSS or JS
+- Any customization should be done by editing the files directly.
+- If you modify code outside of /themes folder please create a pull request.
+- If you create a new theme, please create a pull request
+- Don't modify basic themes, clon one of them and start your "landing" from there.
+- DebugMode also acts like a switch between Stripe Keys (live/test)
+- Don't modify data.json as it will be overwritten if you ever add new products
+
+
+
 ### In Production
 
 - Add a webhook from https://dashboard.stripe.com/webhooks to https://yourdomain.com/webhooks/stripeNotifications.php to manage Stripe events.
