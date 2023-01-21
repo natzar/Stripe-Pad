@@ -37,5 +37,5 @@ if(!file_exists(CacheFilename)){ // Defined in config
 	else echo "Cache is not working, every refresh is a call to Stripe API";
 }
 
-$settings = json_decode(file_get_contents(CacheFilename),true); //data read from json file to Array
+$stripeData = json_decode(file_get_contents(CacheFilename),true); //data read from json file to Array
 include "themes/".Theme."/index.php";

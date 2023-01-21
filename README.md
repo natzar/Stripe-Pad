@@ -1,7 +1,8 @@
 
 #  Stripe Pad
 ![Stripe Pad Storefront](open-graph.png "Stripe Pad Sample Image")
-Stripe Pad is a fast and efficient way to sell your products configured in Stripe, acting as a front-end for your Stripe account. 
+Stripe Pad is a Php tool that helps you sell your products quickly and easily. It connects to your Stripe account and acts as a UI for selling your products.
+### Starter Themes
 ![Stripe Pad Storefront](sample2.png "Grid Theme")
 
 ![Stripe Pad Storefront](sample.png "List Theme")

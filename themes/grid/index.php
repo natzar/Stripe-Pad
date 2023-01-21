@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<title><?= $settings['account']['settings']['dashboard']['display_name'] ?></title>
+	<title><?= $stripeData['account']['settings']['dashboard']['display_name'] ?></title>
 	  <meta name="title" content="Stripe Pad">	  
 	  <meta name="description" content="Stripe Pad, create a public shop from your Stripe products in a minute">
 	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -37,7 +37,7 @@
 	<div class="bg-white">
   <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
 	<span class="bg-indigo-100 rounded-full text-indigo-600 px-4 py-1 text-xs uppercase font-extrabold">Just launched!</span>
-   <h2 class="text-6xl font-extrabold tracking-tight text-gray-900 mt-5"><?= $settings['account']['settings']['dashboard']['display_name'] ?></h2>
+   <h2 class="text-6xl font-extrabold tracking-tight text-gray-900 mt-5"><?= $stripeData['account']['settings']['dashboard']['display_name'] ?></h2>
    <p class="text-2xl font-light text-gray-500 mb-10">Edit /themes/<?= Theme ?>/index.php file to change this text</p>
    
    
@@ -52,7 +52,7 @@
 
 	<div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 	  
-		<? foreach ($settings['products'] as $p): ?>
+		<? foreach ($stripeData['products'] as $p): ?>
 <? if (!$p->images[0]) $p->images[0] = "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"; ?>
   
 	<div class="group relative ">
@@ -89,7 +89,7 @@
   
   
 	<div class="border-t-1 border-t border-indigo-200 mt-10 text-gray-400 pt-3 text-xs mt-10 block">
-	 &copy; <?= $settings['account']['settings']['dashboard']['display_name'] ?> is powered by	<strong>Stripepad.com</strong>. Send feedback <a  rel="nofollow" class="underline text-indigo-600" href="mailto:<?= AdminEmail ?>" target="_blank">Email</a></div>
+	 &copy; <?= $stripeData['account']['settings']['dashboard']['display_name'] ?> is powered by	<strong>Stripepad.com</strong>. Send feedback <a  rel="nofollow" class="underline text-indigo-600" href="mailto:<?= AdminEmail ?>" target="_blank">Email</a></div>
   </div>
   
 	</div>
