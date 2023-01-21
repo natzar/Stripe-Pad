@@ -1,6 +1,6 @@
 #  Stripe Pad v.0.0.1
 
-![Stripe Pad Storefront](logo-small.png "Stripe Pad Sample Image") January 20th, 2023. Stripe Pad is a micro SaaS boilerplate that allows you to quickly build projects and integrate Stripe payments from the beginning. It is a fast and efficient way to sell your products configured in Stripe, acting as a front-end for your Stripe account.
+January 20th, 2023. Stripe Pad is a micro SaaS boilerplate that allows you to quickly build projects and integrate Stripe payments from the beginning. It is a fast and efficient way to sell your products configured in Stripe, acting as a front-end for your Stripe account.
 
 
 Project URL: [www.stripepad.com](https://www.stripepad.com)
@@ -58,7 +58,7 @@ Dependencies are managed via composer
 
 Any contributions to Stripe Pad are welcomed. If you have any ideas or suggestions for new features, please feel free to open an issue or submit a pull request.
 
-IMPORTANT: The main advantage of Stripe Pad is being an unopionated package, the challenge is to maintain every component decoupled from others, there is no js library, no CSS framework. I don't guarantee that it will be like this in the future, but the effort will go always in this direction.
+IMPORTANT: The main advantage of Stripe Pad is being an unopinionated package, the challenge is to maintain every component decoupled from others, there is no js library, no CSS framework. I don't guarantee that it will be like this in the future, but the effort will go always in this direction.
 
 ## License
 

@@ -25,6 +25,10 @@
 
 require('config.php');
 
+# Checking if minimum settings are ready
+
+if (empty(StripeKey) or empty(StripeKeySecret)) die("Stripe credentials are empty. Edit config.php file an add theme");
+
 if(!file_exists(CacheFilename)){ // Defined in config
 	$data = file_get_contents('/webhooks/stripeGetSettings.php');
 	file_put_contents(CacheFilename, $data);
