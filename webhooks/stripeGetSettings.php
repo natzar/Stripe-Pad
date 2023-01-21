@@ -29,45 +29,63 @@ use Stripe\StripeClient;
 require '../vendor/autoload.php';
 require ('../config.php');
 
-$stripe = new StripeClient(StripeSecret);
+# Checking if minimum settings are ready
 
-$settings = [];
-
-// Retrieve account details
-$accounts = $stripe->accounts->all(['limit' => 1]);
-
-$settings['account'] = $stripe->accounts->retrieve($accounts->data[0]->id,[]);
+if (empty(StripeKey) or empty(StripeKeySecret)) die("Stripe credentials are empty. Edit config.php file an add theme");
 
 
-// Retrieve all products
+$stripeData = [];
 
-$products =  $stripe->products->all(['limit' => 300])->data;
+# Refresh Cache if needed
 
-// Create Payment Links, if they don't exist
-
-// for ($i=0;$i<count($products);$i++){
-// 	$products[$i]->price= array();
-// 	if($products[$i]->default_price){
-// 		$price = $stripe->prices->retrieve($products[$i]->default_price);
-		
-// 		$products[$i]->price[] = array("amount" => $price->unit_amount, "link" => $stripe->paymentLinks->create(
-// 			['line_items' => [['price' => $products[$i]->default_price, 'quantity' => 1]]]
-// 			));
-		
-// 	}else{
-		
-// 		$prices = $stripe->prices->all(['limit' => 3, 'product' => $products[$i]->id]);
-// 		foreach($prices->data as $price){
-// 			$products[$i]->price[] = array("amount" => $price->unit_amount, "link" => $stripe->paymentLinks->create(
-// 			['line_items' => [['price' => $price->id, 'quantity' => 1]]]
-// 			));
-// 		}
-// 	}
-// }
+if(!file_exists(CacheFilename)){ // Defined in config
 	
+	$stripe = new StripeClient(StripeSecret);
+	
+	// Retrieve account details
+	$accounts = $stripe->accounts->all(['limit' => 1]);
 
-$settings['products'] = $products;
+	if (!isset($accounts->data[0]->id)) die("Some error ocurred while connecting to Stripe");
+
+	$stripeData['account'] = $stripe->accounts->retrieve($accounts->data[0]->id,[]);
+
+	// Retrieve all products
+
+	$products =  $stripe->products->all(['limit' => 300])->data;
+
+	// Create Payment Links, if they don't exist
+
+	// for ($i=0;$i<count($products);$i++){
+	// 	$products[$i]->price= array();
+	// 	if($products[$i]->default_price){
+	// 		$price = $stripe->prices->retrieve($products[$i]->default_price);
+			
+	// 		$products[$i]->price[] = array("amount" => $price->unit_amount, "link" => $stripe->paymentLinks->create(
+	// 			['line_items' => [['price' => $products[$i]->default_price, 'quantity' => 1]]]
+	// 			));
+			
+	// 	}else{
+			
+	// 		$prices = $stripe->prices->all(['limit' => 3, 'product' => $products[$i]->id]);
+	// 		foreach($prices->data as $price){
+	// 			$products[$i]->price[] = array("amount" => $price->unit_amount, "link" => $stripe->paymentLinks->create(
+	// 			['line_items' => [['price' => $price->id, 'quantity' => 1]]]
+	// 			));
+	// 		}
+	// 	}
+	// }
+		
+	$stripeData['products'] = $products;
+
+	file_put_contents(CacheFilename, json_encode($stripeData));
+	if (!file_exists(Cachefilename) echo "Cache is not working, every refresh is a call to Stripe API";
+
+}else{
+	
+	$stripeData = json_decode(file_get_contents(CacheFilename),true); //data read from json file to Array
+
+}
 
 // Json Output
 
-echo json_encode($settings);
+echo json_encode($stripeData);
