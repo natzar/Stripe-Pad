@@ -1,16 +1,17 @@
 #  Stripe Pad v.0.0.1
-
+![Stripe Pad Storefront](sample2.png "Stripe Pad Sample Image")
 January 20th, 2023. Stripe Pad is a micro SaaS boilerplate that allows you to quickly build projects and integrate Stripe payments from the beginning. It is a fast and efficient way to sell your products configured in Stripe, acting as a front-end for your Stripe account.
 
 
 Project URL: [www.stripepad.com](https://www.stripepad.com)
+
 Git Repository: [Git repo](https://github.com/natzar/Stripe-Pad)
 
-* Sample1 *
+
 ![Stripe Pad Storefront](sample.png "Stripe Pad Sample Image")
 
-* Sample2 ** It was the landing for stripepad.com
-![Stripe Pad Storefront](sample2.png "Stripe Pad Sample Image")
+
+
 
 ## Getting Started
 
@@ -27,6 +28,10 @@ To get started with Stripe Pad, follow these steps:
 3. Open your browser http://localhost/stripe-pad ?
 
 If you did everything well, you will see your products here.
+
+### In Stripe
+
+- Add a webhook https://dashboard.stripe.com/webhooks
 
 ## Usage & Customization
 
