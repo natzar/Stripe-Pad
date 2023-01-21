@@ -29,10 +29,13 @@ require('config.php');
 
 if (empty(StripeKey) or empty(StripeKeySecret)) die("Stripe credentials are empty. Edit config.php file an add theme");
 
+# Refresh Cache if needed
+
 if(!file_exists(CacheFilename)){ // Defined in config
-	$data = file_get_contents('/webhooks/stripeGetSettings.php');
-	file_put_contents(CacheFilename, $data);
+	$data = file_get_contents(WebhooksUrl."stripeGetSettings.php");	
+	if (strlen($data) > 0 ) file_put_contents(CacheFilename, $data);
+	else echo "Cache is not working, every refresh is a call to Stripe API";
 }
 
-$settings = json_decode(file_get_contents(CacheFilename)); //data read from json file	
+$settings = json_decode(file_get_contents(CacheFilename),true); //data read from json file to Array
 include "themes/".Theme."/index.php";

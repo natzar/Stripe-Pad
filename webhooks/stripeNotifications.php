@@ -26,7 +26,7 @@
 use Stripe\Invoice;
 use Stripe\StripeClient;
 
-require __DIR__ . '/vendor/autoload.php';
+require '../vendor/autoload.php';
 require ('../config.php');
 
 $stripe = new StripeClient(StripeSecret);

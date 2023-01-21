@@ -26,10 +26,17 @@
 use Stripe\Invoice;
 use Stripe\StripeClient;
 
-require __DIR__ . '/vendor/autoload.php';
+require '../vendor/autoload.php';
 require ('../config.php');
 
 $stripe = new StripeClient(StripeSecret);
+
+$settings = [];
+
+// Retrieve account details
+$accounts = $stripe->accounts->all(['limit' => 1]);
+
+$settings['account'] = $stripe->accounts->retrieve($accounts->data[0]->id,[]);
 
 
 // Retrieve all products
@@ -58,7 +65,7 @@ $products =  $stripe->products->all(['limit' => 300])->data;
 // 	}
 // }
 	
-$settings = [];
+
 $settings['products'] = $products;
 
 // Json Output
