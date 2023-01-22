@@ -38,8 +38,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Modify assets/ files -->
-    <script src="assets/js/custom.js"></script>
+    <!-- Modify assets/ files -->    
     <link rel="stylesheet" type="text/css" href="css/custom.css">
   </head>
   <body>
@@ -78,7 +77,7 @@
 
     <!-- Item templates used by Js -->
     <!-- Grid item -->
-    <template id="grid-item">
+    <template id="grid-template">
       <div class="group relative">
         <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
           <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
@@ -86,39 +85,31 @@
         <div class="mt-4 flex justify-between">
           <div>
             <h3 class="text-sm text-gray-700">
-              <a href="#">
+              <a href="#" id="name">
                 <span aria-hidden="true" class="absolute inset-0"></span> Basic Tee </a>
             </h3>
-            <p class="mt-1 text-sm text-gray-500">Black</p>
+            <p class="mt-1 text-sm text-gray-500" id="description">Black</p>
           </div>
-          <p class="text-sm font-medium text-gray-900">$35</p>
+          <p class="text-sm font-medium text-gray-900" id="price">$35</p>
         </div>
       </div>
     </template>
     <!-- List item -->
-    <template id="list-item">
+    <template id="list-template">
       <a href="https://app.phpninja.net/checkout?title=Bug+Fixing&amount=225&iva=0&vat=1" target="_blank" class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none hover:border-indigo-500 hover:ring-2 hover:ring-indigo-500">
         <span class="flex items-center">
           <span class="text-sm flex flex-col">
-            <span id="server-size-0-label" class="font-medium text-gray-900 text-base">Bug Fixing </span>
-            <span id="server-size-0-description-0" class="text-gray-500">
-              <span class="block sm:inline">Carts</span>
-              <span class="hidden sm:inline sm:mx-1" aria-hidden="true">·</span>
-              <span class="block sm:inline">Users</span>
-              <span class="hidden sm:inline sm:mx-1" aria-hidden="true">·</span>
-              <span class="block sm:inline">Hosting</span>
-              <span class="hidden sm:inline sm:mx-1" aria-hidden="true">·</span>
-              <span class="block sm:inline">Google</span>
-              <span class="hidden sm:inline sm:mx-1" aria-hidden="true">·</span>
-              <span class="block sm:inline">Any issue</span>
+            <span  class="font-medium text-gray-900 text-base" id="name">Bug Fixing </span>
+            <span  class="text-gray-500" id="description">
+              <span class="block sm:inline">Carts</span>              
             </span>
           </span>
         </span>
         <span id="server-size-0-description-1" class="mt-2 flex text-sm sm:mt-0 sm:flex-col sm:ml-4 sm:text-right">
-          <span class="font-bold text-lg text-indigo-600">225€</span>
+          <span class="font-bold text-lg text-indigo-600" id="price">225€</span>
           <!--         <span class="ml-1 text-gray-500 sm:ml-0">/mo</span> -->
         </span>
-        <span class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></span>
+        
       </a>
     </template>
     <!-- Show Whatsapp icon bottom left, this href only works on mobile, look in google for wa.me if you want it working in desktop -->
@@ -127,5 +118,8 @@
         <img alt="whatsapp-icon" src="assets/img/whatsapp-150x150.png">
       </a>
     </div>
+
+    <!-- Load Custom JS -->
+    <script src="assets/js/custom.js"></script>
   </body>
 </html>

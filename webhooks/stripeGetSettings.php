@@ -30,16 +30,20 @@ require './vendor/autoload.php';
 require ('config.php');
 
 # Checking if minimum settings are ready
-
-if (empty(StripeKey) or empty(StripeKeySecret)) die("Stripe credentials are empty. Edit config.php file an add theme");
-
-
 $stripeData = [];
+
+
+
+
 
 # Refresh Cache if needed
 
 if(!file_exists(CacheFilename)){ // Defined in config
 	
+	if (empty(StripeKey) or empty(StripeKeySecret)) {		
+		die("Stripe credentials are empty. Edit config.php file an add theme");
+	}
+
 	$stripe = new StripeClient(StripeSecret);
 	
 	// Retrieve account details
@@ -78,7 +82,7 @@ if(!file_exists(CacheFilename)){ // Defined in config
 	$stripeData['products'] = $products;
 
 	file_put_contents(CacheFilename, json_encode($stripeData));
-	if (!file_exists(Cachefilename) echo "Cache is not working, every refresh is a call to Stripe API";
+	if (!file_exists(Cachefilename)) $stripeData = array("msg" => "Cache is not working, every refresh is a call to Stripe API", "error", true);
 
 }else{
 	
