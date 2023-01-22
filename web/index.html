@@ -39,7 +39,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Modify assets/ files -->    
-    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
   </head>
   <body>
     <div class="bg-gray-900 min-h-screen pt-10 mt-0 pl-5 pr-5 ">
@@ -80,17 +80,17 @@
     <template id="grid-template">
       <div class="group relative">
         <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-          <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+          <img id="image" src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
         </div>
         <div class="mt-4 flex justify-between">
           <div>
-            <h3 class="text-sm text-gray-700">
+            <h3 class="text-sm text-gray-200">
               <a href="#" id="name">
                 <span aria-hidden="true" class="absolute inset-0"></span> Basic Tee </a>
             </h3>
-            <p class="mt-1 text-sm text-gray-500" id="description">Black</p>
+            <p class="mt-1 text-sm text-gray-400" id="description">Black</p>
           </div>
-          <p class="text-sm font-medium text-gray-900" id="price">$35</p>
+          <p class="text-sm font-medium text-white" id="price">$35</p>
         </div>
       </div>
     </template>
@@ -98,6 +98,7 @@
     <template id="list-template">
       <a href="https://app.phpninja.net/checkout?title=Bug+Fixing&amount=225&iva=0&vat=1" target="_blank" class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none hover:border-indigo-500 hover:ring-2 hover:ring-indigo-500">
         <span class="flex items-center">
+          <img class="flex-inline mr-10" src="" width="40" id="image">
           <span class="text-sm flex flex-col">
             <span  class="font-medium text-gray-900 text-base" id="name">Bug Fixing </span>
             <span  class="text-gray-500" id="description">
