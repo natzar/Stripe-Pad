@@ -23,7 +23,7 @@ Once installed, your storefront will be ready to:
 - 🔖 **Manage webhooks calls from Stripe** to hook actions after a new subscription or a new payment is received.
 - 💧 **Ready to make money** clone any of the starter themes to build your landing page. The Signup button could link directly to a product payment process at Stripe.
 
-### [📣 Find our full announcement post here →](https://www.indiehackers.com/post/stripe-pad-a-storefront-a-micro-saas-boilerplate-for-your-stripe-php-or-nodejs-2579dd2504)
+### [📣 See live demo here →](https://www.stripepad.com)
 
 ## Technologies used
 
@@ -34,9 +34,8 @@ It's a very simple and rudimentary architecture on purpose, less code, less debt
 3. Dependencies: Stripe Php Wrapper & Php Mailer only.
 5. *Starter themes use Tailwind CSS via CDN*.
  
-## Starter Themes Samples
-![Stripe Pad Storefront](sample2.png "Grid Theme")
-
+## DEMO
+[📣 See live demo here →](https://www.stripepad.com)
 ![Stripe Pad Storefront](sample.png "List Theme")
 
 
