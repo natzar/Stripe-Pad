@@ -1,10 +1,11 @@
 #whatsapp{ 
-	display: block !important;display: block;
+	display: block;
 	position: fixed;
 	bottom: 10px;
 	right: 10px;
 	z-index: 999;
 	width: 80px;
 
-	display: none 
+	display: none  !important
+
 }
