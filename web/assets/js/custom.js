@@ -25,7 +25,7 @@ var StripePad = StripePad || {};
 
 StripePad = {
 
-	webhookUrl: '/stripe-pad/webhooks/stripeGetSettings.php',
+	webhookUrl: '/webhooks/stripeGetSettings.php',
 	init:function(){
 		var self = this;
 		this.fetch(this.webhookUrl, function(data){
