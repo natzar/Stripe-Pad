@@ -9,29 +9,6 @@ if (function_exists('__')){
 }
 
 
-function espinner($content,$p_words = array("mantenimiento web","diseño web","prestashop","wordpress")){
-    if ($content == "") return false;
-    $ch = curl_init();
-    $p_words = implode(",",$p_words);
-    $postfields ="soy=crazy&hello=peisithanatos&email=".urlencode('crazywriter@crazywriter.net')."&apikey=ef85fe2cc3ef3b3077e0c92276f0195c9321ae7e&content=".urlencode($content)."&p_words=".urlencode($p_words);
-
-    // definimos la URL a la que hacemos la petici贸n
-    curl_setopt($ch, CURLOPT_URL,"http://espinner.net/app/api/peisithanatos");
-    // indicamos el tipo de petici贸n: POST
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-type: application/x-www-form-urlencoded'
-    ));
-
-    // definimos cada uno de los par谩metros
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
-
-    // recibimos la respuesta y la guardamos en una variable
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $espineado = curl_exec ($ch);
-    curl_close ($ch);
-    return json_decode($espineado);
-}
 
 function replaceTemplateValues($body,$p){
 	
@@ -157,38 +134,6 @@ function slack($message, $channel ="feed")
 	$logs = new logsModel();
 	return $logs->push($message,'feed','webs',1,0);
 	
-
-/*
-	$urls = array("#general" => "https://hooks.slack.com/services/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",
-	"#ventas" => "https://hooks.slack.com/services/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",
-	"#produccion" => "https://hooks.slack.com/services/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",
-		"#production" => "https://hooks.slack.com/services/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",
-		"#secretaria" => "https://hooks.slack.com/services/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",
-		"#logs" => "https://hooks.slack.com/services/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"
-		);
-	
-	$url = isset($urls[$channel]) ? $urls[$channel] : $urls['#general'];
-	if ($channel != "#secretaria")
-	$url = $urls['#logs'];
-	
-    $ch = curl_init($url);
-    $data = json_encode(array(
-    	"channel" => $channel, //"#mychannel",
-    	"text" => $message, //"Hello, Foo-Bar channel message.",
-    	"username" => "Php Ninja",
-    ));
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    $result = curl_exec($ch);
-    curl_close($ch);
-    
-    return $result;
-*/
 }
 
 
