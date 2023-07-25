@@ -34,7 +34,10 @@ define('APP_THEME','basic');
 
 error_reporting(DEBUG_MODE ? E_ALL : E_NONE);
 ini_set('display_errors', DEBUG_MODE ? 0 : 1);
-
+mb_internal_encoding("UTF-8");
+date_default_timezone_set('Europe/Madrid'); 
+setlocale (LC_ALL, 'es_ES.ISO8859-1'); 
+setlocale(LC_TIME, 'spanish'); 
 
 function isLocalhost() {
     // List of common localhost IP addresses
