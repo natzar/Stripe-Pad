@@ -1,0 +1,9 @@
+DirectoryIndex  index.php
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(counter|group|user)/?([0-9]*)?/?([a-z]*)?/?$ index.php?p=app&m=$1&id=$2&period=$3 [NC,L,QSA]
