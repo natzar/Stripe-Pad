@@ -26,7 +26,7 @@ if (!defined('SECRET_ACCESS_TOKEN')) define('SECRET_ACCESS_TOKEN', 'BetterChange
  *
  * @var string
  */
-if (!defined('REMOTE_REPOSITORY')) define('REMOTE_REPOSITORY', 'git@bitbucket.org:gophpninja/counterify.git');
+if (!defined('REMOTE_REPOSITORY')) define('REMOTE_REPOSITORY', 'git@github.com:natzar/Stripe-Pad.git');
 
 /**
  * The branch that's being deployed.
