@@ -125,18 +125,6 @@ function fingerPrint($result){
 	return implode("-",$words);
 }
 
-function slack($message, $channel ="feed")
-{
-	
-	//@include_once dirname(__FILE__)."/../load.php";
-	
-	
-	$logs = new logsModel();
-	return $logs->push($message,'feed','webs',1,0);
-	
-}
-
-
 
 function saveTranslations($json){
 return $token;
