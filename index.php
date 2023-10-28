@@ -22,44 +22,73 @@
 
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
-
 require_once dirname(__FILE__).'/load.php'; //Archivo con configuraciones.
 	
 
 
 
 class App {
-
+	var $params;
+	var $view;
+	
   /*  Admin Login
   ---------------------------------------*/
   public function __construct(){
 		$this->params = gett();
         $this->view = new View();
-
+		$this->view->isAuthenticated = $this->isAuthenticated();
     	
-		if ($this->params['m'] != "cloneSession" and $this->params['m'] != "checkout"  and $this->params['m'] != "actionRecoverPassword" and $this->params['m'] != "forgotPassword"  and $this->params['m'] != "actionLogin" and $this->params['m'] != "actionSignup" and $this->params['m'] != "signup" and !$this->isAuthenticated()){
-			//$this->login();	
-			//exit();
-		}
+		// if (isset($this->params['m']) and $this->params['m'] != "cloneSession" and $this->params['m'] != "checkout"  and $this->params['m'] != "actionRecoverPassword" and $this->params['m'] != "forgotPassword"  and $this->params['m'] != "actionLogin" and $this->params['m'] != "actionSignup" and $this->params['m'] != "signup" and !$this->isAuthenticated()){
+		// 	//$this->login();	
+		// 	//exit();
+		// }
+	//	print_r($this->params);
 
   }
   public function index(){      
 		if ($this->isAuthenticated()){
-			$this->dashboard();
+		//	$this->dashboard();
+			echo 'authentic';
 		}else{
-			echo 'landing';
-			$this->landing();
+			
+			$this->main();
 		}
   }
-  
-  public function landing(){
+  public function feedback(){
+  	$msg = $_GET['msg']; //print_r($_GET);
+  	mail("beto.phpninja@gmail.com","mail feedback chatleads",$msg);
+  }
 
-  		$data = Array();         	
-  		include "app/index.php";
+  public function expiredDomains(){
+  	$this->view->show('expired-domains.php',array());
+  }
+  public function main(){
 
-//		$this->view->show("app/index.php", $data,true);
+  		// $stats = new statsModel();
+
+  		// $totals = array("total"=>$stats->totalDomains(), "queue"=> $stats->totalQueue());
+
+  	
+
+		$this->view->show("app.php", array());
   }
   
+  public function tag(){
+  	if (!isset($this->params['a']) or empty($this->params['a'])) return $this->main();
+  	$title = ucfirst(str_replace("-"," ",$this->params['a']));
+
+  	$currentQuery = str_replace("Websites using","",$title);
+  	$currentQuery = str_replace("domains","",$currentQuery);
+  	$data = array(
+  		"tag" => $this->params['a'],
+  		"tag_human" => $title,
+  		"currentQuery" => $currentQuery,
+  		"hookBeforeApp" => '<h1 class="text-white font-bold">'.$title.'</h1><p>Find all domains matching "'.$title.'" in title, description, technologies or domain name </p>',
+  		"SEO_TITLE" => $title,
+  		"SEO_DESCRIPTION" => "Lorem ipsum sit dolor amet"
+  	);
+  	$this->view->show("app.php", $data);
+  }
   // public function comment(){
 	 //  $comments = new commentsModel();
 	  
@@ -355,12 +384,12 @@ class App {
 // 		$this->view->show("web.php",$data);
 // 		//echo json_encode($data);
 // 	}
-// 	public function signup(){
-// 		$data = array(
+	public function signup(){
+		$data = array(
 			
-// 		);
-// 		$this->view->show("signup.php",$data,false);
-// 	}
+		);
+		$this->view->show("signup.php",$data,true);
+	}
 	
 // 	 public function account(){
 // 		 if (empty($_SESSION['user']['stripe_customer_id'])):
@@ -402,15 +431,15 @@ class App {
 // 	  header ("location: ".APP_DOMAIN."/dashboard");
 // 	}
   
-// 	public function actionRecoverPassword(){
-// 		$email = $this->params['email'];
-// 		$customers = new customersModel();
-// 		$customers->sendResetPassword($email);
+	public function actionRecoverPassword(){
+		$email = $this->params['email'];
+		$customers = new customersModel();
+		$customers->sendResetPassword($email);
 		
 		
 		
-// 		header("location: /forgotPassword?success=1");
-// 	}
+		header("location: /forgotPassword?success=1");
+	}
 //     public function actionAddWeb(){
 // 	    $webs = new websModel();
 // 		$credentials = new credentialsModel();
@@ -456,7 +485,19 @@ class App {
 	      
       );         
 
-      $this->view->show("login.php", $data,false);
+      
+
+// $client = new Google_Client();
+// $client->setClientId('YOUR_CLIENT_ID');
+// $client->setClientSecret('YOUR_CLIENT_SECRET');
+// $client->setRedirectUri('YOUR_REDIRECT_URI');
+// $client->addScope("email");
+// $client->addScope("profile");
+
+// $authUrl = $client->createAuthUrl();
+// echo "<a href='$authUrl'>Login with Google</a>";
+
+      $this->view->show("login.php", $data,true);
   }
   
     public function forgotPassword(){
@@ -467,7 +508,7 @@ class App {
   }
   public function actionLogin(){
 
-
+  		$users = new usersModel();
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 1;
         $_SESSION['login_attemp'] = 1;
 		
@@ -476,10 +517,9 @@ class App {
         
         header ("location: ".APP_DOMAIN."/login");
 		}else{
-		// TODO SECURITY
-		// $customers = new customersModel();
 		
-  //       $user = $customers->getByCustomersEmail($this->params['email']);
+		
+  		$user = $users->getByUserEmail($this->params['email']);
 
 		$pass = sha1($this->params['password'])        	  ;
 
@@ -499,7 +539,7 @@ class App {
   }
   public function actionSignup(){
 	 
-  		$customers = new customersModel();
+  		$users = new usersModel();
 
   		if (!empty($_POST['huny'])) die();
   		
@@ -518,18 +558,20 @@ class App {
   		}
 */
 
-  		if (empty($this->params['privacy'])){
-  			$_SESSION['errors'] = "Tiene que aceptar la política de privacidad";  	
-  			header ("location: ".APP_DOMAIN."/signup");		
-  			return;
-  		}
-  		if (!empty( $customers->getCustomerByEmail($this->params['email']))){
+  		// if (empty($this->params['privacy'])){
+  		// 	$_SESSION['errors'] = "Tiene que aceptar la política de privacidad";  	
+  		// 	header ("location: ".APP_DOMAIN."/signup");		
+  		// 	return;
+  		// }
+  		/*
+f (!empty( $customers->getCustomerByEmail($this->params['email']))){
 	  		$_SESSION['errors'] = "El usuario ya existe, intenta loggearte.";
 	  		 header ("location: ".APP_DOMAIN."/login");
 	  		return;
   		}
+*/
 
-  		$customers->selfServiceCreateCustomer($this->params);
+  		$users->selfServiceCreateCustomer($this->params);
   		
   		
   		$_SESSION['errors'] = "Te hemos enviado un email con los datos de acceso.";
@@ -537,24 +579,41 @@ class App {
 
   }
   private function createSession($user,$saveLogin = true){
-  		$_SESSION['app_phpninja_logged_in'] = 1;
+  		$_SESSION['app_'.APP_NAME.'_logged_in'] = 1;
   		$_SESSION['login_attemp'] = 0;
   		$_SESSION['user'] = $user; 
         $_SESSION['HTTP_USER_AGENT'] = sha1($_SERVER['HTTP_USER_AGENT'].$user['email']);	
-		$customers = new customersModel();
-		if ($saveLogin) $customers->saveLastLogin($user);
+// 		$customers = new customersModel();
+// 		if ($saveLogin) $customers->saveLastLogin($user);
   }
   
 
+  public function GoogleLoginCallback(){
+  	if (isset($_GET['code'])) {
+    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+    $_SESSION['access_token'] = $token;
 
+    // Get user info
+    $google_service = new Google_Service_Oauth2($client);
+    $data = $google_service->userinfo->get();
+
+    // Now you have $data which contains user info. You can save this info in your database.
+    // For demonstration purposes, we're just printing it.
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+}
+
+  }
   private function isAuthenticated(){
-	  	return false;
+	  	
   	 	return !empty($_SESSION['user']) and isset($_SESSION['app_'.APP_NAME.'_logged_in']);
   }
   
    public function actionLogout(){
 
         session_destroy();    	
+        
   		header ("location: ".APP_DOMAIN);
         exit(0);
    }
@@ -594,8 +653,10 @@ if (!isset($_SESSION['errors'])) $_SESSION['errors'] ="";
 if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = "";
 
 if (!is_callable(array('App', $actionName))){
-	View::error404();
+	//View::error404();
 }
+
+
 
 $App = new App();
 $App->$actionName(); 

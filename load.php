@@ -21,11 +21,11 @@ setlocale(LC_TIME, 'spanish');
 
 require_once dirname(__FILE__).'/config.php';
 
-if (is_file(dirname(__FILE__)."/vendor/autoload.php")) require(CORE_PATH."vendor/autoload.php");
+if (is_file(dirname(__FILE__)."/vendor/autoload.php")) require(APP_PATH."vendor/autoload.php");
 
 include_once CORE_PATH."ControllerBase.php";
 include_once CORE_PATH."ModelBase.php";
-require_once CORE_PATH.'Config.php'; //de configuracion
+#require_once CORE_PATH.'Config.php'; //de configuracion
 require_once CORE_PATH.'SPDO.php';
 require CORE_PATH.'View.php';
 

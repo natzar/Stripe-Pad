@@ -8,7 +8,9 @@
  *
  * https://github.com/tailwindcss/tailwindcss/issues/362
  */
-
+html{
+	scroll-behavior: smooth;
+}
 img {
   border-style: solid;
 }

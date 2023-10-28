@@ -204,4 +204,39 @@ class usersModel extends ModelBase
 			$c->execute();
 		}
 		
+		public function selfServiceCreateCustomer($params){
+		$email = $params['email'];
+		
+
+		$user = $this->userExist($email);
+		$passw = randomPassword();
+		$sha1_passw = sha1($passw);
+
+		if (!$user){
+			$c = $this->db->prepare('INSERT INTO users (email,password) VALUES (:email,:password)');
+			$c->bindParam(':email',$email,PDO::PARAM_STR);        	   
+			$c->bindParam(':password',$sha1_passw,PDO::PARAM_STR);        	   
+			$c->execute();
+			
+		} else {
+			$c = $this->db->prepare('UPDATE users set password = :password where email = :email' );
+			$c->bindParam(':email',$email,PDO::PARAM_STR);        	   
+			$c->bindParam(':password',$sha1_passw,PDO::PARAM_STR);        	   
+			$c->execute();
+		}
+		
+
+
+		$body ="Welcome to Domstry,\n
+		\n
+		You can now login with email and password:\n
+		email: ".$email."\n
+		password: ".$passw."\n
+
+		";
+		mail($email, 'Welcome to Domstry', $body);
+				
+
+	}
+	
 }
