@@ -4,14 +4,12 @@
 abstract class ModelBase
 {
 	public $db;
-	public $model;
- 	protected $config;
+	public $model;	
 
 	public function __construct()
 	{
 		$this->db = SPDO::singleton();
-		$this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-		$this->config = Config::singleton();
+		$this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);		
 		
     
 	}

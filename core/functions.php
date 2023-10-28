@@ -261,12 +261,6 @@ function gett(){
 }
 
 
-function json_from_array($array){
-	$json = new Services_JSON();
-	$aux = $json->encode($array);
-	return $aux;
-}
-
 function generar_cadena_random($long){ 
 //
 // Genera cadena aleatoria de minusuclas i numeros.
