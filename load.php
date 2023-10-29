@@ -19,6 +19,9 @@ if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()){
 	session_start();
 }
 
+# Include configuration file
+require_once dirname(__FILE__).'/config.php';
+
 # Defaults 
 error_reporting(DEBUG_MODE ? E_ALL : E_NONE);
 ini_set('display_errors', DEBUG_MODE ? 0 : 1);
@@ -26,9 +29,6 @@ mb_internal_encoding("UTF-8");
 date_default_timezone_set('Europe/Madrid'); 
 setlocale (LC_ALL, 'es_ES.ISO8859-1'); 
 setlocale(LC_TIME, 'spanish'); 
-
-# Include configuration file
-require_once dirname(__FILE__).'/config.php';
 
 # Include composer autoload
 if (is_file(dirname(__FILE__)."/vendor/autoload.php")) require(APP_PATH."vendor/autoload.php");
