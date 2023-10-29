@@ -35,10 +35,12 @@ For Educational purposes. Get started with MVC in PHP.
 
 ## Tech Stack
 
-1. Php
+Packed with basic stuff only.
+
+1. Vanilla Php
 2. Vanilla Js
-3. Dependencies: Stripe Php Wrapper & Php Mailer only.
-5. *Starter themes use Tailwind CSS via CDN*.
+3. Composer
+5. Tailwind CDN
 
  
 
