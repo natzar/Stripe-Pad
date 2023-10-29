@@ -145,7 +145,7 @@ class App {
 		// $authUrl = $client->createAuthUrl();
 		// echo "<a href='$authUrl'>Login with Google</a>";
 
-   		$this->view->show("login.php", $data,true);
+   		$this->view->show("user/login.php", $data,true);
 	}
   
     public function forgotPassword(){      
@@ -272,7 +272,7 @@ f (!empty( $customers->getCustomerByEmail($this->params['email']))){
 
 $actionName = 'index';
 		
-if(get_param('m') != -1) $actionName = get_param('m');
+if(isset($_GET['m']) and !empty($_GET['m'] )) $actionName = $_GET['m'];
 
 if (!isset($_SESSION['errors'])) $_SESSION['errors'] ="";
 if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = "";

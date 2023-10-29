@@ -11,6 +11,9 @@
  * 
  */
 
+# Include configuration file
+require_once dirname(__FILE__).'/config.php';
+
 # Session 
 if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()){
 	ini_set('session.cookie_lifetime', 3600 * 24 );
@@ -27,14 +30,12 @@ date_default_timezone_set('Europe/Madrid');
 setlocale (LC_ALL, 'es_ES.ISO8859-1'); 
 setlocale(LC_TIME, 'spanish'); 
 
-# Include configuration file
-require_once dirname(__FILE__).'/config.php';
+
 
 # Include composer autoload
-if (is_file(dirname(__FILE__)."/vendor/autoload.php")) require(APP_PATH."vendor/autoload.php");
+if (is_file(dirname(__FILE__)."/vendor/autoload.php")) require(dirname(__FILE__)."/vendor/autoload.php");
 
 # Include base classes
-include_once CORE_PATH."ControllerBase.php";
 include_once CORE_PATH."ModelBase.php";
 require_once CORE_PATH.'SPDO.php';
 require CORE_PATH.'View.php';

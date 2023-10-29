@@ -76,16 +76,26 @@
 
     <main class="text-gray-400 leading-6">
         <section>
-           <h2 class="bg-white text-gray-900 pl-4">Base settings</h2>
+           <h2 class="bg-white text-gray-900 pl-4">Required Steps</h2>
 
             <ul class="list">
                 <li>Modify RedirectBase in /app/.htaccess. Add your localhost folder /folder/</li>
                 <li>Modify RedirectBase in /api/.htaccess. Add your localhost folder /folder/</li>
-                <li>Set name, urls, database details at config.php</li>
+                <li>Set App Name, base url, ... at config.php</li>
                 <li>Run `composer install`</li>
+    
+
+            </ul>
+
+            <h2 class="bg-white text-gray-900 pl-4">Recommended Steps</h2>
+
+            <ul class="list">
+                <li>Create subdomains and point them to each folder: app, api, webhooks and cdn</li>                
+                <li>Set database details at config.php</li>    
                 <li>Add Stripe api keys at config.php</li>
 
             </ul>
+
 
             <h2 class="bg-white text-gray-900 pl-4">Test it</h2>
             <a href="/app">/app should open login page</a>
@@ -98,12 +108,14 @@
              <strong>Link:</strong> <a href="https://github.com/natzar/stripe-pad">https://github.com/natzar/stripe-pad</a>
             <!-- Metadata Information -->
             
-        </section>
+        	
+        	    <h2 class="bg-white text-gray-900 pl-4">Start your SaaS</h2>
+        	    <p>Your main landing / marketing page should go under /web folder</p>
+        	    <p>Your custom application will live in /app folder</p>
+        	    <p>Your API will live in/api folder</p>
+        	    <p>Models are shared between al components, you can use them everywhere</p>
 
-        <section>
-            <h2>Links</h2>
-            <p>Your app will be located at <a href="/app">/app</a> here or at app.domain.com if you set up a subdomain with the root folder pointing to /app.</p>
-            <p><a href="http://cdn.yourdomain.com">cdn.yourdomain.com</a></p>
+       
         </section>
 
 <div>

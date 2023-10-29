@@ -32,6 +32,7 @@
 # App Name & Email
 define('APP_NAME','Stripe Pad');
 define('ADMIN_EMAIL','webmaster@domain.com');
+define('APP_LOGO','logo.png');
 
 # Counterify.com 
 define('COUNTERIFY_TOKEN','');
@@ -95,10 +96,10 @@ define('APP_STRIPE_CURRENCY','eur');
 define('APP_STRIPE_DEFAULTCOUNTRY','ES');
 
 # PATHS
-
-define('CORE_PATH',dirname(__FILE__));
-define('APP_PATH',CORE_PATH."/");
-define('APP_UPLOAD_PATH',CORE_PATH.'/uploads/');
+define('ROOT_PATH',dirname(__FILE__)."/");
+define('CORE_PATH',dirname(__FILE__)."/core/");
+define('APP_PATH',dirname(__FILE__)."/app/");
+define('APP_UPLOAD_PATH',dirname(__FILE__).'/app/uploads/');
 
 
 

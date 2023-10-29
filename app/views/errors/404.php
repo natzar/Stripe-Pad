@@ -1,4 +1,4 @@
-ERROR 404 <? print_r(gett()); ?>
+ERROR 404 <? print_r($_GET); ?>
           <div class="container flex flex-col items-center px-6 mx-auto">
             <svg
               class="w-12 h-12 mt-8 text-purple-200"

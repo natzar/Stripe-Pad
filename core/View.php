@@ -13,15 +13,12 @@ class View
 	public function show($name = 'home.php', $vars = array(),$show_menu = true)
 	{	
  		
- 		/* Pagination */
-		$params = gett();
-		$OFFSET = $params['offset'];
-		$PERPAGE = $params['perpage'];
+ 		
 		
 		/* Template meta data */
 		$page = $name;
 		$base_url = APP_DOMAIN;
-		$base_title =  APP_BASE_TITLE;
+		$base_title =  APP_NAME;
 		
 		$HOOK_JS = '';
 
@@ -33,12 +30,12 @@ class View
            	
 	/* TEMPLATE
 	***********************/	
-		$template = APP_PATH."/views/".$name;
+		$template = APP_PATH."views/".$name;
 		
 		if (file_exists($template) == false) {
 			
-			if (file_exists(APP_PATH."/views/".$name)){
-				$template = APP_PATH."/views/".$name;
+			if (file_exists(APP_PATH."views/".$name)){
+				$template = APP_PATH."views/".$name;
 			}else{
 				$this->error404();
 			}
@@ -46,23 +43,23 @@ class View
 		
 
 
-		include APP_PATH."/views/header.php";		
+		include APP_PATH."views/layout/header.php";		
 		if ($show_menu){
-			include APP_PATH."/views/menu.php";		
+			include APP_PATH."views/layout/menu.php";		
 		}
     	include($template);
-    	echo '<!-- Template Ninja: '.$template.' -->';
+    	echo '<!-- Template StripePad: '.$template.' -->';
 
-    	include APP_PATH."/views/footer.php";		
+    	include APP_PATH."views/layout/footer.php";		
 		
 		if (isset($_SESSION['errors'])) unset($_SESSION['errors']);
 		if (isset($_SESSION['alerts'])) unset($_SESSION['alerts']);
 	}
 	static public function error404(){
 		header('HTTP/1.0 404 Not Found');
-		include APP_PATH."views/header.php";		
-	    include APP_PATH."views/404.php";
-   		include APP_PATH."views/footer.php";			
+		include APP_PATH."views/layout/header.php";		
+	    include APP_PATH."views/errors/404.php";
+   		include APP_PATH."views/layout/footer.php";			
 		return false;
 	}
 }
