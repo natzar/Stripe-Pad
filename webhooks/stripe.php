@@ -12,9 +12,7 @@
 */
 
 
-	include dirname(__FILE__)."/../app/load.php";
-	require_once(dirname(__FILE__).'/../core/vendor/stripe-php-7.77.0/init.php');
-
+	include dirname(__FILE__)."/../load.php";
 	
 	
 	\Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY);
