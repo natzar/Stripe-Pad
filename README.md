@@ -1,9 +1,7 @@
-![Stripe Pad Storefront](open-graph.png "Stripe Pad Logo Image")
-  
-[![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
+
 
 #  Stripe Pad
-
+[![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
 > 🚧 **Note**: This project is in early development. Use in production environments is not recommended.
 
 **Stripe Pad** is a PHP boilerplate for rapid SaaS development with Stripe integration. It offers a minimalist approach to start, validate, and grow your SaaS application without the constraints of a particular framework.
