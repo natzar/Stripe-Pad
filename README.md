@@ -2,6 +2,7 @@
 
 #  Stripe Pad
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
+> 🚧 **Note**: This project is in early development. Use in production environments is not recommended.
 
 PHP Micro SaaS Boilerplate with Stripe integration out of the box.
 
