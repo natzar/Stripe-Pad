@@ -2,37 +2,48 @@
   
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
 
-
-
-
-
-  
 #  Stripe Pad
 
-> 🚧 **This project is heavily under construction!** 🚧 As excited as you may be, we don't recommend this early alpha for production use. Still, give it a try if you want to have some fun and don't mind.
+> 🚧 **Note**: This project is in early development. Use in production environments is not recommended.
 
-[Stripe Pad](https://stripepad.com) is the simplest way to start selling your Stripe products and subscriptions. A simple storefront solution that wants to become a Stripe based Micro SaaS boilerplate for faster launching. Show and sell your products today, effortlessly. It connects to your Stripe account and acts as an UI, there is no database, just a Json file. 
+**Stripe Pad** is a PHP boilerplate for rapid SaaS development with Stripe integration. It offers a minimalist approach to start, validate, and grow your SaaS application without the constraints of a particular framework.
 
-` You can think of Stripe pad as a public UI for your Stripe Account. `
+It's also done for educatinal purposes, to get started with a pattern like MVC in PHP.
 
-The main objective is to be an ideal option to launch fast and validate ideas without being attached to any framework or library so you can work with your favorite stack. 
+### Disclaimer
 
-Once installed, your storefront will be ready to:
+``` Not affiliated in any way with Stripe.com ```
 
-- 🚀 **Show your products to visitors with direct links to Stripe.** and customize it later.
-- 🔖 **Manage webhooks calls from Stripe** to hook actions after a new subscription or a new payment is received.
-- 💧 **Ready to make money** clone any of the starter themes to build your landing page. The Signup button could link directly to a product payment process at Stripe.
+## Features
 
-### [📣 See live demo here →](https://www.stripepad.com)
+- Direct storefront links to Stripe products.
+- Webhooks management for Stripe events.
+- Starter themes for quick customization.
+- No database—only a Json cache file for faster deployment.
 
-## Technologies used
+[📣 **Live Demo**](https://www.stripepad.com)
 
-It's a very simple and rudimentary architecture on purpose, less code, less debt, less long-term commitment. The focus is on the short-term, in generating a website with Stripe integration to validate a business or product idea fast, while having a starting point that doesn't make you lose time, when starting up or later.
+## Directory Structure
+
+- **web**: Main landing/marketing page.
+- **crons**: Scripts and cronjobs.
+- **app**: Custom application code.
+- **core**: Core files for database connections and templates.
+- **webhooks**: Handlers for webhooks (default: Stripe and Bitbucket).
+- **API**: Basic API functionality.
+- **cdn**: Subdomain for static assets.
+
+## Tech Stack
 
 1. Php
 2. Vanilla Js
 3. Dependencies: Stripe Php Wrapper & Php Mailer only.
 5. *Starter themes use Tailwind CSS via CDN*.
+
+  
+
+### [📣 See live demo here →](https://www.stripepad.com)
+
  
 ## DEMO
 [📣 See live demo here →](https://www.stripepad.com)
@@ -128,16 +139,10 @@ This project is still in early alpha, so we have many features soon to come! Sta
 |---------------------------------------------------------------------------------------|-----------|
 | Complete README.md file |  ✅     |
 | Php Webhooks to communicate with Stripe                                               |  ✅     |
-| Basic Starter theme to show products from Stripe                                               |  ✅     |
-| Load data.json via Js from themes                                               | ⏳      |
-| Make Starter theme like Gumroad                                                                      | ⏳        |
-| Add link to Stripe's customer portal                                                                       | ⏳        |
-| User Private Area (after successful signup & login), the gateway to become a new ideas boilerplate to launch fast                                                                 | ⏳         |
-| Admin Private Area (user & payments management)                                                                     | ⏳         |
-| Add Default Transactional Emails. Payments, Sign up, ...                                                        |⏳        |
-| Add User management, logins, signups, lost password.                                        | ⏳      |
-| Add event in webhooks to clear cache after a product or Stripe account details have been updated                                          | ⏳         |
-|  Webhooks written in NodeJs as an alternative. *I'm afraid Php won't be so popular*                                       | ⏳         |
+| Basic Starter theme                                                |  ✅     |
+| Documentation                                               | ⏳      |
+| Stripe Webhooks complete integration                                               | ⏳      |
+
  - ✅ = Ready to use
 - ⏳ = In progress
 
@@ -160,9 +165,6 @@ Licensed under the GPL License, Version 3.0 [Copy of the license](LICENSE.txt).
 
 ## Author 
 [Beto Ayesa](https://github.com/betoayesa) ([@betoayesa](https://twitter.com/betoayesa)), looking for contributors!
-## Disclaimer
-
-``` Not affiliated in any way with Stripe.com ```
 
 
 ## Have an idea? Notice a bug? Need help?
