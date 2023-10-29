@@ -1,9 +1,15 @@
 <?
-/* 
-	Stripe Pad - Micro SaaS boilerplate
-    Config file
-    Copyright (C) 2023 Beto Ayesa
-
+/**
+ * Package Name: Stripe Pad
+ * File Description: Global config file
+ * 
+ * @author Beto Ayesa <beto.phpninja@gmail.com>
+ * @version 1.0.0
+ * @package StripePad
+ * @license GPL3
+ * @link https://github.com/natzar/stripe-pad
+ * 
+ 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -28,16 +34,8 @@ define('APP_NAME','Counterify');
 define('APP_LOGO','');
 define('DEBUG_MODE',true);
 define('CORE_PATH',dirname(__FILE__));
-
 define('APP_UPLOAD_PATH',CORE_PATH.'/uploads/');
 define('APP_THEME','basic');
-
-error_reporting(DEBUG_MODE ? E_ALL : E_NONE);
-ini_set('display_errors', DEBUG_MODE ? 0 : 1);
-mb_internal_encoding("UTF-8");
-date_default_timezone_set('Europe/Madrid'); 
-setlocale (LC_ALL, 'es_ES.ISO8859-1'); 
-setlocale(LC_TIME, 'spanish'); 
 
 function isLocalhost() {
     // List of common localhost IP addresses
@@ -105,14 +103,7 @@ define('APP_STRIPE_DEFAULTCOUNTRY','ES');
 # Counterify.com 
 define('COUNTERIFY_TOKEN','');
 
-# Debug Mode
-set_error_handler(function($errno, $errstr, $errfile, $errline ){	
-	$error_msg = Date("d/m/Y H:i:s")." ".$errstr." [". $errno."]"." File: ". $errfile. " // Linea: ".$errline." ";		
-	file_put_contents(APP_NAME."-errors.log", $error_msg);
-	if (DEBUG_MODE){
-    	throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
-    }
-});
+
 
 
 
