@@ -26,15 +26,14 @@ if($method == "OPTIONS") {
 }
 
 # Include Stripe Pad Environment
-include "../app/load.php";
+include dirname(__FILE__)."/../load.php";
 
 
 class Api {
 	
-	var $params;
-	var $view;
-	var $bearer;	
-	var $data;
+	var $params; # GET params	
+	var $bearer; # Basic auth	
+	var $data; # POST or JSON
 
 	public function __construct(){
 		       
