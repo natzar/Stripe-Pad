@@ -102,16 +102,17 @@ define('APP_STRIPE_ACCOUNTCOUNTRY','ES');
 define('APP_STRIPE_CURRENCY','eur');
 define('APP_STRIPE_DEFAULTCOUNTRY','ES');
 
-# Debug Mode
+# Counterify.com 
+define('COUNTERIFY_TOKEN','');
 
-if (DEBUG_MODE){
-	set_error_handler(function($errno, $errstr, $errfile, $errline ){
-		
-		$error_msg = Date("d/m/Y H:i:s")." ".$errstr." [". $errno."]"." File: ". $errfile. " // Linea: ".$errline." ";		
-		file_put_contents(APP_NAME."-errors.log", $error_msg);
-	    throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
-	});
-}
+# Debug Mode
+set_error_handler(function($errno, $errstr, $errfile, $errline ){	
+	$error_msg = Date("d/m/Y H:i:s")." ".$errstr." [". $errno."]"." File: ". $errfile. " // Linea: ".$errline." ";		
+	file_put_contents(APP_NAME."-errors.log", $error_msg);
+	if (DEBUG_MODE){
+    	throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
+    }
+});
 
 
 
