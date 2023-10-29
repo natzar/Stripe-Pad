@@ -1,9 +1,15 @@
 <?
-
-// Stripe Pad 1.0
-// users Model
-// 07-2015
-// Beto Ayesa contacto@phpninja.info
+/**
+ * Package Name: Stripe Pad
+ * File Description: User Model.
+ * 
+ * @author Beto Ayesa <beto.phpninja@gmail.com>
+ * @version 1.0.0
+ * @package StripePad
+ * @license GPL3
+ * @link https://github.com/natzar/stripe-pad
+ * 
+ */
 
 class usersModel extends ModelBase
 {
