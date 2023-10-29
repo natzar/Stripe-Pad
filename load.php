@@ -25,25 +25,23 @@ if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()){
 # Defaults 
 error_reporting(DEBUG_MODE ? E_ALL : E_NONE);
 ini_set('display_errors', DEBUG_MODE ? 0 : 1);
-mb_internal_encoding("UTF-8");
-date_default_timezone_set('Europe/Madrid'); 
-setlocale (LC_ALL, 'es_ES.ISO8859-1'); 
-setlocale(LC_TIME, 'spanish'); 
-
-
+mb_internal_encoding(INTERNAL_ENCODING);
+date_default_timezone_set(TIMEZONE); 
+setlocale (LC_ALL, LOCALE_LANG); 
+setlocale(LC_TIME, LOCALE_TIME); 
 
 # Include composer autoload
 if (is_file(dirname(__FILE__)."/vendor/autoload.php")) require(dirname(__FILE__)."/vendor/autoload.php");
 
 # Include base classes
 include_once CORE_PATH."ModelBase.php";
-require_once CORE_PATH.'SPDO.php';
-require CORE_PATH.'View.php';
+include_once CORE_PATH.'SPDO.php';
+include_once CORE_PATH.'View.php';
 
 # Capture any error to file
 set_error_handler(function($errno, $errstr, $errfile, $errline ){
 	$error_msg = Date("d/m/Y H:i:s")." ".$errstr." [". $errno."]"." File: ". $errfile. " // Linea: ".$errline." ";		
-	file_put_contents(APP_PATH.APP_NAME."-errors.log", $error_msg);
+	@file_put_contents(APP_PATH.APP_NAME."-errors.log", $error_msg);
 	if (DEBUG_MODE){
 		echo $error_msg. '<br>';
    		throw new ErrorException($errstr, $errno, 0, $errfile, $errline);

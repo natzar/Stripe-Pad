@@ -34,6 +34,11 @@ define('APP_NAME','Stripe Pad');
 define('ADMIN_EMAIL','webmaster@domain.com');
 define('APP_LOGO','logo.png');
 
+define(INTERNAL_ENCODING,"UTF-8");
+define(TIMEZONE,'Europe/Madrid'); 
+define(LOCALE_LANG,'es_ES.ISO8859-1'); 
+define(LOCALE_TIME,'spanish'); 
+
 # Counterify.com 
 define('COUNTERIFY_TOKEN','');
 
