@@ -29,26 +29,20 @@
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
 
-define('APP_PATH',CORE_PATH."/");
-define('APP_NAME','Counterify');
-define('APP_LOGO','');
-define('DEBUG_MODE',true);
-define('CORE_PATH',dirname(__FILE__));
-define('APP_UPLOAD_PATH',CORE_PATH.'/uploads/');
-define('APP_THEME','basic');
+# App Name & Email
+define('APP_NAME','Stripe Pad');
+define('ADMIN_EMAIL','webmaster@domain.com');
 
-function isLocalhost() {
-    // List of common localhost IP addresses
-    $localhostIPs = array(
-        '127.0.0.1',
-        '::1',
-    );
+# Counterify.com 
+define('COUNTERIFY_TOKEN','');
 
-    // Check if the server IP or remote IP is in the list of localhost IPs
-    return in_array($_SERVER['SERVER_ADDR'], $localhostIPs) || in_array($_SERVER['REMOTE_ADDR'], $localhostIPs);
-}
+# Dual Environment, Dev / Prod
+$localhostIPs = array('127.0.0.1','::1');
 
-if (isLocalhost()) {
+if (in_array($_SERVER['SERVER_ADDR'], $localhostIPs) || in_array($_SERVER['REMOTE_ADDR'], $localhostIPs)) {
+
+	# Localhost / Development
+
     define('APP_DOMAIN','localhost/domain/app/');
 	define('APP_BASE_URL', 'http://localhost/domain/app/');
 	define('API_BASE_URL', 'http://localhost/domain/api/');
@@ -59,10 +53,10 @@ if (isLocalhost()) {
 	define('APP_DB','db name');
 	define('APP_DB_USER','root');
 	define('APP_DB_PASSWORD','');
-
+	define('DEBUG_MODE',true);
 } else {
 
-	// PRODUCTION ENVIRONMENT
+	# Server / Production
 
     define('APP_DOMAIN','https://app.domain.com/');
 	define('APP_BASE_URL', 'https://app.domain.com/');
@@ -74,10 +68,10 @@ if (isLocalhost()) {
 	define('APP_DB','');
 	define('APP_DB_USER','');
 	define('APP_DB_PASSWORD','');
-
+	define('DEBUG_MODE',false);
 }
 
-/* STRIPE */
+# Stripe
 
 define('STRIPE_PUB_PROD','');
 define('STRIPE_SEC_PROD','');
@@ -100,10 +94,11 @@ define('APP_STRIPE_ACCOUNTCOUNTRY','ES');
 define('APP_STRIPE_CURRENCY','eur');
 define('APP_STRIPE_DEFAULTCOUNTRY','ES');
 
-# Counterify.com 
-define('COUNTERIFY_TOKEN','');
+# PATHS
 
-
+define('CORE_PATH',dirname(__FILE__));
+define('APP_PATH',CORE_PATH."/");
+define('APP_UPLOAD_PATH',CORE_PATH.'/uploads/');
 
 
 

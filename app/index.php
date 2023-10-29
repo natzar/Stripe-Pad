@@ -1,162 +1,96 @@
 <?
+/**
+ * Package Name: Stripe Pad
+ * File Description: Main Controller for custom app
+ * 
+ * @author Beto Ayesa <beto.phpninja@gmail.com>
+ * @version 1.0.0
+ * @package StripePad
+ * @license GPL3
+ * @link https://github.com/natzar/stripe-pad
+ * 
+ */
 
-include "load.php";
+# Load Environment
+require_once dirname(__FILE__).'/load.php'; 
+	
+
+
+# Each method of this class can be accessed from //your-domain/app/{method}?params=params
 
 class App {
-	
 	var $params;
 	var $view;
-	var $bearer;
 	
-	public function __construct(){
-		$this->params = gett();
+  /*  Admin Login
+  ---------------------------------------*/
+  	public function __construct(){
+		$this->params = $_GET; // TO_DO: SECURITY, SANITIZE
         $this->view = new View();
-		
-		if (!isset($_SESSION['lang'])){
-			$_SESSION['lang'] = 'en';
-		}
+		$this->view->isAuthenticated = $this->isAuthenticated();
     	
-		if ($this->params['m'] != "cloneSession" and $this->params['m'] != "checkout"  and $this->params['m'] != "actionRecoverPassword" and $this->params['m'] != "forgotPassword"  and $this->params['m'] != "actionLogin" and $this->params['m'] != "actionSignup" and $this->params['m'] != "signup" and !$this->isAuthenticated()){
-			$this->login();	
-			exit();
-		}else{
-		//	$this->bearer = sha1($_SESSION['user']['customersId'].$_SESSION['user']['usersId'].$_SESSION['user']['email']);
-		}
-
+		// if (isset($this->params['m']) and $this->params['m'] != "cloneSession" and $this->params['m'] != "checkout"  and $this->params['m'] != "actionRecoverPassword" and $this->params['m'] != "forgotPassword"  and $this->params['m'] != "actionLogin" and $this->params['m'] != "actionSignup" and $this->params['m'] != "signup" and !$this->isAuthenticated()){
+		// 	//$this->login();	
+		// 	//exit();
+		// }
+		//	print_r($this->params);
   	}
-  
+
+  	#Default app home page
   	public function index(){      
-		if ($this->isAuthenticated()){
+
+  		# check if user is authenticated
+		if ($this->isAuthenticated()){			
+			# Load Dashboard (main-first screen of your app for logged users)
 			$this->dashboard();
 		}else{
+			# Redirect to login if not authenticated
 			$this->login();
 		}
-	}
-	
-	public function settings(){
-		$this->view->show('app/settings.php',array());
-	}
-
-	// public function integrations(){
-	// 	$this->view->show('app/integrations.php',array());
-	// }
-
-	public function export(){
-
-		
-
-		$counters = new counterModel();
-		assert(isset($_GET['a']));
-		assert(isset($_SESSION['user']['usersId']));
-
-		$counter = $counters->get($_GET['a']);
-		if ($counter['usersId'] == $_SESSION['user']['usersId']){
-
-			$data = $counters->getWithHistory($_GET['a']);
-		
-			// TO-DO: history to columns
-			$filename = $counter['label']."-".Date("Y-m-d").".csv";
-
-			$this->CSV($filename, $data);
-		} else {
-			die("Not authorized");
-		}
-	}
-
-	public function CSV($filename = "counterify.csv", $data = array()){
-
-		// Set headers for CSV file download
-		header('Content-Type: text/csv');
-		header('Content-Disposition: attachment; filename="'.$filename.'"');
-
-		// Create a file handle for output stream
-		$output = fopen('php://output', 'w');
-
-		
-		// Write data rows to output stream
-		fputcsv($output, array("YearWeek", "Count"));
-		foreach ($data['history'] as $row) {
-			$row = array_reverse($row);
-			$row = array_values($row);
-		    fputcsv($output, $row);
-		}
-
-		// Close output stream
-		fclose($output);
-
-	}
-	
-  	
-	public function dashboard(){
-		
-		$users = new usersModel();
-				
-	
-		$data = array(
-			"user" => $_SESSION['user'],
-			
-			"alerts" => array()
-			
-			
-		);
-		
-		$this->view->show("app.php",$data,true);
-		
-	}
-
-/*
-	  	  public function checkout(){
-			$data = Array("params" => $this->params);         		
-			$product = $this->params['a'];
-			$client = $this->params['i'];
-  	  		$data['customer'] = null;
-  	  		$data['cart'] = null;
-  	  		$data['product'] = null;
-
-			$products = new productsModel();
-			$customers = new customersModel();
-
-	  	  	if (isset($_GET['title']) and isset($_GET['amount'])){
-	  	  		$data['cart'] = array(array(
-		  	  		"name" => $this->params['title'],
-		  	  		"amount" => $this->params['amount'],
-		  	  		"currency" => "eur",
-		  	  		"quantity" => 1
-	  	  		));
-	
-	 	  		$data['payment_type'] = 'free';
-		
-			}else if(!empty($product) or !empty($client)){    
-				
-				$data['cart'] = $products->getCart($product);
-				$data['customer'] = $customers->getByCustomersId($client);
-				$data['product'] = $products->getProduct($product);
-	 	  		$data['payment_type'] = 'catalog';
-		  
-			}else{
-				$data['store'] =  $products->getProducts();
-				$this->view->show("shop.php", $data,false);
-				exit();
-			}
-
-	   $this->view->show("checkout.php", $data,false);
-
-   
   	}
-*/
+  public function feedback(){
+  	$msg = $_GET['msg'];
+  	mail(ADMIN_EMAIL,"Feedback from ".APP_NAME,$msg);
+  }
 
-		public function signup(){
+  public function expiredDomains(){
+  	$this->view->show('expired-domains.php',array());
+  }
+  public function main(){
 
-		
+  		// $stats = new statsModel();
+
+  		// $totals = array("total"=>$stats->totalDomains(), "queue"=> $stats->totalQueue());
+
+  	
+
+		$this->view->show("app.php", array());
+  }
+  
+  
+	
+	public function dashboard(){
+		$data = array();		
+		$this->view->show("dashboard.php",$data,true);		
+	}
+
+	public function sample(){
+		$data = Array();         			
+		$this->view->show("help.php", $data,true);
+	}
+	public function actionSample(){
+
+	}
+	public function signup(){
 		$data = array();
-		 $this->view->show("signup.php",$data,false);
+		$this->view->show("signup.php",$data,true);
 	}
 	
-	 public function account(){
+	public function stripePortal(){
 		 if (empty($_SESSION['user']['stripe_customer_id'])):
 		 
 		 	$_SESSION['errors'] = "Aún no tienes esta sección habilitada.";
-		 	header ("location: ".APP_BASE_URL);
+		 	header ("location: ".APP_DOMAIN."/dashboard");
 		 
 		 else:
 	
@@ -169,12 +103,12 @@ class App {
 			// Authenticate your user.
 			$session = \Stripe\BillingPortal\Session::create([
 			  'customer' => $_SESSION['user']['stripe_customer_id'],
-			  'return_url' => APP_BASE_URL
+			  'return_url' => 'https://app.phpninja.net/dashboard',
 			]);
 						header("Location: " . $session->url);
 			}catch(Exception $e){
 							$_SESSION['errors'] = $e->getMessage();
-		 	header ("location: ".APP_BASE_URL);
+		 	header ("location: ".APP_DOMAIN."/dashboard");
 				
 			}
 			
@@ -185,31 +119,43 @@ class App {
 		endif;
 
 	}
-    
+  
+
 	public function actionRecoverPassword(){
 		$email = $this->params['email'];
-		$users = new customersModel();
-		$users->sendResetPassword($email);		
-		header("location: ".APP_BASE_URL."forgotPassword?success=1");
+		$customers = new customersModel();
+		$customers->sendResetPassword($email);		
+		header("location: /forgotPassword?success=1");
 	}
-    public function login(){
-      
-      $data = Array(
-	     
-	      
-      );         
 
-      $this->view->show("login.php", $data,false);
-  }
+
+	public function login(){      
+		$data = Array();         
+
+		# Login function
+
+		# Login with Google
+		// $client = new Google_Client();
+		// $client->setClientId('YOUR_CLIENT_ID');
+		// $client->setClientSecret('YOUR_CLIENT_SECRET');
+		// $client->setRedirectUri('YOUR_REDIRECT_URI');
+		// $client->addScope("email");
+		// $client->addScope("profile");
+
+		// $authUrl = $client->createAuthUrl();
+		// echo "<a href='$authUrl'>Login with Google</a>";
+
+   		$this->view->show("login.php", $data,true);
+	}
   
-    public function forgotPassword(){
-      
-      $data = Array();         
+    public function forgotPassword(){      
+		$data = Array();         
+		$this->view->show("forgot-password.php", $data,false);
+  	}
+  
+  	public function actionLogin(){
 
-      $this->view->show("forgot-password.php", $data,false);
-  }
-  public function actionLogin(){
-
+  		$users = new usersModel();
 
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 1;
         $_SESSION['login_attemp'] = 1;
@@ -217,112 +163,112 @@ class App {
 		if ($_SESSION['login_attemp'] > 4){
 				$_SESSION['errors'] = "Demasiados intentos.";    
         
-        header ("location: ".APP_BASE_URL."login");
+        header ("location: ".APP_DOMAIN."/login");
 		}else{
-		// TODO SECURITY
-		$users = new usersModel();
 		
-        $user = $users->getByUserEmail($this->params['email']);
+		
+  		$user = $users->getByUserEmail($this->params['email']);
 
 		$pass = sha1($this->params['password'])        	  ;
 
 		if (!empty($user) and $user['password'] == $pass){
 			$this->createSession($user);
-			header ("location: ".APP_BASE_URL);
+			header ("location: ".APP_DOMAIN);
 			exit();
 		}
 
 		$_SESSION['login_attemp']++;
-       	$_SESSION['errors'] = "User or password not valid. ¿Forgot password?";    
+       	$_SESSION['errors'] = "Usuario o Password incorrecto";    
         
-        header ("location: ".APP_BASE_URL."login");
+        header ("location: ".APP_DOMAIN."/login");
         }
-
-
-  }
-  public function actionSignup(){
+	}
+  	
+  	public function actionSignup(){
 	 
-  		
+  		$users = new usersModel();
 
   		if (!empty($_POST['huny'])) die();
   		
-  	// TODO: Verify valid email
+  		// TODO: Verify valid email
   		if (empty($this->params['email']) ){
-  			$_SESSION['errors'] = "Email is required";  	
-  			header ("location: ".APP_BASE_URL."signup");		
+  			$_SESSION['errors'] = "Email no puede estar en blanco";  	
+  			header ("location: ".APP_DOMAIN."/signup");		
   			return;
   		}
 
+/*
   		if ($this->params['password'] != $this->params['passwordConfirm']){
-  			$_SESSION['errors'] = "Passwords does not match";	
-  			header ("location: ".APP_BASE_URL."/signup");		
+  			$_SESSION['errors'] = "Passwords no coinciden";  	
+  			header ("location: ".APP_DOMAIN."/signup");		
   			return;
   		}
+*/
 
-  		if (empty($this->params['privacy'])){
-  			$_SESSION['errors'] = "Tiene que aceptar la política de privacidad";  	
-  			header ("location: ".APP_BASE_URL."signup");		
-  			return;
-  		}
-  		$users = new usersModel();
-  		
-  		if (!empty( $users->getByUserEmail($this->params['email']))){
-	  		$_SESSION['errors'] = "The user already exists";
-	  		 header ("location: ".APP_BASE_URL."login");
+  		// if (empty($this->params['privacy'])){
+  		// 	$_SESSION['errors'] = "Tiene que aceptar la política de privacidad";  	
+  		// 	header ("location: ".APP_DOMAIN."/signup");		
+  		// 	return;
+  		// }
+  		/*
+f (!empty( $customers->getCustomerByEmail($this->params['email']))){
+	  		$_SESSION['errors'] = "El usuario ya existe, intenta loggearte.";
+	  		 header ("location: ".APP_DOMAIN."/login");
 	  		return;
   		}
-  		
-  		$users = new usersModel();
-  		$users->create($this->params);
-  		
-  		mail("beto.phpninja@gmail.com","New Counterify User", json_encode($this->params));
-  		
-  		$_SESSION['alerts'] = "Signup successful";
-	  	header ("location: ".APP_BASE_URL."login");
+*/
 
-  }
-  private function createSession($user,$saveLogin = true){
-  		$_SESSION['app_phpninja_logged_in'] = 1;
-  		$_SESSION['login_attemp'] = 0;
-  		$_SESSION['user'] = $user; 
-        $_SESSION['HTTP_USER_AGENT'] = sha1($_SERVER['HTTP_USER_AGENT'].$user['email']);	
-		$users = new usersModel();
+  		$users->selfServiceCreateCustomer($this->params);
+  		
+  		
+  		$_SESSION['errors'] = "An email with login credentials have been sent, please follow instructions.";
+	  	header ("location: ".APP_DOMAIN."/login");
+
+  	}
+	
+	private function createSession($user,$saveLogin = true){
+			$_SESSION['app_'.APP_NAME.'_logged_in'] = 1;
+			$_SESSION['login_attemp'] = 0;
+			$_SESSION['user'] = $user; 
+	    $_SESSION['token'] = sha1($_SERVER['HTTP_USER_AGENT'].$user['email']);	
+
 		if ($saveLogin) $users->saveLastLogin($user);
-  }
+	}
   
 
+  	public function GoogleLoginCallback(){
+	  	if (isset($_GET['code'])) {
+	    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+	    $_SESSION['access_token'] = $token;
 
-  private function isAuthenticated(){
+	    // Get user info
+	    $google_service = new Google_Service_Oauth2($client);
+	    $data = $google_service->userinfo->get();
+
+	    // Now you have $data which contains user info. You can save this info in your database.
+	    // For demonstration purposes, we're just printing it.
+	    echo '<pre>';
+	    print_r($data);
+	    echo '</pre>';
+		}
+  	}
+
+  	private function isAuthenticated(){
 	  	
-  	 	if (!empty($_SESSION['user']) and isset($_SESSION['app_phpninja_logged_in'])){
-	  	 	return true;
-	  	}else{
-		  	 //Check bearer
-		  	 
-		  	 
-		  	 
-		  	 $headers = apache_request_headers();
-			if (isset($headers['Authorization']) && preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)) {
-			    $token = $matches[1];
-			    // Do something with the token...
-			    return true;
-			} else {
-			    // Handle missing or invalid Authorization header...
-			    return false;
-			}
-	  	 }
+  	 	return !empty($_SESSION['user']) and isset($_SESSION['app_'.APP_NAME.'_logged_in']);
   }
   
    public function actionLogout(){
 
         session_destroy();    	
-  		header ("location: ".APP_BASE_URL);
+        
+  		header ("location: ".APP_DOMAIN);
         exit(0);
    }
-  	
-     
+   
 }
 
+# Router
 
 $actionName = 'index';
 		
@@ -332,9 +278,10 @@ if (!isset($_SESSION['errors'])) $_SESSION['errors'] ="";
 if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = "";
 
 if (!is_callable(array('App', $actionName))){
-	View::error404();
-	exit();
+	//View::error404();
 }
+
+
 
 $App = new App();
 $App->$actionName(); 
