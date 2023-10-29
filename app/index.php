@@ -48,10 +48,12 @@ class App {
 			$this->login();
 		}
   	}
-  public function feedback(){
-  	$msg = $_GET['msg'];
-  	mail(ADMIN_EMAIL,"Feedback from ".APP_NAME,$msg);
-  }
+  	
+  	# SAMPLE - Custom endpoint to send feedback by email
+  	public function feedback(){
+  		$msg = $_GET['msg'];
+  		mail(ADMIN_EMAIL,"Feedback from ".APP_NAME,$msg);
+  	}
 
   public function expiredDomains(){
   	$this->view->show('expired-domains.php',array());
