@@ -32,11 +32,9 @@
   </head>
   <body class=" bg-gray-100">
 	
-	<script src="https://cdn.gophpninja.com/jquery-1.11.2/jquery-1.11.2.min.js"></script>
-  	<script src="<?= APP_BASE_URL ?>assets/jquery-ui.min.js"></script>
-  	<script>
-	    var COUNTERIFY = null;
-	</script>
+	<script src="cdn/jquery-1.11.2/jquery-1.11.2.min.js"></script>
+  	<script src="cdn/jquery-ui.min.js"></script>
+ 
 
 	<? if (!empty($_SESSION['errors'])): ?>
 	<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
