@@ -16,16 +16,19 @@ For Educational purposes. Get started with MVC in PHP.
 
 ## Features
 
-- Direct storefront links to Stripe products.
+- Space for a marketing website (landing) & app (with authentication)
+- MVC, 1 controller for the app and 1 for the api. Models shared between all controllers.
 - Webhooks management for Stripe events.
-- Starter themes for quick customization.
-- No database—only a Json cache file for faster deployment.
+- Divided in subdomains or subfolders
+- PHP is the only requirement, how you build you app inside /app folder is up to you
+- Easy to modify and customize
+
 
 
 
 ## Directory Structure
 
-- **web**: Main landing/marketing page.
+- **web**: Main landing/marketing page, the place for a ghost or wp installation.
 - **crons**: Scripts and cronjobs.
 - **app**: Custom application code.
 - **core**: Core files for database connections and templates.
