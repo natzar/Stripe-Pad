@@ -58,7 +58,7 @@
           <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div class="w-full">
 	           <? if (!empty(APP_LOGO)): ?>
-				   <img class=""  src="https://www.phpninja.net/phpninja-logo.png">
+				   <img class=""  src="<?= APP_LOGO ?>">
 				<? else: ?>
 				 <h1 class="mb-10 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                 Login to <?= APP_NAME ?> 

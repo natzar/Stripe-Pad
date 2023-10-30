@@ -32,7 +32,7 @@
 # App Name & Email
 define('APP_NAME','Stripe Pad');
 define('ADMIN_EMAIL','webmaster@domain.com');
-define('APP_LOGO','logo.png');
+define('APP_LOGO','../cdn/logo.png');
 
 define('INTERNAL_ENCODING',"UTF-8");
 define('TIMEZONE','Europe/Madrid'); 
