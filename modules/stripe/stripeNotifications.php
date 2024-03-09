@@ -50,7 +50,7 @@ if ($event->type == 'charge.succeeded') {
     	
 }
 
-mail(AdminEmail, ProjectTitle." · ".$event->type, $json):
+mail(AdminEmail, ProjectTitle." · ".$event->type, $json);
 
 
 
