@@ -39,21 +39,19 @@ These are core files, they will break with an update:
 - **webhooks**: Handlers for webhooks (default: Stripe and Bitbucket).
 - **API**: Basic API functionality.
 
-![Relations between components](https://stripepad.com/relations.png)
+![Relations between components](https://www.stripepad.com/relations.png)
 
-## Tech Stack
+### Tech Stack
 
 Packed with basic stuff only.
 
 1. Php. MVC style, no framework.
-2. Vanilla Js & jQuery, just for basic things.
+2. Vanilla Js & jQuery, just to open/close mobile menu
 3. Composer, to install stripe and email dependencies
 
 Basic theme uses Tailwind. 100% optional. You can edit /app folder completely.
 
- # Other Resources
- SVG icons: https://heroicons.com/
-
+ 
 
 ## Getting Started, Installation
 
@@ -70,7 +68,7 @@ After clone or downloading files, just visit //localhost/stripe-pad in your brow
 Browser: //localhost/stripe-pad/
 ```
 
-
+Find full installation instructions [here](https://www.stripepad.com/installation)
 
 
 ## How to contribute
@@ -102,3 +100,6 @@ I'd love to hear your feedback! Feel free to log an issue on our [GitHub issues 
 - [How it works? Development internals](#development-internals)
 - [How to contribute](#how-to-contribute)
 - [License](#license)
+
+## Other Resources
+SVG icons: https://heroicons.com/

@@ -82,26 +82,24 @@
             <li>Import <span class="bg-gray-700 text-green-300 p-1 rounded">database.sql</span> into your MySQL database.</li>
             
             <li>Set up a webhook from your Stripe dashboard to <span class="bg-gray-700 text-green-300 p-1 rounded">https://yourdomain.com/webhooks/stripe.php</span> to handle Stripe events.</li>
+            
+            <p>Modify the automatic deployment settings at <span class="bg-gray-700 text-green-300 p-1 rounded">/webhooks/bitbucket.php</span>.</p>
+
         </ol>
     </section>
 
 
 
     <section class="mt-4">
-        <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4">Deployment and Usage</h3>
-        <p>Modify the automatic deployment settings at <span class="bg-gray-700 text-green-300 p-1 rounded">/webhooks/bitbucket.php</span>.</p>
-        <p>Access your main landing or marketing page at the <span class="bg-gray-700 text-green-300 p-1 rounded">/web</span> directory.</p>
-        <p>Your custom application should reside in the <span class="bg-gray-700 text-green-300 p-1 rounded">/app</span> folder.</p>
-        <p>Your API endpoints will be located within the <span class="bg-gray-700 text-green-300 p-1 rounded">/api</span> folder.</p>
-        <p>Models shared between all components are available for use across the application.</p>
-    </section>
-    
-    <section class="mt-4">
         <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4  rounded-full pl-8">Verification and Testing</h3>
         <p>Ensure the setup is correct by accessing the following:</p>
         <ul class="list-disc pl-8">
             <li><a href="/app" class="text-blue-400 hover:text-blue-600">Login Page</a> should open correctly.</li>
             <li><a href="/api" class="text-blue-400 hover:text-blue-600">API Endpoint</a> should display a 'not authenticated' message.</li>
+             <p>Access your main landing or marketing page at the <span class="bg-gray-700 text-green-300 p-1 rounded">/web</span> directory.</p>
+        <p>Your custom application should reside in the <span class="bg-gray-700 text-green-300 p-1 rounded">/app</span> folder.</p>
+        <p>Your API endpoints will be located within the <span class="bg-gray-700 text-green-300 p-1 rounded">/api</span> folder.</p>
+        <p>Models shared between all components are available for use across the application.</p>
         </ul>
     </section>
     <div class="mt-6">
