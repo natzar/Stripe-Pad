@@ -139,13 +139,13 @@ PHP Micro SaaS Boilerplate already wired to Stripe
             </ul>
           </div>
           <div class="mt-10 md:mt-0">
-            <h3 class="text-sm font-semibold leading-6 text-white">Databases</h3>
+            <h3 class="text-sm font-semibold leading-6 text-white">Components</h3>
             <ul role="list" class="mt-6 space-y-4">
               
 
-            <li><a href="browse/country" class="text-sm leading-6 text-gray-300 hover:text-white">Leads by Country</a></li>
+            <li><a href="browse/country" class="text-sm leading-6 text-gray-300 hover:text-white">Login</a></li>
 
-<li><a href="builtwith" class="text-sm leading-6 text-gray-300 hover:text-white">Leads by Technology</a></li>
+<li><a href="builtwith" class="text-sm leading-6 text-gray-300 hover:text-white">Signup</a></li>
 <li><a href="browse/hosting" class="text-sm leading-6 text-gray-300 hover:text-white">Leads by Network</a></li>
 <li><a href="browse/lang" class="text-sm leading-6 text-gray-300 hover:text-white">Leads by Language</a></li>
                 

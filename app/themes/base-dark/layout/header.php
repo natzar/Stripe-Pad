@@ -24,6 +24,25 @@
 <meta name="twitter:image" content="https://www.domstry.com/domstry-share.png" />
 <meta name="twitter:creator" content="@betoayesa" />
 
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stripe Pad</title>
+    <meta name="title" content="Stripe Pad">
+    <meta name="author" content="Php Ninja">
+    <meta name="description" content="Stripe Pad, create a public shop from your Stripe products in a minute">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset='utf-8'>
+    <meta property="og:title" content="Stripe Pad">
+    <meta property="og:image" content="https://stripepad.com/main-stripepad.png">
+    <meta property="og:url" content="https://stripepad.com">
+    <meta name="og:description" content="Stripe Pad, create a public shop from your Stripe products in a minute">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
@@ -44,10 +63,17 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <base href="<?= APP_BASE_URL ?>">
-<link href="a<?= APP_BASE_URL ?>app/themes/<?= APP_THEME ?>/app.css" rel="stylesheet">
+
+<!-- CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="<?= APP_BASE_URL ?>app/themes/<?= APP_THEME ?>/app.css" rel="stylesheet"> 
+
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet">
+
+<!-- Favicon* -->
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -64,6 +90,8 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
+
+<!-- Hardcoded SS -->
 <style>
 	html{
 	scroll-behavior: smooth;
@@ -73,11 +101,17 @@
 	font-weight: 600;
 }
 </style>
+
+<!-- PHP to JS -->
 <script>var isAuthorized = <?= $isAuthenticated ? 1:0 ?>;</script>
+
+<!-- Include here your JS -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" async></script>
-<script src="<?= APP_CDN ?>main.js?v=<?= Date("Ymd") ?>" async defer></script>
 
 
+<? if ($page == "app.php"): ?>
+<!-- header hardcoded hook: custom code exclusive for your app -->
+<? endif; ?>
 </head>
  <body class="bg-black">
 

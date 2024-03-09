@@ -32,29 +32,9 @@
 
     You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Stripe Pad</title>
-    <meta name="title" content="Stripe Pad">
-    <meta name="author" content="Php Ninja">
-    <meta name="description" content="Stripe Pad, create a public shop from your Stripe products in a minute">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset='utf-8'>
-    <meta property="og:title" content="Stripe Pad">
-    <meta property="og:image" content="https://stripepad.com/main-stripepad.png">
-    <meta property="og:url" content="https://stripepad.com">
-    <meta name="og:description" content="Stripe Pad, create a public shop from your Stripe products in a minute">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Modify assets/ files -->    
-    <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
-  </head>
-  <body>
-    <div class="bg-gray-900 min-h-screen pt-10 mt-0 pl-5 pr-5 ">
-      <div class="max-w-3xl mx-auto pt-10 pb-10">
+
+    
+      <div class="max-w-2xl mx-auto py-8 px-4 sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
         <h1 class="text-3xl font-extrabold tracking-tight text-indigo-100 sm:text-5xl lg:text-6xl text-center">Stripe Pad</h1>
         <span class="clear  z-0 flex items-center text-center mx-auto justify-center border-1 border-gray-100 mt-2 space-x-2  mb-5 ">
           <span href="/quote" class="hidden sm:inline-flex relative  items-center  rounded-l-md  text-sm font-medium text-gray-600  focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
@@ -134,12 +114,4 @@
              <p class="text-xs text-gray-400 mt-5 mb-10 text-center">Licensed under GPL3 | Powered by <strong>Stripepad.com</strong>&copy; Powered by <strong><a href="https://stripepad.com">Stripepad.com</a></strong>. Send feedback <a rel="nofollow" class="underline text-indigo-600" href="mailto:<?= ADMIN_EMAIL ?>" target="_blank">Email</a>
         </div>
     </footer>
-
-   
-  
-
-    <!-- Load Custom JS -->
-    <script src="assets/js/custom.js"></script>
-  </body>
-</html>
-
+</p></div></footer></a></span></span></div>
