@@ -60,11 +60,11 @@ if (isLocalhost()) { # Localhost
 	define('APP_DB_USER','');
 	define('APP_DB_PASSWORD','');
 } else {    # Server / Production
-    define('APP_DOMAIN','https://app.domain.com/');
-	define('APP_BASE_URL', 'https://app.domain.com/');
-	define('API_BASE_URL', 'https://api.domain.com/');
-	define('HOMEPAGE_URL', 'https://domain.com');
-	define('APP_CDN', 'https://cdn.domstry.com/');
+    define('APP_DOMAIN','https://www.stripepad.com/');
+	define('APP_BASE_URL', 'https://www.stripepad.com/');
+	define('API_BASE_URL', 'https://www.stripepad.com/');
+	define('HOMEPAGE_URL', 'https://www.stripepad.com');
+	define('APP_CDN', 'https://www.stripepad.com/cdn/');
 
 	define('APP_TABLE_PREFIX','');
 	define('APP_DB_HOST','');
