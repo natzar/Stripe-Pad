@@ -257,7 +257,7 @@ PHP Micro SaaS Boilerplate already wired to Stripe
 </p>
     </div>
 
-<script src="<?= APP_CDN ?>main.js?v=1"  ></script>
+<script src="<?= APP_CDN ?>app/main.js?v=1"  ></script>
 <script><?= $HOOK_JS ?></script>
 </body>
 </html>

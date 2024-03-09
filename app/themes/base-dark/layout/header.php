@@ -106,7 +106,11 @@
 </style>
 
 <!-- PHP to JS -->
-<script>var isAuthorized = <?= $isAuthenticated ? 1:0 ?>;</script>
+<script>
+    var isAuthorized = <?= $isAuthenticated ? 1:0 ?>;
+    var base_url = '<?= APP_BASE_URL?>';
+
+</script>
 
 <!-- Include here your JS -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" async></script>

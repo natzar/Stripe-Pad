@@ -25,18 +25,18 @@
   	
 
 
-    <div class=" pt-10 sm:pt-16 lg:overflow-hidden lg:pb-14 lg:pt-8 ">
-        <div class="mx-auto sm:max-w-7xl lg:px-8">
+    <div class="px-6  py-10 sm:pt-16 lg:overflow-hidden lg:pb-14 lg:pt-8 ">
+        <div class="mx-auto max-w-7xl lg:px-8">
           <div class="">
-            <div class="  sm:max-w-3xl sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
+            <div class="  max-w-5xl sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
               <div class="lg:py-24">
                
 <span class="clear  z-0 flex items-center text-left mx-auto justify-start border-1 border-gray-100 mt-2 space-x-2  mb-5 ">
-          <span href="/quote" class="hidden sm:inline-flex relative  items-center  rounded-l-md  text-sm font-medium text-gray-600  focus:z-10 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500">
+          <span href="/quote" class="inline-flex relative  items-center  rounded-l-md  text-sm font-medium text-gray-600  focus:z-10 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg> v.0.0.1 </span>
-          <span class="-ml-px hidden sm:inline-flex relative inline-flex items-center text-sm font-medium text-gray-600 focus:z-10 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500">
+          <span class="-ml-px  inline-flex relative inline-flex items-center text-sm font-medium text-gray-600 focus:z-10 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
             </svg> Open Source GPL3 </span>
@@ -45,7 +45,7 @@
        
                 <h1 class="mt-4 text-5xl font-bold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-7xl nunito">
                   <span class="">Build your Micro SaaS with</span>
-                  <span class=" bg-gradient-to-r from-green-400 to-gray-900 bg-clip-text pb-3 text-transparent sm:pb-5">Stripe Pad</span>
+                  <span class=" bg-gradient-to-r from-green-400 to-green-900 bg-clip-text pb-3 text-transparent sm:pb-5">Stripe Pad</span>
                 </h1>
                 <p class="text-base text-gray-500 sm:text-xl lg:text-lg xl:text-xl">PHP Micro-SaaS Boilerplate wired to Stripe</p>
 
