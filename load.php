@@ -63,7 +63,8 @@ register_shutdown_function(function() {
         include "app/templates/error.php";
     } else {
         // Flush the buffer if there's no error
-        ob_end_flush();
+        //ob_end_flush();
+        flush();
     }
 });
 
