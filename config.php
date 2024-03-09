@@ -35,7 +35,9 @@ define('APP_NAME','Stripe Pad');
 define('APP_SLUG','stripe-pad');
 define('APP_LOGO','');
 define('DEBUG_MODE',true);
-define('APP_THEME','basic');
+define('APP_THEME','base-dark'); #folder name of your theme
+define('SEO_TITLE','Stripe Pad · PHP Micro Saas Boilerplate');
+define('SEO_DESCRIPTION','Stripe Pad · PHP Micro Saas Boilerplate');
 
 # EMAIL
 define('ADMIN_EMAIL','');
