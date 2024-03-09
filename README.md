@@ -36,7 +36,7 @@ For Educational purposes. Get started with MVC in PHP.
 - **API**: Basic API functionality.
 - **cdn**: Subdomain for static assets.
 
-![Relations](https://stripepad.com/relations.png)
+![Relations between components](https://stripepad.com/relations.png)
 
 ## Tech Stack
 
