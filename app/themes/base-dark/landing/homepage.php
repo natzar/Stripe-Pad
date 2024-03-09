@@ -51,10 +51,15 @@
 
   gtag('config', 'G-KKGVWVY1J4');
 </script>
-    <div class="bg-gray-900   pt-10 mt-0 pl-5 pr-5 ">
-      <div class="max-w-3xl mx-auto pt-10 pb-5">
-        <h1 class="text-3xl font-extrabold tracking-tight text-indigo-100 sm:text-5xl lg:text-6xl text-center">Stripe Pad</h1>
-        <span class="clear  z-0 flex items-center text-center mx-auto justify-center border-1 border-gray-100 mt-2 space-x-2  mb-5 ">
+
+
+    <div class=" pt-10 sm:pt-16 lg:overflow-hidden lg:pb-14 lg:pt-8">
+        <div class="mx-auto sm:max-w-7xl lg:px-8">
+          <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+            <div class="mx-auto px-6 sm:max-w-2xl sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
+              <div class="lg:py-24">
+               
+<span class="clear  z-0 flex items-center text-left mx-auto justify-start border-1 border-gray-100 mt-2 space-x-2  mb-5 ">
           <span href="/quote" class="hidden sm:inline-flex relative  items-center  rounded-l-md  text-sm font-medium text-gray-600  focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -64,30 +69,75 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
             </svg> Open Source GPL3 </span>
         </span>
-        <p class="text-2xl font-light text-gray-200 mb-3 text-center">Build your Micro SaaS Fast</p>
-        <p class="mt-6 text-sm sm:text-xl text-gray-500 max-w-3xl text-center">PHP MicroSaaS boilerplate wired to Stripe</p>
+        
         <div>
-          <a style="width:200px;" class="rounded-full bg-indigo-600 text-white py-3 px-5 mx-auto block my-6 text-center" href="https://www.github.com/natzar/Stripe-Pad">Get it from Github</a>
+          
         </div>
-      
-     
-          <footer>
-        <div class=" mt-10 text-gray-400 pt-3 text-xs mt-10 block">
-             <p class="text-xs text-gray-400 mt-5 mb-10 text-center">* Not affiliated or have any relation with Stripe.com<br>Licensed under GPL3 | &copy; Powered by <strong><a href="https://stripepad.com">Stripepad.com</a></strong>. 
-        </div>
-    </footer>
+                <h1 class="mt-4 text-5xl font-bold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-7xl">
+                  <span class="block">Build your Micro SaaS Today with
+ 
+</span>
+                  <span class="block bg-gradient-to-r from-purple-400 to-purple-800 bg-clip-text pb-3 text-transparent sm:pb-5">Stripe Pad</span>
+                </h1>
+                <p class="text-base text-gray-500 sm:text-xl lg:text-lg xl:text-xl">PHP Micro-SaaS Boilerplate wired to Stripe</p>
 
 
-        </p>
-      </div>
+                <div class="mt-5">
+                  <form action="#" class="sm:mx-auto sm:max-w-xl lg:mx-0">
+                    <div class="min-w-0 flex-1">
+                          <div class=" flex gap-x-4 w-full mx-auto text-center">
+              <a href="https://www.github.com/natzar/Stripe-Pad" class="inline-block rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-500 hover:bg-purple-700 hover:ring-indigo-700">
+               DOWNLOAD
+                <span class="text-purple-200" aria-hidden="true">&rarr;</span>
+              </a>
+              <a href="#" onclick="alert('You are already in the demo'); return false;" class="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                Live demo
+                <span class="text-gray-400" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+                     <!--  <div class="min-w-0 flex-1">
+                        <label for="email" class="sr-only">Email address</label>
+                        <input id="email" type="email" placeholder="Enter your email" class="block w-full rounded-md border-1 px-4 py-3 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900">
+                      </div>
+                      <div class="mt-3 sm:ml-3 sm:mt-0">
+                        <button type="submit" class="block w-full rounded-md bg-gradient-to-r from-purple-500 to-purple-600 px-4 py-3 font-medium text-white shadow hover:from-purple-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-gray-900">Get Started</button>
+                      </div> -->
+                    </div>
+                    <p class="mt-3 text-xs text-gray-400 sm:mt-4">Licensed under GPL3 | Not affiliated or have any relation with Stripe.com</p>
+                  </form>
+                </div>
+                <div class="mt-8 justify-start mx-auto text-left">
+
+<div class="flex space-x-3 mt-4 justify-start mx-auto text-center">
+    <p class="text-gray-400 text-xs">Enjoyable with:</p>
+            <img width="40" height="auto" alt="Referrals widget wordpress" src="wordpress.png" style="height: 100%;">
+                        <img width="35" alt="Referrals widget Shopify"  height="auto" src="shopify.png" style="height: 100%;">
+                        <img width="40" alt="Referrals widget Prestashop" height="auto" src="prestashop.png" style="height: 100%;">
+        </div>
     </div>
+
+              </div>
+            </div>
+            <div class="-mb-16 mt-12 sm:-mb-48 lg:relative lg:m-0">
+              <div class="mx-auto max-w-md px-6 sm:max-w-2xl lg:max-w-none lg:px-0">
+                <!-- Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ -->
+              
+
+                <!-- <img class="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/cloud-illustration-teal-cyan.svg" alt=""> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+   
 
     <div class="bg-gray-900 py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-2xl lg:mx-0">
       <h2 class="text-base font-semibold leading-7 text-indigo-400">Everything you need</h2>
-      <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">No server? No problem.</p>
-      <p class="mt-6 text-lg leading-8 text-gray-300">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis.</p>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Simple PHP</p>
+      <p class="mt-6 text-lg leading-8 text-gray-300">Add your code and you are ready to go find customers</p>
     </div>
     <dl class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-16">
       <div class="relative pl-9">
@@ -97,7 +147,7 @@
           </svg>
           Push to deploy.
         </dt>
-        <dd class="inline">Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.</dd>
+        <dd class="inline">Deploy directly from a repository.</dd>
       </div>
       <div class="relative pl-9">
         <dt class="inline font-semibold text-white">
@@ -131,7 +181,7 @@
           <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M7.84 1.804A1 1 0 018.82 1h2.36a1 1 0 01.98.804l.331 1.652a6.993 6.993 0 011.929 1.115l1.598-.54a1 1 0 011.186.447l1.18 2.044a1 1 0 01-.205 1.251l-1.267 1.113a7.047 7.047 0 010 2.228l1.267 1.113a1 1 0 01.206 1.25l-1.18 2.045a1 1 0 01-1.187.447l-1.598-.54a6.993 6.993 0 01-1.929 1.115l-.33 1.652a1 1 0 01-.98.804H8.82a1 1 0 01-.98-.804l-.331-1.652a6.993 6.993 0 01-1.929-1.115l-1.598.54a1 1 0 01-1.186-.447l-1.18-2.044a1 1 0 01.205-1.251l1.267-1.114a7.05 7.05 0 010-2.227L1.821 7.773a1 1 0 01-.206-1.25l1.18-2.045a1 1 0 011.187-.447l1.598.54A6.993 6.993 0 017.51 3.456l.33-1.652zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
           </svg>
-          Powerful API.
+          Flexible
         </dt>
         <dd class="inline">Laudantium tempora sint ut consectetur ratione. Ut illum ut rem numquam fuga delectus.</dd>
       </div>

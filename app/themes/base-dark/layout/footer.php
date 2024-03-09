@@ -76,9 +76,7 @@
 
 
 
-Search and download lists of domains (with email) from our detailed domain database of 19M+ domains.
-Explore domains, technologies, plugins, modules, hosting, expiration dates, location and more.
- 
+PHP Micro SaaS Boilerplate already wired to Stripe 
 
         </p>
         <div class="flex space-x-6">
@@ -226,9 +224,9 @@ Explore domains, technologies, plugins, modules, hosting, expiration dates, loca
       </form>
     </div>
     <div class="mt-10 border-t border-white/10 pt-8 ">
-      <p class="text-xs leading-5 text-gray-400"><a href="https://www.domstry.com">DOMSTRY</a> Domains List &copy; <?= Date("Y") ?> Ayesa Digital SLU. All rights reserved</p>
+      <p class="text-xs leading-5 text-gray-400"><a href="<?= APP_BASE_URL ?>"><?= APP_DOMAIN ?></a> <?= $SEO_TITLE ?> &copy; <?= Date("Y") ?> Ayesa Digital SLU. All rights reserved</p>
       <p class="text-xs leading-5 text-gray-600">
-        Made by <a href="https://www.twitter.com/betoayesa" target="_blank">@betoayesa</a>, maintenance by <a href="https://www.phpninja.es" target="_blank">Php Ninja</a> · Get Support: <a href="mailto:support@domstry.com">support@domstry.com</a></p>
+        Powered by  <a href="//stripepad.com">Stripe Pad v.0.0.1 </a> · Made by <a href="https://www.twitter.com/betoayesa" target="_blank">@betoayesa</a>, maintenance by <a href="https://www.phpninja.es" target="_blank">Php Ninja</a> · Get Support: <a href="mailto:<?= ADMIN_EMAIL ?>"><?= ADMIN_EMAIL ?></a></p>
 
 
     </div>
@@ -256,7 +254,7 @@ Explore domains, technologies, plugins, modules, hosting, expiration dates, loca
 
 🤞 <a class="hover:underline" href="#" id="trigger">Click here to send feedback!</a>
 <br><br>
-<span class="text-xs font-light ">v.0.0.1 - Made by <a href="https://www.twitter.com/betoayesa" target="_blank">@betoayesa</a></span>
+<span class="text-xs font-light ">Powered by  <a href="//stripepad.com">Stripe Pad v.0.0.1 </a> · Made by <a href="https://www.twitter.com/betoayesa" target="_blank">@betoayesa</a></span>
 </p>
     </div>
 
