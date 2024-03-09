@@ -38,7 +38,7 @@ $event = json_decode($json);
 
 $event_id = $event->{'id'};
 $event = $stripe->event->retrieve($event_id);
-if (!isset($event->type)) die("Stripe Response Error: No event to retrieve"):
+if (!isset($event->type)) die("Stripe Response Error: No event to retrieve");
 
 $emailCustomer = $event->data->object->receipt_email;
 
