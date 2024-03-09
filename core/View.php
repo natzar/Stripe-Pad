@@ -4,7 +4,7 @@ class View
 {
 	var $notification;
 	var $path;
-	
+	var $isAuthenticated;
 	
 	function __construct(){
 		
@@ -54,12 +54,10 @@ class View
 		if (isset($_SESSION['alerts'])) unset($_SESSION['alerts']);
 	}
 
-	static public function error404(){
+	public function error404(){
 		header('HTTP/1.0 404 Not Found');
-		include APP_PATH."themes/".APP_THEME."/layout/header.php";		
-	    include APP_PATH."themes/".APP_THEME."/errors/404.php";
-   		include APP_PATH."themes/".APP_THEME."/layout/footer.php";			
-		return false;
+        $this->show('errors/404.php');
+		
 	}
 }
 

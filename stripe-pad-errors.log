@@ -1,0 +1,11 @@
+09/03/2024 12:52:15 Non-static method View::error404() should not be called statically [8192] File: /Applications/XAMPP/xamppfiles/htdocs/stripe-pad/index.php // Linea: 273 09/03/2024 12:52:15 Uncaught ErrorException: Non-static method View::error404() should not be called statically in /Applications/XAMPP/xamppfiles/htdocs/stripe-pad/index.php:273
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/stripe-pad/index.php(273): {closure}(8192, 'Non-static meth...', '/Applications/X...', 273, Array)
+#1 {main}
+  thrown [1] File: /Applications/XAMPP/xamppfiles/htdocs/stripe-pad/index.php // Line: 273 09/03/2024 12:52:55 Uncaught Error: Call to undefined method App::error404() in /Applications/XAMPP/xamppfiles/htdocs/stripe-pad/index.php:275
+Stack trace:
+#0 {main}
+  thrown [1] File: /Applications/XAMPP/xamppfiles/htdocs/stripe-pad/index.php // Line: 275 09/03/2024 12:52:56 Uncaught Error: Call to undefined method App::error404() in /Applications/XAMPP/xamppfiles/htdocs/stripe-pad/index.php:275
+Stack trace:
+#0 {main}
+  thrown [1] File: /Applications/XAMPP/xamppfiles/htdocs/stripe-pad/index.php // Line: 275 

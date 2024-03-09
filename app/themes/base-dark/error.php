@@ -27,7 +27,7 @@
         </div>
          --><p class="text-red-500">ERROR: </p>
         <p class="text-red-500"><?= nl2br($error_msg)?> </p>
-        <p>[user@stripepad]$ <span class="blink-cursor">_</span></p>
+        <p>[developer@stripepad]$ <span class="blink-cursor">_</span></p>
     </div>
 </body>
 </html>

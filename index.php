@@ -269,13 +269,17 @@ if (!$actionName) {
     $actionName = 'index'; // Default action
 }
 
+$App = new App();
+
 if (!is_callable(array('App', $actionName))){
-	View::error404();
+	$App->view->error404();
+}else{
+    $App->$actionName(); 
 }
 
 
 
-$App = new App();
-$App->$actionName(); 
+
+
 
 

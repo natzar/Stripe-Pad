@@ -64,7 +64,7 @@ class App extends StripePad {
         $this->view->show("landing/homepage.php",$data);      
     }
 
-    public function install(){
+    public function installation(){
         $data = array();        
         $this->view->show("landing/installation.php",$data);      
     }
@@ -90,10 +90,10 @@ class App extends StripePad {
     ));
   }
   public function tos(){
-    $this->view->show('tos.php',array());
+    $this->view->show('common/tos.php',array());
   }
   public function privacy(){
-    $this->view->show('privacy.php',array());
+    $this->view->show('common/privacy.php',array());
   }
 
 
