@@ -116,25 +116,23 @@ PHP Micro SaaS Boilerplate already wired to Stripe
       <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
         <div class="md:grid md:grid-cols-2 md:gap-8">
           <div>
-            <h3 class="text-sm font-semibold leading-6 text-white">Solutions</h3>
+            <h3 class="text-sm font-semibold leading-6 text-white">Stripe Pad</h3>
             <ul role="list" class="mt-6 space-y-4">
               <li>
-                <a href="<?= APP_DOMAIN ?>domain-list" class="text-sm leading-6 text-gray-300 hover:text-white">Search</a>
+                <a href="<?= APP_DOMAIN ?>" class="text-sm leading-6 text-gray-300 hover:text-white">Home</a>
               </li>
 
               <li>
-                <a href="<?= APP_DOMAIN ?>domain-list" class="text-sm leading-6 text-gray-300 hover:text-white">Leads for Email Marketing</a>
+                <a href="<?= APP_DOMAIN ?>installation" class="text-sm leading-6 text-gray-300 hover:text-white">Installation</a>
               </li>
               <li>
-                <a href="<?= APP_DOMAIN ?>domain-list" class="text-sm leading-6 text-gray-300 hover:text-white">Market Research</a>
+                <a href="https://github.com/natzar/Stripe-Pad/wiki" class="text-sm leading-6 text-gray-300 hover:text-white">Documentation</a>
               </li>
               <li>
-                <a href="<?= APP_DOMAIN ?>expired-domains" class="text-sm leading-6 text-gray-300 hover:text-white">Expired Domains</a>
+                <a href="<?= APP_DOMAIN ?>examples" class="text-sm leading-6 text-gray-300 hover:text-white">Examples</a>
               </li>
-              <li><a href="<?= APP_DOMAIN ?>domain-list/available/1" class="text-sm leading-6 text-gray-300 hover:text-white">Available Domains</a></li>
-              <li>
-                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Leads API</a>
-              </li>
+              <li><a href="https://github.com/natzar/Stripe-Pad" class="text-sm leading-6 text-gray-300 hover:text-white">Download</a></li>
+             
               
             </ul>
           </div>
@@ -143,52 +141,27 @@ PHP Micro SaaS Boilerplate already wired to Stripe
             <ul role="list" class="mt-6 space-y-4">
               
 
-            <li><a href="browse/country" class="text-sm leading-6 text-gray-300 hover:text-white">Login</a></li>
+            <li><a href="login" class="text-sm leading-6 text-gray-300 hover:text-white">Login</a></li>
 
-<li><a href="builtwith" class="text-sm leading-6 text-gray-300 hover:text-white">Signup</a></li>
-<li><a href="browse/hosting" class="text-sm leading-6 text-gray-300 hover:text-white">Leads by Network</a></li>
-<li><a href="browse/lang" class="text-sm leading-6 text-gray-300 hover:text-white">Leads by Language</a></li>
+<li><a href="signup" class="text-sm leading-6 text-gray-300 hover:text-white">Signup</a></li>
+<li><a href="sample" class="text-sm leading-6 text-gray-300 hover:text-white">Sample page</a></li>
+<li><a href="throw-an-error" class="text-sm leading-6 text-gray-300 hover:text-white">Errors</a></li>
                 
+            <li>
+                <a href="<?= APP_DOMAIN ?>blog" class="text-sm leading-6 text-gray-300 hover:text-white">Blog</a>
+              </li>
 
 
             </ul>
           </div>
         </div>
         <div class="md:grid md:grid-cols-2 md:gap-8">
-          <div>
-            <h3 class="text-sm font-semibold leading-6 text-white">Popular</h3>
-            <ul role="list" class="mt-6 space-y-4">
-            
-     
-
-
-               <li>
-                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Built with WordPress</a>
-              </li>
-              <li>
-                <a href="/domain-list/tech/Google-Analytics" class="text-sm leading-6 text-gray-300 hover:text-white">Built with Google Analytics </a>
-              </li>
-              <li>
-                <a href="/domain-list/tech/shopify" class="text-sm leading-6 text-gray-300 hover:text-white">Shopify Domains</a>
-              </li> 
-              <li>
-                <a href="/domain-list/tld/ai" class="text-sm leading-6 text-gray-300 hover:text-white">.ai Domains</a>
-              </li> 
-              <li>
-                <a href="/domain-list/tld/com/available/1" class="text-sm leading-6 text-gray-300 hover:text-white">Expired .com Domains Available</a>
-              </li> 
-            </ul>
-          </div>
+          
           <div class="mt-10 md:mt-0">
             <h3 class="text-sm font-semibold leading-6 text-white">Company</h3>
             <ul role="list" class="mt-6 space-y-4">
-  <li>
-                <a href="<?= APP_DOMAIN ?>about" class="text-sm leading-6 text-gray-300 hover:text-white">About</a>
-              </li>
-              <li>
-                <a href="<?= APP_DOMAIN ?>resources" class="text-sm leading-6 text-gray-300 hover:text-white">Blog</a>
-              </li>
-
+  
+  
      
               <li>
                 <a href="privacy" class="text-sm leading-6 text-gray-300 hover:text-white">Privacy</a>
@@ -206,6 +179,10 @@ PHP Micro SaaS Boilerplate already wired to Stripe
 
             </ul>
           </div>
+          <div>
+            
+          </div>
+
         </div>
       </div>
     </div>
@@ -218,7 +195,7 @@ PHP Micro SaaS Boilerplate already wired to Stripe
         <label for="email-address" class="sr-only">Email address</label>
         <input type="email" name="email" id="email" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6" placeholder="Enter your email">
         <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
-          <button type="submit" class="flex w-full items-center justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500">Subscribe</button>
+          <button type="button" onclick="alert('Not collecting emails but you can do it easily');" class="flex w-full items-center justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500">Subscribe</button>
         </div>
       </form>
     </div>

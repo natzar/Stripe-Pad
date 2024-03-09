@@ -40,10 +40,10 @@ define('SEO_TITLE','Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_DESCRIPTION','Stripe Pad · PHP Micro Saas Boilerplate');
 
 # EMAIL
-define('ADMIN_EMAIL','');
+define('ADMIN_EMAIL','support@stripepad.com');
 define('SMTP_SERVER','');                // Specify main and backup server
 define('SMTP_PORT','');
-define('EMAIL_FROM', '');
+define('EMAIL_FROM', 'support@stripepad.com');
 define('EMAIL_PASSWORD', '');
 
 

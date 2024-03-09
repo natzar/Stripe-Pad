@@ -47,18 +47,18 @@
                   <span class="">Build your Micro SaaS with</span>
                   <span class=" bg-gradient-to-r from-green-400 to-green-900 bg-clip-text pb-3 text-transparent sm:pb-5">Stripe Pad</span>
                 </h1>
-                <p class="text-base text-gray-500 sm:text-xl lg:text-lg xl:text-xl">PHP Micro-SaaS Boilerplate wired to Stripe</p>
+                <p class="text-base text-gray-500 sm:text-xl lg:text-lg xl:text-xl">The PHP boilerplate to build Micro SaaS apps with Stripe</p>
 
 
                 <div class="mt-5">
                   <form action="#" class="sm:mx-auto sm:max-w-xl lg:mx-0">
                     <div class="min-w-0 flex-1">
                           <div class=" flex gap-x-4 w-full mx-auto text-center">
-              <a href="https://www.github.com/natzar/Stripe-Pad" class="inline-block rounded-lg bg-green-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-green-500 hover:bg-green-700 hover:ring-green-700">
+              <a href="https://www.github.com/natzar/Stripe-Pad" class="inline-block rounded-lg bg-green-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-green-600 hover:bg-green-700 hover:ring-green-700">
                DOWNLOAD
                 <span class="text-purple-200" aria-hidden="true">&rarr;</span>
               </a>
-              <a href="#" onclick="alert('You are already in the demo'); return false;" class="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+              <a href="#" onclick="alert('You are already in the demo. All public pages are considered the landing and are located at app/themes/*/landing, you can add as many sections or pages as you want. Login or signup to test private espaces where your app will live to.'); return false;" class="inline-block rounded-lg px-4 py-1.5 hover:text-green-700 text-base font-semibold leading-7 text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                 Live demo
                 <span class="text-gray-400" aria-hidden="true">&rarr;</span>
               </a>

@@ -44,6 +44,8 @@
         
         <a href="<?= APP_BASE_URL ?>examples" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Examples</a>
 
+        <a href="https://github.com/natzar/Stripe-Pad/wiki" target="_blank" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Documentation</a>
+
         
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -85,8 +87,8 @@
 
         <a href="<?= APP_BASE_URL ?>examples" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Examples</a>
 
-   
-        
+   <a href="https://github.com/natzar/Stripe-Pad/wiki" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Documentation</a>
+       
 
 
               
