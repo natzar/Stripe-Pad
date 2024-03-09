@@ -33,7 +33,7 @@
 
 define('APP_NAME','Stripe Pad');
 define('APP_SLUG','stripe-pad');
-define('APP_LOGO','');
+define('APP_LOGO','https://refboost.com/refboost-logo.png');
 define('DEBUG_MODE',true);
 define('APP_THEME','base-dark'); #folder name of your theme
 define('SEO_TITLE','Stripe Pad · PHP Micro Saas Boilerplate');
