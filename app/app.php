@@ -64,9 +64,19 @@ class App extends StripePad {
         $this->view->show("landing/homepage.php",$data);      
     }
 
+    public function install(){
+        $data = array();        
+        $this->view->show("landing/installation.php",$data);      
+    }
+
     public function dashboard(){
         $data = array();        
         $this->view->show("dashboard.php",$data);      
+    }
+
+ public function download(){
+        $data = Array();                    
+        $this->view->show("help.php", $data);
     }
 
     public function sample(){

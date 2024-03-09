@@ -1,4 +1,13 @@
-
+<div class="flex items-center gap-x-6 bg-indigo-800 px-6 py-2.5 sm:px-3.5 hidden  sm:flex sm:before:flex-1">
+  <p class="text-sm leading-6 text-white">
+    <a href="#">
+      <strong class="font-semibold">Welcome!</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true"><circle cx="1" cy="1" r="1" /></svg>Get a 20% discount with <strong>"WELCOME20"</strong> coupon code
+    </a>
+  </p>
+  <div class="flex flex-1 justify-end">
+    
+  </div>
+</div>
 
 
 
@@ -7,10 +16,10 @@
     <nav class="flex items-center justify-between p-6 lg:px-8 border-b-1 border-gray-600" aria-label="Global">
       <div class="flex lg:flex-1">
         <a href="<?= HOMEPAGE_URL ?>" class="-m-1.5 p-1.5 text-gray-100 hover:text-green-500 font-bold">
-          <span class="sr-only">Domstry</span>
+          <span class="sr-only"><?= APP_NAME ?></span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline items-center">
   <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
-</svg> <span class="nunito">Domstry</span>
+</svg> <span class="nunito"><?= APP_NAME ?></span>
         </a>
       </div>
       <div class="flex lg:hidden">
@@ -24,16 +33,15 @@
       <div class="hidden lg:flex lg:gap-x-12">
       
         
-        <a href="<?= APP_DOMAIN ?>domain-list" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1  hover:bg-gray-900 hover:text-green-500 rounded-full">Search</a>
+        <a href="<?= APP_DOMAIN ?>" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1  hover:bg-gray-900 hover:text-green-500 rounded-full">Home</a>
         
-        <a href="<?= APP_DOMAIN ?>builtwith" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Technologies</a>
+        <a href="<?= APP_DOMAIN ?>install" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Installation</a>
+
+        <a href="<?= APP_DOMAIN ?>download" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Download</a>
         
-        <a href="<?= APP_DOMAIN ?>browse/hosting" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Networks</a>
+        <a href="<?= APP_DOMAIN ?>examples" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Examples</a>
 
-        <a href="<?= APP_DOMAIN ?>browse/lang" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Languages</a>
-
-        <a href="<?= APP_DOMAIN ?>browse/country" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Geolocation</a>
-
+        
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="login" class="text-sm font-semibold leading-6 text-gray-600">Log in <span aria-hidden="true">&rarr;</span></a>
@@ -64,15 +72,15 @@
              
 
 
-        <a href="<?= APP_DOMAIN ?>domain-list" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Search</a>
+        <a href="<?= APP_DOMAIN ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Home</a>
         
-        <a href="<?= APP_DOMAIN ?>builtwith" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Technologies</a>
+        <a href="<?= APP_DOMAIN ?>install" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Installation</a>
         
-        <a href="<?= APP_DOMAIN ?>browse/hosting" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Networks</a>
+        <a href="<?= APP_DOMAIN ?>download" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Download</a>
 
-        <a href="<?= APP_DOMAIN ?>browse/lang" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Languages</a>
+        
 
-        <a href="<?= APP_DOMAIN ?>browse/country" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Geolocation</a>
+        <a href="<?= APP_DOMAIN ?>examples" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Examples</a>
 
    
         
@@ -105,13 +113,3 @@
 
 </div>
 
-<div class="flex items-center gap-x-6 bg-indigo-600 px-6 py-2.5 sm:px-3.5 hidden  sm:flex sm:before:flex-1">
-  <p class="text-sm leading-6 text-white">
-    <a href="#">
-      <strong class="font-semibold">Welcome!</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true"><circle cx="1" cy="1" r="1" /></svg>Get a 20% discount with <strong>"WELCOME20"</strong> coupon code
-    </a>
-  </p>
-  <div class="flex flex-1 justify-end">
-    
-  </div>
-</div>

@@ -18,16 +18,16 @@
 </head>
 <body class="bg-black text-green-400 font-mono">
     <div class="p-4 space-y-2 max-w-4xl mx-auto">
-        <p>[user@phpninja]$ <span class="text-green-600">cd /var/www/html</span></p>
-        <p>[user@phpninja html]$ <span class="text-green-600">ls -la</span></p>
-        <div class="bg-green-800 bg-opacity-25 p-2">
+        <p>[Stripe Pad] <span class="text-green-600">An error occurred</span></p>
+        <!-- <p>[user@phpninja html]$ <span class="text-green-600">ls -la</span></p> -->
+        <!-- <div class="bg-green-800 bg-opacity-25 p-2">
             <p>-rw-r--r-- 1 user user 11321 Mar  3 12:45 index.html</p>
             <p>-rw-r--r-- 1 user user 13458 Mar  3 12:45 style.css</p>
             <p class="text-red-500">-rw-r--r-- 1 user user     0 Mar  3 12:45 error.log</p>
         </div>
-        <p class="text-red-500">ERROR: </p>
-        <p class="text-red-500"><?= $error_msg?> </p>
-        <p>[user@phpninja html]$ <span class="blink-cursor">_</span></p>
+         --><p class="text-red-500">ERROR: </p>
+        <p class="text-red-500"><?= nl2br($error_msg)?> </p>
+        <p>[user@stripepad]$ <span class="blink-cursor">_</span></p>
     </div>
 </body>
 </html>
