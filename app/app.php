@@ -61,29 +61,29 @@ class App extends StripePad {
     
     public function home(){
         $data = array();        
-        $this->view->show("landing/homepage.php",$data,true);      
+        $this->view->show("landing/homepage.php",$data);      
     }
 
     public function dashboard(){
         $data = array();        
-        $this->view->show("dashboard.php",$data,true);      
+        $this->view->show("dashboard.php",$data);      
     }
 
     public function sample(){
         $data = Array();                    
-        $this->view->show("help.php", $data,true);
+        $this->view->show("help.php", $data);
     }
 
   public function about(){
-    $this->view->show('views/about.php',array(
+    $this->view->show('about.php',array(
         "SEO_TITLE" => "About Domstry"
     ));
   }
   public function tos(){
-    $this->view->show('views/tos.php',array());
+    $this->view->show('tos.php',array());
   }
   public function privacy(){
-    $this->view->show('views/privacy.php',array());
+    $this->view->show('privacy.php',array());
   }
 
 

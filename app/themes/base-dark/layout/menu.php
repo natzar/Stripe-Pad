@@ -1,13 +1,4 @@
-<div class="flex items-center gap-x-6 bg-green-700 px-6 py-2.5 sm:px-3.5 hidden  sm:flex sm:before:flex-1">
-  <p class="text-sm leading-6 text-white">
-    <a href="#">
-      <strong class="font-semibold">Welcome!</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true"><circle cx="1" cy="1" r="1" /></svg>Get a 20% discount with <strong>"WELCOME20"</strong> coupon code
-    </a>
-  </p>
-  <div class="flex flex-1 justify-end">
-    
-  </div>
-</div>
+
 
 
 
@@ -114,3 +105,13 @@
 
 </div>
 
+<div class="flex items-center gap-x-6 bg-indigo-600 px-6 py-2.5 sm:px-3.5 hidden  sm:flex sm:before:flex-1">
+  <p class="text-sm leading-6 text-white">
+    <a href="#">
+      <strong class="font-semibold">Welcome!</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true"><circle cx="1" cy="1" r="1" /></svg>Get a 20% discount with <strong>"WELCOME20"</strong> coupon code
+    </a>
+  </p>
+  <div class="flex flex-1 justify-end">
+    
+  </div>
+</div>
