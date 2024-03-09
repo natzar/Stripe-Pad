@@ -22,7 +22,7 @@
 
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
-	
+
 class StripePad{
 	var $params;
 	var $view;
@@ -243,7 +243,7 @@ class StripePad{
 # START UP
 
 require_once dirname(__FILE__).'/load.php'; //Archivo con configuraciones.
-include "app/app.php";
+include dirname(__FILE__)."/app/app.php";
 
 // Initialize session variables if not already set
 if (!isset($_SESSION['errors'])) $_SESSION['errors'] = "";

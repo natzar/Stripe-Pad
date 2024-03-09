@@ -31,14 +31,14 @@
 
 # BASIC DETAILS
 
-define('APP_NAME','Domstry');
+define('APP_NAME','Stripe Pad');
 define('APP_LOGO','');
 define('DEBUG_MODE',true);
 define('APP_THEME','basic');
 
 # EMAIL
 define('SMTP_SERVER','');                // Specify main and backup server
-define('SMTP_PORT',587);
+define('SMTP_PORT','');
 define('EMAIL_FROM', '');
 define('EMAIL_PASSWORD', '');
 

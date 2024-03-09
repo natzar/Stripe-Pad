@@ -55,10 +55,15 @@ class App extends StripePad {
             $this->dashboard();
         }else{
             # Redirect to login if not authenticated
-            $this->login();
+            $this->home();
         }
     }
     
+    public function home(){
+        $data = array();        
+        $this->view->show("homepage.php",$data,true);      
+    }
+
     public function dashboard(){
         $data = array();        
         $this->view->show("dashboard.php",$data,true);      
