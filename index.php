@@ -23,6 +23,8 @@
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
 
+require_once dirname(__FILE__).'/load.php'; //Archivo con configuraciones.
+
 class StripePad{
 	var $params;
 	var $view;
@@ -32,7 +34,21 @@ class StripePad{
   /*  Admin Login
   ---------------------------------------*/
   public function __construct(){
-		$this->params = gett();
+		
+    $this->params = array();
+    $filter = FILTER_SANITIZE_STRING;
+
+    // Check if the key exists in the $_GET array
+    if(isset($_GET)) {
+        // Return the sanitized value using a specified filter
+        // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
+        foreach($_GET as $k => $v){
+            if (filter_input(INPUT_GET, $k, $filter)){
+                $this->params[$k] = $v;
+            }
+        }
+        
+    }
         $this->view = new View();
 		$this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();
 
@@ -155,7 +171,7 @@ class StripePad{
 }
 
   }
-  private function isAuthenticated(){
+  protected function isAuthenticated(){
 	  	
   	 	return !empty($_SESSION['user']) and isset($_SESSION['app_'.APP_NAME.'_logged_in']);
   }
@@ -241,8 +257,6 @@ class StripePad{
 
 
 # START UP
-
-require_once dirname(__FILE__).'/load.php'; //Archivo con configuraciones.
 include dirname(__FILE__)."/app/app.php";
 
 // Initialize session variables if not already set

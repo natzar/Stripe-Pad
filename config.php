@@ -32,6 +32,7 @@
 # BASIC DETAILS
 
 define('APP_NAME','Stripe Pad');
+define('APP_SLUG','stripe-pad');
 define('APP_LOGO','');
 define('DEBUG_MODE',true);
 define('APP_THEME','basic');
@@ -43,11 +44,7 @@ define('EMAIL_FROM', '');
 define('EMAIL_PASSWORD', '');
 
 
-if (isLocalhost()) {
-
-    # Force Debug
-    define('DEBUG_MODE',true);
-    
+if (isLocalhost()) { # Localhost
     define('APP_DOMAIN','//localhost/chatleads/');
 	define('APP_BASE_URL', 'http://localhost/chatleads/');
 	define('API_BASE_URL', 'http://localhost/domain/api/');
@@ -59,11 +56,7 @@ if (isLocalhost()) {
 	define('APP_CDN', '');
 	define('APP_DB_USER','');
 	define('APP_DB_PASSWORD','');
-
-
-} else {
-
-	# Server / Production
+} else {    # Server / Production
     define('APP_DOMAIN','https://app.domain.com/');
 	define('APP_BASE_URL', 'https://app.domain.com/');
 	define('API_BASE_URL', 'https://api.domain.com/');
