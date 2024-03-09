@@ -9,6 +9,7 @@
 
 For Educational purposes. Get started with MVC in PHP.
 
+![Relations between components](https://stripepad.com/open-graph.png)
 
 ### Disclaimer
 
@@ -50,7 +51,8 @@ Packed with basic stuff only.
 
 Basic theme uses Tailwind. 100% optional. You can edit /app folder completely.
 
- 
+ # Other Resources
+ SVG icons: https://heroicons.com/
 
 
 ## Getting Started, Installation

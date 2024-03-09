@@ -49,13 +49,21 @@
         </span>
         <p class="text-2xl font-light text-gray-200 mb-3 text-center">Thanks for downloading Stripe Pad, a PHP Micro SaaS boilerplate</p>
         
-     <a style="width:200px;" class="rounded-full bg-indigo-600 text-white py-3 px-5 mx-auto block my-6 text-center" href="https://github.com/natzar/Stripe-Pad/issues">Get Support!</a>
+  
 
-        <p class="mt-6 text-sm sm:text-xl text-gray-400 max-w-3xl text-center">Let's continue with installation </p>
+        
         
    
 
     <main class="text-gray-400 leading-6">
+
+        <h2 class="mt-6 text-xl font-semibold sm:text-xl text-gray-100">Get Started </h2>
+
+        <ul>
+<li>Download latest version</li>
+<li>Follow steps</li>
+<li>Continue following steps</li>
+        </ul>
         <section>
            <h2 class="bg-white text-gray-900 pl-4">Required Steps</h2>
 
@@ -106,7 +114,7 @@
 <a  class="rounded-full bg-indigo-600 text-white py-3 px-5 mx-auto  my-6 text-center" href="app/">Visit your SaaS login page</a>
           
         </div>
-
+   <a style="width:200px;" class="rounded-full bg-indigo-600 text-white py-3 px-5 mx-auto block my-6 text-center" href="https://github.com/natzar/Stripe-Pad/issues">Get Support!</a>
     </main>
 
     <footer>
