@@ -51,71 +51,65 @@
         
   
 
-        
-        
-   
+        <main class="text-gray-400 leading-6">
+    <h2 class="mt-6 text-xl font-semibold text-gray-100">Installation Guide</h2>
 
-    <main class="text-gray-400 leading-6">
+    <section class="mt-4">
+        <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4">Initial Setup</h3>
+        <ol class="list-decimal pl-8">
+            <li>Download the latest version from the repository.</li>
+            <li>Extract the files to your preferred directory.</li>
+            <li>Ensure your environment meets the required specifications.</li>
+        </ol>
+    </section>
 
-        <h2 class="mt-6 text-xl font-semibold sm:text-xl text-gray-100">Get Started </h2>
+    <section class="mt-4">
+        <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4">Configuration</h3>
+        <ol class="list-decimal pl-8">
+            <li>Modify <code class="bg-gray-700 text-green-300 p-1 rounded">RedirectBase</code> in <span class="bg-gray-700 text-green-300 p-1 rounded">/app/.htaccess</span> and <span class="bg-gray-700 text-green-300 p-1 rounded">/api/.htaccess</span> to match your localhost directory.</li>
+            <li>Set your application name, base URL, and other configurations in <span class="bg-gray-700 text-green-300 p-1 rounded">config.php</span>.</li>
+            <li>Run <span class="bg-gray-700 text-green-300 p-1 rounded">composer install</span> to install necessary dependencies.</li>
+        </ol>
+    </section>
 
-        <ul>
-<li>Download latest version</li>
-<li>Follow steps</li>
-<li>Continue following steps</li>
+    <section class="mt-4">
+        <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4">Post-Configuration Steps</h3>
+        <ol class="list-decimal pl-8">
+            <li>Create subdomains and point them to the respective folders: app, api, webhooks, and cdn.</li>
+            <li>Import <span class="bg-gray-700 text-green-300 p-1 rounded">database.sql</span> into your MySQL database.</li>
+            <li>Update database details and Stripe API keys in <span class="bg-gray-700 text-green-300 p-1 rounded">config.php</span>.</li>
+            <li>Set up a webhook from your Stripe dashboard to <span class="bg-gray-700 text-green-300 p-1 rounded">https://yourdomain.com/webhooks/stripe.php</span> to handle Stripe events.</li>
+        </ol>
+    </section>
+
+    <section class="mt-4">
+        <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4">Verification and Testing</h3>
+        <p>Ensure the setup is correct by accessing the following:</p>
+        <ul class="list-disc pl-8">
+            <li><a href="/app" class="text-blue-400 hover:text-blue-600">Login Page</a> should open correctly.</li>
+            <li><a href="/api" class="text-blue-400 hover:text-blue-600">API Endpoint</a> should display a 'not authenticated' message.</li>
         </ul>
-        <section>
-           <h2 class="bg-white text-gray-900 pl-4">Required Steps</h2>
+    </section>
 
-            <ul class="list">
-                <li>Modify RedirectBase in /app/.htaccess. Add your localhost folder /folder/</li>
-                <li>Modify RedirectBase in /api/.htaccess. Add your localhost folder /folder/</li>
-                <li>Set App Name, base url, ... at config.php</li>
-                <li>Run `composer install`</li>
-    
+    <section class="mt-4">
+        <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4">Deployment and Usage</h3>
+        <p>Modify the automatic deployment settings at <span class="bg-gray-700 text-green-300 p-1 rounded">/webhooks/bitbucket.php</span>.</p>
+        <p>Access your main landing or marketing page at the <span class="bg-gray-700 text-green-300 p-1 rounded">/web</span> directory.</p>
+        <p>Your custom application should reside in the <span class="bg-gray-700 text-green-300 p-1 rounded">/app</span> folder.</p>
+        <p>Your API endpoints will be located within the <span class="bg-gray-700 text-green-300 p-1 rounded">/api</span> folder.</p>
+        <p>Models shared between all components are available for use across the application.</p>
+    </section>
 
-            </ul>
+    <div class="mt-6">
+        <a href="web/" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-full">Visit Your SaaS Landing Page</a>
+        <a href="app/" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-full">Visit Your SaaS Login Page</a>
+    </div>
 
-            <h2 class="bg-white text-gray-900 pl-4">Recommended Steps</h2>
+    <div class="mt-6">
+        <a href="https://github.com/natzar/Stripe-Pad/issues" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-full">Get Support!</a>
+    </div>
+</main>
 
-            <ul class="list">
-                <li>Create subdomains and point them to each folder: app, api, webhooks and cdn</li>    
-                <li>Import database.sql to your MySql</li>            
-                <li>Set database details at config.php</li>    
-                <li>Add Stripe api keys at config.php</li>
-<li>Add a webhook from https://dashboard.stripe.com/webhooks to https://yourdomain.com/webhooks/stripe.php to manage Stripe events.</li>
-            </ul>
-
-
-            <h2 class="bg-white text-gray-900 pl-4">Test it</h2>
-            <a href="/app">/app should open login page</a>
-            <a href="/api">/api should show a not authenticated message</a>
-
-            <h2 class="bg-white text-gray-900 pl-4">Automatic deployment from git</h2>
-            Modify /webhooks/bitbucket.php
-
-            <h2 class="bg-white text-gray-900 pl-4">Links</h2>
-             <strong>Link:</strong> <a href="https://github.com/natzar/stripe-pad">https://github.com/natzar/stripe-pad</a>
-            <!-- Metadata Information -->
-            
-            
-                <h2 class="bg-white text-gray-900 pl-4">Start your SaaS</h2>
-                <p>Your main landing / marketing page should go under /web folder</p>
-                <p>Your custom application will live in /app folder</p>
-                <p>Your API will live in/api folder</p>
-                <p>Models are shared between al components, you can use them everywhere</p>
-
-       
-        </section>
-
-<div class="block mt-5">
-          <!-- <a style="width:200px;" class="rounded-full bg-indigo-600 text-white py-3 px-5 mx-auto block my-6 text-center" href="https://www.github.com/natzar/Stripe-Pad">Get it from Github</a> -->
-          <a  class="rounded-full bg-indigo-600 text-white py-3 px-5 mx-auto  my-6 text-center" href="web/">Visit your SaaS landing page</a>
-<a  class="rounded-full bg-indigo-600 text-white py-3 px-5 mx-auto  my-6 text-center" href="app/">Visit your SaaS login page</a>
-          
-        </div>
-   <a style="width:200px;" class="rounded-full bg-indigo-600 text-white py-3 px-5 mx-auto block my-6 text-center" href="https://github.com/natzar/Stripe-Pad/issues">Get Support!</a>
-    </main>
 
     <footer>
         <div class="border-t-1 border-t border-indigo-200 mt-10 text-gray-400 pt-3 text-xs mt-10 block">
