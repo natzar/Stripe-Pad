@@ -29,82 +29,81 @@
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
 
-# App Name & Email
-define('APP_NAME','Stripe Pad');
-define('ADMIN_EMAIL','webmaster@domain.com');
-define('APP_LOGO','../cdn/logo.png');
+# BASIC DETAILS
 
-define('INTERNAL_ENCODING',"UTF-8");
-define('TIMEZONE','Europe/Madrid'); 
-define('LOCALE_LANG','es_ES.ISO8859-1'); 
-define('LOCALE_TIME','spanish'); 
+define('APP_NAME','Domstry');
+define('APP_LOGO','');
+define('DEBUG_MODE',true);
+define('APP_THEME','basic');
 
-# Counterify.com 
-define('COUNTERIFY_TOKEN','');
+# EMAIL
+define('SMTP_SERVER','');                // Specify main and backup server
+define('SMTP_PORT',587);
+define('EMAIL_FROM', '');
+define('EMAIL_PASSWORD', '');
 
-# Dual Environment, Dev / Prod
-$localhostIPs = array('127.0.0.1','::1');
 
-if (in_array($_SERVER['SERVER_ADDR'], $localhostIPs) || in_array($_SERVER['REMOTE_ADDR'], $localhostIPs)) {
+if (isLocalhost()) {
 
-	# Localhost / Development
-
-    define('APP_DOMAIN','localhost/domain/app/');
-	define('APP_BASE_URL', 'http://localhost/domain/app/');
+    # Force Debug
+    define('DEBUG_MODE',true);
+    
+    define('APP_DOMAIN','//localhost/chatleads/');
+	define('APP_BASE_URL', 'http://localhost/chatleads/');
 	define('API_BASE_URL', 'http://localhost/domain/api/');
-	define('HOMEPAGE_URL', 'http://localhost/domain/');
+	define('HOMEPAGE_URL', 'http://localhost/chatleads/');
 
 	define('APP_TABLE_PREFIX','');
-	define('APP_DB_HOST','localhost');
-	define('APP_DB','db name');
-	define('APP_DB_USER','root');
+	define('APP_DB_HOST','');
+	define('APP_DB','');
+	define('APP_CDN', '');
+	define('APP_DB_USER','');
 	define('APP_DB_PASSWORD','');
-	define('DEBUG_MODE',true);
+
+
 } else {
 
 	# Server / Production
-
     define('APP_DOMAIN','https://app.domain.com/');
 	define('APP_BASE_URL', 'https://app.domain.com/');
 	define('API_BASE_URL', 'https://api.domain.com/');
 	define('HOMEPAGE_URL', 'https://domain.com');
+	define('APP_CDN', 'https://cdn.domstry.com/');
 
 	define('APP_TABLE_PREFIX','');
 	define('APP_DB_HOST','');
 	define('APP_DB','');
 	define('APP_DB_USER','');
 	define('APP_DB_PASSWORD','');
-	define('DEBUG_MODE',false);
 }
 
-# Stripe
+# Stripe 
+define('APP_STRIPE_PUBKEY','');
+define('APP_STRIPE_SECRETKEY','');
+define('APP_STRIPE_WEBHOOK_SECRET','');
 
-define('STRIPE_PUB_PROD','');
-define('STRIPE_SEC_PROD','');
-define('STRIPE_WEBHOOK_PROD','');
-
-define('STRIPE_WEBHOOK_TEST','');
-define('STRIPE_PUB_TEST','');
-define('STRIPE_SEC_TEST','');
-
-define('APP_STRIPE_PUBKEY',STRIPE_PUB_PROD);
-define('APP_STRIPE_SECRETKEY',STRIPE_SEC_PROD);
-define('APP_STRIPE_WEBHOOK_SECRET',STRIPE_WEBHOOK_PROD);
-
-define('APP_STRIPE_PUBKEY_TEST',STRIPE_PUB_TEST);
-define('APP_STRIPE_SECRETKEY_TEST',STRIPE_SEC_TEST);
-define('APP_STRIPE_WEBHOOK_SECRET_TEST',STRIPE_WEBHOOK_TEST);
-
+define('APP_STRIPE_PUBKEY_TEST','');
+define('APP_STRIPE_SECRETKEY_TEST','');
+define('APP_STRIPE_WEBHOOK_SECRET_TEST','');
 
 define('APP_STRIPE_ACCOUNTCOUNTRY','ES');
 define('APP_STRIPE_CURRENCY','eur');
 define('APP_STRIPE_DEFAULTCOUNTRY','ES');
 
+
 # PATHS
 define('ROOT_PATH',dirname(__FILE__)."/");
 define('CORE_PATH',dirname(__FILE__)."/core/");
 define('APP_PATH',dirname(__FILE__)."/app/");
-define('APP_UPLOAD_PATH',dirname(__FILE__).'/app/uploads/');
+define('APP_UPLOAD_PATH',dirname(__FILE__).'/uploads/');
 
+# ENVIRONMENT
+define("INTERNAL_ENCODING","UTF-8");
+define("TIMEZONE","Europe/Madrid");
+define("LOCALE_LANG","'es_ES.ISO8859-1'");
+define("LOCALE_TIME","spanish");
+
+# EXTRAS - MODULES
+define('COUNTERIFY_TOKEN','');
 
 

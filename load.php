@@ -78,6 +78,25 @@ register_shutdown_function(function() {
     }
 });
 
+# Helper function
+function isLocalhost() {
+    // List of common localhost IP addresses
+    $localhostIPs = array(
+        '127.0.0.1',
+        '::1',
+    );
 
+    // Check if we are running from the command line
+    if (php_sapi_name() === 'cli' || defined('STDIN')) {
+        // In CLI, assume localhost environment or implement additional logic as needed
+        return true;
+    }
+
+    // Check if the server IP or remote IP is in the list of localhost IPs
+    $serverAddr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
+    $remoteAddr = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+
+    return in_array($serverAddr, $localhostIPs) || in_array($remoteAddr, $localhostIPs);
+}
 
 
