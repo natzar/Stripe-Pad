@@ -186,7 +186,7 @@ PHP Micro SaaS Boilerplate already wired to Stripe
                 <a href="<?= APP_DOMAIN ?>about" class="text-sm leading-6 text-gray-300 hover:text-white">About</a>
               </li>
               <li>
-                <a href="<?= APP_DOMAIN ?>resources" class="text-sm leading-6 text-gray-300 hover:text-white">Resources</a>
+                <a href="<?= APP_DOMAIN ?>resources" class="text-sm leading-6 text-gray-300 hover:text-white">Blog</a>
               </li>
 
      
@@ -197,11 +197,9 @@ PHP Micro SaaS Boilerplate already wired to Stripe
                 <a href="tos" class="text-sm leading-6 text-gray-300 hover:text-white">Terms of service</a>
               </li>
 
+  
          <li>
-          <a href="<?= APP_DOMAIN ?>stats" class="text-sm leading-6 text-gray-300 hover:text-white">Stats</a>
-</li>
-         <li>
-          <a href="mailto:support@domstry.com" class="text-sm leading-6 text-gray-300 hover:text-white">support@domstry.com</a>
+          <a href="mailto:<?= ADMIN_EMAIL ?>" class="text-sm leading-6 text-gray-300 hover:text-white"><?= ADMIN_EMAIL ?></a>
 </li>
 
 

@@ -2,12 +2,12 @@
 
 #  Stripe Pad
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
-> 🚧 **Note**: This project is in early development. Use in production environments is not recommended.
 
-PHP Micro SaaS Boilerplate with Stripe integration out of the box.
+
+**Stripe Pad** is a PHP boilerplate for rapid SaaS development with Stripe integration. It offers a minimalist approach to start, validate, and grow your SaaS application without the constraints of a particular framework.
+
 
 For Educational purposes. Get started with MVC in PHP.
-**Stripe Pad** is a PHP boilerplate for rapid SaaS development with Stripe integration. It offers a minimalist approach to start, validate, and grow your SaaS application without the constraints of a particular framework.
 
 
 ### Disclaimer
@@ -16,7 +16,8 @@ For Educational purposes. Get started with MVC in PHP.
 
 ## Features
 
-- Space for a marketing website (landing) & app (with authentication)
+- Public: Landing page
+- Private: User Profile, Your App
 - MVC, 1 controller for the app and 1 for the api. Models shared between all controllers.
 - Webhooks management for Stripe events.
 - Divided in subdomains or subfolders
@@ -25,16 +26,17 @@ For Educational purposes. Get started with MVC in PHP.
 
 
 
+## Structure
 
-## Directory Structure
-
-- **web**: Main landing/marketing page, the place for a ghost or wp installation.
+Space to insert your code:
 - **crons**: Scripts and cronjobs.
-- **app**: Custom application code.
+- **app**: Custom application code & landing page. All HTML is here.
+- **cdn**: Subdomain for static assets. 
+
+These are core files, they will break with an update:
 - **core**: Core files for database connections and templates.
 - **webhooks**: Handlers for webhooks (default: Stripe and Bitbucket).
 - **API**: Basic API functionality.
-- **cdn**: Subdomain for static assets.
 
 ![Relations between components](https://stripepad.com/relations.png)
 
@@ -42,10 +44,11 @@ For Educational purposes. Get started with MVC in PHP.
 
 Packed with basic stuff only.
 
-1. Vanilla Php
-2. Vanilla Js
-3. Composer
-5. Tailwind CDN
+1. Php. MVC style, no framework.
+2. Vanilla Js & jQuery, just for basic things.
+3. Composer, to install stripe and email dependencies
+
+Basic theme uses Tailwind. 100% optional. You can edit /app folder completely.
 
  
 
@@ -64,23 +67,6 @@ After clone or downloading files, just visit //localhost/stripe-pad in your brow
 ```php
 Browser: //localhost/stripe-pad/
 ```
-
-
-
-## Roadmap &Feature set
-
-This project is still in early alpha, so we have many features soon to come! Starter themes covers a majority of features we support today. The road to a micro saas boilerplate based in Stripe to launch and validate new ideas fast. For reference, here's our complete roadmap of current and upcoming features:
-
-| Feature                                                                               | Status    |
-|---------------------------------------------------------------------------------------|-----------|
-| Complete README.md file |  ✅     |
-| Php Webhooks to communicate with Stripe                                               |  ✅     |
-| Basic Starter theme                                                |  ✅     |
-| Documentation                                               | ⏳      |
-| Stripe Webhooks complete integration                                               | ⏳      |
-
- - ✅ = Ready to use
-- ⏳ = In progress
 
 
 

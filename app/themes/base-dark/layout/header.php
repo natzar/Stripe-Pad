@@ -100,6 +100,9 @@
 	font-family: 'Nunito',sans-serif;
 	font-weight: 600;
 }
+.custom-green{
+    color:#41B883;
+}
 </style>
 
 <!-- PHP to JS -->

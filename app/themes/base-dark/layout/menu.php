@@ -1,6 +1,6 @@
 <!-- Uncomment for super top header banner -->
 
-<!-- <div class="flex items-center gap-x-6 bg-indigo-800 px-6 py-2.5 sm:px-3.5 hidden  sm:flex sm:before:flex-1">
+<!-- <div class="flex items-center gap-x-6 bg-green-800 px-6 py-2.5 sm:px-3.5 hidden  sm:flex sm:before:flex-1">
   <p class="text-sm leading-6 text-white">
     <a href="#">
       <strong class="font-semibold">Welcome!</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true"><circle cx="1" cy="1" r="1" /></svg>Get a 20% discount with <strong>"WELCOME20"</strong> coupon code
@@ -17,7 +17,7 @@
   <header class=" z-50 border-b relative border-gray-800 ">
     <nav class="flex items-center justify-between p-6 lg:px-8 border-b-1 border-gray-600" aria-label="Global">
       <div class="flex lg:flex-1">
-        <a href="<?= HOMEPAGE_URL ?>" class="-m-1.5 p-1.5 text-gray-100 hover:text-indigo-500 font-bold">
+        <a href="<?= HOMEPAGE_URL ?>" class="-m-1.5 p-1.5 text-gray-100 hover:text-green-500 font-bold">
           <span class="sr-only"><?= APP_NAME ?></span>
          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
@@ -36,13 +36,13 @@
       <div class="hidden lg:flex lg:gap-x-12">
       
         
-        <a href="<?= APP_BASE_URL ?>" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1  hover:bg-gray-900 hover:text-indigo-500 rounded-full">Home</a>
+        <a href="<?= APP_BASE_URL ?>" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1  hover:bg-gray-900 hover:text-green-500 rounded-full">Home</a>
         
-        <a href="<?= APP_BASE_URL ?>installation"  class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-indigo-500 rounded-full">Installation</a>
+        <a href="<?= APP_BASE_URL ?>installation"  class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Installation</a>
 
-        <a href="https://www.github.com/natzar/Stripe-Pad" target="_blank" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-indigo-500 rounded-full">Download</a>
+        <a href="https://www.github.com/natzar/Stripe-Pad" target="_blank" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Download</a>
         
-        <a href="<?= APP_BASE_URL ?>examples" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-indigo-500 rounded-full">Examples</a>
+        <a href="<?= APP_BASE_URL ?>examples" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-green-500 rounded-full">Examples</a>
 
         
       </div>
@@ -101,7 +101,7 @@
             <? else: ?>
 
             	<!-- <span>Credits: 0/0</span>
-            	<a href="https://buy.stripe.com/cN25lUaKsaq4aE89AE" target="_blank" class="bg-indigo-500 hover:bg-blue-500 px-2 py-1  ml-4">Buy 500 Credits</a>
+            	<a href="https://buy.stripe.com/cN25lUaKsaq4aE89AE" target="_blank" class="bg-green-500 hover:bg-blue-500 px-2 py-1  ml-4">Buy 500 Credits</a>
  -->
 
 <a href="actionLogout" class="text-gray-800 hover:text-gray-800 hover:font-bold ml-4">Logout</a>
