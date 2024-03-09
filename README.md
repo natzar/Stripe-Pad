@@ -19,7 +19,7 @@ For Educational purposes. Get started with MVC in PHP.
 
 - Public: Landing page
 - Private: User Profile, Your App
-- MVC, 1 controller for the app and 1 for the api. Models shared between all controllers.
+- MVC. Controllers, Models shared between all controllers, and JSON + templates for the views part.
 - Webhooks management for Stripe events.
 - Divided in subdomains or subfolders
 - PHP is the only requirement, how you build you app inside /app folder is up to you
