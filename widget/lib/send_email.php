@@ -11,8 +11,8 @@ function sendEmail($to,$subject,$body){
 
 	$mail->Port = 587;                                    // Set the SMTP port
 	$mail->SMTPAuth = true;                               // Enable SMTP authentication
-	$mail->Username = 'hello@refboost.com';
-	$mail->Password = 'fC58Iky658aeJ2VZ';                  // SMTP password
+	$mail->Username = '';
+	$mail->Password = '';                  // SMTP password
 	$mail->SMTPSecure = 'tsl';     
 	$mail->SetFrom("hello@refboost.com");		
 	$mail->IsHTML(true);
