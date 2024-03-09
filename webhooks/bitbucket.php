@@ -66,7 +66,7 @@ if (!defined('DELETE_FILES')) define('DELETE_FILES', false);
  * @var serialized array of strings
  */
 if (!defined('EXCLUDE')) define('EXCLUDE', serialize(array(
-	'.git','app/config.php'
+	'.git'
 )));
 
 /**
