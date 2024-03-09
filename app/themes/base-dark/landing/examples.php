@@ -27,7 +27,7 @@
 				Refboost
 			  </a>
 			</h3>
-			<p class="mt-1 text-sm text-gray-500">   A Referrals widget</p>
+			<p class="mt-1 text-sm text-gray-500">SaaS: A Referrals widget</p>
 		  </div>
 		 
 		  <!-- <p class="text-sm font-medium text-gray-900">$30  </p> -->
@@ -93,7 +93,7 @@
                 Airovic
               </a>
             </h3>
-            <p class="mt-1 text-sm text-gray-500">SaaS: Digital tally counter</p>
+            <p class="mt-1 text-sm text-gray-500">Build in progress</p>
           </div>
          
           <!-- <p class="text-sm font-medium text-gray-900">$30  </p>
