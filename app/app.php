@@ -52,11 +52,27 @@ class App extends StripePad {
         # check if user is authenticated
         if ($this->isAuthenticated()){          
             # Load Dashboard (main-first screen of your app for logged users)
-            $this->dashboard();
+            $this->app();
         }else{
             # Redirect to login if not authenticated
             $this->home();
         }
+    }
+
+    public function app(){
+        if ($this->isAuthenticated()){     
+
+            # Do here any logic your app needs
+            # $model = new model(); /models files are already available
+
+            
+            $this->view->show('app.php',array(
+                "any variable" => "you want to pass to the view"
+
+            ));
+        }else{
+            $this->login();
+        }   
     }
     
     public function home(){

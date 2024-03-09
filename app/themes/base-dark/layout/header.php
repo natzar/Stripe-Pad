@@ -44,7 +44,7 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <base href="<?= APP_BASE_URL ?>">
-<link href="app/domain.database.css" rel="stylesheet">
+<link href="a<?= APP_BASE_URL ?>app/themes/<?= APP_THEME ?>/app.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet">

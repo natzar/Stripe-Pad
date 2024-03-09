@@ -779,3 +779,137 @@ return $fecha_texto;
 	 return $matches[0];
 
  }
+
+
+
+
+
+
+
+ 
+if (isset($_POST['submit'])): 
+
+    include "emailValidator/emailValidator.php";
+
+    $emailValidator = new emailValidator();
+
+    if ($emailValidator->isValid($_POST['email']) and empty($_POST['name'])):
+//  print_r($_POST);
+$settings = '{
+    "url": "yourdomain.com",
+    "submit": "",
+    "body_main": "Hi {{name}}!\r\n\r\nThanks for sharing our product.\r\nYou can use this coupon code DISCOUNTOFF20 to get your discount!\r\n\r\nYour friends have been notified and got another discount coupon (-10% off) thanks to you \r\n",
+    "button_cta": "GET COUPON",
+    "deal_title": "Hi there!",
+    "max_friends": "3",
+    "body_friends": "Your friend {{name}},\r\n\r\nWants to share with you Ref Boost, a tool to convert your visitors into referrers.\r\nYou can try it for free, but if you want the premium license you can use discount 10OFF to get a 10% discount!\r\n\r\nCheck it out: www.refboost.com\r\n",
+    "primary_color": "#493df0",
+    "deal_description": "Share it with 3 friends and get a $40 off for life"
+}';
+
+  include "./widget/bd.php";
+
+  $sha1= sha1($_POST['email']);
+  $q = $bd->prepare("insert into users (hash,email,settings) VALUES (:hash,:email,:settings)");
+  $q->bindParam(":email",$_POST['email']);
+  $q->bindParam(":hash",$sha1);
+  $q->bindParam(":settings",$settings);
+
+  //$q->bindParam(":url",$_POST['url']);
+  $q->execute();
+
+  $body= "
+  Welcome to RefBoost,
+  <br><br>
+  Please click this link to customize your widget and get the line to copy paste to make it work in your website.
+  <br><br>
+  https://refboost.com/customizer.php?id=".$sha1."
+  <br><br>
+  You can reply this email for any question or help,
+<br><br>
+  ----<br>
+  The RefBoost Team<br><br>";
+
+  //echo sha1($_POST['email']);
+
+  require("widget/lib/class.phpmailer.php");
+  include "widget/lib/class.smtp.php";
+   
+    $to = $_POST['email'];
+    $subject = "Welcome to RefBoost";
+    
+    $mail = new PHPMailer();
+    $mail->IsSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'mail.your-server.de';                 // Specify main and backup server
+    
+    $mail->Port = 587;                                    // Set the SMTP port
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'hello@refboost.com';
+    $mail->Password = 'fC58Iky658aeJ2VZ';                  // SMTP password
+    $mail->SMTPSecure = 'tsl';     
+       $mail->SetFrom("hello@refboost.com");
+   // $mail->AddCC("hello@natzar.co");
+    $mail->IsHTML(true);
+    $mail->CharSet = "UTF-8";
+    $mail->AddAddress($to);
+    $mail->Subject = $subject;
+    $mail->AltBody = "To view the message, please use an HTML compatible email viewer!";
+    $mail->MsgHTML($body); 
+    
+
+    if ($mail->Send()):
+
+     
+
+
+
+
+
+?>
+
+<div class="rounded-md bg-green-50 p-4">
+  <div class="flex">
+    <div class="flex-shrink-0">
+      <!-- Heroicon name: mini/check-circle -->
+      <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+      </svg>
+    </div>
+    <div class="ml-3">
+      <h3 class="text-sm font-medium text-green-800">Sign up completed</h3>
+      <div class="mt-2 text-sm text-green-700">
+        <p>Please check your inbox to continue widget setup</p>
+      </div>
+      <div class="mt-4">
+       
+      </div>
+    </div>
+  </div>
+</div>
+<? else: ?>
+
+<div class="rounded-md bg-green-50 p-4">
+  <div class="flex">
+    <div class="flex-shrink-0">
+      <!-- Heroicon name: mini/check-circle -->
+      <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+      </svg>
+    </div>
+    <div class="ml-3">
+      <h3 class="text-sm font-medium text-green-800">Some error ocurred</h3>
+      <div class="mt-2 text-sm text-green-700">
+        <p>Please try again or contact us at hello@refboost.com</p>
+      </div>
+      <div class="mt-4">
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<?
+endif;
+endif;
+    endif;
+  ?>
