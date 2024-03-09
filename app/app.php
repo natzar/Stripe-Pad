@@ -61,7 +61,7 @@ class App extends StripePad {
     
     public function home(){
         $data = array();        
-        $this->view->show("homepage.php",$data,true);      
+        $this->view->show("landing/homepage.php",$data,true);      
     }
 
     public function dashboard(){
@@ -121,7 +121,7 @@ class App extends StripePad {
         $data = array(
             
         );
-        $this->view->show("signup.php",$data,true);
+        $this->view->show("user/signup.php",$data,true);
     }
     
   
@@ -149,7 +149,7 @@ class App extends StripePad {
   
     public function forgotPassword(){      
         $data = Array();         
-        $this->view->show("forgot-password.php", $data,false);
+        $this->view->show("user/forgot-password.php", $data,false);
     }
 }
 

@@ -264,7 +264,7 @@ if (!isset($_SESSION['errors'])) $_SESSION['errors'] = "";
 if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = "";
 
 // Sanitize 'm' parameter to prevent injection
-$actionName = filter_input(INPUT_GET, 'm', FILTER_SANITIZE_STRING);
+$actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
 if (!$actionName) {
     $actionName = 'index'; // Default action
 }

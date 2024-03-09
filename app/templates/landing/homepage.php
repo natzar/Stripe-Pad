@@ -131,7 +131,7 @@
 
     <footer>
         <div class="border-t-1 border-t border-indigo-200 mt-10 text-gray-400 pt-3 text-xs mt-10 block">
-             <p class="text-xs text-gray-400 mt-5 mb-10 text-center">Licensed under GPL3 | Powered by <strong>Stripepad.com</strong>&copy; Powered by <strong><a href="https://stripepad.com">Stripepad.com</a></strong>. Send feedback <a rel="nofollow" class="underline text-indigo-600" href="mailto:<?= AdminEmail ?>" target="_blank">Email</a>
+             <p class="text-xs text-gray-400 mt-5 mb-10 text-center">Licensed under GPL3 | Powered by <strong>Stripepad.com</strong>&copy; Powered by <strong><a href="https://stripepad.com">Stripepad.com</a></strong>. Send feedback <a rel="nofollow" class="underline text-indigo-600" href="mailto:<?= ADMIN_EMAIL ?>" target="_blank">Email</a>
         </div>
     </footer>
 

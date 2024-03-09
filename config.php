@@ -38,6 +38,7 @@ define('DEBUG_MODE',true);
 define('APP_THEME','basic');
 
 # EMAIL
+define('ADMIN_EMAIL','');
 define('SMTP_SERVER','');                // Specify main and backup server
 define('SMTP_PORT','');
 define('EMAIL_FROM', '');
@@ -45,15 +46,15 @@ define('EMAIL_PASSWORD', '');
 
 
 if (isLocalhost()) { # Localhost
-    define('APP_DOMAIN','//localhost/chatleads/');
-	define('APP_BASE_URL', 'http://localhost/chatleads/');
-	define('API_BASE_URL', 'http://localhost/domain/api/');
-	define('HOMEPAGE_URL', 'http://localhost/chatleads/');
+    define('APP_DOMAIN','//localhost/stripe-pad/');
+	define('APP_BASE_URL', 'http://localhost/stripe-pad/');
+	define('API_BASE_URL', 'http://localhost/stripe-pad/api/');
+	define('HOMEPAGE_URL', 'http://localhost/stripe-pad/');
 
 	define('APP_TABLE_PREFIX','');
 	define('APP_DB_HOST','');
 	define('APP_DB','');
-	define('APP_CDN', '');
+	define('APP_CDN', 'http://localhost/stripe-pad/cdn/');
 	define('APP_DB_USER','');
 	define('APP_DB_PASSWORD','');
 } else {    # Server / Production
