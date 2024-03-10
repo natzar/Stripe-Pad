@@ -52,7 +52,7 @@ register_shutdown_function(function() {
     $error = error_get_last();
     if ($error !== NULL) {
         // Clear the output buffer to prevent previous output
-        ob_clean();
+        //ob_clean();
 
         // Custom error handling logic
         $errno   = $error["type"];
