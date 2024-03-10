@@ -10,7 +10,7 @@
     "require-dev": {
         "phplint/phplint": "^0.0.1"
     },
-    "license": "GPL-3.0-or-later", // Or "GPL-3.0-only" based on your preference
+    "license": "GPL-3.0-or-later", 
     "authors": [
         {
             "name": "Beto Ayesa",
