@@ -217,41 +217,41 @@ class StripePad{
         endif;
 
     }
-    //   public function account(){
-//       if (empty($_SESSION['user']['stripe_customer_id'])):
+      public function account(){
+      if (empty($_SESSION['user']['stripe_customer_id'])):
          
-//          $_SESSION['errors'] = "Aún no tienes esta sección habilitada.";
-//          header ("location: ".APP_DOMAIN."/dashboard");
+         $_SESSION['errors'] = "Aún no tienes esta sección habilitada.";
+         header ("location: ".APP_DOMAIN."/dashboard");
          
-//       else:
+      else:
     
          
-//          require_once(CORE_PATH.'vendor/stripe-php-7.77.0/init.php');
-//          \Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY);
-//          $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);                   
+         require_once(CORE_PATH.'vendor/stripe-php-7.77.0/init.php');
+         \Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY);
+         $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);                   
             
-//          try{
-//          // Authenticate your user.
-//          $session = \Stripe\BillingPortal\Session::create([
-//            'customer' => $_SESSION['user']['stripe_customer_id'],
-//            'return_url' => 'https://app.phpninja.net/dashboard',
-//          ]);
-//                      header("Location: " . $session->url);
-//          }catch(Exception $e){
-//                          $_SESSION['errors'] = $e->getMessage();
-//          header ("location: ".APP_DOMAIN."/dashboard");
+         try{
+         // Authenticate your user.
+         $session = \Stripe\BillingPortal\Session::create([
+           'customer' => $_SESSION['user']['stripe_customer_id'],
+           'return_url' => 'https://xxxxx',
+         ]);
+                     header("Location: " . $session->url);
+         }catch(Exception $e){
+                         $_SESSION['errors'] = $e->getMessage();
+         header ("location: ".APP_DOMAIN."/dashboard");
                 
-//          }
+         }
             
             
-//          // Redirect to the customer portal.
+         // Redirect to the customer portal.
 
     
-//      endif;
+     endif;
 
-//  }
+ }
 
-    public stripe_create_session(){
+    public function stripe_create_session(){
                 
         if (!$_POST) die("Stripe Pad - Stripe Token Service");
 
