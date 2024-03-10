@@ -1,3 +1,4 @@
 vendor/
 _recycle/
 node_modules/
+*.log
