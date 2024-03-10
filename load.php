@@ -14,6 +14,10 @@
 # Include configuration file
 require_once dirname(__FILE__).'/config.php';
 
+if (BOT_BLOCKER){
+    include dirname(__FILE__)."/modules/requestBlocker/bot-blocker.php";
+}
+
 # Defaults 
 ini_set('log_errors', 1);
 ini_set('error_log', APP_PATH.APP_NAME."-errors.log");

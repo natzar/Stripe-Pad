@@ -39,6 +39,8 @@ define('APP_THEME','base-dark'); #folder name of your theme
 define('SEO_TITLE','Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_DESCRIPTION','Stripe Pad · PHP Micro Saas Boilerplate');
 
+define('BOT_BLOCKER',true);
+
 # EMAIL
 define('ADMIN_EMAIL','support@stripepad.com');
 define('SMTP_SERVER','');                // Specify main and backup server
@@ -101,5 +103,5 @@ define("LOCALE_TIME","spanish");
 
 # EXTRAS - MODULES
 define('COUNTERIFY_TOKEN','');
-
+define('OPENAI_CHATGPT_APIKEY','');
 
