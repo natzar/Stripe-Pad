@@ -58,7 +58,7 @@
                DOWNLOAD
                 <span class="text-purple-200" aria-hidden="true">&rarr;</span>
               </a>
-              <a href="#" onclick="alert('You are already in the demo. All public pages are considered the landing and are located at app/themes/*/landing, you can add as many sections or pages as you want. Login or signup to test private espaces where your app will live to.'); return false;" class="inline-block rounded-lg px-4 py-1.5 hover:text-red-700 text-base font-semibold leading-7 text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+              <a href="#" onclick="alert('You are already in the demo. All public pages are considered the landing and are located at app/themes/*/landing, you can add as many sections or pages as you want. Login or signup to test private espaces where your app will live to.'); return false;" class="inline-block rounded-lg px-4 py-1.5 hover:text-red-700 text-base font-semibold leading-7 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                 Live demo
                 <span class="text-gray-400" aria-hidden="true">&rarr;</span>
               </a>
