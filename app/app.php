@@ -102,11 +102,7 @@ class App extends StripePad {
         $this->view->show("sample-page.php", $data);
     }
 
-  public function about(){
-    $this->view->show('about.php',array(
-        "SEO_TITLE" => "About Domstry"
-    ));
-  }
+
   public function tos(){
     $this->view->show('common/tos.php',array());
   }
