@@ -35,7 +35,7 @@
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
       
-        <? if ($isAuthenticated): ?>
+        <? if (!$isAuthenticated): ?>
         <a href="<?= APP_BASE_URL ?>" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1  hover:bg-gray-900 hover:text-red-500 rounded-full">Home</a>
         
         <a href="<?= APP_BASE_URL ?>installation"  class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-red-500 rounded-full">Installation</a>
@@ -77,7 +77,7 @@
           <div class="-my-6 divide-y divide-gray-500/25">
             <div class="space-y-2 py-6">
              
-    <? if ($isAuthenticated): ?>
+    <? if (!$isAuthenticated): ?>
 
         <a href="<?= APP_BASE_URL ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Home</a>
         
