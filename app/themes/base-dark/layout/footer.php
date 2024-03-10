@@ -20,7 +20,7 @@
         <div class="flex items-start">
           <div class="flex-shrink-0">
             <!-- Heroicon name: outline/check-circle -->
-            <svg class="h-6 w-6 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <svg class="h-6 w-6 text-red-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
@@ -49,15 +49,15 @@
       <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">Start your SaaS Today!</h2>
       <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">Everything you need to focus only in your original idea</p>
       <div class="mt-10 flex items-center justify-center gap-x-6">
-        <a href="/signup" class="rounded-md bg-green-600 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Sign up</a>
+        <a href="/signup" class="rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-gray-100 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Sign up</a>
         <!-- <a href="https://www.domstry.com/resources/domstry-mautic-leads" class="text-sm font-semibold leading-6 text-white">Learn more <span aria-hidden="true">→</span></a> -->
       </div>
      <svg viewBox="0 0 1024 1024" class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]" aria-hidden="true">
     <circle cx="512" cy="512" r="512" fill="url(#827591b1-ce8c-4110-b064-7cb85a0b1217)" fill-opacity="0.7"></circle>
     <defs>
         <radialGradient id="827591b1-ce8c-4110-b064-7cb85a0b1217">
-            <stop stop-color="#6AC47E"></stop> <!-- Light Green -->
-            <stop offset="1" stop-color="#008037"></stop> <!-- Dark Green -->
+            <stop stop-color="#6AC47E"></stop> <!-- Light Red -->
+            <stop offset="1" stop-color="#008037"></stop> <!-- Dark Red -->
         </radialGradient>
     </defs>
 </svg>
@@ -195,7 +195,7 @@ PHP Micro SaaS Boilerplate already wired to Stripe
         <label for="email-address" class="sr-only">Email address</label>
         <input type="email" name="email" id="email" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6" placeholder="Enter your email">
         <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
-          <button type="button" onclick="alert('Not collecting emails but you can do it easily');" class="flex w-full items-center justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500">Subscribe</button>
+          <button type="button" onclick="alert('Not collecting emails but you can do it easily');" class="flex w-full items-center justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500">Subscribe</button>
         </div>
       </form>
     </div>
