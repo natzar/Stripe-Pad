@@ -99,7 +99,7 @@ class App extends StripePad {
 
     public function sample(){
         $data = Array();                    
-        $this->view->show("help.php", $data);
+        $this->view->show("sample.php", $data);
     }
 
   public function about(){
