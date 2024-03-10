@@ -17,7 +17,7 @@ function requestBlocker()
 
         # Before using this function you must 
         # create & set this directory as writeable!!!!
-        $dir = 'requestBlocker/';
+        $dir = dirname(__FILE__).'/';
 
         $rules   = array(
                 #You can add multiple Rules in a array like this one here
