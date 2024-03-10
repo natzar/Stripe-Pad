@@ -7,7 +7,7 @@
         "stripe/stripe-php": "^7.67",
         "phpmailer/phpmailer": "^6.5"
     },
-    "require_dev":{
+    "require_dev": {
         "phplint/phplint": "^0.0.1"
     },
     "license": "GPL3",
@@ -16,5 +16,8 @@
             "name": "Beto Ayesa",
             "email": "betolopezayesa@gmail.com"
         }
-    ]
+    ],
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
 }

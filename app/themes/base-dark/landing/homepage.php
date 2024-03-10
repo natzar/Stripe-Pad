@@ -28,7 +28,7 @@
     <div class="px-6  py-10 sm:pt-16 lg:overflow-hidden lg:pb-14 lg:pt-8 ">
         <div class="mx-auto max-w-7xl lg:px-8">
           <div class="">
-            <div class="  max-w-5xl sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
+            <div class="  max-w-3xl sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
               <div class="lg:py-24">
                
 <span class="clear  z-0 flex items-center text-left mx-auto justify-start border-1 border-gray-100 mt-2 space-x-2  mb-5 ">
