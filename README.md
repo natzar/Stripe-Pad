@@ -9,6 +9,8 @@
 
 For Educational purposes. Get started with MVC in PHP.
 
+DEMO: [Stripepad.com](https://www.stripepad.com)
+
 ![Relations between components](https://stripepad.com/open-graph.png)
 
 ### Disclaimer
