@@ -47,7 +47,7 @@
             </svg> Open Source GPL3 &nbsp;<a href="https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md">
         <img src="https://img.shields.io/github/license/natzar/Stripe-Pad" alt="License: GPL3"></span>
         </span>
-        <p class="text-2xl font-light text-gray-200 mb-3 text-center">Thanks for downloading Stripe Pad, a PHP Micro SaaS boilerplate</p>
+        <p class="text-2xl font-light text-gray-200 mb-3 text-center"></p>
         
   
 
@@ -66,10 +66,12 @@
     <section class="mt-4">
         <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4 mb-4  rounded-full pl-8">Configuration</h3>
         <ol class="list-decimal pl-8 space-y-2">
-            <li>Check .htaccess if you will be running in a /subfolder/ <code class="bg-gray-700 text-green-300 p-1 rounded">RedirectBase</code> in <span class="bg-gray-700 text-green-300 p-1 rounded">/app/.htaccess</span> and <span class="bg-gray-700 text-green-300 p-1 rounded">/api/.htaccess</span> to match your localhost directory.</li>
-            <li>Optional:Create subdomains and point them to the respective folders: app, api, webhooks, and cdn.</li>
+             <li>Set your application name, base URL, Stripe API Keys, Database settings and all configurations in <span class="bg-gray-700 text-green-300 p-1 rounded">config.php</span>.</li>
 
-            <li>Set your application name, base URL, Stripe API Keys, Database settings and all configurations in <span class="bg-gray-700 text-green-300 p-1 rounded">config.php</span>.</li>
+            <li>Optional: Check .htaccess if you will be running in a /subfolder/ <code class="bg-gray-700 text-green-300 p-1 rounded">RedirectBase</code> in <span class="bg-gray-700 text-green-300 p-1 rounded">/app/.htaccess</span> and <span class="bg-gray-700 text-green-300 p-1 rounded">/api/.htaccess</span> to match your localhost directory.</li>
+            <li>Optional: Create subdomains and point them to the respective folders: app, api, webhooks, and cdn.</li>
+
+           
             
         </ol>
     </section>
@@ -83,7 +85,7 @@
             
             <li>Set up a webhook from your Stripe dashboard to <span class="bg-gray-700 text-green-300 p-1 rounded">https://yourdomain.com/webhooks/stripe.php</span> to handle Stripe events.</li>
             
-            <p>Modify the automatic deployment settings at <span class="bg-gray-700 text-green-300 p-1 rounded">/webhooks/bitbucket.php</span>.</p>
+            <li>Set up automatic deployment from a git repository<span class="bg-gray-700 text-green-300 p-1 rounded">/webhooks/deploy.php</span>.</p>
 
         </ol>
     </section>
@@ -96,10 +98,10 @@
         <ul class="list-disc pl-8">
             <li><a href="/app" class="text-blue-400 hover:text-blue-600">Login Page</a> should open correctly.</li>
             <li><a href="/api" class="text-blue-400 hover:text-blue-600">API Endpoint</a> should display a 'not authenticated' message.</li>
-             <p>Access your main landing or marketing page at the <span class="bg-gray-700 text-green-300 p-1 rounded">/web</span> directory.</p>
-        <p>Your custom application should reside in the <span class="bg-gray-700 text-green-300 p-1 rounded">/app</span> folder.</p>
-        <p>Your API endpoints will be located within the <span class="bg-gray-700 text-green-300 p-1 rounded">/api</span> folder.</p>
-        <p>Models shared between all components are available for use across the application.</p>
+             <li>Access your main landing or marketing page at the <span class="bg-gray-700 text-green-300 p-1 rounded">/web</span> directory.</li>
+        <li>Your custom application should reside in the <span class="bg-gray-700 text-green-300 p-1 rounded">/app</span> folder.</li>
+        <li>Your API endpoints will be located within the <span class="bg-gray-700 text-green-300 p-1 rounded">/api</span> folder.</li>
+        <li>Models shared between all components are available for use across the application.</li>
         </ul>
     </section>
     <div class="mt-6">
