@@ -2,3 +2,4 @@ vendor/
 _recycle/
 node_modules/
 *.log
+app/build/node_modules/
