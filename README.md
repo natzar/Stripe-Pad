@@ -3,6 +3,7 @@
 #  Stripe Pad
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
 
+![Stripe Pad Image](https://stripepad.com/open-graph.png)
 
 **Stripe Pad** is a PHP boilerplate for rapid SaaS development with Stripe integration. It offers a minimalistic approach to start, validate, and grow your SaaS application without the constraints of a particular framework.
 
@@ -11,7 +12,7 @@ For Educational purposes. Get started with MVC in PHP.
 
 DEMO: [Stripepad.com](https://www.stripepad.com)
 
-![Relations between components](https://stripepad.com/open-graph.png)
+
 
 ### Disclaimer
 
