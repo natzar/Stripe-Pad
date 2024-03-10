@@ -46,30 +46,37 @@ class App extends StripePad {
 
   }
 
-     #Default app home page
+    # Default app home page
     public function index(){      
 
         # check if user is authenticated
         if ($this->isAuthenticated()){          
             # Load Dashboard (main-first screen of your app for logged users)
-            $this->app();
+            $this->dashboard();
         }else{
             # Redirect to login if not authenticated
             $this->home();
         }
     }
 
-    public function app(){
+    public function dashboard(){
         if ($this->isAuthenticated()){     
 
             # Do here any logic your app needs
+            # Include any library you need
             # $model = new model(); /models files are already available
-
             
-            $this->view->show('app.php',array(
-                "any variable" => "you want to pass to the view"
-
+            #example 
+            $user = new usersModel();
+            
+            $this->view->show('dashboard.php',array(
+                
+                "user" => $_SESSION['user'],
+                "example" => "Lorem ipsum sit dolor",
+                "date" => Date("Y-m-d")
             ));
+
+
         }else{
             $this->login();
         }   
@@ -85,12 +92,7 @@ class App extends StripePad {
         $this->view->show("landing/installation.php",$data);      
     }
 
-    public function dashboard(){
-        $data = array();        
-        $this->view->show("dashboard.php",$data);      
-    }
-
- public function examples(){
+    public function examples(){
         $data = Array();                    
         $this->view->show("landing/examples.php", $data);
     }

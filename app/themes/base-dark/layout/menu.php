@@ -35,7 +35,7 @@
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
       
-        
+        <? if ($isAuthenticated): ?>
         <a href="<?= APP_BASE_URL ?>" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1  hover:bg-gray-900 hover:text-red-500 rounded-full">Home</a>
         
         <a href="<?= APP_BASE_URL ?>installation"  class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-red-500 rounded-full">Installation</a>
@@ -46,7 +46,9 @@
 
         <a href="https://github.com/natzar/Stripe-Pad/wiki" target="_blank" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-red-500 rounded-full">Documentation</a>
 
-        
+        <? else: ?>
+
+        <? endif; ?>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="login" class="text-sm font-semibold leading-6 text-gray-600">Log in <span aria-hidden="true">&rarr;</span></a>
@@ -75,7 +77,7 @@
           <div class="-my-6 divide-y divide-gray-500/25">
             <div class="space-y-2 py-6">
              
-
+    <? if ($isAuthenticated): ?>
 
         <a href="<?= APP_BASE_URL ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Home</a>
         
@@ -90,6 +92,9 @@
    <a href="https://github.com/natzar/Stripe-Pad/wiki" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Documentation</a>
        
 
+        <? else: ?>
+
+        <? endif; ?>
 
               
             </div>
@@ -97,7 +102,7 @@
               
               
 
-              <? if (!isset($_SESSION['user']) ): ?>
+                 <? if ($isAuthenticated): ?>
                  <a href="login" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Login</a>
                 <a href="signup" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Sign Up</a> 
             <? else: ?>
