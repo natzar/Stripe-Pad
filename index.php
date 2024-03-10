@@ -250,7 +250,84 @@ class StripePad{
 //      endif;
 
 //  }
-  
+
+    public stripe_create_session(){
+                
+        if (!$_POST) die("Stripe Pad - Stripe Token Service");
+
+        \Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY); 
+
+        $stripe = new \Stripe\StripeClient(
+         APP_STRIPE_SECRETKEY
+        );
+
+        $items = $_POST['items'];
+        $customer = isset($_POST['customer']) ? $_POST['customer'] : array();
+        $product = isset($_POST['product']) ? $_POST['product'] : array();
+
+        $surl = 'https://';
+        $curl = 'https://';
+
+
+        if (isset($product['stripe_price_id'])){
+            $line_items = array(array(
+                "price" => $product['stripe_price_id'],
+                "quantity" => 1,
+                "tax_rates" => array(STRIPE_TAX_RATE) 
+        
+            ));
+                    
+        } else{
+            $line_items = $items;
+            $line_items[0]['tax_rates'] = array(STRIPE_TAX_RATE); 
+            $amount = floatval($line_items[0]['amount']) ;
+            $line_items[0]['amount'] = number_format($amount,2,"","");
+
+            $product['name'] = $items[0]['name'];
+            $product['amount'] = $items[0]['amount'];
+            $product['description'] = "No description";
+            $product['productsId'] = -1;
+            $product['stripe_price_id'] = -1;
+        }
+
+        $tax = $product['amount'] * 0.21;
+        $total = $product['amount'] + $tax;                        
+        $metadata = array( "language" => $lang, "product_name" => $product['name'], "product_description" => $product['description'],"product_id" => $product['productsId'], "price" => $product['stripe_price_id'], "product_price" => $product['amount'],"subtotal" => $product['amount'],  "quantity" => 1, "tax" => $tax, "total" => $total );
+
+
+        $params =[        
+            'billing_address_collection' => 'required',
+          'payment_method_types' => ['card'],
+          'line_items' => $line_items,
+          'success_url' => $surl,
+          'allow_promotion_codes' => true,
+          
+          'tax_id_collection' => [
+            'enabled' => true,
+            
+          ],
+          'mode' => 'payment',
+            'cancel_url' => $curl,
+            'payment_intent_data' => array("metadata" => $metadata)
+
+        ];
+
+        if (isset($product['product_stripe_id'])){
+            $params['automatic_tax'] = array('enabled' => true);
+        }
+
+        if (!empty($product['interval'])) {
+            $params['mode'] = 'subscription';
+            $params['payment_method_types'] = ['card'];
+            $params['subscription_data'] = $params['payment_intent_data'];
+            unset($params['payment_intent_data']);
+        }
+
+        $session = \Stripe\Checkout\Session::create($params);
+        echo json_encode($session);
+
+
+    }
 
    
 }

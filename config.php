@@ -87,7 +87,7 @@ define('APP_STRIPE_WEBHOOK_SECRET_TEST','');
 define('APP_STRIPE_ACCOUNTCOUNTRY','ES');
 define('APP_STRIPE_CURRENCY','eur');
 define('APP_STRIPE_DEFAULTCOUNTRY','ES');
-
+define('APP_STRIPE_TAX_RATE','');
 
 # PATHS
 define('ROOT_PATH',dirname(__FILE__)."/");
