@@ -7,10 +7,10 @@
         "stripe/stripe-php": "^7.67",
         "phpmailer/phpmailer": "^6.5"
     },
-    "require_dev": {
+    "require-dev": {
         "phplint/phplint": "^0.0.1"
     },
-    "license": "GPL3",
+    "license": "GPL-3.0-or-later", // Or "GPL-3.0-only" based on your preference
     "authors": [
         {
             "name": "Beto Ayesa",
