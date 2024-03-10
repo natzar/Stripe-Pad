@@ -35,7 +35,7 @@
 
     
       <div class="max-w-2xl mx-auto py-8 px-4 sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h1 class="text-3xl font-extrabold tracking-tight text-gray-100 sm:text-5xl lg:text-6xl text-center">Download Stripe Pad</h1>
+        <h1 class="text-3xl font-extrabold tracking-tight text-gray-100 sm:text-5xl lg:text-6xl text-center">Installation Guide</h1>
         <span class="clear  z-0 flex items-center text-center mx-auto justify-center border-1 border-gray-100 mt-2 space-x-2  mb-5 ">
           <span href="/quote" class="hidden sm:inline-flex relative  items-center  rounded-l-md  text-sm font-medium text-gray-600  focus:z-10 focus:outline-none focus:ring-1 focus:ring-red-500 focus:border-red-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -47,12 +47,12 @@
             </svg> Open Source GPL3 &nbsp;<a href="https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md">
         <img src="https://img.shields.io/github/license/natzar/Stripe-Pad" alt="License: GPL3"></span>
         </span>
-        <p class="text-2xl font-light text-gray-200 mb-3 text-center"></p>
+        <p class="text-2xl font-light text-gray-200 mb-3 text-center">Visit <a href="https://github.com/natzar/Stripe-Pad" target="_blank">Github</a></p>
         
   
 
         <main class="text-gray-400 leading-6 space-y-6">
-    <h2 class="mt-6 text-xl font-semibold text-gray-100">Installation Guide</h2>
+    
 
     <section class="mt-4">
         <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4 mb-4 rounded-full pl-8">Initial Setup</h3>
@@ -105,9 +105,9 @@
         </ul>
     </section>
     <div class="mt-6">
-        <a href="web/" class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full">Visit Your SaaS Landing Page</a>
+        <!-- <a href="web/" class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full">Visit Your SaaS Landing Page</a>
         <a href="app/" class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full">Visit Your SaaS Login Page</a>
-        <a href="https://github.com/natzar/Stripe-Pad/issues" class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full">Get Support!</a>
+         --><a href="https://github.com/natzar/Stripe-Pad/issues" class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full">Get Support!</a>
     </div>
 
 </main>
