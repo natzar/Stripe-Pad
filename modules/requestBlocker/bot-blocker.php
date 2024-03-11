@@ -24,19 +24,19 @@ function requestBlocker()
                 #Notice that large "sec definitions" (like 60*60*60) will blow up your client File
                 array(
                         //if >5 requests in 5 Seconds then Block client 15 Seconds
-                        'requests' => 7, //5 requests
-                        'sek' => 7, //5 requests in 5 Seconds
+                        'requests' => 27, //5 requests
+                        'sek' => 27, //5 requests in 5 Seconds
                         'blockTime' => 10 // Block client 15 Seconds
                 ),
                 array(
                         //if >10 requests in 30 Seconds then Block client 20 Seconds
-                        'requests' => 20, //10 requests
-                        'sek' => 30, //10 requests in 30 Seconds
+                        'requests' => 40, //10 requests
+                        'sek' => 60, //10 requests in 30 Seconds
                         'blockTime' => 50 // Block client 20 Seconds
                 ),
                 array(
                         //if >200 requests in 1 Hour then Block client 10 Minutes
-                        'requests' => 100, //200 requests
+                        'requests' => 500, //200 requests
                         'sek' => 60 * 60, //200 requests in 1 Hour
                         'blockTime' => 600  // Block client 10 Minutes
                 )

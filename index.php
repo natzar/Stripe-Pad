@@ -39,9 +39,7 @@ class StripePad{
             $error_msg = "Possible BOT detected - ".implode("<br>",$t);
             include "app/themes/".APP_THEME."/error.php";
             die();
-        } else {
-
-        }
+        } 
 
         $this->params = array();
         $filter = FILTER_SANITIZE_STRING;
