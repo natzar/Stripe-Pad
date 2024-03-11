@@ -31,36 +31,35 @@ class StripePad{
     var $isAuthenticated;
     var $version = '0.1';
 	
-  /*  Admin Login
-  ---------------------------------------*/
-  public function __construct(){
-		
-    $this->params = array();
-    $filter = FILTER_SANITIZE_STRING;
+  
+    public function __construct(){
+        
+        # Block aggresive bots
+        if (BOT_BLOCKER && $t = requestBlocker()) {
+            $error_msg = implode("<br>",$t);
+            include "app/themes/".APP_THEME."/error.php";
+        } else {
 
-    // Check if the key exists in the $_GET array
-    if(isset($_GET)) {
-        // Return the sanitized value using a specified filter
-        // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
-        foreach($_GET as $k => $v){
-            if (filter_input(INPUT_GET, $k, $filter)){
-                $this->params[$k] = $v;
+        }
+
+        $this->params = array();
+        $filter = FILTER_SANITIZE_STRING;
+
+        // Check if the key exists in the $_GET array
+        if(isset($_GET)) {
+            // Return the sanitized value using a specified filter
+            // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
+            foreach($_GET as $k => $v){
+                if (filter_input(INPUT_GET, $k, $filter)){
+                   $this->params[$k] = $v;
+                }
             }
         }
         
-    }
         $this->view = new View();
 		$this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();
 
-    	
-
-		// if (isset($this->params['m']) and $this->params['m'] != "cloneSession" and $this->params['m'] != "checkout"  and $this->params['m'] != "actionRecoverPassword" and $this->params['m'] != "forgotPassword"  and $this->params['m'] != "actionLogin" and $this->params['m'] != "actionSignup" and $this->params['m'] != "signup" and !$this->isAuthenticated()){
-		// 	//$this->login();	
-		// 	//exit();
-		// }
-	//	print_r($this->params);
-
-  }
+    }
 
   	
   

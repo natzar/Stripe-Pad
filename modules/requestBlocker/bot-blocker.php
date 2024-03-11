@@ -128,12 +128,3 @@ function requestBlocker()
 
 }
 
-
-if ($t = requestBlocker()) {
-        echo 'mmmm... how to say it';
-        print_r($t);
-        die();
-
-} else {
-
-}
