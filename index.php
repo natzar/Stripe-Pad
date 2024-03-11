@@ -36,8 +36,9 @@ class StripePad{
         
         # Block aggresive bots
         if (BOT_BLOCKER && $t = requestBlocker()) {
-            $error_msg = implode("<br>",$t);
+            $error_msg = "Possible BOT detected - ".implode("<br>",$t);
             include "app/themes/".APP_THEME."/error.php";
+            die();
         } else {
 
         }
@@ -55,7 +56,7 @@ class StripePad{
                 }
             }
         }
-        
+
         $this->view = new View();
 		$this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();
 
