@@ -84,7 +84,7 @@ class usersModel extends ModelBase
 		if(!empty($userExist)){
 			return $userExist;			
 		}else{
-			$new_password = sha1($params['password']);
+			$new_password = hash('sha256',$params['password']);
 			
 						
 			$customersId = 1; //$this->getLastInsertedId();
@@ -104,7 +104,7 @@ class usersModel extends ModelBase
 			
 			
 			
-			$bearer = sha1($user['customersId'].$user['usersId'].$user['email']);
+			$bearer = hash('sha256',$user['customersId'].$user['usersId'].$user['email']);
 			$c = $this->db->prepare("UPDATE users set bearer = :bearer where usersId = :usersId");
 			$c->bindParam(':usersId',$user['usersId'],PDO::PARAM_STR); 
 			$c->bindParam(':bearer',$bearer,PDO::PARAM_STR); 
@@ -216,7 +216,7 @@ class usersModel extends ModelBase
 
 		$user = $this->userExist($email);
 		$passw = randomPassword();
-		$sha1_passw = sha1($passw);
+		$sha1_passw = hash('sha256',$passw);
 
 		if (!$user){
 			$c = $this->db->prepare('INSERT INTO users (email,password) VALUES (:email,:password)');

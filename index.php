@@ -87,7 +87,7 @@ class StripePad{
 		
   		$user = $users->find($this->params['email']);
 
-		$pass = sha1($this->params['password'])        	  ;
+		$pass =  hash('sha256', $this->params['password']); 
 
 		if (!empty($user) and $user['password'] == $pass){
 			$this->createSession($user);
@@ -146,7 +146,7 @@ class StripePad{
   		$_SESSION['app_'.APP_NAME.'_logged_in'] = 1;
   		$_SESSION['login_attemp'] = 0;
   		$_SESSION['user'] = $user; 
-        $_SESSION['HTTP_USER_AGENT'] = sha1($_SERVER['HTTP_USER_AGENT'].$user['email']);	
+        $_SESSION['HTTP_USER_AGENT'] = hash('sha256',($_SERVER['HTTP_USER_AGENT'].$user['email']));	
 // 		$customers = new customersModel();
 // 		if ($saveLogin) $customers->saveLastLogin($user);
   }
