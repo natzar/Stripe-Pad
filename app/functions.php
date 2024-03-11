@@ -1,4 +1,15 @@
 <?
+/**
+ * Package Name: Stripe Pad
+ * File Description: Helper functions. Similar to functions.php file in wordpress, add here any helper or aux function you could need 
+ * 
+ * @author Beto Ayesa <beto.phpninja@gmail.com>
+ * @version 1.0.0
+ * @package StripePad
+ * @license GPL3
+ * @link https://github.com/natzar/stripe-pad
+ * 
+ */
 
 
 if (function_exists('__')){
