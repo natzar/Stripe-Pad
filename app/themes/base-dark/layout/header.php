@@ -24,25 +24,6 @@
 <meta name="twitter:image" content="https://www.domstry.com/domstry-share.png" />
 <meta name="twitter:creator" content="@betoayesa" />
 
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Stripe Pad</title>
-    <meta name="title" content="Stripe Pad">
-    <meta name="author" content="Php Ninja">
-    <meta name="description" content="Stripe Pad, create a public shop from your Stripe products in a minute">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset='utf-8'>
-    <meta property="og:title" content="Stripe Pad">
-    <meta property="og:image" content="https://stripepad.com/main-stripepad.png">
-    <meta property="og:url" content="https://stripepad.com">
-    <meta name="og:description" content="Stripe Pad, create a public shop from your Stripe products in a minute">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
@@ -58,7 +39,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
+
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
