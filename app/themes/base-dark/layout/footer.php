@@ -189,7 +189,7 @@ PHP Micro SaaS Boilerplate already wired to Stripe
      <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
       <div>
         <h3 class="text-sm font-semibold leading-6 text-white">Subscribe to our newsletter</h3>
-        <p class="mt-2 text-sm leading-6 text-gray-400">The latest domain news, sent to your inbox weekly.</p>
+        <p class="mt-2 text-sm leading-6 text-gray-400">The latest news, about your amazing SaaS sent to your inbox weekly.</p>
       </div>
       <form class="mt-6 sm:flex sm:max-w-md lg:mt-0" action="actionSignup" method="POST">
         <label for="email-address" class="sr-only">Email address</label>
