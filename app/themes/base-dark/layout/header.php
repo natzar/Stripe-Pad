@@ -94,7 +94,7 @@
 </script>
 
 <!-- Include here your JS -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" async></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 
 <? if ($page == "app.php"): ?>
