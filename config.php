@@ -39,7 +39,8 @@ define('APP_THEME','base-dark'); #folder name of your theme
 define('SEO_TITLE','Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_DESCRIPTION','Stripe Pad · PHP Micro Saas Boilerplate');
 
-define('BOT_BLOCKER',true);
+# Enable bot blocker if you have too many requests
+define('BOT_BLOCKER',false);
 
 # EMAIL
 define('ADMIN_EMAIL','support@stripepad.com');
