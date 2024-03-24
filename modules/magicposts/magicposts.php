@@ -1,15 +1,22 @@
 <?
+/*
+        Stripe Pad - Magic Posts
 
+
+
+
+*/
 class Openai{
+
     private function secret_key(){
-        return $secret_key = 'Bearer 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';
+        return $secret_key = OPENAI_CHATGPT_APIKEY;
     }
 
     public function request( $prompt, $max_tokens=1024){ 
 $request_body = [
     "model" => "gpt-3.5-turbo",
     "messages" => [
-        ["role" => "system", "content" => "You are the CMO of domstry.com. Write articles for the blog. Return the html that goes between body tag, dont include it. Return HTML only, no introductions or explanations.
+        ["role" => "system", "content" => "You are the CMO of ".APP_NAME.". Write articles for the blog. Return the html that goes between body tag, dont include it. Return HTML only, no introductions or explanations.
 
         "],
         ["role" => "user", "content" => $prompt],
@@ -109,29 +116,29 @@ $n = new leadsModel();
 $o = new Openai();
 
 foreach($blogTitles as $title){
-	
-	$r = $o->request($title);
-	$r = json_decode($r,true);
+    
+    $r = $o->request($title);
+    $r = json_decode($r,true);
 
-	$body = $r['choices'][0]['message']['content'];
-	$slug = generate_seo_link($title);
-	$q = $n->db->prepare("INSERT INTO blog (title,slug,body) VALUES (:t,:s,:b)");
-	$q->bindParam(":t", $title );
-	$q->bindParam(":b", $body  );
-	$q->bindParam(":s",$slug  );
-	$q->execute();
+    $body = $r['choices'][0]['message']['content'];
+    $slug = generate_seo_link($title);
+    $q = $n->db->prepare("INSERT INTO blog (title,slug,body) VALUES (:t,:s,:b)");
+    $q->bindParam(":t", $title );
+    $q->bindParam(":b", $body  );
+    $q->bindParam(":s",$slug  );
+    $q->execute();
 
-	echo $title.PHP_EOL;
-	echo "= ========".PHP_EOL;
-	echo $body;
+    echo $title.PHP_EOL;
+    echo "= ========".PHP_EOL;
+    echo $body;
 
-	echo PHP_EOL.PHP_EOL;
+    echo PHP_EOL.PHP_EOL;
 }
 
 # foreach
-	# generate post
-		# save to bd
+    # generate post
+        # save to bd
 
 
-	# template + post content
-	# save to file
+    # template + post content
+    # save to file
