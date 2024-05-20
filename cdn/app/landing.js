@@ -1,20 +1,15 @@
 /*
     
-    Ass less javascript as possible
-    I love jquery    
-    * Some interactions for the landing and the menu
+    Ass less javascript as possible :P
+    I love jquery * Some interactions for the landing and the menu
     09/03/2024
 
 */
-$ = jQuery;
-$(document).load(function(){
-    
-});     
-         
-$(document).ready(function()
-{    
-    console.log("StripePad! Loaded...");
 
+$ = $ || jQuery;
+         
+$(document).ready(function(){    
+    console.log("StripePad! Loaded...");
 
     $(window).scroll(function() {
         var height = $(window).scrollTop();
@@ -26,6 +21,7 @@ $(document).ready(function()
         }
     });
 
+    // Add style to the link hrefing the current page
     var uri = unescape(document.location.href);
     uri = uri.substr(uri.indexOf(base_url)+base_url.length);
     

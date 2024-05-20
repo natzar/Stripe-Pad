@@ -22,7 +22,15 @@
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 -->
 
-  	
+  	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KKGVWVY1J4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KKGVWVY1J4');
+</script>
 
 
     <div class="px-6  py-10 sm:pt-16 lg:overflow-hidden lg:pb-14 lg:pt-8 ">
