@@ -30,9 +30,7 @@
     You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
 
-# Load Environment
-require_once dirname(__FILE__).'/../load.php'; 
-    
+
 
 # Each method of this class can be accessed from //your-domain/app/{method}?params=params
 
