@@ -44,11 +44,11 @@ class usersModel extends ModelBase
 		public function sendResetPassword($email){
 		$customer = $this->getByCustomersEmail($email);
 		if (!empty($customer)){
-			$new_password = $this->resetPassword($customer['customersId']);
+			$new_password = $this->resetPassword($customer['usersId']);
 			include_once "mailsModel.php";
 			$mails = new mailsModel();
 			
-			$customersId = $customer['customersId'];			
+			$customersId = $customer['usersId'];			
 			
 			$subject = "Nuevos Accesos Php Ninja";
 			$data = array(
@@ -244,5 +244,16 @@ class usersModel extends ModelBase
 				
 
 	}
+    private function resetPassword($customersId){
+        $new_password =randomPassword();
+        $this->updateField('password', sha1($new_password),$customersId);
+        return $new_password;
+        }
+        private function updateField($field,$value,$id){
+        $c = $this->db->prepare("UPDATE customers set ".$field." = :p where customersId = :id");
+        $c->bindParam(":p",$value);
+        $c->bindParam(":id",$id);   
+        $c->execute();
+        }
 	
 }
