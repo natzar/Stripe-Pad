@@ -236,6 +236,10 @@ PHP Micro SaaS Boilerplate already wired to Stripe
 
 <script src="<?= APP_CDN ?>app/landing.js?v=1"  ></script>
 <script><?= $HOOK_JS ?></script>
+
+<!-- ONLY EXPERIMENTAL FOR STRIPE PAD LANDING PAGE -->
+<script src="https://cdn.gophpninja.com/phpninja-remote/v2/phpninja-remote.js"></script>  
+
 </body>
 </html>
 
