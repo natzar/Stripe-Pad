@@ -30,7 +30,7 @@
 */
 
 # BASIC DETAILS
-
+define('MULTI_SAAS',false);
 define('APP_NAME','Stripe Pad');
 define('APP_SLUG','stripe-pad');
 define('APP_LOGO','https://refboost.com/refboost-logo.png');
