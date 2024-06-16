@@ -1,8 +1,6 @@
+<meta name="robots" content="noindex">
 
-
-  <meta name="robots" content="noindex">
-
-  <div class="h-screen mt-1 sm:mt-5 mb-4 sm:px-6 w-full prose max-w-8xl prose-indigo text-gray-600 mx-auto   ">
+  <div class=" mt-1 sm:mt-5 mb-4 sm:px-6 w-full prose max-w-8xl prose-indigo text-gray-600 mx-auto   ">
   <!--
   This example requires some changes to your config:
   
@@ -32,7 +30,7 @@
   </div>
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form class="space-y-6" action="actionSignup" method="POST">
+    <form class="space-y-6" action="<?= APP_DOMAIN ?>actionSignup" method="POST">
       <div>
         <label for="email" class="block text-sm font-medium leading-6 text-gray-100">Email address</label>
         <div class="mt-2">
@@ -53,7 +51,7 @@
       </div> -->
 
       <div>
-        <button type="submit" class="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>
+        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>
       </div>
     </form>
 <?= $_SESSION['errors'] ?>
