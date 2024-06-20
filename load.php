@@ -60,7 +60,7 @@ register_shutdown_function(function() {
         file_put_contents(ROOT_PATH.APP_SLUG."-errors.log", $error_msg, FILE_APPEND);
        // echo $error_msg . '<br>';
 
-        include "app/themes/".APP_THEME."/errors/error.php";
+        include "app/views/errors/error.php";
     } else {
         // Flush the buffer if there's no error
         //ob_end_flush();
@@ -74,7 +74,7 @@ set_error_handler(function($errno, $errstr, $errfile, $errline ){
     $error_msg = Date("d/m/Y H:i:s")." ".$errstr." [". $errno."]"." File: ". $errfile. " // Linea: ".$errline." ";      
     @file_put_contents(ROOT_PATH.APP_SLUG."-errors.log", $error_msg);
     if (DEBUG_MODE){
-        include "app/themes/".APP_THEME."/errors/error.php";
+        include "app/views/errors/error.php";
         throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
     }
 });
