@@ -45,16 +45,11 @@
 <meta name="theme-color" content="#ffffff">
 <base href="<?= APP_BASE_URL ?>">
 
-<!-- CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="<?= APP_BASE_URL ?>app/themes/<?= APP_THEME ?>/app.css" rel="stylesheet"> 
-
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet">
-
-<!-- Favicon* -->
+<!-- MAIN CSS -->
+<link href="<?= APP_BASE_URL ?>app/css/app.css?v=4" rel="stylesheet">
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet"> -->
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -71,27 +66,48 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-
-<!-- Hardcoded SS -->
 <style>
 	html{
 	scroll-behavior: smooth;
 }
 .nunito{
-	font-family: 'Nunito',sans-serif;
+/*	font-family: 'Nunito',sans-serif;*/
+        font-family: Inter var, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
 	font-weight: 600;
 }
-.custom-green{
-    color:#41B883;
+html,body{
+    font-family: Inter var, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
 }
+</style> <style>
+    @font-face {
+  font-family: 'AirClassicMedium'; /* Give your font a name */
+  src: url('https://cdn.gophpninja.com/fonts/airclassic-medium.woff2') format('woff2'); /* Specify the path to your WOFF2 file */
+  font-weight: normal; /* Adjust font-weight if needed */
+  font-style: normal; /* Adjust font-style if needed */
+}
+
+
+
+@font-face {
+  font-family: 'AirClassicBlack'; /* Give your font a name */
+  src: url('https://cdn.gophpninja.com/fonts/airclassic.woff2') format('woff2'); /* Specify the path to your WOFF2 file */
+  font-weight: bold; /* Adjust font-weight if needed */
+  font-style: normal; /* Adjust font-style if needed */
+}
+
+html, body {
+  font-family: 'AirClassicBlack', sans-serif !important; /* Use your custom font for the body or any specific element */
+}
+
+h1,h2,h3,h4,strong, .font-black{font-family: 'AirClassicBlack' !important;font-weight: 600}
+.font-medium{  font-family: 'AirClassicMedium';}
+
 </style>
-
-<!-- PHP to JS -->
-<script>
-    var isAuthorized = <?= $isAuthenticated ? 1:0 ?>;
-    var base_url = '<?= APP_BASE_URL?>';
-
-</script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
 <!-- Include here your JS -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
