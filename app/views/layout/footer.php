@@ -236,7 +236,9 @@ PHP Micro SaaS Boilerplate already wired to Stripe
 <span class="text-xs font-light ">Powered by  <a href="//stripepad.com">Stripe Pad v.0.0.1 </a> · Made by <a href="https://www.twitter.com/betoayesa" target="_blank">@betoayesa</a></span>
 </p>
     </div>
-
+<script>
+    var base_url = '<?= APP_DOMAIN ?>';
+</script>
 <script src="<?= APP_CDN ?>app/landing.js?v=1"  ></script>
 <script><?= $HOOK_JS ?></script>
 
