@@ -52,7 +52,7 @@
         
        
                 <h1 class="mt-4 text-5xl font-bold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-7xl nunito">
-                  <span class="">Build your SaaS with</span>
+                  <span class="">PHP SaaS Boilerplate</span>
                   <span class=" bg-gradient-to-r from-red-400 to-red-900 bg-clip-text pb-3 text-transparent sm:pb-5">Stripe Pad</span>
                 </h1>
                 <p class="text-base text-gray-500 sm:text-xl lg:text-lg xl:text-xl mt-5 pb-5">The PHP boilerplate to build SaaS with Stripe</p>

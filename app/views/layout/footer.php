@@ -45,6 +45,7 @@
 
 </div>
 
+<? if ($page != "forgot-password.php" and $page != "signup.php" and  !isset($_SESSION['user']) ): ?>
 <div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl border-b border-gray-800  sm:px-16 ">
       <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">Start your SaaS Today!</h2>
       <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">Everything you need to focus only in your original idea</p>
@@ -63,6 +64,8 @@
 </svg>
 
     </div>
+<? endif; ?>
+
 <!-- FOOTer -->
 <footer class="bg-gray-900 " aria-labelledby="footer-heading">
   <h2 id="footer-heading" class="sr-only">Footer</h2>
@@ -122,6 +125,9 @@ PHP Micro SaaS Boilerplate already wired to Stripe
                 <a href="<?= APP_DOMAIN ?>" class="text-sm leading-6 text-gray-300 hover:text-white">Home</a>
               </li>
 
+              <li>
+
+<a href="https://bayesa.gumroad.com/l/build-saas-learn-web-development" target="_blank" class="text-sm leading-6 text-gray-300 hover:text-white">Get 1:1 support & assistance to build your saas</a>
               <li>
                 <a href="<?= APP_DOMAIN ?>installation" class="text-sm leading-6 text-gray-300 hover:text-white">Installation</a>
               </li>
@@ -233,6 +239,13 @@ PHP Micro SaaS Boilerplate already wired to Stripe
 <span class="text-xs font-light ">Powered by  <a href="//stripepad.com">Stripe Pad v.0.0.1 </a> · Made by <a href="https://www.twitter.com/betoayesa" target="_blank">@betoayesa</a></span>
 </p>
     </div>
+
+<!-- PHP to JS -->
+<script>
+    var isAuthorized = <?= $isAuthenticated ? 1:0 ?>;
+    var base_url = '<?= APP_BASE_URL?>';
+
+</script>
 
 <script src="<?= APP_CDN ?>app/landing.js?v=1"  ></script>
 <script><?= $HOOK_JS ?></script>

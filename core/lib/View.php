@@ -30,25 +30,24 @@ class View
            	
 	    /* TEMPLATE
 	    ***********************/	
-		$template = APP_PATH."themes/".APP_THEME."/".$name;
+        $viewsFolder = APP_PATH."views/";
+
+		$template = $viewsFolder .$name;
 		
 		if (file_exists($template) == false) {
 			
-			if (file_exists(APP_PATH."themes/".APP_THEME."/".$name)){
-				$template = APP_PATH."themes/".APP_THEME."/".$name;
-			}else{
-				$this->error404();
-			}
+			$this->error404();
+			
 		}
 		
-		include APP_PATH."themes/".APP_THEME."/layout/header.php";		
+		include $viewsFolder."layout/header.php";		
 		if ($show_menu){
-			include APP_PATH."themes/".APP_THEME."/layout/menu.php";		
+			include $viewsFolder."layout/menu.php";		
 		}
     	include($template);
     	echo '<!-- Template StripePad: '.$template.' -->';
 
-    	include APP_PATH."themes/".APP_THEME."/layout/footer.php";		
+    	include $viewsFolder."layout/footer.php";		
 		echo '<!-- Powered by StripePad -->';
 		if (isset($_SESSION['errors'])) unset($_SESSION['errors']);
 		if (isset($_SESSION['alerts'])) unset($_SESSION['alerts']);
