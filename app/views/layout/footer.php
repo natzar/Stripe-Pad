@@ -126,6 +126,9 @@ PHP Micro SaaS Boilerplate already wired to Stripe
               </li>
 
               <li>
+
+<a href="https://bayesa.gumroad.com/l/build-saas-learn-web-development" target="_blank" class="text-sm leading-6 text-gray-300 hover:text-white">Get 1:1 support & assistance to build your saas</a>
+              <li>
                 <a href="<?= APP_DOMAIN ?>installation" class="text-sm leading-6 text-gray-300 hover:text-white">Installation</a>
               </li>
               <li>

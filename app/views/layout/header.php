@@ -107,7 +107,31 @@ h1,h2,h3,h4,strong, .font-black{font-family: 'AirClassicBlack' !important;font-w
 .font-medium{  font-family: 'AirClassicMedium';}
 
 </style>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<style>
+    @font-face {
+  font-family: 'AirClassicMedium'; /* Give your font a name */
+  src: url('https://cdn.gophpninja.com/fonts/airclassic-medium.woff2') format('woff2'); /* Specify the path to your WOFF2 file */
+  font-weight: normal; /* Adjust font-weight if needed */
+  font-style: normal; /* Adjust font-style if needed */
+}
+
+
+
+@font-face {
+  font-family: 'AirClassicBlack'; /* Give your font a name */
+  src: url('https://cdn.gophpninja.com/fonts/airclassic.woff2') format('woff2'); /* Specify the path to your WOFF2 file */
+  font-weight: bold; /* Adjust font-weight if needed */
+  font-style: normal; /* Adjust font-style if needed */
+}
+
+html, body {
+  font-family: 'AirClassicBlack', sans-serif !important; /* Use your custom font for the body or any specific element */
+}
+
+h1,h2,h3,h4,strong, .font-black{font-family: 'AirClassicBlack' !important;font-weight: 600}
+.font-medium{  font-family: 'AirClassicMedium';}
+
+</style>
 
 <!-- Include here your JS -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>

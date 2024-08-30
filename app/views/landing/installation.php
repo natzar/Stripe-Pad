@@ -90,6 +90,9 @@
         </ol>
     </section>
 
+npm install -D tailwindcss
+npx tailwindcss init
+app/css/build/compile-tailwind.sh
 
 
     <section class="mt-4">
