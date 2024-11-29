@@ -1,0 +1,5 @@
+<?
+
+Class User extends UserModel{
+
+}
