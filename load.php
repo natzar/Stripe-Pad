@@ -43,6 +43,39 @@ include_once CORE_PATH."lib/ModelBase.php";
 include_once CORE_PATH.'lib/SPDO.php';
 include_once CORE_PATH.'lib/View.php';
 
+# include all models from app dynamically
+foreach (glob(dirname(__FILE__)."/app/models/*.php") as $filename)
+{
+    include $filename;
+}
+
+# Include Modules
+include dirname(__FILE__)."/modules/requestBlocker/bot-blocker.php"; 
+include dirname(__FILE__)."/modules/emailValidator/emailValidator.php"; 
+
+
+# Helper functions
+function isLocalhost() {
+    // List of common localhost IP addresses
+    $localhostIPs = array(
+        '127.0.0.1',
+        '::1',
+    );
+
+    // Check if we are running from the command line
+    if (php_sapi_name() === 'cli' || defined('STDIN')) {
+        // In CLI, assume localhost environment or implement additional logic as needed
+        return true;
+    }
+
+    // Check if the server IP or remote IP is in the list of localhost IPs
+    $serverAddr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
+    $remoteAddr = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+
+    return in_array($serverAddr, $localhostIPs) || in_array($remoteAddr, $localhostIPs);
+}
+
+
 # Register fatal errors
 register_shutdown_function(function() {
     $error = error_get_last();
@@ -78,37 +111,3 @@ set_error_handler(function($errno, $errstr, $errfile, $errline ){
         throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
     }
 });
-
-# include all models from app dynamically
-foreach (glob(dirname(__FILE__)."/app/models/*.php") as $filename)
-{
-    include $filename;
-}
-
-# Include Modules
-include dirname(__FILE__)."/modules/requestBlocker/bot-blocker.php"; 
-include dirname(__FILE__)."/modules/emailValidator/emailValidator.php"; 
-
-
-# Helper functions
-function isLocalhost() {
-    // List of common localhost IP addresses
-    $localhostIPs = array(
-        '127.0.0.1',
-        '::1',
-    );
-
-    // Check if we are running from the command line
-    if (php_sapi_name() === 'cli' || defined('STDIN')) {
-        // In CLI, assume localhost environment or implement additional logic as needed
-        return true;
-    }
-
-    // Check if the server IP or remote IP is in the list of localhost IPs
-    $serverAddr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
-    $remoteAddr = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
-
-    return in_array($serverAddr, $localhostIPs) || in_array($remoteAddr, $localhostIPs);
-}
-
-

@@ -8,13 +8,17 @@
         "phpmailer/phpmailer": "^6.5"
     },
     "require-dev": {
-        "phplint/phplint": "^0.0.1"
+        "phplint/phplint": "^0.0.1",
+        "wp-coding-standards/wpcs": "^3.1",
+        "squizlabs/php_codesniffer": "^3.10",
+        "phpstan/phpstan": "^1.10",        
+        "phpunit/phpunit": "^9"
     },
     "license": "GPL-3.0-or-later", 
     "authors": [
         {
             "name": "Beto Ayesa",
-            "email": "betolopezayesa@gmail.com"
+            "email": "beto@ayesadigital.com"
         }
     ],
     "scripts": {
