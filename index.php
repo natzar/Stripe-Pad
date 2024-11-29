@@ -332,7 +332,7 @@ class StripePad{
 
 
 # START UP
-include dirname(__FILE__)."/app/app.php";
+include dirname(__FILE__)."/app/routes.php";
 
 // Initialize session variables if not already set
 if (!isset($_SESSION['errors'])) $_SESSION['errors'] = "";
