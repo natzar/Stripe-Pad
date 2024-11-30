@@ -12,7 +12,7 @@
 <meta name="keywords" content="<?= implode(",",explode(" ",$SEO_TITLE)) ?>">
 <meta property="og:title" content="<?= $SEO_TITLE ?>" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://www.domstry.com/domstry-share.png" />
+<meta property="og:image" content="https://www.stripepad.com/stripepad-share.png" />
 <meta property="og:url" content="<?= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>" />
 <meta property="og:description" content="<?= $SEO_DESCRIPTION ?>" />
 <meta property="og:site_name" content="Domstry" />
@@ -46,7 +46,7 @@
 <base href="<?= APP_BASE_URL ?>">
 
 <!-- MAIN CSS -->
-<link href="<?= APP_BASE_URL ?>app/css/app.css?v=4" rel="stylesheet">
+<link href="<?= APP_CDN ?>css/app.css?v=4" rel="stylesheet">
 <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
 <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet"> -->
