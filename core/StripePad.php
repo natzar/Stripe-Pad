@@ -34,17 +34,31 @@ class StripePad
                 }
             }
         }
+        if (isset($_POST)) {
+            // Return the sanitized value using a specified filter
+            // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
+            foreach ($_POST as $k => $v) {
+                if (filter_input(INPUT_POST, $k, $filter)) {
+                    $this->params[$k] = $v;
+                }
+            }
+        }
 
         $this->view = new View();
         $this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();
     }
 
 
-
+    
+    /**
+     * actionRecoverPassword
+     *
+     * @return void
+     */
     public function actionRecoverPassword()
     {
         $email = $this->params['email'];
-        $customers = new customersModel();
+        $customers = new userModel();
         $customers->sendResetPassword($email);
 
 
@@ -55,7 +69,7 @@ class StripePad
     public function actionLogin()
     {
 
-        $users = new usersModel();
+        $users = new userModel();
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 1;
         $_SESSION['login_attemp'] = 1;
 
@@ -90,7 +104,7 @@ class StripePad
     public function actionSignup()
     {
 
-        $users = new usersModel();
+        $users = new userModel();
 
         if (!empty($_POST['huny'])) die();
 
@@ -132,7 +146,7 @@ class StripePad
         $_SESSION['login_attemp'] = 0;
         $_SESSION['user'] = $user;
         $_SESSION['HTTP_USER_AGENT'] = hash('sha256', ($_SERVER['HTTP_USER_AGENT'] . $user['email']));
-        // 		$customers = new customersModel();
+        // 		$customers = new userModel();
         // 		if ($saveLogin) $customers->saveLastLogin($user);
     }
 
@@ -342,7 +356,7 @@ class StripePad
             # $model = new model(); /models files are already available
 
             #example 
-            $user = new usersModel();
+            $user = new userModel();
 
             $this->view->show('dashboard.php', array(
 

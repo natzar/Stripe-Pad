@@ -92,7 +92,7 @@ register_shutdown_function(function() {
         $errstr  = $error["message"];
 
         $error_msg = date("d/m/Y H:i:s")." ".$errstr." [".$errno."]"." File: ".$errfile." // Line: ".$errline." ";
-        file_put_contents(ROOT_PATH.APP_SLUG."-errors.log", $error_msg, FILE_APPEND);
+        @file_put_contents(ROOT_PATH.APP_SLUG."-errors.log", $error_msg, FILE_APPEND);
        // echo $error_msg . '<br>';
 
         include ROOT_PATH."app/views/errors/error.php";
