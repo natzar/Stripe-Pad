@@ -18,7 +18,7 @@ require_once dirname(__FILE__).'/config.php';
 ini_set('log_errors', 1);
 ini_set('error_log', APP_PATH.APP_NAME."-errors.log");
 
-error_reporting(DEBUG_MODE ? E_ALL : E_NONE);
+error_reporting(DEBUG_MODE ? E_ALL : 0);
 ini_set('display_errors', DEBUG_MODE ? 1 : 0);
 ini_set('display_startup_errors', DEBUG_MODE ? 1 : 0);
 

@@ -37,4 +37,34 @@ class mailsModel extends ModelBase {
         return false;
     }
     
+    function replaceTemplateValues($body,$p){
+	
+        foreach($p as $k => $v){
+                if ($k == "persona_contacto"){ // Sin apellidossi
+                    $v = explode(" ",$v);
+                    $v = $v[0];
+                }
+                $body = str_replace("{{".$k."}}",$v,$body);
+        }
+    
+        if (isset($p['persona_contacto'])) {
+            $body = str_replace("{{persona_contacto_completo}}",$p['persona_contacto'],$body);	
+        }
+        
+                
+            
+        $weekdays = array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+        $body = str_replace("{{dia_semana}}",$weekdays[date("w")],$body);
+        
+        $body = str_replace("{{fecha_completa}}",Date("d/m/Y H:i:s"),$body);
+    
+        $body = str_replace("{{fecha}}",Date("d/m/Y"),$body);
+    
+        $body = str_replace(" ,",Date(","),$body);
+    
+        // Prevent errors
+        $body = preg_replace('/\\{{2}(.*)\\}{2}/', '', $body);
+        return $body;
+    
+    }
 }

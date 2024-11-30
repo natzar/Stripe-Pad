@@ -31,7 +31,7 @@
 */
 
 # SAMPLE APP
-# Use this class to Override any core method
+# Use this class to Override any core method /core/StripePad.php
 # From here its yours
 
 
