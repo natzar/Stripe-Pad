@@ -25,9 +25,9 @@
 
 # Load Environment
 require_once dirname(__FILE__).'/load.php'; // 
-
+include_once CORE_PATH.'StripePad.php';
 # Load Custom App
-include dirname(__FILE__)."/app/App.php";
+include APP_PATH."App.php";
 
 // Initialize session variables if not already set
 if (!isset($_SESSION['errors'])) $_SESSION['errors'] = array();
@@ -35,6 +35,7 @@ if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = array();
 
 // Sanitize 'm' parameter to prevent injection
 $actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
+
 if (!$actionName) {
     $actionName = 'index'; // Default action
 }
