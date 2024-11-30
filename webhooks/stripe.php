@@ -31,8 +31,8 @@
     
 	$metadata = $event->data->object->metadata;
     
-    // Customer
-    $customer = $customers->search(array("email" => $event->data->object->receipt_email));
+    // // Customer
+    // $customer = $customers->search(array("email" => $event->data->object->receipt_email));
 	$email = $event->data->object->receipt_email;
 	
 	$event_id = $event->{'id'};
@@ -40,6 +40,34 @@
 		
 	// Cargo       		
     
+	if ($event->type == 'charge.succeeded'){
+		# search user email = $email
+		# set active = 1
+
+
+        $user = $users->find($email);
+     //   print_r($user);
+        if ($user == null){
+  		    $user = $users->create($email);
+            //echo 'created';
+          //  print_r($user);
+            $users->sendWelcomeEmail($user);
+          		//echo 'sent';
+  		
+  		    $_SESSION['errors'] = "The password of your account is in your email inbox";
+	  	    
+            
+        } else {
+            $_SESSION['errors'] = "El usuario ya existe, intenta loggearte.";
+           // header("location: ".APP_DOMAIN."/login");
+            
+        }
+
+		#$users->activate($user['usersId']);
+		$users->updateField('active',1,$user['usersId']);
+
+		mail("beto.phpninja@gmail.com", "Nueva algo DOMSTRY!", $json);
+	}
     
     if ($event->type == "customer.subscription.created"){
     	//$dt->push('stripe-subscription-created');
@@ -53,7 +81,7 @@
     	// CREAR TICKET INICIO
 		
     	
-    	mail("beto.phpninja@gmail.com", "Nueva Suscripción COUNTERIFY!", $json);
+    	mail("beto.phpninja@gmail.com", "Nueva Suscripción DOMSTRY!", $json);
 
     }
 
