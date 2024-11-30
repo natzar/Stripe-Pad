@@ -1,5 +1,5 @@
 <?
 # Extends core/userModel.php
-Class User extends UserModel{
+Class User extends userModel{
 
 }
