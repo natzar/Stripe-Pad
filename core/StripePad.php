@@ -64,8 +64,15 @@ class StripePad
 
 
         header("location: /forgotPassword?success=1");
-    }
+    }    
+ 
+ 
 
+    /**
+     * actionLogin
+     *
+     * @return void
+     */
     public function actionLogin()
     {
 
@@ -340,14 +347,19 @@ class StripePad
         # check if user is authenticated
         if ($this->isAuthenticated()) {
             # Load Dashboard (main-first screen of your app for logged users)
-            $this->dashboard();
+            $this->app();
         } else {
             # Redirect to login if not authenticated
             $this->home();
         }
     }
 
-    public function dashboard()
+       /**
+     * App: This method will be overwritten by app/App.php
+     *
+     * @return void
+     */
+    public function app()
     {
         if ($this->isAuthenticated()) {
 
