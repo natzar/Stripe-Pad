@@ -1,9 +1,27 @@
 <?php
 
+/**
+ * View
+ */
 class View
-{
-	var $notification;
-	var $path;
+{	
+	/**
+	 * notification
+	 *
+	 * @var mixed
+	 */
+	var $notification;	
+	/**
+	 * path
+	 *
+	 * @var mixed
+	 */
+	var $path;	
+	/**
+	 * isAuthenticated
+	 *
+	 * @var mixed
+	 */
 	var $isAuthenticated;
 	
 	function __construct(){

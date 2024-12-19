@@ -23,18 +23,6 @@ if (function_exists('__')){
 
 
 
-// Pass in the string you'd for which you'd like a random output
-function spintax ($str) {
-    // Returns random values found between { this | and }
-    return preg_replace_callback("/{(.*?)}/", function ($match) {
-        // Splits 'foo|bar' strings into an array
-        $words = explode("|", $match[1]);
-        // Grabs a random array entry and returns it
-        return $words[array_rand($words)];
-    // The input string, which you provide when calling this func
-    }, $str);
-}
-
 
 
 function howManyDaysSince($date){
@@ -57,28 +45,8 @@ function format_stripe_timestamp($timestamp) {
   return strftime("%m/%d/%Y", $timestamp);
 }
 
-function format_number($n){
-	return number_format($n,2,",",".");
-}
-	
-function ticketstatus($id){
-	
-	$status = Array("","Nuevo","Abierto","En Espera","Cerrado","Archivado","Descartado");
-	return $status[$id];
-}
 
-function ticketstype($id){
 	
-	$status = Array("","Reparación","Optimización","Malware","Diseño Web","SEO","Hosting","Migración","Cambios dentro de secciones","Importadores CSV/XML","Bolsa de horas","Landings","Updates Prestashop","Google","Mantenimiento");
-	if (isset($status[$id])) return $status[$id];
-	return $status[1];
-}
-function labelPlan($id){
-	if ($id < 2) return '<span class="rounded-full   px-1 bg-red-100 text-xs font-semibold text-red-600">Sin Plan </span>';
-	$status = Array("","","Basico (old)","Plan WordPress","Plan Optimización (old)","Plan Tienda Online","Plan SEO","Plan Empresa");
-	return '<span class="rounded-full text-xs px-1 bg-green-100 font-semibold text-green-600">'.$status[$id].'</span>';
-}
-
 function randomPassword() {
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
     $pass = array(); //remember to declare $pass as an array
@@ -108,32 +76,8 @@ function fingerPrint($result){
 }
 
 
-function saveTranslations($json){
-return $token;
-}
-
-/*
-if (!function_exists('__')){
-function __($token,$lang = null){        
-return $token;
-    }
-    }
-*/
     
-    
-
-function cleanInput($input) {
-
-  $search = array(
-    '@<script[^>]*?>.*?</script>@si',   // Strip out javascript
-    '@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
-    '@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
-    '@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
-  );
-
-    $output = preg_replace($search, '', $input);
-    return $output;
-  }
+   
   
   function time_elapsed_string($datetime, $full = false) {
 if (empty($datetime)) return "Nunca";
@@ -173,48 +117,6 @@ if (empty($datetime)) return "Nunca";
 }
 
 
-function sanitize($input) {
-
-/* Clearify */
-	if ($input == '') return -1;
-	//$input  = cleanInput($input);
-	$output = $input;
-    return $output;
-}
-
-function removeAccents($s) {
-    $replace = array(
-        'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'Ae', 'Å'=>'A', 'Æ'=>'A', 'Ă'=>'A',
-        'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'ae', 'å'=>'a', 'ă'=>'a', 'æ'=>'ae',
-        'þ'=>'b', 'Þ'=>'B',
-        'Ç'=>'C', 'ç'=>'c',
-        'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E',
-        'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 
-        'Ğ'=>'G', 'ğ'=>'g',
-        'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'İ'=>'I', 'ı'=>'i', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i',
-        'Ñ'=>'N',
-        'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'Oe', 'Ø'=>'O', 'ö'=>'oe', 'ø'=>'o',
-        'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
-        'Š'=>'S', 'š'=>'s', 'Ş'=>'S', 'ș'=>'s', 'Ș'=>'S', 'ş'=>'s', 'ß'=>'ss',
-        'ț'=>'t', 'Ț'=>'T',
-        'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'Ue',
-        'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ü'=>'ue', 
-        'Ý'=>'Y',
-        'ý'=>'y', 'ý'=>'y', 'ÿ'=>'y',
-        'Ž'=>'Z', 'ž'=>'z'
-    );
-    return strtr($s, $replace);
-}
-
-
-function get_param($param){
-	if (isset($_GET[$param]))
-		return sanitize($_GET[$param]);
-	if (isset($_POST[$param]))
-		return sanitize($_POST[$param]);
-	return -1;
-}
-
 function gett(){
 
 		// Takes USER INPUT, normalize, sanitize, and returns and array
@@ -243,11 +145,7 @@ function gett(){
 }
 
 
-function json_from_array($array){
-	$json = new Services_JSON();
-	$aux = $json->encode($array);
-	return $aux;
-}
+
 
 function generar_cadena_random($long){ 
 //
@@ -262,69 +160,6 @@ function generar_cadena_random($long){
 	}
 	return $cad;
 
-}
-
-
-// FORMS
-function create_combo_before_number($name){
-	echo "<select name=\"".$name."\">
-
-	<option value=\">=\">>=</option>
-		<option value=\"<=\"><=</option>
-	</select> ";
-}
-
-function float_to_sql($valor){
-	$valor = str_replace('.','',$valor);
-	$valor = str_replace(',','.',$valor);
-	return $valor;
-}
-function generate_seo_link($input,$replace = '-',$remove_words = true,$words_array = array())
-{
-
-if (preg_match("/\p{Han}+/u", $input)) return $input;
-	//make it lowercase, remove punctuation, remove multiple/leading/ending spaces
-	$input = removeAccents($input);
-	$return = trim(preg_replace('/[^a-zA-Z0-9\s]/','',strtolower($input)));
-
-	//remove words, if not helpful to seo
-	//i like my defaults list in remove_words(), so I wont pass that array
-	if($remove_words) { $return = remove_words($return,$replace,$words_array); }
-
-	//convert the spaces to whatever the user wants
-	//usually a dash or underscore..
-	//...then return the value.
-	return str_replace(' ',$replace,$return);
-}
-
-/* takes an input, scrubs unnecessary words */
-function remove_words($input,$replace,$words_array = array(),$unique_words = true)
-{
-	//separate all words based on spaces
-	$input_array = explode(' ',$input);
-
-	//create the return array
-	$return = array();
-
-	//loops through words, remove bad words, keep good ones
-	foreach($input_array as $word)
-	{
-		//if it's a word we should add...
-		if(!in_array($word,$words_array) && ($unique_words ? !in_array($word,$return) : true))
-		{
-			$return[] = $word;
-		}
-	}
-
-	//return good words separated by dashes
-	return implode($replace,$return);
-}
-
-
-function get_extension($file_name){
-	$ext = explode('.', $file_name);
-	$ext = array_pop($ext);
-	return strtolower($ext);
 }
 
 
@@ -482,32 +317,6 @@ function clean_filename($aux){
 }
 
 
-function generar_nombre_archivo($filename){
-
-// NEW ONE, without saving filename just time stamp
-
-
-$punto_pos = strrpos ( $filename, ".");
-$soloname = substr($filename,0,$punto_pos );
-$ext = substr($filename,$punto_pos + 1, strlen($filename) - $punto_pos);
-$new_code = generar_cadena_random(7);
-return Date("YmdHis")."_".$new_code.".".$ext;
-
-
-
-// OLD ONE, saving filename
-$punto_pos = strrpos ( $filename, ".");
-$soloname = substr($filename,0,$punto_pos );
-if (isset($_POST['title'])) $soloname = $_POST['title'];
-if (isset($_POST['contenidossubcategorias'])) $soloname = $_POST['contenidossubcategorias'];
-$soloname = clean_filename($soloname);
-$ext = substr($filename,$punto_pos + 1, strlen($filename) - $punto_pos);
-$new_code = generar_cadena_random(7);
-
-return $soloname."_".$new_code.".".$ext;
-
-}
-
   
 function upload_image($var,$W,$H,$folder){
 	$path = 'data/img/'.$folder.'/';
@@ -660,113 +469,6 @@ function truncate($text, $length = 100, $ending = '...', $exact = true, $conside
 return $truncate;
 
 }
-
-function mostrar_fecha_completa($fecha)
-{
-$subfecha=explode("-",$fecha); 
-   for($i=0;$i<count($subfecha);$i++); 
-$año=$subfecha[0];
-$mes=$subfecha[1];
-$dia=$subfecha[2];
-
-$dia2=date( "d", mktime(0,0,0,$mes,$dia,$año));
-$mes2=date( "m", mktime(0,0,0,$mes,$dia,$año));
-$año2=date( "Y", mktime(0,0,0,$mes,$dia,$año));
-$dia_sem=date( "w", mktime(0,0,0,$mes,$dia,$año));
-
-   switch($dia_sem) { 
-      case "0":   // Bloque 1 
-         $dia_sem3='Domingo'; 
-               break; 
-      case "1":   // Bloque 1 
-         $dia_sem3='Lunes'; 
-               break; 
-        case "2":   // Bloque 1 
-         $dia_sem3='Martes'; 
-               break; 
-        case "3":   // Bloque 1 
-         $dia_sem3='Miercoles'; 
-               break; 
-        case "4":   // Bloque 1 
-         $dia_sem3='Jueves'; 
-               break; 
-        case "5":   // Bloque 1 
-         $dia_sem3='Viernes'; 
-               break; 
-        case "6":   // Bloque 1 
-         $dia_sem3='Sabado'; 
-               break; 
-      default:   // Bloque 3 
-         };
-   
-    switch($mes2) { 
-      case "1":   // Bloque 1 
-         $mes3='Enero'; 
-               break; 
-      case "2":   // Bloque 1 
-         $mes3='Febrero';
-     break; 
-      case "3":   // Bloque 1 
-         $mes3='Marzo';
-     break; 
- case "4":   // Bloque 1 
-         $mes3='Abril'; 
-     break;  
- case "5":   // Bloque 1 
-         $mes3='Mayo';
-     break;   
- case "6":   // Bloque 1 
-         $mes3='Junio';    
-               break; 
- case "7":   // Bloque 1 
-         $mes3='Julio';
-     break; 
- case "8":   // Bloque 1 
-         $mes3='Agosto';
-     break; 
- case "9":   // Bloque 1 
-         $mes3='Septiembre';
-     break; 
- case "10":   // Bloque 1 
-         $mes3='Octubre';
-     break; 
- case "11":   // Bloque 1 
-         $mes3='Noviembre';
-     break;           
- case "12":   // Bloque 1 
-         $mes3='Diciembre';  
-     break; 
-      default:   // Bloque 3 
-     break; 
-         }; 
-   
-   
-$fecha_texto=$dia_sem3.' '.$dia2.' '.'de'.' '.$mes3.' '.'de'.' '.$año2;
-
-return $fecha_texto;
-};
-
- function extract_email($string){
-	 preg_match_all('/^(.+\@.+\..+)$/',$string,$matches);
-	 
-	 return $matches[0];
- }
- function extract_phone($string){
-	 preg_match_all('/^[0-9]{9}$/',$string,$matches);
-	 return $matches[0];
-
- }
-  function extract_url($string){
-	 preg_match('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#',$string,$matches);
-	 return $matches[0];
-
- }
-
-
-
-
-
-
 
  
 if (isset($_POST['submit'])): 

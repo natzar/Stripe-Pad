@@ -27,31 +27,24 @@ use Stripe\Invoice;
 use Stripe\StripeClient;
 
 require './vendor/autoload.php';
-require ('config.php');
+require('config.php');
 
 $stripe = new StripeClient(StripeSecret);
-			
-$json = file_get_contents('php://input');	
+
+$json = file_get_contents('php://input');
 $event = json_decode($json);
 
 // TO-DO: Webhook key check
 
 $event_id = $event->{'id'};
 $event = $stripe->event->retrieve($event_id);
-if (!isset($event->type)) die("Stripe Response Error: No event to retrieve"):
+if (!isset($event->type)) die("Stripe Response Error: No event to retrieve");
 
 $emailCustomer = $event->data->object->receipt_email;
 
 if ($event->type == 'charge.succeeded') {
-
-}else if ($event->type == 'invoice.payment_succeeded') {
-
-}else if ($event->type == "customer.subscription.created"){
-    	
+} else if ($event->type == 'invoice.payment_succeeded') {
+} else if ($event->type == "customer.subscription.created") {
 }
 
-mail(AdminEmail, ProjectTitle." · ".$event->type, $json):
-
-
-
-
+mail(AdminEmail, ProjectTitle . " · " . $event->type, $json);

@@ -21,7 +21,7 @@ class cronJob {
 		$this->datatracker = new datatrackerModel();		
 		$this->db = SPDO::singleton();
 		$this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-		$this->db->config = Config::singleton();
+
 		$this->mails = new mailsModel();	
 		$this->name = $name;
 

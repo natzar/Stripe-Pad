@@ -53,7 +53,7 @@ class userModel extends ModelBase
 				"password" => $new_password
 			);
 
-			$this->datatracker->push("areaclientes-send-password-reset");
+
 			$mails->sendTemplate('robot-password-recovery', $data, $customer['email'], $customer['persona_contacto'], $subject);
 		}
 	}
@@ -65,6 +65,17 @@ class userModel extends ModelBase
 		$subject = "Welcome to " . APP_NAME;
 
 		$body = "Successful signup to " . APP_NAME . ", Welcome to " . APP_NAME . " modify this message, usersModel.php line 49";
+
+		// $body = "Welcome to Domstry,\n
+		// \n
+		// You can now login with email and password:\n
+		// email: " . $email . "\n
+		// password: " . $passw . "\n
+
+		// ";
+		// mail($email, 'Welcome to Domstry', $body);
+
+
 		mail($user['email'], $subject, $body);
 	}
 
@@ -126,7 +137,7 @@ class userModel extends ModelBase
 	}
 
 
-	public function getByUsersId($id)
+	public function getById($id)
 	{
 		$consulta = $this->db->prepare("SELECT * FROM users  WHERE usersId=:id limit 1");
 		$consulta->bindParam(":id", $id);
@@ -159,17 +170,8 @@ class userModel extends ModelBase
 		$c->execute();
 	}
 
-	
 
-		$body = "Welcome to Domstry,\n
-		\n
-		You can now login with email and password:\n
-		email: " . $email . "\n
-		password: " . $passw . "\n
 
-		";
-		mail($email, 'Welcome to Domstry', $body);
-	}
 	private function resetPassword($customersId)
 	{
 		$new_password = randomPassword();
