@@ -49,7 +49,7 @@ class StripePad
     }
 
 
-    
+
     /**
      * actionRecoverPassword
      *
@@ -58,15 +58,15 @@ class StripePad
     public function actionRecoverPassword()
     {
         $email = $this->params['email'];
-        $customers = new userModel();
+        $customers = new usersModel();
         $customers->sendResetPassword($email);
 
 
 
         header("location: /forgotPassword?success=1");
-    }    
- 
- 
+    }
+
+
 
     /**
      * actionLogin
@@ -76,7 +76,7 @@ class StripePad
     public function actionLogin()
     {
 
-        $users = new userModel();
+        $users = new usersModel();
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 1;
         $_SESSION['login_attemp'] = 1;
 
@@ -111,7 +111,7 @@ class StripePad
     public function actionSignup()
     {
 
-        $users = new userModel();
+        $users = new usersModel();
 
         if (!empty($_POST['huny'])) die();
 
@@ -161,18 +161,18 @@ class StripePad
     public function GoogleLoginCallback()
     {
         if (isset($_GET['code'])) {
-            $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-            $_SESSION['access_token'] = $token;
+            // $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+            // $_SESSION['access_token'] = $token;
 
-            // Get user info
-            $google_service = new Google_Service_Oauth2($client);
-            $data = $google_service->userinfo->get();
+            // // Get user info
+            // $google_service = new Google_Service_Oauth2($client);
+            // $data = $google_service->userinfo->get();
 
-            // Now you have $data which contains user info. You can save this info in your database.
-            // For demonstration purposes, we're just printing it.
-            echo '<pre>';
-            print_r($data);
-            echo '</pre>';
+            // // Now you have $data which contains user info. You can save this info in your database.
+            // // For demonstration purposes, we're just printing it.
+            // echo '<pre>';
+            // print_r($data);
+            // echo '</pre>';
         }
     }
     protected function isAuthenticated()
@@ -306,7 +306,7 @@ class StripePad
 
         $tax = $product['amount'] * 0.21;
         $total = $product['amount'] + $tax;
-        $metadata = array("language" => $lang, "product_name" => $product['name'], "product_description" => $product['description'], "product_id" => $product['productsId'], "price" => $product['stripe_price_id'], "product_price" => $product['amount'], "subtotal" => $product['amount'],  "quantity" => 1, "tax" => $tax, "total" => $total);
+        $metadata = array("product_name" => $product['name'], "product_description" => $product['description'], "product_id" => $product['productsId'], "price" => $product['stripe_price_id'], "product_price" => $product['amount'], "subtotal" => $product['amount'],  "quantity" => 1, "tax" => $tax, "total" => $total);
 
 
         $params = [
@@ -354,7 +354,7 @@ class StripePad
         }
     }
 
-       /**
+    /**
      * App: This method will be overwritten by app/App.php
      *
      * @return void
@@ -368,7 +368,7 @@ class StripePad
             # $model = new model(); /models files are already available
 
             #example 
-            $user = new userModel();
+            $user = new usersModel();
 
             $this->view->show('dashboard.php', array(
 
@@ -419,11 +419,11 @@ class StripePad
     public function blog()
     {
 
-        $blog = new leadsModel();
+
         if (!empty($this->params['a'])):
 
             $slug = $this->params['a'];
-
+            $blog = new blogModel();
             $q = $blog->db->prepare("SELECT *,DATE_FORMAT(created, '%d-%m-%Y') as created from blog where slug = :slug limit 1");
             $q->bindParam(":slug", $slug);
             $q->execute();
