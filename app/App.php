@@ -65,4 +65,67 @@ class App extends StripePad
     # show app/views/index.php passing $data
     $this->view->show('index.php', $data);
   }
+  public function home()
+  {
+    $data = array();
+    $this->view->show("landing/homepage.php", $data);
+  }
+
+  public function installation()
+  {
+    $data = array();
+    $this->view->show("landing/installation.php", $data);
+  }
+
+  public function examples()
+  {
+    $data = array();
+    $this->view->show("landing/examples.php", $data);
+  }
+
+  public function sample()
+  {
+    $data = array();
+    $this->view->show("sample-page.php", $data);
+  }
+
+
+  public function tos()
+  {
+    $this->view->show('common/tos.php', array());
+  }
+  public function privacy()
+  {
+    $this->view->show('common/privacy.php', array());
+  }
+
+
+  public function blog()
+  {
+
+
+    if (!empty($this->params['a'])):
+
+      $slug = $this->params['a'];
+      //  $blog = new blogModel();
+      $q = $blog->db->prepare("SELECT *,DATE_FORMAT(created, '%d-%m-%Y') as created from blog where slug = :slug limit 1");
+      $q->bindParam(":slug", $slug);
+      $q->execute();
+      $data = $q->fetch();
+
+      $data['SEO_TITLE'] = $data['title'] . " - Domstry";
+      $data['SEO_DESCRIPTION'] = truncate(strip_tags($data['body']));
+      $this->view->show('views/blog-post.php', $data, false);
+    else:
+
+      $slug = $this->params['a'];
+
+      // $q = $blog->db->prepare("SELECT *,DATE_FORMAT(created, '%d-%m-%Y') as created from blog order by created DESC  ");
+      $q->execute();
+      $data = array("items" => $q->fetchAll());
+
+      $data['SEO_TITLE'] = "Resources - Domstry";
+      $this->view->show('views/resources.php', $data);
+    endif;
+  }
 }
