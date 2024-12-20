@@ -40,15 +40,17 @@ if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()) {
 if (is_file(dirname(__FILE__) . "/vendor/autoload.php")) require(dirname(__FILE__) . "/vendor/autoload.php");
 
 # Include base classes
-include_once CORE_PATH . "base/ModelBase.php";
-include_once CORE_PATH . 'base/SPDO.php';
-include_once CORE_PATH . 'base/View.php';
-include_once CORE_PATH . 'base/helpers.php';
+include_once CORE_PATH . "ModelBase.php";
+include_once CORE_PATH . 'SPDO.php';
+include_once CORE_PATH . 'View.php';
+include_once CORE_PATH . 'helpers.php';
+include_once CORE_PATH . 'Mail.php';
+include_once CORE_PATH . 'Users.php';
 
 # include all models from app dynamically
-foreach (glob(dirname(__FILE__) . "/core/models/*.php") as $filename) {
-    include $filename;
-}
+#foreach (glob(dirname(__FILE__) . "/core//*.php") as $filename) {
+#    include $filename;
+#}
 
 
 
