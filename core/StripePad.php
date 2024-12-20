@@ -48,7 +48,83 @@ class StripePad
         $this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();
     }
 
+    # Default app home page
+    public function index()
+    {
 
+        # check if user is authenticated
+        if ($this->isAuthenticated) {
+            # Load Dashboard (main-first screen of your app for logged users)
+            $this->app();
+        } else {
+            # Redirect to login if not authenticated
+            $this->home();
+        }
+    }
+
+    /**
+     * App: This method will be overwritten by app/App.php
+     *
+     * @return void
+     */
+    public function app()
+    {
+        if ($this->isAuthenticated) {
+
+            # Do here any logic your app needs
+            # Include any library you need
+            # $model = new model(); /models files are already available
+
+            #example 
+            $user = new usersModel();
+
+            $this->view->show('dashboard.php', array(
+
+                "user" => $_SESSION['user'],
+                "example" => "Lorem ipsum sit dolor",
+                "date" => Date("Y-m-d")
+            ));
+        } else {
+            $this->login();
+        }
+    }
+
+
+    public function signup()
+    {
+        $this->view->show("user/signup.php", array(), true);
+    }
+
+    /**
+     * login
+     *
+     * @return void
+     */
+    public function login()
+    {
+        $data = array();
+
+        # Login function
+
+        # Login with Google
+        // $client = new Google_Client();
+        // $client->setClientId('YOUR_CLIENT_ID');
+        // $client->setClientSecret('YOUR_CLIENT_SECRET');
+        // $client->setRedirectUri('YOUR_REDIRECT_URI');
+        // $client->addScope("email");
+        // $client->addScope("profile");
+
+        // $authUrl = $client->createAuthUrl();
+        // echo "<a href='$authUrl'>Login with Google</a>";
+
+        $this->view->show("user/login.php", $data, true);
+    }
+
+    public function forgotPassword()
+    {
+        $data = array();
+        $this->view->show("user/forgot-password.php", $data, false);
+    }
 
     /**
      * actionRecoverPassword
@@ -200,7 +276,7 @@ class StripePad
         else:
 
 
-            require_once(CORE_PATH . 'vendor/stripe-php-7.77.0/init.php');
+
             \Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY);
             $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
 
@@ -339,146 +415,5 @@ class StripePad
 
         $session = \Stripe\Checkout\Session::create($params);
         echo json_encode($session);
-    }
-    # Default app home page
-    public function index()
-    {
-
-        # check if user is authenticated
-        if ($this->isAuthenticated()) {
-            # Load Dashboard (main-first screen of your app for logged users)
-            $this->app();
-        } else {
-            # Redirect to login if not authenticated
-            $this->home();
-        }
-    }
-
-    /**
-     * App: This method will be overwritten by app/App.php
-     *
-     * @return void
-     */
-    public function app()
-    {
-        if ($this->isAuthenticated()) {
-
-            # Do here any logic your app needs
-            # Include any library you need
-            # $model = new model(); /models files are already available
-
-            #example 
-            $user = new usersModel();
-
-            $this->view->show('dashboard.php', array(
-
-                "user" => $_SESSION['user'],
-                "example" => "Lorem ipsum sit dolor",
-                "date" => Date("Y-m-d")
-            ));
-        } else {
-            $this->login();
-        }
-    }
-
-    public function home()
-    {
-        $data = array();
-        $this->view->show("landing/homepage.php", $data);
-    }
-
-    public function installation()
-    {
-        $data = array();
-        $this->view->show("landing/installation.php", $data);
-    }
-
-    public function examples()
-    {
-        $data = array();
-        $this->view->show("landing/examples.php", $data);
-    }
-
-    public function sample()
-    {
-        $data = array();
-        $this->view->show("sample-page.php", $data);
-    }
-
-
-    public function tos()
-    {
-        $this->view->show('common/tos.php', array());
-    }
-    public function privacy()
-    {
-        $this->view->show('common/privacy.php', array());
-    }
-
-
-    public function blog()
-    {
-
-
-        if (!empty($this->params['a'])):
-
-            $slug = $this->params['a'];
-            //  $blog = new blogModel();
-            $q = $blog->db->prepare("SELECT *,DATE_FORMAT(created, '%d-%m-%Y') as created from blog where slug = :slug limit 1");
-            $q->bindParam(":slug", $slug);
-            $q->execute();
-            $data = $q->fetch();
-
-            $data['SEO_TITLE'] = $data['title'] . " - Domstry";
-            $data['SEO_DESCRIPTION'] = truncate(strip_tags($data['body']));
-            $this->view->show('views/blog-post.php', $data, false);
-        else:
-
-            $slug = $this->params['a'];
-
-            // $q = $blog->db->prepare("SELECT *,DATE_FORMAT(created, '%d-%m-%Y') as created from blog order by created DESC  ");
-            $q->execute();
-            $data = array("items" => $q->fetchAll());
-
-            $data['SEO_TITLE'] = "Resources - Domstry";
-            $this->view->show('views/resources.php', $data);
-        endif;
-    }
-
-    public function signup()
-    {
-        $data = array();
-        $this->view->show("user/signup.php", $data, true);
-    }
-
-    /**
-     * login
-     *
-     * @return void
-     */
-    public function login()
-    {
-        $data = array();
-
-        # Login function
-
-        # Login with Google
-        // $client = new Google_Client();
-        // $client->setClientId('YOUR_CLIENT_ID');
-        // $client->setClientSecret('YOUR_CLIENT_SECRET');
-        // $client->setRedirectUri('YOUR_REDIRECT_URI');
-        // $client->addScope("email");
-        // $client->addScope("profile");
-
-        // $authUrl = $client->createAuthUrl();
-        // echo "<a href='$authUrl'>Login with Google</a>";
-
-        $this->view->show("user/login.php", $data, true);
-    }
-
-    public function forgotPassword()
-    {
-        $data = array();
-        $this->view->show("user/forgot-password.php", $data, false);
     }
 }

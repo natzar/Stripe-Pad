@@ -168,22 +168,28 @@ function gett()
     // Takes USER INPUT, normalize, sanitize, and returns and array
     $retrieved = -1;
     $params = array();
-    if (count($_GET) > 0) {
-        foreach ($_GET as $key => $value)
-            //$aux = sanitize($value);
-            $params[$key] = trim($value);
-    }
-    if (count($_POST) > 0) {
-        foreach ($_POST as $key => $value)
-            //$aux = sanitize($value);
-            if (is_array($value)) {
-                $params[$key] = $value;
-            } else {
-                $params[$key] = trim($value);
+    $filter = FILTER_SANITIZE_STRING;
+
+    // Check if the key exists in the $_GET array
+    if (isset($_GET)) {
+        // Return the sanitized value using a specified filter
+        // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
+        foreach ($_GET as $k => $v) {
+            if (filter_input(INPUT_GET, $k, $filter)) {
+                $params[$k] = $v;
             }
+        }
+    }
+    if (isset($_POST)) {
+        // Return the sanitized value using a specified filter
+        // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
+        foreach ($_POST as $k => $v) {
+            if (filter_input(INPUT_POST, $k, $filter)) {
+                $params[$k] = $v;
+            }
+        }
     }
 
-    if (!isset($params['offset'])) $params['offset'] = 0;
-    if (!isset($params['perpage'])) $params['perpage'] = 18;
+
     return $params;
 }
