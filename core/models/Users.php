@@ -12,7 +12,7 @@
  * 
  */
 
-class userModel extends ModelBase
+class usersModel extends ModelBase
 {
 
 	public function getAll()

@@ -1,130 +1,168 @@
 <?
 /*
 *
-*		Webhook STRIPE
+*		Stripe Webhook 
 *		+charge.succeeded
 *		+customer.subscription.created
 *		+invoice.payment_succeeded
 *
-*
-*
-*
 */
 
+include dirname(__FILE__) . "/../core/load.php";
 
-	include dirname(__FILE__)."/../load.php";
-	
-	
-	\Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY);
-	$stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
-	      		
-	$db = SPDO::singleton();
-	$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-	$db->config = Config::singleton();
-			
-	$json = file_get_contents('php://input');	
-	$event = json_decode($json);
-	
-	
+class StripeWebhook
+{
+	var $event;
+	var $metadata;
+	var $customers;
+	var $stripe;
+	var $customer;
+	var $users;
+	var $user;
+	var $productDetails = [];
 
+	public function __construct()
+	{
+		$json = file_get_contents('php://input');
+		$this->users = new usersModel();
+		$this->stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
+		$this->event = json_decode($json);
 
-    
-	$metadata = $event->data->object->metadata;
-    
-    // // Customer
-    // $customer = $customers->search(array("email" => $event->data->object->receipt_email));
-	$email = $event->data->object->receipt_email;
-	
-	$event_id = $event->{'id'};
-	$event = \Stripe\Event::retrieve($event_id); //$stripe->event->retrieve($event_id);
-		
-	// Cargo       		
-    
-	if ($event->type == 'charge.succeeded'){
-		# search user email = $email
-		# set active = 1
+		echo 'Hi Stripe!';
 
+		$this->user = array(
+			"name" => "", //$this->event->data->object->customer_name,
+			"email" => $this->event->data->object->receipt_email,
+			"stripe_customer_id" => $this->event->data->object->customer
+		);
 
-        $user = $users->find($email);
-     //   print_r($user);
-        if ($user == null){
-  		    $user = $users->create($email);
-            //echo 'created';
-          //  print_r($user);
-            $users->sendWelcomeEmail($user);
-          		//echo 'sent';
-  		
-  		    $_SESSION['errors'] = "The password of your account is in your email inbox";
-	  	    
-            
-        } else {
-            $_SESSION['errors'] = "El usuario ya existe, intenta loggearte.";
-           // header("location: ".APP_DOMAIN."/login");
-            
-        }
+		$this->metadata = $this->event->data->object->metadata;
 
-		#$users->activate($user['usersId']);
-		$users->updateField('active',1,$user['usersId']);
+		$user_exists = $this->users->find($this->user);
 
-		mail("beto.phpninja@gmail.com", "Nueva algo DOMSTRY!", $json);
+		if (empty($user_exists)) { // New Customer
+			#$this->user = $this->users->create($this->customer['email']);
+			#$this->customer = $this->customers->create($user['usersId'], $this->customer['name'], $address = "", $nif = "", $location = "", $country = "", $email = "", $stripe_customer_id = "", $url = "", $language = "", $source = "") {
+			$this->users->create($this->user['usersId'], $this->user['name'], "", "", "", "", $this->user['email'], $this->user['stripe_customer_id'], "", "", "");
+		} else { // Customer exists
+			$this->user = $user_exists;
+			if (empty($this->users['stripe_customer_id']))
+				$this->users->setField($this->user['usersId'], 'stripe_customer_id', $this->user['stripe_customer_id']);
+		}
+
+		$this->process_event();
 	}
-    
-    if ($event->type == "customer.subscription.created"){
-    	//$dt->push('stripe-subscription-created');
 
-    	// ob_start();
-    	// print_r($metadata);
-    	// $message = ob_get_clean();
+	private function process_event()
+	{
 
-    	// ENVIAR MAIL
-    	// SETEAR WEB 
-    	// CREAR TICKET INICIO
-		
-    	
-    	mail("beto.phpninja@gmail.com", "Nueva Suscripción DOMSTRY!", $json);
+		//$invoices = new invoicesModel();		
+		$mails = new mailsModel();
 
-    }
+		echo $this->event->type . "\n";
+		switch ($this->event->type):
+			case 'customer.subscription.updated':
+				/* */
 
+				break;
+			case 'customer.subscription.deleted':
+				/* */
 
-function invoice_payment_received_body($invoice) {
-  $subscription = $invoice->lines->data[0];
-  $nickname = $subscription->plan->nickname;
-  $start = format_stripe_timestamp($subscription->period->start);
-  $end = format_stripe_timestamp($subscription->period->end);
-  $total = format_stripe_amount($invoice->total);
-  
-  return <<<EOD
--------------------------------------------------
-PAGO SUSCRIPCIÓN / FACTURA ENVIADA
-Nickname: {$nickname}
-Plan: {$subscription->plan->name}
-Amount: {$total} (USD)
-For service between {$start} and {$end}
--------------------------------------------------
-EOD;
+				break;
+			case 'customer.subscription.created':
+
+				// $subject = "[INFO] Servicio Contratado Php Ninja";
+				// $data = array(
+				// 	"persona_contacto" => $this->customer['persona_contacto'],
+				// 	"user" => $this->customer['email'],
+				// );
+
+				// # TO-DO: Manntenimiento o Hosting ?
+
+				// $mails->sendTemplate('subscription_created', $data, $this->customer['email'], $subject);
+				// $mails->internal("Nuevo Plan! y nuevo usuario en area de clientes", $this->customer['email']);
+				// //$this->datatracker->push("areaclientes-send-bienvenida-plan");
+				break;
+			case 'charge.succeeded':
+				$chargeId = $this->event->data->object->id;
+				$charge = $this->stripe->charges->retrieve($chargeId);
+				$total = $charge->amount;
+				$currency = $charge->currency;
+				$description = $charge->description;
+				// Retrieve the PaymentIntent associated with the charge
+				$paymentIntentId = $charge->payment_intent;
+				$paymentIntent = $this->stripe->paymentIntents->retrieve($paymentIntentId);
+
+				// Attempt to retrieve the Subscription associated with the PaymentIntent (if any)
+				$subscriptionId = $paymentIntent->subscription;
+
+				if ($subscriptionId) {
+					// Retrieve the subscription object
+					$subscription = $this->stripe->subscriptions->retrieve($subscriptionId);
+
+					// Extract product details from subscription items
+					foreach ($subscription->items->data as $item) {
+						$price = $this->stripe->prices->retrieve($item->price->id);
+						$product = $this->stripe->products->retrieve($price->product);
+						$this->productDetails[] = [
+							'product_id' => $product->id,
+							'product_name' => $product->name,
+							'price_id' => $price->id,
+							'price' => $price->unit_amount,
+							'currency' => $price->currency,
+							'quantity' => $item->quantity,
+							'product_description' => $product->description,
+						];
+					}
+				} else {
+					// If no subscription, check for available information in PaymentIntent
+					foreach ($paymentIntent->charges->data as $chargeItem) {
+						if (!empty($chargeItem->metadata['product_id'])) {
+							$productId = $chargeItem->metadata['product_id'];
+							$priceId = $chargeItem->metadata['price_id'];
+
+							$price = $this->stripe->prices->retrieve($priceId);
+							$product = $this->stripe->products->retrieve($price->product);
+
+							$this->productDetails[] = [
+								'product_id' => $product->id,
+								'product_name' => $product->name,
+								'price_id' => $price->id,
+								'price' => $price->unit_amount,
+								'currency' => $price->currency,
+								'quantity' => 1, // Default to 1 if not available
+								'product_description' => $product->description,
+							];
+						}
+					}
+				}
+
+				$amount = $this->event->data->object->metadata->subtotal ? $this->event->data->object->metadata->subtotal : $this->event->data->object->amount / 100;
+				$amount = number_format($amount, 2, ".", "");
+				//$dt->push('stripe-amount',$amount);
+
+				# Make Invoice
+				// $subtotal = $this->productDetails[0]['price'];
+				// $tax = $total - $subtotal;
+
+				// $invoice = array(
+				// 	"date" => Date("Y-m-d"),
+				// 	"cart" => $this->productDetails[0]['product_name'] . " - " . $this->productDetails[0]['product_description'], //array("item" => isset($metadata->product_name) ? $metadata->product_name : "Mantenimiento Web Completo"),
+				// 	"customersId" => $this->customer['customersId'],
+				// 	"paymentsId" => $paymentId,
+				// 	"subtotal" => $subtotal / 100,
+				// 	"iva" => $tax / 100, //$params['tax'],
+				// 	"total" => $total / 100,
+				// 	"payment_method" => 'stripe',
+				// 	"customer" => $this->customer
+				// );
+				// print_r($invoice);
+				// $invoice =  $invoices->create($invoice);
+
+				break;
+		endswitch;
+	}
 }
 
-
-function payment_received_body($charge) {
-
-	$email =$charge->receipt_email;
-	$product = isset($charge->metadata->product_name) ? $charge->metadata->product_name : $charge->description;
-	$amount = format_stripe_amount($charge->amount);
-  return <<<EOD
-A payment has been charged successfully. 
--------------------------------------------------
-PAYMENT RECEIPT
-{$product}
-Email: {$email}
-Amount: {$amount} (EUR)
--------------------------------------------------
-EOD;
-}
-
-
-
-
-
-
-echo 'END';
-
+$w = new StripeWebhook();
+echo 'End';
