@@ -41,9 +41,9 @@ class StripeWebhook
 		$user_exists = $this->users->find($this->user);
 
 		if (empty($user_exists)) { // New Customer
-			#$this->user = $this->users->create($this->customer['email']);
+			$this->user = $this->users->create($this->customer['email']);
 			#$this->customer = $this->customers->create($user['usersId'], $this->customer['name'], $address = "", $nif = "", $location = "", $country = "", $email = "", $stripe_customer_id = "", $url = "", $language = "", $source = "") {
-			$this->users->create($this->user['usersId'], $this->user['name'], "", "", "", "", $this->user['email'], $this->user['stripe_customer_id'], "", "", "");
+			#$this->users->create($this->user['usersId'], $this->user['name'], "", "", "", "", $this->user['email'], $this->user['stripe_customer_id'], "", "", "");
 		} else { // Customer exists
 			$this->user = $user_exists;
 			if (empty($this->users['stripe_customer_id']))

@@ -1,4 +1,5 @@
 <?
+
 /**
  * Package Name: Stripe Pad
  * File Description: Include this file anywhere to load all environment
@@ -12,52 +13,53 @@
  */
 
 # Include configuration file
-require_once dirname(__FILE__).'/config.php';
+require_once dirname(__FILE__) . '/config.php';
 
 # Defaults 
 ini_set('log_errors', 1);
-ini_set('error_log', APP_PATH.APP_NAME."-errors.log");
+ini_set('error_log', APP_PATH . APP_NAME . "-errors.log");
 
 error_reporting(DEBUG_MODE ? E_ALL : 0);
 ini_set('display_errors', DEBUG_MODE ? 1 : 0);
 ini_set('display_startup_errors', DEBUG_MODE ? 1 : 0);
 
 mb_internal_encoding(INTERNAL_ENCODING);
-date_default_timezone_set(TIMEZONE); 
-setlocale (LC_ALL, LOCALE_LANG); 
-setlocale(LC_TIME, LOCALE_TIME); 
+date_default_timezone_set(TIMEZONE);
+setlocale(LC_ALL, LOCALE_LANG);
+setlocale(LC_TIME, LOCALE_TIME);
 
 # Session 
-if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()){
-    ini_set('session.cookie_lifetime', 3600 * 24 );
-    ini_set('session.gc_maxlifetime', 3600 * 24 );
+if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()) {
+    ini_set('session.cookie_lifetime', 3600 * 24);
+    ini_set('session.gc_maxlifetime', 3600 * 24);
     session_set_cookie_params(3600 * 24);
     session_start();
 }
 
 # Include composer autoload
-if (is_file(dirname(__FILE__)."/vendor/autoload.php")) require(dirname(__FILE__)."/vendor/autoload.php");
+if (is_file(dirname(__FILE__) . "/vendor/autoload.php")) require(dirname(__FILE__) . "/vendor/autoload.php");
 
 # Include base classes
-include_once CORE_PATH."base/ModelBase.php";
-include_once CORE_PATH.'base/SPDO.php';
-include_once CORE_PATH.'base/View.php';
+include_once CORE_PATH . "base/ModelBase.php";
+include_once CORE_PATH . 'base/SPDO.php';
+include_once CORE_PATH . 'base/View.php';
+include_once CORE_PATH . 'base/helpers.php';
 
 # include all models from app dynamically
-foreach (glob(dirname(__FILE__)."/core/models/*.php") as $filename)
-{
+foreach (glob(dirname(__FILE__) . "/core/models/*.php") as $filename) {
     include $filename;
 }
 
 
 
 # Include Modules
-include dirname(__FILE__)."/modules/requestBlocker/bot-blocker.php"; 
-include dirname(__FILE__)."/modules/emailValidator/emailValidator.php"; 
+include dirname(__FILE__) . "/modules/requestBlocker/bot-blocker.php";
+include dirname(__FILE__) . "/modules/emailValidator/emailValidator.php";
 
 
 # Helper functions
-function isLocalhost() {
+function isLocalhost()
+{
     // List of common localhost IP addresses
     $localhostIPs = array(
         '127.0.0.1',
@@ -79,7 +81,7 @@ function isLocalhost() {
 
 
 # Register fatal errors
-register_shutdown_function(function() {
+register_shutdown_function(function () {
     $error = error_get_last();
     if ($error !== NULL) {
         // Clear the output buffer to prevent previous output
@@ -91,11 +93,11 @@ register_shutdown_function(function() {
         $errline = $error["line"];
         $errstr  = $error["message"];
 
-        $error_msg = date("d/m/Y H:i:s")." ".$errstr." [".$errno."]"." File: ".$errfile." // Line: ".$errline." ";
-        @file_put_contents(ROOT_PATH.APP_SLUG."-errors.log", $error_msg, FILE_APPEND);
-       // echo $error_msg . '<br>';
+        $error_msg = date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
+        @file_put_contents(ROOT_PATH . APP_SLUG . "-errors.log", $error_msg, FILE_APPEND);
+        // echo $error_msg . '<br>';
 
-        include ROOT_PATH."app/views/errors/error.php";
+        include ROOT_PATH . "app/views/errors/error.php";
     } else {
         // Flush the buffer if there's no error
         //ob_end_flush();
@@ -105,11 +107,11 @@ register_shutdown_function(function() {
 
 
 # Capture any error to file
-set_error_handler(function($errno, $errstr, $errfile, $errline ){
-    $error_msg = Date("d/m/Y H:i:s")." ".$errstr." [". $errno."]"." File: ". $errfile. " // Linea: ".$errline." ";      
-    @file_put_contents(ROOT_PATH.APP_SLUG."-errors.log", $error_msg);
-    if (DEBUG_MODE){
-        include ROOT_PATH."app/views/errors/error.php";
+set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+    $error_msg = Date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Linea: " . $errline . " ";
+    @file_put_contents(ROOT_PATH . APP_SLUG . "-errors.log", $error_msg);
+    if (DEBUG_MODE) {
+        include ROOT_PATH . "app/views/errors/error.php";
         throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
     }
 });

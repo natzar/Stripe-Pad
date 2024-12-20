@@ -63,7 +63,7 @@ class StripePad
 
 
 
-        header("location: /forgotPassword?success=1");
+        header("location: " . APP_DOMAIN . "/forgotPassword?success=1");
     }
 
 
@@ -135,9 +135,9 @@ class StripePad
         }
 
         $user = $users->find($this->params['email']);
-        if ($user == null) {
-            $user = $users->create($this->params);
-            $users->sendWelcomeEmail($user);
+        if (empty($user)) {
+            $user = $users->create($this->params['email']);
+
 
 
             $_SESSION['errors'] = "The password of your account is in your email inbox";
@@ -423,7 +423,7 @@ class StripePad
         if (!empty($this->params['a'])):
 
             $slug = $this->params['a'];
-            $blog = new blogModel();
+            //  $blog = new blogModel();
             $q = $blog->db->prepare("SELECT *,DATE_FORMAT(created, '%d-%m-%Y') as created from blog where slug = :slug limit 1");
             $q->bindParam(":slug", $slug);
             $q->execute();
@@ -436,7 +436,7 @@ class StripePad
 
             $slug = $this->params['a'];
 
-            $q = $blog->db->prepare("SELECT *,DATE_FORMAT(created, '%d-%m-%Y') as created from blog order by created DESC  ");
+            // $q = $blog->db->prepare("SELECT *,DATE_FORMAT(created, '%d-%m-%Y') as created from blog order by created DESC  ");
             $q->execute();
             $data = array("items" => $q->fetchAll());
 

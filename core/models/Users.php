@@ -38,27 +38,25 @@ class usersModel extends ModelBase
 
 	public function sendResetPassword($email)
 	{
-		$customer = $this->find($email);
-		if (!empty($customer)) {
-			$new_password = $this->resetPassword($customer['usersId']);
-			include_once "mailsModel.php";
+		$user = $this->find($email);
+		if (!empty($user)) {
+			$new_password = $this->resetPassword($user['usersId']);
+
 			$mails = new mailsModel();
 
-			$customersId = $customer['usersId'];
-
-			$subject = "Nuevos Accesos Php Ninja";
+			$subject = "Nuevos Accesos {APP_NAME}";
 			$data = array(
-				"persona_contacto" => $customer['persona_contacto'],
-				"user" => $customer['email'],
+				"persona_contacto" => $user['name'],
+				"user" => $user['email'],
 				"password" => $new_password
 			);
 
 
-			$mails->sendTemplate('robot-password-recovery', $data, $customer['email'], $customer['persona_contacto'], $subject);
+			$mails->sendTemplate('robot-password-recovery', $data, $user['email'], $user['name'], $subject);
 		}
 	}
 
-	public function sendEmailBienvenida($user)
+	public function sendWelcomeEmail($user)
 	{
 		// Setear Password
 
@@ -80,7 +78,7 @@ class usersModel extends ModelBase
 	}
 
 
-	public function create($email)
+	public function create($email, $name = "")
 	{
 
 		$find = $this->find($email);
@@ -91,15 +89,10 @@ class usersModel extends ModelBase
 			$password = randomPassword();
 			$new_password = hash('sha256', $password);
 
-
-			$customersId = 1; //$this->getLastInsertedId();
-			//$bearer = sha1($email);
-
-
-			$c = $this->db->prepare('INSERT INTO users (email,password,customersId) VALUES (:email,:password,:customersId)');
+			$c = $this->db->prepare('INSERT INTO users (name,email,password) VALUES (:name, :email,:password)');
 			$c->bindParam(':email', $email, PDO::PARAM_STR);
 			$c->bindParam(':password', $new_password, PDO::PARAM_STR);
-			$c->bindParam(':customersId', $customersId, PDO::PARAM_INT);
+			$c->bindParam(':name', $name, PDO::PARAM_STR);
 
 			$c->execute();
 
@@ -109,7 +102,7 @@ class usersModel extends ModelBase
 
 
 
-			$bearer = hash('sha256', $user['customersId'] . $user['usersId'] . $user['email']);
+			$bearer = hash('sha256', $user['usersId'] . $user['email']);
 			$c = $this->db->prepare("UPDATE users set bearer = :bearer where usersId = :usersId");
 			$c->bindParam(':usersId', $user['usersId'], PDO::PARAM_STR);
 			$c->bindParam(':bearer', $bearer, PDO::PARAM_STR);
@@ -117,7 +110,7 @@ class usersModel extends ModelBase
 
 			$user['password'] = $password;
 
-			$this->sendEmailBienvenida($user);
+			$this->sendWelcomeEmail($user);
 
 			return $user;
 		}
@@ -172,17 +165,16 @@ class usersModel extends ModelBase
 
 
 
-	private function resetPassword($customersId)
+	private function resetPassword($usersId)
 	{
 		$new_password = randomPassword();
-		$this->updateField('password', sha1($new_password), $customersId);
-		return $new_password;
-	}
-	private function updateField($field, $value, $id)
-	{
-		$c = $this->db->prepare("UPDATE customers set " . $field . " = :p where customersId = :id");
-		$c->bindParam(":p", $value);
-		$c->bindParam(":id", $id);
+		$sha1p = sha1($new_password);
+
+		$c = $this->db->prepare("UPDATE users set password= :p where usersId = :id");
+		$c->bindParam(":p", $sha1p);
+		$c->bindParam(":id", $usersId);
 		$c->execute();
+
+		return $new_password;
 	}
 }

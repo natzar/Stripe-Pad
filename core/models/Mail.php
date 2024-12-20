@@ -15,6 +15,10 @@ class mailsModel extends ModelBase
     public function send($to, $subject, $body)
     {
 
+        if (empty(SMTP_SERVER)) {
+            die("Set SMTP server in config.php");
+        }
+
         if (!empty($to) and $this->emailValidator->isValid($to)):
 
             $mail = new PHPMailer();
