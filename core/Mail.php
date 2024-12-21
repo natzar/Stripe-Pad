@@ -23,7 +23,7 @@ class mailsModel extends ModelBase
 
 		if (empty($params['to'])) return false; //("Falta destino");
 
-        if (!$this->emailValidator->isValid($to)) return false;
+        if (!$this->emailValidator->isValid($params['to'])) return false;
 
 		if (empty($params['tag'])) $params['tag'] = "Default";
 		if (empty($params['from_name'])) $params['from_name'] = APP_NAME;
@@ -101,10 +101,10 @@ class mailsModel extends ModelBase
 
 		#var_export $data before template, so template uses $phpvars and just it.
 		ob_start();
-		if (!file_exists(APP_PATH . "mails/" . $template . ".php")) die("Email could not be sent, template " . $template . " does not exist");
-		include APP_PATH . "mails/header.php";
-		include APP_PATH . "mails/" . $template . ".php";
-		include APP_PATH . "mails/footer.php";
+		if (!file_exists(ROOT_PATH . "mails/" . $template . ".php")) die("Email could not be sent, template " . $template . " does not exist");
+		include ROOT_PATH . "mails/header.php";
+		include ROOT_PATH . "mails/" . $template . ".php";
+		include ROOT_PATH . "mails/footer.php";
 		$body = ob_get_contents();
 		//$body = nl2br($body);
 		ob_clean();

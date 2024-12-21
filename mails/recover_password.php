@@ -11,7 +11,7 @@
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tbody>
                         <tr>
-                            <td> <a href="https://app.phpninja.net/login" target="_blank">Entrar ahora</a> </td>
+                            <td> <a href="<?= APP_DOMAIN ?>" target="_blank">Entrar ahora</a> </td>
                         </tr>
                     </tbody>
                 </table>
