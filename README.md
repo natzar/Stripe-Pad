@@ -1,6 +1,9 @@
 #  Stripe Pad
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
 [![PHP Composer](https://github.com/natzar/Stripe-Pad/actions/workflows/php.yml/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/php.yml)
+[![Psalm Security Scan](https://github.com/natzar/Stripe-Pad/actions/workflows/psalm.yml/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/psalm.yml)
+[![DevSkim](https://github.com/natzar/Stripe-Pad/actions/workflows/devskim.yml/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/devskim.yml)
+[![CodeQL](https://github.com/natzar/Stripe-Pad/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/github-code-scanning/codeql)
 ![Stripe Pad Image](https://stripepad.com/open-graph.png)
 
 **Stripe Pad** is a PHP boilerplate for rapid SaaS development with Stripe integration. It offers a minimalistic approach to start, validate, and grow your SaaS application without the constraints of a particular framework.
