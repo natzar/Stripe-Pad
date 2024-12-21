@@ -102,6 +102,8 @@ class App extends StripePad
 
   public function blog()
   {
+    include ROOT_PATH."modules/blog/blog.php";
+    $blog = new blog();
 
 
     if (!empty($this->params['a'])):
@@ -128,4 +130,7 @@ class App extends StripePad
       $this->view->show('views/resources.php', $data);
     endif;
   }
+  }
+
+
 }

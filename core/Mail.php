@@ -27,10 +27,10 @@ class mailsModel extends ModelBase
 
             $mail->Port = SMTP_PORT;                                    // Set the SMTP port
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = EMAIL_FROM;
-            $mail->Password = EMAIL_PASSWORD;                  // SMTP password
+            $mail->Username = SMTP_USER_EMAIL;
+            $mail->Password = SMTP_PASSWORD;                  // SMTP password
             $mail->SMTPSecure = 'tsl';
-            $mail->SetFrom(EMAIL_FROM);
+            $mail->SetFrom(SMTP_GLOBAL_EMAIL_FROM);
             $mail->IsHTML(true);
             $mail->CharSet = "UTF-8";
             $mail->AddAddress($to);

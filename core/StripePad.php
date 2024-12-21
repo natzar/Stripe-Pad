@@ -364,12 +364,12 @@ class StripePad
             $line_items = array(array(
                 "price" => $product['stripe_price_id'],
                 "quantity" => 1,
-                "tax_rates" => array(STRIPE_TAX_RATE)
+                "tax_rates" => array(APP_STRIPE_TAX_RATE)
 
             ));
         } else {
             $line_items = $items;
-            $line_items[0]['tax_rates'] = array(STRIPE_TAX_RATE);
+            $line_items[0]['tax_rates'] = array(APP_STRIPE_TAX_RATE);
             $amount = floatval($line_items[0]['amount']);
             $line_items[0]['amount'] = number_format($amount, 2, "", "");
 
