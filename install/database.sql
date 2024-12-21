@@ -2,7 +2,7 @@
 # Stripe Pad Mysql Database
 # Version 0.0.1
 #
-# http://www.stripepad.com
+# https://www.stripepad.com
 #
 # NO_AUTO_VALUE_ON_ZERO
 # y

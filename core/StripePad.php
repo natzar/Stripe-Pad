@@ -201,21 +201,30 @@ class StripePad
 
         if (!empty($_POST['huny'])) die();
 
+        include CORE_PATH . "classes/EmailValidator.php";
+        $emailValidator = new emailValidator();
+
+        if (!$emailValidator->isValid($this->params['email'])) {
+            $_SESSION['errors'][] = ERR_EMAIL_NOT_VALID;
+            header("location: " . APP_DOMAIN . "/signup");
+            return;
+        }
+
         // TODO: Verify valid email
         if (empty($this->params['email'])) {
-            $_SESSION['errors'] = "Email no puede estar en blanco";
+            $_SESSION['errors'][] = ERR_EMAIL_NOT_BLANK;
             header("location: " . APP_DOMAIN . "/signup");
             return;
         }
 
         if (isset($this->params['passwordConfirm']) and $this->params['password'] != $this->params['passwordConfirm']) {
-            $_SESSION['errors'] = "Passwords no coinciden";
+            $_SESSION['errors'][] "Passwords no coinciden";
             header("location: " . APP_DOMAIN . "/signup");
             return;
         }
 
         if (isset($this->params['privacy']) and empty($this->params['privacy'])) {
-            $_SESSION['errors'] = "You have to accept privacy policy";
+            $_SESSION['errors'][] "You have to accept privacy policy";
             header("location: " . APP_DOMAIN . "/signup");
             return;
         }

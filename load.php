@@ -40,6 +40,7 @@ if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()) {
 if (is_file(dirname(__FILE__) . "/vendor/autoload.php")) require(dirname(__FILE__) . "/vendor/autoload.php");
 
 # Include base classes
+include_once CORE_PATH . "errors.php";
 include_once CORE_PATH . "helpers.php";
 include_once CORE_PATH . "classes/ModelBase.php";
 include_once CORE_PATH . 'classes/SPDO.php';
