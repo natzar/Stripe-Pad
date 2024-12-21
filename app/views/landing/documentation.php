@@ -3,7 +3,7 @@
     <div class="block flex min-h-screen ">
 
         <!-- Sidebar: Navigation -->
-        <aside class="w-64 bg-gray-800 px-8 py-12  overflow-y-auto">
+        <aside class="w-64  px-8 py-12  overflow-y-auto">
             <h2 class="text-xl text-white font-semibold mb-10">Docs</h2>
             <ul class="space-y-2">
                 <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Introduction</a></li>
@@ -15,7 +15,18 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 pl-64 pr-32 py-12 text-white text-base">
+        <main class="flex-1 pl-32 pr-32 py-12 text-white text-base">
+
+            <?
+
+
+            $parsedown = new Parsedown();
+
+            $text = file_get_contents(dirname(__FILE__) . "/../../../docs/Home.md");
+            $html = $parsedown->text($text);
+
+            echo $html;
+            ?>
             <div id="introduction" class="mb-12">
                 <h1 class="text-3xl font-bold mb-4">Introduction</h1>
                 <p>Explanation of what Stripe Pad is and how it can be used in various scenarios.</p>
@@ -124,14 +135,7 @@
 
         <!-- Right Sidebar: On-page navigation -->
         <nav class="w-48 bg-gray-800 py-12  inset-y-0 right-0 overflow-y-auto">
-            <h3 class="px-4 text-lg text-white font-semibold mb-6">On this page</h3>
-            <ul class="space-y-2 px-4">
-                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500 block">Introduction</a></li>
-                <li><a href="#installation" class="text-gray-400 hover:text-blue-500 block">Installation</a></li>
-                <li><a href="#configuration" class="text-gray-400 hover:text-blue-500 block">Configuration</a></li>
-                <li><a href="#customizing" class="text-gray-400 hover:text-blue-500 block">Customizing</a></li>
-                <li><a href="#advanced-topics" class="text-gray-400 hover:text-blue-500 block">Advanced Topics</a></li>
-            </ul>
+
         </nav>
     </div>
 </div>

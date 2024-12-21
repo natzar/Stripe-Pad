@@ -44,4 +44,5 @@ Please review [our security policy](https://github.com/natzar/stripe-pad/securit
 
 
 Stripe Pad is licensed under the GPL License, Version 3.0 [Copy of the license](LICENSE.txt).
+
 **Important Disclaimer** Not affiliated in any way with Stripe.com 
