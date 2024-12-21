@@ -3,7 +3,7 @@ class emailValidator
 {
 	var $email;
 	var $blockedDomains;
-
+	var $invalidEmails;
 	function __construct()
 	{
 
