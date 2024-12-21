@@ -218,13 +218,13 @@ class StripePad
         }
 
         if (isset($this->params['passwordConfirm']) and $this->params['password'] != $this->params['passwordConfirm']) {
-            $_SESSION['errors'][] "Passwords no coinciden";
+            $_SESSION['errors'][] = "Passwords no coinciden";
             header("location: " . APP_DOMAIN . "/signup");
             return;
         }
 
         if (isset($this->params['privacy']) and empty($this->params['privacy'])) {
-            $_SESSION['errors'][] "You have to accept privacy policy";
+            $_SESSION['errors'][] = "You have to accept privacy policy";
             header("location: " . APP_DOMAIN . "/signup");
             return;
         }
