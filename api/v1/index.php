@@ -1,6 +1,6 @@
 <?php
 
-include_once "../load.php";
+include_once "../../load.php";
 
 // Allow requests from
 // Cross-domain issues, here!
