@@ -40,46 +40,21 @@ if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()) {
 if (is_file(dirname(__FILE__) . "/vendor/autoload.php")) require(dirname(__FILE__) . "/vendor/autoload.php");
 
 # Include base classes
-include_once CORE_PATH . "ModelBase.php";
-include_once CORE_PATH . 'SPDO.php';
-include_once CORE_PATH . 'View.php';
-include_once CORE_PATH . 'helpers.php';
-include_once CORE_PATH . 'Mail.php';
-include_once CORE_PATH . 'Users.php';
+include_once CORE_PATH . "helpers.php";
+include_once CORE_PATH . "classes/ModelBase.php";
+include_once CORE_PATH . 'classes/SPDO.php';
+include_once CORE_PATH . 'classes/View.php';
+
+include_once CORE_PATH . 'models/Mail.php';
+include_once CORE_PATH . 'models/Users.php';
+include_once CORE_PATH . "classes/BotBlocker.php";
 
 # include all models from app dynamically
-#foreach (glob(dirname(__FILE__) . "/core//*.php") as $filename) {
-#    include $filename;
-#}
-
-
-
-# Include Modules
-include dirname(__FILE__) . "/modules/requestBlocker/bot-blocker.php";
-include dirname(__FILE__) . "/modules/emailValidator/emailValidator.php";
-
-
-# Helper functions
-function isLocalhost()
-{
-    // List of common localhost IP addresses
-    $localhostIPs = array(
-        '127.0.0.1',
-        '::1',
-    );
-
-    // Check if we are running from the command line
-    if (php_sapi_name() === 'cli' || defined('STDIN')) {
-        // In CLI, assume localhost environment or implement additional logic as needed
-        return true;
-    }
-
-    // Check if the server IP or remote IP is in the list of localhost IPs
-    $serverAddr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
-    $remoteAddr = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
-
-    return in_array($serverAddr, $localhostIPs) || in_array($remoteAddr, $localhostIPs);
+foreach (glob(APP_PATH . "models/*.php") as $filename) {
+    include $filename;
 }
+
+
 
 
 # Register fatal errors

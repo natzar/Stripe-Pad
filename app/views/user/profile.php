@@ -1,256 +1,295 @@
-<?
-if (!isset($_GET['id'])) {
- 	header("location: /");
- 	die();
-}
-include "./widget/bd.php";
+<? //print_r($_SESSION); 
+?><!-- <a href="team">Team</a>
+<a href="team">Notificaciones</a> -->
+<div class="flex max-w-6xl mx-auto mt-10">
+  <!-- Main Content Column -->
+  <div class="w-1/2 p-4 ">
+    <div class="col-span-1">
 
-$WIDGET_ID = $_GET['id'];
+      <div class="bg-white p-6 rounded-lg shadow-md mb-5">
 
-if (isset($_POST['submit'])):
-
-  $json = json_encode($_POST);
-  $q = $bd->prepare("UPDATE users set settings = :json where hash = :hash");
-  $q->bindParam(":json",$json);
-  $q->bindParam(":hash",$WIDGET_ID);
-  $q->execute();
-
-  echo "Saved!";
-
-endif;
-
- 
-
- $q = $bd->prepare("SELECT * from users where hash = :e limit 1" );
- $q->bindParam(":e",$WIDGET_ID);
- $q->execute();
- $user = $q->fetch();
-
- if (empty($user)){
- 	header("location: /");
- 	die();
- }
-
- $settings = json_decode($user['settings'],true);
-
-?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>RefBoost | Private</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <link href="https://refboost.com/referrals-widget.css" rel="stylesheet">
-  </head>
-<body>
-<script>
-
-var toClipBoard = function(el){
-	 
-	 var value = '<script'+' src="https://refboost.com/widget/?id=<?=  $WIDGET_ID ?>"></'+'script>';
-	 navigator.clipboard.writeText(value);
-	 el.innerHTML = "copied!";
-}
-</script>
-
-
-
-
- <!-- MAIN -->
-
-<div class="bg-gray-100 py-16">
-	<div class="max-w-5xl mx-auto">
-		<div>
-  <div class="md:grid md:grid-cols-3 md:gap-6">
-    <div class="md:col-span-1">
-      <div class="px-4 sm:px-0">
-      	<img width="70" class="" src="https://refboost.com/refboost-logo.png">
-        <h3 class="text-lg font-semibold leading-8 tracking-tight text-indigo-600 mt-10">Widget Settings</h3>
-        <p class="mt-1 mb-10 text-base leading-7 text-gray-600">Customize settings for the widget, contact hello@refboost.com for custom requests</p>
-
-             <a href="https://buy.stripe.com/3cs3fNegF9597gA004" class="inline-block rounded-lg bg-indigo-100 px-4 py-2.5 text-center text-sm font-semibold leading-5 text-indigo-700 hover:bg-indigo-100">Remove branding <span aria-hidden="true">→</span></a>
-            <div class=" text-base leading-7 text-gray-600">Remove branding from RefBoost + export collected leads <span class="font-semibold text-gray-900">$9/month</span></div>
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-gray-300"></div>
           </div>
-        
-  
-  
-    </div>
-    <div class="mt-5 md:col-span-2 md:mt-0">
-
-    	<div class="relative mx-auto mb-8 ">
-      <div class="mx-auto max-w-md lg:max-w-4xl">
-
-       
-        
-        <div class="flex flex-col gap-6 rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 lg:flex-row lg:items-center lg:gap-8">
-          <div class="lg:min-w-0 lg:flex-1">
-            <h3 class="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Copy this line and paste it in your website's html:</h3>
-            <div class="mt-2 text-base leading-7 text-gray-600">
-      	  <span class="text-xs text-gray-900"><code>&lt;script src="https://refboost.com/widget/?id=<?=  $WIDGET_ID ?>"&gt;&lt;/script&gt;</code></span></div>
-          </div>
-          <div>
-            <a href="#" onclick="toClipBoard(this);" class="inline-block rounded-lg bg-indigo-50 px-4 py-2.5 text-center text-sm font-semibold leading-5 text-indigo-700 hover:bg-indigo-100">Copy <span aria-hidden="true">→</span></a>
+          <div class="relative flex justify-start">
+            <span class="bg-white  text-base font-semibold leading-6 text-gray-900">Perfil Usuario</span>
           </div>
         </div>
+
+        <form action="<?= APP_DOMAIN ?>actionUpdateUser" method="POST">
+          <div class="mb-4">
+            <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+            <input type="text" name="name" value="<?= $_SESSION['user']['name'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required="required">
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" name="email" value="<?= $_SESSION['user']['email'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required="required">
+          </div>
+
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+              <div class="w-full border-t border-gray-300"></div>
+            </div>
+            <div class="relative flex justify-start">
+              <span class="bg-white  text-base font-semibold leading-6 text-gray-900">Cambio de contraseña</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-gray-500">Dejar en blanco para no modificar</p>
+          <div class="mb-4">
+            <label for="current_password" class="block text-sm font-medium text-gray-700">Contraseña Actual</label>
+            <input type="password" name="current_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+          </div>
+          <div class="mb-4">
+            <label for="new_password" class="block text-sm font-medium text-gray-700">Nueva Contraseña</label>
+            <input type="password" name="new_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+          </div>
+          <div class="mb-4">
+            <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirmar Nueva Contraseña</label>
+            <input type="password" name="confirm_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+          </div>
+
+
+          <input type="submit" class="bg-gray-100 text-gray-400 hover:bg-orange-800 hover:text-white px-4 py-2 rounded text-sm font-bold" value="Guardar datos de usuario">
+        </form>
       </div>
     </div>
 
-      <form action="" method="POST">
-        <div class="shadow sm:overflow-hidden sm:rounded-md">
-          <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
-            <div class="grid grid-cols-3 gap-6">
-              <div class="col-span-3 sm:col-span-2">
-                <label for="company-website" class="block text-sm font-medium text-gray-700">Website</label>
-                <div class="mt-1 flex rounded-md shadow-sm">
-                  <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500">https://</span>
-                  <input type="text" name="url" id="company-website" class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" value="<?= $settings['url'] ?>" required="required">
-                </div>
-              </div>
-            </div>
-             
-            <div class="col-span-6 sm:col-span-3">
-                <label for="first-name" class="block text-sm font-medium text-gray-700">Trigger CTA</label>
-                <p class="mt-2 text-sm text-gray-500">This text will appear in the floating trigger button</p>
-                <input type="text" name="trigger_cta" required="required" autocomplete="false" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" value="<?= empty($settings['trigger_cta']) ? $settings['button_cta'] :$settings['trigger_cta']  ?>">
-              </div>
-               
-
-             <div class="col-span-6 sm:col-span-3">
-                <label for="first-name" class="block text-sm font-medium text-gray-700">Widget Header</label>
-                <input type="text" name="deal_title" required="required" autocomplete="false" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" value="<?= $settings['deal_title'] ?>">
-              </div>
-               <div>
-              <label for="about" class="block text-sm font-medium text-gray-700">Widget Subheader</label>
-               <p class="mt-2 text-sm text-gray-500">This text will appear just after the widget header, keep it short.</p>
-              <div class="mt-1">
-                <textarea name="deal_description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder=""><?= $settings['deal_description'] ?></textarea>
-              </div>
-             
-            </div>
-
-            <div class="col-span-6 sm:col-span-3">
-                <label for="first-name" class="block text-sm font-medium text-gray-700">Number of friends</label>
-                  <p class="mt-2 text-sm text-gray-500">Number of input fields shown</p>
-                <input type="number" name="max_friends" required="required" autocomplete="false" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" value="<?= $settings['max_friends'] ?>" min="1" max="5">
-              </div>
-
-              <div class="col-span-6 sm:col-span-3">
-                <label for="last-name" class="block text-sm font-medium text-gray-700">Primary Color</label>
-                <input type="color" name="primary_color" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" value="<?= $settings['primary_color'] ?>">
-              </div>
-
-              <div class="col-span-6 sm:col-span-4">
-                <label for="email-address" class="block text-sm font-medium text-gray-700">Button CTA</label>
-                <input type="text" name="button_cta" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" value="<?= $settings['button_cta'] ?>">
-              </div>
-           
-            <div>
-              <label for="about" class="block text-sm font-medium text-gray-700">E-mail to main contact</label>
-                <p class="mt-2 text-sm text-gray-500">This email will be sent to the main contact. You can use {{name}} = main's contact name</p>
-
-              <div class="mt-1">
-                <textarea  name="body_main" rows="7" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder=""><?= $settings['body_main'] ?></textarea>
-              </div>
-            
-            </div>
 
 
-            <div>
-              <label for="about" class="block text-sm font-medium text-gray-700">E-mail to friends</label>
-                 <p class="mt-2 text-sm text-gray-500">This email will be sent to all referred friends</p>
-              <div class="mt-1">
-                <textarea name="body_friends" rows="7" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder=""><?= $settings['body_friends'] ?></textarea>
-              </div>
-           
-            </div>
+  </div>
+  <!-- Sidebar Column -->
+  <div class="w-1/2 p-4  ml-4">
+    <!-- Documentos -->
 
-  			
-<!-- 
-           
-    <div class="space-y-6 divide-y divide-gray-200 pt-8 sm:space-y-5 sm:pt-10">
-      <div>
-        <h3 class="text-lg font-medium leading-6 text-gray-900">ON/OFF Settings</h3>
-        <p class="mt-1 max-w-2xl text-sm text-gray-500">We'll always let you know about important changes, but you pick what else you want to hear about.</p>
-      </div>
-      <div class="space-y-6 divide-y divide-gray-200 sm:space-y-5">
-        <div class="pt-6 sm:pt-5">
-          <div role="group" aria-labelledby="label-email">
-            <div class="sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-4">
-              <div>
-                <div class="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700" id="label-email">By Email</div>
-              </div>
-              <div class="mt-4 sm:col-span-2 sm:mt-0">
-                <div class="max-w-lg space-y-4">
-                  <div class="relative flex items-start">
-                    <div class="flex h-5 items-center">
-                      <input name="mobile" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" checked>
-                    </div>
-                    <div class="ml-3 text-sm">
-                      <label for="comments" class="font-medium text-gray-700">Enable on mobile devices</label>
-                      <p class="text-gray-500">The widget will show up in devices with a resolution under 900 pixels wide</p>
-                    </div>
-                  </div>
-                  <div class="relative flex items-start">
-                    <div class="flex h-5 items-center">
-                      <input id="candidates" name="candidates" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                    </div>
-                    <div class="ml-3 text-sm">
-                      <label for="candidates" class="font-medium text-gray-700">Send the </label>
-                      <p class="text-gray-500">Get notified when a candidate applies for a job.</p>
-                    </div>
-                  </div>
-                  <div class="relative flex items-start">
-                    <div class="flex h-5 items-center">
-                      <input id="offers" name="offers" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                    </div>
-                    <div class="ml-3 text-sm">
-                      <label for="offers" class="font-medium text-gray-700">Offers</label>
-                      <p class="text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
 
-            
-          </div>
-          <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-            <button type="submit" name="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
-          </div>
+    <div class="bg-white p-6 rounded-lg shadow-md mb-5">
+
+      <div class="relative">
+        <div class="absolute inset-0 flex items-center" aria-hidden="true">
+          <div class="w-full border-t border-gray-300"></div>
         </div>
+        <div class="relative flex justify-start">
+          <span class="bg-white  text-base font-semibold leading-6 text-gray-900">Datos de Cliente y Facturación</span>
+        </div>
+      </div>
+
+      <form action="<?= APP_DOMAIN ?>actionUpdateCustomer" method="POST">
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input required="required" type="email" name="email" value="<?= $_SESSION['customer']['email'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+        </div>
+
+        <div class="mb-4">
+          <label for="company" class="block text-sm font-medium text-gray-700">Empresa</label>
+          <input required="required" type="text" name="name" value="<?= $_SESSION['customer']['name'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+        </div>
+        <div class="mb-4">
+          <label for="address" class="block text-sm font-medium text-gray-700">Dirección</label>
+          <input required="required" type="text" name="address" value="<?= $_SESSION['customer']['address'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+        </div>
+        <div class="mb-4">
+          <label for="vat" class="block text-sm font-medium text-gray-700">CIF/NIF</label>
+          <input required="required" type="text" name="nif" value="<?= $_SESSION['customer']['nif'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+        </div>
+
+
+
+        <input type="submit" class="bg-gray-100 text-gray-400 hover:bg-orange-800 hover:text-white px-4 py-2 rounded text-sm font-bold" value="Guardar datos de cliente">
       </form>
     </div>
+    <section aria-labelledby="recent-hires-title" class="mb-10">
+
+
+      <? if ($_SESSION['user']['group'] == "customers"): // DISABLED 
+      ?>
+        <div class="rounded-lg bg-white overflow-hidden shadow mb-5">
+          <div class="p-6">
+            <h2 class="text-base font-medium text-gray-900">Facturas</h2>
+            <a href="/account" target="_blank" class="border-transparent rounded-md bg-orange-600 text-gray-100 hover:bg-orange-800 inline-flex items-center px-3 py-2 text-sm font-bold">
+              Ver todas las Facturas
+            </a>
+            <p class="text-xs text-gray-500">Se abrirá Stripe en una nueva ventana</p>
+
+
+            <ul role="list" class="hidden divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl">
+
+              <? foreach ($invoices as $invoice): ?>
+
+
+
+                <li class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6">
+                  <div class="flex min-w-0 gap-x-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                    </svg>
+
+                    <div class="min-w-0 flex-auto">
+                      <p class="text-sm font-semibold leading-6 text-gray-900">
+                        <a href="#">
+                          <span class="absolute inset-x-0 -top-px bottom-0"></span>
+                          #<?= $invoice['invoicesId'] ?>
+                        </a>
+                      </p>
+                      <p class="mt-1 flex text-xs leading-5 text-gray-500">
+                        <?= $invoice['cart'] ?>
+
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex shrink-0 items-center gap-x-4">
+                    <div class="hidden sm:flex sm:flex-col sm:items-end">
+                      <p class="text-sm leading-6 text-gray-900"><?= $invoice['total']; ?>&euro;</p>
+                      <p class="mt-1 text-xs leading-5 text-gray-500">Fecha Factura <time datetime="2023-01-23T13:23Z"><?= $invoice['created'] ?> </time></p>
+                    </div>
+                    <a target="_blank" alt="download" href="https://app.phpninja.net/uploads/customers/<?= $invoice['pdf_path'] ?>" class="cursor-pointer">
+                      <svg class="h-8 w-8 cursor-pointer flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                        <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  </div>
+                </li>
+
+
+
+              <? endforeach; ?>
+
+            </ul>
+
+          </div>
+        </div>
+      <? endif; ?>
+      <div class="rounded-lg bg-white overflow-hidden shadow">
+        <div class="p-6">
+
+          <h2 class="text-base font-medium text-gray-900 mt-5" id="recent-hires-title">Documentos</h2>
+          <div class="flow-root mt-6">
+            <ul class="-my-5 divide-y divide-gray-200">
+
+              <!--    <li class="py-4">
+                      <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <p class="text-sm font-medium text-gray-900 truncate">
+                           Contrato de Servicios
+                          </p>
+                          <p class="text-sm text-gray-500 truncate">
+                            @leonardkrasner
+                          </p>
+                        </div>
+                        <div>
+                          <a href="#" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
+                            View
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li class="py-4">
+                      <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <p class="text-sm font-medium text-gray-900 truncate">
+                           Contrato de Confidencialidad
+                          </p>
+                          <p class="text-sm text-gray-500 truncate">
+                            <a href="/generateNDA">NDA Documento confidencialidad</a><br> 
+                          </p>
+                        </div>
+                        <div>
+                          <a href="#" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
+                            View
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li class="py-4">
+                      <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <p class="text-sm font-medium text-gray-900 truncate">
+                            Emily Selman
+                          </p>
+                          <p class="text-sm text-gray-500 truncate">
+                            @emilyselman
+                          </p>
+                        </div>
+                        <div>
+                          <a href="#" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
+                            View
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li class="py-4">
+                      <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <p class="text-sm font-medium text-gray-900 truncate">
+                            Kristin Watson
+                          </p>
+                          <p class="text-sm text-gray-500 truncate">
+                            @kristinwatson
+                          </p>
+                        </div>
+                        <div>
+                          <a href="#" class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
+                            View
+                          </a>
+                        </div>
+                      </div>
+                    </li> -->
+            </ul>
+          </div>
+          <!--      <div class="mt-6">
+                  <a href="#" class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                    View all
+                  </a>
+                </div> -->
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- 
+        <a href="/account" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+Listado de Facturas
+          </a>
+        <table class="min-w-full bg-white">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">Fecha</th>
+              <th class="py-2 px-4 border-b">Número</th>
+              <th class="py-2 px-4 border-b">Monto</th>
+              <th class="py-2 px-4 border-b">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-2 px-4 border-b">2024-06-14</td>
+              <td class="py-2 px-4 border-b">INV-001</td>
+              <td class="py-2 px-4 border-b">€500.00</td>
+              <td class="py-2 px-4 border-b"><a href="#" class="text-orange-500">Descargar</a></td>
+            </tr>
+           
+          </tbody>
+        </table>
+ -->
+
+
+
   </div>
 </div>
-
-
-
-
 </div>
-</div>
-
-</body>
-
-</html>

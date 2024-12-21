@@ -14,6 +14,10 @@ class StripePad
     public function __construct()
     {
 
+        // Initialize session variables if not already set
+        if (!isset($_SESSION['errors'])) $_SESSION['errors'] = array();
+        if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = array();
+
         # Block aggresive bots
         if (BOT_BLOCKER && $t = requestBlocker()) {
             $error_msg = "Possible BOT detected - " . implode("<br>", $t);
@@ -124,11 +128,15 @@ class StripePad
 
         $this->view->show("user/login.php", $data, true);
     }
-
+    public function profile()
+    {
+        $data = array();
+        $this->view->show("user/profile.php", $data, true);
+    }
     public function forgotPassword()
     {
         $data = array();
-        $this->view->show("user/forgot-password.php", $data, false);
+        $this->view->show("user/forgot-password.php", $data, true);
     }
 
     /**
@@ -139,12 +147,9 @@ class StripePad
     public function actionRecoverPassword()
     {
         $email = $this->params['email'];
-        $customers = new usersModel();
-        $customers->sendResetPassword($email);
-
-
-
-        header("location: " . APP_DOMAIN . "/forgotPassword?success=1");
+        $users = new usersModel();
+        $users->sendResetPassword($email);
+        header("location: " . APP_DOMAIN . "forgotPassword?success=1");
     }
 
 

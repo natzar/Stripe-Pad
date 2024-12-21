@@ -24,14 +24,10 @@
 */
 
 # Load Environment
-require_once dirname(__FILE__).'/load.php'; // 
-include_once CORE_PATH.'StripePad.php';
+require_once dirname(__FILE__) . '/load.php'; // 
+include_once CORE_PATH . 'StripePad.php';
 # Load Custom App
-include APP_PATH."App.php";
-
-// Initialize session variables if not already set
-if (!isset($_SESSION['errors'])) $_SESSION['errors'] = ""; #array();
-if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = ""; #array();
+include APP_PATH . "App.php";
 
 // Sanitize 'm' parameter to prevent injection
 $actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
@@ -42,15 +38,8 @@ if (!$actionName) {
 
 $App = new App();
 
-if (!is_callable(array('App', $actionName))){
-	$App->view->error404();
-}else{
-    $App->$actionName(); 
+if (!is_callable(array('App', $actionName))) {
+    $App->view->error404();
+} else {
+    $App->$actionName();
 }
-
-
-
-
-
-
-

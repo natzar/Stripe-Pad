@@ -1,4 +1,4 @@
-<div class="bg-red-600 flex min-h-screen flex-col pt-16 pb-12">
+<div class="bg-gray-900 flex min-h-screen flex-col pt-16 pb-12">
   <main class="mx-auto flex w-full max-w-7xl flex-grow flex-col justify-center px-4 sm:px-6 lg:px-8">
     <div class="flex flex-shrink-0 justify-center">
       <a href="/" class="inline-flex">
@@ -11,8 +11,8 @@
         <p class="text-7xl font-bold text-white">404</p>
         <h1 class="mt-2 text-4xl font-bold tracking-tight text-gray-100 sm:text-5xl">Page not found.</h1>
         <p class="mt-2 text-base text-gray-100">Sorry, we couldn’t find the page you’re looking for.<br>
-        Coordinates: <? print_r($_GET); ?></p>
-        
+          Coordinates: <? print_r($_GET); ?></p>
+
         <div class="mt-6">
           <a href="<?= APP_BASE_URL ?>" class="text-base font-medium text-red-100 hover:text-red-800">
             Go back home
@@ -32,4 +32,3 @@
     </nav>
   </footer>
 </div>
-
