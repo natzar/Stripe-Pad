@@ -13,7 +13,7 @@
  */
 
 # Include configuration file
-require_once dirname(__FILE__) . '/config.php';
+include_once  dirname(__FILE__) . '/config.php';
 
 # Defaults 
 ini_set('log_errors', 1);
@@ -44,14 +44,13 @@ include_once CORE_PATH . "helpers.php";
 include_once CORE_PATH . "classes/ModelBase.php";
 include_once CORE_PATH . 'classes/SPDO.php';
 include_once CORE_PATH . 'classes/View.php';
-
 include_once CORE_PATH . 'models/Mail.php';
 include_once CORE_PATH . 'models/Users.php';
 include_once CORE_PATH . "classes/BotBlocker.php";
 
 # include all models from app dynamically
 foreach (glob(APP_PATH . "models/*.php") as $filename) {
-    include $filename;
+    include_once $filename;
 }
 
 
@@ -74,7 +73,7 @@ register_shutdown_function(function () {
         @file_put_contents(ROOT_PATH . APP_SLUG . "-errors.log", $error_msg, FILE_APPEND);
         // echo $error_msg . '<br>';
 
-        include ROOT_PATH . "app/views/errors/error.php";
+        include_once ROOT_PATH . "app/views/errors/error.php";
     } else {
         // Flush the buffer if there's no error
         //ob_end_flush();
@@ -88,7 +87,7 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
     $error_msg = Date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Linea: " . $errline . " ";
     @file_put_contents(ROOT_PATH . APP_SLUG . "-errors.log", $error_msg);
     if (DEBUG_MODE) {
-        include ROOT_PATH . "app/views/errors/error.php";
+        include_once ROOT_PATH . "app/views/errors/error.php";
         throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
     }
 });

@@ -21,7 +21,9 @@
         }
     ],
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "test": "vendor/bin/phpunit",
+        "build-tailwind": "php -r \"exec('npx update-browserslist-db@latest'); exec('npx tailwindcss -i ./src/input.css -o ./../app.css --minify');\""
+          
     },
     "config": {
         "allow-plugins": {

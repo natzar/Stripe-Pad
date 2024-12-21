@@ -24,10 +24,10 @@
 */
 
 # Load Environment
-require_once dirname(__FILE__) . '/load.php'; // 
+include_once  dirname(__FILE__) . '/load.php'; // 
 include_once CORE_PATH . 'StripePad.php';
 # Load Custom App
-include APP_PATH . "App.php";
+include_once  APP_PATH . "App.php";
 
 // Sanitize 'm' parameter to prevent injection
 $actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
