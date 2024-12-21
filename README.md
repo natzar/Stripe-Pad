@@ -1,5 +1,3 @@
-IMPORTANT: EARLY DEVELOPMENT (NOT READY FOR PRODUCTION)
-
 #  Stripe Pad
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
 
