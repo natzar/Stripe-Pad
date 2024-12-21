@@ -62,6 +62,11 @@ class StripePad
         }
     }
 
+    public function home()
+    {
+        echo 'default home, overwrite public function home.php in App.php';
+    }
+
     /**
      * App: This method will be overwritten by app/App.php
      *

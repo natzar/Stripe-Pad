@@ -1,0 +1,2 @@
+<p>Hola,</p>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Fecha: {{fecha}}<br /></span>Proyecto: {{proyecto}}<br /><br />Ahora mismo el proyecto {{proyecto}} ha sido marcado c&oacute;mo en "en espera" por el programador.<br /><br />Probablemente falta alg&uacute;n detalle o passwords para acceder, nada grave pero en espera.&nbsp;<br /><br /></p>

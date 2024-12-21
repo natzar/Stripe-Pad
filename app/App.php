@@ -45,6 +45,19 @@ class App extends StripePad
     parent::__construct();
   }
 
+  public function index()
+  {
+
+    # check if user is authenticated
+    if ($this->isAuthenticated) {
+      # Load Dashboard (main-first screen of your app for logged users)
+      $this->app();
+    } else {
+      # Redirect to login if not authenticated, or to home or landing
+      $this->home();
+    }
+  }
+
   /**
    * app
    * If a registered user logs in, this method will be called
@@ -102,7 +115,7 @@ class App extends StripePad
 
   public function blog()
   {
-    include ROOT_PATH."modules/blog/blog.php";
+    include ROOT_PATH . "modules/blog/blog.php";
     $blog = new blog();
 
 
@@ -130,7 +143,4 @@ class App extends StripePad
       $this->view->show('views/resources.php', $data);
     endif;
   }
-  }
-
-
 }

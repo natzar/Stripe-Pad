@@ -159,7 +159,7 @@ class usersModel extends ModelBase
 	public function saveLastLogin($user)
 	{
 		$c = $this->db->prepare('UPDATE users set last_login = NOW() where usersId = :id');
-		$c->bindParam(':id', $user['customersId'], PDO::PARAM_STR);
+		$c->bindParam(':id', $user['usersId'], PDO::PARAM_STR);
 		$c->execute();
 	}
 
