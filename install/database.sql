@@ -1,13 +1,12 @@
 # ************************************************************
-# Sequel Pro SQL dump
-# Versión 4541
+# Stripe Pad Mysql Database
+# Version 0.0.1
 #
-# http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
+# http://www.stripepad.com
 #
-# Host: 127.0.0.1 (MySQL 5.5.5-10.5.19-MariaDB-0+deb11u2)
-# Base de datos: counts_db1
-# Tiempo de Generación: 2023-07-26 15:04:30 +0000
+# NO_AUTO_VALUE_ON_ZERO
+# y
+# x
 # ************************************************************
 
 
@@ -20,24 +19,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Volcado de tabla users
+# USERS
 # ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `usersId` int(11) NOT NULL AUTO_INCREMENT,
-  `parentId` int(11) NOT NULL DEFAULT 0,
-  `customersId` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `last_login` datetime NOT NULL,
-  `bearer` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT '',
+  `password` varchar(255) NOT NULL,
+  `group` varchar(50) DEFAULT 'customers',
+  `last_login` datetime DEFAULT NULL,
+  `bearer` varchar(255) DEFAULT '',
   `premium` tinyint(4) DEFAULT 0,
-  `stripe_customers_id` varchar(255) DEFAULT NULL,
+  `stripe_customer_id` varchar(255) DEFAULT NULL,
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   `updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`usersId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  PRIMARY KEY (`usersId`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
