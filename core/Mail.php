@@ -12,37 +12,82 @@ class mailsModel extends ModelBase
         $this->emailValidator = new emailValidator();
     }
 
-    public function send($to, $subject, $body)
-    {
+
+
+	private function send($params)
+	{
 
         if (empty(SMTP_SERVER)) {
             die("Set SMTP server in config.php");
         }
 
-        if (!empty($to) and $this->emailValidator->isValid($to)):
+		if (empty($params['to'])) return false; //("Falta destino");
 
-            $mail = new PHPMailer();
+        if (!$this->emailValidator->isValid($to)) return false;
+
+		if (empty($params['tag'])) $params['tag'] = "Default";
+		if (empty($params['from_name'])) $params['from_name'] = APP_NAME;
+		if (empty($params['to_name'])) $params['to_name'] = "";
+        
+        if (empty($params['from'])) $params['from'] =  SMTP_GLOBAL_EMAIL_FROM;
+
+		// Instantiation and passing `true` enables exceptions
+        $mail = new PHPMailer();
             $mail->IsSMTP();                                      // Set mailer to use SMTP
             $mail->Host = SMTP_SERVER;                // Specify main and backup server
-
+            $mail->SMTPDebug = 0;  
             $mail->Port = SMTP_PORT;                                    // Set the SMTP port
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
             $mail->Username = SMTP_USER_EMAIL;
             $mail->Password = SMTP_PASSWORD;                  // SMTP password
-            $mail->SMTPSecure = 'tsl';
-            $mail->SetFrom(SMTP_GLOBAL_EMAIL_FROM);
+            $mail->SMTPSecure = 'tls';                             // Set the SMTP port
+            $mail->SMTPAuth = true;    
             $mail->IsHTML(true);
             $mail->CharSet = "UTF-8";
-            $mail->AddAddress($to);
-            $mail->Subject = $subject;
-            $mail->AltBody = "To view the message, please use an HTML compatible email viewer!";
-            $mail->MsgHTML($body);
+            $mail->Mailer = "smtp";
+            $mail->SMTPKeepAlive = true;
+            // Comment if you prefer no-reply!
+            $mail->addReplyTo(ADMIN_EMAIL, APP_NAME);
+            
+            
+            $mail->SetFrom($params['from'], $params['from_name']);
 
-            return $mail->Send();
+        // Destination
+		if (strstr($params['to'], ";")) {
+			$aux = explode(";", $params['to']);
+			foreach ($aux as $email) {
+				$mail->AddAddress(trim($email));				
+			}
+		} else {
+			$mail->AddAddress($params['to']);		
+		}
 
-        endif;
-        return false;
-    }
+		if (!empty($_FILES['attach_file'])) {
+			if (count($_FILES['attach_file']) > 0 and !empty($_FILES['attach_file']['name'][0])) {
+				for ($ct = 0; $ct < count($_FILES['attach_file']['tmp_name']); $ct++) {
+					$mail->AddAttachment($_FILES['attach_file']['tmp_name'][$ct], $_FILES['attach_file']['name'][$ct]);					
+				}
+			}
+		}
+
+		if (!empty($params['attachments'])) {
+
+			for ($ct = 0; $ct < count($params['attachments']); $ct++) {
+				$mail->AddAttachment($params['attachments'][$ct]['file'], $params['attachments'][$ct]['filename']);				
+			}
+		}
+        
+        $mail->Subject = ($params['subject']);
+		$mail->AltBody = strip_tags($params['body']);		
+		$mail->MsgHTML($params['body']);
+		
+		if ($mail->Send()) {
+			return true;
+		}
+        $mail = null;
+		return false;
+	}
+
 
     private function loadTemplate($template, $data)
 	{
@@ -87,11 +132,9 @@ class mailsModel extends ModelBase
 	{
 
 		return $this->send(array(
-			"template" => $templateName,
-			"data" => $data,
+			"body" => $this->loadTemplate($templateName, $data),			
 			"to" => $to,
 			"subject" => $subject,
-			"save" => true,
 			"attachments" => $attachments
 		));
 	}
