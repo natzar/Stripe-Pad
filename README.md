@@ -25,13 +25,13 @@ You can read the official documentation on the [Stripepad.com](https://www.strip
 ## Contributing
 <a name="contributing"></a>
 
-[Beto Ayesa](https://github.com/betoayesa) ([@betoayesa](https://twitter.com/betoayesa)), looking for contributors! Thank you for considering contributing to Stripe Pad! You can read the contribution guide [here](https://github.com/natzar/Stripe-Pad/blob/main/CONTRIBUTING.md). Feel free to log an issue on our [GitHub issues page](https://github.com/natzar/Stripe-Pad/issues) or  [@betoayesa](https://www.twitter.com/betoayesa) is always open as well.
+Thank you for considering contributing to Stripe Pad! You can read the contribution guide [here](https://github.com/natzar/Stripe-Pad/blob/main/CONTRIBUTING.md). Feel free to log an issue on our [GitHub issues page](https://github.com/natzar/Stripe-Pad/issues).
 
 
 ## Code of Conduct
 <a name="code-of-conduct"></a>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the Code of Conduct
+In order to ensure that the PHP community is welcoming to all, please review and abide by the Code of Conduct
 
 ## Security Vulnerabilities
 <a name="security-vulnerabilities"></a>
