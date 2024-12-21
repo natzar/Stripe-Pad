@@ -15,8 +15,13 @@ For Educational purposes. Get started with MVC in PHP.
 
 DEMO: [Stripepad.com](https://www.stripepad.com)
 
-QUICK INSTALL: git clone https://github.com/natzar/stripe-pad.git
-Navigate to localhostordomain.com/install and follow instructions.
+## Quick Install
+- git clone https://github.com/natzar/stripe-pad.git
+- run composer install
+- import install/database.sql
+- adjust config.php
+
+(The installer at install/index.php is not operative yet)
 
 ## Official Documentation
 
