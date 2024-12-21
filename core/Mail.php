@@ -44,7 +44,66 @@ class mailsModel extends ModelBase
         return false;
     }
 
-    function sendTemplate() {}
+    private function loadTemplate($template, $data)
+	{
+
+		// $t = $this->db->prepare("SELECT * from emailtemplates where subject = :template limit 1");
+		// $t->bindParam(":template",$template);
+
+		// $t->execute();
+		// $ts = $t->fetch();
+		// $body = $ts['body'];
+
+		#var_export $data before template, so template uses $phpvars and just it.
+		ob_start();
+		if (!file_exists(APP_PATH . "mails/" . $template . ".php")) die("Email could not be sent, template " . $template . " does not exist");
+		include APP_PATH . "mails/header.php";
+		include APP_PATH . "mails/" . $template . ".php";
+		include APP_PATH . "mails/footer.php";
+		$body = ob_get_contents();
+		//$body = nl2br($body);
+		ob_clean();
+
+
+
+		return replaceTemplateValues($body, $data);
+	}
+
+	private function isReply($params)
+	{
+
+		//	if ($params['from'] == "hola@phpninja.es") return array();
+		if ($params['from'] == "robot@phpninja.es") return array();
+
+		$q = $this->db->prepare("SELECT * FROM comments where object = :obj and objectid = :objid and message_id is not null and usersId IN (0,1,3,1000) order by created DESC limit 3");
+		$q->bindParam(":obj", $params['object']);
+		$q->bindParam(":objid", $params['objectid']);
+		$q->execute();
+
+		return $q->fetchAll();
+	}
+
+	public function sendTemplate($templateName, $data, $to, $subject, $attachments = array())
+	{
+
+		return $this->send(array(
+			"template" => $templateName,
+			"data" => $data,
+			"to" => $to,
+			"subject" => $subject,
+			"save" => true,
+			"attachments" => $attachments
+		));
+	}
+	public function internal($subject, $msg)
+	{
+		return $this->send(array(
+			"body" => $msg,
+			"to" =>  "beto.phpninja@gmail.com",
+			"tag" => "internal",
+			"subject" => $subject,
+		));
+	}
 
     function replaceTemplateValues($body, $p)
     {
