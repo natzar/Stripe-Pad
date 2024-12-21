@@ -1,65 +1,50 @@
-<?
-// Allow requests from both *.gphpninja.com and chatleads.net
+<?php
 
-header("Access-Control-Allow-Origin: *");
+include_once "../load.php";
+
+// Allow requests from
+// Cross-domain issues, here!
+header("Access-Control-Allow-Origin: " . APP_DOMAIN);
 
 // Allow specific headers that your application might use
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
-// Marca el inicio del script
-
-
-// Coloca aquí el código cuyo tiempo de ejecución quieres medir
 
 $method = $_SERVER['REQUEST_METHOD'];
-if($method == "OPTIONS") {
-	die();
-}
-$tiempoInicio = microtime(true);
-include_once "../load.php";
-
-$leads = new LeadsModel();
-$json = null;
-$params = gett();
-if (isset($_GET) and !empty($params)){
-	$json = json_encode($params);
-}else{
-	$json = file_get_contents('php://input');			
+if ($method == "OPTIONS") {
+    die();
 }
 
+$init = microtime(true);
 
-$data = json_decode($json);
+$json = file_get_contents('php://input');
+$data = json_decode($json, true);
+$data['page'] = 0;
 
-$data->page = 0;
-
-if (empty($data)){
-	die("Not Cool");
+if (empty($data)) {
+    die("Suspicious empty request");
 }
-$r = $leads->getQuery($data);
-//$r = array();
-$search = new searchModel();
-$search->saveQuery($r['where']);
-unset($r['where']);
 
-$tracker = datatrackerModel::singleton();  
-$tracker->push('api-crawler-request');
-	
+// Enable simple cache: Generate a hash from the parameters
+$hash = md5($json);
+$cache_file = __DIR__ . "/cache/$hash.json";
+
+// Check if the cache file exists
+if (file_exists($cache_file)) {
+    // Serve the cached response
+    header('Content-Type: application/json; charset=utf-8');
+    echo file_get_contents($cache_file);
+    exit;
+}
+
+// Use MYSQL, models or elastic search to fill up $ouput array and return JSON response
+$output = array();
+
+$final = microtime(true);
+$total_time = ($final - $init);
+$output['total_time'] = number_format($total_time, 4, ".");
+
+// JSON Response
 header('Content-Type: application/json; charset=utf-8');
-
-
-// Marca el final del script
-$tiempoFinal = microtime(true);
-
-// Calcula el tiempo de ejecución restando el tiempo de inicio del tiempo final
-$tiempoEjecucion = ($tiempoFinal - $tiempoInicio) ;
-
-
-$r['count_formated'] =  number_format($r['count'],0,".",",");
-$r['time_formated'] =  number_format($tiempoEjecucion,4,".");
-
-echo json_encode($r);		
-		
-	
-
-
-
-
+$json_response = json_encode($output);
+file_put_contents($cache_file, $json_response);
+echo $json_response;
