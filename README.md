@@ -30,7 +30,7 @@ You can read the official documentation on the [Stripepad.com](https://www.strip
 ## Contributing
 <a name="contributing"></a>
 
-Thank you for considering contributing to Stripe Pad! You can read the contribution guide [here](https://github.com/natzar/Stripe-Pad/blob/main/CONTRIBUTING.md). Feel free to log an issue on our [GitHub issues page](https://github.com/natzar/Stripe-Pad/issues).
+You can read the contribution guide [here](https://github.com/natzar/Stripe-Pad/blob/main/CONTRIBUTING.md). Feel free to log an issue on our [GitHub issues page](https://github.com/natzar/Stripe-Pad/issues).
 
 
 ## Code of Conduct
