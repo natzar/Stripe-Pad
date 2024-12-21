@@ -22,7 +22,7 @@
     ],
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "build-tailwind": "php -r \"exec('npx update-browserslist-db@latest'); exec('npx tailwindcss -i ./src/input.css -o ./../app.css --minify');\""
+        "build-tailwind": "php -r \"exec('npx update-browserslist-db@latest'); exec('npx tailwindcss -i ./app/tailwind/src/input.css -o ./cdn/css/app.css --minify');\""
           
     },
     "config": {
