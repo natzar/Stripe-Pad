@@ -103,7 +103,10 @@ class App extends StripePad
     $data = array();
     $this->view->show("sample-page.php", $data);
   }
-
+  public function documentation()
+  {
+    $this->view->show('landing/documentation.php', array());
+  }
 
   public function tos()
   {
