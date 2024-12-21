@@ -1,265 +1,137 @@
-<!--
-  This example requires updating your template:
+<div class="relative px-10">
+    <!-- Wrapper for the entire layout -->
+    <div class="block flex min-h-screen ">
 
-  ```
-  <html class="h-full bg-gray-50">
-  <body class="h-full">
-  ```
--->
-<div>
-    <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-    <div class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
-        <!--
-      Off-canvas menu backdrop, show/hide based on off-canvas menu state.
+        <!-- Sidebar: Navigation -->
+        <aside class="w-64 bg-gray-800 px-8 py-12  overflow-y-auto">
+            <h2 class="text-xl text-white font-semibold mb-10">Docs</h2>
+            <ul class="space-y-2">
+                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Introduction</a></li>
+                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Installation</a></li>
+                <li><a href="#configuration" class="text-gray-400 hover:text-blue-500">Configuration</a></li>
+                <li><a href="#customizing" class="text-gray-400 hover:text-blue-500">Customizing</a></li>
+                <li><a href="#advanced-topics" class="text-gray-400 hover:text-blue-500">Advanced Topics</a></li>
+            </ul>
+        </aside>
 
-      Entering: "transition-opacity ease-linear duration-300"
-        From: "opacity-0"
-        To: "opacity-100"
-      Leaving: "transition-opacity ease-linear duration-300"
-        From: "opacity-100"
-        To: "opacity-0"
-    -->
-        <div class="fixed inset-0 bg-gray-900/80" aria-hidden="true"></div>
+        <!-- Main Content -->
+        <main class="flex-1 pl-64 pr-32 py-12 text-white text-base">
+            <div id="introduction" class="mb-12">
+                <h1 class="text-3xl font-bold mb-4">Introduction</h1>
+                <p>Explanation of what Stripe Pad is and how it can be used in various scenarios.</p>
+                ## Structure
 
-        <div class="fixed inset-0 flex">
-            <!--
-        Off-canvas menu, show/hide based on off-canvas menu state.
+                Space to insert your code:
+                - **crons**: Scripts and cronjobs.
+                - **app**: Custom application code & landing page. All HTML is here.
+                - **cdn**: Subdomain for static assets.
 
-        Entering: "transition ease-in-out duration-300 transform"
-          From: "-translate-x-full"
-          To: "translate-x-0"
-        Leaving: "transition ease-in-out duration-300 transform"
-          From: "translate-x-0"
-          To: "-translate-x-full"
-      -->
-            <div class="relative mr-16 flex w-full max-w-xs flex-1">
-                <!--
-          Close button, show/hide based on off-canvas menu state.
+                These are core files, they will break with an update:
+                - **core**: Core files for database connections and templates.
+                - **webhooks**: Handlers for webhooks (default: Stripe and Bitbucket).
+                - **API**: Basic API functionality.
 
-          Entering: "ease-in-out duration-300"
-            From: "opacity-0"
-            To: "opacity-100"
-          Leaving: "ease-in-out duration-300"
-            From: "opacity-100"
-            To: "opacity-0"
-        -->
-                <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
-                    <button type="button" class="-m-2.5 p-2.5">
-                        <span class="sr-only">Close sidebar</span>
-                        <svg class="size-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
+                ![Relations between components](https://www.stripepad.com/relations.png)
 
-                <!-- Sidebar component, swap this element with another sidebar if you like -->
-                <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-2">
-                    <div class="flex h-16 shrink-0 items-center">
-                        <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
-                    </div>
-                    <nav class="flex flex-1 flex-col">
-                        <ul role="list" class="flex flex-1 flex-col gap-y-7">
-                            <li>
-                                <ul role="list" class="-mx-2 space-y-1">
-                                    <li>
-                                        <!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-50" -->
-                                        <a href="#" class="group flex gap-x-3 rounded-md bg-gray-50 p-2 text-sm/6 font-semibold text-indigo-600">
-                                            <svg class="size-6 shrink-0 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                                            </svg>
-                                            Dashboard
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                            <svg class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-                                            </svg>
-                                            Team
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                            <svg class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
-                                            </svg>
-                                            Projects
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                            <svg class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-                                            </svg>
-                                            Calendar
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                            <svg class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
-                                            </svg>
-                                            Documents
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                            <svg class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
-                                            </svg>
-                                            Reports
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <div class="text-xs/6 font-semibold text-gray-400">Your teams</div>
-                                <ul role="list" class="-mx-2 mt-2 space-y-1">
-                                    <li>
-                                        <!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-50" -->
-                                        <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                            <span class="flex size-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">H</span>
-                                            <span class="truncate">Heroicons</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                            <span class="flex size-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">T</span>
-                                            <span class="truncate">Tailwind Labs</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                            <span class="flex size-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">W</span>
-                                            <span class="truncate">Workcation</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                ## Features
+
+                - Public: Landing page
+                - Private: User Profile, Your App
+                - MVC. Controllers, Models shared between all controllers, and JSON + templates for the views part.
+                - Webhooks management for Stripe events.
+                - Divided in subdomains or subfolders
+                - PHP is the only requirement, how you build you app inside /app folder is up to you
+                - Easy to modify and customize
+
+
+
+
+                ### Tech Stack
+
+                Packed with basic stuff only.
+
+                1. Php. MVC style, no framework.
+                2. Vanilla Js & jQuery, just to open/close mobile menu
+                3. Composer, to install stripe and email dependencies
+
+                Basic theme uses Tailwind. 100% optional. You can edit /app folder completely.
+
+
             </div>
-        </div>
-    </div>
-
-    <!-- Static sidebar for desktop -->
-    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-        <!-- Sidebar component, swap this element with another sidebar if you like -->
-        <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
-            <div class="flex h-16 shrink-0 items-center">
-                <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+            <div id="installation" class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">Installation</h2>
+                <p>To get started with Stripe Pad, follow these steps to ensure a proper setup:</p>
+                <ol class="list-decimal pl-4">
+                    <li>Ensure your system meets all required dependencies: PHP 7.4+, Composer, and MySQL.</li>
+                    <li>Clone the repository from GitHub:</li>
+                    <pre class="bg-gray-700 text-white p-2 rounded"><code>git clone https://github.com/yourusername/stripe-pad.git</code></pre>
+                    <li>Install all Composer dependencies:</li>
+                    <pre class="bg-gray-700 text-white p-2 rounded"><code>composer install</code></pre>
+                    <li>Copy the sample configuration file and modify it according to your environment:</li>
+                    <pre class="bg-gray-700 text-white p-2 rounded"><code>cp .env.example .env</code></pre>
+                    <li>Generate your application key:</li>
+                    <pre class="bg-gray-700 text-white p-2 rounded"><code>php artisan key:generate</code></pre>
+                    <li>Run the database migrations and seed the database:</li>
+                    <pre class="bg-gray-700 text-white p-2 rounded"><code>php artisan migrate --seed</code></pre>
+                    <li>You are now ready to start your Stripe Pad application.</li>
+                </ol>
             </div>
-            <nav class="flex flex-1 flex-col">
-                <ul role="list" class="flex flex-1 flex-col gap-y-7">
-                    <li>
-                        <ul role="list" class="-mx-2 space-y-1">
-                            <li>
-                                <!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-50" -->
-                                <a href="#" class="group flex gap-x-3 rounded-md bg-gray-50 p-2 text-sm/6 font-semibold text-indigo-600">
-                                    <svg class="size-6 shrink-0 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                                    </svg>
-                                    Dashboard
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                    <svg class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-                                    </svg>
-                                    Team
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                    <svg class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
-                                    </svg>
-                                    Projects
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                    <svg class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-                                    </svg>
-                                    Calendar
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                    <svg class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
-                                    </svg>
-                                    Documents
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                    <svg class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
-                                    </svg>
-                                    Reports
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="text-xs/6 font-semibold text-gray-400">Your teams</div>
-                        <ul role="list" class="-mx-2 mt-2 space-y-1">
-                            <li>
-                                <!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-50" -->
-                                <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                    <span class="flex size-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">H</span>
-                                    <span class="truncate">Heroicons</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                    <span class="flex size-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">T</span>
-                                    <span class="truncate">Tailwind Labs</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
-                                    <span class="flex size-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600">W</span>
-                                    <span class="truncate">Workcation</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="-mx-6 mt-auto">
-                        <a href="#" class="flex items-center gap-x-4 px-6 py-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-50">
-                            <img class="size-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                            <span class="sr-only">Your profile</span>
-                            <span aria-hidden="true">Tom Cook</span>
-                        </a>
-                    </li>
+
+            <div id="configuration" class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">Configuration</h2>
+                <p>Configuring Stripe Pad is essential to tailor the software to your specific needs. Follow the steps below to configure your installation properly:</p>
+                <ol class="list-decimal pl-4">
+                    <li>Set environment variables in the <code>.env</code> file. This includes database settings, API keys, and other operational parameters that Stripe Pad relies on.</li>
+                    <li>Adjust the application settings in the admin panel:</li>
+                    <ul class="list-disc pl-8">
+                        <li>API configurations</li>
+                        <li>User management settings</li>
+                        <li>Payment and billing options</li>
+                    </ul>
+                    <li>For advanced users, delve into the <code>config/app.php</code> file to set up:</li>
+                    <ul class="list-disc pl-8">
+                        <li>Locale and timezone settings</li>
+                        <li>Service providers</li>
+                        <li>Class aliases for ease of development</li>
+                    </ul>
+                </ol>
+            </div>
+
+            <div id="customizing" class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">Customizing</h2>
+                <p>Stripe Pad allows for extensive customization to meet the unique demands of your project. Here are some ways you can customize your setup:</p>
+                <ol class="list-decimal pl-4">
+                    <li>Themes: Change the visual appearance by modifying or creating new themes.</li>
+                    <li>Modules: Enhance functionality by developing new modules or modifying existing ones.</li>
+                    <li>Integrations: Integrate with third-party services for enhanced capabilities.</li>
+                </ol>
+                <p>For more detailed instructions on customizing each aspect, refer to the developer guides provided in the subsequent sections.</p>
+            </div>
+
+            <div id="advanced-topics" class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">Advanced Topics</h2>
+                <p>For those looking to get the most out of Stripe Pad, exploring advanced topics is crucial. This section covers:</p>
+                <ul class="list-disc pl-4">
+                    <li>Performance optimization techniques</li>
+                    <li>Security best practices</li>
+                    <li>Automated testing and continuous integration setups</li>
+                    <li>Detailed API documentation</li>
                 </ul>
-            </nav>
-        </div>
-    </div>
+                <p>Each topic is covered in depth to provide you with the knowledge needed to optimize your use of Stripe Pad.</p>
+            </div>
 
-    <div class="sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
-        <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
-            <span class="sr-only">Open sidebar</span>
-            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-        </button>
-        <div class="flex-1 text-sm/6 font-semibold text-gray-900">Dashboard</div>
-        <a href="#">
-            <span class="sr-only">Your profile</span>
-            <img class="size-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-        </a>
-    </div>
+        </main>
 
-    <main class="py-10 lg:pl-72">
-        <div class="px-4 sm:px-6 lg:px-8">
-            <!-- Your content -->
-        </div>
-    </main>
+        <!-- Right Sidebar: On-page navigation -->
+        <nav class="w-48 bg-gray-800 py-12  inset-y-0 right-0 overflow-y-auto">
+            <h3 class="px-4 text-lg text-white font-semibold mb-6">On this page</h3>
+            <ul class="space-y-2 px-4">
+                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500 block">Introduction</a></li>
+                <li><a href="#installation" class="text-gray-400 hover:text-blue-500 block">Installation</a></li>
+                <li><a href="#configuration" class="text-gray-400 hover:text-blue-500 block">Configuration</a></li>
+                <li><a href="#customizing" class="text-gray-400 hover:text-blue-500 block">Customizing</a></li>
+                <li><a href="#advanced-topics" class="text-gray-400 hover:text-blue-500 block">Advanced Topics</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>

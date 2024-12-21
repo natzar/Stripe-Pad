@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
- content: ["./../../views/*.php","./../../views/*/*.php","./../../views/templates/*.php","./../../app/*.html"],
+ content: ["./../views/*.php","./../views/*/*.php"],
  plugins:[
  require('postcss-import'),
     require('tailwindcss'),
