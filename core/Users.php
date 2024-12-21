@@ -122,7 +122,7 @@ class usersModel extends ModelBase
 	public function resetPassword($usersId)
 	{
 		$new_password = $this->randomPassword();
-		$sha1p = sha1($new_password);
+		$sha1p = hash('sha256', $new_password);
 		$c = $this->db->prepare('UPDATE users set password = :p where usersId = :id');
 		$c->bindParam(':p', $sha1p);
 		$c->bindParam(':id', $usersId);
