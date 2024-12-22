@@ -13,10 +13,10 @@
 
 For Educational purposes. Get started with MVC in PHP.
 
-DEMO: [Stripepad.com](https://www.stripepad.com)
-**Important Disclaimer** Not affiliated in any way with Stripe.com 
+**Important Disclaimer:** Not affiliated in any way with Stripe.com.
 
-
+## Demo
+Test it [Stripepad.com](https://www.stripepad.com)
 ## Quick Install
 [Download latest stable release here](https://github.com/natzar/Stripe-Pad/releases), then run the installer at yourdomain.com/install.
 
