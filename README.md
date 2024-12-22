@@ -20,14 +20,6 @@ DEMO: [Stripepad.com](https://www.stripepad.com)
 ## Quick Install
 [Download latest stable release here](https://github.com/natzar/Stripe-Pad/releases), then run the installer at yourdomain.com/install.
 
-If you prefer, install it manually:
-
-- git clone https://github.com/natzar/stripe-pad.git
-- run composer install
-- import install/database.sql
-- adjust config.php
-
-(The installer at install/index.php is not operative yet)
 
 ## Official Documentation
 
