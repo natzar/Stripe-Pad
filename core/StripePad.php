@@ -248,8 +248,8 @@ class StripePad
         $_SESSION['login_attemp'] = 0;
         $_SESSION['user'] = $user;
         $_SESSION['HTTP_USER_AGENT'] = hash('sha256', ($_SERVER['HTTP_USER_AGENT'] . $user['email']));
-        // 		$customers = new userModel();
-        // 		if ($saveLogin) $customers->saveLastLogin($user);
+        $users = new usersModel();
+        if ($saveLogin) $users->saveLastLogin($user);
     }
 
 
