@@ -23,7 +23,7 @@ Test it [Stripepad.com](https://www.stripepad.com)
 
 ## Official Documentation
 
-You can read the official documentation on the [stripepad.com/documentation website](https://www.stripepad.com/documentation).
+You can read the official documentation on the [stripepad.com/documentation](https://www.stripepad.com/documentation) website.
 
 ## Contributing
 <a name="contributing"></a>
@@ -34,7 +34,7 @@ You can read the contribution guide [here](https://github.com/natzar/Stripe-Pad/
 ## Code of Conduct
 <a name="code-of-conduct"></a>
 
-In order to ensure that the PHP community is welcoming to all, please review and abide by the Code of Conduct
+In order to ensure that the PHP community is welcoming to all, please review and abide by the [Code of Conduct](https://github.com/natzar/Stripe-Pad?tab=coc-ov-file)
 
 ## Security Vulnerabilities
 <a name="security-vulnerabilities"></a>
