@@ -20,9 +20,9 @@
                 <li><a href="documentation#mail" class="text-gray-400 hover:text-blue-500">Mail</a></li>
                 <li><a href="documentation#webhook" class="text-gray-400 hover:text-blue-500">Webhooks</a></li>
 
-                <li><a href="documentation#api" class="text-gray-400 hover:text-blue-500">Api</a></li>
 
-                <li><a href="documentation#cdn" class="text-gray-400 hover:text-blue-500">CDN</a></li>
+
+
             </ul>
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Customization</h2>
             <ul class="space-y-2 mb-10">
@@ -31,8 +31,9 @@
             </ul>
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Extras</h2>
             <ul class="space-y-2 mb-10">
+                <li><a href="documentation#api" class="text-gray-400 hover:text-blue-500">Api</a></li>
                 <li><a href="documentation#blog" class="text-gray-400 hover:text-blue-500">Blog</a></li>
-
+                <li><a href="documentation#cdn" class="text-gray-400 hover:text-blue-500">CDN</a></li>
 
 
             </ul>

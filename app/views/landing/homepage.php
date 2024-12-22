@@ -22,20 +22,6 @@
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 -->
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KKGVWVY1J4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag('js', new Date());
-
-  gtag('config', 'G-KKGVWVY1J4');
-</script>
-
-
 <div class="px-6  py-10 sm:pt-8 lg:overflow-hidden lg:pb-14 lg:pt-8 ">
   <div class="mx-auto max-w-7xl lg:px-8">
     <div class="">
@@ -56,7 +42,7 @@
 
           <h1 class="mt-4 text-5xl font-bold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-7xl nunito">
             <span class="">PHP SaaS Boilerplate</span>
-            <span class=" bg-gradient-to-r from-blue-400 to-blue-900 bg-clip-text pb-3 text-transparent sm:pb-5">Stripe Pad</span>
+            <span class=" bg-gradient-to-r text-blue-800 from-blue-400 to-blue-900 bg-clip-text pb-3 text-transparent sm:pb-5">Stripe Pad</span>
           </h1>
           <p class="text-base text-gray-500 sm:text-xl lg:text-lg xl:text-xl mt-5 pb-5">The PHP boilerplate to build SaaS with Stripe</p>
 
