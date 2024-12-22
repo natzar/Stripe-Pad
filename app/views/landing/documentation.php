@@ -11,7 +11,7 @@
                 <li><a href="documentation#upgrade" class="text-gray-400 hover:text-blue-500">Upgrade Guide</a></li>
 
             </ul>
-            <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Components</h2>
+            <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Core</h2>
             <ul class="space-y-2 mb-10">
                 <li><a href="documentation#components" class="text-gray-400 hover:text-blue-500">Introduction</a></li>
                 <li><a href="documentation#routes" class="text-gray-400 hover:text-blue-500">Routes</a></li>
@@ -20,59 +20,48 @@
                 <li><a href="documentation#mail" class="text-gray-400 hover:text-blue-500">Mail</a></li>
                 <li><a href="documentation#webhook" class="text-gray-400 hover:text-blue-500">Webhooks</a></li>
                 <li><a href="documentation#crons" class="text-gray-400 hover:text-blue-500">Crons</a></li>
-                <li><a href="documentation#crons" class="text-gray-400 hover:text-blue-500">Api</a></li>
+                <li><a href="documentation#api" class="text-gray-400 hover:text-blue-500">Api</a></li>
+                <li><a href="documentation#cdn" class="text-gray-400 hover:text-blue-500">CDN</a></li>
 
             </ul>
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Customization</h2>
-            <ul class="space-y-2">
-
+            <ul class="space-y-2 mb-10">
+                <li><a href="documentation#app" class="text-gray-400 hover:text-blue-500">Your App</a></li>
+                <li><a href="documentation#landing" class="text-gray-400 hover:text-blue-500">Landing page</a></li>
             </ul>
+            <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Extras</h2>
+            <ul class="space-y-2 mb-10">
+                <li><a href="documentation#blog" class="text-gray-400 hover:text-blue-500">Blog</a></li>
+            </ul>
+
         </aside>
 
         <!-- Main Content -->
         <main class="flex-1 pl-80 pr-32  text-gray-300 text-base">
 
-
+            <p>Stripe Pad Version: <?= STRIPE_PAD_VERSION ?></p>
             <h2 id="quickstart" class="text-xl mt-10 uppercase">Quickstart</h2>
-            <ol>
-                <li>Download the latest version from the repository. <a href="https://github.com/natzar/Stripe-Pad/releases/tag/v.0.0.1-alpha">https://github.com/natzar/Stripe-Pad/releases/tag/v.0.0.1-alpha</a></li>
-                <li>Extract the files to your preferred directory (htdocs)</li>
-                <li>Create database &amp; import database.sql into your MySQL database.</li>
-                <li>Run composer install to install necessary dependencies.
-                    <h2>Configuration</h2>
-                    <ul>
-                        <li>Optional: Create subdomains and point them to the respective folders: app, api, webhooks, and cdn.</li>
-                        <li>Set your application name, base URL, Stripe API Keys, Database settings and all configurations in config.php.</li>
-                        <li>Optional: Check .htaccess if you will be running in a /subfolder/ RedirectBase in /app/.htaccess and /api/.htaccess to match your localhost directory.</li>
-                    </ul>
-                </li>
-            </ol>
 
             <p>Stripe Pad is simple PHP SaaS boilerplate designed to streamline the process of building Software as a Service (SaaS) applications in a WordPress Style. This comprehensive guide aims to provide you with all the necessary information to get started with Stripe Pad, from setting up your development environment to deploying your first SaaS application.</p>
-            <p>Stripe Pad combines seamless integration of Stripe, a leading online payment processor, to provide a robust foundation for your SaaS projects. Whether you are a beginner just starting out in the world of web development or a seasoned developer looking to accelerate your SaaS product development, Stripe Pad offers the tools and flexibility you need.</p>
-            <p>In this documentation, you will find step-by-step instructions, best practices, and detailed explanations of Stripe-Pad's features and components. Our goal is to help you maximize the potential of Stripe-Pad and create efficient, scalable, and secure SaaS applications.</p>
-            <p>Thank you for choosing Stripe Pad.</p>
-            <h2>Features</h2>
-            <ul>
-                <li>user management: login, signup, password recovery</li>
-                <li>stripe: manage user subscriptions</li>
-                <li>landing page: </li>
-                <li>private area: the place to insert your app</li>
-                <li>themes: Basic theme is base-dark (Tailwind CSS)</li>
-            </ul>
-            <h2>Dependencies</h2>
-            <p>They are managed via composer</p>
-            <ul>
-                <li>Stripe</li>
-                <li>PHPEmail</li>
-            </ul>
-
-
-            <h2>Requirements</h2>
+            <br>
+            <h3>Quick install</h3>
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                $ git clone https://github.com/natzar/Stripe-Pad.git<br>
+                $ composer install<br>
+                $ import install/database.sql<br>
+                $ edit config.php
+            </blockquote><br>
+            <h3>Requirements</h3>
             <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
                 PHP 7.2<br>
-                MySQL / MariaDB / SqlLite
+                Composer<br>
+                MySQL / MariaDB / SqlLite<br>
+                SMTP server<br>
+                Stripe Account<br>
             </blockquote>
+
+
+
             <hr class="border-1 border-gray-500 mt-10">
 
             <h2 id="install" class="text-xl mt-10 uppercase">Installation</h2>
@@ -90,6 +79,64 @@
                 <li>Your custom application should reside in the /app folder.</li>
                 <li>Your API endpoints will be located within the /api folder.</li>
             </ul>
+            <section class="mt-4">
+                <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4 mb-4 rounded-full pl-8">Initial Setup</h3>
+                <ol class="list-decimal pl-8 space-y-2">
+                    <li>Download the latest version from the repository. https://github.com/natzar/Stripe-Pad/releases/tag/v.0.0.1-alpha</li>
+                    <li>Extract the files to your preferred directory (htdocs)</li>
+
+                </ol>
+            </section>
+
+            <section class="mt-4">
+                <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4 mb-4  rounded-full pl-8">Configuration</h3>
+                <ol class="list-decimal pl-8 space-y-2">
+                    <li>Set your application name, base URL, Stripe API Keys, Database settings and all configurations in <span class="bg-gray-700 text-red-300 p-1 rounded">config.php</span>.</li>
+
+                    <li>Optional: Check .htaccess if you will be running in a /subfolder/ <code class="bg-gray-700 text-red-300 p-1 rounded">RedirectBase</code> in <span class="bg-gray-700 text-red-300 p-1 rounded">/app/.htaccess</span> and <span class="bg-gray-700 text-red-300 p-1 rounded">/api/.htaccess</span> to match your localhost directory.</li>
+                    <li>Optional: Create subdomains and point them to the respective folders: app, api, webhooks, and cdn.</li>
+
+
+
+                </ol>
+            </section>
+
+            <section class="mt-4">
+                <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4 mb-4  rounded-full pl-8">Post-Configuration Steps</h3>
+                <ol class="list-decimal pl-8 space-y-2">
+                    <li>Run <span class="bg-gray-700 text-red-300 p-1 rounded">composer install</span> to install necessary dependencies.</li>
+
+                    <li>Import <span class="bg-gray-700 text-red-300 p-1 rounded">database.sql</span> into your MySQL database.</li>
+
+                    <li>Set up a webhook from your Stripe dashboard to <span class="bg-gray-700 text-red-300 p-1 rounded">https://yourdomain.com/webhooks/stripe.php</span> to handle Stripe events.</li>
+
+                    <li>Set up automatic deployment from a git repository<span class="bg-gray-700 text-red-300 p-1 rounded">/webhooks/deploy.php</span>.</p>
+
+                </ol>
+            </section>
+
+            npm install -D tailwindcss
+            npx tailwindcss init
+            app/css/build/compile-tailwind.sh
+
+
+            <section class="mt-4">
+                <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4  rounded-full pl-8">Verification and Testing</h3>
+                <p>Ensure the setup is correct by accessing the following:</p>
+                <ul class="list-disc pl-8">
+                    <li><a href="/app" class="text-blue-400 hover:text-blue-600">Login Page</a> should open correctly.</li>
+                    <li><a href="/api" class="text-blue-400 hover:text-blue-600">API Endpoint</a> should display a 'not authenticated' message.</li>
+                    <li>Access your main landing or marketing page at the <span class="bg-gray-700 text-red-300 p-1 rounded">/web</span> directory.</li>
+                    <li>Your custom application should reside in the <span class="bg-gray-700 text-red-300 p-1 rounded">/app</span> folder.</li>
+                    <li>Your API endpoints will be located within the <span class="bg-gray-700 text-red-300 p-1 rounded">/api</span> folder.</li>
+                    <li>Models shared between all components are available for use across the application.</li>
+                </ul>
+            </section>
+            <div class="mt-6">
+                <!-- <a href="web/" class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full">Visit Your SaaS Landing Page</a>
+        <a href="app/" class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full">Visit Your SaaS Login Page</a>
+         --><a href="https://github.com/natzar/Stripe-Pad/issues" class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full">Get Support!</a>
+            </div>
             <hr class="border-1 border-gray-500 mt-10">
             <h2 id="upgrade" class="text-xl mt-10 uppercase">Upgrade Guide</h2>
 
@@ -101,11 +148,12 @@
 
 
             <h2 id="components" class="text-xl mt-10 uppercase">Components</h2>
-            <p><img src="https://www.stripepad.com/relations.png" alt="Stripe Pad Relations"></p>
-            <p>The base of Stripe Pad is structured as a simplistic MVC (Model-View-Controller) PHP application. </p>
+            <p>The base of Stripe Pad is structured as a simplistic MVC (Model-View-Controller (1)) PHP application. </p>
+            <p><img width="500" class="mx-auto" src="https://www.stripepad.com/relations.png" alt="Stripe Pad Relations"></p>
+
             <ul>
                 <li>Find and add your models at app/models</li>
-                <li>Find and add your views (templates) at app/themes/theme-name/</li>
+                <li>Find and add your views (templates) at app/views/</li>
                 <li>Everything else where users makes requests to (api, webhooks, web (index.php), widget, cronjobs) could be considered the controllers.</li>
             </ul>
             <h2>Core Components</h2>
@@ -122,97 +170,17 @@
                 <li><strong>load.php</strong>: Initializes the application by loading <code>config.php</code>, managing error handling, including all model files, and integrating composer packages.</li>
             </ul>
             <p>For optimal security and organization, setting up dedicated domains or subdomains for different application aspects (such as cron jobs, core functionality, and CDN) is advised.</p>
-
+            <hr class="border-1 border-gray-500 mt-10">
 
             <h2 id="routes" class="text-xl mt-10 uppercase">Routes</h2>
-            <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="models" class="text-xl mt-10 uppercase">Models</h2>
-            <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="users" class="text-xl mt-10 uppercase">Users</h2>
-            <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="emails" class="text-xl mt-10 uppercase">Transactional Emails</h2>
-            <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="webhooks" class="text-xl mt-10 uppercase">Webhooks</h2>
-
-            <h2>Webhooks</h2>
-            <p>Facilitate automated interactions with external systems:</p>
-            <ul>
-                <li><strong>deploy.php</strong>: Configurable for automatic deployment via Bitbucket or Git hooks.</li>
-                <li><strong>stripe.php</strong>: Endpoint for receiving events from Stripe.</li>
-            </ul>
-            <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="cronjobs" class="text-xl mt-10 uppercase">Cronjobs</h2>
-            <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="api" class="text-xl mt-10 uppercase">Api</h2>
-
-            <hr class="border-1 border-gray-500 mt-10">
-            <h2>Application (App)</h2>
-            <p>index.php is the boilerplate, app/app.php it's an extended StripePad Class. You can override the parent methods.
-                All your application logic will be in app/app.php, public &amp; private sides, is all there, all urls are defined there. </p>
-            <h3>Landing Page</h3>
-            <p>The 'landing' directory hosts all public-facing parts of your SaaS, including marketing content and user acquisition elements. To extend the landing page:</p>
-            <ol>
-                <li>Create new HTML/PHP templates within <code>templates/landing/</code>.</li>
-                <li>Add corresponding methods to <code>app/app.php</code> for new pages, e.g., <code>public function about()</code>.</li>
-                <li>Implement the desired logic and view rendering within these new methods.</li>
-            </ol>
-            <p>This setup enables straightforward routing from URLs to respective application methods and views.</p>
-            <h3>Your code goes here</h3>
-            <p>Access to the core application features, such as the dashboard, is restricted to authenticated users. The dashboard acts as the entry point for logged-in users, hosting the primary functionality and data interactions of your SaaS solution. Start by modifying <code>dashboard.php</code> to tailor it to your application's needs.</p>
-            <h2>Cronjobs</h2>
-            <p>This section is designated for scheduling and managing cronjobs. Scripts within the 'crons' directory should start by including <code>load.php</code>, initializing required models, and executing necessary tasks. These scripts can then be scheduled directly on the server.</p>
-            <h2>CDN</h2>
-            <p>The 'cdn' directory is intended for static assets such as JavaScript, CSS, and images. Ideally, these should be served from a separate domain or subdomain to improve loading times and security.</p>
-            <h2>Database</h2>
-            <p>Stripe Pad is built on a MySQL database encompassing three primary tables:</p>
-            <ul>
-                <li><strong>users</strong>: Stores user information such as email, password, membership status, and timestamps.</li>
-                <li><strong>payments</strong>: Records payment transactions including Stripe payment IDs, user IDs, amounts, and timestamps.</li>
-                <li><strong>blog</strong>: Maintains blog post data including slugs, titles, bodies, and timestamps.</li>
-            </ul>
-
-            <h2>API</h2>
-            <p>API comes in 2 forms, v1 and v2.</p>
-            <ul>
-                <li>v1: just 1 endpoint user for 1 action (search, get info, whatever...)</li>
-                <li>v2: API REST. You can instance here your models and return JSON responses</li>
-            </ul>
-            <h2>Widget</h2>
-            <p>In case you want to build a widget that users will insert in their websites, you can use this. </p>
-            <h2>Modules</h2>
-            <ul>
-                <li>EmailValidator</li>
-                <li>Request Bot Blocker</li>
-            </ul>
-            <p>The directory structure and setup described provide a comprehensive framework for developing and scaling your SaaS platform with Stripe Pad.</p>
-            <h2>Getting Started</h2>
-            <p>Follow the installation instructions to set up the environment on your local machine. Once you have everything running locally, you are ready to begin the development of your SaaS application.</p>
-            <h2>Customizing Your Theme</h2>
-            <p>To create a new theme:</p>
-            <ol>
-                <li>Duplicate the <code>app/themes/basic-dark</code> directory. Rename the new directory to reflect the primary keyword of your niche, optimizing for SEO purposes.</li>
-                <li>Your main file for customization will be <code>app/themes/[your-new-theme]/dashboard.php</code>.</li>
-                <li>Update the configuration file <code>config.php</code> within your theme folder, setting <code>APP_THEME</code> to the name of your new folder.</li>
-            </ol>
-            <h2>Incorporating JavaScript Frameworks</h2>
-            <p>If your application requires a JavaScript framework:</p>
-            <ol>
-                <li>Include the necessary <code>&lt;script&gt;</code> tags within the relevant PHP templates, particularly within <code>dashboard.php</code>.</li>
-            </ol>
-            <h2>Modifying the Dashboard</h2>
-            <p>To enhance your dashboard functionality:</p>
-            <ol>
-                <li>In <code>app/app.php</code>, modify the <code>dashboard</code> method to include any necessary database data.</li>
-                <li>Instantiate your model, call its methods, retrieve the data, and pass this data to the view.</li>
-            </ol>
             <h2>Adding New URLs</h2>
             <p>To introduce new URLs to your application:</p>
             <ol>
                 <li>Edit <code>app/themes/[your-theme]/app.php</code>.</li>
                 <li>Add new methods corresponding to your desired URLs, for example, <code>public function faq() {}</code> which will make <code>https://your-domain.com/faq</code> accessible.</li>
             </ol>
-            <h2>Interacting with the Database</h2>
-            <h3>Creating Models</h3>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="models" class="text-xl mt-10 uppercase">Models</h2>
             <p>Instead of embedding SQL directly within your controllers or views, utilize models:</p>
             <ol>
                 <li>
@@ -231,109 +199,91 @@ echo $sales-&gt;getById(4);</code></pre>
                 </li>
             </ol>
             <p>This approach keeps your application organized and maintains a separation of concerns between your database logic and your application logic.</p>
-            <div id="introduction" class="mb-12">
-                <h1 class="text-3xl font-bold mb-4">Introduction</h1>
-                <p>Explanation of what Stripe Pad is and how it can be used in various scenarios.</p>
-                ## Structure
 
-                Space to insert your code:
-                - **crons**: Scripts and cronjobs.
-                - **app**: Custom application code &amp; landing page. All HTML is here.
-                - **cdn**: Subdomain for static assets.
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="users" class="text-xl mt-10 uppercase">Users</h2>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="emails" class="text-xl mt-10 uppercase">Transactional Emails</h2>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="webhooks" class="text-xl mt-10 uppercase">Webhooks</h2>
+            <p>Facilitate automated interactions with external systems:</p>
+            <ul>
+                <li><strong>deploy.php</strong>: Configurable for automatic deployment via Bitbucket or Git hooks.</li>
+                <li><strong>stripe.php</strong>: Endpoint for receiving events from Stripe.</li>
+            </ul>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="cronjobs" class="text-xl mt-10 uppercase">Cronjobs</h2>
+            <p>This section is designated for scheduling and managing cronjobs. Scripts within the 'crons' directory should start by including <code>load.php</code>, initializing required models, and executing necessary tasks. These scripts can then be scheduled directly on the server.</p>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="api" class="text-xl mt-10 uppercase">Api</h2>
+            <p>API comes in 2 forms, v1 and v2.</p>
+            <ul>
+                <li>v1: just 1 endpoint user for 1 action (search, get info, whatever...)</li>
+                <li>v2: Very Simple API REST. You can instance here your models and return JSON responses</li>
+            </ul>
 
-                These are core files, they will break with an update:
-                - **core**: Core files for database connections and templates.
-                - **webhooks**: Handlers for webhooks (default: Stripe and Bitbucket).
-                - **API**: Basic API functionality.
+            <p> v3 is coming, Guzzle + REST</p>
 
-                ![Relations between components](https://www.stripepad.com/relations.png)
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2>Application (App)</h2>
 
-                ## Features
-
-                - Public: Landing page
-                - Private: User Profile, Your App
-                - MVC. Controllers, Models shared between all controllers, and JSON + templates for the views part.
-                - Webhooks management for Stripe events.
-                - Divided in subdomains or subfolders
-                - PHP is the only requirement, how you build you app inside /app folder is up to you
-                - Easy to modify and customize
-
+            <h3>Landing Page</h3>
+            <p>The 'landing' directory hosts all public-facing parts of your SaaS, including marketing content and user acquisition elements. To extend the landing page:</p>
+            <ol>
+                <li>Create new HTML/PHP templates within <code>templates/landing/</code>.</li>
+                <li>Add corresponding methods to <code>app/app.php</code> for new pages, e.g., <code>public function about()</code>.</li>
+                <li>Implement the desired logic and view rendering within these new methods.</li>
+            </ol>
+            <p>This setup enables straightforward routing from URLs to respective application methods and views.</p>
+            <h3>Your code goes here</h3>
+            <p>Access to the core application features, such as the dashboard, is restricted to authenticated users. The dashboard acts as the entry point for logged-in users, hosting the primary functionality and data interactions of your SaaS solution. Start by modifying <code>dashboard.php</code> to tailor it to your application's needs.</p>
 
 
 
-                ### Tech Stack
 
-                Packed with basic stuff only.
+            <h2>Widget</h2>
+            <p>In case you want to build a widget that users will insert in their websites, you can use this. </p>
+            <h2>Modules</h2>
+            <ul>
+                <li>EmailValidator</li>
+                <li>Request Bot Blocker</li>
+            </ul>
+            <p>The directory structure and setup described provide a comprehensive framework for developing and scaling your SaaS platform with Stripe Pad.</p>
+            <h2>Getting Started</h2>
+            <p>Follow the installation instructions to set up the environment on your local machine. Once you have everything running locally, you are ready to begin the development of your SaaS application.</p>
 
-                1. Php. MVC style, no framework.
-                2. Vanilla Js &amp; jQuery, just to open/close mobile menu
-                3. Composer, to install stripe and email dependencies
-
-                Basic theme uses Tailwind. 100% optional. You can edit /app folder completely.
 
 
-            </div>
-            <div id="installation" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">Installation</h2>
-                <p>To get started with Stripe Pad, follow these steps to ensure a proper setup:</p>
-                <ol class="list-decimal pl-4">
-                    <li>Ensure your system meets all required dependencies: PHP 7.4+, Composer, and MySQL.</li>
-                    <li>Clone the repository from GitHub:</li>
-                    <pre class="bg-gray-700 text-white p-2 rounded"><code>git clone https://github.com/yourusername/stripe-pad.git</code></pre>
-                    <li>Install all Composer dependencies:</li>
-                    <pre class="bg-gray-700 text-white p-2 rounded"><code>composer install</code></pre>
-                    <li>Copy the sample configuration file and modify it according to your environment:</li>
-                    <pre class="bg-gray-700 text-white p-2 rounded"><code>cp .env.example .env</code></pre>
-                    <li>Generate your application key:</li>
-                    <pre class="bg-gray-700 text-white p-2 rounded"><code>php artisan key:generate</code></pre>
-                    <li>Run the database migrations and seed the database:</li>
-                    <pre class="bg-gray-700 text-white p-2 rounded"><code>php artisan migrate --seed</code></pre>
-                    <li>You are now ready to start your Stripe Pad application.</li>
-                </ol>
-            </div>
+            <h2 id="cdn" class="text-xl mt-10 uppercase">CDN</h2>
+            <h2>CDN</h2>
+            <p>The 'cdn' directory is intended for static assets such as JavaScript, CSS, and images. Ideally, these should be served from a separate domain or subdomain to improve loading times and security.</p>
+            <hr class="border-1 border-gray-500 mt-10">
 
-            <div id="configuration" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">Configuration</h2>
-                <p>Configuring Stripe Pad is essential to tailor the software to your specific needs. Follow the steps below to configure your installation properly:</p>
-                <ol class="list-decimal pl-4">
-                    <li>Set environment variables in the <code>.env</code> file. This includes database settings, API keys, and other operational parameters that Stripe Pad relies on.</li>
-                    <li>Adjust the application settings in the admin panel:</li>
-                    <ul class="list-disc pl-8">
-                        <li>API configurations</li>
-                        <li>User management settings</li>
-                        <li>Payment and billing options</li>
-                    </ul>
-                    <li>For advanced users, delve into the <code>config/app.php</code> file to set up:</li>
-                    <ul class="list-disc pl-8">
-                        <li>Locale and timezone settings</li>
-                        <li>Service providers</li>
-                        <li>Class aliases for ease of development</li>
-                    </ul>
-                </ol>
-            </div>
 
-            <div id="customizing" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">Customizing</h2>
-                <p>Stripe Pad allows for extensive customization to meet the unique demands of your project. Here are some ways you can customize your setup:</p>
-                <ol class="list-decimal pl-4">
-                    <li>Themes: Change the visual appearance by modifying or creating new themes.</li>
-                    <li>Modules: Enhance functionality by developing new modules or modifying existing ones.</li>
-                    <li>Integrations: Integrate with third-party services for enhanced capabilities.</li>
-                </ol>
-                <p>For more detailed instructions on customizing each aspect, refer to the developer guides provided in the subsequent sections.</p>
-            </div>
 
-            <div id="advanced-topics" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">Advanced Topics</h2>
-                <p>For those looking to get the most out of Stripe Pad, exploring advanced topics is crucial. This section covers:</p>
-                <ul class="list-disc pl-4">
-                    <li>Performance optimization techniques</li>
-                    <li>Security best practices</li>
-                    <li>Automated testing and continuous integration setups</li>
-                    <li>Detailed API documentation</li>
-                </ul>
-                <p>Each topic is covered in depth to provide you with the knowledge needed to optimize your use of Stripe Pad.</p>
-            </div>
+
+            <h2 id="app">Your app</h2>
+            <p>index.php is the boilerplate, app/app.php it's an extended StripePad Class. You can override the parent methods.
+                All your application logic will be in app/app.php, public &amp; private sides, is all there, all urls are defined there. </p>
+
+            <p>To enhance your dashboard functionality:</p>
+            <ol>
+                <li>In <code>app/app.php</code>, modify the <code>dashboard</code> method to include any necessary database data.</li>
+                <li>Instantiate your model, call its methods, retrieve the data, and pass this data to the view.</li>
+            </ol>
+            <h2>Incorporating JavaScript Frameworks</h2>
+            <p>If your application requires a JavaScript framework:</p>
+            <ol>
+                <li>Include the necessary <code>&lt;script&gt;</code> tags within the relevant PHP templates, particularly within <code>dashboard.php</code>.</li>
+            </ol>
+            <p>To create a new theme:</p>
+            <ol>
+                <li>Duplicate the <code>app/themes/basic-dark</code> directory. Rename the new directory to reflect the primary keyword of your niche, optimizing for SEO purposes.</li>
+                <li>Your main file for customization will be <code>app/themes/[your-new-theme]/dashboard.php</code>.</li>
+                <li>Update the configuration file <code>config.php</code> within your theme folder, setting <code>APP_THEME</code> to the name of your new folder.</li>
+            </ol>
+
+
 
         </main>
 
