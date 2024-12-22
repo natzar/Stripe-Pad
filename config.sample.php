@@ -31,12 +31,9 @@
  */
 
 # BASIC DETAILS
-define('STRIPE_PAD_VERSION', '1.0.0');
-
 define('APP_NAME', 'Stripe Pad');
 define('APP_SLUG', 'stripe-pad');
 define('APP_LOGO', 'https://stripepad.com/stripepad-logo.png');
-define('APP_THEME', 'base-dark'); #folder name of your theme
 define('SEO_TITLE', 'Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_DESCRIPTION', 'Stripe Pad · PHP Micro Saas Boilerplate');
 
