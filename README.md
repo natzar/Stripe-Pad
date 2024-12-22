@@ -23,7 +23,7 @@ Test it [Stripepad.com](https://www.stripepad.com)
 
 ## Official Documentation
 
-You can read the official documentation on the [Stripepad.com](https://www.stripepad.com/documentation) website.
+You can read the official documentation on the [stripepad.com/documentation website](https://www.stripepad.com/documentation).
 
 ## Contributing
 <a name="contributing"></a>
