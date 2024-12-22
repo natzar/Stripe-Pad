@@ -4,7 +4,7 @@
 [![Psalm Security Scan](https://github.com/natzar/Stripe-Pad/actions/workflows/psalm.yml/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/psalm.yml)
 [![DevSkim](https://github.com/natzar/Stripe-Pad/actions/workflows/devskim.yml/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/devskim.yml)
 [![CodeQL](https://github.com/natzar/Stripe-Pad/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/github-code-scanning/codeql)
-![Stripe Pad Image](https://stripepad.com/open-graph.png)
+![Stripe Pad Image](https://stripepad.com/cdn/img/open-graph.png)
 
 ## Introduction
 
@@ -14,8 +14,14 @@
 For Educational purposes. Get started with MVC in PHP.
 
 DEMO: [Stripepad.com](https://www.stripepad.com)
+**Important Disclaimer** Not affiliated in any way with Stripe.com 
+
 
 ## Quick Install
+[Download latest stable release here](https://github.com/natzar/Stripe-Pad/releases), then run the installer at yourdomain.com/install.
+
+If you prefer, install it manually:
+
 - git clone https://github.com/natzar/stripe-pad.git
 - run composer install
 - import install/database.sql
@@ -50,4 +56,3 @@ Please review [our security policy](https://github.com/natzar/stripe-pad/securit
 
 Stripe Pad is licensed under the GPL License, Version 3.0 [Copy of the license](LICENSE.txt).
 
-**Important Disclaimer** Not affiliated in any way with Stripe.com 

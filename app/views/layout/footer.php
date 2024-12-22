@@ -45,10 +45,10 @@
 
 <? if ($page != "forgot-password.php" and $page != "landing/documentation.php" and $page != "signup.php" and  !isset($_SESSION['user'])): ?>
   <div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl border-b border-gray-800  sm:px-16 ">
-    <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">Start your SaaS Today!</h2>
-    <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">Everything you need to focus only in your original idea</p>
+    <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">Start your SaaS now!</h2>
+    <p class="mx-auto mt-6 max-w-xl text-sm leading-8 text-gray-300">The GPL3-licensed PHP boilerplate to build SaaS with Stripe, that saves you months of development by starting you off with all the features that are the same in every product, so you can focus on what makes your app unique.</p>
     <div class="mt-10 flex items-center justify-center gap-x-6">
-      <a href="/signup" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-gray-100 shadow-sm hover:bg-blue-000 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"> START HERE
+      <a href="https://github.com/natzar/Stripe-Pad" class="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-gray-100 shadow-sm hover:bg-blue-000 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"> CLONE THE REPO
         <span class="text-purple-200" aria-hidden="true">&rarr;</span>
       </a>
       <!-- <a href="https://www.domstry.com/resources/domstry-mautic-leads" class="text-sm font-semibold leading-6 text-white">Learn more <span aria-hidden="true">→</span></a> -->
@@ -57,11 +57,12 @@
       <circle cx="512" cy="512" r="512" fill="url(#827591b1-ce8c-4110-b064-7cb85a0b1217)" fill-opacity="0.7"></circle>
       <defs>
         <radialGradient id="827591b1-ce8c-4110-b064-7cb85a0b1217">
-          <stop stop-color="#6AC47E"></stop> <!-- Light blue -->
-          <stop offset="1" stop-color="#008037"></stop> <!-- Dark blue -->
+          <stop stop-color="#87CEEB"></stop> <!-- Light sky blue -->
+          <stop offset="1" stop-color="#00BFFF"></stop> <!-- Deep sky blue -->
         </radialGradient>
       </defs>
     </svg>
+
 
   </div>
 <? endif; ?>
@@ -79,8 +80,7 @@
         <p class="text-sm leading-6 text-gray-500">
 
 
-
-          PHP Micro SaaS Boilerplate already wiblue to Stripe
+          Stripe Pad is a PHP SaaS-in-a-Box that saves developers months of effort and new founders tens of thousands of dollars.
 
         </p>
         <div class="flex space-x-6">

@@ -44,7 +44,7 @@
             <span class="">PHP SaaS Boilerplate</span>
             <span class=" bg-gradient-to-r text-blue-800 from-blue-400 to-blue-900 bg-clip-text pb-3 text-transparent sm:pb-5">Stripe Pad</span>
           </h1>
-          <p class="text-base text-gray-500 sm:text-xl lg:text-lg xl:text-xl mt-5 pb-5">The PHP boilerplate to build SaaS with Stripe</p>
+          <p class="text-base text-gray-500 sm:text-xl lg:text-lg xl:text-xl mt-5 pb-5">The PHP boilerplate to build SaaS with Stripe. Stripe Pad is a GPL3-licensed PHP-based framework that saves you months of development by starting you off with all the features that are the same in every product, so you can focus on what makes your app unique.</p>
 
 
           <div class="mt-5 text-center mx-auto">
@@ -122,7 +122,7 @@
     <div class="mx-auto max-w-2xl lg:mx-0">
       <h2 class="text-base font-semibold leading-7 text-blue-400">Everything you need</h2>
       <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">All included PHP boilerplate</p>
-      <p class="mt-6 text-lg leading-8 text-gray-300">Add your code and you are ready to go find customers</p>
+      <p class="mt-6 text-lg leading-8 text-gray-300">Stripe Pad is a PHP SaaS-in-a-Box that saves developers months of effort and new founders tens of thousands of dollars.</p>
     </div>
     <dl class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-16">
       <div class="relative pl-9">
