@@ -36,11 +36,11 @@ class usersModel extends ModelBase
 
 			# Password here
 			$password = $this->randomPassword();
-			$sha1pass = sha1($password);
+			$sha1p = hash('sha256', $password);
 			$consulta = $this->db->prepare("INSERT INTO users (name,email,password,`group`) VALUES (:name,:email,:pass,:group)");
 			$consulta->bindParam(':name', $name);
 			$consulta->bindParam(':email', $email);
-			$consulta->bindParam(':pass', $sha1pass);
+			$consulta->bindParam(':pass', $sha1p);
 			$consulta->bindParam(':group', $group);
 
 			$consulta->execute();
