@@ -61,8 +61,8 @@
                 </li>
             </ol>
             <ul>
-                <li><a href="http://localhost/app">Login Page</a> should open correctly.</li>
-                <li><a href="http://localhost/api">API Endpoint</a> should display a 'not authenticated' message.</li>
+                <li><a href="https://localhost/app">Login Page</a> should open correctly.</li>
+                <li><a href="https://localhost/api">API Endpoint</a> should display a 'not authenticated' message.</li>
                 <li>Access your main landing or marketing page at the /web directory.</li>
                 <li>Your custom application should reside in the /app folder.</li>
                 <li>Your API endpoints will be located within the /api folder.</li>
@@ -157,7 +157,7 @@
             <p>To introduce new URLs to your application:</p>
             <ol>
                 <li>Edit <code>app/themes/[your-theme]/app.php</code>.</li>
-                <li>Add new methods corresponding to your desired URLs, for example, <code>public function faq() {}</code> which will make <code>http://your-domain.com/faq</code> accessible.</li>
+                <li>Add new methods corresponding to your desired URLs, for example, <code>public function faq() {}</code> which will make <code>https://your-domain.com/faq</code> accessible.</li>
             </ol>
             <h2>Interacting with the Database</h2>
             <h3>Creating Models</h3>
