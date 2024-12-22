@@ -1,39 +1,37 @@
 <div class="relative px-10">
     <!-- Wrapper for the entire layout -->
-    <div class="block flex min-h-screen ">
+    <div class="block flex min-h-screen text-gray-200 ">
 
         <!-- Sidebar: Navigation -->
         <aside class="w-64  px-8 py-12  overflow-y-auto">
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Getting Started</h2>
             <ul class="space-y-2 mb-10">
-                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Introduction</a></li>
-                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Quickstart</a></li>
-                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Upgrade Guide</a></li>
+                <li><a href="documentation#introduction" class="text-gray-400 hover:text-blue-500">Introduction</a></li>
+                <li><a href="documentation#quickstart" class="text-gray-400 hover:text-blue-500">Quickstart</a></li>
+                <li><a href="documentation#install" class="text-gray-400 hover:text-blue-500">Installation</a></li>
+                <li><a href="documentation#upgrade" class="text-gray-400 hover:text-blue-500">Upgrade Guide</a></li>
 
             </ul>
-            <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Essentials</h2>
+            <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Components</h2>
             <ul class="space-y-2 mb-10">
-                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Routes</a></li>
-                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Models</a></li>
-                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Users</a></li>
-                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Mail</a></li>
-                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Webhooks</a></li>
-                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Crons</a></li>
+                <li><a href="documentation#routes" class="text-gray-400 hover:text-blue-500">Routes</a></li>
+                <li><a href="documentation#models" class="text-gray-400 hover:text-blue-500">Models</a></li>
+                <li><a href="documentation#users" class="text-gray-400 hover:text-blue-500">Users</a></li>
+                <li><a href="documentation#mail" class="text-gray-400 hover:text-blue-500">Mail</a></li>
+                <li><a href="documentation#webhook" class="text-gray-400 hover:text-blue-500">Webhooks</a></li>
+                <li><a href="documentation#crons" class="text-gray-400 hover:text-blue-500">Crons</a></li>
+                <li><a href="documentation#crons" class="text-gray-400 hover:text-blue-500">Api</a></li>
+
             </ul>
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Customization</h2>
             <ul class="space-y-2">
-                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500"></a></li>
-                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Models</a></li>
-                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Users</a></li>
-                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Mail</a></li>
-                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Webhooks</a></li>
-                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Crons</a></li>
+
             </ul>
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 pl-32 pr-32 py-12 text-white text-base">
-
+        <main class="flex-1 pl-32 pr-32 py-12 text-gray-300 text-base">
+            <h2 id="introduction" class="text-xl mt-10 uppercase">Introduction</h2>
             <p>Stripe Pad is an innovative PHP boilerplate designed to streamline the process of building Software as a Service (SaaS) applications in a WordPress Style. This comprehensive guide aims to provide you with all the necessary information to get started with Stripe Pad, from setting up your development environment to deploying your first SaaS application.</p>
             <p>Stripe Pad combines modern PHP development practices with seamless integration of Stripe, a leading online payment processor, to provide a robust foundation for your SaaS projects. Whether you are a beginner just starting out in the world of web development or a seasoned developer looking to accelerate your SaaS product development, Stripe Pad offers the tools and flexibility you need.</p>
             <p>In this documentation, you will find step-by-step instructions, best practices, and detailed explanations of Stripe-Pad's features and components. Our goal is to help you maximize the potential of Stripe-Pad and create efficient, scalable, and secure SaaS applications.</p>
@@ -50,12 +48,17 @@
             <p>They are managed via composer</p>
             <ul>
                 <li>Stripe</li>
-                <li>PHPEmail
-                    <h2>Requirements</h2>
-                </li>
-                <li>PHP &gt; 7.2</li>
+                <li>PHPEmail</li>
             </ul>
-            <h2>Initial Setup</h2>
+
+
+            <h2>Requirements</h2>
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                PHP 7.2<br>
+                MySQL / MariaDB / SqlLite
+            </blockquote>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="quickstart" class="text-xl mt-10 uppercase">Quickstart</h2>
             <ol>
                 <li>Download the latest version from the repository. <a href="https://github.com/natzar/Stripe-Pad/releases/tag/v.0.0.1-alpha">https://github.com/natzar/Stripe-Pad/releases/tag/v.0.0.1-alpha</a></li>
                 <li>Extract the files to your preferred directory (htdocs)</li>
@@ -303,7 +306,7 @@ echo $sales-&gt;getById(4);</code></pre>
         </main>
 
         <!-- Right Sidebar: On-page navigation -->
-        <nav class="w-48 bg-gray-800 py-12  inset-y-0 right-0 overflow-y-auto">
+        <nav class="w-48  py-12  inset-y-0 right-0 overflow-y-auto">
 
         </nav>
     </div>

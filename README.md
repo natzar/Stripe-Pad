@@ -25,7 +25,7 @@ DEMO: [Stripepad.com](https://www.stripepad.com)
 
 ## Official Documentation
 
-You can read the official documentation on the [Stripepad.com](https://www.stripepad.com/documentation).
+You can read the official documentation on the [Stripepad.com](https://www.stripepad.com/documentation) website.
 
 ## Contributing
 <a name="contributing"></a>
