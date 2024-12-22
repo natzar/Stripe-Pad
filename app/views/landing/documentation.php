@@ -32,12 +32,13 @@
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Extras</h2>
             <ul class="space-y-2 mb-10">
                 <li><a href="documentation#blog" class="text-gray-400 hover:text-blue-500">Blog</a></li>
+                <li><a href="documentation#widget" class="text-gray-400 hover:text-blue-500">Widget</a></li>
             </ul>
 
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 pl-80 pr-32  text-gray-300 text-base">
+        <main class="flex-1 pl-80 pr-32  text-gray-300 text-base pb-16">
 
             <p>Stripe Pad Version: <?= STRIPE_PAD_VERSION ?></p>
             <h2 id="quickstart" class="text-xl mt-10 uppercase">Quickstart</h2>
@@ -80,7 +81,7 @@
                 <li>Your API endpoints will be located within the /api folder.</li>
             </ul>
             <section class="mt-4">
-                <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4 mb-4 rounded-full pl-8">Initial Setup</h3>
+                <h3 class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">Initial Setup</h3>
                 <ol class="list-decimal pl-8 space-y-2">
                     <li>Download the latest version from the repository. https://github.com/natzar/Stripe-Pad/releases/tag/v.0.0.1-alpha</li>
                     <li>Extract the files to your preferred directory (htdocs)</li>
@@ -89,7 +90,7 @@
             </section>
 
             <section class="mt-4">
-                <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4 mb-4  rounded-full pl-8">Configuration</h3>
+                <h3 class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">Configuration</h3>
                 <ol class="list-decimal pl-8 space-y-2">
                     <li>Set your application name, base URL, Stripe API Keys, Database settings and all configurations in <span class="bg-gray-700 text-red-300 p-1 rounded">config.php</span>.</li>
 
@@ -225,32 +226,8 @@ echo $sales-&gt;getById(4);</code></pre>
             <p> v3 is coming, Guzzle + REST</p>
 
             <hr class="border-1 border-gray-500 mt-10">
-            <h2>Application (App)</h2>
-
-            <h3>Landing Page</h3>
-            <p>The 'landing' directory hosts all public-facing parts of your SaaS, including marketing content and user acquisition elements. To extend the landing page:</p>
-            <ol>
-                <li>Create new HTML/PHP templates within <code>templates/landing/</code>.</li>
-                <li>Add corresponding methods to <code>app/app.php</code> for new pages, e.g., <code>public function about()</code>.</li>
-                <li>Implement the desired logic and view rendering within these new methods.</li>
-            </ol>
-            <p>This setup enables straightforward routing from URLs to respective application methods and views.</p>
-            <h3>Your code goes here</h3>
-            <p>Access to the core application features, such as the dashboard, is restricted to authenticated users. The dashboard acts as the entry point for logged-in users, hosting the primary functionality and data interactions of your SaaS solution. Start by modifying <code>dashboard.php</code> to tailor it to your application's needs.</p>
 
 
-
-
-            <h2>Widget</h2>
-            <p>In case you want to build a widget that users will insert in their websites, you can use this. </p>
-            <h2>Modules</h2>
-            <ul>
-                <li>EmailValidator</li>
-                <li>Request Bot Blocker</li>
-            </ul>
-            <p>The directory structure and setup described provide a comprehensive framework for developing and scaling your SaaS platform with Stripe Pad.</p>
-            <h2>Getting Started</h2>
-            <p>Follow the installation instructions to set up the environment on your local machine. Once you have everything running locally, you are ready to begin the development of your SaaS application.</p>
 
 
 
@@ -262,7 +239,7 @@ echo $sales-&gt;getById(4);</code></pre>
 
 
 
-            <h2 id="app">Your app</h2>
+            <h2 id="app" class="text-xl mt-10 uppercase">Your app</h2>
             <p>index.php is the boilerplate, app/app.php it's an extended StripePad Class. You can override the parent methods.
                 All your application logic will be in app/app.php, public &amp; private sides, is all there, all urls are defined there. </p>
 
@@ -282,6 +259,30 @@ echo $sales-&gt;getById(4);</code></pre>
                 <li>Your main file for customization will be <code>app/themes/[your-new-theme]/dashboard.php</code>.</li>
                 <li>Update the configuration file <code>config.php</code> within your theme folder, setting <code>APP_THEME</code> to the name of your new folder.</li>
             </ol>
+            <h2 id="landing" class="text-xl mt-10 uppercase">Landing Page</h2>
+            <p>The 'landing' directory hosts all public-facing parts of your SaaS, including marketing content and user acquisition elements. To extend the landing page:</p>
+            <ol>
+                <li>Create new HTML/PHP templates within <code>templates/landing/</code>.</li>
+                <li>Add corresponding methods to <code>app/app.php</code> for new pages, e.g., <code>public function about()</code>.</li>
+                <li>Implement the desired logic and view rendering within these new methods.</li>
+            </ol>
+            <p>This setup enables straightforward routing from URLs to respective application methods and views.</p>
+            <h3>Your code goes here</h3>
+            <p>Access to the core application features, such as the dashboard, is restricted to authenticated users. The dashboard acts as the entry point for logged-in users, hosting the primary functionality and data interactions of your SaaS solution. Start by modifying <code>dashboard.php</code> to tailor it to your application's needs.</p>
+
+
+
+
+            <h2 id="widget">Widget</h2>
+            <p>In case you want to build a widget that users will insert in their websites, you can use this. </p>
+            <h2>Modules</h2>
+            <ul>
+                <li>EmailValidator</li>
+                <li>Request Bot Blocker</li>
+            </ul>
+            <p>The directory structure and setup described provide a comprehensive framework for developing and scaling your SaaS platform with Stripe Pad.</p>
+            <h2>Getting Started</h2>
+            <p>Follow the installation instructions to set up the environment on your local machine. Once you have everything running locally, you are ready to begin the development of your SaaS application.</p>
 
 
 

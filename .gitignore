@@ -3,3 +3,4 @@ _recycle/
 node_modules/
 *.log
 app/build/node_modules/
+config.php
