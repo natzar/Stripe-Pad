@@ -43,8 +43,10 @@
         <main class="flex-1 pl-80 pr-32  text-gray-300 text-base pb-16">
 
 
-            <h2 id="quickstart" class="text-xl mt-10 uppercase">Quickstart</h2>
-            <p>Stripe Pad Version: <?= STRIPE_PAD_VERSION ?></p>
+            <h2 id="quickstart" class="text-xl text-blue-500 mt-10 uppercase">Quickstart</h2>
+            <? include CORE_PATH . "version.php"; ?>
+
+            <p>Stripe Pad Version: <?= $STRIPE_PAD_VERSION ?></p>
             <p>Github Repo: <a href="https://github.com/natzar/Stripe-Pad" target="_blank">https://github.com/natzar/Stripe-Pad</a></p>
             <p>License GPL-3</p><br>
 
@@ -72,7 +74,7 @@
 
             <hr class="border-1 border-gray-500 mt-10">
 
-            <h2 id="install" class="text-xl mt-10 uppercase">Installation</h2>
+            <h2 id="install" class="text-xl text-blue-500 mt-10 uppercase">Installation</h2>
             <p>Follow the installation instructions to set up the environment on your local machine. Once you have everything running locally, you are ready to begin the development of your SaaS application.</p>
 
             <h3>Download Stripe Pad From Github</h3>
@@ -147,7 +149,7 @@
          --><a href="https://github.com/natzar/Stripe-Pad/issues" class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full">Get Support!</a>
             </div>
             <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="upgrade" class="text-xl mt-10 uppercase">Upgrade Guide</h2>
+            <h2 id="upgrade" class="text-xl text-blue-500 mt-10 uppercase">Upgrade Guide</h2>
 
             <p>To upgrade Stripe Pad you just need to replace core files</p>
             1- Replace core folder with the new version<br>
@@ -156,7 +158,7 @@
 
 
 
-            <h2 id="components" class="text-xl mt-10 uppercase">Components</h2>
+            <h2 id="components" class="text-xl text-blue-500 mt-10 uppercase">Components</h2>
             <p>The base of Stripe Pad is structured as a simplistic MVC (Model-View-Controller (1)) PHP application. </p>
             <p><img width="500" class="mx-auto" src="https://www.stripepad.com/relations.png" alt="Stripe Pad Relations"></p>
 
@@ -240,7 +242,7 @@
             <p>For optimal security and organization, setting up dedicated domains or subdomains for different application aspects (such as cron jobs, core functionality, and CDN) is advised.</p>
             <hr class="border-1 border-gray-500 mt-10">
 
-            <h2 id="routes" class="text-xl mt-10 uppercase">Routes</h2>
+            <h2 id="routes" class="text-xl text-blue-500 mt-10 uppercase">Routes</h2>
             <h2>Adding New URLs</h2>
             <p>To introduce new URLs to your application, open /app/App.php and add a new method:</p>
             <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
@@ -253,7 +255,7 @@
                 <li>Add new methods corresponding to your desired URLs, for example, <code>public function faq() {}</code> which will make <code>https://your-domain.com/faq</code> accessible.</li>
             </ol>
             <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="models" class="text-xl mt-10 uppercase">Models</h2>
+            <h2 id="models" class="text-xl text-blue-500 mt-10 uppercase">Models</h2>
             <p>Instead of embedding SQL directly within your controllers or views, utilize models:</p>
 
             <p>Models serve as adapters for your MySQL queries. Create a new model by duplicating an existing one and adding new methods as needed.</p>
@@ -279,7 +281,7 @@
             <p>This approach keeps your application organized and maintains a separation of concerns between your database logic and your application logic.</p>
 
             <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="users" class="text-xl mt-10 uppercase">Users</h2>
+            <h2 id="users" class="text-xl text-blue-500 mt-10 uppercase">Users</h2>
             <p>Users are identified by email</p>
             <ul>
                 <li>name: String</li>
@@ -293,7 +295,7 @@
                 $user = $users->find('beto@gmail.com');
             </blockquote>
             <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="emails" class="text-xl mt-10 uppercase">Transactional Emails</h2>
+            <h2 id="emails" class="text-xl text-blue-500 mt-10 uppercase">Transactional Emails</h2>
 
             <p>An email system comes enabled by default using SMTP server. To-do: integrate other services like Mailgun.</p>
             <p>You must update settings at config.php</p>
@@ -312,17 +314,17 @@
                 $mails->sendTemplate('welcome', $subject, $to, $data );
             </blockquote>
             <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="webhooks" class="text-xl mt-10 uppercase">Webhooks</h2>
+            <h2 id="webhooks" class="text-xl text-blue-500 mt-10 uppercase">Webhooks</h2>
             <p>Facilitate automated interactions with external systems:</p>
             <ul>
                 <li><strong>deploy.php</strong>: Configurable for automatic deployment via Bitbucket or Git hooks.</li>
                 <li><strong>stripe.php</strong>: Endpoint for receiving events from Stripe.</li>
             </ul>
             <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="cronjobs" class="text-xl mt-10 uppercase">Cronjobs</h2>
+            <h2 id="cronjobs" class="text-xl text-blue-500 mt-10 uppercase">Cronjobs</h2>
             <p>This section is designated for scheduling and managing cronjobs. Scripts within the 'crons' directory should start by including <code>load.php</code>, initializing required models, and executing necessary tasks. These scripts can then be scheduled directly on the server.</p>
             <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="api" class="text-xl mt-10 uppercase">Api</h2>
+            <h2 id="api" class="text-xl text-blue-500 mt-10 uppercase">Api</h2>
             <p>API comes in 2 forms, v1 and v2.</p>
             <ul>
                 <li>v1: just 1 endpoint user for 1 action (search, get info, whatever...)</li>
@@ -337,7 +339,7 @@
 
 
 
-            <h2 id="cdn" class="text-xl mt-10 uppercase">CDN</h2>
+            <h2 id="cdn" class="text-xl text-blue-500 mt-10 uppercase">CDN</h2>
             <h2>CDN</h2>
             <p>The 'cdn' directory is intended for static assets such as JavaScript, CSS, and images. Ideally, these should be served from a separate domain or subdomain to improve loading times and security.</p>
             <hr class="border-1 border-gray-500 mt-10">
@@ -345,7 +347,7 @@
 
 
 
-            <h2 id="app" class="text-xl mt-10 uppercase">Your app</h2>
+            <h2 id="app" class="text-xl text-blue-500 mt-10 uppercase">Your app</h2>
             <p>index.php is the boilerplate, app/app.php it's an extended StripePad Class. You can override the parent methods.
                 All your application logic will be in app/app.php, public &amp; private sides, is all there, all urls are defined there. </p>
 
@@ -365,7 +367,7 @@
                 <li>Your main file for customization will be <code>app/themes/[your-new-theme]/dashboard.php</code>.</li>
                 <li>Update the configuration file <code>config.php</code> within your theme folder, setting <code>APP_THEME</code> to the name of your new folder.</li>
             </ol>
-            <h2 id="landing" class="text-xl mt-10 uppercase">Landing Page</h2>
+            <h2 id="landing" class="text-xl text-blue-500 mt-10 uppercase">Landing Page</h2>
             <p>The 'landing' directory hosts all public-facing parts of your SaaS, including marketing content and user acquisition elements. To extend the landing page:</p>
             <ol>
                 <li>Create new HTML/PHP templates within <code>templates/landing/</code>.</li>
