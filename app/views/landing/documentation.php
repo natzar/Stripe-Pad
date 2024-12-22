@@ -59,11 +59,13 @@
             </blockquote><br>
             <h3>Requirements</h3>
             <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                Stripe Account (Signup at <a href="https://stripe.com/?ref=stripepad.com" target="_blank">stripe.com</a>)
+                <br>
                 PHP 7.2<br>
                 Composer<br>
                 MySQL / MariaDB / SqlLite<br>
                 SMTP server<br>
-                Stripe Account<br>
+
             </blockquote>
 
 
@@ -73,13 +75,17 @@
             <h2 id="install" class="text-xl mt-10 uppercase">Installation</h2>
             <p>Follow the installation instructions to set up the environment on your local machine. Once you have everything running locally, you are ready to begin the development of your SaaS application.</p>
 
-            <h3>Download Stripe Pad</h3>
+            <h3>Download Stripe Pad From Github</h3>
 
             <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
-                Download the latest version from the repository an uncompressed it <br>or git clone https://github.com/natzar/Stripe-Pad.git<br>
-                Then, open https://www.yourdomain.com/stripe-pad/install/
+                Download the latest version from the repository an uncompress it
             </blockquote>
-            <p>The installer will fill up config.php for you and import install/database.sql, in case something failed, please try manual installation.</p>
+            <h3>Git clone</h3>
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                git clone https://github.com/natzar/Stripe-Pad.git<br>
+
+            </blockquote>
+            <p> Then, open https://www.yourdomain.com/stripe-pad/install/. The installer will fill up config.php for you and import install/database.sql, in case something failed, please try manual installation.</p>
 
             <h3>Manual installation </h3>
             <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
