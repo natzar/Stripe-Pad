@@ -77,24 +77,21 @@
           <div class="-my-6 divide-y divide-gray-500/25">
             <div class="space-y-2 py-6">
 
-              <? if (!$isAuthenticated): ?>
 
-                <a href="<?= APP_BASE_URL ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Home</a>
 
-                <a href="<?= APP_BASE_URL ?>installation" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Installation</a>
+              <a href="<?= APP_BASE_URL ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Home</a>
 
-                <a href="https://www.github.com/natzar/Stripe-Pad" target="_blank" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Download</a>
+              <a href="<?= APP_BASE_URL ?>documentation" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Documentation</a>
 
+              <a href="https://www.github.com/natzar/Stripe-Pad" target="_blank" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Github</a>
+              <!-- 
 
 
                 <a href="<?= APP_BASE_URL ?>examples" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Examples</a>
 
-                <a href="https://github.com/natzar/Stripe-Pad/wiki" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Documentation</a>
+                <a href="https://github.com/natzar/Stripe-Pad/wiki" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Documentation</a> -->
 
 
-              <? else: ?>
-
-              <? endif; ?>
 
 
             </div>
@@ -102,17 +99,10 @@
 
 
 
-              <? if ($isAuthenticated): ?>
-                <a href="login" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Login</a>
-                <a href="signup" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Sign Up</a>
-              <? else: ?>
 
-                <!-- <span>Credits: 0/0</span>
-            	<a href="https://buy.stripe.com/cN25lUaKsaq4aE89AE" target="_blank" class="bg-red-500 hover:bg-blue-500 px-2 py-1  ml-4">Buy 500 Credits</a>
- -->
+              <a href="<?= APP_DOMAIN ?>login" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Login</a>
+              <a href="<?= APP_DOMAIN ?>signup" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Sign Up</a>
 
-                <a href="actionLogout" class="text-gray-800 hover:text-gray-800 hover:font-bold ml-4">Logout</a>
-              <? endif; ?>
 
             </div>
           </div>
