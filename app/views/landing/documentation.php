@@ -3,10 +3,9 @@
     <div class="block flex min-h-screen text-gray-200 ">
 
         <!-- Sidebar: Navigation -->
-        <aside class="w-64  px-8 py-12  overflow-y-auto">
+        <aside class="sm:w-64  sm:px-8 sm:py-12 sm:fixed overflow-y-auto">
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Getting Started</h2>
             <ul class="space-y-2 mb-10">
-                <li><a href="documentation#introduction" class="text-gray-400 hover:text-blue-500">Introduction</a></li>
                 <li><a href="documentation#quickstart" class="text-gray-400 hover:text-blue-500">Quickstart</a></li>
                 <li><a href="documentation#install" class="text-gray-400 hover:text-blue-500">Installation</a></li>
                 <li><a href="documentation#upgrade" class="text-gray-400 hover:text-blue-500">Upgrade Guide</a></li>
@@ -14,6 +13,7 @@
             </ul>
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Components</h2>
             <ul class="space-y-2 mb-10">
+                <li><a href="documentation#components" class="text-gray-400 hover:text-blue-500">Introduction</a></li>
                 <li><a href="documentation#routes" class="text-gray-400 hover:text-blue-500">Routes</a></li>
                 <li><a href="documentation#models" class="text-gray-400 hover:text-blue-500">Models</a></li>
                 <li><a href="documentation#users" class="text-gray-400 hover:text-blue-500">Users</a></li>
@@ -30,12 +30,28 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 pl-32 pr-32 py-12 text-gray-300 text-base">
-            <h2 id="introduction" class="text-xl mt-10 uppercase">Introduction</h2>
-            <p>Stripe Pad is an innovative PHP boilerplate designed to streamline the process of building Software as a Service (SaaS) applications in a WordPress Style. This comprehensive guide aims to provide you with all the necessary information to get started with Stripe Pad, from setting up your development environment to deploying your first SaaS application.</p>
-            <p>Stripe Pad combines modern PHP development practices with seamless integration of Stripe, a leading online payment processor, to provide a robust foundation for your SaaS projects. Whether you are a beginner just starting out in the world of web development or a seasoned developer looking to accelerate your SaaS product development, Stripe Pad offers the tools and flexibility you need.</p>
+        <main class="flex-1 pl-80 pr-32  text-gray-300 text-base">
+
+
+            <h2 id="quickstart" class="text-xl mt-10 uppercase">Quickstart</h2>
+            <ol>
+                <li>Download the latest version from the repository. <a href="https://github.com/natzar/Stripe-Pad/releases/tag/v.0.0.1-alpha">https://github.com/natzar/Stripe-Pad/releases/tag/v.0.0.1-alpha</a></li>
+                <li>Extract the files to your preferred directory (htdocs)</li>
+                <li>Create database &amp; import database.sql into your MySQL database.</li>
+                <li>Run composer install to install necessary dependencies.
+                    <h2>Configuration</h2>
+                    <ul>
+                        <li>Optional: Create subdomains and point them to the respective folders: app, api, webhooks, and cdn.</li>
+                        <li>Set your application name, base URL, Stripe API Keys, Database settings and all configurations in config.php.</li>
+                        <li>Optional: Check .htaccess if you will be running in a /subfolder/ RedirectBase in /app/.htaccess and /api/.htaccess to match your localhost directory.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <p>Stripe Pad is simple PHP SaaS boilerplate designed to streamline the process of building Software as a Service (SaaS) applications in a WordPress Style. This comprehensive guide aims to provide you with all the necessary information to get started with Stripe Pad, from setting up your development environment to deploying your first SaaS application.</p>
+            <p>Stripe Pad combines seamless integration of Stripe, a leading online payment processor, to provide a robust foundation for your SaaS projects. Whether you are a beginner just starting out in the world of web development or a seasoned developer looking to accelerate your SaaS product development, Stripe Pad offers the tools and flexibility you need.</p>
             <p>In this documentation, you will find step-by-step instructions, best practices, and detailed explanations of Stripe-Pad's features and components. Our goal is to help you maximize the potential of Stripe-Pad and create efficient, scalable, and secure SaaS applications.</p>
-            <p>Thank you for choosing Stripe Pad. Feel free to use the issues tab if you need help.</p>
+            <p>Thank you for choosing Stripe Pad.</p>
             <h2>Features</h2>
             <ul>
                 <li>user management: login, signup, password recovery</li>
@@ -58,21 +74,8 @@
                 MySQL / MariaDB / SqlLite
             </blockquote>
             <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="quickstart" class="text-xl mt-10 uppercase">Quickstart</h2>
-            <ol>
-                <li>Download the latest version from the repository. <a href="https://github.com/natzar/Stripe-Pad/releases/tag/v.0.0.1-alpha">https://github.com/natzar/Stripe-Pad/releases/tag/v.0.0.1-alpha</a></li>
-                <li>Extract the files to your preferred directory (htdocs)</li>
-                <li>Create database &amp; import database.sql into your MySQL database.</li>
-                <li>Run composer install to install necessary dependencies.
-                    <h2>Configuration</h2>
-                    <ul>
-                        <li>Optional: Create subdomains and point them to the respective folders: app, api, webhooks, and cdn.</li>
-                        <li>Set your application name, base URL, Stripe API Keys, Database settings and all configurations in config.php.</li>
-                        <li>Optional: Check .htaccess if you will be running in a /subfolder/ RedirectBase in /app/.htaccess and /api/.htaccess to match your localhost directory.</li>
-                    </ul>
-                </li>
-            </ol>
-            <h2>Post-Configuration Steps</h2>
+
+            <h2 id="install" class="text-xl mt-10 uppercase">Installation</h2>
             <ol>
                 <li>Set up a webhook from your Stripe dashboard to <a href="https://yourdomain.com/webhooks/stripe.php">https://yourdomain.com/webhooks/stripe.php</a> or webhooks.your-domain.com (in case you are using subdomains) to handle Stripe events.</li>
                 <li>Set up automatic deployment from a git repository/webhooks/deploy.php.
@@ -87,7 +90,17 @@
                 <li>Your custom application should reside in the /app folder.</li>
                 <li>Your API endpoints will be located within the /api folder.</li>
             </ul>
-            <h2>Base Framework</h2>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="upgrade" class="text-xl mt-10 uppercase">Upgrade Guide</h2>
+
+            <p>To upgrade Stripe Pad you just need to replace core files</p>
+            - Replace core folder with the new version<br>
+            - replace load.php with the new version<br>
+            <hr class="border-1 border-gray-500 mt-10">
+
+
+
+            <h2 id="components" class="text-xl mt-10 uppercase">Components</h2>
             <p><img src="https://www.stripepad.com/relations.png" alt="Stripe Pad Relations"></p>
             <p>The base of Stripe Pad is structured as a simplistic MVC (Model-View-Controller) PHP application. </p>
             <ul>
@@ -109,6 +122,30 @@
                 <li><strong>load.php</strong>: Initializes the application by loading <code>config.php</code>, managing error handling, including all model files, and integrating composer packages.</li>
             </ul>
             <p>For optimal security and organization, setting up dedicated domains or subdomains for different application aspects (such as cron jobs, core functionality, and CDN) is advised.</p>
+
+
+            <h2 id="routes" class="text-xl mt-10 uppercase">Routes</h2>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="models" class="text-xl mt-10 uppercase">Models</h2>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="users" class="text-xl mt-10 uppercase">Users</h2>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="emails" class="text-xl mt-10 uppercase">Transactional Emails</h2>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="webhooks" class="text-xl mt-10 uppercase">Webhooks</h2>
+
+            <h2>Webhooks</h2>
+            <p>Facilitate automated interactions with external systems:</p>
+            <ul>
+                <li><strong>deploy.php</strong>: Configurable for automatic deployment via Bitbucket or Git hooks.</li>
+                <li><strong>stripe.php</strong>: Endpoint for receiving events from Stripe.</li>
+            </ul>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="cronjobs" class="text-xl mt-10 uppercase">Cronjobs</h2>
+            <hr class="border-1 border-gray-500 mt-10">
+            <h2 id="api" class="text-xl mt-10 uppercase">Api</h2>
+
+            <hr class="border-1 border-gray-500 mt-10">
             <h2>Application (App)</h2>
             <p>index.php is the boilerplate, app/app.php it's an extended StripePad Class. You can override the parent methods.
                 All your application logic will be in app/app.php, public &amp; private sides, is all there, all urls are defined there. </p>
@@ -133,12 +170,7 @@
                 <li><strong>payments</strong>: Records payment transactions including Stripe payment IDs, user IDs, amounts, and timestamps.</li>
                 <li><strong>blog</strong>: Maintains blog post data including slugs, titles, bodies, and timestamps.</li>
             </ul>
-            <h2>Webhooks</h2>
-            <p>Facilitate automated interactions with external systems:</p>
-            <ul>
-                <li><strong>deploy.php</strong>: Configurable for automatic deployment via Bitbucket or Git hooks.</li>
-                <li><strong>stripe.php</strong>: Endpoint for receiving events from Stripe.</li>
-            </ul>
+
             <h2>API</h2>
             <p>API comes in 2 forms, v1 and v2.</p>
             <ul>

@@ -14,7 +14,7 @@
 
 
 <div class="bg-transparent  shadow-lg ">
-  <header class="mx-auto w-full px-10 z-50   relative   ">
+  <header class="mx-auto w-full px-3 md:px-10 z-50   relative   ">
     <nav class="flex items-center justify-between p-6 lg:px-8 " aria-label="Global">
       <div class="flex lg:flex-1">
         <a href="<?= HOMEPAGE_URL ?>" class="-m-1.5 p-1.5 text-gray-100 hover:text-red-500 font-bold">
