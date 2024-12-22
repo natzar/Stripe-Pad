@@ -48,7 +48,9 @@
     <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">Start your SaaS Today!</h2>
     <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">Everything you need to focus only in your original idea</p>
     <div class="mt-10 flex items-center justify-center gap-x-6">
-      <a href="/signup" class="rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-gray-100 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Sign up</a>
+      <a href="/signup" class="rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-gray-100 shadow-sm hover:bg-red-000 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"> START HERE
+        <span class="text-purple-200" aria-hidden="true">&rarr;</span>
+      </a>
       <!-- <a href="https://www.domstry.com/resources/domstry-mautic-leads" class="text-sm font-semibold leading-6 text-white">Learn more <span aria-hidden="true">→</span></a> -->
     </div>
     <svg viewBox="0 0 1024 1024" class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]" aria-hidden="true">
@@ -214,29 +216,6 @@
 </footer>
 
 
-
-<!-- Floating feedback div -->
-<div id="feedbackDiv" style="padding:20px;position: fixed;
-    bottom: 10px;
-    right: 10px;" class=" bg-indigo-500 text-xs items-center px-4 text-white p-2 rounded cursor-pointer hidden">
-
-  <svg id="welcome_close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" style="float:right">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-  </svg>
-
-
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="block w-20 h-20 mx-auto">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-  </svg>
-  <p class="max-w-xs mt-8  text-sm font-semibold block">
-
-
-
-    🤞 <a class="hover:underline" href="#" id="trigger">Click here to send feedback!</a>
-    <br><br>
-    <span class="text-xs font-light ">Powered by <a href="//stripepad.com">Stripe Pad v.0.0.1 </a> · Made by <a href="https://www.twitter.com/betoayesa" target="_blank">@betoayesa</a></span>
-  </p>
-</div>
 
 <!-- PHP to JS -->
 <script>
