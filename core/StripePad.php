@@ -204,13 +204,13 @@ class StripePad
         include CORE_PATH . "classes/EmailValidator.php";
         $emailValidator = new emailValidator();
 
+        // verify valid email
         if (!$emailValidator->isValid($this->params['email'])) {
             $_SESSION['errors'][] = ERR_EMAIL_NOT_VALID;
             header("location: " . APP_DOMAIN . "/signup");
             return;
         }
 
-        // TODO: Verify valid email
         if (empty($this->params['email'])) {
             $_SESSION['errors'][] = ERR_EMAIL_NOT_BLANK;
             header("location: " . APP_DOMAIN . "/signup");
