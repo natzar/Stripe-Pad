@@ -19,9 +19,9 @@
                 <li><a href="documentation#users" class="text-gray-400 hover:text-blue-500">Users</a></li>
                 <li><a href="documentation#mail" class="text-gray-400 hover:text-blue-500">Mail</a></li>
                 <li><a href="documentation#webhook" class="text-gray-400 hover:text-blue-500">Webhooks</a></li>
-                <li><a href="documentation#crons" class="text-gray-400 hover:text-blue-500">Crons</a></li>
+
                 <li><a href="documentation#api" class="text-gray-400 hover:text-blue-500">Api</a></li>
-                <li><a href="documentation#cdn" class="text-gray-400 hover:text-blue-500">CDN</a></li>
+
 
             </ul>
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Customization</h2>
@@ -33,6 +33,8 @@
             <ul class="space-y-2 mb-10">
                 <li><a href="documentation#blog" class="text-gray-400 hover:text-blue-500">Blog</a></li>
                 <li><a href="documentation#widget" class="text-gray-400 hover:text-blue-500">Widget</a></li>
+                <li><a href="documentation#crons" class="text-gray-400 hover:text-blue-500">Crons</a></li>
+                <li><a href="documentation#cdn" class="text-gray-400 hover:text-blue-500">CDN</a></li>
             </ul>
 
         </aside>
@@ -40,10 +42,13 @@
         <!-- Main Content -->
         <main class="flex-1 pl-80 pr-32  text-gray-300 text-base pb-16">
 
-            <p>Stripe Pad Version: <?= STRIPE_PAD_VERSION ?></p>
-            <h2 id="quickstart" class="text-xl mt-10 uppercase">Quickstart</h2>
 
-            <p>Stripe Pad is simple PHP SaaS boilerplate designed to streamline the process of building Software as a Service (SaaS) applications in a WordPress Style. This comprehensive guide aims to provide you with all the necessary information to get started with Stripe Pad, from setting up your development environment to deploying your first SaaS application.</p>
+            <h2 id="quickstart" class="text-xl mt-10 uppercase">Quickstart</h2>
+            <p>Stripe Pad Version: <?= STRIPE_PAD_VERSION ?></p>
+            <p>Github Repo: <a href="https://github.com/natzar/Stripe-Pad" target="_blank">https://github.com/natzar/Stripe-Pad</a></p>
+            <p>License GPL-3</p><br>
+
+            <p>Stripe Pad is simple PHP SaaS boilerplate designed to streamline the process of building Software as a Service (SaaS). It's simplicity it's the main diferentiator with other boilerplates. This comprehensive guide aims to provide you with all the necessary information to get started with Stripe Pad, from setting up your development environment to deploying your first SaaS application.</p>
             <br>
             <h3>Quick install</h3>
             <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
@@ -66,73 +71,70 @@
             <hr class="border-1 border-gray-500 mt-10">
 
             <h2 id="install" class="text-xl mt-10 uppercase">Installation</h2>
-            <ol>
-                <li>Set up a webhook from your Stripe dashboard to <a href="https://yourdomain.com/webhooks/stripe.php">https://yourdomain.com/webhooks/stripe.php</a> or webhooks.your-domain.com (in case you are using subdomains) to handle Stripe events.</li>
-                <li>Set up automatic deployment from a git repository/webhooks/deploy.php.
-                    <h2>Verification and Testing</h2>
-                    <p>Ensure the setup is correct by accessing the following:</p>
-                </li>
-            </ol>
+            <p>Follow the installation instructions to set up the environment on your local machine. Once you have everything running locally, you are ready to begin the development of your SaaS application.</p>
+
+            <h3>Download Stripe Pad</h3>
+
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                Download the latest version from the repository an uncompressed it <br>or git clone https://github.com/natzar/Stripe-Pad.git<br>
+                Then, open https://www.yourdomain.com/stripe-pad/install/
+            </blockquote>
+            <p>The installer will fill up config.php for you and import install/database.sql, in case something failed, please try manual installation.</p>
+
+            <h3>Manual installation </h3>
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+            </blockquote>
             <ul>
-                <li><a href="https://localhost/app">Login Page</a> should open correctly.</li>
-                <li><a href="https://localhost/api">API Endpoint</a> should display a 'not authenticated' message.</li>
-                <li>Access your main landing or marketing page at the /web directory.</li>
-                <li>Your custom application should reside in the /app folder.</li>
-                <li>Your API endpoints will be located within the /api folder.</li>
+                <li>Run <span class="bg-gray-700 text-red-300 p-1 rounded">composer install</span> to install necessary dependencies.</li>
+
+                <li>Import <span class="bg-gray-700 text-red-300 p-1 rounded">database.sql</span> into your MySQL database.</li>
+
             </ul>
-            <section class="mt-4">
-                <h3 class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">Initial Setup</h3>
-                <ol class="list-decimal pl-8 space-y-2">
-                    <li>Download the latest version from the repository. https://github.com/natzar/Stripe-Pad/releases/tag/v.0.0.1-alpha</li>
-                    <li>Extract the files to your preferred directory (htdocs)</li>
+            <h3>Environment</h3>
+            <ol class="list-decimal pl-8 space-y-2">
+                <li>Set your application name, base URL, Stripe API Keys, Database settings and all configurations in <span class="bg-gray-700 text-red-300 p-1 rounded">config.php</span>.</li>
 
-                </ol>
+                <li>Optional: Check .htaccess if you will be running in a /subfolder/ <code class="bg-gray-700 text-red-300 p-1 rounded">RedirectBase</code> in <span class="bg-gray-700 text-red-300 p-1 rounded">/app/.htaccess</span> and <span class="bg-gray-700 text-red-300 p-1 rounded">/api/.htaccess</span> to match your localhost directory.</li>
+                <li>Optional: Create subdomains and point them to the respective folders: app, api, webhooks, and cdn.</li>
+
+
+
+            </ol>
+
+
+
+            <h3>Finishing</h3>
+
+            <ol class="list-decimal pl-8 space-y-2">
+                <li>Set up a webhook from your Stripe dashboard to <span class="bg-gray-700 text-red-300 p-1 rounded">https://yourdomain.com/webhooks/stripe.php</span> to handle Stripe events.</li>
+
+                <li>Set up automatic deployment from a git repository<span class="bg-gray-700 text-red-300 p-1 rounded">/webhooks/deploy.php</span>.</li>
+
+                <li>
+                </li>
+
+            </ol>
             </section>
 
-            <section class="mt-4">
-                <h3 class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">Configuration</h3>
-                <ol class="list-decimal pl-8 space-y-2">
-                    <li>Set your application name, base URL, Stripe API Keys, Database settings and all configurations in <span class="bg-gray-700 text-red-300 p-1 rounded">config.php</span>.</li>
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
 
-                    <li>Optional: Check .htaccess if you will be running in a /subfolder/ <code class="bg-gray-700 text-red-300 p-1 rounded">RedirectBase</code> in <span class="bg-gray-700 text-red-300 p-1 rounded">/app/.htaccess</span> and <span class="bg-gray-700 text-red-300 p-1 rounded">/api/.htaccess</span> to match your localhost directory.</li>
-                    <li>Optional: Create subdomains and point them to the respective folders: app, api, webhooks, and cdn.</li>
-
-
-
-                </ol>
-            </section>
-
-            <section class="mt-4">
-                <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4 mb-4  rounded-full pl-8">Post-Configuration Steps</h3>
-                <ol class="list-decimal pl-8 space-y-2">
-                    <li>Run <span class="bg-gray-700 text-red-300 p-1 rounded">composer install</span> to install necessary dependencies.</li>
-
-                    <li>Import <span class="bg-gray-700 text-red-300 p-1 rounded">database.sql</span> into your MySQL database.</li>
-
-                    <li>Set up a webhook from your Stripe dashboard to <span class="bg-gray-700 text-red-300 p-1 rounded">https://yourdomain.com/webhooks/stripe.php</span> to handle Stripe events.</li>
-
-                    <li>Set up automatic deployment from a git repository<span class="bg-gray-700 text-red-300 p-1 rounded">/webhooks/deploy.php</span>.</p>
-
-                </ol>
-            </section>
-
-            npm install -D tailwindcss
-            npx tailwindcss init
-            app/css/build/compile-tailwind.sh
+                npm install -D tailwindcss
+                npx tailwindcss init
+                app/css/build/compile-tailwind.sh
+            </blockquote>
+            <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4  rounded-full pl-8">Verification and Testing</h3>
+            <p>Ensure the setup is correct by accessing the following:</p>
 
 
-            <section class="mt-4">
-                <h3 class="text-lg font-medium text-gray-100 bg-gray-800 p-4  rounded-full pl-8">Verification and Testing</h3>
-                <p>Ensure the setup is correct by accessing the following:</p>
-                <ul class="list-disc pl-8">
-                    <li><a href="/app" class="text-blue-400 hover:text-blue-600">Login Page</a> should open correctly.</li>
-                    <li><a href="/api" class="text-blue-400 hover:text-blue-600">API Endpoint</a> should display a 'not authenticated' message.</li>
-                    <li>Access your main landing or marketing page at the <span class="bg-gray-700 text-red-300 p-1 rounded">/web</span> directory.</li>
-                    <li>Your custom application should reside in the <span class="bg-gray-700 text-red-300 p-1 rounded">/app</span> folder.</li>
-                    <li>Your API endpoints will be located within the <span class="bg-gray-700 text-red-300 p-1 rounded">/api</span> folder.</li>
-                    <li>Models shared between all components are available for use across the application.</li>
-                </ul>
-            </section>
+            <ul class="list-disc pl-8">
+                <li><a href="/app" class="text-blue-400 hover:text-blue-600">Login Page</a> should open correctly.</li>
+                <li><a href="/api" class="text-blue-400 hover:text-blue-600">API Endpoint</a> should display a 'not authenticated' message.</li>
+                <li>Access your main landing or marketing page at the <span class="bg-gray-700 text-red-300 p-1 rounded">/web</span> directory.</li>
+                <li>Your custom application should reside in the <span class="bg-gray-700 text-red-300 p-1 rounded">/app</span> folder.</li>
+                <li>Your API endpoints will be located within the <span class="bg-gray-700 text-red-300 p-1 rounded">/api</span> folder.</li>
+                <li>Models shared between all components are available for use across the application.</li>
+            </ul>
+
             <div class="mt-6">
                 <!-- <a href="web/" class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full">Visit Your SaaS Landing Page</a>
         <a href="app/" class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full">Visit Your SaaS Login Page</a>
@@ -142,8 +144,8 @@
             <h2 id="upgrade" class="text-xl mt-10 uppercase">Upgrade Guide</h2>
 
             <p>To upgrade Stripe Pad you just need to replace core files</p>
-            - Replace core folder with the new version<br>
-            - replace load.php with the new version<br>
+            1- Replace core folder with the new version<br>
+            2- Replace load.php with the new version<br>
             <hr class="border-1 border-gray-500 mt-10">
 
 
@@ -157,12 +159,71 @@
                 <li>Find and add your views (templates) at app/views/</li>
                 <li>Everything else where users makes requests to (api, webhooks, web (index.php), widget, cronjobs) could be considered the controllers.</li>
             </ul>
-            <h2>Core Components</h2>
-            <p>Located within the 'core' directory, these essential classes include:</p>
+
+            <h2>Paths</h2>
+            <h3>Any visit to /faq (example)</h3>
+            <ol>
+                <li>htaccess: will translate /faq for index.php?p=faq</li>
+                <li>index.php: will execute App->faq(), faq is a method inside app/App.php</li>
+                <li>App->faq will load details via faqsModel and pass it to the view</li>
+                <li>the view will include and render the template inside /app/views using the $data provided</li>
+                <li>The user will see the Faq page</li>
+
+            </ol>
+
+            <h3>Signup A: /signupp redirects to stripe checkout page</h3>
+            <ol>
+                <li>htaccess: will translate /faq for index.php?p=faq</li>
+                <li>index.php: will execute App->faq(), faq is a method inside app/App.php</li>
+                <li>App->faq will load details via faqsModel and pass it to the view</li>
+                <li>the view will include and render the template inside /app/views using the $data provided</li>
+                <li>The user will see the Faq page</li>
+
+            </ol>
+
+            <h3>Signup B: Signup without payment</h3>
+            <ol>
+                <li>htaccess: will translate /signup for index.php?p=faq</li>
+                <li>index.php: will execute App->signup(), signup is a method inside app/App.php or core/StripePad.php (App extends StripePad and you can overwrite any method).</li>
+                <li>App->signup will load details (empty) and pass it to the view</li>
+                <li>The user will fill the form and submit to /actionSignup (actionSignup method defined in core/Stripepad.php)</li>
+                <li>An email with passwords will be sent</li>
+                <li>The user can now log in and find stripe links inside the private area</li>
+
+
+            </ol>
+
+
+            <h2>Folders and files</h2>
+            <p>Ideally you will have set each folder on different domains or subdomains.<br>
+                api.domain.com for your api, webhooks.domain.com, domain.com for /, </p>
+            <h3>folders</h3>
             <ul>
-                <li><strong>ModelBase</strong>: Serves as the foundation for all model classes, incorporating database connection functionality.</li>
-                <li><strong>View</strong>: Manages template rendering and data handling.</li>
-                <li><strong>SPDO</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>api</strong>: Serves as the foundation for all model classes, incorporating database connection functionality.</li>
+                <li><strong>app</strong>: Manages template rendering and data handling.</li>
+                <li><strong>cdn</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>core</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>crons</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>docs</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>install</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>mails</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>pdfs</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>tests</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>webhooks</strong>: Facilitates MySQL database connections.</li>
+            </ul>
+            <h3>files</h3>
+            <ul>
+                <li>.htaccess</li>
+                <li>config.php</li>
+                <lii>index.php</lii>
+                <li>load.php</li>
+                <li>stripe-pad-errors.log</li>
+            </ul>
+
+            <h2>Modules</h2>
+            <ul>
+                <li>EmailValidator</li>
+                <li>Request Bot Blocker</li>
             </ul>
             <p>Key environmental files include:</p>
             <ul>
@@ -175,7 +236,12 @@
 
             <h2 id="routes" class="text-xl mt-10 uppercase">Routes</h2>
             <h2>Adding New URLs</h2>
-            <p>To introduce new URLs to your application:</p>
+            <p>To introduce new URLs to your application, open /app/App.php and add a new method:</p>
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                public function newpage(){
+                $this->view('template.php',$data); // Load the template with $data in the view
+                }
+            </blockquote>
             <ol>
                 <li>Edit <code>app/themes/[your-theme]/app.php</code>.</li>
                 <li>Add new methods corresponding to your desired URLs, for example, <code>public function faq() {}</code> which will make <code>https://your-domain.com/faq</code> accessible.</li>
@@ -183,28 +249,62 @@
             <hr class="border-1 border-gray-500 mt-10">
             <h2 id="models" class="text-xl mt-10 uppercase">Models</h2>
             <p>Instead of embedding SQL directly within your controllers or views, utilize models:</p>
-            <ol>
-                <li>
-                    <p>Models serve as adapters for your MySQL queries. Create a new model by duplicating an existing one and adding new methods as needed.</p>
-                </li>
-                <li>
-                    <p>For example, create a method within your model:</p>
-                    <pre><code class="language-php">public function getById($id) {
-// Your SQL query logic here
-}</code></pre>
-                </li>
-                <li>
-                    <p>In <code>app.php</code>, use the model to fetch data:</p>
-                    <pre><code class="language-php">$sales = new salesModel();
-echo $sales-&gt;getById(4);</code></pre>
-                </li>
-            </ol>
+
+            <p>Models serve as adapters for your MySQL queries. Create a new model by duplicating an existing one and adding new methods as needed.</p>
+            <p>For example, create a method within your model:</p>
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                public function getByLastLogin($id) { // add new method<br>
+                $query = $this->db->prepare("Your SQL query logic here with :params limit 1");<br>
+                $query->bindParam(":params", $params); // example<br>
+                $query->execute();<br>
+                return $query->fetch();<br>
+                }</blockquote>
+
+            <p>Now you can use it inside App.php (All files in app/models are automatically included).</p>
+
+            <p>Inside any method of app/App.php, use the model to fetch data:</p>
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                public function dashboard() { // using /dashboard endpoint
+                $users = new usersModel();
+                echo $users-&gt;getByLastLogin(4);
+                }
+            </blockquote>
+
             <p>This approach keeps your application organized and maintains a separation of concerns between your database logic and your application logic.</p>
 
             <hr class="border-1 border-gray-500 mt-10">
             <h2 id="users" class="text-xl mt-10 uppercase">Users</h2>
+            <p>Users are identified by email</p>
+            <ul>
+                <li>name: String</li>
+                <li>email: String</li>
+                <li>password: String</li>
+                <li>stripe_customer_id: String</li>
+                <li>group: String, default: customers</li>
+            </ul>
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                $users = new usersModel();<br>
+                $user = $users->find('beto@gmail.com');
+            </blockquote>
             <hr class="border-1 border-gray-500 mt-10">
             <h2 id="emails" class="text-xl mt-10 uppercase">Transactional Emails</h2>
+
+            <p>An email system comes enabled by default using SMTP server. To-do: integrate other services like Mailgun.</p>
+            <p>You must update settings at config.php</p>
+
+            <h3>Templates</h3>
+            <p>Email templates are in /mails folder.</p>
+            <ul>
+                <li>Welcome</li>
+                <li>Password Reset</li>
+                <li>Payment received</li>
+            </ul>
+
+            <h3>How to send Email or template?</h3>
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                $mails = new mailsModel();<br>
+                $mails->sendTemplate('welcome', $subject, $to, $data );
+            </blockquote>
             <hr class="border-1 border-gray-500 mt-10">
             <h2 id="webhooks" class="text-xl mt-10 uppercase">Webhooks</h2>
             <p>Facilitate automated interactions with external systems:</p>
@@ -275,14 +375,8 @@ echo $sales-&gt;getById(4);</code></pre>
 
             <h2 id="widget">Widget</h2>
             <p>In case you want to build a widget that users will insert in their websites, you can use this. </p>
-            <h2>Modules</h2>
-            <ul>
-                <li>EmailValidator</li>
-                <li>Request Bot Blocker</li>
-            </ul>
-            <p>The directory structure and setup described provide a comprehensive framework for developing and scaling your SaaS platform with Stripe Pad.</p>
-            <h2>Getting Started</h2>
-            <p>Follow the installation instructions to set up the environment on your local machine. Once you have everything running locally, you are ready to begin the development of your SaaS application.</p>
+
+
 
 
 
