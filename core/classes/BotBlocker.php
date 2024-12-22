@@ -1,5 +1,5 @@
 <?
-	/* Function which can Block unwanted Requests
+/* Function which can Block unwanted Requests
  * @return array of error messages
  */
 function requestBlocker()
@@ -17,7 +17,7 @@ function requestBlocker()
 
         # Before using this function you must 
         # create & set this directory as writeable!!!!
-        $dir = dirname(__FILE__).'/';
+        $dir = dirname(__FILE__) . '/';
 
         $rules   = array(
                 #You can add multiple Rules in a array like this one here
@@ -56,8 +56,7 @@ function requestBlocker()
 
         if (file_exists($botFile)) {
                 $file   = file_get_contents($botFile);
-                $client = unserialize($file);
-
+                $client = json_decode($file, true);
         } else {
                 $client                = array();
                 $client['time'][$time] = 0;
@@ -67,7 +66,7 @@ function requestBlocker()
         if (isset($client['block'])) {
                 foreach ($client['block'] as $ruleNr => $timestampPast) {
                         $elapsed = $time - $timestampPast;
-                        if (($elapsed ) > $rules[$ruleNr]['blockTime']) {
+                        if (($elapsed) > $rules[$ruleNr]['blockTime']) {
                                 unset($client['block'][$ruleNr]);
                                 continue;
                         }
@@ -83,7 +82,6 @@ function requestBlocker()
                 $client['time'][$time] = 1;
         } else {
                 $client['time'][$time]++;
-
         }
 
         #check the Rules for Client
@@ -121,10 +119,8 @@ function requestBlocker()
                         unset($client['time'][$k]);
                 }
         }
-        $file = file_put_contents($botFile, serialize($client));
+        $file = file_put_contents($botFile, json_encode($client));
 
 
         return $blockIt;
-
 }
-
