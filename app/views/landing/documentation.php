@@ -4,13 +4,30 @@
 
         <!-- Sidebar: Navigation -->
         <aside class="w-64  px-8 py-12  overflow-y-auto">
-            <h2 class="text-xl text-white font-semibold mb-10">Docs</h2>
-            <ul class="space-y-2">
+            <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Getting Started</h2>
+            <ul class="space-y-2 mb-10">
                 <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Introduction</a></li>
-                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Installation</a></li>
-                <li><a href="#configuration" class="text-gray-400 hover:text-blue-500">Configuration</a></li>
-                <li><a href="#customizing" class="text-gray-400 hover:text-blue-500">Customizing</a></li>
-                <li><a href="#advanced-topics" class="text-gray-400 hover:text-blue-500">Advanced Topics</a></li>
+                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Quickstart</a></li>
+                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Upgrade Guide</a></li>
+
+            </ul>
+            <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Essentials</h2>
+            <ul class="space-y-2 mb-10">
+                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Routes</a></li>
+                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Models</a></li>
+                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Users</a></li>
+                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Mail</a></li>
+                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Webhooks</a></li>
+                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Crons</a></li>
+            </ul>
+            <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Customization</h2>
+            <ul class="space-y-2">
+                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500"></a></li>
+                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Models</a></li>
+                <li><a href="#introduction" class="text-gray-400 hover:text-blue-500">Users</a></li>
+                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Mail</a></li>
+                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Webhooks</a></li>
+                <li><a href="#installation" class="text-gray-400 hover:text-blue-500">Crons</a></li>
             </ul>
         </aside>
 
