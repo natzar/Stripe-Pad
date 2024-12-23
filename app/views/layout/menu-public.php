@@ -37,6 +37,7 @@
 
 
         <a href="<?= APP_BASE_URL ?>documentation" class="text-md font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-light-blue-500 rounded-full">Documentation</a>
+        <a href="<?= APP_BASE_URL ?>#demo" class="text-md font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-light-blue-500 rounded-full">Demo</a>
         <!-- <a href="<?= APP_BASE_URL ?>screencasts" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-light-blue-500 rounded-full">Screencasts</a> -->
         <!-- <a href="<?= APP_BASE_URL ?>support" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-900 hover:text-light-blue-500 rounded-full">Premium Support</a> -->
 
