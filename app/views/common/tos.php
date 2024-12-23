@@ -11,7 +11,7 @@
 
 
 
-    <h2>Welcome to <?= APP_NAME ?></h2>
+    <h2><?= APP_NAME ?> terms and conditions</h2>
     <p>These terms and conditions outline the rules and regulations for the use of <?= APP_NAME ?>'s Website, located at <?= HOMEPAGE_URL ?>.</p>
 
     <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use <?= HOMEPAGE_URL ?> if you do not agree to take all of the terms and conditions stated on this page.</p>
