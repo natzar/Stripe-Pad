@@ -51,9 +51,9 @@ define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
         ?>";
 
-        //file_put_contents('config.php', $content);
+        //file_put_contents('sp-config.php', $content);
 
-        $output .= "[CONFIG] config.php saved" . "<br>";
+
 
         // IMPORT DATABASE
         $mysqli = new mysqli($_POST['APP_DB_HOST'], $_POST['APP_DB_USER'], $_POST['APP_DB_PASSWORD'], $_POST['APP_DB']);
@@ -82,7 +82,7 @@ define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
         // Close the database connection
         $mysqli->close();
 
-        if (!@file_put_contents('config.php', $content)):
+        if (!@file_put_contents('../sp-config.php', $content)):
             $output .= "[CONFIG] Error creating config.php file. Move config.php manually to /";
     ?>
 
@@ -100,7 +100,7 @@ define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
                 // Create a download link
                 var downloadLink = document.createElement('a');
                 downloadLink.href = url;
-                downloadLink.download = 'config.php';
+                downloadLink.download = 'sp-config.php';
 
                 // Append the link to the document and trigger the download
                 document.body.appendChild(downloadLink);
@@ -109,8 +109,11 @@ define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
                 // Optionally free up the Blob URL
                 window.URL.revokeObjectURL(url);
+                alert("Move the sp-config.php you have just downloaded and move it to the root folder");
             </script>
     <?
+        else:
+            $output .= "[CONFIG] config.php saved" . "<br>";
         endif;
     }
     ?>
