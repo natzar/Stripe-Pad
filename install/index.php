@@ -51,39 +51,38 @@ define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
         ?>";
 
-        //file_put_contents('config.php', $content);
-
-        $output .= "[CONFIG] config.php saved" . "<br>";
-
         // IMPORT DATABASE
-        $mysqli = new mysqli($_POST['APP_DB_HOST'], $_POST['APP_DB_USER'], $_POST['APP_DB_PASSWORD'], $_POST['APP_DB']);
+        if ($mysqli = new mysqli($_POST['APP_DB_HOST'], $_POST['APP_DB_USER'], $_POST['APP_DB_PASSWORD'], $_POST['APP_DB'])) {
 
-        // Set character encoding to UTF-8
-        $mysqli->set_charset("utf8");
+            // Set character encoding to UTF-8
+            $mysqli->set_charset("utf8");
 
-        // Check for a successful database connection
-        if ($mysqli->connect_error) {
-            $output .= ('[DATABASE] Database Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error) . "<br>";
-        } else {
-
-            $sql = file_get_contents(dirname(__FILE__) . '/database.sql');
-            if (!$mysqli->multi_query($sql)) {
-                $output .= "[DATABASE] Database import failed: (" . $mysqli->errno . ") " . $mysqli->error . "<br>";
+            // Check for a successful database connection
+            if ($mysqli->connect_error) {
+                $output .= ('[DATABASE] Database Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error) . "<br>";
             } else {
-                $output .= "[DATABASE] Database import completed successfully!<br>";
+
+                $sql = file_get_contents(dirname(__FILE__) . '/database.sql');
+                if (!$mysqli->multi_query($sql)) {
+                    $output .= "[DATABASE] Database import failed: (" . $mysqli->errno . ") " . $mysqli->error . "<br>";
+                } else {
+                    $output .= "[DATABASE] Database import completed successfully!<br>";
+                }
             }
+        } else {
+            $output .= "[DATABASE] Not imported, please check database settings.";
         }
 
 
         // RUN COMPOSER: Ensure that composer is executable and the path is correctly set
         $composerCommand = 'cd ..; composer install';
-        $output .= shell_exec($composerCommand . ' 2>&1') . "<br>"; // Redirect stderr to stdout to capture any errors
+        $output .= "[COMPOSER] " . shell_exec($composerCommand . ' 2>&1') . "<br>"; // Redirect stderr to stdout to capture any errors
 
         // Close the database connection
         $mysqli->close();
 
-        if (!@file_put_contents('config.php', $content)):
-            $output .= "[CONFIG] Error creating config.php file. Move config.php manually to /";
+        if (!@file_put_contents('../sp-config.php', $content)):
+            $output .= "[CONFIG] Error creating config.php file. Move config.php manually to / Or copy this content:<br>" . nl2br(htmlentities($content));
     ?>
 
             <script>
@@ -110,7 +109,8 @@ define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
                 // Optionally free up the Blob URL
                 window.URL.revokeObjectURL(url);
             </script>
-    <?
+    <? else:
+            $output .= "[CONFIG] config.php saved" . "<br>";
         endif;
     }
     ?>
@@ -122,7 +122,7 @@ define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
             <!-- <p>You are a form away of signning up to your application</p> -->
 
             <? if (!empty($output)): ?>
-                <blockquote class="bg-gray-800 text-gray-400 text-xs rounded-md py-4 px-3 mb-5">
+                <blockquote class="bg-gray-100 text-gray-600 text-xs rounded-md py-4 px-3 mb-5">
                     Installation output:<br>
                     <?= $output ?>
                     <hr>
