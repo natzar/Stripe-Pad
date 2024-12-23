@@ -41,7 +41,15 @@
                 $content .= "define('{$key}', '" . addslashes($value) . "');\n";
             }
         }
-        $content .= "?>";
+        $content .= "        
+define('APP_DOMAIN', HOMEPAGE_URL);   
+define('APP_BASE_URL', HOMEPAGE_URL);        
+        define('ROOT_PATH', dirname(__FILE__) . '/');
+define('CORE_PATH', dirname(__FILE__) . '/core/');
+define('APP_PATH', dirname(__FILE__) . '/app/');
+define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
+
+        ?>";
 
         //file_put_contents('config.php', $content);
 
@@ -274,20 +282,19 @@
                 <input type="text" class="w-full p-2 rounded bg-gray-800 border border-gray-700" name="APP_STRIPE_WEBHOOK_SECRET_TEST" value="<?php echo defined('APP_STRIPE_WEBHOOK_SECRET_TEST') ? APP_STRIPE_WEBHOOK_SECRET_TEST : ''; ?>">
             </label>
 
+            <!-- 
+            <input type="hidden" name="DEBUG_MODE" value="true">
+            <input type="hidden" name="CORE_PATH" value="true">
+            <input type="hidden" name="APP_PATH" value="true">
+            <input type="hidden" name="APP_UPLOAD_PATH" value="true">
+            <input type="hidden" name="APP_DOMAIN" value="true">
+            <input type="hidden" name="APP_BASE_URL" value="true">
+            <input type="hidden" name="HOMEPAGE_URL" value="true"> -->
 
-        </form>if (isLocalhost()) { # Localhost
-        define('DEBUG_MODE', true);define('ROOT_PATH', dirname(__FILE__) . "/");
-        define('CORE_PATH', dirname(__FILE__) . "/core/");
-        define('APP_PATH', dirname(__FILE__) . "/app/");
-        define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
-        define('APP_DOMAIN', '//localhost/stripe-pad/');
-        define('APP_BASE_URL', 'http://localhost/stripe-pad/');
-        define('API_BASE_URL', 'http://localhost/stripe-pad/api/');
-        define('HOMEPAGE_URL', 'http://localhost/stripe-pad/');
 
-        <input type="submit" name="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-5" value="Install my SaaS">
-        <p class="text-xs text-gray-400 pt-10">Config.php file will be created, composer run and tables imported to database. In case you need to change anything, edit config.php later.</p>
-        <a href="https://www.stripepad.com">stripepad.com</a>
+            <input type="submit" name="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-5" value="Install my SaaS">
+            <p class="text-xs text-gray-400 pt-10">Config.php file will be created, composer run and tables imported to database. In case you need to change anything, edit config.php later.</p>
+            <a href="https://www.stripepad.com">stripepad.com</a>
         </form>
 
 
