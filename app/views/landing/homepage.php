@@ -333,7 +333,7 @@
 
     <div class="group relative ">
       <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
-        <img src="<?= APP_CDN ?>refboost.png" alt="Front of men&#039;s Basic Tee in black." class="w-full h-full object-center object-cover lg:w-full lg:h-full">
+        <img src="<?= APP_CDN ?>refboost.png" alt="Screenshot of Refboost homepage" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
       </div>
 
       <div class="mt-4 flex justify-between">
@@ -355,7 +355,7 @@
 
     <div class="group relative ">
       <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
-        <img src="<?= APP_CDN ?>domstry.png" alt="Front of men&#039;s Basic Tee in black." class="w-full h-full object-center object-cover lg:w-full lg:h-full">
+        <img src="<?= APP_CDN ?>domstry.png" alt="Screenshot of domstry.com homepage." class="w-full h-full object-center object-cover lg:w-full lg:h-full">
       </div>
 
       <div class="mt-4 flex justify-between">
@@ -377,7 +377,7 @@
 
     <div class="group relative ">
       <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
-        <img src="<?= APP_CDN ?>counterify.png" alt="Front of men&#039;s Basic Tee in black." class="w-full h-full object-center object-cover lg:w-full lg:h-full">
+        <img src="<?= APP_CDN ?>counterify.png" alt="Screenshot of Counterify Homepage" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
       </div>
 
       <div class="mt-4 flex justify-between">
@@ -399,7 +399,7 @@
 
     <div class="group relative ">
       <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
-        <img src="<?= APP_CDN ?>airovic.png" alt="Front of men&#039;s Basic Tee in black." class="w-full h-full object-center object-cover lg:w-full lg:h-full">
+        <img src="<?= APP_CDN ?>airovic.png" alt="Screenshot of thingsnearyou.com homepage" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
       </div>
 
       <div class="mt-4 flex justify-between">
