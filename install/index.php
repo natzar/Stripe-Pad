@@ -86,6 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['submit'])) {
                 <blockquote class="bg-gray-800 text-gray-400 text-xs rounded-md py-4 px-3 mb-5">
                     Installation output:<br>
                     <?= $output ?>
+                    <hr>
+                    Remove /install folder afterwards
                 </blockquote>
             <? else: ?>
 

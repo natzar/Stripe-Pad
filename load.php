@@ -13,6 +13,10 @@
  */
 
 # Include configuration file
+if (!file_exists(dirname(__FILE__) . '/config.php')) {
+    header("location: install");
+    exit();
+}
 include_once dirname(__FILE__) . '/config.php';
 
 # Defaults 
