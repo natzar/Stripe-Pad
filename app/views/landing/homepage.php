@@ -115,7 +115,7 @@
 
 <div class="max-w-7xl mx-auto mb-10">
   <div class="divide-y divide-gray-200 overflow-hidden rounded-xl bg-gray-900 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
-    <div class="group relative rounded-tl-lg rounded-tr-lg bg-gray-900  p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 sm:rounded-tr-none">
+    <div class="group relative rounded-tl-lg rounded-tr-lg bg-gray-900  p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 sm:rounded-tr-none">
       <div>
         <span class="inline-flex rounded-lg bg-gray-800 p-3 text-teal-700 ring-4 ring-gray-700">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
@@ -139,7 +139,7 @@
         </svg>
       </span>
     </div>
-    <div class="group relative bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 sm:rounded-tr-lg">
+    <div class="group relative bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 sm:rounded-tr-lg">
       <div>
         <span class="inline-flex rounded-lg bg-gray-800 p-3 text-purple-700 ring-4 ring-gray-700">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
@@ -163,7 +163,7 @@
         </svg>
       </span>
     </div>
-    <div class="group relative bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+    <div class="group relative bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500">
       <div>
         <span class="inline-flex rounded-lg bg-gray-800 p-3 text-sky-700 ring-4 ring-gray-700">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
@@ -211,7 +211,7 @@
         </svg>
       </span>
     </div>
-    <div class="group relative bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 sm:rounded-bl-lg">
+    <div class="group relative bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 sm:rounded-bl-lg">
       <div>
         <span class="inline-flex rounded-lg bg-gray-800 p-3 text-rose-700 ring-4 ring-gray-700">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
@@ -235,7 +235,7 @@
         </svg>
       </span>
     </div>
-    <div class="group relative rounded-bl-lg rounded-br-lg bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 sm:rounded-bl-none">
+    <div class="group relative rounded-bl-lg rounded-br-lg bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 sm:rounded-bl-none">
       <div>
         <span class="inline-flex rounded-lg bg-gray-800 p-3 text-indigo-700 ring-4 ring-gray-700">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
