@@ -43,6 +43,7 @@
         <!-- Main Content -->
         <main class="flex-1 pl-80 pr-32  text-gray-300 text-base pb-16">
 
+            <strong>~ WORK IN PROGRESS ~</strong>
 
             <h2 id="quickstart" class="text-xl text-blue-500 mt-10 uppercase">Quickstart</h2>
             <? include CORE_PATH . "version.php"; ?>
