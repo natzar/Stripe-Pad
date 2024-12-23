@@ -99,7 +99,7 @@ define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
                 // Create a download link
                 var downloadLink = document.createElement('a');
                 downloadLink.href = url;
-                downloadLink.download = 'config.php';
+                downloadLink.download = 'sp-config.php';
 
                 // Append the link to the document and trigger the download
                 document.body.appendChild(downloadLink);
@@ -108,6 +108,7 @@ define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
                 // Optionally free up the Blob URL
                 window.URL.revokeObjectURL(url);
+                alert("Move the sp-config.php you have just downloaded and move it to the root folder");
             </script>
     <? else:
             $output .= "[CONFIG] config.php saved" . "<br>";
