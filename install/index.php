@@ -43,7 +43,8 @@
             }
         }
         $content .= "        
-# ENVIRONMENT
+define('ADMIN_EMAIL', 'support@stripepad.com');
+        # ENVIRONMENT
 define('DEBUG_MODE', true);
 define('INTERNAL_ENCODING', 'UTF-8');
 define('TIMEZONE', 'Europe/Madrid');
