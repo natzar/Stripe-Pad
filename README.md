@@ -12,7 +12,7 @@
 
 Website: [stripepad.com](https://stripepad.com)
 
-**Not affiliated in any way with Stripe.com.**
+**Not affiliated with Stripe.com.**
 
 ## Demo
 Test some live projects built with Stripe Pad
