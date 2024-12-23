@@ -125,24 +125,24 @@
                 <a href="<?= APP_DOMAIN ?>" class="text-sm leading-6 text-gray-300 hover:text-white">Home</a>
               </li>
 
-              <li>
 
-                <a href="https://bayesa.gumroad.com/l/build-saas-learn-web-development" target="_blank" class="text-sm leading-6 text-gray-300 hover:text-white">Get 1:1 support & assistance to build your saas</a>
               <li>
-                <a href="<?= APP_DOMAIN ?>installation" class="text-sm leading-6 text-gray-300 hover:text-white">Installation</a>
+                <a href="<?= APP_DOMAIN ?>documentation" class="text-sm leading-6 text-gray-300 hover:text-white">Documentation</a>
               </li>
+
               <li>
-                <a href="https://github.com/natzar/Stripe-Pad/wiki" class="text-sm leading-6 text-gray-300 hover:text-white">Documentation</a>
+                <a href="https://www.github.com/natzar/Stripe-Pad" target="_blank" class="text-sm leading-6 text-gray-300 hover:text-white">Download - Github</a>
               </li>
-              <li>
+
+              <!-- <li>
                 <a href="<?= APP_DOMAIN ?>examples" class="text-sm leading-6 text-gray-300 hover:text-white">Examples</a>
               </li>
-              <li><a href="https://github.com/natzar/Stripe-Pad" class="text-sm leading-6 text-gray-300 hover:text-white">Download</a></li>
+              <li><a href="https://github.com/natzar/Stripe-Pad" class="text-sm leading-6 text-gray-300 hover:text-white">Download</a></li> -->
 
 
             </ul>
           </div>
-          <div class="mt-10 md:mt-0">
+          <!-- <div class="mt-10 md:mt-0">
             <h3 class="text-sm font-semibold leading-6 text-white">Components</h3>
             <ul role="list" class="mt-6 space-y-4">
 
@@ -159,7 +159,7 @@
 
 
             </ul>
-          </div>
+          </div> -->
         </div>
         <div class="md:grid md:grid-cols-2 md:gap-8">
 
