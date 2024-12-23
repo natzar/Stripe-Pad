@@ -31,8 +31,8 @@
  */
 
 # Load Environment
-include_once  dirname(__FILE__) . '/load.php'; // 
-include_once CORE_PATH . 'StripePad.php';
+include_once  dirname(__FILE__) . '/sp-load.php'; // 
+include_once CORE_PATH . 'sp-core.php';
 
 # Load Custom App
 include_once  APP_PATH . "App.php";
