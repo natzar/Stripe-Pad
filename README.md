@@ -46,5 +46,13 @@ Please review [our security policy](https://github.com/natzar/stripe-pad/securit
 
 
 ## License
-Stripe Pad is licensed under the GPL License, Version 3.0 [Copy of the license](LICENSE.txt).
+Stripe Pad is free software, and is released under the terms of the <abbr>GPL</abbr> (GNU General Public License) Version 3.0 [Copy of the license](LICENSE.txt).
+
+
+## Share the love
+Stripe Pad has no multi-million dollar marketing campaign or celebrity sponsors, but it have something even better&#8212;you. If you enjoy Stripe Pad please consider telling a friend, setting it up for someone less knowledgeable than yourself, or writing the author of a media article that overlooks us.</p>
+
+If you would like to support Stripe Pad, please consider donating
+
+
 
