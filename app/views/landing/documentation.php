@@ -46,7 +46,7 @@
             <strong>~ WORK IN PROGRESS ~</strong>
 
             <h2 id="quickstart" class="text-xl text-blue-500 mt-10 uppercase">Quickstart</h2>
-            <? include CORE_PATH . "version.php"; ?>
+            <? include CORE_PATH . "sp-version.php"; ?>
 
             <p>Stripe Pad Version: <?= $STRIPE_PAD_VERSION ?></p>
             <p>Github Repo: <a href="https://github.com/natzar/Stripe-Pad" target="_blank">https://github.com/natzar/Stripe-Pad</a></p>

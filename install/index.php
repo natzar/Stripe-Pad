@@ -108,7 +108,7 @@
     ?>
     <div class="max-w-xl bg-gray-900 px-6 py-6  mx-auto  text-gray-400 rounded-lg shadow-lg">
         <form action="" method="post" class="">
-            <? include "../core/version.php"; ?>
+            <? include "../core/sp-version.php"; ?>
 
             <h1 class="text-xl text-blue-500 font-bold mb-4 air">Stripe Pad v. <?= $STRIPE_PAD_VERSION ?> Installer</h1>
             <!-- <p>You are a form away of signning up to your application</p> -->
@@ -275,9 +275,19 @@
             </label>
 
 
-            <input type="submit" name="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-5" value="Install my SaaS">
-            <p class="text-xs text-gray-400 pt-10">Config.php file will be created, composer run and tables imported to database. In case you need to change anything, edit config.php later.</p>
-            <a href="https://www.stripepad.com">stripepad.com</a>
+        </form>if (isLocalhost()) { # Localhost
+        define('DEBUG_MODE', true);define('ROOT_PATH', dirname(__FILE__) . "/");
+        define('CORE_PATH', dirname(__FILE__) . "/core/");
+        define('APP_PATH', dirname(__FILE__) . "/app/");
+        define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
+        define('APP_DOMAIN', '//localhost/stripe-pad/');
+        define('APP_BASE_URL', 'http://localhost/stripe-pad/');
+        define('API_BASE_URL', 'http://localhost/stripe-pad/api/');
+        define('HOMEPAGE_URL', 'http://localhost/stripe-pad/');
+
+        <input type="submit" name="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-5" value="Install my SaaS">
+        <p class="text-xs text-gray-400 pt-10">Config.php file will be created, composer run and tables imported to database. In case you need to change anything, edit config.php later.</p>
+        <a href="https://www.stripepad.com">stripepad.com</a>
         </form>
 
 
