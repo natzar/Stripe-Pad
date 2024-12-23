@@ -1,47 +1,3 @@
-<?php
-$output = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['submit'])) {
-
-    // Save Configuration file
-    $content = "<?php\n\n";
-    foreach ($_POST as $key => $value) {
-        if ($key != 'submit') {
-            $content .= "define('{$key}', '" . addslashes($value) . "');\n";
-        }
-    }
-    $content .= "?>";
-    file_put_contents('config.php', $content);
-
-    $output .= "[CONFIG] config.php saved" . "<br>";
-
-    // IMPORT DATABASE
-    $mysqli = new mysqli($_POST['APP_DB_HOST'], $_POST['APP_DB_USER'], $_POST['APP_DB_PASSWORD'], $_POST['APP_DB']);
-
-    // Set character encoding to UTF-8
-    $mysqli->set_charset("utf8");
-
-    // Check for a successful database connection
-    if ($mysqli->connect_error) {
-        $output .= ('[DATABASE] Database Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error) . "<br>";
-    } else {
-
-        $sql = file_get_contents(dirname(__FILE__) . '/database.sql');
-        if (!$mysqli->multi_query($sql)) {
-            $output .= "[DATABASE] Database import failed: (" . $mysqli->errno . ") " . $mysqli->error . "<br>";
-        } else {
-            $output .= "[DATABASE] Database import completed successfully!<br>";
-        }
-    }
-
-
-    // RUN COMPOSER: Ensure that composer is executable and the path is correctly set
-    $composerCommand = 'cd ..; composer install';
-    $output .= shell_exec($composerCommand . ' 2>&1') . "<br>"; // Redirect stderr to stdout to capture any errors
-
-    // Close the database connection
-    $mysqli->close();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,10 +30,93 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['submit'])) {
 </head>
 
 <body class="bg-black py-10 text-gray-300">
+    <?php
+    $output = "";
+    if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['submit'])) {
 
+        // Save Configuration file
+        $content = "<?php\n\n";
+        foreach ($_POST as $key => $value) {
+            if ($key != 'submit') {
+                $content .= "define('{$key}', '" . addslashes($value) . "');\n";
+            }
+        }
+        $content .= "        
+define('APP_DOMAIN', HOMEPAGE_URL);   
+define('APP_BASE_URL', HOMEPAGE_URL);        
+        define('ROOT_PATH', dirname(__FILE__) . '/');
+define('CORE_PATH', dirname(__FILE__) . '/core/');
+define('APP_PATH', dirname(__FILE__) . '/app/');
+define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
+
+        ?>";
+
+        //file_put_contents('config.php', $content);
+
+        $output .= "[CONFIG] config.php saved" . "<br>";
+
+        // IMPORT DATABASE
+        $mysqli = new mysqli($_POST['APP_DB_HOST'], $_POST['APP_DB_USER'], $_POST['APP_DB_PASSWORD'], $_POST['APP_DB']);
+
+        // Set character encoding to UTF-8
+        $mysqli->set_charset("utf8");
+
+        // Check for a successful database connection
+        if ($mysqli->connect_error) {
+            $output .= ('[DATABASE] Database Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error) . "<br>";
+        } else {
+
+            $sql = file_get_contents(dirname(__FILE__) . '/database.sql');
+            if (!$mysqli->multi_query($sql)) {
+                $output .= "[DATABASE] Database import failed: (" . $mysqli->errno . ") " . $mysqli->error . "<br>";
+            } else {
+                $output .= "[DATABASE] Database import completed successfully!<br>";
+            }
+        }
+
+
+        // RUN COMPOSER: Ensure that composer is executable and the path is correctly set
+        $composerCommand = 'cd ..; composer install';
+        $output .= shell_exec($composerCommand . ' 2>&1') . "<br>"; // Redirect stderr to stdout to capture any errors
+
+        // Close the database connection
+        $mysqli->close();
+
+        if (!@file_put_contents('config.php', $content)):
+            $output .= "[CONFIG] Error creating config.php file. Move config.php manually to /";
+    ?>
+
+            <script>
+                var content = `<?php echo $content; ?>`;
+
+                // Convert the PHP output string to a Blob
+                var blob = new Blob([content], {
+                    type: 'text/plain'
+                });
+
+                // Create a URL for the Blob
+                var url = window.URL.createObjectURL(blob);
+
+                // Create a download link
+                var downloadLink = document.createElement('a');
+                downloadLink.href = url;
+                downloadLink.download = 'config.php';
+
+                // Append the link to the document and trigger the download
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+
+                // Optionally free up the Blob URL
+                window.URL.revokeObjectURL(url);
+            </script>
+    <?
+        endif;
+    }
+    ?>
     <div class="max-w-xl bg-gray-900 px-6 py-6  mx-auto  text-gray-400 rounded-lg shadow-lg">
         <form action="" method="post" class="">
-            <? include "../core/version.php"; ?>
+            <? include "../core/sp-version.php"; ?>
 
             <h1 class="text-xl text-blue-500 font-bold mb-4 air">Stripe Pad v. <?= $STRIPE_PAD_VERSION ?> Installer</h1>
             <!-- <p>You are a form away of signning up to your application</p> -->
@@ -86,6 +125,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['submit'])) {
                 <blockquote class="bg-gray-800 text-gray-400 text-xs rounded-md py-4 px-3 mb-5">
                     Installation output:<br>
                     <?= $output ?>
+                    <hr>
+                    Remove /install folder afterwards
                 </blockquote>
             <? else: ?>
 
@@ -240,6 +281,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['submit'])) {
                 <span class="text-gray-400">Stripe Webhook Secret Test</span>
                 <input type="text" class="w-full p-2 rounded bg-gray-800 border border-gray-700" name="APP_STRIPE_WEBHOOK_SECRET_TEST" value="<?php echo defined('APP_STRIPE_WEBHOOK_SECRET_TEST') ? APP_STRIPE_WEBHOOK_SECRET_TEST : ''; ?>">
             </label>
+
+            <!-- 
+            <input type="hidden" name="DEBUG_MODE" value="true">
+            <input type="hidden" name="CORE_PATH" value="true">
+            <input type="hidden" name="APP_PATH" value="true">
+            <input type="hidden" name="APP_UPLOAD_PATH" value="true">
+            <input type="hidden" name="APP_DOMAIN" value="true">
+            <input type="hidden" name="APP_BASE_URL" value="true">
+            <input type="hidden" name="HOMEPAGE_URL" value="true"> -->
 
 
             <input type="submit" name="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-5" value="Install my SaaS">

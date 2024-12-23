@@ -21,7 +21,7 @@ if ($method == "OPTIONS") {
 	die();
 }
 
-include "../../load.php";
+include "../../sp-load.php";
 
 header('Content-type: application/json');
 

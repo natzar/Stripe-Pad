@@ -13,7 +13,11 @@
  */
 
 # Include configuration file
-include_once dirname(__FILE__) . '/config.php';
+if (!file_exists(dirname(__FILE__) . '/sp-config.php')) {
+    header("location: install");
+    exit();
+}
+include_once dirname(__FILE__) . '/sp-config.php';
 
 # Defaults 
 ini_set('log_errors', 1);
@@ -40,13 +44,13 @@ if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()) {
 if (is_file(dirname(__FILE__) . "/vendor/autoload.php")) require(dirname(__FILE__) . "/vendor/autoload.php");
 
 # Include base classes
-include_once CORE_PATH . "errors.php";
-include_once CORE_PATH . "helpers.php";
-include_once CORE_PATH . "classes/ModelBase.php";
-include_once CORE_PATH . 'classes/SPDO.php';
-include_once CORE_PATH . 'classes/View.php';
-include_once CORE_PATH . 'models/Mail.php';
-include_once CORE_PATH . 'models/Users.php';
+include_once CORE_PATH . "sp-errors.php";
+include_once CORE_PATH . "sp-helpers.php";
+include_once CORE_PATH . "classes/sp-model-base.php";
+include_once CORE_PATH . 'classes/sp-spdo.php';
+include_once CORE_PATH . 'classes/sp-view.php';
+include_once CORE_PATH . 'models/sp-mail.php';
+include_once CORE_PATH . 'models/sp-user.php';
 include_once CORE_PATH . "classes/BotBlocker.php";
 
 # include all models from app dynamically
