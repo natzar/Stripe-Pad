@@ -59,7 +59,7 @@
               </div>
 
             </div>
-            <p class="mt-3 text-xs text-gray-600 sm:mt-4">Licensed under GPL3 | Not affiliated or have any relation with Stripe.com</p>
+            <p class="mt-3 text-xs text-gray-400 sm:mt-4">Licensed under GPL3 | Not affiliated or have any relation with Stripe.com</p>
 
           </div>
           <div class="mt-8 justify-center mx-auto text-left ">
@@ -104,10 +104,7 @@
       </div>
       <div class="-mb-16 mt-12 sm:-mb-48 lg:relative lg:m-0">
         <div class="mx-auto max-w-md px-6 sm:max-w-2xl lg:max-w-none lg:px-0">
-          <!-- Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ -->
 
-
-          <!-- <img class="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/cloud-illustration-teal-cyan.svg" alt=""> -->
         </div>
       </div>
     </div>
@@ -116,69 +113,209 @@
 
 
 
+<div class="max-w-7xl mx-auto mb-10">
+  <div class="divide-y divide-gray-200 overflow-hidden rounded-xl bg-gray-900 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
+    <div class="group relative rounded-tl-lg rounded-tr-lg bg-gray-900  p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 sm:rounded-tr-none">
+      <div>
+        <span class="inline-flex rounded-lg bg-teal-50 p-3 text-teal-700 ring-4 ring-white">
+          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </span>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-base font-semibold text-gray-200">
+          <a href="#" class="focus:outline-none">
+            <!-- Extend touch target to entire panel -->
+            <span class="absolute inset-0" aria-hidden="true"></span>
+            Installation in under 10 minutes
+          </a>
+        </h3>
+        <p class="mt-2 text-sm text-gray-500">Focus on what makes you app unique, what is the same in every product, is already built.</p>
+      </div>
+      <span class="pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+        <svg class="size-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+        </svg>
+      </span>
+    </div>
+    <div class="group relative bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 sm:rounded-tr-lg">
+      <div>
+        <span class="inline-flex rounded-lg bg-purple-50 p-3 text-purple-700 ring-4 ring-white">
+          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+          </svg>
+        </span>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-base font-semibold text-gray-200">
+          <a href="#" class="focus:outline-none">
+            <!-- Extend touch target to entire panel -->
+            <span class="absolute inset-0" aria-hidden="true"></span>
+            Security
+          </a>
+        </h3>
+        <p class="mt-2 text-sm text-gray-500">Code passes up to 4 security tools to identify potentially insecure lines of code. Everything is public and reviewable on Github</p>
+      </div>
+      <span class="pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+        <svg class="size-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+        </svg>
+      </span>
+    </div>
+    <div class="group relative bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+      <div>
+        <span class="inline-flex rounded-lg bg-sky-50 p-3 text-sky-700 ring-4 ring-white">
+          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+          </svg>
+        </span>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-base font-semibold text-gray-200">
+          <a href="#" class="focus:outline-none">
+            <!-- Extend touch target to entire panel -->
+            <span class="absolute inset-0" aria-hidden="true"></span>
+            Users and authentication management
+          </a>
+        </h3>
+        <p class="mt-2 text-sm text-gray-500">Out of the box the users can signup, login or recover their passwords. Also, or pages and forms are already done. Profile page inside the private app too.</p>
+      </div>
+      <span class="pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+        <svg class="size-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+        </svg>
+      </span>
+    </div>
+    <div class="group relative bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+      <div>
+        <span class="inline-flex rounded-lg bg-yellow-50 p-3 text-yellow-700 ring-4 ring-white">
+          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+          </svg>
+        </span>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-base font-semibold text-gray-200">
+          <a href="#" class="focus:outline-none">
+            <!-- Extend touch target to entire panel -->
+            <span class="absolute inset-0" aria-hidden="true"></span>
+            Payments and subscriptions with Stripe
+          </a>
+        </h3>
+        <p class="mt-2 text-sm text-gray-500">Anytime there is a charge or a change in a subscription, the system gets notified via webhooks and acts accordingly.</p>
+      </div>
+      <span class="pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+        <svg class="size-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+        </svg>
+      </span>
+    </div>
+    <div class="group relative bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 sm:rounded-bl-lg">
+      <div>
+        <span class="inline-flex rounded-lg bg-rose-50 p-3 text-rose-700 ring-4 ring-white">
+          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9.75h4.875a2.625 2.625 0 0 1 0 5.25H12M8.25 9.75 10.5 7.5M8.25 9.75 10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185Z" />
+          </svg>
+        </span>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-base font-semibold text-gray-200">
+          <a href="#" class="focus:outline-none">
+            <!-- Extend touch target to entire panel -->
+            <span class="absolute inset-0" aria-hidden="true"></span>
+            Transactional Emails out-of-the-box
+          </a>
+        </h3>
+        <p class="mt-2 text-sm text-gray-500">The package comes with welcome email, password recover and subscription created email templates ready to be sent.</p>
+      </div>
+      <span class="pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+        <svg class="size-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+        </svg>
+      </span>
+    </div>
+    <div class="group relative rounded-bl-lg rounded-br-lg bg-gray-900 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 sm:rounded-bl-none">
+      <div>
+        <span class="inline-flex rounded-lg bg-indigo-50 p-3 text-indigo-700 ring-4 ring-white">
+          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+          </svg>
+        </span>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-base font-semibold text-gray-200">
+          <a href="#" class="focus:outline-none">
+            <!-- Extend touch target to entire panel -->
+            <span class="absolute inset-0" aria-hidden="true"></span>
+            Help, Support and Documentation
+          </a>
+        </h3>
+        <p class="mt-2 text-sm text-gray-500">Educational content is being built, if you need help please get in touch support@stripepad.com</p>
+      </div>
+      <span class="pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+        <svg class="size-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+        </svg>
+      </span>
+    </div>
+  </div>
+
+</div>
 
 <div class="bg-gray-900 py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-2xl lg:mx-0">
-      <h2 class="text-base font-semibold leading-7 text-blue-400">Everything you need</h2>
-      <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">All included PHP boilerplate</p>
-      <p class="mt-6 text-lg leading-8 text-gray-300">Stripe Pad is a PHP SaaS-in-a-Box that saves developers months of effort and new founders tens of thousands of dollars.</p>
+      <h2 class="text-base font-semibold leading-7 text-blue-400">Let's build a Saas</h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Start your own online business</p>
+      <p class="mt-6 text-lg leading-8 text-gray-300">Stripe Pad is a PHP SaaS-in-a-Box that saves developers months of effort and new founders tens of thousands of dollars. Follow these easy steps to get started:</p>
     </div>
     <dl class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-16">
       <div class="relative pl-9">
         <dt class="inline font-semibold text-white">
           <svg class="absolute left-1 top-1 h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd"></path>
           </svg>
-          Stripe Integration
+          Step 1: Get a Domain
         </dt>
-        <dd class="inline">Handle payments seamlessly with built-in Stripe support.</dd>
+        <dd class="inline">Choose and register your unique website address. (check <a href="https://godaddy.com">GoDaddy.com</a>)</dd>
       </div>
       <div class="relative pl-9">
         <dt class="inline font-semibold text-white">
           <svg class="absolute left-1 top-1 h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd"></path>
           </svg>
-          Webhook System
+          Step 2: Set Up Hosting
         </dt>
-        <dd class="inline">Automate workflows with an easy-to-use webhook interface.</dd>
+        <dd class="inline">Secure a space on the internet to host your website. (check <a href="https://www.hetzner.com/webhosting/?ref=stripepad.com" target="_blank">Hetzner</a>, recommended!)</dd>
       </div>
       <div class="relative pl-9">
         <dt class="inline font-semibold text-white">
           <svg class="absolute left-1 top-1 h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M15.312 11.424a5.5 5.5 0 01-9.201 2.466l-.312-.311h2.433a.75.75 0 000-1.5H3.989a.75.75 0 00-.75.75v4.242a.75.75 0 001.5 0v-2.43l.31.31a7 7 0 0011.712-3.138.75.75 0 00-1.449-.39zm1.23-3.723a.75.75 0 00.219-.53V2.929a.75.75 0 00-1.5 0V5.36l-.31-.31A7 7 0 003.239 8.188a.75.75 0 101.448.389A5.5 5.5 0 0113.89 6.11l.311.31h-2.432a.75.75 0 000 1.5h4.243a.75.75 0 00.53-.219z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M15.312 11.424a5.5 5.5 0 01-9.201 2.466l-.312-.311h2.433a.75.75 0 000-1.5H3.989a.75.75 0 00-.75.75v4.242a.75.75 0 001.5 0v-2.43l.31.31a7 7 0 0011.712-3.138.75.75 0 00-1.449-.39zm1.23-3.723a.75.75 0 00.219-.53V2.929a.75.75 0 00-1.5 0V5.36l-.31-.31A7 7 0 003.239 8.188a.75.75 0 101.448.389A5.5 5.5 0 0113.89 6.11l.311.31h-2.432a.75.75 0 000 1.5h4.243a.75.75 0 00.53-.219z" clip-rule="evenodd"></path>
           </svg>
-          Cronjobs
+          Step 3: Install Stripe Pad
         </dt>
-        <dd class="inline">Efficient task automation with customizable scheduling.</dd>
+        <dd class="inline">Easily install our PHP framework with just a few clicks. (Get it here: <a href="https://www.github.com/natzar/Stripe-Pad" target="_blank">Github</a>)</dd>
       </div>
       <div class="relative pl-9">
         <dt class="inline font-semibold text-white">
           <svg class="absolute left-1 top-1 h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M10 2.5c-1.31 0-2.526.386-3.546 1.051a.75.75 0 01-.82-1.256A8 8 0 0118 9a22.47 22.47 0 01-1.228 7.351.75.75 0 11-1.417-.49A20.97 20.97 0 0016.5 9 6.5 6.5 0 0010 2.5zM4.333 4.416a.75.75 0 01.218 1.038A6.466 6.466 0 003.5 9a7.966 7.966 0 01-1.293 4.362.75.75 0 01-1.257-.819A6.466 6.466 0 002 9c0-1.61.476-3.11 1.295-4.365a.75.75 0 011.038-.219zM10 6.12a3 3 0 00-3.001 3.041 11.455 11.455 0 01-2.697 7.24.75.75 0 01-1.148-.965A9.957 9.957 0 005.5 9c0-.028.002-.055.004-.082a4.5 4.5 0 018.996.084V9.15l-.005.297a.75.75 0 11-1.5-.034c.003-.11.004-.219.005-.328a3 3 0 00-3-2.965zm0 2.13a.75.75 0 01.75.75c0 3.51-1.187 6.745-3.181 9.323a.75.75 0 11-1.186-.918A13.687 13.687 0 009.25 9a.75.75 0 01.75-.75zm3.529 3.698a.75.75 0 01.584.885 18.883 18.883 0 01-2.257 5.84.75.75 0 11-1.29-.764 17.386 17.386 0 002.078-5.377.75.75 0 01.885-.584z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M7.84 1.804A1 1 0 018.82 1h2.36a1 1 0 01.98.804l.331 1.652a6.993 6.993 0 011.929 1.115l1.598-.54a1 1 0 011.186.447l1.18 2.044a1 1 0 01-.205 1.251l-1.267 1.113a7.047 7.047 0 010 2.228l1.267 1.113a1 1 0 01.206 1.25l-1.18 2.045a1 1 0 01-1.187.447l-1.598-.54a6.993 6.993 0 01-1.929 1.115l-.33 1.652a1 1 0 01-.98.804H8.82a1 1 0 01-.98-.804l-.331-1.652a6.993 6.993 0 01-1.929-1.115l-1.598.54a1 1 0 01-1.186-.447l-1.18-2.044a1 1 0 01.205-1.251l1.267-1.114a7.05 7.05 0 010-2.227L1.821 7.773a1 1 0 01-.206-1.25l1.18-2.045a1 1 0 011.187-.447l1.598.54A6.993 6.993 0 017.51 3.456l.33-1.652zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
           </svg>
-          E-mail integration
+          Step 4: Integrate Your Unique App
         </dt>
-        <dd class="inline">Connect with your users through integrated email services.</dd>
+        <dd class=" inline">Add your unique features and content to your app. (contact us if you need support@stripepad.com)</dd>
       </div>
       <div class="relative pl-9">
         <dt class="inline font-semibold text-white">
           <svg class="absolute left-1 top-1 h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M7.84 1.804A1 1 0 018.82 1h2.36a1 1 0 01.98.804l.331 1.652a6.993 6.993 0 011.929 1.115l1.598-.54a1 1 0 011.186.447l1.18 2.044a1 1 0 01-.205 1.251l-1.267 1.113a7.047 7.047 0 010 2.228l1.267 1.113a1 1 0 01.206 1.25l-1.18 2.045a1 1 0 01-1.187.447l-1.598-.54a6.993 6.993 0 01-1.929 1.115l-.33 1.652a1 1 0 01-.98.804H8.82a1 1 0 01-.98-.804l-.331-1.652a6.993 6.993 0 01-1.929-1.115l-1.598.54a1 1 0 01-1.186-.447l-1.18-2.044a1 1 0 01.205-1.251l1.267-1.114a7.05 7.05 0 010-2.227L1.821 7.773a1 1 0 01-.206-1.25l1.18-2.045a1 1 0 011.187-.447l1.598.54A6.993 6.993 0 017.51 3.456l.33-1.652zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+            <path d="M4.632 3.533A2 2 0 016.577 2h6.846a2 2 0 011.945 1.533l1.976 8.234A3.489 3.489 0 0016 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234z"></path>
+            <path fill-rule="evenodd" d="M4 13a2 2 0 100 4h12a2 2 0 100-4H4zm11.24 2a.75.75 0 01.75-.75H16a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75h-.01a.75.75 0 01-.75-.75V15zm-2.25-.75a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75h-.01z" clip-rule="evenodd"></path>
           </svg>
-          Authentication System
+          Step 5: Launch Your SaaS
         </dt>
-        <dd class="inline">Secure and streamlined user login and signup management.</dd>
-      </div>
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-white">
-          <svg class="absolute left-1 top-1 h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path d="M4.632 3.533A2 2 0 016.577 2h6.846a2 2 0 011.945 1.533l1.976 8.234A3.489 3.489 0 0016 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234z" />
-            <path fill-rule="evenodd" d="M4 13a2 2 0 100 4h12a2 2 0 100-4H4zm11.24 2a.75.75 0 01.75-.75H16a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75h-.01a.75.75 0 01-.75-.75V15zm-2.25-.75a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75h-.01z" clip-rule="evenodd" />
-          </svg>
-          API Ready
-        </dt>
-        <dd class="inline">Build and extend with a ready-to-use API system.</dd>
+        <dd class="inline">Go live and start marketing your new online business!</dd>
       </div>
     </dl>
   </div>
@@ -186,9 +323,10 @@
 
 
 
-<div class="max-w-2xl mx-auto py-8 px-4 sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
 
-  <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl nunito">Examples</h2>
+<div id="demo" class="max-w-2xl mx-auto mt-10 py-8 px-4 sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
+
+  <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl text-center">Demo(s)</h2>
   <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-2 xl:gap-x-8">
 
 
@@ -200,8 +338,8 @@
 
       <div class="mt-4 flex justify-between">
         <div>
-          <h3 class="text-sm text-gray-700">
-            <a href="https://refboost.com/?ref=stripe-pad">
+          <h3 class="text-sm text-gray-500">
+            <a href="https://refboost.com/?ref=stripe-pad" target="_blank">
               <span aria-hidden="true" class="absolute inset-0"></span>
               Refboost
             </a>
@@ -209,7 +347,7 @@
           <p class="mt-1 text-sm text-gray-500">SaaS: A Referrals widget</p>
         </div>
 
-        <!-- <p class="text-sm font-medium text-gray-900">$30  </p> -->
+        <!-- <p class="text-sm font-medium text-gray-200">$30  </p> -->
         <!-- <a href="" class="p-4 bg-indigo-600 text-white">Buy it</a> -->
 
       </div>
@@ -222,8 +360,8 @@
 
       <div class="mt-4 flex justify-between">
         <div>
-          <h3 class="text-sm text-gray-700">
-            <a href="https://domstry.com">
+          <h3 class="text-sm text-gray-500">
+            <a href="https://domstry.com" target="_blank">
               <span aria-hidden="true" class="absolute inset-0"></span>
               Domstry
             </a>
@@ -231,7 +369,7 @@
           <p class="mt-1 text-sm text-gray-500"> SaaS: Domains database</p>
         </div>
 
-        <!--           <p class="text-sm font-medium text-gray-900">$30  </p>
+        <!--           <p class="text-sm font-medium text-gray-200">$30  </p>
         <a href="" class="p-4 bg-indigo-600 text-white">Buy it</a> -->
 
       </div>
@@ -244,8 +382,8 @@
 
       <div class="mt-4 flex justify-between">
         <div>
-          <h3 class="text-sm text-gray-700">
-            <a href="https://counterify.com/?ref=stripe-pad">
+          <h3 class="text-sm text-gray-500">
+            <a href="https://counterify.com/?ref=stripe-pad" target="_blank">
               <span aria-hidden="true" class="absolute inset-0"></span>
               Counterify
             </a>
@@ -253,7 +391,7 @@
           <p class="mt-1 text-sm text-gray-500">SaaS: Digital tally counter</p>
         </div>
 
-        <!-- <p class="text-sm font-medium text-gray-900">$30  </p>
+        <!-- <p class="text-sm font-medium text-gray-200">$30  </p>
         <a href="" class="p-4 bg-indigo-600 text-white">Buy it</a> -->
 
       </div>
@@ -266,8 +404,8 @@
 
       <div class="mt-4 flex justify-between">
         <div>
-          <h3 class="text-sm text-gray-700">
-            <a href="https://Thingsnearyou.com">
+          <h3 class="text-sm text-gray-500">
+            <a href="https://Thingsnearyou.com" target="_blank">
               <span aria-hidden="true" class="absolute inset-0"></span>
               Thingsnearyou.com
             </a>
@@ -275,7 +413,7 @@
           <p class="mt-1 text-sm text-gray-500">Build in progress</p>
         </div>
 
-        <!-- <p class="text-sm font-medium text-gray-900">$30  </p>
+        <!-- <p class="text-sm font-medium text-gray-200">$30  </p>
         <a href="" class="p-4 bg-indigo-600 text-white">Buy it</a> -->
 
       </div>
