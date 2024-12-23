@@ -8,15 +8,20 @@
 
 ## Introduction
 
-**Stripe Pad** is a PHP boilerplate for rapid SaaS development with Stripe integration. It offers a minimalistic approach to start, validate, and grow your SaaS application without the constraints of a particular framework.
+**Stripe Pad** is the PHP boilerplate to build SaaS with Stripe. Stripe Pad is a GPL3-licensed PHP-based MVC framework that saves you months of development by starting you off with all the features that are the same in every product, so you can focus on what makes your app unique. Suitable for Educational purposes.
 
+Website: [stripepad.com](https://stripepad.com)
 
-For Educational purposes. Get started with MVC in PHP.
-
-**Important Disclaimer:** Not affiliated in any way with Stripe.com.
+**Not affiliated in any way with Stripe.com.**
 
 ## Demo
-Test it [Stripepad.com](https://www.stripepad.com)
+Test some live projects built with Stripe Pad
+
+- [domstry.com](https://domstry.com)
+- [thingsnearyou.com](https://thingsnearyou.com)
+- [counterify.com](https://counterify.com)
+- [refboost.com](https://refboost.com)
+
 ## Quick Install
 [Download latest stable release here](https://github.com/natzar/Stripe-Pad/releases), then run the installer at yourdomain.com/install.
 
@@ -26,13 +31,11 @@ Test it [Stripepad.com](https://www.stripepad.com)
 You can read the official documentation on the [stripepad.com/documentation](https://www.stripepad.com/documentation) website.
 
 ## Contributing
-<a name="contributing"></a>
 
 You can read the contribution guide [here](https://github.com/natzar/Stripe-Pad/blob/main/CONTRIBUTING.md). Feel free to log an issue on our [GitHub issues page](https://github.com/natzar/Stripe-Pad/issues).
 
 
 ## Code of Conduct
-<a name="code-of-conduct"></a>
 
 In order to ensure that the PHP community is welcoming to all, please review and abide by the [Code of Conduct](https://github.com/natzar/Stripe-Pad?tab=coc-ov-file)
 
