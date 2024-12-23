@@ -14,15 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['submit'])) {
 
     $output .= "[CONFIG] config.php saved" . "<br>";
 
-
-    // Create a new MySQLi object for database interaction
-    $host = 'localhost';
-    $username = 'root';
-    $password = 'your_password'; // Replace with your actual MySQL password
-    $databaseName = 'your_database'; // Replace with your actual database name
-    $sqlFilePath = '/path/to/your/file.sql'; // Absolute path to your SQL file
-
-    $mysqli = new mysqli('HOST', 'USERNAME', 'PASSWORD', 'DATABASE');
+    // IMPORT DATABASE
+    $mysqli = new mysqli($_POST['APP_DB_HOST'], $_POST['APP_DB_USER'], $_POST['APP_DB_PASSWORD'], $_POST['APP_DB']);
 
     // Set character encoding to UTF-8
     $mysqli->set_charset("utf8");
@@ -34,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['submit'])) {
 
         $sql = file_get_contents(dirname(__FILE__) . '/database.sql');
         if (!$mysqli->multi_query($sql)) {
-            $output = "[DATABASE] Database import failed: (" . $mysqli->errno . ") " . $mysqli->error . "<br>";
+            $output .= "[DATABASE] Database import failed: (" . $mysqli->errno . ") " . $mysqli->error . "<br>";
         } else {
             $output .= "[DATABASE] Database import completed successfully!<br>";
         }
