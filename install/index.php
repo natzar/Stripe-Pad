@@ -1,47 +1,3 @@
-<?php
-$output = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['submit'])) {
-
-    // Save Configuration file
-    $content = "<?php\n\n";
-    foreach ($_POST as $key => $value) {
-        if ($key != 'submit') {
-            $content .= "define('{$key}', '" . addslashes($value) . "');\n";
-        }
-    }
-    $content .= "?>";
-    file_put_contents('config.php', $content);
-
-    $output .= "[CONFIG] config.php saved" . "<br>";
-
-    // IMPORT DATABASE
-    $mysqli = new mysqli($_POST['APP_DB_HOST'], $_POST['APP_DB_USER'], $_POST['APP_DB_PASSWORD'], $_POST['APP_DB']);
-
-    // Set character encoding to UTF-8
-    $mysqli->set_charset("utf8");
-
-    // Check for a successful database connection
-    if ($mysqli->connect_error) {
-        $output .= ('[DATABASE] Database Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error) . "<br>";
-    } else {
-
-        $sql = file_get_contents(dirname(__FILE__) . '/database.sql');
-        if (!$mysqli->multi_query($sql)) {
-            $output .= "[DATABASE] Database import failed: (" . $mysqli->errno . ") " . $mysqli->error . "<br>";
-        } else {
-            $output .= "[DATABASE] Database import completed successfully!<br>";
-        }
-    }
-
-
-    // RUN COMPOSER: Ensure that composer is executable and the path is correctly set
-    $composerCommand = 'cd ..; composer install';
-    $output .= shell_exec($composerCommand . ' 2>&1') . "<br>"; // Redirect stderr to stdout to capture any errors
-
-    // Close the database connection
-    $mysqli->close();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +30,81 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['submit'])) {
 </head>
 
 <body class="bg-black py-10 text-gray-300">
+    <?php
+    $output = "";
+    if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['submit'])) {
 
+        // Save Configuration file
+        $content = "<?php\n\n";
+        foreach ($_POST as $key => $value) {
+            if ($key != 'submit') {
+                $content .= "define('{$key}', '" . addslashes($value) . "');\n";
+            }
+        }
+        $content .= "?>";
+
+        //file_put_contents('config.php', $content);
+
+        $output .= "[CONFIG] config.php saved" . "<br>";
+
+        // IMPORT DATABASE
+        $mysqli = new mysqli($_POST['APP_DB_HOST'], $_POST['APP_DB_USER'], $_POST['APP_DB_PASSWORD'], $_POST['APP_DB']);
+
+        // Set character encoding to UTF-8
+        $mysqli->set_charset("utf8");
+
+        // Check for a successful database connection
+        if ($mysqli->connect_error) {
+            $output .= ('[DATABASE] Database Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error) . "<br>";
+        } else {
+
+            $sql = file_get_contents(dirname(__FILE__) . '/database.sql');
+            if (!$mysqli->multi_query($sql)) {
+                $output .= "[DATABASE] Database import failed: (" . $mysqli->errno . ") " . $mysqli->error . "<br>";
+            } else {
+                $output .= "[DATABASE] Database import completed successfully!<br>";
+            }
+        }
+
+
+        // RUN COMPOSER: Ensure that composer is executable and the path is correctly set
+        $composerCommand = 'cd ..; composer install';
+        $output .= shell_exec($composerCommand . ' 2>&1') . "<br>"; // Redirect stderr to stdout to capture any errors
+
+        // Close the database connection
+        $mysqli->close();
+
+        if (!@file_put_contents('config.php', $content)):
+    ?>
+
+            <script>
+                var content = `<?php echo $content; ?>`;
+
+                // Convert the PHP output string to a Blob
+                var blob = new Blob([content], {
+                    type: 'text/plain'
+                });
+
+                // Create a URL for the Blob
+                var url = window.URL.createObjectURL(blob);
+
+                // Create a download link
+                var downloadLink = document.createElement('a');
+                downloadLink.href = url;
+                downloadLink.download = 'config.php';
+
+                // Append the link to the document and trigger the download
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+
+                // Optionally free up the Blob URL
+                window.URL.revokeObjectURL(url);
+            </script>
+    <?
+        endif;
+    }
+    ?>
     <div class="max-w-xl bg-gray-900 px-6 py-6  mx-auto  text-gray-400 rounded-lg shadow-lg">
         <form action="" method="post" class="">
             <? include "../core/version.php"; ?>
