@@ -75,6 +75,7 @@
         $mysqli->close();
 
         if (!@file_put_contents('config.php', $content)):
+            $output .= "[CONFIG] Error creating config.php file. Move config.php manually to /";
     ?>
 
             <script>
