@@ -199,7 +199,7 @@
       </div>
       <form class="mt-6 sm:flex sm:max-w-md lg:mt-0" action="actionSignup" method="POST">
         <label for="email-address" class="sr-only">Email address</label>
-        <input type="email" name="email" id="email" autocomplete="email" requiblue class="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6" placeholder="Enter your email">
+        <input type="email" name="email" id="email" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6" placeholder="Enter your email">
         <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
           <button type="button" onclick="alert('Not collecting emails but you can do it easily');" class="flex w-full items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">Subscribe</button>
         </div>
@@ -208,7 +208,7 @@
     <div class="mt-10 border-t border-white/10 pt-8 ">
       <p class="text-xs leading-5 text-gray-400"><a href="<?= APP_BASE_URL ?>"><?= APP_DOMAIN ?></a> <?= $SEO_TITLE ?> &copy; <?= Date("Y") ?> Ayesa Digital SLU. All rights reserved</p>
       <p class="text-xs leading-5 text-gray-600">
-        Poweblue by <a href="//stripepad.com">Stripe Pad v.0.0.1 </a> · Made by <a href="https://www.twitter.com/betoayesa" target="_blank">@betoayesa</a>, maintenance by <a href="https://www.phpninja.es" target="_blank">Php Ninja</a> · Get Support: <a href="mailto:<?= ADMIN_EMAIL ?>"><?= ADMIN_EMAIL ?></a></p>
+        Powered by <a href="//stripepad.com">Stripe Pad v.0.0.1 </a> · Made by <a href="https://www.twitter.com/betoayesa" target="_blank">@betoayesa</a>, maintenance by <a href="https://www.phpninja.es" target="_blank">Php Ninja</a> · Get Support: <a href="mailto:<?= ADMIN_EMAIL ?>"><?= ADMIN_EMAIL ?></a></p>
 
 
     </div>
