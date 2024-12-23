@@ -1,3 +1,4 @@
+<? if (file_exists("../sp-config.php")) die("[Stripe Pad] sp-config.php file already exists, delete it to re-run installer.<br>support@stripepad.com"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,13 +43,24 @@
             }
         }
         $content .= "        
-define('APP_DOMAIN', HOMEPAGE_URL);   
+# ENVIRONMENT
+define('DEBUG_MODE', true);
+define('INTERNAL_ENCODING', 'UTF-8');
+define('TIMEZONE', 'Europe/Madrid');
+define('LOCALE_LANG', 'es_ES.ISO8859-1');
+define('LOCALE_TIME', 'spanish');
+
+# EXTRAS - MODULES
+define('COUNTERIFY_TOKEN', ''); // Counterify.com
+define('OPENAI_CHATGPT_APIKEY', ''); // platform.openai.com
+        define('APP_DOMAIN', HOMEPAGE_URL);   
 define('APP_BASE_URL', HOMEPAGE_URL);        
         define('ROOT_PATH', dirname(__FILE__) . '/');
 define('CORE_PATH', dirname(__FILE__) . '/core/');
 define('APP_PATH', dirname(__FILE__) . '/app/');
 define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
-
+define('BOT_BLOCKER', false);
+define('APP_CDN', HOMEPAGE_URL.'/cdn/');
         ?>";
 
         // IMPORT DATABASE
@@ -108,7 +120,7 @@ define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
                 // Optionally free up the Blob URL
                 window.URL.revokeObjectURL(url);
-                alert("Move the sp-config.php you have just downloaded and move it to the root folder");
+                alert("Move the sp-config.php just downloaded to the root folder");
             </script>
     <? else:
             $output .= "[CONFIG] config.php saved" . "<br>";
