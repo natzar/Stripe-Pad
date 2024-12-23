@@ -8,7 +8,7 @@
 *
 */
 
-include dirname(__FILE__) . "/../core/load.php";
+include dirname(__FILE__) . "/../sp-load.php";
 
 class StripeWebhook
 {

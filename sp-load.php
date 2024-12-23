@@ -13,11 +13,11 @@
  */
 
 # Include configuration file
-if (!file_exists(dirname(__FILE__) . '/config.php')) {
+if (!file_exists(dirname(__FILE__) . '/sp-config.php')) {
     header("location: install");
     exit();
 }
-include_once dirname(__FILE__) . '/config.php';
+include_once dirname(__FILE__) . '/sp-config.php';
 
 # Defaults 
 ini_set('log_errors', 1);
