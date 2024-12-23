@@ -398,3 +398,9 @@
         </nav>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('main a').addClass("text-blue-400 hover:underline hover:text-blue-700");
+    });
+</script>
