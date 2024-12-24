@@ -75,7 +75,7 @@ register_shutdown_function(function () {
         $errstr  = $error["message"];
 
         $error_msg = date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
-        @file_put_contents(ROOT_PATH . APP_SLUG . "-errors.log", $error_msg, FILE_APPEND);
+        @file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg, FILE_APPEND);
         // echo $error_msg . '<br>';
 
         include_once ROOT_PATH . "app/views/errors/error.php";
@@ -90,9 +90,9 @@ register_shutdown_function(function () {
 # Capture any error to file
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
     $error_msg = Date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Linea: " . $errline . " ";
-    @file_put_contents(ROOT_PATH . APP_SLUG . "-errors.log", $error_msg);
+    @file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg);
     if (DEBUG_MODE) {
-        include_once ROOT_PATH . "app/views/errors/error.php";
+        //   include_once ROOT_PATH . "app/views/errors/error.php";
         throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
     }
 });
