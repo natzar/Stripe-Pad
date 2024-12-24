@@ -15,8 +15,9 @@
             <ul class="space-y-2 mb-10">
                 <li><a href="documentation#app" class="text-gray-400 hover:text-blue-500">Your App</a></li>
                 <li><a href="documentation#landing" class="text-gray-400 hover:text-blue-500">Landing page</a></li>
+                <li><a href="documentation#extend" class="text-gray-400 hover:text-blue-500">Extending it</a></li>
             </ul>
-            <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Core</h2>
+            <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Core Components</h2>
             <ul class="space-y-2 mb-10">
                 <li><a href="documentation#components" class="text-gray-400 hover:text-blue-500">Introduction</a></li>
                 <li><a href="documentation#routes" class="text-gray-400 hover:text-blue-500">Routes</a></li>
@@ -161,9 +162,46 @@
             <hr class="border-1 border-gray-500 mt-10">
 
 
+            [WRITTING IN PUBLIC. Content below this line is not reviewed. 22/12/2024 - WIP]
 
-            <h2 id="components" class="text-xl text-blue-500 mt-10 uppercase mb-5">Components</h2>
+            <h2 id="app" class="text-xl text-blue-500 mt-10 uppercase">Your app</h2>
+            <p>index.php is the boilerplate, app/app.php it's an extended StripePad Class. You can override the parent methods.
+                All your application logic will be in app/app.php, public &amp; private sides, is all there, all urls are defined there. </p>
+
+            <p>To enhance your dashboard functionality:</p>
+            <ol>
+                <li>In <code>app/app.php</code>, modify the <code>dashboard</code> method to include any necessary database data.</li>
+                <li>Instantiate your model, call its methods, retrieve the data, and pass this data to the view.</li>
+            </ol>
+            <h2>Incorporating JavaScript Frameworks</h2>
+            <p>If your application requires a JavaScript framework:</p>
+            <ol>
+                <li>Include the necessary <code>&lt;script&gt;</code> tags within the relevant PHP templates, particularly within <code>dashboard.php</code>.</li>
+            </ol>
+            <p>To create a new theme:</p>
+            <ol>
+                <li>Duplicate the <code>app/themes/basic-dark</code> directory. Rename the new directory to reflect the primary keyword of your niche, optimizing for SEO purposes.</li>
+                <li>Your main file for customization will be <code>app/themes/[your-new-theme]/dashboard.php</code>.</li>
+                <li>Update the configuration file <code>config.php</code> within your theme folder, setting <code>APP_THEME</code> to the name of your new folder.</li>
+            </ol>
+            <h2 id="landing" class="text-xl text-blue-500 mt-10 uppercase">Landing Page</h2>
+            <p>The 'landing' directory hosts all public-facing parts of your SaaS, including marketing content and user acquisition elements. To extend the landing page:</p>
+            <ol>
+                <li>Create new HTML/PHP templates within <code>templates/landing/</code>.</li>
+                <li>Add corresponding methods to <code>app/app.php</code> for new pages, e.g., <code>public function about()</code>.</li>
+                <li>Implement the desired logic and view rendering within these new methods.</li>
+            </ol>
+            <p>This setup enables straightforward routing from URLs to respective application methods and views.</p>
+
+            <h2 id="extend" class="text-xl text-blue-500 mt-10 uppercase">Building on top of Stripe Pad</h2>
+            <p>To create a new webhook or a cronjob, you can do it by including "sp-load.php" file. Once included you can run any included model. For example, you will be able to check if a user is registered and then execute a method from your app.</p>
+
+
+            <h2 id="components" class="text-xl text-blue-500 mt-10 uppercase mb-5">5. Components</h2>
             <p>The base of Stripe Pad is structured as a simplistic MVC (Model-View-Controller (1)) PHP application. </p>
+
+            <p>It's main feature is to separate users from non-users or customers. It will show public content to visitors, it will allow access to users and customers to private areas.</p>
+
             <p><img width="500" class="mx-auto" src="https://www.stripepad.com/relations.png" alt="Stripe Pad Relations"></p>
 
             <ul>
@@ -286,6 +324,15 @@
 
             <hr class="border-1 border-gray-500 mt-10">
             <h2 id="users" class="text-xl text-blue-500 mt-10 uppercase mb-5">Users</h2>
+
+            <p>There are 4 user roles:</p>
+            <ol>
+                <li>- Super Admin</li>
+                <li>- Visitor</li>
+                <li>- Registered User</li>
+                <li>- Customer (+ Registered User)</li>
+            </ol>
+
             <p>Users are identified by email</p>
             <ul>
                 <li>name: String</li>
@@ -351,42 +398,6 @@
 
 
 
-            <h2 id="app" class="text-xl text-blue-500 mt-10 uppercase">Your app</h2>
-            <p>index.php is the boilerplate, app/app.php it's an extended StripePad Class. You can override the parent methods.
-                All your application logic will be in app/app.php, public &amp; private sides, is all there, all urls are defined there. </p>
-
-            <p>To enhance your dashboard functionality:</p>
-            <ol>
-                <li>In <code>app/app.php</code>, modify the <code>dashboard</code> method to include any necessary database data.</li>
-                <li>Instantiate your model, call its methods, retrieve the data, and pass this data to the view.</li>
-            </ol>
-            <h2>Incorporating JavaScript Frameworks</h2>
-            <p>If your application requires a JavaScript framework:</p>
-            <ol>
-                <li>Include the necessary <code>&lt;script&gt;</code> tags within the relevant PHP templates, particularly within <code>dashboard.php</code>.</li>
-            </ol>
-            <p>To create a new theme:</p>
-            <ol>
-                <li>Duplicate the <code>app/themes/basic-dark</code> directory. Rename the new directory to reflect the primary keyword of your niche, optimizing for SEO purposes.</li>
-                <li>Your main file for customization will be <code>app/themes/[your-new-theme]/dashboard.php</code>.</li>
-                <li>Update the configuration file <code>config.php</code> within your theme folder, setting <code>APP_THEME</code> to the name of your new folder.</li>
-            </ol>
-            <h2 id="landing" class="text-xl text-blue-500 mt-10 uppercase">Landing Page</h2>
-            <p>The 'landing' directory hosts all public-facing parts of your SaaS, including marketing content and user acquisition elements. To extend the landing page:</p>
-            <ol>
-                <li>Create new HTML/PHP templates within <code>templates/landing/</code>.</li>
-                <li>Add corresponding methods to <code>app/app.php</code> for new pages, e.g., <code>public function about()</code>.</li>
-                <li>Implement the desired logic and view rendering within these new methods.</li>
-            </ol>
-            <p>This setup enables straightforward routing from URLs to respective application methods and views.</p>
-            <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">Your code goes here</h3>
-            <p>Access to the core application features, such as the dashboard, is restricted to authenticated users. The dashboard acts as the entry point for logged-in users, hosting the primary functionality and data interactions of your SaaS solution. Start by modifying <code>dashboard.php</code> to tailor it to your application's needs.</p>
-
-
-
-
-            <h2 id="widget">Widget</h2>
-            <p>In case you want to build a widget that users will insert in their websites, you can use this. </p>
 
 
 
