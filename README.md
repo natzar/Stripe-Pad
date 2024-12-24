@@ -50,7 +50,7 @@ Stripe Pad is free software, and is released under the terms of the GPL (GNU Gen
 ## Share the love
 Stripe Pad has no multi-million dollar marketing campaign or celebrity sponsors, but it have something even better; you. If you enjoy Stripe Pad please consider telling a friend, setting it up for someone less knowledgeable than yourself, or writing the author of a media article that overlooks us.
 
-If you would like to support Stripe Pad, please consider donating
+If you would like to support Stripe Pad, please consider [becoming an sponsor](https://github.com/sponsors/natzar)
 
 
 
