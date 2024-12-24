@@ -167,7 +167,7 @@ class StripePad
         $_SESSION['login_attemp'] = 1;
 
         if ($_SESSION['login_attemp'] > 4) {
-            $_SESSION['errors'] = "Demasiados intentos.";
+            $_SESSION['errors'][] = "Too many intents.";
 
             header("location: " . APP_DOMAIN . "/login");
         } else {
@@ -184,7 +184,7 @@ class StripePad
             }
 
             $_SESSION['login_attemp']++;
-            $_SESSION['errors'] = "Usuario o Password incorrecto";
+            $_SESSION['errors'][] = "User or password not correct";
 
             header("location: " . APP_DOMAIN . "/login");
         }
@@ -235,10 +235,10 @@ class StripePad
 
 
 
-            $_SESSION['errors'] = "The password of your account is in your email inbox";
+            $_SESSION['errors'][] = "The password of your account is in your email inbox";
             header("location: " . APP_DOMAIN . "/login");
         } else {
-            $_SESSION['errors'] = "El usuario ya existe, intenta loggearte.";
+            $_SESSION['errors'][] = "The user already exists, please login";
             header("location: " . APP_DOMAIN . "/login");
         }
     }
@@ -289,7 +289,7 @@ class StripePad
     {
         if (empty($_SESSION['user']['stripe_customer_id'])):
 
-            $_SESSION['errors'] = "Aún no tienes esta sección habilitada.";
+            $_SESSION['errors'][] = "This section is not enabled for your user";
             header("location: " . APP_DOMAIN . "/dashboard");
 
         else:
@@ -307,7 +307,7 @@ class StripePad
                 ]);
                 header("Location: " . $session->url);
             } catch (Exception $e) {
-                $_SESSION['errors'] = $e->getMessage();
+                $_SESSION['errors'][] = $e->getMessage();
                 header("location: " . APP_DOMAIN . "/dashboard");
             }
 
@@ -326,7 +326,7 @@ class StripePad
     {
         if (empty($_SESSION['user']['stripe_customer_id'])):
 
-            $_SESSION['errors'] = "Aún no tienes esta sección habilitada.";
+            $_SESSION['errors'][] = "NOT_ENABLED;";
             header("location: " . APP_DOMAIN . "/dashboard");
 
         else:
@@ -344,7 +344,7 @@ class StripePad
                 ]);
                 header("Location: " . $session->url);
             } catch (Exception $e) {
-                $_SESSION['errors'] = $e->getMessage();
+                $_SESSION['errors'][] = $e->getMessage();
                 header("location: " . APP_DOMAIN . "/dashboard");
             }
 
