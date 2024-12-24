@@ -147,6 +147,7 @@
 
             <ul class="list-disc pl-8">
                 <li><a href="/app" class="text-blue-400 hover:text-blue-600">Login Page</a> should open correctly.</li>
+                <li><a href="/signup" class="text-blue-400 hover:text-blue-600">Signup Page</a> should receive an email with password correctly.</li>
                 <li><a href="/api" class="text-blue-400 hover:text-blue-600">API Endpoint</a> should display a 'not authenticated' message.</li>
                 <li>Access your main landing or marketing page at the <span class="bg-gray-700 text-red-300 p-1 rounded">/</span> directory.</li>
 
