@@ -40,17 +40,15 @@ You can read the contribution guide [here](https://github.com/natzar/Stripe-Pad/
 In order to ensure that the PHP community is welcoming to all, please review and abide by the [Code of Conduct](https://github.com/natzar/Stripe-Pad?tab=coc-ov-file)
 
 ## Security Vulnerabilities
-<a name="security-vulnerabilities"></a>
-
 Please review [our security policy](https://github.com/natzar/stripe-pad/security/policy) on how to report security vulnerabilities.
 
 
 ## License
-Stripe Pad is free software, and is released under the terms of the <abbr>GPL</abbr> (GNU General Public License) Version 3.0 [Copy of the license](LICENSE.txt).
+Stripe Pad is free software, and is released under the terms of the GPL (GNU General Public License) Version 3.0 [Copy of the license](LICENSE.txt).
 
 
-## Share the love
-Stripe Pad has no multi-million dollar marketing campaign or celebrity sponsors, but it have something even better&#8212;you. If you enjoy Stripe Pad please consider telling a friend, setting it up for someone less knowledgeable than yourself, or writing the author of a media article that overlooks us.</p>
+## Share the love
+Stripe Pad has no multi-million dollar marketing campaign or celebrity sponsors, but it have something even better; you. If you enjoy Stripe Pad please consider telling a friend, setting it up for someone less knowledgeable than yourself, or writing the author of a media article that overlooks us.
 
 If you would like to support Stripe Pad, please consider donating
 
