@@ -6,6 +6,19 @@
     </div>
 </div>
 
+<div class="bg-gray-900 text-gray-400 shadow-md rounded-lg max-w-4xl mx-auto p-6 mt-10 mb-10">
+    <div class=" space-y-1">
+
+        <h2 class="text-xl AirClassicBold text-white">Let's build your Idea!</h2>
+        <p class="text-sm">With Stripe Pad costs are reduced dramatically. We can just focus on your unique idea, everything else like user management, invoicing, etc ... it's alreadyd done.</p>
+
+        <br>
+        <a href="https://github.com/sponsors/natzar" target="_blank" class=" inline-block rounded-lg bg-blue-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-blue-600 hover:bg-blue-700 hover:ring-blue-700 AirClassicBold">
+            Read more
+            <span class="text-purple-200" aria-hidden="true">&rarr;</span>
+        </a>
+    </div>
+</div>
 
 <div class="bg-gray-900 text-gray-400 shadow-md rounded-lg max-w-4xl mx-auto p-6 mt-10 mb-10">
     <div class=" space-y-1">
@@ -14,7 +27,7 @@
         <p class="text-sm">If your team runs into a nasty bug, rather than wasting hours or days with chatgpt, scouring the forums and Stack Overflow, shoot a message to PHP NINJA instead and we'll get you headed in the right direction asap.</p>
 
         <br>
-        <a href="https://phpninja.eu/contact" target="_blank" class=" inline-block rounded-lg bg-blue-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-blue-600 hover:bg-blue-700 hover:ring-blue-700 AirClassicBold">
+        <a href="https://github.com/sponsors/natzar" target="_blank" class=" inline-block rounded-lg bg-blue-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-blue-600 hover:bg-blue-700 hover:ring-blue-700 AirClassicBold">
             Get help
             <span class="text-purple-200" aria-hidden="true">&rarr;</span>
         </a>

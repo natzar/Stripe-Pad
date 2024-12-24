@@ -328,7 +328,7 @@
 
 <div id="demo" class="max-w-2xl mx-auto mt-10 py-8 px-4 sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
 
-  <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl text-center">Demo(s)</h2>
+  <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl text-center mb-5">Demo(s)</h2>
   <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-4 xl:gap-x-8">
 
 
