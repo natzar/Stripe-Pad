@@ -35,6 +35,7 @@
 if (file_exists(dirname(__FILE__) . "/helpers.php")) {
   include_once(dirname(__FILE__) . "/helpers.php");
 }
+
 class App extends StripePad
 {
 
@@ -85,11 +86,7 @@ class App extends StripePad
     $this->view->show("landing/homepage.php", $data);
   }
 
-  public function installation()
-  {
-    $data = array();
-    $this->view->show("landing/installation.php", $data);
-  }
+
 
   public function examples()
   {
@@ -106,7 +103,10 @@ class App extends StripePad
   {
     $this->view->show('landing/documentation.php', array());
   }
-
+  public function support()
+  {
+    $this->view->show('landing/support.php', array());
+  }
   public function tos()
   {
     $this->view->show('common/tos.php', array());
