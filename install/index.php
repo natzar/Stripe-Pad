@@ -37,8 +37,12 @@
 
         // Save Configuration file
         $content = "<?php\n\n";
+        $url_keys = ['HOMEPAGE_URL'];
         foreach ($_POST as $key => $value) {
             if ($key != 'submit') {
+                if (in_array($key, $url_keys) and substr($value, -1) !== "/") {
+                    $value .= "/";
+                }
                 $content .= "define('{$key}', '" . addslashes($value) . "');\n";
             }
         }
