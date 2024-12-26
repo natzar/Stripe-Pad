@@ -46,12 +46,12 @@ if (is_file(dirname(__FILE__) . "/vendor/autoload.php")) require(dirname(__FILE_
 # Include base classes
 include_once CORE_PATH . "sp-errors.php";
 include_once CORE_PATH . "sp-helpers.php";
-include_once CORE_PATH . "classes/sp-model-base.php";
-include_once CORE_PATH . 'classes/sp-spdo.php';
-include_once CORE_PATH . 'classes/sp-view.php';
-include_once CORE_PATH . 'models/sp-mail.php';
-include_once CORE_PATH . 'models/sp-user.php';
-include_once CORE_PATH . "classes/BotBlocker.php";
+include_once CORE_PATH . "Classes/sp-model-base.php";
+include_once CORE_PATH . 'Classes/sp-spdo.php';
+include_once CORE_PATH . 'Classes/sp-view.php';
+include_once CORE_PATH . 'Models/sp-mail.php';
+include_once CORE_PATH . 'Models/sp-user.php';
+include_once CORE_PATH . "Classes/BotBlocker.php";
 
 # include all models from app dynamically
 foreach (glob(APP_PATH . "models/*.php") as $filename) {
