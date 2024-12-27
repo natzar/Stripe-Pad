@@ -14,13 +14,8 @@ Website: [stripepad.com](https://stripepad.com)
 
 **Not affiliated with Stripe.com**
 
-## Demo
-Test some live projects built with Stripe Pad
+![Structure Overview](https://stripepad.com/cdn/demo/stripe-pad-overview.png)
 
-- [domstry.com](https://domstry.com)
-- [thingsnearyou.com](https://thingsnearyou.com)
-- [counterify.com](https://counterify.com)
-- [refboost.com](https://refboost.com)
 
 ## Quick Install
 [Download latest stable release here](https://github.com/natzar/Stripe-Pad/releases), then run the installer at yourdomain.com/install.
@@ -50,7 +45,7 @@ Stripe Pad is free software, and is released under the terms of the GPL (GNU Gen
 ## Share the love
 Stripe Pad has no multi-million dollar marketing campaign or celebrity sponsors, but it have something even better; you. If you enjoy Stripe Pad please consider telling a friend, setting it up for someone less knowledgeable than yourself, or writing the author of a media article that overlooks us.
 
-If you would like to support Stripe Pad, please consider [becoming an sponsor](https://github.com/sponsors/natzar)
+If you would like to support Stripe Pad, please consider [becoming a sponsor](https://github.com/sponsors/natzar)
 
 
 
