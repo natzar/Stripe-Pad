@@ -128,3 +128,6 @@ function isLocalhost()
 
 	return in_array($serverAddr, $localhostIPs) || in_array($remoteAddr, $localhostIPs);
 }
+
+# Stripe Pad Version
+include_once dirname(__FILE__) . "/core/sp-version.php";
