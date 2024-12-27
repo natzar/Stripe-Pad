@@ -51,6 +51,7 @@ include_once CORE_PATH . 'Classes/sp-spdo.php';
 include_once CORE_PATH . 'Classes/sp-view.php';
 include_once CORE_PATH . 'Models/sp-mail.php';
 include_once CORE_PATH . 'Models/sp-user.php';
+include_once CORE_PATH . 'Models/sp-blog.php';
 include_once CORE_PATH . "Classes/BotBlocker.php";
 
 # include all models from app dynamically

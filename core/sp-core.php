@@ -71,6 +71,29 @@ class StripePad
         echo 'default home, overwrite public function home.php in App.php';
     }
 
+
+    /**
+     * Blog
+     * Manages general blog view + post (1) view
+     * @return void
+     */
+    public function blog()
+    {
+        $blog = new blogModel();
+        if (!empty($this->params['m'])): // there is a slug = there is a selected post 
+            $slug = $this->params['m'];
+
+            $data = $blog->getBySlug($slug);
+            $data['SEO_TITLE'] = $data['title'] . " - " . APP_NAME;
+            $data['SEO_DESCRIPTION'] = truncate(strip_tags($data['body']));
+            $this->view->show('blog/post.php', $data);
+        else: // show all
+
+            $data = array("items" => $blog->getAll());
+            $this->view->show('blog/index.php', $data);
+        endif;
+    }
+
     /**
      * App: This method will be overwritten by app/App.php
      *
