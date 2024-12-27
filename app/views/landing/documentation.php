@@ -1,9 +1,9 @@
-<div class="relative px-10">
+<div class="relative px-3 sm:px-10">
     <!-- Wrapper for the entire layout -->
     <div class="block flex min-h-screen text-gray-200 ">
 
         <!-- Sidebar: Navigation -->
-        <aside class="sm:w-64  sm:px-8 sm:py-12 sm:fixed overflow-y-auto">
+        <aside class="hidden sm:block sm:w-64  sm:px-8 sm:py-12 sm:fixed overflow-y-auto">
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Getting Started</h2>
             <ul class="space-y-2 mb-10">
                 <li><a href="documentation#quickstart" class="text-gray-400 hover:text-blue-500">Quickstart</a></li>
@@ -13,13 +13,14 @@
             </ul>
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Customization</h2>
             <ul class="space-y-2 mb-10">
+                <li><a href="documentation#introduction" class="text-gray-400 hover:text-blue-500">Introduction</a></li>
                 <li><a href="documentation#app" class="text-gray-400 hover:text-blue-500">Your App</a></li>
                 <li><a href="documentation#landing" class="text-gray-400 hover:text-blue-500">Landing page</a></li>
                 <li><a href="documentation#extend" class="text-gray-400 hover:text-blue-500">Extending it</a></li>
             </ul>
             <h2 class="text-sm uppercase  font-semibold mb-5 text-gray-600">Core Components</h2>
             <ul class="space-y-2 mb-10">
-                <li><a href="documentation#components" class="text-gray-400 hover:text-blue-500">Introduction</a></li>
+
                 <li><a href="documentation#routes" class="text-gray-400 hover:text-blue-500">Routes</a></li>
                 <li><a href="documentation#models" class="text-gray-400 hover:text-blue-500">Models</a></li>
                 <li><a href="documentation#users" class="text-gray-400 hover:text-blue-500">Users</a></li>
@@ -43,7 +44,7 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 pl-80 pr-32  text-gray-300 text-base pb-16">
+        <main class="md:flex-1 md:pl-80 md:pr-32  text-gray-300 text-base pb-16">
 
 
 
@@ -82,21 +83,16 @@
 
 
 
-            <hr class="border-1 border-gray-500 mt-10">
+            <hr class="border-1 border-gray-800 mt-10">
 
             <h2 id="install" class="text-xl text-blue-500 mt-10 uppercase mb-5">2. Installation</h2>
-            <p>Follow the installation instructions to set up the environment on your local machine. Once you have everything running locally, you are ready to begin the development of your SaaS application.</p>
+            <p>Follow the installation instructions to set up the environment.</p>
 
 
-            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
-                <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">Important note: running it in a sub-folder?</h3>
-                <p class="text-xs">If you will be running stripe pad from a sub folder, like yourdomain.com/your-folder/ you need to edit .htaccess, look for RewriteBase in the .htaccess file (Slash at first and last position):</p><br>
-                RewriteBase /your-folder/
-            </blockquote>
 
 
             <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">2.1 Get the Code</h3>
-
+            <p>You can download a zip with the latest release or you can clone the repo with the latest version</p>
             <h4 class="mt-2 mb-2 font-bold text-blue-400 text-base">&rarr;&nbsp;2.1.1 Download the latest version from the repository an uncompress it</h4>
             <p class="mb-5">Check <a href="documentation#quickstart">Quickstart section</a></p>
 
@@ -108,10 +104,18 @@
             </blockquote>
 
             <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">2.2 Configuration & Settings</h3>
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">Important note: running it in a sub-folder?</h3>
+                <p class="text-xs">If you will be running stripe pad from a sub folder, like yourdomain.com/your-folder/ you need to edit .htaccess, look for RewriteBase in the .htaccess file (Slash at first and last position):</p><br>
+                RewriteBase /your-folder/
+            </blockquote>
 
             <h4 class="mt-2 mb-2 font-bold text-blue-400 text-base">&rarr;&nbsp;2.2.1 Automatic Configuration</h4>
             <p>Open yourdomain.com or localhost relative to your stripe pad folder in your browser and installation process will start.</p>
-            <p> Then, open https://www.yourdomain.com/stripe-pad/install/. The installer will fill up config.php for you and import install/database.sql, in case something failed, please try manual installation.</p>
+
+            <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
+                open https://www.yourdomain.com/install/ in your browser.</blockquote>
+            <p> <br>The installer will fill up config.php for you and import install/database.sql, in case something failed, please try manual installation.</p>
 
             <h4 class="mt-2 mb-2 font-bold text-blue-400 text-base">&rarr;&nbsp;2.2.2 Manual Configuration </h4>
             <blockquote class="bg-gray-900 rounded-md text-md text-white px-6 py-4 border-1 border-gray-700">
@@ -154,56 +158,60 @@
             </ul>
 
 
-            <hr class="border-1 border-gray-500 mt-10">
+            <hr class="border-1 border-gray-800 mt-10">
             <h2 id="upgrade" class="text-xl text-blue-500 mt-10 uppercase mb-5">3. Upgrade Guide</h2>
 
             <p>To upgrade Stripe Pad you just need to replace core files</p>
             1- Replace core folder with the new version<br>
             2- Replace load.php with the new version (TO-DO: Move file to core/)<br>
-            <hr class="border-1 border-gray-500 mt-10">
+            <hr class="border-1 border-gray-800 mt-10">
 
-
-            [WRITTING IN PUBLIC. Content below this line is not reviewed. 22/12/2024 - WIP]
-
-            <h2 id="app" class="text-xl text-blue-500 mt-10 uppercase">Your app</h2>
-            <p>index.php is the boilerplate, app/app.php it's an extended StripePad Class. You can override the parent methods.
-                All your application logic will be in app/app.php, public &amp; private sides, is all there, all urls are defined there. </p>
-
-            <p>To enhance your dashboard functionality:</p>
-            <ol>
-                <li>In <code>app/app.php</code>, modify the <code>dashboard</code> method to include any necessary database data.</li>
-                <li>Instantiate your model, call its methods, retrieve the data, and pass this data to the view.</li>
-            </ol>
-            <h2>Incorporating JavaScript Frameworks</h2>
-            <p>If your application requires a JavaScript framework:</p>
-            <ol>
-                <li>Include the necessary <code>&lt;script&gt;</code> tags within the relevant PHP templates, particularly within <code>dashboard.php</code>.</li>
-            </ol>
-            <p>To create a new theme:</p>
-            <ol>
-                <li>Duplicate the <code>app/themes/basic-dark</code> directory. Rename the new directory to reflect the primary keyword of your niche, optimizing for SEO purposes.</li>
-                <li>Your main file for customization will be <code>app/themes/[your-new-theme]/dashboard.php</code>.</li>
-                <li>Update the configuration file <code>config.php</code> within your theme folder, setting <code>APP_THEME</code> to the name of your new folder.</li>
-            </ol>
-            <h2 id="landing" class="text-xl text-blue-500 mt-10 uppercase">Landing Page</h2>
-            <p>The 'landing' directory hosts all public-facing parts of your SaaS, including marketing content and user acquisition elements. To extend the landing page:</p>
-            <ol>
-                <li>Create new HTML/PHP templates within <code>templates/landing/</code>.</li>
-                <li>Add corresponding methods to <code>app/app.php</code> for new pages, e.g., <code>public function about()</code>.</li>
-                <li>Implement the desired logic and view rendering within these new methods.</li>
-            </ol>
-            <p>This setup enables straightforward routing from URLs to respective application methods and views.</p>
-
-            <h2 id="extend" class="text-xl text-blue-500 mt-10 uppercase">Building on top of Stripe Pad</h2>
-            <p>To create a new webhook or a cronjob, you can do it by including "sp-load.php" file. Once included you can run any included model. For example, you will be able to check if a user is registered and then execute a method from your app.</p>
-
-
-            <h2 id="components" class="text-xl text-blue-500 mt-10 uppercase mb-5">5. Components</h2>
+            <h2 id="introduction" class="text-xl text-blue-500 mt-10 uppercase mb-5">5. Introduction</h2>
             <p>The base of Stripe Pad is structured as a simplistic MVC (Model-View-Controller (1)) PHP application. </p>
 
             <p>It's main feature is to separate users from non-users or customers. It will show public content to visitors, it will allow access to users and customers to private areas.</p>
 
             <p><img width="500" class="mx-auto" src="https://www.stripepad.com/relations.png" alt="Stripe Pad Relations"></p>
+
+
+            <h2 class="text-xl text-blue-500 mt-10 uppercase mb-5">Folders and files</h2>
+            <p>Ideally you will have set each folder on different domains or subdomains.<br>
+                api.domain.com for your api, webhooks.domain.com, domain.com for /, </p>
+            <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">folders</h3>
+            <ul>
+                <li><strong>api</strong>: Serves as the foundation for all model classes, incorporating database connection functionality.</li>
+                <li><strong>app</strong>: Manages template rendering and data handling.</li>
+                <li><strong>cdn</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>core</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>crons</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>docs</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>install</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>mails</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>pdfs</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>tests</strong>: Facilitates MySQL database connections.</li>
+                <li><strong>webhooks</strong>: Facilitates MySQL database connections.</li>
+            </ul>
+            <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">files</h3>
+            <ul>
+                <li>.htaccess</li>
+                <li>config.php</li>
+                <lii>index.php</lii>
+                <li>load.php</li>
+                <li>stripe-pad-errors.log</li>
+            </ul>
+
+
+            <ul>
+                <li>EmailValidator</li>
+                <li>Request Bot Blocker</li>
+            </ul>
+            <p>Key environmental files include:</p>
+            <ul>
+                <li><strong>.htaccess</strong>: Redirects URLs in the format <code>/a/b/c/d</code> to <code>index.php?p=a&amp;m=b&amp;i=c</code> (without physically redirecting). Additional parameters can be added for deeper navigation.</li>
+                <li><strong>config.php</strong>: Centralizes all settings, API keys, and secrets. It is exclusively included by <code>load.php</code>.</li>
+                <li><strong>load.php</strong>: Initializes the application by loading <code>config.php</code>, managing error handling, including all model files, and integrating composer packages.</li>
+            </ul>
+            <p>For optimal security and organization, setting up dedicated domains or subdomains for different application aspects (such as cron jobs, core functionality, and CDN) is advised.</p>
 
             <ul>
                 <li>Find and add your models at app/models</li>
@@ -245,45 +253,45 @@
             </ol>
 
 
-            <h2 class="text-xl text-blue-500 mt-10 uppercase mb-5">Folders and files</h2>
-            <p>Ideally you will have set each folder on different domains or subdomains.<br>
-                api.domain.com for your api, webhooks.domain.com, domain.com for /, </p>
-            <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">folders</h3>
-            <ul>
-                <li><strong>api</strong>: Serves as the foundation for all model classes, incorporating database connection functionality.</li>
-                <li><strong>app</strong>: Manages template rendering and data handling.</li>
-                <li><strong>cdn</strong>: Facilitates MySQL database connections.</li>
-                <li><strong>core</strong>: Facilitates MySQL database connections.</li>
-                <li><strong>crons</strong>: Facilitates MySQL database connections.</li>
-                <li><strong>docs</strong>: Facilitates MySQL database connections.</li>
-                <li><strong>install</strong>: Facilitates MySQL database connections.</li>
-                <li><strong>mails</strong>: Facilitates MySQL database connections.</li>
-                <li><strong>pdfs</strong>: Facilitates MySQL database connections.</li>
-                <li><strong>tests</strong>: Facilitates MySQL database connections.</li>
-                <li><strong>webhooks</strong>: Facilitates MySQL database connections.</li>
-            </ul>
-            <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">files</h3>
-            <ul>
-                <li>.htaccess</li>
-                <li>config.php</li>
-                <lii>index.php</lii>
-                <li>load.php</li>
-                <li>stripe-pad-errors.log</li>
-            </ul>
 
-            <h2 class="text-xl text-blue-500 mt-10 uppercase mb-5">Modules</h2>
-            <ul>
-                <li>EmailValidator</li>
-                <li>Request Bot Blocker</li>
-            </ul>
-            <p>Key environmental files include:</p>
-            <ul>
-                <li><strong>.htaccess</strong>: Redirects URLs in the format <code>/a/b/c/d</code> to <code>index.php?p=a&amp;m=b&amp;i=c</code> (without physically redirecting). Additional parameters can be added for deeper navigation.</li>
-                <li><strong>config.php</strong>: Centralizes all settings, API keys, and secrets. It is exclusively included by <code>load.php</code>.</li>
-                <li><strong>load.php</strong>: Initializes the application by loading <code>config.php</code>, managing error handling, including all model files, and integrating composer packages.</li>
-            </ul>
-            <p>For optimal security and organization, setting up dedicated domains or subdomains for different application aspects (such as cron jobs, core functionality, and CDN) is advised.</p>
-            <hr class="border-1 border-gray-500 mt-10">
+            <hr class="border-1 border-gray-800 mt-10">
+
+            [WRITTING IN PUBLIC. Content below this line is not reviewed. 22/12/2024 - WIP]
+
+            <h2 id="app" class="text-xl text-blue-500 mt-10 uppercase">Your app</h2>
+            <p>index.php is the boilerplate, app/app.php it's an extended StripePad Class. You can override the parent methods.
+                All your application logic will be in app/app.php, public &amp; private sides, is all there, all urls are defined there. </p>
+
+            <p>To enhance your dashboard functionality:</p>
+            <ol>
+                <li>In <code>app/app.php</code>, modify the <code>dashboard</code> method to include any necessary database data.</li>
+                <li>Instantiate your model, call its methods, retrieve the data, and pass this data to the view.</li>
+            </ol>
+            <h2>Incorporating JavaScript Frameworks</h2>
+            <p>If your application requires a JavaScript framework:</p>
+            <ol>
+                <li>Include the necessary <code>&lt;script&gt;</code> tags within the relevant PHP templates, particularly within <code>dashboard.php</code>.</li>
+            </ol>
+            <p>To create a new theme:</p>
+            <ol>
+                <li>Duplicate the <code>app/themes/basic-dark</code> directory. Rename the new directory to reflect the primary keyword of your niche, optimizing for SEO purposes.</li>
+                <li>Your main file for customization will be <code>app/themes/[your-new-theme]/dashboard.php</code>.</li>
+                <li>Update the configuration file <code>config.php</code> within your theme folder, setting <code>APP_THEME</code> to the name of your new folder.</li>
+            </ol>
+            <h2 id="landing" class="text-xl text-blue-500 mt-10 uppercase">Landing Page</h2>
+            <p>The 'landing' directory hosts all public-facing parts of your SaaS, including marketing content and user acquisition elements. To extend the landing page:</p>
+            <ol>
+                <li>Create new HTML/PHP templates within <code>templates/landing/</code>.</li>
+                <li>Add corresponding methods to <code>app/app.php</code> for new pages, e.g., <code>public function about()</code>.</li>
+                <li>Implement the desired logic and view rendering within these new methods.</li>
+            </ol>
+            <p>This setup enables straightforward routing from URLs to respective application methods and views.</p>
+
+            <h2 id="extend" class="text-xl text-blue-500 mt-10 uppercase">Building on top of Stripe Pad</h2>
+            <p>To create a new webhook or a cronjob, you can do it by including "sp-load.php" file. Once included you can run any included model. For example, you will be able to check if a user is registered and then execute a method from your app.</p>
+
+
+
 
             <h2 id="routes" class="text-xl text-blue-500 mt-10 uppercase mb-5">Routes</h2>
             <h2>Adding New URLs</h2>
@@ -297,7 +305,7 @@
                 <li>Edit <code>app/themes/[your-theme]/app.php</code>.</li>
                 <li>Add new methods corresponding to your desired URLs, for example, <code>public function faq() {}</code> which will make <code>https://your-domain.com/faq</code> accessible.</li>
             </ol>
-            <hr class="border-1 border-gray-500 mt-10">
+            <hr class="border-1 border-gray-800 mt-10">
             <h2 id="models" class="text-xl text-blue-500 mt-10 uppercase mb-5">Models</h2>
             <p>Instead of embedding SQL directly within your controllers or views, utilize models:</p>
 
@@ -323,7 +331,7 @@
 
             <p>This approach keeps your application organized and maintains a separation of concerns between your database logic and your application logic.</p>
 
-            <hr class="border-1 border-gray-500 mt-10">
+            <hr class="border-1 border-gray-800 mt-10">
             <h2 id="users" class="text-xl text-blue-500 mt-10 uppercase mb-5">Users</h2>
 
             <p>There are 4 user roles:</p>
@@ -346,7 +354,7 @@
                 $users = new usersModel();<br>
                 $user = $users->find('beto@gmail.com');
             </blockquote>
-            <hr class="border-1 border-gray-500 mt-10">
+            <hr class="border-1 border-gray-800 mt-10">
             <h2 id="emails" class="text-xl text-blue-500 mt-10 uppercase mb-5">Transactional Emails</h2>
 
             <p>An email system comes enabled by default using SMTP server. To-do: integrate other services like Mailgun.</p>
@@ -365,17 +373,15 @@
                 $mails = new mailsModel();<br>
                 $mails->sendTemplate('welcome', $subject, $to, $data );
             </blockquote>
-            <hr class="border-1 border-gray-500 mt-10">
+            <hr class="border-1 border-gray-800 mt-10">
             <h2 id="webhooks" class="text-xl text-blue-500 mt-10 uppercase">Webhooks</h2>
             <p>Facilitate automated interactions with external systems:</p>
             <ul>
                 <li><strong>deploy.php</strong>: Configurable for automatic deployment via Bitbucket or Git hooks.</li>
                 <li><strong>stripe.php</strong>: Endpoint for receiving events from Stripe.</li>
             </ul>
-            <hr class="border-1 border-gray-500 mt-10">
-            <h2 id="cronjobs" class="text-xl text-blue-500 mt-10 uppercase">Cronjobs</h2>
-            <p>This section is designated for scheduling and managing cronjobs. Scripts within the 'crons' directory should start by including <code>load.php</code>, initializing required models, and executing necessary tasks. These scripts can then be scheduled directly on the server.</p>
-            <hr class="border-1 border-gray-500 mt-10">
+            <hr class="border-1 border-gray-800 mt-10">
+
             <h2 id="api" class="text-xl text-blue-500 mt-10 uppercase">Api</h2>
             <p>API comes in 2 forms, v1 and v2.</p>
             <ul>
@@ -385,7 +391,7 @@
 
             <p> v3 is coming, Guzzle + REST</p>
 
-            <hr class="border-1 border-gray-500 mt-10">
+            <hr class="border-1 border-gray-800 mt-10">
 
 
 
@@ -394,7 +400,7 @@
             <h2 id="cdn" class="text-xl text-blue-500 mt-10 uppercase">CDN</h2>
             <h2>CDN</h2>
             <p>The 'cdn' directory is intended for static assets such as JavaScript, CSS, and images. Ideally, these should be served from a separate domain or subdomain to improve loading times and security.</p>
-            <hr class="border-1 border-gray-500 mt-10">
+            <hr class="border-1 border-gray-800 mt-10">
 
 
 
