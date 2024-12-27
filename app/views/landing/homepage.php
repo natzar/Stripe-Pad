@@ -305,7 +305,7 @@
           <svg class="absolute left-1 top-1 h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M7.84 1.804A1 1 0 018.82 1h2.36a1 1 0 01.98.804l.331 1.652a6.993 6.993 0 011.929 1.115l1.598-.54a1 1 0 011.186.447l1.18 2.044a1 1 0 01-.205 1.251l-1.267 1.113a7.047 7.047 0 010 2.228l1.267 1.113a1 1 0 01.206 1.25l-1.18 2.045a1 1 0 01-1.187.447l-1.598-.54a6.993 6.993 0 01-1.929 1.115l-.33 1.652a1 1 0 01-.98.804H8.82a1 1 0 01-.98-.804l-.331-1.652a6.993 6.993 0 01-1.929-1.115l-1.598.54a1 1 0 01-1.186-.447l-1.18-2.044a1 1 0 01.205-1.251l1.267-1.114a7.05 7.05 0 010-2.227L1.821 7.773a1 1 0 01-.206-1.25l1.18-2.045a1 1 0 011.187-.447l1.598.54A6.993 6.993 0 017.51 3.456l.33-1.652zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
           </svg>
-          Step 4: Integrate Your Unique App
+          Step 4: Integrate Your Unique Idea
         </dt>
         <dd class=" inline">Add your unique features and content to your app. (contact us if you need support@stripepad.com)</dd>
       </div>
@@ -334,9 +334,9 @@
 
 
     <div class="group relative ">
-      <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
+      <!-- <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
         <img src="<?= APP_CDN ?>refboost.png" alt="Screenshot of Refboost homepage" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
-      </div>
+      </div> -->
 
       <div class="mt-4 flex justify-between">
         <div>
@@ -356,9 +356,9 @@
     </div>
 
     <div class="group relative ">
-      <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
+      <!-- <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
         <img src="<?= APP_CDN ?>domstry.png" alt="Screenshot of domstry.com homepage." class="w-full h-full object-center object-cover lg:w-full lg:h-full">
-      </div>
+      </div> -->
 
       <div class="mt-4 flex justify-between">
         <div>
@@ -378,9 +378,9 @@
     </div>
 
     <div class="group relative ">
-      <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
+      <!-- <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
         <img src="<?= APP_CDN ?>counterify.png" alt="Screenshot of Counterify Homepage" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
-      </div>
+      </div> -->
 
       <div class="mt-4 flex justify-between">
         <div>
@@ -400,9 +400,9 @@
     </div>
 
     <div class="group relative ">
-      <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
+      <!-- <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
         <img src="<?= APP_CDN ?>airovic.png" alt="Screenshot of thingsnearyou.com homepage" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
-      </div>
+      </div> -->
 
       <div class="mt-4 flex justify-between">
         <div>
