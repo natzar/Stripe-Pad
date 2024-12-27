@@ -62,7 +62,7 @@
             <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">Download Latest Version</h3>
 
             <blockquote class="cursor-pointer bg-gray-900 rounded-xl text-white p-3 border-1 border-gray-700 hover:bg-black">
-                <a href="https://github.com/natzar/Stripe-Pad/releases" target="_blank" class="block p-4 bg-gray-800 rounded-xl ">
+                <a href="https://github.com/natzar/Stripe-Pad/releases/download/v1/StripePad-v1.0.0.zip" target="_blank" class="block p-4 bg-gray-800 rounded-xl ">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 inline">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9.75v6.75m0 0-3-3m3 3 3-3m-8.25 6a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
                     </svg>Download Stripe Pad v1.0.0-alpha <small class="text-xs">(ZIP File)</small><br>
