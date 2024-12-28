@@ -147,7 +147,7 @@ class datatrackerModel extends ModelBase
 		return $counters;
 	}
 
-	public function get($id)
+	public function counters_get($id)
 	{
 
 
