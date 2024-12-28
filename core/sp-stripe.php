@@ -27,7 +27,7 @@
 use Stripe\Invoice;
 use Stripe\StripeClient;
 
-class StripePad_Stripe
+class StripePad_Stripe extends ModelBase
 {
 
     function __construct()
@@ -250,5 +250,54 @@ class StripePad_Stripe
 
 
         echo json_encode($session);
+    }
+
+    public function syncStripeSubscriptions()
+    {
+        $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
+        $subscriptions = $stripe->subscriptions->all(['limit' => 100]);
+
+        foreach ($subscriptions->autoPagingIterator() as $subscription) {
+            $stmt = $this->db->prepare("REPLACE INTO subscriptions (usersId, productsId, active, start_date, end_date, created, updated) VALUES (?, ?, ?, ?, ?, NOW(), NOW())");
+            $stmt->execute([
+                $subscription->customer, // Assuming `usersId` maps to Stripe's `customer` ID
+                $subscription->items->data[0]->price->product, // Assuming `productsId` maps to Stripe's product ID associated with the price
+                $subscription->status == 'active' ? 1 : 0,
+                date('Y-m-d', $subscription->current_period_start),
+                date('Y-m-d', $subscription->current_period_end)
+            ]);
+        }
+    }
+    public function syncStripeInvoices()
+    {
+        $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
+        $invoices = $stripe->invoices->all(['limit' => 100]);
+
+        foreach ($invoices->autoPagingIterator() as $invoice) {
+            $stmt = $this->db->prepare("REPLACE INTO invoices (invoicesId, stripe_payment_id, usersId, subtotal, vat, total, created, updated) VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())");
+            $stmt->execute([
+                $invoice->id,
+                $invoice->payment_intent,
+                $invoice->customer, // Assuming `usersId` maps to Stripe's `customer` ID
+                $invoice->subtotal,
+                $invoice->tax,
+                $invoice->total
+            ]);
+        }
+    }
+    public function syncStripeProducts()
+    {
+        $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
+        $products = $stripe->products->all(['limit' => 100]);
+
+        foreach ($products->autoPagingIterator() as $product) {
+            $stmt = $this->db->prepare("REPLACE INTO products (stripe_product_id, name, description, visible, created, updated) VALUES (?, ?, ?, ?, NOW(), NOW())");
+            $stmt->execute([
+                $product->id,
+                $product->name,
+                $product->description,
+                $product->active ? 1 : 0
+            ]);
+        }
     }
 }
