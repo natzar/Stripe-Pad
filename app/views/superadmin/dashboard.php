@@ -17,11 +17,32 @@
 
 
         <main class="flex-1 text-gray-100">
+
+            <div class="flex items-center gap-x-6 bg-gray-900 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 rounded-xl mb-5">
+                <p class="text-sm/6 text-white">
+                    <a href="#">
+                        <strong class="font-semibold">Stripe Connection</strong><svg viewBox="0 0 2 2" class="mx-2 inline size-0.5 fill-current" aria-hidden="true">
+                            <circle cx="1" cy="1" r="1" />
+                        </svg> Import products, customers and subscriptions <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </p>
+                <div class="flex flex-1 justify-end">
+                    <button type="button" class="-m-3 p-3 focus-visible:outline-offset-[-4px]">
+                        <span class="sr-only">Dismiss</span>
+                        <svg class="size-5 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                            <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
             <span class="isolate inline-flex rounded-md shadow-sm">
                 <button type="button" class="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">Years</button>
                 <button type="button" class="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">Months</button>
                 <button type="button" class="relative -ml-px inline-flex items-center rounded-r-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">Days</button>
             </span>
+
+
 
             <canvas id="trafficChart"></canvas>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -87,7 +108,7 @@
                     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <h2 class="mx-auto max-w-2xl text-base font-semibold text-gray-100 lg:mx-0 lg:max-w-none">Recent activity</h2>
                     </div>
-                    <div class="mt-6 overflow-hidden border-t border-gray-100">
+                    <div class="mt-6 overflow-hidden border-t bg-white/5  rounded-xl border-gray-700">
                         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                             <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                                 <table class="w-full text-left">
@@ -232,7 +253,42 @@
                     </div>
                 </div>
 
+                <h2>Sysatem info</h2>
+                <? if (extension_loaded('gettext')) {
+                    echo "Gettext is available.";
+                } else {
+                    echo "Gettext is not available.";
+                }
+                ?>
+                View ERROR.log
+                <? if (version_compare(PHP_VERSION, '7.2', '>=')) {
+                    echo "<span class='text-light-blue-300'>✔︎</span> PHP version is " . PHP_VERSION . " (>=7.2).<br>";
+                } else {
+                    echo "[x] FIX: PHP version is " . PHP_VERSION . " <br>";
+                }
 
+                if (function_exists('system')) {
+                    echo "✔︎ The 'system' function is available.<br>";
+                } else {
+                    echo "The 'system' function is not available.<br>";
+                }
+
+                if (function_exists('exec')) {
+                    echo "✔︎ The 'exec' function is available.<br>";
+                } else {
+                    echo "The 'exec' function is not available.<br>";
+                }
+
+                if (class_exists('PDO')) {
+                    $drivers = PDO::getAvailableDrivers();
+                    if (in_array('mysql', $drivers)) {
+                        echo "✔︎ MySQL PDO is installed.<br>";
+                    } else {
+                        echo "[x] MySQL PDO is not available.<br>";
+                    }
+                } else {
+                    echo "[x] PDO is not installed.<br>";
+                } ?>
             </div>
         </main>
     </div>

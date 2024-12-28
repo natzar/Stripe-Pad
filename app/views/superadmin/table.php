@@ -1,4 +1,4 @@
-<header class="py-6 border-gray-600  bg-gray-900">
+<header class="py-6 border-gray-600  bg-gray-800">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center space-x-4 ">
     <h1 class="text-3xl font-bold tracking-tight text-gray-100"><?= ucfirst($table) ?> (<?= count($items) ?>)</h1>
     <!-- <p class="text-base leading-8 text-gray-300">You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p> -->

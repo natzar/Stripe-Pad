@@ -1,4 +1,4 @@
-<header class="py-6 border-gray-600  bg-gray-900">
+<header class="py-6 border-gray-600  bg-gray-800">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
     <h1 class="text-3xl font-bold tracking-tight text-gray-100">Profile</h1>
 
