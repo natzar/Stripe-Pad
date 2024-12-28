@@ -13,7 +13,7 @@
  -->
 
 
-<div class="bg-transparent  shadow-lg ">
+<div class=" bg-gray-800  shadow-lg ">
     <header class="mx-auto max-w-7xl z-50   relative   ">
         <nav class="flex items-center justify-between p-6 lg:px-8 " aria-label="Global">
             <div class="flex lg:flex-1">
@@ -42,7 +42,7 @@
 
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <a href="actionLogout" class="text-sm font-semibold leading-6 text-gray-600">Log out <span aria-hidden="true">&rarr;</span></a>
+                <a href="actionLogout" class="text-sm font-semibold leading-6 text-gray-600 hover:bg-gray-900 rounded-full px-3 hover:text-gray-500">Log out <span aria-hidden="true">&rarr;</span></a>
             </div>
         </nav>
         <!-- Mobile menu, show/hide based on menu open state. -->
@@ -78,7 +78,7 @@
 
 
 
-                            <a href="actionLogout" class="text-gray-800 hover:text-gray-800 hover:font-bold ml-4">Logout</a>
+                            <a href="actionLogout" class="text-gray-800 hover:text-gray-800 hover:font-bold hover:bg-gray-900 rounded-full ml-4">Logout</a>
 
 
                         </div>
