@@ -26,8 +26,9 @@
     ],
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "install-tailwind": "cd tailwind; npm install; npx update-browserslist-db@latest');",        
-        "rebuild-css": "cd tailwind; npx tailwindcss -i ./src/input.css -o ./../cdn/css/app.css --minify"
+        "install-tailwind": "cd tailwind; npm install;",        
+        "rebuild-css": "cd tailwind; npx tailwindcss -i ./src/input.css -o ./../cdn/css/app.css --minify",
+        "tailwind-update-browser": "cd tailwind; npx update-browserslist-db@latest"
     },
     "config": {
         "allow-plugins": {
