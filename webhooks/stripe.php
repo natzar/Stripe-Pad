@@ -70,7 +70,7 @@ class StripeWebhook
 		} else { // Customer exists
 			$this->user = $user_exists;
 			if (empty($this->users['stripe_customer_id']))
-				$this->users->setField($this->user['usersId'], 'stripe_customer_id', $this->user['stripe_customer_id']);
+				$this->users->setField('users', $this->user['usersId'], 'stripe_customer_id', $this->user['stripe_customer_id']);
 		}
 
 		$this->process_event();
