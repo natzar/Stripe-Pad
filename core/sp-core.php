@@ -509,7 +509,21 @@ class StripePad
         ];
         $this->view->show('staff/products.php', $data);
     }
-
+    public function reports()
+    {
+        $data = array();
+        $this->view->show('superadmin/reports.php', $data);
+    }
+    public function system()
+    {
+        $data = array();
+        $this->view->show('superadmin/system.php', $data);
+    }
+    public function superadmin()
+    {
+        $data = array();
+        $this->view->show('superadmin/dashboard.php', $data);
+    }
 
     /* SuperAdmin magic functions: Forms creation and Rows Inserting and updating. One day someone will come.
     ---------------------------------------*/

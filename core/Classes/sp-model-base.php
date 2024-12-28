@@ -70,7 +70,7 @@ abstract class ModelBase
 			$feature = explode("(", $field['Type']);
 			$type  = strtolower($feature[0]);
 
-			if ($name != $table . "Id" and $name != "created") $description['fields'][] = $name;
+			if ($name != $table . "Id" and $name != "created" and $name != "updated") $description['fields'][] = $name;
 
 			if ($type == 'int') $type = 'number';
 			if ($type == 'double') $type = 'number';

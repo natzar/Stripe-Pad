@@ -17,12 +17,12 @@
 		<!-- SIDEBAR -->
 		<? include_once dirname(__FILE__) . "/../layout/sidebar-private.php"; ?>
 		<main class="flex-1 text-gray-800">
-			<div class=" main max-w-2xl mx-auto bg-white rounded-lg p-6 mb-10">
+			<div class=" main max-w-2xl mx-auto bg-white rounded-lg px-6 py-3 mb-10">
 				<!-- Notification -->
 
 				<nav class="flex items-center justify-between space-x-2" aria-label="Breadcrumb">
 					<a href="<?= APP_DOMAIN ?>table/<?= $table ?>" class="flex justify-start text-gray-500 hover:font-bold hover:text-gray-500">
-						<ol role="list" class="flex  ">
+						<ol role="list" class="flex space-x-3 ">
 							<li class="flex">
 								<div class="flex items-center">
 
@@ -34,7 +34,7 @@
 								</div>
 							</li>
 							<li class="flex">
-								<div class="flex items-center">
+								<div class="flex text-lg items-center">
 
 									Back
 								</div>
