@@ -29,7 +29,7 @@
  *
  *	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
  */
-class logsModel extends ModelBase
+class logModel extends ModelBase
 {
 	private static $instance = null;
 
