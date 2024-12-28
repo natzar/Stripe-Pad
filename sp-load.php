@@ -55,6 +55,7 @@ include_once CORE_PATH . 'Models/sp-blog.php';
 include_once CORE_PATH . 'Models/sp-orm.php';
 include_once CORE_PATH . 'Models/sp-datatracker.php';
 include_once CORE_PATH . 'Models/sp-subscriptions.php';
+include_once CORE_PATH . 'Models/sp-invoices.php';
 include_once CORE_PATH . "Classes/BotBlocker.php";
 
 # include all models from app dynamically
