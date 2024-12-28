@@ -61,7 +61,7 @@ require_once dirname(__FILE__) . "/file_img_multi.php";
 require_once dirname(__FILE__) . "/float.php";
 require_once dirname(__FILE__) . "/hora.php";
 require_once dirname(__FILE__) . "/literal.php";
-require_once dirname(__FILE__) . "/mp3.php";
+
 require_once dirname(__FILE__) . "/multiselect.php";
 require_once dirname(__FILE__) . "/number.php";
 require_once dirname(__FILE__) . "/password.php";

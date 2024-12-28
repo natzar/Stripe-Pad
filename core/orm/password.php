@@ -16,15 +16,15 @@ final class password extends field
 	function exec_add()
 	{
 		if ($this->value != -1)
-			return sha1(strtolower($this->value));
+			return  hash('sha256', $this->value);
 		return '';
 	}
 	function exec_edit()
 	{
 
 		if ($this->value != -1) {
-			//echo 'edit password'.$this->value;
-			return sha1(strtolower($this->value));
+
+			return  hash('sha256', $this->value);
 		}
 
 
