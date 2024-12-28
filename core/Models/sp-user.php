@@ -17,6 +17,9 @@
 class usersModel extends ModelBase
 {
 	var $datatracker;
+
+
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -79,28 +82,6 @@ class usersModel extends ModelBase
 		return $aux2;
 	}
 
-
-
-	public function getByUsersId($id)
-	{
-		$consulta = $this->db->prepare("SELECT * FROM users  WHERE users.usersId='$id' limit 1");
-		$consulta->execute();
-		$aux2 = $consulta->fetch();
-
-		return $aux2;
-	}
-
-	public function search($params)
-	{
-		assert($params['query']);
-
-		$consulta = $this->db->prepare("SELECT * FROM users  where title like '%" . $params['query'] . "%' ");
-		$consulta->execute();
-		$aux2 = $consulta->fetchAll();
-
-		return $aux2;
-	}
-
 	public function delete($params)
 	{
 		$consulta = $this->db->prepare("DELETE FROM users where usersId='" . $params['usersId'] . "'");
@@ -114,7 +95,7 @@ class usersModel extends ModelBase
 
 	public function saveLastLogin($usersId)
 	{
-		$c = $this->db->prepare('UPDATE users set lastLogin = NOW() where usersId = :id');
+		$c = $this->db->prepare('UPDATE users set last_login = NOW() where usersId = :id');
 		$c->bindParam(':id', $usersId);
 		$c->execute();
 	}
@@ -171,6 +152,10 @@ class usersModel extends ModelBase
 	}
 
 
+	/**
+	 * @param User's $id 
+	 * @return Array
+	 */
 	public function getById($id)
 	{
 		$consulta = $this->db->prepare("SELECT * FROM users  WHERE usersId=:id limit 1");
@@ -184,7 +169,7 @@ class usersModel extends ModelBase
 	 * Generate Random String
 	 * @return String
 	 */
-	private function randomPassword()
+	private function randomPassword($length = 12)
 	{
 		$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:\'",.<>/?';
 		$password = '';
@@ -196,5 +181,18 @@ class usersModel extends ModelBase
 		}
 
 		return $password;
+	}
+
+	public function getTableDescription()
+	{
+		$data = array(
+			"table_label" => "clons",
+			"default_order" => "clonsId ASC",
+			"fields" => array("customersId", "websId", "files", "db", "completed", "message", "updated"),
+			"fields_labels" => array("Cliente", "Sitio Web", "files", "db", "completed", "message", "updated"),
+			"fields_types" => array("customers", "webs", "truefalse", "truefalse", "truefalse", "literal", "fecha")
+		);
+
+		return $data;
 	}
 }
