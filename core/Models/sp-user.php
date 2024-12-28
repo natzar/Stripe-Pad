@@ -50,9 +50,9 @@ class usersModel extends ModelBase
 			$consulta->execute();
 			$user = $this->getById($this->getLastId());
 
-			# Send bienvenida email
+			# Send welcome email
 			$data = array("email" => $email, "name" => $name, "password" => $password);
-			$subject = "[INFO] Accesos Area de Clientes";
+			$subject = "[INFO] Welcome to " . APP_NAME;
 			$mails->sendTemplate('welcome_user', $data, $email, $subject);
 
 			return $user;
@@ -94,6 +94,12 @@ class usersModel extends ModelBase
 		}
 	}
 
+	/**
+	 * saveLastLogin
+	 *
+	 * @param  mixed $usersId
+	 * @return void
+	 */
 	public function saveLastLogin($usersId)
 	{
 		$c = $this->db->prepare('UPDATE users set last_login = NOW() where usersId = :id');
@@ -101,6 +107,12 @@ class usersModel extends ModelBase
 		$c->execute();
 	}
 
+	/**
+	 * resetPassword
+	 *
+	 * @param  mixed $usersId
+	 * @return void
+	 */
 	public function resetPassword($usersId)
 	{
 		$new_password = $this->randomPassword();
@@ -131,17 +143,12 @@ class usersModel extends ModelBase
 		}
 	}
 
-	public function getByBearer($token)
-	{
-
-		$consulta = $this->db->prepare("SELECT * FROM users where bearer = :token limit 1");
-		$consulta->bindParam(":token", $token);
-		$consulta->execute();
-		return $consulta->fetch();
-	}
-
-
-
+	/**
+	 * find
+	 *
+	 * @param  mixed $email
+	 * @return void
+	 */
 	public function find($email)
 	{
 		$consulta = $this->db->prepare("SELECT * FROM users  WHERE users.email=:email limit 1");
