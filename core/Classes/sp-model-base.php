@@ -85,7 +85,7 @@ abstract class ModelBase
 
 			if (strstr($name, "_file")) $type = 'file_file';
 			if (strstr($name, "image")) $type = 'file_img';
-			if (strstr($name, "content") or $type == 'text') $type = "tinymce";
+			if (strstr($name, "content") or $type == 'text') $type = "text"; // remove WYSIWYG editor (tinymce)
 
 			if ($name != $table . "Id" and $name != "created") $description['fields_types'][] =  $type;
 		}

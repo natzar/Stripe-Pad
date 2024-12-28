@@ -129,7 +129,12 @@ class StripePad
     }
     public function profile()
     {
-        $data = array();
+        $users = new usersModel();
+
+        $data = array(
+            "user" => $users->getById($_SESSION['user']['usersId'])
+        );
+
         $this->view->show("user/profile.php", $data, true);
     }
     public function forgotPassword()
@@ -504,6 +509,12 @@ class StripePad
         ];
         $this->view->show('staff/products.php', $data);
     }
+
+
+    /* SuperAdmin magic functions: Forms creation and Rows Inserting and updating. One day someone will come.
+    ---------------------------------------*/
+
+
     /**
      * table
      * Part of Orm, it generates a table 
@@ -542,8 +553,6 @@ class StripePad
         $this->view->show('superadmin/table.php', $data);
     }
 
-    /* Forms creation and Rows Inserting and updating
-    ---------------------------------------*/
 
     public function form()
     {

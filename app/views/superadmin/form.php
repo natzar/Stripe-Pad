@@ -1,7 +1,12 @@
 <header class="py-6 border-gray-600  bg-gray-900">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
-		<h1 class="text-3xl font-bold tracking-tight text-gray-100">Dashboard</h1>
-		<p class="text-base leading-8 text-gray-300">You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p>
+		<h1 class="text-3xl font-bold tracking-tight text-gray-100"><? if ($rid != -1) {
+																		echo ucfirst($table_label) . ' #' . $rid; ?>
+				<!-- Meta data -->
+				<small class="text-xs text-gray-400 block font-italic"></small>
+			<? } else echo ucfirst($table) . ' > Añadir nuevo '; ?>
+		</h1>
+		<p class="text-base leading-8 text-gray-300"> Created <?= strftime(" %d %B %Y %H:%M", strtotime($raw['created'])) ?> - Updated: <?= strftime(" %d %B %Y %H:%M", strtotime($raw['updated'])) ?></p>
 	</div>
 </header>
 
@@ -14,34 +19,8 @@
 		<? include_once dirname(__FILE__) . "/../layout/sidebar-private.php"; ?>
 
 
-		<main class="flex-1 text-gray-100">
-			<div class="mx-auto text-center mb-10">
+		<main class="flex-1 text-gray-800">
 
-
-				<h2 class="text-3xl"><? if ($rid != -1) {
-											echo ucfirst($table_label) . ' #' . $rid; ?>
-						<!-- Meta data -->
-						<small class="text-xs text-gray-400 block font-italic"> Creado <?= strftime(" %d %B %Y %H:%M", strtotime($raw['created'])) ?><br> Actualizado <?= strftime(" %d %B %Y %H:%M", strtotime($raw['updated'])) ?></small>
-					<? } else echo ucfirst($table) . ' > Añadir nuevo '; ?>
-				</h2>
-				<p class="mt-1 text-xs text-gray-400 ">
-
-					Membresía:
-					<span class="inline-flex items-center gap-x-1.5 rounded-full bg-orange-100 px-2 py-1 text-xs font-medium text-orange-700">
-						<svg class="h-1.5 w-1.5 fill-orange-500" viewBox="0 0 6 6" aria-hidden="true">
-							<circle cx="3" cy="3" r="3" />
-						</svg>
-						Basic (Respuestas en 24-48h)
-					</span>
-
-
-				</p>
-				<p>hola@phpninja.es · +34 649 38 29 65</p>
-
-
-
-
-			</div>
 
 			<div class=" main max-w-5xl mx-auto bg-white rounded-lg p-10 mb-10">
 				<!-- Notification -->
@@ -116,11 +95,11 @@
 						} else if ($rid != -1) {
 							if ($table == "customers"):
 								if ($raw['iva'] == 0): ?> Ojito! <strong>Cliente con IVA desactivado</strong> <? endif;
-																						//include "staff/component-new-ticket.php"; 
-																						//include "staff/component-mails.php"; 
-																						endif;
-																					}
-																								?>
+																										//include "staff/component-new-ticket.php"; 
+																										//include "staff/component-mails.php"; 
+																										endif;
+																									}
+																												?>
 
 					</div>
 

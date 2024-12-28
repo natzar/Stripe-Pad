@@ -37,6 +37,7 @@ class Orm extends ModelBase
 	{
 		parent::__construct();
 		$this->datatracker = datatrackerModel::singleton();
+		include CORE_PATH . "orm/field.php";
 	}
 
 
@@ -358,9 +359,7 @@ class Orm extends ModelBase
 
 	public function form_js($table)
 	{
-		$model = $table . 'Model';
-		$instance = new $model();
-		$data = $instance->getOrmDescription();
+		$data = $this->getOrmDescription($table);
 		$fields = $data['fields'];
 		$fields_labels = $data['fields_labels'];
 		$fields_types = $data['fields_types'];
@@ -604,9 +603,7 @@ class Orm extends ModelBase
 	public function generateForm($table, $rid, $op)
 	{
 
-		$model = $table . 'Model';
-		$instance = new $model();
-		$data = $instance->getOrmDescription();
+		$data = $this->getOrmDescription($table);
 		$fields = $data['fields'];
 		$fields_labels = $data['fields_labels'];
 		$fields_types = $data['fields_types'];
