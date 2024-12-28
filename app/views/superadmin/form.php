@@ -4,26 +4,51 @@
 																		echo ucfirst($table_label) . ' #' . $rid; ?>
 				<!-- Meta data -->
 				<small class="text-xs text-gray-400 block font-italic"></small>
-			<? } else echo ucfirst($table) . ' > Añadir nuevo '; ?>
+			<? } else echo ucfirst($table) . ' ➞ Add New '; ?>
 		</h1>
-		<p class="text-base leading-8 text-gray-300"> Created <?= strftime(" %d %B %Y %H:%M", strtotime($raw['created'])) ?> - Updated: <?= strftime(" %d %B %Y %H:%M", strtotime($raw['updated'])) ?></p>
+		<? if ($rid != -1): ?>
+			<p class="text-base leading-8 text-gray-300"> Created <?= strftime(" %d %B %Y %H:%M", strtotime($raw['created'])) ?> - Updated: <?= strftime(" %d %B %Y %H:%M", strtotime($raw['updated'])) ?></p>
+		<? endif; ?>
 	</div>
 </header>
 
-
-
 <div class="flex min-h-screen flex-col bg-gray-800">
-
-
 	<div class="mx-auto flex w-full max-w-7xl items-start gap-x-8 px-4 py-10 sm:px-6 lg:px-8">
+		<!-- SIDEBAR -->
 		<? include_once dirname(__FILE__) . "/../layout/sidebar-private.php"; ?>
-
-
 		<main class="flex-1 text-gray-800">
-
-
-			<div class=" main max-w-5xl mx-auto bg-white rounded-lg p-10 mb-10">
+			<div class=" main max-w-2xl mx-auto bg-white rounded-lg p-6 mb-10">
 				<!-- Notification -->
+
+				<nav class="flex items-center space-x-2" aria-label="Breadcrumb">
+					<a href="<?= APP_DOMAIN ?>table/<?= $table ?>" class="flex justify-start text-gray-500 hover:font-bold hover:text-gray-500">
+						<ol role="list" class="flex  ">
+							<li class="flex">
+								<div class="flex items-center">
+
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+									</svg>
+
+
+								</div>
+							</li>
+							<li class="flex">
+								<div class="flex items-center">
+
+									Back
+								</div>
+							</li>
+
+
+						</ol>
+					</a>
+					<button class='flex items-center justify-end px-5 py-2 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-orange-500 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900' onclick="check_form_values(this.form);" type="button"><i class="glyphicon glyphicon-ok"></i> Save <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+						</svg>
+					</button>
+				</nav>
+
 				<? if (isset($_GET['i']) and $_GET['i'] == 'success'): ?>
 					<div class="alert alert-success">
 						<a class="close" data-dismiss='alert'>&times;</a>
@@ -31,117 +56,34 @@
 					</div>
 				<? endif; ?>
 
-				<div class="<? if ($rid != -1): echo 'xlg:grid xlg:grid-cols-10 xgap-4';
-							endif; ?> ">
-					<? $width = $rid === -1 ? 'xcol-span-4' : 'xcol-span-4'; ?>
-
-					<!-- COL 1: Left -->
-					<div class="<? echo $width; ?> " style="margin-left:0px;padding-left:0px;">
-						<div>
-
-						</div>
-						<? if ($table == "customers"): ?>
-
-							<? //include "staff/component-webinfo-customer.php"; 
-							?>
-							<? include "staff/component-customer.php"; ?>
-
-							<? // include "staff/component-activity.php"; 
-							?>
-							<? // include "staff/component-stripe-link.php"; 
-							?>
-						<? endif; ?>
-						<form class='form  py-3' id="form<?= $table ?><?= $rid ?>" name="<?= APP_BASE_URL ?>form<?= $table ?><?= $rid ?>" action="update" method="POST" enctype="multipart/form-data">
-							<div class="">
-								<button class='inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-500 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900' onclick="check_form_values(this.form);" type="button"><i class="glyphicon glyphicon-ok"></i> Guardar</button><br><br>
-								<fieldset>
-									<?= $form ?>
-									<input type="hidden" name="table" value="<?= $table ?>">
-									<input type="hidden" name="op" value='<?= $op ?>'>
-									<input type="hidden" name="return_url" value='<?= isset($_SESSION['return_url']) ? $_SESSION['return_url'] : ''  ?>'>
-									<input type="hidden" name="rid" value="<?= $rid ?>">
-									<hr>
-
-									&nbsp;&nbsp;
-									<button class='inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-500 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900' onclick="check_form_values(this.form);" type="button"><i class="glyphicon glyphicon-ok"></i> Guardar</button>
-								</fieldset>
-							</div>
-						</form>
-					</div>
-
-					<!-- COL 2 -->
-					<div class="xcol-span-1">
-
-
-						<? if ($table == "comments" and $rid > -1): ?>
-							<? include "staff/component-comments.php"; ?>
-						<? endif; ?>
-						<? if ($table == "documentos" and $rid > -1): ?>
-							<a class="btn btn-warning" href="/makePdf/<?= $rid ?>">Descargar PDF</a>
-						<? endif; ?>
-						<? if ($table == "spams" and $rid > -1): ?>
-							<a class="btn btn-warning" href="/sendSpam/<?= $rid ?>">¡Enviar SPAM!</a>
-						<? endif; ?>
-
-						<? if ($table == "tickets" and $rid > -1): ?>
-							<?	//include "staff/component-ticket.php"; 
-							?>
-							<?	//	 include "staff/component-comments.php";  
-							?>
-						<? endif; ?>
-
-						<?
-						if ($rid != -1 and $table !== "customers" and $table !== "leads" and $table !== "comments") {
-						} else if ($rid != -1) {
-							if ($table == "customers"):
-								if ($raw['iva'] == 0): ?> Ojito! <strong>Cliente con IVA desactivado</strong> <? endif;
-																										//include "staff/component-new-ticket.php"; 
-																										//include "staff/component-mails.php"; 
-																										endif;
-																									}
-																												?>
-
-					</div>
-
-					<!-- COL 3: Right -->
-					<div class="col-span-4">
-						<?
-						if ($rid != -1):
-
-							if ($table == "tickets"): ?>
-								<? //include "staff/component-ticketsinfo.php"; 
-								?>
-								<? //include "staff/component-openai.php"; 
-								?>
-								<? include "staff/component-webinfo.php"; ?>
-								<? include "staff/component-credentials.php"; ?>
-								<? include "staff/component-attachments.php"; ?>
-								<? include "staff/component-changelog.php"; ?>
-								<? include "staff/component-tickets.php"; ?>
-
-								<? //include "staff/component-timetables.php"; 
-								?>
-								<? //include "staff/component-comments.php"; 
-								?>
-							<? endif; ?>
-							<? if ($table == "webs"): ?>
-
-								<? include "staff/component-webinfo.php"; ?>
-								<? include "staff/component-credentials.php"; ?>
-								<? include "staff/component-attachments.php"; ?>
-								<? include "staff/component-weblogs.php"; ?>
-
-								<? include "staff/component-web-mantenimiento.php"; ?>
-							<? endif; ?>
-						<? endif; ?>
-					</div>
-
-				</div> <!-- End Grid -->
-
-
-			</div> <!-- End main -->
 
 
 
-		</main>
-	</div>
+				<form class='form  py-3' id="form<?= $table ?><?= $rid ?>" name="<?= APP_BASE_URL ?>form<?= $table ?><?= $rid ?>" action="update" method="POST" enctype="multipart/form-data">
+
+
+					<fieldset>
+						<?= $form ?>
+						<input type="hidden" name="table" value="<?= $table ?>">
+						<input type="hidden" name="op" value='<?= $op ?>'>
+						<input type="hidden" name="return_url" value='<?= isset($_SESSION['return_url']) ? $_SESSION['return_url'] : ''  ?>'>
+						<input type="hidden" name="rid" value="<?= $rid ?>">
+						<hr>
+
+						&nbsp;&nbsp;
+						<!-- <button class='inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-500 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900' onclick="check_form_values(this.form);" type="button"><i class="glyphicon glyphicon-ok"></i> Guardar</button> -->
+					</fieldset>
+
+				</form>
+
+			</div>
+
+	</div> <!-- End Grid -->
+
+
+</div> <!-- End main -->
+
+
+
+</main>
+</div>
