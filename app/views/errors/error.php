@@ -33,9 +33,15 @@
         <hr>
         <br>
 
-        <p><a class="bg-blue-400 hover:bg-blue-800 text-base text-white py-2 px-4 rounded-full" href="https://stripepad.com/support" target="_blank">Get Support</a></p>
+        <p>
+            <a class="bg-purple-600 hover:bg-purple-800 text-base text-white py-2 px-4 rounded-full shadow-xl" href="#" onclick="window.location.reload();">Reload</a>
+
+            <a class="bg-blue-600 hover:bg-blue-800 text-base text-white py-2 px-4 rounded-full shadow-xl" href="https://stripepad.com/support" target="_blank">Contact Support</a>
+        </p>
+
+
     </div>
-    <p class="text-xs text-gray-500 mt-5">Stripe Pad v.<?= STRIPE_PAD_VERSION ?> · stripepad.com</p>
+    <p class="text-xs text-gray-500 mt-5"> Stripe Pad v.<?= STRIPE_PAD_VERSION ?> · stripepad.com </p>
 </body>
 
 </html>
