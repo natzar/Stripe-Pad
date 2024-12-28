@@ -21,7 +21,31 @@ if (function_exists('__')) {
     }
 }
 
-
+function get_parameters()
+{
+    $params = array();
+    $filter = FILTER_SANITIZE_STRING;
+    // Check if the key exists in the $_GET array
+    if (isset($_GET)) {
+        // Return the sanitized value using a specified filter
+        // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
+        foreach ($_GET as $k => $v) {
+            if (filter_input(INPUT_GET, $k, $filter)) {
+                $params[$k] = $v;
+            }
+        }
+    }
+    if (isset($_POST)) {
+        // Return the sanitized value using a specified filter
+        // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
+        foreach ($_POST as $k => $v) {
+            if (filter_input(INPUT_POST, $k, $filter)) {
+                $params[$k] = $v;
+            }
+        }
+    }
+    return $params;
+}
 function getCurrentUrl()
 {
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
