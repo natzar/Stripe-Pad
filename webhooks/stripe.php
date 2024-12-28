@@ -70,7 +70,7 @@ class StripeWebhook
 		} else { // Customer exists
 			$this->user = $user_exists;
 			if (empty($this->users['stripe_customer_id']))
-				$this->users->setField($this->user['usersId'], 'stripe_customer_id', $this->user['stripe_customer_id']);
+				$this->users->setField('users', $this->user['usersId'], 'stripe_customer_id', $this->user['stripe_customer_id']);
 		}
 
 		$this->process_event();
@@ -86,14 +86,14 @@ class StripeWebhook
 		switch ($this->event->type):
 			case 'customer.subscription.updated':
 				/* */
-
+				// Subscription->update
 				break;
 			case 'customer.subscription.deleted':
 				/* */
-
+				// Subscription->delete
 				break;
 			case 'customer.subscription.created':
-
+// Subscription->create
 				// $subject = "[INFO] Servicio Contratado Php Ninja";
 				// $data = array(
 				// 	"persona_contacto" => $this->customer['persona_contacto'],

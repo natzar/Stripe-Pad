@@ -94,13 +94,12 @@
             <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">2.1 Get the Code</h3>
             <p>You can download a zip with the latest release or you can clone the repo with the latest version</p>
             <h4 class="mt-2 mb-2 font-bold text-blue-400 text-base">&rarr;&nbsp;2.1.1 Download the latest version from the repository an uncompress it</h4>
-            <p class="mb-5">Check <a href="documentation#quickstart">Quickstart section</a></p>
+            <p class="mb-5"><a href="https://github.com/natzar/Stripe-Pad/releases/download/v1/StripePad-v1.0.0.zip" target="_blank">Download latest version</a></p>
 
-            <h4 class="mt-2 mb-2 font-bold text-blue-400 text-base">&rarr;&nbsp;2.1.2 Git clone</h4>
+            <h4 class="mt-2 mb-2 font-bold text-blue-400 text-base">&rarr;&nbsp;2.1.2 [DEVELOPERS] Git clone </h4>
             <blockquote class="bg-gray-900 rounded-md text-white px-6 py-4 border-1 border-gray-700">
                 $ git clone https://github.com/natzar/Stripe-Pad.git<br>
-                $ composer install<br>
-                $ mysql < [database_name] install/database.sql<br>
+
             </blockquote>
 
             <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">2.2 Configuration & Settings</h3>
@@ -121,6 +120,8 @@
             <blockquote class="bg-gray-900 rounded-md text-md text-white px-6 py-4 border-1 border-gray-700">
                 1. Duplicate sp-config.sample.php and rename it to sp-config.php<br>
                 2. Edit sp-config.php with your favorite text editor and define all settings
+                3. composer install<br>
+                4. mysql < [database_name] install/database.sql<br>
             </blockquote><br>
 
 
@@ -166,17 +167,20 @@
             2- Replace load.php with the new version (TO-DO: Move file to core/)<br>
             <hr class="border-1 border-gray-800 mt-10">
 
-            <h2 id="introduction" class="text-xl text-blue-500 mt-10 uppercase mb-5">5. Introduction</h2>
+            <h2 id="introduction" class="text-xl text-blue-500 mt-10 uppercase mb-5">4. Introduction</h2>
             <p>The base of Stripe Pad is structured as a simplistic MVC (Model-View-Controller (1)) PHP application. </p>
 
             <p>It's main feature is to separate users from non-users or customers. It will show public content to visitors, it will allow access to users and customers to private areas.</p>
 
-            <p><img width="500" class="mx-auto" src="https://www.stripepad.com/relations.png" alt="Stripe Pad Relations"></p>
+
+            <p><img width="500" class="mx-auto" src="https://www.stripepad.com/cdn/demo/stripe-pad-overview.png" alt="Stripe Pad Relations"></p>
+
+
+
 
 
             <h2 class="text-xl text-blue-500 mt-10 uppercase mb-5">Folders and files</h2>
-            <p>Ideally you will have set each folder on different domains or subdomains.<br>
-                api.domain.com for your api, webhooks.domain.com, domain.com for /, </p>
+
             <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">folders</h3>
             <ul>
                 <li><strong>api</strong>: Serves as the foundation for all model classes, incorporating database connection functionality.</li>
@@ -211,47 +215,6 @@
                 <li><strong>config.php</strong>: Centralizes all settings, API keys, and secrets. It is exclusively included by <code>load.php</code>.</li>
                 <li><strong>load.php</strong>: Initializes the application by loading <code>config.php</code>, managing error handling, including all model files, and integrating composer packages.</li>
             </ul>
-            <p>For optimal security and organization, setting up dedicated domains or subdomains for different application aspects (such as cron jobs, core functionality, and CDN) is advised.</p>
-
-            <ul>
-                <li>Find and add your models at app/models</li>
-                <li>Find and add your views (templates) at app/views/</li>
-                <li>Everything else where users makes requests to (api, webhooks, web (index.php), widget, cronjobs) could be considered the controllers.</li>
-            </ul>
-
-            <h2 class="text-xl text-blue-500 mt-10 uppercase mb-5">Paths</h2>
-            <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">Any visit to /faq (example)</h3>
-            <ol>
-                <li>htaccess: will translate /faq for index.php?p=faq</li>
-                <li>index.php: will execute App->faq(), faq is a method inside app/App.php</li>
-                <li>App->faq will load details via faqsModel and pass it to the view</li>
-                <li>the view will include and render the template inside /app/views using the $data provided</li>
-                <li>The user will see the Faq page</li>
-
-            </ol>
-
-            <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">Signup A: /signupp redirects to stripe checkout page</h3>
-            <ol>
-                <li>htaccess: will translate /faq for index.php?p=faq</li>
-                <li>index.php: will execute App->faq(), faq is a method inside app/App.php</li>
-                <li>App->faq will load details via faqsModel and pass it to the view</li>
-                <li>the view will include and render the template inside /app/views using the $data provided</li>
-                <li>The user will see the Faq page</li>
-
-            </ol>
-
-            <h3 class="mt-4 mb-4 font-bold text-lg text-blue-500">Signup B: Signup without payment</h3>
-            <ol>
-                <li>htaccess: will translate /signup for index.php?p=faq</li>
-                <li>index.php: will execute App->signup(), signup is a method inside app/App.php or core/StripePad.php (App extends StripePad and you can overwrite any method).</li>
-                <li>App->signup will load details (empty) and pass it to the view</li>
-                <li>The user will fill the form and submit to /actionSignup (actionSignup method defined in core/Stripepad.php)</li>
-                <li>An email with passwords will be sent</li>
-                <li>The user can now log in and find stripe links inside the private area</li>
-
-
-            </ol>
-
 
 
             <hr class="border-1 border-gray-800 mt-10">

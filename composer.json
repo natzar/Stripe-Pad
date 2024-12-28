@@ -1,18 +1,21 @@
 {
     "name": "natzar/stripe-pad",
-    "description": "A Micro SaaS boilerplate to launch fast with Stripe",
+    "description": "The PHP SaaS boilerplate to launch fast with Stripe",
     "type": "project",
     "require": {
         "ext-curl": "*",
         "stripe/stripe-php": "^7.67",
         "phpmailer/phpmailer": "^6.5",
-        "erusev/parsedown": "^1.7"
+        "google/apiclient": "^2.0",
+        "google/apiclient-services": "^0.200",                  
+        "dompdf/dompdf": "^2.0"
     },
     "require-dev": {
         "phplint/phplint": "^0.0.1",
         "wp-coding-standards/wpcs": "^3.1",
         "phpstan/phpstan": "^1.10",        
-        "phpunit/phpunit": "^9"
+        "phpunit/phpunit": "^9",
+        "erusev/parsedown": "^1.7"
     },
     "license": "GPL-3.0-or-later", 
     "authors": [
@@ -23,8 +26,8 @@
     ],
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "build-tailwind": "php -r \"exec('npx update-browserslist-db@latest'); exec('npx tailwindcss -i ./app/tailwind/src/input.css -o ./cdn/css/app.css --minify');\""
-          
+        "install-tailwind": "cd tailwind; npm install; npx update-browserslist-db@latest');",        
+        "rebuild-css": "cd tailwind; npx tailwindcss -i ./src/input.css -o ./../cdn/css/app.css --minify"
     },
     "config": {
         "allow-plugins": {

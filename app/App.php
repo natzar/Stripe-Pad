@@ -115,10 +115,4 @@ class App extends StripePad
   {
     $this->view->show('common/privacy.php', array());
   }
-
-
-  public function blog()
-  {
-    $blog = new blogModel();
-  }
 }

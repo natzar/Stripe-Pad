@@ -51,6 +51,12 @@ include_once CORE_PATH . 'Classes/sp-spdo.php';
 include_once CORE_PATH . 'Classes/sp-view.php';
 include_once CORE_PATH . 'Models/sp-mail.php';
 include_once CORE_PATH . 'Models/sp-user.php';
+include_once CORE_PATH . 'Models/sp-blog.php';
+include_once CORE_PATH . 'Models/sp-orm.php';
+include_once CORE_PATH . 'Models/sp-datatracker.php';
+include_once CORE_PATH . 'Models/sp-subscriptions.php';
+include_once CORE_PATH . 'Models/sp-invoices.php';
+include_once CORE_PATH . 'Models/sp-products.php';
 include_once CORE_PATH . "Classes/BotBlocker.php";
 
 # include all models from app dynamically
@@ -60,39 +66,34 @@ foreach (glob(APP_PATH . "models/*.php") as $filename) {
 
 
 
-
 # Register fatal errors
 register_shutdown_function(function () {
     $error = error_get_last();
     if ($error !== NULL) {
-        // Clear the output buffer to prevent previous output
-        //ob_clean();
+        ob_clean(); // Uncomment this if output buffering is active
 
-        // Custom error handling logic
         $errno   = $error["type"];
         $errfile = $error["file"];
         $errline = $error["line"];
         $errstr  = $error["message"];
 
-        $error_msg = date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
-        @file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg, FILE_APPEND);
-        // echo $error_msg . '<br>';
+        $error_msg = "[FATAL ERROR] " . date("d/m/Y H:i:s") . "<br>" . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
+        @file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND);
 
         include_once ROOT_PATH . "app/views/errors/error.php";
+        exit();  // Ensure script termination after a fatal error
     } else {
-        // Flush the buffer if there's no error
-        //ob_end_flush();
-        flush();
+        flush();  // This is applicable if output buffering is turned off
     }
+    exit();
 });
 
 
 # Capture any error to file
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-    $error_msg = Date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Linea: " . $errline . " ";
-    @file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg);
+    $error_msg = date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
+    @file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND);
     if (DEBUG_MODE) {
-        //   include_once ROOT_PATH . "app/views/errors/error.php";
         throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
     }
 });

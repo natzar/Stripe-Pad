@@ -20,8 +20,67 @@ if (function_exists('__')) {
         return $f;
     }
 }
+function friendlyUrl($input)
+{
+    $words_array = array('a', 'an', 'the', 'and', 'or', 'but', 'so', 'on', 'in', 'out', 'by', 'as', 'at', 'of');
+    $replace = '-';
+
+    // Prevent issues with non-latin
+    if (preg_match("/\p{Han}+/u", $input)) {
+
+        return $input; // Return the input directly if it contains non-Latin characters.
+    }
+
+    // Set the locale to handle different character encodings
+    setlocale(LC_ALL, 'en_US.UTF8');
+    // Transliterate characters to ASCII
+    $input = iconv('UTF-8', 'ASCII//TRANSLIT', $input);
+
+    // Make it lowercase, remove punctuation, remove multiple/leading/ending spaces
+    $input = trim(preg_replace('/[^a-zA-Z0-9\s]/', '', strtolower($input)));
+
+    // Remove words if necessary
+
+    $input_array = explode(' ', $input);
+    $input = [];
+    foreach ($input_array as $word) {
+        if (!in_array($word, $words_array)) {
+            $input[] = $word;
+        }
+    }
+    $input = implode(' ', $input);
 
 
+    // Convert the spaces to whatever the user wants (usually a dash or underscore) then return the value
+    return str_replace(' ', $replace, $input);
+}
+
+
+function get_parameters()
+{
+    $params = array();
+    $filter = FILTER_SANITIZE_STRING;
+    // Check if the key exists in the $_GET array
+    if (isset($_GET)) {
+        // Return the sanitized value using a specified filter
+        // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
+        foreach ($_GET as $k => $v) {
+            if (filter_input(INPUT_GET, $k, $filter)) {
+                $params[$k] = $v;
+            }
+        }
+    }
+    if (isset($_POST)) {
+        // Return the sanitized value using a specified filter
+        // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
+        foreach ($_POST as $k => $v) {
+            if (filter_input(INPUT_POST, $k, $filter)) {
+                $params[$k] = $v;
+            }
+        }
+    }
+    return $params;
+}
 function getCurrentUrl()
 {
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";

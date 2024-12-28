@@ -17,10 +17,14 @@
 class usersModel extends ModelBase
 {
 	var $datatracker;
+
+
+
 	public function __construct()
 	{
 		parent::__construct();
 		//	$this->datatracker = datatrackerModel::singleton();
+		include_once CORE_PATH . "orm/field.php";
 	}
 
 
@@ -46,9 +50,9 @@ class usersModel extends ModelBase
 			$consulta->execute();
 			$user = $this->getById($this->getLastId());
 
-			# Send bienvenida email
+			# Send welcome email
 			$data = array("email" => $email, "name" => $name, "password" => $password);
-			$subject = "[INFO] Accesos Area de Clientes";
+			$subject = "[INFO] Welcome to " . APP_NAME;
 			$mails->sendTemplate('welcome_user', $data, $email, $subject);
 
 			return $user;
@@ -79,28 +83,6 @@ class usersModel extends ModelBase
 		return $aux2;
 	}
 
-
-
-	public function getByUsersId($id)
-	{
-		$consulta = $this->db->prepare("SELECT * FROM users  WHERE users.usersId='$id' limit 1");
-		$consulta->execute();
-		$aux2 = $consulta->fetch();
-
-		return $aux2;
-	}
-
-	public function search($params)
-	{
-		assert($params['query']);
-
-		$consulta = $this->db->prepare("SELECT * FROM users  where title like '%" . $params['query'] . "%' ");
-		$consulta->execute();
-		$aux2 = $consulta->fetchAll();
-
-		return $aux2;
-	}
-
 	public function delete($params)
 	{
 		$consulta = $this->db->prepare("DELETE FROM users where usersId='" . $params['usersId'] . "'");
@@ -112,13 +94,25 @@ class usersModel extends ModelBase
 		}
 	}
 
+	/**
+	 * saveLastLogin
+	 *
+	 * @param  mixed $usersId
+	 * @return void
+	 */
 	public function saveLastLogin($usersId)
 	{
-		$c = $this->db->prepare('UPDATE users set lastLogin = NOW() where usersId = :id');
+		$c = $this->db->prepare('UPDATE users set last_login = NOW() where usersId = :id');
 		$c->bindParam(':id', $usersId);
 		$c->execute();
 	}
 
+	/**
+	 * resetPassword
+	 *
+	 * @param  mixed $usersId
+	 * @return void
+	 */
 	public function resetPassword($usersId)
 	{
 		$new_password = $this->randomPassword();
@@ -149,17 +143,12 @@ class usersModel extends ModelBase
 		}
 	}
 
-	public function getByBearer($token)
-	{
-
-		$consulta = $this->db->prepare("SELECT * FROM users where bearer = :token limit 1");
-		$consulta->bindParam(":token", $token);
-		$consulta->execute();
-		return $consulta->fetch();
-	}
-
-
-
+	/**
+	 * find
+	 *
+	 * @param  mixed $email
+	 * @return void
+	 */
 	public function find($email)
 	{
 		$consulta = $this->db->prepare("SELECT * FROM users  WHERE users.email=:email limit 1");
@@ -171,6 +160,10 @@ class usersModel extends ModelBase
 	}
 
 
+	/**
+	 * @param User's $id 
+	 * @return Array
+	 */
 	public function getById($id)
 	{
 		$consulta = $this->db->prepare("SELECT * FROM users  WHERE usersId=:id limit 1");
@@ -184,7 +177,7 @@ class usersModel extends ModelBase
 	 * Generate Random String
 	 * @return String
 	 */
-	private function randomPassword()
+	private function randomPassword($length = 12)
 	{
 		$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:\'",.<>/?';
 		$password = '';
@@ -196,5 +189,18 @@ class usersModel extends ModelBase
 		}
 
 		return $password;
+	}
+
+	public function getOrmDescription($table = "users")
+	{
+
+		return array(
+			"table_label" => "Users",
+			"default_order" => "name ASC",
+			"fields" => array("name", "email", "last_login", "created", "updated"),
+			"fields_to_show" =>  array("name", "email", "last_login", "created", "updated"),
+			"fields_labels" =>  array("name", "email", "last_login", "created", "updated"),
+			"fields_types" => array("literal", "email", "fechahora", "fechahora", "fechahora")
+		);
 	}
 }

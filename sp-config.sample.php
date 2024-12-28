@@ -96,6 +96,11 @@ define('CORE_PATH', dirname(__FILE__) . "/core/");
 define('APP_PATH', dirname(__FILE__) . "/app/");
 define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
+# GOOGLE
+define('GOOGLE_CLIENT_ID', '');
+define('GOOGLE_CLIENT_SECRET', '');
+define('GOOGLE_REDIRECT_URI', '');
+
 # ENVIRONMENT
 define("INTERNAL_ENCODING", "UTF-8");
 define("TIMEZONE", "Europe/Madrid");
@@ -128,3 +133,6 @@ function isLocalhost()
 
 	return in_array($serverAddr, $localhostIPs) || in_array($remoteAddr, $localhostIPs);
 }
+
+# Stripe Pad Version
+include_once dirname(__FILE__) . "/core/sp-version.php";

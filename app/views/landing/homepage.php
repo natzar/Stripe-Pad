@@ -157,7 +157,8 @@
             Security
           </a>
         </h3>
-        <p class="mt-2 text-sm text-gray-500">Code passes tests from 4 security tools to identify potentially insecure lines of code. Everything is public and reviewable on Github</p>
+        <p class="mt-2 text-sm text-gray-500">Code passes tests from
+          DevSkim, Psalm Security Scan, GitGuardian Security and other quality and security tools to identify potentially insecure lines of code. Everything is public and reviewable on Github</p>
       </div>
       <span class="pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
         <svg class="size-6" fill="currentColor" viewBox="0 0 24 24">

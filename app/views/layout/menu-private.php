@@ -13,7 +13,7 @@
  -->
 
 
-<div class="bg-transparent  shadow-lg ">
+<div class=" bg-gray-800  shadow-lg ">
     <header class="mx-auto max-w-7xl z-50   relative   ">
         <nav class="flex items-center justify-between p-6 lg:px-8 " aria-label="Global">
             <div class="flex lg:flex-1">
@@ -36,13 +36,13 @@
             <div class="hidden lg:flex lg:gap-x-12">
 
 
-                <a href="<?= APP_BASE_URL ?>" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1  hover:bg-gray-900 hover:text-red-500 rounded-full">App Dashboard</a>
-                <a href="<?= APP_BASE_URL ?>profile" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1  hover:bg-gray-900 hover:text-red-500 rounded-full">Profile</a>
+                <!-- <a href="<?= APP_BASE_URL ?>" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1  hover:bg-gray-900 hover:text-red-500 rounded-full">App Dashboard</a>
+                <a href="<?= APP_BASE_URL ?>profile" class="text-base font-semibold leading-6 text-gray-600 px-3 py-1  hover:bg-gray-900 hover:text-red-500 rounded-full">Profile</a> -->
 
 
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <a href="actionLogout" class="text-sm font-semibold leading-6 text-gray-600">Log out <span aria-hidden="true">&rarr;</span></a>
+                <a href="actionLogout" class="text-sm font-semibold leading-6 text-gray-600 hover:bg-gray-900 rounded-full px-3 hover:text-gray-500">Log out <span aria-hidden="true">&rarr;</span></a>
             </div>
         </nav>
         <!-- Mobile menu, show/hide based on menu open state. -->
@@ -68,7 +68,7 @@
                     <div class="-my-6 divide-y divide-gray-500/25">
                         <div class="space-y-2 py-6">
 
-                            <a href="<?= APP_BASE_URL ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Home</a>
+                            <a href="<?= APP_BASE_URL ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800">Dashboard</a>
 
 
                         </div>
@@ -78,7 +78,7 @@
 
 
 
-                            <a href="actionLogout" class="text-gray-800 hover:text-gray-800 hover:font-bold ml-4">Logout</a>
+                            <a href="actionLogout" class="text-gray-800 hover:text-gray-800 hover:font-bold hover:bg-gray-900 rounded-full ml-4">Logout</a>
 
 
                         </div>

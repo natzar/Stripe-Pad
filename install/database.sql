@@ -4,9 +4,9 @@
 #
 # https://www.stripepad.com
 #
-# NO_AUTO_VALUE_ON_ZERO
-# y
-# x
+# Host: 127.0.0.1 (MySQL 5.5.5-10.4.21-MariaDB)
+# Base de datos: stripepad
+# Tiempo de Generación: 2024-12-27 17:45:16 +0000
 # ************************************************************
 
 
@@ -20,6 +20,25 @@
 
 
 # USERS
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `blog`;
+
+CREATE TABLE `blog` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `slug` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_description` varchar(255) DEFAULT NULL,
+  `body` text DEFAULT NULL,
+  `created` datetime DEFAULT current_timestamp(),
+  `updated` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+# Volcado de tabla users
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `users`;

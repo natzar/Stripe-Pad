@@ -13,7 +13,7 @@
  -->
 
 
-<div class="bg-transparent  shadow-lg ">
+<div class=" bg-gray-900  shadow-lg ">
   <header class="mx-auto w-full z-50   relative   ">
     <nav class="flex items-center justify-between p-6 lg:px-8 " aria-label="Global">
       <div class="flex lg:flex-1">
