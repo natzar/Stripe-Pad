@@ -18,6 +18,40 @@
 
         <main class="flex-1 text-gray-100">
 
+            <canvas id="trafficChart"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var ctx = document.getElementById('trafficChart').getContext('2d');
+                    var trafficData = {
+                        labels: Array.from({
+                            length: 365
+                        }, (_, i) => new Date(2023, 0, i + 1).toLocaleDateString('en-US')),
+                        datasets: [{
+                            label: 'Daily Website Visits',
+                            data: Array.from({
+                                length: 365
+                            }, () => Math.floor(Math.random() * 200 + 100)),
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    };
+
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: trafficData,
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                });
+            </script>
+
             <div class="relative isolate overflow-hidden pt-16">
                 <!-- Secondary navigation -->
                 <header class="pb-4 pt-6 sm:pb-6">
