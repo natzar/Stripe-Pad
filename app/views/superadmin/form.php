@@ -20,7 +20,7 @@
 			<div class=" main max-w-2xl mx-auto bg-white rounded-lg p-6 mb-10">
 				<!-- Notification -->
 
-				<nav class="flex items-center space-x-2" aria-label="Breadcrumb">
+				<nav class="flex items-center justify-between space-x-2" aria-label="Breadcrumb">
 					<a href="<?= APP_DOMAIN ?>table/<?= $table ?>" class="flex justify-start text-gray-500 hover:font-bold hover:text-gray-500">
 						<ol role="list" class="flex  ">
 							<li class="flex">
