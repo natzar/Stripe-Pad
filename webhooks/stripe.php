@@ -86,14 +86,14 @@ class StripeWebhook
 		switch ($this->event->type):
 			case 'customer.subscription.updated':
 				/* */
-
+				// Subscription->update
 				break;
 			case 'customer.subscription.deleted':
 				/* */
-
+				// Subscription->delete
 				break;
 			case 'customer.subscription.created':
-
+// Subscription->create
 				// $subject = "[INFO] Servicio Contratado Php Ninja";
 				// $data = array(
 				// 	"persona_contacto" => $this->customer['persona_contacto'],

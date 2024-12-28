@@ -109,11 +109,7 @@ class invoicesModel extends ModelBase
 		$invoice['cart'] = json_encode($invoice['cart']);
 
 		$invoice['pdf_path'] = $this->pdfName($invoice);
-
-
 		$consulta = $this->db->prepare("INSERT INTO invoices (invoicesId,period,paymentsId,customersId,cart,subtotal,iva,total,payment_method, pdf_path) VALUES (:invoicesId, extract(YEAR_MONTH FROM CURDATE()) ,:paymentsId,:customersId,:cart,:subtotal,:iva,:total,:payment_method, :pdf_path)");
-
-
 		$consulta->bindParam(":invoicesId", $invoice['invoicesId']);
 		$consulta->bindParam(":paymentsId", $invoice['paymentsId']);
 		$consulta->bindParam(":customersId", $invoice['customersId']);

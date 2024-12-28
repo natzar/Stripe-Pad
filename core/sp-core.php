@@ -448,7 +448,7 @@ class StripePad
         $data['product'] = null;
 
         $products = new productsModel();
-        $customers = new customersModel();
+        //     $customers = new customersModel();
 
         if (isset($_GET['title']) and isset($_GET['amount'])) {
             $data['cart'] = [[
@@ -474,11 +474,11 @@ class StripePad
     }
     public function invoices()
     {
-        assert($_SESSION['user']['group'] == 'superadmin');
+        // assert($_SESSION['user']['group'] == 'superadmin');
         $invoices = new invoicesModel();
 
         $data = [
-            'invoices' => $invoices->getLast100(),
+            'invoices' => $invoices->getAll(),
         ];
         $this->view->show('staff/invoices.php', $data);
     }
@@ -504,25 +504,27 @@ class StripePad
         ];
         $this->view->show('staff/products.php', $data);
     }
+    /**
+     * table
+     * Part of Orm, it generates a table 
+     * @return void
+     */
     public function table()
     {
-        //  assert($this->isSuperadmin == true);
-
+        //  assert($this->isSuperadmin == true);        
         $items = new Orm();
-        $table = isset($this->params['a']) and $this->params['a'] != -1 ? $this->params['a'] : '';
-        $_SESSION['return_url'] = $_SERVER['REQUEST_URI'];
+
+        $table = $this->params['m'];
+
         $itemsFinal = null;
         $items_head = $items->getItemsHead($table);
         $fields = $items->getTableAttribute($table, 'fields');
         $user_group = $_SESSION['user']['group'];
 
-        if (in_array($this->params['i'], $fields)) {
+        if (isset($this->params['i']) and in_array($this->params['i'], $fields)) {
             $params = ['table' => $table, $this->params['i'] => $this->params['z']];
             $itemsFinal = $items->search($params);
         } else {
-        }
-
-        if (is_null($itemsFinal)) {
             $itemsFinal = $items->getAll($table);
         }
 
@@ -530,12 +532,13 @@ class StripePad
             'title' => "BackOffice | $table",
             'items_head' => $items_head,
             'items' => $itemsFinal,
-            'HOOK_JS' => $items->js($table),
+            'HOOK_JS' => $items->table_js($table),
             'table' => $table,
             'table_label' => $items->getTableAttribute($table, 'table_label'),
-            'notification' => $this->params['i'] != -1 ? 'Se ha guardado correctamente' : '',
+            'notification' => isset($this->params['i']) and $this->params['i'] != -1 ? 'Se ha guardado correctamente' : '',
         ];
 
+        $_SESSION['return_url'] = $_SERVER['REQUEST_URI'];
         $this->view->show('superadmin/table.php', $data);
     }
 
@@ -544,105 +547,26 @@ class StripePad
 
     public function form()
     {
+        $table = isset($this->params['m']) ? $this->params['m'] : -1;
+        $rid = isset($this->params['a']) ? $this->params['a'] : -1;
+        $op = isset($this->params['i']) ? $this->params['i'] : '';
+        $form = new Orm();
+        $data = $form->generateForm($table, $rid, $op);
 
-        $logs = new logsModel();
-        $form = new formModel();
-        $table = $this->params['a'];
-        $rid = $this->params['i'];
-        $op = $this->params['m'];
-
-        $form->getTableDescription();
-
-        if ($rid == '') {
-            $rid = -1;
-        }
-        $form_html = '';
-        $raw = ($rid != -1) ? $form->getFormValues($table, $rid) : '';
-        $SIDEDATA = new sidedataModel();
-
-        for ($i = 0; $i < count($fields); ++$i) {
-            if ($fields[$i] != $table . 'Id' and $fields[$i] != 'updated' and $fields[$i] != 'created') {
-                $not_dev_fields = ['customersId', 'usersId', 'websId', 'prioritysId', 'name', 'customersstatusId', 'developersId', 'tickettypeId', 'minutes_estimated', 'description', 'test', 'informe_inicial', 'tasks', 'date_start', 'date_end'];
-                $not_client_fields = ['usersId', 'developersId'];
-
-                if ($table == 'tickets' and $rid != -1 and $_SESSION['user']['group'] == 'developersx' and in_array($fields[$i], $not_dev_fields)) {
-                    $VALUE = isset($raw[$fields[$i]]) ? $raw[$fields[$i]] : '';
-                    if (!in_array($fields[$i], ['ticketsstatusId', 'developersId', 'usersId', 'tickettypeId'])) {
-                        $field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $VALUE, $table, $rid);
-                        $form_html .= '<strong>' . ucfirst($fields_labels[$i]) . '</strong><br>';
-                        if ($fields_types[$i] == 'tinymce') {
-                            $form_html .= trim($field_aux->value) . '<br><br>';
-                        } else {
-                            $form_html .= trim($field_aux->view()) . '<br><br>';
-                        }
-                    }
-                    $form_html .= "<input type='hidden' id='" . $fields[$i] . "' name='" . $fields[$i] . "' value='" . $VALUE . "'>";
-
-                    //                    }else if ($table == "tickets"  and $_SESSION['user']['group'] == 'clientsmanager' and in_array($fields[$i],$not_client_fields)){
-                    /*
-                                if ($fields[$i] == "usersId"){
-
-                                }
-*/
-
-                    /*
-                                $VALUE = isset($raw[$fields[$i]]) ? $raw[$fields[$i]] : '';
-                                $field_aux = new $fields_types[$i]($fields[$i],$fields_labels[$i],$fields_types[$i],$VALUE,$table,$rid);
-                                $aux = $field_aux->view();
-                                $form_html .= "<strong>".ucfirst($fields_labels[$i])."</strong><br>";
-                                if ($aux == "...")
-                                    $form_html .=  $raw[$fields[$i]]."<br><br>";
-                                else
-                                    $form_html .= $aux."<br><br>";
-
-*/
-                } else {
-                    $form_html .= "<div class='form-group'><label class='form-label text-xs text-gray-500'>";
-                    $form_html .= ucfirst($fields_labels[$i]);
-                    $form_html .= '</label>';
-                    // added to provide hints about the field
-                    if (isset($field_hints) and $field_hints[$i] != '') {
-                        $form_html .= '<span class="help">e.g. "' . $field_hints[$i] . '"</span>';
-                    }
-                    $form_html .= "<div class='controls'>";
-                    if (!class_exists($fields_types[$i])) {
-                        exit('La clase ' . $fields_types[$i] . ' no existe');
-                    }
-                    $VALUE = isset($raw[$fields[$i]]) ? $raw[$fields[$i]] : '';
-                    $field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $VALUE, $table, $rid);
-                    $form_html .= $field_aux->bake_field();
-                    $form_html .= '</div>';
-                    $form_html .= ' </div>';
-                }
-            }
-        }
-
-        $data = [/* "table_label" => $table_label, */
-            'title' => "BackOffice | $table",
-            'form' => $form_html,
-            'HOOK_JS' => $form->js($table),
-            'table' => $table,
-            'raw' => $raw,
-            'SIDEDATA' => $SIDEDATA->load($raw),
-            'op' => '',
-            'rid' => $rid,
-            'table_label' => $table_label,
-        ];
-
-        $this->view->show('superadmin/form.php', $data, $show_top_footer);
+        $this->view->show('superadmin/form.php', $data);
     }
 
     public function update()
     {
-        $form = new formModel();
+        $orm = new Orm();
         $rid = $this->params['rid'];
         $table = $this->params['table'];
-        $return_url = -1 != $this->params['return_url'] ? $this->params['return_url'] : $_SESSION['return_url'];
+        $return_url = isset($this->params['return_url']) and -1 != $this->params['return_url'] ? $this->params['return_url'] : $_SESSION['return_url'];
 
         if ($rid == -1) {
-            $id = $form->add($table);
+            $id = $orm->add($table);
         } else {
-            $form->edit($table, $rid);
+            $orm->edit($table, $rid);
         }
 
         header('location: ' . $return_url);

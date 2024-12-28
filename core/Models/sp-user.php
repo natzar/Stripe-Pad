@@ -24,6 +24,7 @@ class usersModel extends ModelBase
 	{
 		parent::__construct();
 		//	$this->datatracker = datatrackerModel::singleton();
+		include_once CORE_PATH . "orm/field.php";
 	}
 
 
@@ -183,16 +184,16 @@ class usersModel extends ModelBase
 		return $password;
 	}
 
-	public function getTableDescription()
+	public function getOrmDescription($table = "users")
 	{
-		$data = array(
-			"table_label" => "clons",
-			"default_order" => "clonsId ASC",
-			"fields" => array("customersId", "websId", "files", "db", "completed", "message", "updated"),
-			"fields_labels" => array("Cliente", "Sitio Web", "files", "db", "completed", "message", "updated"),
-			"fields_types" => array("customers", "webs", "truefalse", "truefalse", "truefalse", "literal", "fecha")
-		);
 
-		return $data;
+		return array(
+			"table_label" => "Users",
+			"default_order" => "name ASC",
+			"fields" => array("name", "email", "last_login", "created", "updated"),
+			"fields_to_show" =>  array("name", "email", "last_login", "created", "updated"),
+			"fields_labels" =>  array("name", "email", "last_login", "created", "updated"),
+			"fields_types" => array("literal", "email", "fechahora", "fechahora", "fechahora")
+		);
 	}
 }

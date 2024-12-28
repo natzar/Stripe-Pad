@@ -1,4 +1,34 @@
 <?php
+
+/**
+ * Package Name: Stripe Pad
+ * File Description: Simple CRUD/ORM class
+ * 
+ * @author Beto Ayesa <beto.phpninja@gmail.com>
+ * @version 1.0.0
+ * @package StripePad
+ * @license GPL3
+ * @link https://github.com/natzar/stripe-pad
+ * 
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This file is part of Stripe Pad.
+ *
+ *	Stripe Pad is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ *
+ *	Stripe Pad is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ *	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
+ */
 class Orm extends ModelBase
 {
 	var $datatracker;
@@ -12,24 +42,17 @@ class Orm extends ModelBase
 
 	public function getTableAttribute($table, $attribute)
 	{
-		if (!is_file(CORE_PATH . "setup/" . $table . ".php")) {
-
-			#include_once $this->config->get("modelsFolder")."installModel.php";
-			$install = new installModel();
-			$install->makeSetups($table);
-		}
-		require  CORE_PATH . "setup/" . $table . ".php";
-		return $$attribute;
+		$data = $this->getOrmDescription($table);
+		return $data[$attribute];
 	}
 
 	public function getItemsHead($table)
 	{
-		if (!is_file(CORE_PATH . "setup/" . $table . ".php")) {
-			$install = new installModel();
-			$install->makeSetups($table);
-		}
-		include_once CORE_PATH . "setup/" . $table . ".php";
-		$fr = $fields_labels;
+		$data = $this->getOrmDescription($table);
+		$fr = $data['fields_labels'];
+		$fields_to_show = $data['fields_to_show'];
+		$fields = $data['fields'];
+		$fields_labels = $data['fields_labels'];
 		if (isset($fields_to_show) and is_array($fields_to_show) and count($fields_to_show) > 0) {
 			$fr = array();
 			for ($i = 0; $i < count($fields); $i++):
@@ -40,13 +63,18 @@ class Orm extends ModelBase
 
 		return $fr;
 	}
-	public function getAllByField($table, $field, $rid_in_field)
+	public function getAllByField($table, $field, $rid_in_field, $custom_order = null)
 	{
+		$model = $table . 'Model';
+		$instance = new $model();
+		$data = $instance->getOrmDescription();
+		$fields_to_show = $data['fields_to_show'];
+		$fields = $data['fields'];
+		$fields_labels = $data['fields_labels'];
+
+		$order = is_null($custom_order) ? $data['default_order'] : $custom_order;
 
 
-
-
-		$order = (get_param('sorder') != -1) ? get_param('sorder') : $default_order;
 
 		$consulta = $this->db->prepare('SELECT *, FROM ' . $table . ' where ' . $field . '= "' . $rid_in_field . '" order by ' . $order);
 		$consulta->execute();
@@ -75,9 +103,13 @@ class Orm extends ModelBase
 	public function search($params)
 	{
 
-		include CORE_PATH . "setup/" . $params['table'] . ".php";
-
-		$order = (get_param('sorder') != -1) ? get_param('sorder') : $default_order;
+		$model = $table . 'Model';
+		$instance = new $model();
+		$data = $instance->getOrmDescription();
+		$fields_to_show = $data['fields_to_show'];
+		$fields = $data['fields'];
+		$fields_labels = $data['fields_labels'];
+		$order = ($this->params['sorder'] != -1) ? $this->params['sorder'] : $default_order;
 		$table = $table_aux = $params['table'];
 
 		//	if (isset($group_by) and !empty($group_by)) $table_aux.= ' GROUP BY '.$group_by.' ';  
@@ -127,39 +159,20 @@ class Orm extends ModelBase
 		return $array_return;
 	}
 
-	private function rowExtras($array, $table)
-	{
-		return $array;
-		foreach ($array as &$r) {
-			$consulta = $this->db->prepare('SELECT * FROM comments where object = :object and objectid = :objectid order by commentsId DESC limit 1');
-			$consulta->bindParam(":object", $table);
-			$consulta->bindParam(":objectid", $r[$table . "Id"]);
-			$consulta->execute();
-			if ($q = $consulta->fetch()) {
 
 
-				$r['last_comment'] = substr(strip_tags($q['body']), 0, 245) . "...";
-			} else {
-				$r['last_comment'] = "";
-			}
-		}
-		return $array;
-	}
-
-	public function getAll($table)
+	public function getAll($table, $custom_order = null)
 	{
 
-
-
-
-		$order = (get_param('sorder') != -1) ? get_param('sorder') : $default_order;
+		$data = $this->getOrmDescription($table);
+		$fields_to_show = $data['fields_to_show'];
+		$fields = $data['fields'];
+		$fields_labels = $data['fields_labels'];
+		$fields_types = $data['fields_types'];
+		$order = is_null($custom_order) ? $data['default_order'] : $custom_order;
 		$table_aux = $table;
 		$table_no_prefix = $table;
-		$params = gett();
-
-
-		if (isset($group_by) and !empty($group_by)) $order .= ' GROUP BY ' . $group_by . ' ';
-		$consulta = $this->db->prepare('SELECT * FROM ' . $table_aux . ' order by ' . $table . '.' . $order);
+		$consulta = $this->db->prepare('SELECT * FROM ' . $table . ' order by ' . $table . '.' . $order);
 		$consulta->execute();
 		$array_return = array();
 
@@ -177,29 +190,19 @@ class Orm extends ModelBase
 			$array_return[] = $row_array;
 
 		endwhile;
-		$array_return = $this->rowExtras($array_return, $table);
 		return $array_return;
 	}
 
 	public function getById($table, $id)
 	{
-
-
-
-
-		$order = (get_param('sorder') != -1) ? get_param('sorder') : $default_order;
-		$table_aux = $table;
-
-		$table_no_prefix = $table; //substr($table,strlen($this->config->get('db_prefix')));
-
-		$consulta = $this->db->prepare('SELECT * FROM ' . $table_aux . ' where ' . $table_no_prefix . 'Id ="' . $id . '" order by ' . $order);
+		$consulta = $this->db->prepare('SELECT * FROM ' . $table . ' where ' . $table . 'Id ="' . $id . 'limit 1');
 		$consulta->execute();
 
 		return $consulta->fetch();
 	}
 	public function table_js($table)
 	{
-		require CORE_PATH . "setup/" . $table . ".php";
+
 		$output = "";
 		$output .= "$(document).ready(function(){";
 		//$output .="$('#tablaMain').pagination();";
@@ -207,36 +210,6 @@ class Orm extends ModelBase
 
 		$output .= "         $('.tablaMain').bdt({ pageRowCount:200, search: false});";
 
-		if (isset($table_order_on) and $table_order_on) {
-			$output .= '$(".tablaMain tbody > tr").mouseover(function(){
-				$(this).css("cursor","hand");
-				$(this).css("cursor","pointer");	
-				});';
-
-
-			// MAKE TABLE SORTABLE
-			$output .= '$(function() {
-				firefox = (/firefox/i.test(navigator.userAgent.toLowerCase()));
-
-				$(".tablaMain tbody").sortable({ opacity: 0.6, cursor: "move", helper: firefox === true ? "clone" : void 0, update: function() {
-					var aux = $(this).parent().attr("data-table");
-					aux_id = -1;
-					aux_field = -1;
-					if ($(this).parent().attr("data-filter-id")){
-						aux_id = $(this).parent().attr("data-filter-id");
-						aux_field =$(this).parent().attr("data-filter");
-					}
-					var order = $(this).sortable("serialize") + "&action=updateRecordsListings&tabla="+aux+"&field="+aux_field+"&id="+aux_id;
-					console.log(order);
-					$.post("admin/updateOrder", order, function(theResponse){
-						console.log(theResponse);
-					});
-				}
-
-				});
-				
-				});';
-		}
 
 
 
@@ -265,25 +238,12 @@ class Orm extends ModelBase
 		$add_info_form = "";
 		$tmp_path = APP_UPLOAD_PATH;
 
-		// UPLOADS FOLDER
-		if ($table == "attachments") {
-			if (!is_dir(APP_UPLOAD_PATH . get_param('object') . "/" . get_param('objectid'))) {
-				mkdir(APP_UPLOAD_PATH . get_param('object') . "/" . get_param('objectid'));
-				chmod(APP_UPLOAD_PATH . get_param('object') . "/" . get_param('objectid'), '1777');
-				chown(APP_UPLOAD_PATH . get_param('object') . "/" . get_param('objectid'), 'gophpj');
-			}
-
-			$newpath = APP_UPLOAD_PATH . get_param('object') . "/" . get_param('objectid') . "/";
-			//TO-DO: uploads will not work
-			$tmp_path =  $newpath;
-		}
-
 		for ($i = 0; $i < count($fields); $i++) {
 
 			if ($fields[$i] != $table . 'Id') {
 				$retrieved = '';
 				if ($fields_types[$i] != 'file_img' and $fields_types[$i] != 'file_file') {
-					$retrieved = get_param($fields[$i]);
+					$retrieved = $this->params['$fields[$i]'];
 				} else $retrieved = -1;
 
 				if (!class_exists($fields_types[$i])) die("La clase " . $fields_types[$i] . " no existe");
@@ -295,47 +255,11 @@ class Orm extends ModelBase
 		$info = substr($add_info_form, 0, strlen($add_info_form) - 1);
 		$consulta = $this->db->prepare("INSERT INTO " . $table . " (" . implode(",", $fields) . ") VALUES ($info)");
 		$consulta->execute();
-
 		$id =  $this->getLastInsertedId($table);
-
-		if ($table == "comments") {
-			$rid = get_param('objectid');
-			$table = get_param('object');
-			$d = $this->db->prepare("UPDATE " . $table . " set updated = NOW() where " . $table . "Id = '" . $rid . "'");
-			$d->execute();
-		}
-
-		# Send notification new ticket created by a superadmin
-		if ($table == "tickets") {
-			$ticket = gett();
-			$ticket['ticketsId'] = $id;
-			$users = new usersModel();
-			$mails = new mailsModel();
-			$webs = new websModel();
-			$web = $webs->getByWebsId($ticket['websId']);
-
-			if ($_SESSION['user']['usersId'] != $ticket['developersId']) {
-				$subject = '[INFO] Nuevo ticket asignado';
-				$user = $users->getByUsersId($ticket['developersId']);
-				$ticket['url'] = $web['url'];
-				$mails->sendTemplate('ticket_asigned', $ticket, $user['email'], $subject);
-			}
-
-			$customers = new customersModel();
-			$customer = $customers->getByCustomersId($ticket['customersId']);
-			$user = $users->getByUsersId($customer['usersId']);
-			$ticket['url'] = $web['url'];
-
-			$subject = "[INFO] Nuevo ticket añadido " . $web['url'];
-			$mails->sendTemplate('ticket_new', $ticket, $user['email'], $subject);
-		}
-
 		$this->datatracker->push($table . "-add");
 
 		return $id;
 	}
-
-
 
 	public function updateField()
 	{
@@ -432,78 +356,17 @@ class Orm extends ModelBase
 		$this->datatracker->push($table . "-edit");
 	}
 
-	// DEPRECATED ??
-	public function updateInforme($var)
-	{
-
-
-		$final = $testing = $field = $v = $label = null;
-		$id = $_POST['objectid'];
-		if (empty($id)) die("No hay id");
-		if ($_POST['informe_final']) {
-			$field = "informe_final";
-			$v = $_POST['informe_final'];
-			$label = "INFORME FINAL:<br>==============================<br>";
-		} else if ($_POST['informe_testing']) {
-			$field = "informe_testing";
-			$v = $_POST['informe_testing'];
-			$label = "TESTING:<br>==============================<br>";
-		}
-
-		$c = $this->db->prepare("UPDATE tickets SET " . $field . " = '" . $v . "' where ticketsId = '" . $id . "'");
-
-		$c->execute();
-
-		$d = $this->db->prepare("UPDATE tickets set updated = NOW() where ticketsId = '" . $id . "'");
-		$d->execute();
-
-
-		$comments = new commentsModel();
-		$comments->push('tickets', $id, $label . $v, $_SESSION['user']['usersId']);
-
-		header("location: " . $_POST['return_url']);
-	}
-
-
-
-
 	public function form_js($table)
 	{
-		require CORE_PATH . "setup/" . $table . ".php";
+		$model = $table . 'Model';
+		$instance = new $model();
+		$data = $instance->getOrmDescription();
+		$fields = $data['fields'];
+		$fields_labels = $data['fields_labels'];
+		$fields_types = $data['fields_types'];
 		$output = "";
 
-		if ($table == "customers" or $table == "tickets" or in_array('fecha', $fields_types) or in_array('hora', $fields_types) or in_array('combo_child', $fields_types) or in_array('tinymce', $fields_types))
-
-
-			// 	$output.= 'tinymce.init({
-			//    		document_base_url: "'.$config->get('base_url').'",
-			//         mode : "textareas", 
-
-			//       toolbar: "| bold italic underline strikethrough | bullist checklist lists  link ",
-			// autosave:true,
-			//     menubar: false,
-			//         selector : ".mceEditor",
-			//         width: "100%",
-			//         height: "350px",
-			//    branding: false,
-			//   plugins: " paste   tinydrive  autolink  image embed image img   fullscreen  link  template  table charmap hr  nonbreaking anchor toc insertdatetime  lists      source code ",
-			//    tinydrive_token_provider: "dropbox",
-			//   tinydrive_dropbox_app_key: "ymbe6eootc2fbi7",
-
-
-
-			//   toolbar: " bold italic underline strikethrough link |  bullist checklist | removeformat fullscreen code source   ", 
-			//   autosave_ask_before_unload: true,
-			//     image_advtab: false,
-			//    importcss_append: false,
-
-			//   image_caption: false,
-
-
-
-
-			//         
-			//     });'; 
+		if (in_array('fecha', $fields_types) or in_array('hora', $fields_types) or in_array('combo_child', $fields_types))
 
 			for ($i = 0; $i < count($fields); $i++) {
 				/*
@@ -533,12 +396,6 @@ class Orm extends ModelBase
                 showInputs: false,
                 defaultTime: '00:00'
 									});";
-				}
-				if ($fields_types[$i] == "customers") {
-					$output .= '$("#customersId").select2();';
-				}
-				if ($fields_types[$i] == 'webs') {
-					$output .= '$("#websId").filterOn("#customersId") ;';
 				}
 
 				if ($fields_types[$i] == "slug") {
@@ -666,26 +523,6 @@ class Orm extends ModelBase
 		return true;
 	}
 
-	function updatePresupuesto()
-	{
-
-
-		$rid = $_GET['presupuestosId'];
-
-		$v = ($_GET['v']);
-		$v = explode(",", $v);
-		$v = array_unique($v);
-		$v = implode(",", $v);
-
-		$consulta = $this->db->prepare("UPDATE presupuestos SET content = :v WHERE presupuestosId= :rid");
-		$consulta->bindParam(":v", $v);
-		$consulta->bindParam(":rid", $rid);
-		$consulta->execute();
-		echo $v;
-		return true;
-	}
-
-
 	function updateFeatured()
 	{
 
@@ -704,7 +541,12 @@ class Orm extends ModelBase
 	public function deleteRow($table, $id)
 	{
 
-
+		$model = $table . 'Model';
+		$instance = new $model();
+		$data = $instance->getOrmDescription();
+		$fields = $data['fields'];
+		$fields_labels = $data['fields_labels'];
+		$fields_types = $data['fields_types'];
 
 		$table_no_prefix =  $table;
 		if (in_array('file_img', $fields) or in_array('file', $fields)) {
@@ -721,8 +563,8 @@ class Orm extends ModelBase
 
 				if ($fields_types[$i] == 'file_img') {
 					if ($row2[$fields[$i]] != "") {
-						@unlink($ninjaconfig->base_dir_img . $row2[$fields[$i]]);
-						@unlink($ninjaconfig->base_dir_img . "thumbs/" . $row2[$fields[$i]]);
+						@unlink(APP_UPLOAD_PATH . $row2[$fields[$i]]);
+						@unlink(APP_UPLOAD_PATH . "thumbs/" . $row2[$fields[$i]]);
 					}
 				}
 			}
@@ -746,5 +588,63 @@ class Orm extends ModelBase
 		$consulta = $this->db->prepare("UPDATE $table set $field='' where " . $table_no_prefix . "Id='$id'");
 		$consulta->execute();
 		return true;
+	}
+
+
+	/**
+	 * generateForm
+	 * Returns the HTML for a form
+	 * @param  mixed $table
+	 * @param  mixed $rid
+	 * @param  mixed $fields
+	 * @param  mixed $fields_labels
+	 * @param  mixed $fields_types
+	 * @return void
+	 */
+	public function generateForm($table, $rid, $op)
+	{
+
+		$model = $table . 'Model';
+		$instance = new $model();
+		$data = $instance->getOrmDescription();
+		$fields = $data['fields'];
+		$fields_labels = $data['fields_labels'];
+		$fields_types = $data['fields_types'];
+
+		if ($rid == '') {
+			$rid = -1;
+		}
+		$form_html = '';
+		$raw = ($rid != -1) ? $this->getFormValues($table, $rid) : '';
+
+		for ($i = 0; $i < count($fields); ++$i) {
+
+			$form_html .= "<div class='form-group'><label class='form-label text-xs text-gray-500'>";
+			$form_html .= ucfirst($fields_labels[$i]);
+			$form_html .= '</label>';
+			// Not used: added to provide hints about the field
+			if (isset($field_hints) and $field_hints[$i] != '') {
+				$form_html .= '<span class="help">e.g. "' . $field_hints[$i] . '"</span>';
+			}
+			$form_html .= "<div class='controls'>";
+			if (!class_exists($fields_types[$i])) {
+				exit('La clase ' . $fields_types[$i] . ' no existe');
+			}
+			$VALUE = isset($raw[$fields[$i]]) ? $raw[$fields[$i]] : '';
+			$field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $VALUE, $table, $rid);
+			$form_html .= $field_aux->bake_field();
+			$form_html .= '</div>';
+			$form_html .= ' </div>';
+		}
+
+		return [
+			'form' => $form_html,
+			'HOOK_JS' => $this->form_js($table),
+			'table' => $table,
+			'raw' => $raw,
+			'op' => '',
+			'rid' => $rid,
+			'table_label' => $data['table_label'],
+		];
 	}
 }
