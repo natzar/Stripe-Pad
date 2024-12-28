@@ -27,10 +27,15 @@ error_reporting(DEBUG_MODE ? E_ALL : 1);
 ini_set('display_errors', DEBUG_MODE ? 1 : 1);
 ini_set('display_startup_errors', DEBUG_MODE ? 1 : 1);
 
+# Locale
 mb_internal_encoding(INTERNAL_ENCODING);
 date_default_timezone_set(TIMEZONE);
 setlocale(LC_ALL, LOCALE_LANG);
 setlocale(LC_TIME, LOCALE_TIME);
+
+## Strings
+bindtextdomain('messages', ROOT_PATH . 'locale/');
+## ... (more to come)
 
 # Session 
 if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()) {

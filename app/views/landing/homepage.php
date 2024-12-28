@@ -46,7 +46,7 @@
             <span class="">PHP SaaS Boilerplate</span>
             <span class=" bg-gradient-to-r text-blue-800 from-blue-400 to-blue-900 bg-clip-text pb-3 text-transparent sm:pb-5">Stripe Pad</span>
           </h1>
-          <p class="text-base text-gray-400 sm:text-xl lg:text-lg xl:text-xl mt-5 pb-5">Stripe Pad is a GPL3-licensed PHP-based boilerplate to build SaaS with Stripe that saves you months of development by starting you off with all the features that are the same in every product, so you can focus on what makes your app unique.</p>
+          <p class="text-base text-gray-400 sm:text-xl lg:text-lg xl:text-xl mt-5 pb-5"><?= _('Stripe Pad is a GPL3-licensed PHP-based boilerplate to build SaaS with Stripe that saves you months of development by starting you off with all the features that are the same in every product, so you can focus on what makes your app unique.') ?></p>
 
 
           <div class="text-center mx-auto">
@@ -54,7 +54,7 @@
             <div class="min-w-0 flex-1 w-full text-center">
               <div class=" flex gap-x-4 w-full mx-auto text-center justify-center">
                 <a href="<?= APP_DOMAIN ?>documentation" class="inline-block rounded-lg bg-blue-600 px-6 py-3 text-lg font-bold leading-7 text-white shadow-sm ring-1 ring-blue-600 hover:bg-blue-700 hover:ring-blue-700">
-                  START HERE
+                  <?= _('START HERE') ?>
                   <span class="text-purple-200" aria-hidden="true">&rarr;</span>
                 </a>
 
