@@ -8,12 +8,12 @@ class StripePad
     var $params;
     var $view;
     var $isAuthenticated;
+    var $isSuperadmin;
     var $version = '0.1';
 
 
     public function __construct()
     {
-
         // Initialize session variables if not already set
         if (!isset($_SESSION['errors'])) $_SESSION['errors'] = array();
         if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = array();
@@ -25,29 +25,7 @@ class StripePad
             die();
         }
 
-        $this->params = array();
-        $filter = FILTER_SANITIZE_STRING;
-
-        // Check if the key exists in the $_GET array
-        if (isset($_GET)) {
-            // Return the sanitized value using a specified filter
-            // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
-            foreach ($_GET as $k => $v) {
-                if (filter_input(INPUT_GET, $k, $filter)) {
-                    $this->params[$k] = $v;
-                }
-            }
-        }
-        if (isset($_POST)) {
-            // Return the sanitized value using a specified filter
-            // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
-            foreach ($_POST as $k => $v) {
-                if (filter_input(INPUT_POST, $k, $filter)) {
-                    $this->params[$k] = $v;
-                }
-            }
-        }
-
+        $this->params = get_parameters();
         $this->view = new View();
         $this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();
     }
@@ -55,7 +33,6 @@ class StripePad
     # Default app home page
     public function index()
     {
-
         # check if user is authenticated
         if ($this->isAuthenticated) {
             # Load Dashboard (main-first screen of your app for logged users)
@@ -137,18 +114,17 @@ class StripePad
         $data = array();
 
         # Login function
+        if (!empty(GOOGLE_CLIENT_ID)) {
+            # Login with Google
+            $client = new Google_Client();
+            $client->setClientId(GOOGLE_CLIENT_ID);
+            $client->setClientSecret(GOOGLE_CLIENT_SECRET);
+            $client->setRedirectUri(GOOGLE_REDIRECT_URI);
+            $client->addScope("email");
+            $client->addScope("profile");
 
-        # Login with Google
-        // $client = new Google_Client();
-        // $client->setClientId('YOUR_CLIENT_ID');
-        // $client->setClientSecret('YOUR_CLIENT_SECRET');
-        // $client->setRedirectUri('YOUR_REDIRECT_URI');
-        // $client->addScope("email");
-        // $client->addScope("profile");
-
-        // $authUrl = $client->createAuthUrl();
-        // echo "<a href='$authUrl'>Login with Google</a>";
-
+            $data['google_auth_url'] = $client->createAuthUrl();
+        }
         $this->view->show("user/login.php", $data, true);
     }
     public function profile()
@@ -272,25 +248,27 @@ class StripePad
         $_SESSION['user'] = $user;
         $_SESSION['HTTP_USER_AGENT'] = hash('sha256', ($_SERVER['HTTP_USER_AGENT'] . $user['email']));
         $users = new usersModel();
-        if ($saveLogin) $users->saveLastLogin($user);
+        if ($saveLogin) $users->saveLastLogin($user['usersId']);
     }
 
 
     public function GoogleLoginCallback()
     {
         if (isset($_GET['code'])) {
-            // $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-            // $_SESSION['access_token'] = $token;
+            $client = new Google_Client();
+            $client->setClientId(GOOGLE_CLIENT_ID);
+            $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+            $_SESSION['access_token'] = $token;
 
-            // // Get user info
-            // $google_service = new Google_Service_Oauth2($client);
-            // $data = $google_service->userinfo->get();
+            // Get user info
+            $google_service = new Google_Service_Oauth2($client);
+            $data = $google_service->userinfo->get();
 
-            // // Now you have $data which contains user info. You can save this info in your database.
-            // // For demonstration purposes, we're just printing it.
-            // echo '<pre>';
-            // print_r($data);
-            // echo '</pre>';
+            // Now you have $data which contains user info. You can save this info in your database.
+            // For demonstration purposes, we're just printing it.
+            echo '<pre>';
+            print_r($data);
+            echo '</pre>';
         }
     }
     protected function isAuthenticated()
@@ -347,6 +325,8 @@ class StripePad
      */
     public function account()
     {
+
+
         if (empty($_SESSION['user']['stripe_customer_id'])):
 
             $_SESSION['errors'][] = "NOT_ENABLED;";
@@ -457,5 +437,214 @@ class StripePad
 
         $session = \Stripe\Checkout\Session::create($params);
         echo json_encode($session);
+    }
+    public function checkout()
+    {
+        $data = ['params' => $this->params];
+        $product = $this->params['a'];
+        $client = $this->params['i'];
+        $data['customer'] = null;
+        $data['cart'] = null;
+        $data['product'] = null;
+
+        $products = new productsModel();
+        $customers = new customersModel();
+
+        if (isset($_GET['title']) and isset($_GET['amount'])) {
+            $data['cart'] = [[
+                'name' => $this->params['title'],
+                'amount' => $this->params['amount'],
+                'currency' => 'eur',
+                'quantity' => 1,
+            ]];
+
+            $data['payment_type'] = 'free';
+        } elseif (!empty($product) or !empty($client)) {
+            $data['cart'] = $products->getCart($product);
+            $data['customer'] = $customers->getByCustomersId($client);
+            $data['product'] = $products->getProduct($product);
+            $data['payment_type'] = 'catalog';
+        } else {
+            $data['store'] = $products->getProducts();
+            $this->view->show('shop.php', $data, false);
+            exit();
+        }
+
+        $this->view->show('checkout.php', $data, false);
+    }
+    public function invoices()
+    {
+        assert($_SESSION['user']['group'] == 'superadmin');
+        $invoices = new invoicesModel();
+
+        $data = [
+            'invoices' => $invoices->getLast100(),
+        ];
+        $this->view->show('staff/invoices.php', $data);
+    }
+
+    public function newInvoice()
+    {
+        assert($_SESSION['user']['group'] == 'superadmin');
+        $invoices = new invoicesModel();
+
+        $data = [
+            'invoices' => $invoices->getLast100(),
+        ];
+        $this->view->show('invoice/invoice.php', $data);
+    }
+
+    public function products()
+    {
+        assert($_SESSION['user']['group'] == 'superadmin');
+        $products = new productsModel();
+
+        $data = [
+            'products' => $products->getAll(),
+        ];
+        $this->view->show('staff/products.php', $data);
+    }
+    public function table()
+    {
+        //  assert($this->isSuperadmin == true);
+
+        $items = new Orm();
+        $table = isset($this->params['a']) and $this->params['a'] != -1 ? $this->params['a'] : '';
+        $_SESSION['return_url'] = $_SERVER['REQUEST_URI'];
+        $itemsFinal = null;
+        $items_head = $items->getItemsHead($table);
+        $fields = $items->getTableAttribute($table, 'fields');
+        $user_group = $_SESSION['user']['group'];
+
+        if (in_array($this->params['i'], $fields)) {
+            $params = ['table' => $table, $this->params['i'] => $this->params['z']];
+            $itemsFinal = $items->search($params);
+        } else {
+        }
+
+        if (is_null($itemsFinal)) {
+            $itemsFinal = $items->getAll($table);
+        }
+
+        $data = [/* "table_label" => $table_label, */
+            'title' => "BackOffice | $table",
+            'items_head' => $items_head,
+            'items' => $itemsFinal,
+            'HOOK_JS' => $items->js($table),
+            'table' => $table,
+            'table_label' => $items->getTableAttribute($table, 'table_label'),
+            'notification' => $this->params['i'] != -1 ? 'Se ha guardado correctamente' : '',
+        ];
+
+        $this->view->show('superadmin/table.php', $data);
+    }
+
+    /* Forms creation and Rows Inserting and updating
+    ---------------------------------------*/
+
+    public function form()
+    {
+
+        $logs = new logsModel();
+        $form = new formModel();
+        $table = $this->params['a'];
+        $rid = $this->params['i'];
+        $op = $this->params['m'];
+
+        $form->getTableDescription();
+
+        if ($rid == '') {
+            $rid = -1;
+        }
+        $form_html = '';
+        $raw = ($rid != -1) ? $form->getFormValues($table, $rid) : '';
+        $SIDEDATA = new sidedataModel();
+
+        for ($i = 0; $i < count($fields); ++$i) {
+            if ($fields[$i] != $table . 'Id' and $fields[$i] != 'updated' and $fields[$i] != 'created') {
+                $not_dev_fields = ['customersId', 'usersId', 'websId', 'prioritysId', 'name', 'customersstatusId', 'developersId', 'tickettypeId', 'minutes_estimated', 'description', 'test', 'informe_inicial', 'tasks', 'date_start', 'date_end'];
+                $not_client_fields = ['usersId', 'developersId'];
+
+                if ($table == 'tickets' and $rid != -1 and $_SESSION['user']['group'] == 'developersx' and in_array($fields[$i], $not_dev_fields)) {
+                    $VALUE = isset($raw[$fields[$i]]) ? $raw[$fields[$i]] : '';
+                    if (!in_array($fields[$i], ['ticketsstatusId', 'developersId', 'usersId', 'tickettypeId'])) {
+                        $field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $VALUE, $table, $rid);
+                        $form_html .= '<strong>' . ucfirst($fields_labels[$i]) . '</strong><br>';
+                        if ($fields_types[$i] == 'tinymce') {
+                            $form_html .= trim($field_aux->value) . '<br><br>';
+                        } else {
+                            $form_html .= trim($field_aux->view()) . '<br><br>';
+                        }
+                    }
+                    $form_html .= "<input type='hidden' id='" . $fields[$i] . "' name='" . $fields[$i] . "' value='" . $VALUE . "'>";
+
+                    //                    }else if ($table == "tickets"  and $_SESSION['user']['group'] == 'clientsmanager' and in_array($fields[$i],$not_client_fields)){
+                    /*
+                                if ($fields[$i] == "usersId"){
+
+                                }
+*/
+
+                    /*
+                                $VALUE = isset($raw[$fields[$i]]) ? $raw[$fields[$i]] : '';
+                                $field_aux = new $fields_types[$i]($fields[$i],$fields_labels[$i],$fields_types[$i],$VALUE,$table,$rid);
+                                $aux = $field_aux->view();
+                                $form_html .= "<strong>".ucfirst($fields_labels[$i])."</strong><br>";
+                                if ($aux == "...")
+                                    $form_html .=  $raw[$fields[$i]]."<br><br>";
+                                else
+                                    $form_html .= $aux."<br><br>";
+
+*/
+                } else {
+                    $form_html .= "<div class='form-group'><label class='form-label text-xs text-gray-500'>";
+                    $form_html .= ucfirst($fields_labels[$i]);
+                    $form_html .= '</label>';
+                    // added to provide hints about the field
+                    if (isset($field_hints) and $field_hints[$i] != '') {
+                        $form_html .= '<span class="help">e.g. "' . $field_hints[$i] . '"</span>';
+                    }
+                    $form_html .= "<div class='controls'>";
+                    if (!class_exists($fields_types[$i])) {
+                        exit('La clase ' . $fields_types[$i] . ' no existe');
+                    }
+                    $VALUE = isset($raw[$fields[$i]]) ? $raw[$fields[$i]] : '';
+                    $field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $VALUE, $table, $rid);
+                    $form_html .= $field_aux->bake_field();
+                    $form_html .= '</div>';
+                    $form_html .= ' </div>';
+                }
+            }
+        }
+
+        $data = [/* "table_label" => $table_label, */
+            'title' => "BackOffice | $table",
+            'form' => $form_html,
+            'HOOK_JS' => $form->js($table),
+            'table' => $table,
+            'raw' => $raw,
+            'SIDEDATA' => $SIDEDATA->load($raw),
+            'op' => '',
+            'rid' => $rid,
+            'table_label' => $table_label,
+        ];
+
+        $this->view->show('superadmin/form.php', $data, $show_top_footer);
+    }
+
+    public function update()
+    {
+        $form = new formModel();
+        $rid = $this->params['rid'];
+        $table = $this->params['table'];
+        $return_url = -1 != $this->params['return_url'] ? $this->params['return_url'] : $_SESSION['return_url'];
+
+        if ($rid == -1) {
+            $id = $form->add($table);
+        } else {
+            $form->edit($table, $rid);
+        }
+
+        header('location: ' . $return_url);
     }
 }
