@@ -72,7 +72,7 @@ class Orm extends ModelBase
 		$fields_to_show = $data['fields_to_show'];
 		$fields = $data['fields'];
 		$fields_labels = $data['fields_labels'];
-
+		$fields_types = $data['fields_types'];
 		$order = is_null($custom_order) ? $data['default_order'] : $custom_order;
 
 
