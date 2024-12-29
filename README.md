@@ -14,7 +14,7 @@ Website: [stripepad.com](https://stripepad.com)
 
 **Not affiliated with Stripe.com**
 
-![Structure Overview](https://stripepad.com/cdn/demo/superadmin-screenshot.png)
+![Structure Overview](https://stripepad.com/cdn/demo/superadmin-dashboard.png)
 
 
 ## Quick Install
