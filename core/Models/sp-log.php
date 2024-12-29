@@ -33,6 +33,9 @@ class log extends ModelBase
 {
 	private static $instance = null;
 
+	public function __construct(){
+		parent::__construct();
+	}
 	public static function singleton()
 	{
 		if (self::$instance == null) {
