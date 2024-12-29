@@ -18,7 +18,7 @@
 
         <main class="flex-1 text-gray-100">
 
-            <div class="flex items-center gap-x-6 bg-sky-600 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 rounded-xl mb-6">
+            <div class="flex items-center gap-x-6 bg-sky-600 hover:bg-sky-900 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 rounded-xl mb-3">
                 <p class="text-sm/6 text-white">
                     <a href="javascript:if (confirm('This will import all data from Stripe, don\'t close this tab. Continue?')) window.location.href='<?= APP_DOMAIN ?>actionStripeSync';">
                         <strong class="font-semibold">Stripe Connection</strong><svg viewBox="0 0 2 2" class="mx-2 inline size-0.5 fill-current" aria-hidden="true">
@@ -132,8 +132,8 @@
                     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <h2 class="mx-auto max-w-2xl text-base font-semibold text-gray-100 lg:mx-0 lg:max-w-none">Recent Activity</h2>
                     </div>
-                    <div class="mt-6 overflow-hidden border-t bg-white/5  rounded-xl border-gray-700">
-                        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div class="mt-6 overflow-hidden border-t bg-white/5  rounded-xl border-gray-900">
+                        <div class="mx-auto max-w-7xl ">
                             <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                                 <table class="w-full text-left">
 
@@ -142,8 +142,8 @@
                                         $last_date = "";
                                         foreach ($log as $item): ?>
                                             <? if (date('Y-m-d H', strtotime($item['updated'])) != date('Y-m-d H', strtotime( $last_date))): ?>
-                                                <tr class="text-sm/6 text-gray-200">
-                                                    <th scope="colgroup" colspan="3" class="relative isolate py-2 font-semibold">
+                                                <tr class="text-sm/6 text-gray-200 ">
+                                                    <th scope="colgroup" colspan="3" class="relative pl-6 isolate py-2 font-semibold">
                                                         <time datetime="2023-03-22"><?= time_elapsed_string($item['updated']) ?></time>
                                                         <div class="absolute inset-y-0 right-full -z-10 w-screen border-b border-gray-900 bg-sky-900"></div>
                                                         <div class="absolute inset-y-0 left-0 -z-10 w-screen border-b border-gray-900 bg-sky-900"></div>
@@ -152,32 +152,32 @@
                                             <? 
                                         $last_date = $item['updated']; 
                                         endif; ?>
-                                            <tr>
-                                                <td class="relative py-5 pr-6">
+                                            <tr class="border-gray-600 border-1 border-b ">
+                                                <td class="relative py-5 pl-6 ">
                                                     <div class="flex gap-x-6">
                                                         <svg class="hidden h-6 w-5 flex-none text-gray-400 sm:block" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                                                             <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm-.75-4.75a.75.75 0 0 0 1.5 0V8.66l1.95 2.1a.75.75 0 1 0 1.1-1.02l-3.25-3.5a.75.75 0 0 0-1.1 0L6.2 9.74a.75.75 0 1 0 1.1 1.02l1.95-2.1v4.59Z" clip-rule="evenodd" />
                                                         </svg>
                                                         <div class="flex-auto">
                                                             <div class="flex items-start gap-x-3">
-                                                                <div class="text-sm/6 font-medium text-gray-400"><?= $item['label']?></div>
                                                                 <div class="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"><?= $item['tag'] ?></div>
+                                                                <div class="text-sm/6 font-medium text-gray-400"><?= $item['label']?></div>
+                                                                
                                                             </div>
-                                                            <div class="mt-1 text-xs/5 text-gray-500">$500.00 tax</div>
+                                                            <div class="mt-1 text-xs/5 text-gray-500"><?= $item['body'] ?></div>
                                                         </div>
                                                     </div>
-                                                    <div class="absolute bottom-0 right-full h-px w-screen bg-gray-100"></div>
-                                                    <div class="absolute bottom-0 left-0 h-px w-screen bg-gray-100"></div>
+                                                  
                                                 </td>
-                                                <td class="hidden py-5 pr-6 sm:table-cell">
-                                                    <div class="text-sm/6 text-gray-900">Reform</div>
-                                                    <div class="mt-1 text-xs/5 text-gray-500">Website redesign</div>
-                                                </td>
-                                                <td class="py-5 text-right">
-                                                    <div class="flex justify-end">
-                                                        <a href="#" class="text-sm/6 font-medium text-indigo-600 hover:text-indigo-500">View<span class="hidden sm:inline"> transaction</span><span class="sr-only">, invoice #00012, Reform</span></a>
+                                               
+                                                <td class="py-5 text-right pr-6">
+                                                    <div class="flex justify-end space-x-2">
+                                                        <!-- <a href="#" class="text-sm/6 font-medium text-indigo-600 hover:text-indigo-500">View<span class="hidden sm:inline"> transaction</span><span class="sr-only">, invoice #00012, Reform</span></a> -->
+                                                         
+                                                         <div class="mt-1 text-xs/5 text-gray-500">Count <span class="text-gray-300"><?= $item['total'] ?></span></div> 
+                                                         <div class="mt-1 text-xs/5 text-gray-500">Last <span class="text-gray-300"><?= time_elapsed_string($item['updated']) ?></span></div>
                                                     </div>
-                                                    <div class="mt-1 text-xs/5 text-gray-500">Invoice <span class="text-gray-900">#00012</span></div>
+                                                    
                                                 </td>
                                             </tr>
                                         <? endforeach; ?>
@@ -188,9 +188,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="max-w-4xl mx-auto mt-8">
-    
-</div>
 
                 
                 <?php
@@ -200,11 +197,7 @@
                 $conn = new mysqli(APP_DB_HOST, APP_DB_USER, APP_DB_PASSWORD, APP_DB);
 
                 // Checar conexión
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                } else {
-                    echo "Connected successfully<br>";
-                }
+               
 
                 // Obtener el tamaño de cada tabla
                 $sql = "SELECT 
@@ -227,77 +220,71 @@
 
                 $conn->close();
                 ?>
-                 <h2 class="text-2xl font-semibold mb-4">System Info</h2>
+ 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                    <h2 class="text-2xl font-semibold mb-4">Details</h2>
-    <div class="overflow-hidden shadow-md sm:rounded-lg">
-        <table class="min-w-full">
-            <thead class="bg-gray-900">
-                <tr>
-                    <th class="text-left font-medium text-gray-600 uppercase tracking-wider py-3 px-6">Feature</th>
-                    <th class="text-left font-medium text-gray-600 uppercase tracking-wider py-3 px-6">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">Gettext Extension</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <?php if (extension_loaded('gettext')) {
-                            echo "<span class='text-green-500'>Available</span>";
-                        } else {
-                            echo "<span class='text-red-500'>Not Available</span>";
-                        } ?>
-                    </td>
-                </tr>
-                <tr class="bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap">PHP Version</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <?php if (version_compare(PHP_VERSION, '7.2', '>=')) {
-                            echo "<span class='text-green-500'>✔︎</span> PHP version is " . PHP_VERSION . " (>=7.2).";
-                        } else {
-                            echo "<span class='text-red-500'>[x] FIX:</span> PHP version is " . PHP_VERSION;
-                        } ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">System Function</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <?php if (function_exists('system')) {
-                            echo "<span class='text-green-500'>✔︎ Available</span>";
-                        } else {
-                            echo "<span class='text-red-500'>Not Available</span>";
-                        } ?>
-                    </td>
-                </tr>
-                <tr class="bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap">Exec Function</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <?php if (function_exists('exec')) {
-                            echo "<span class='text-green-500'>✔︎ Available</span>";
-                        } else {
-                            echo "<span class='text-red-500'>Not Available</span>";
-                        } ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">MySQL PDO</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <?php if (class_exists('PDO')) {
-                            $drivers = PDO::getAvailableDrivers();
-                            if (in_array('mysql', $drivers)) {
-                                echo "<span class='text-green-500'>✔︎ MySQL PDO is installed.</span>";
-                            } else {
-                                echo "<span class='text-red-500'>[x] MySQL PDO is not available.</span>";
-                            }
-                        } else {
-                            echo "<span class='text-red-500'>[x] PDO is not installed.</span>";
-                        } ?>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                    <h2 class="text-white text-lg">Checklist</h2>
+                   
+    <ul class="list-disc pl-5 space-y-2">
+        <li>
+            <strong>Gettext Extension:</strong>
+            <?php if (extension_loaded('gettext')) {
+                echo "<span class='text-green-500'>Available</span>";
+            } else {
+                echo "<span class='text-red-500'>Not Available</span>";
+            } ?>
+        </li>
+        <li>
+            <strong>PHP Version:</strong>
+            <?php if (version_compare(PHP_VERSION, '7.2', '>=')) {
+                echo "<span class='text-green-500'>✔︎ PHP version is " . PHP_VERSION . " (>=7.2)</span>";
+            } else {
+                echo "<span class='text-red-500'>[x] FIX: PHP version is " . PHP_VERSION . "</span>";
+            } ?>
+        </li>
+        <li>
+            <strong>System Function:</strong>
+            <?php if (function_exists('system')) {
+                echo "<span class='text-green-500'>✔︎ Available</span>";
+            } else {
+                echo "<span class='text-red-500'>Not Available</span>";
+            } ?>
+        </li>
+        <li>
+            <strong>Exec Function:</strong>
+            <?php if (function_exists('exec')) {
+                echo "<span class='text-green-500'>✔︎ Available</span>";
+            } else {
+                echo "<span class='text-red-500'>Not Available</span>";
+            } ?>
+        </li>
+        <li>
+            <strong>MySQL PDO:</strong>
+            <?php if (class_exists('PDO')) {
+                $drivers = PDO::getAvailableDrivers();
+                if (in_array('mysql', $drivers)) {
+                    echo "<span class='text-green-500'>✔︎ MySQL PDO is installed.</span>";
+                } else {
+                    echo "<span class='text-red-500'>[x] MySQL PDO is not available.</span>";
+                }
+            } else {
+                echo "<span class='text-red-500'>[x] PDO is not installed.</span>";
+            } ?>
+        </li>
+        <li>
+            <strong>Database Connection:</strong>
+            <?php
+                // Assuming $conn is your database connection variable
+                if (isset($conn) && $conn->connect_error) {
+                    echo "<span class='text-red-500'>[x] " . $conn->connect_error . "</span>";
+                } else {
+                    echo "<span class='text-green-500'>✔︎ Connected successfully</span>";
+                }
+            ?>
+        </li>
+    </ul>
+
+
                     </div>
                     <div>
                         <h2 class="text-white text-lg">Database</h2>

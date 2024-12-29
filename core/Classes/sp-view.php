@@ -75,7 +75,8 @@ class View
 
 		include $viewsFolder . "layout/footer.php";
 		echo '<!-- Powered by StripePad -->';
-		$this->log->push(getCurrentUrl(), 'visit');
+		
+		$this->log->push(str_replace(APP_DOMAIN,'/', getCurrentUrl()), 'pageview');
 		if (isset($_SESSION['errors'])) unset($_SESSION['errors']);
 		if (isset($_SESSION['alerts'])) unset($_SESSION['alerts']);
 	}
