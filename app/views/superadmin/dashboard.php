@@ -39,22 +39,26 @@
             <div class="mx-auto max-w-7xl ">
                 <div class="mx-auto max-w-2xl lg:max-w-none">
 
-                    <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
+                    <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-5">
                         <div class="flex flex-col bg-white/5 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Conversion Rate</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">8,000+</dd>
+                            <dt class="text-sm/6 font-semibold text-gray-300">Visitors now</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">67</dd>
+                        </div>   
+                        <div class="flex flex-col bg-white/5 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-300">Revenue</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">$0</dd>
                         </div>
                         <div class="flex flex-col bg-white/5 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Users</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">3%</dd>
+                            <dt class="text-sm/6 font-semibold text-gray-300">$/Visitor</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">$0</dd>
                         </div>
                         <div class="flex flex-col bg-white/5 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Customers</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">99.9%</dd>
+                            <dt class="text-sm/6 font-semibold text-gray-300">Session Time</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">90s</dd>
                         </div>
                         <div class="flex flex-col bg-white/5 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Total earnings</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">$70M</dd>
+                            <dt class="text-sm/6 font-semibold text-gray-300">Bounce Rate</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">23%</dd>
                         </div>
                     </dl>
                 </div>
@@ -105,27 +109,51 @@
             <div class="mx-auto max-w-7xl ">
                 <div class="mx-auto max-w-2xl lg:max-w-none">
 
-                    <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
+                    <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-5">
                         <div class="flex flex-col bg-white/5 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">Visitors</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">8,000+</dd>
                         </div>
                         <div class="flex flex-col bg-white/5 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Users</dt>
+                            <dt class="text-sm/6 font-semibold text-gray-300">Visitor ➞ User</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">3%</dd>
                         </div>
                         <div class="flex flex-col bg-white/5 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Customers</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">99.9%</dd>
+                            <dt class="text-sm/6 font-semibold text-gray-300">Users</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">2,098</dd>
                         </div>
                         <div class="flex flex-col bg-white/5 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Conversion Rate</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">$70M</dd>
+                            <dt class="text-sm/6 font-semibold text-gray-300">User ➞ Customer</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">0%</dd>
+                        </div>
+                        <div class="flex flex-col bg-white/5 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-300">Customers</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">0</dd>
                         </div>
                     </dl>
                 </div>
             </div>
+            <section>
+            
+                        <h2 class="pl-6 mx-auto max-w-2xl text-base font-semibold text-gray-100 py-8 lg:mx-0 lg:max-w-none">Custom Counters</h2>
+            
+                    <div class="mx-auto max-w-7xl ">
+                <div class="mx-auto max-w-2xl lg:max-w-none">
 
+                    <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="flex flex-col bg-white/5 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-300">Downloads</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">8,000+</dd>
+                        </div>
+                        <div class="flex flex-col bg-white/5 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-300">Redirections to Stripe</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">3%</dd>
+                        </div>
+                       
+                    </dl>
+                </div>
+            </div>
+        </section>
             <div class="space-y-16 py-16 xl:space-y-20">
                 <!-- Recent activity table -->
                 <div>
