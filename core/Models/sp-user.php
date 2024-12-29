@@ -14,17 +14,17 @@
 
 
 
+/**
+ * usersModel
+ */
 class usersModel extends ModelBase
 {
-	var $datatracker;
-
-
+	var $log;
 
 	public function __construct()
 	{
 		parent::__construct();
-		//	$this->datatracker = datatrackerModel::singleton();
-		include_once CORE_PATH . "orm/field.php";
+		$this->log = log::singleton();
 	}
 
 
@@ -54,7 +54,7 @@ class usersModel extends ModelBase
 			$data = array("email" => $email, "name" => $name, "password" => $password);
 			$subject = "[INFO] Welcome to " . APP_NAME;
 			$mails->sendTemplate('welcome_user', $data, $email, $subject);
-
+			$this->log->push('Welcome to new user ' . $email, 'users.new');
 			return $user;
 		}
 	}

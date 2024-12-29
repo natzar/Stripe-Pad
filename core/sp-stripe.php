@@ -29,10 +29,11 @@ use Stripe\StripeClient;
 
 class StripePad_Stripe extends ModelBase
 {
-
+    var $log;
     function __construct()
     {
         \Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY_TEST);
+        $this->log = log::singleton();
     }
 
     function create_checkout_session()

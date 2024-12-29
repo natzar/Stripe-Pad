@@ -6,9 +6,13 @@ use PHPMailer\PHPMailer\Exception;
 class mailsModel extends ModelBase
 {
 	var $emailValidator;
+	var $log;
 
 	public function __construct()
 	{
+		parent::__construct();
+		$this->log = log::singleton();
+
 		include CORE_PATH . "classes/EmailValidator.php";
 		$this->emailValidator = new emailValidator();
 	}

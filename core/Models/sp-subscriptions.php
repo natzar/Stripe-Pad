@@ -32,7 +32,13 @@
 
 class subscriptionsModel extends ModelBase
 {
+  var $log;
 
+  public function __construct()
+  {
+    parent::__construct();
+    $this->log = log::singleton();
+  }
 
   public function getByUsersId($customersId)
   {

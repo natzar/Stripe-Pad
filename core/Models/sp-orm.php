@@ -31,12 +31,12 @@
  */
 class Orm extends ModelBase
 {
-	var $datatracker;
+	var $log;
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->datatracker = datatrackerModel::singleton();
+		$this->log = log::singleton();
 		include CORE_PATH . "orm/field.php";
 	}
 

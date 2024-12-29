@@ -23,12 +23,18 @@ class View
 	 * @var mixed
 	 */
 	var $isAuthenticated;
+	/**
+	 * log
+	 *
+	 * @var mixed
+	 */
+	var $log;
 
 	function __construct() {}
 
 	public function show($name = 'home.php', $vars = array(), $show_menu = true)
 	{
-
+		$this->log = log::singleton();
 		$isAuthenticated = $this->isAuthenticated;
 
 		/* Template meta data */
@@ -69,12 +75,14 @@ class View
 
 		include $viewsFolder . "layout/footer.php";
 		echo '<!-- Powered by StripePad -->';
+		$this->log->push(getCurrentUrl(), 'visit');
 		if (isset($_SESSION['errors'])) unset($_SESSION['errors']);
 		if (isset($_SESSION['alerts'])) unset($_SESSION['alerts']);
 	}
 
 	public function error404()
 	{
+		$this->log->push(getCurrentUrl(), '404');
 		header('HTTP/1.0 404 Not Found');
 		$this->show('errors/404.php');
 	}

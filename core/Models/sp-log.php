@@ -2,7 +2,7 @@
 
 /**
  * Package Name: Stripe Pad
- * File Description: Data Tracker Module
+ * File Description: Logs Model
  * 
  * @author Beto Ayesa <beto.phpninja@gmail.com>
  * @version 1.0.0
@@ -29,8 +29,7 @@
  *
  *	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
  */
-
-class datatrackerModel extends ModelBase
+class log extends ModelBase
 {
 	private static $instance = null;
 
@@ -40,6 +39,71 @@ class datatrackerModel extends ModelBase
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+
+	public function getAll($limit = 20)
+	{
+		$consulta = $this->db->prepare("SELECT * FROM logs where tag='error' and object ='webs' order by logsId DESC limit :limit ");
+
+		$consulta->bindParam(":limit", $limit);
+		$consulta->execute();
+		return $consulta->fetchAll();
+	}
+
+	public function getLogsByTag($usersId, $tag, $limit = 20)
+	{
+		$consulta = $this->db->prepare("SELECT * FROM logs where tag=:tag and usersId = :usersId order by updated DESC limit :limit ");
+		$consulta->bindParam(":usersId", $usersId);
+		$consulta->bindParam(":tag", $tag);
+		$consulta->bindParam(":limit", $limit);
+		$consulta->execute();
+		return $consulta->fetchAll();
+	}
+
+	public function getLast20ByTag($tag, $limit = 20)
+	{
+		$consulta = $this->db->prepare("SELECT * FROM logs where tag=:tag  order by updated DESC limit :limit ");
+		$consulta->bindParam(":tag", $tag);
+		$consulta->bindParam(":limit", $limit);
+		$consulta->execute();
+		return $consulta->fetchAll();
+	}
+
+
+	public function getAllErrors($webId, $limit = 20)
+	{
+		$consulta = $this->db->prepare("SELECT * FROM logs where tag='error' and object ='webs' and objectid= :websId order by logsId DESC limit :limit ");
+		$consulta->bindParam(":websId", $webId);
+		$consulta->bindParam(":limit", $limit);
+		//			$consulta->bindParam(":customersId",$_SESSION['user']['customersId']);
+		$consulta->execute();
+		return $consulta->fetchAll();
+	}
+
+
+	public function getFeed($limit = 20)
+	{
+		$consulta = $this->db->prepare("SELECT * FROM logs where tag='error' order by logsId DESC limit :limit");
+
+		$consulta->bindParam(":limit", $limit);
+		//			$consulta->bindParam(":customersId",$_SESSION['user']['customersId']);
+		$consulta->execute();
+		return $consulta->fetchAll();
+	}
+	public function push($label, $tag, $usersId = 0)
+	{
+		$hash = $tag . "-" . $usersId . "-" . fingerprint($label);
+
+		$q  = $this->db->prepare("INSERT INTO logs (hash,week,usersId,body,tag) VALUES (:hash,YEARWEEK(CURDATE(),:uid,:b,:tag) ON DUPLICATE KEY UPDATE    
+total =total + 1");
+		$q->bindParam(":uid", $usersId);
+		$q->bindParam(":tag", $tag);
+		$q->bindParam(":hash", $hash);
+		$q->bindParam(":b", $label);
+
+		if ($q->execute()) return true;
+		return false;
 	}
 
 	public function getThisWeek()
@@ -86,15 +150,7 @@ class datatrackerModel extends ModelBase
 
 		return $aux2['total'];
 	}
-	public function push($key, $value = 1)
-	{
-		//	$key = fingerprint($key);
-		$consulta = $this->db->prepare("INSERT INTO datatracker (week,q,v) VALUES (YEARWEEK(CURDATE()),:q,:v) ON DUPLICATE KEY UPDATE v=v+:v2");
-		$consulta->bindParam(":q", $key);
-		$consulta->bindParam(":v", $value);
-		$consulta->bindParam(":v2", $value);
-		$consulta->execute();
-	}
+
 
 	// COUNTER
 

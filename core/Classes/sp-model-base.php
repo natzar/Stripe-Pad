@@ -5,9 +5,10 @@
  */
 abstract class ModelBase
 {
-	public $db;
-	public $model;
-	public $table;
+	public $db = null;
+	public $model = null;
+	public $table = null;
+
 
 	public function __construct()
 	{

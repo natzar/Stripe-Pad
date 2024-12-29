@@ -40,7 +40,7 @@ class StripePad
     var $isAuthenticated;
     var $isSuperadmin;
     var $version = '0.1';
-
+    var $log;
 
     public function __construct()
     {
@@ -54,7 +54,7 @@ class StripePad
             include "app/themes/" . APP_THEME . "/error.php";
             die();
         }
-
+        $this->log = log::singleton();
         $this->params = get_parameters();
         $this->view = new View();
         $this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();

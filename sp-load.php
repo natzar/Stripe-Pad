@@ -58,7 +58,7 @@ include_once CORE_PATH . 'Models/sp-mail.php';
 include_once CORE_PATH . 'Models/sp-user.php';
 include_once CORE_PATH . 'Models/sp-blog.php';
 include_once CORE_PATH . 'Models/sp-orm.php';
-include_once CORE_PATH . 'Models/sp-datatracker.php';
+include_once CORE_PATH . 'Models/sp-log.php';
 include_once CORE_PATH . 'Models/sp-subscriptions.php';
 include_once CORE_PATH . 'Models/sp-invoices.php';
 include_once CORE_PATH . 'Models/sp-products.php';

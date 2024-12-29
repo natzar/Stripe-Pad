@@ -39,6 +39,13 @@ use Dompdf\Dompdf;
  */
 class invoicesModel extends ModelBase
 {
+	var $log;
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->log = log::singleton();
+	}
 	/**
 	 * getById
 	 *
