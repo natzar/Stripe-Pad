@@ -49,9 +49,9 @@
 
 
             <h2 id="quickstart" class="text-xl text-blue-500 mt-10 uppercase mb-5">1. Quickstart</h2>
-            <? include CORE_PATH . "sp-version.php"; ?>
+       
 
-            <p>Stripe Pad Version: <?= $STRIPE_PAD_VERSION ?></p>
+            <p>Stripe Pad Version: <?= STRIPE_PAD_VERSION ?></p>
             <p>Github Repo: <a href="https://github.com/natzar/Stripe-Pad" target="_blank">https://github.com/natzar/Stripe-Pad</a></p>
             <p>Free Software · License GPL-3</p><br>
 
