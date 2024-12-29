@@ -42,7 +42,7 @@
 
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <a href="actionLogout" class="text-sm font-semibold leading-6 text-gray-600 hover:bg-gray-900 rounded-full px-3 hover:text-gray-500">Log out <span aria-hidden="true">&rarr;</span></a>
+                <a href="actionLogout" class="text-sm font-semibold leading-6 text-gray-500 hover:bg-gray-900 rounded-full px-3 hover:text-gray-500">Log out <span aria-hidden="true">&rarr;</span></a>
             </div>
         </nav>
         <!-- Mobile menu, show/hide based on menu open state. -->

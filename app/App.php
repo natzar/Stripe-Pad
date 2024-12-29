@@ -59,7 +59,13 @@ class App extends StripePad
       $this->home();
     }
   }
+  public function download(){
+    # Redirect directly
+    header("location: https://github.com/natzar/Stripe-Pad/releases/download/v1/StripePad-v1.0.0.zip");
 
+    # Count downloads!
+    $this->log->push("stripepad-downloads","counter");
+  }
   /**
    * app
    * If a registered user logs in, this method will be called

@@ -1,3 +1,5 @@
+> 👋 **Looking for Beta-Testers** Individuals (with or without web development skills) wanting the get their hands dirty building their own SaaS while having support from our team (we will be resolving any issues and helping you find ways of getting your idea out there) with Stripe Pad. Get in touch beta@stripepad.com
+
 #  Stripe Pad
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
 [![PHP Composer](https://github.com/natzar/Stripe-Pad/actions/workflows/php.yml/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/php.yml)
@@ -18,7 +20,7 @@ Website: [stripepad.com](https://stripepad.com)
 
 
 ## Quick Install
-[Download latest stable release here](https://github.com/natzar/Stripe-Pad/releases), then run the installer at yourdomain.com/install.
+[Download latest stable release here](https://stripepad.com/download), then run the installer at yourdomain.com/install.
 
 
 ## Official Documentation
