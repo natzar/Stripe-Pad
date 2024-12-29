@@ -12,14 +12,6 @@
  * 
  */
 
-
-if (function_exists('__')) {
-} else {
-    function __($f)
-    {
-        return $f;
-    }
-}
 function friendlyUrl($input)
 {
     $words_array = array('a', 'an', 'the', 'and', 'or', 'but', 'so', 'on', 'in', 'out', 'by', 'as', 'at', 'of');
@@ -31,8 +23,6 @@ function friendlyUrl($input)
         return $input; // Return the input directly if it contains non-Latin characters.
     }
 
-    // Set the locale to handle different character encodings
-    setlocale(LC_ALL, 'en_US.UTF8');
     // Transliterate characters to ASCII
     $input = iconv('UTF-8', 'ASCII//TRANSLIT', $input);
 
@@ -51,7 +41,7 @@ function friendlyUrl($input)
     $input = implode(' ', $input);
 
 
-    // Convert the spaces to whatever the user wants (usually a dash or underscore) then return the value
+    // Convert the spaces then return the value
     return str_replace(' ', $replace, $input);
 }
 
@@ -127,9 +117,9 @@ function replaceTemplateValues($body, $p)
 function fingerPrint($result)
 {
     // Remove all accents. Compatibility for Spanish strings
-    //$result = removeAccents($result);
+    $result = trim(preg_replace('/[^a-zA-Z0-9\s]/', '', strtolower($result)));
     // Every char to lowercase
-    $result = strtolower($result);
+    //$result = strtolower($result);
     // Remove all chars that are not letters
     $result = preg_replace('/[^ \w]+/', '', $result);
     $words = explode(" ", $result);
