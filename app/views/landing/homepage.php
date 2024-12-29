@@ -395,12 +395,12 @@
       <div class="mt-4 flex justify-between">
         <div>
           <h3 class="text-sm text-gray-500">
-            <a href="https://refboost.com/?ref=stripe-pad" target="_blank">
+            <a href="https://demo.stripepad.com/login" target="_blank">
               <span aria-hidden="true" class="absolute inset-0"></span>
               demo.stripepad.com/login
             </a>
           </h3>
-          <p class="mt-1 text-sm text-gray-500">User: demo / Password: demo</p>
+          <p class="mt-1 text-sm text-gray-500">User: demo@demo.com / Password: demo</p>
         </div>
 
         <!-- <p class="text-sm font-medium text-gray-200">$30  </p> -->
@@ -416,12 +416,12 @@
       <div class="mt-4 flex justify-between">
         <div>
           <h3 class="text-sm text-gray-500">
-            <a href="https://refboost.com/?ref=stripe-pad" target="_blank">
+            <a href="https://demo.stripepad.com/login" target="_blank">
               <span aria-hidden="true" class="absolute inset-0"></span>
               demo.stripepad.com/login
             </a>
           </h3>
-          <p class="mt-1 text-sm text-gray-500">User: superadmin / Password: superadmin</p>
+          <p class="mt-1 text-sm text-gray-500">User: superadmin@demo.com / Password: superadmin</p>
         </div>
 
         <!-- <p class="text-sm font-medium text-gray-200">$30  </p> -->
