@@ -42,22 +42,24 @@ class log extends ModelBase
 	}
 	/**
 	 * push
-	 *
+	 * Store a new message in log table
 	 * @param  mixed $label
 	 * @param  mixed $tag
+	 * @param  mixed $body
 	 * @param  mixed $usersId
 	 * @return void
 	 */
-	public function push($label, $tag, $usersId = 0)
+	public function push($label, $tag ="system", $body= "", $usersId = 0)
 	{
 		$hash = $tag . "-"  . fingerprint($label);
 
-		$q  = $this->db->prepare("INSERT INTO log (hash,month,week,usersId,label,tag) VALUES (:hash,extract(YEAR_MONTH FROM CURDATE()),YEARWEEK(CURDATE()),:uid,:b,:tag) ON DUPLICATE KEY UPDATE    
+		$q  = $this->db->prepare("INSERT INTO log (hash,month,week,usersId,label,tag,body) VALUES (:hash,extract(YEAR_MONTH FROM CURDATE()),YEARWEEK(CURDATE()),:uid,:label,:tag,:body) ON DUPLICATE KEY UPDATE    
 total =total + 1");
 		$q->bindParam(":uid", $usersId);
 		$q->bindParam(":tag", $tag);
 		$q->bindParam(":hash", $hash);
-		$q->bindParam(":b", $label);
+		$q->bindParam(":label", $label);
+		$q->bindParam(":body", $body);
 		$q->execute();
 	}
 
