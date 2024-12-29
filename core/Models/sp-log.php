@@ -44,7 +44,7 @@ class log extends ModelBase
 
 	public function getAll($limit = 20)
 	{
-		$consulta = $this->db->prepare("SELECT * FROM logs where tag='error' and object ='webs' order by logsId DESC limit :limit ");
+		$consulta = $this->db->prepare("SELECT * FROM log where tag='error' and object ='webs' order by logsId DESC limit :limit ");
 
 		$consulta->bindParam(":limit", $limit);
 		$consulta->execute();
@@ -53,7 +53,7 @@ class log extends ModelBase
 
 	public function getLogsByTag($usersId, $tag, $limit = 20)
 	{
-		$consulta = $this->db->prepare("SELECT * FROM logs where tag=:tag and usersId = :usersId order by updated DESC limit :limit ");
+		$consulta = $this->db->prepare("SELECT * FROM log where tag=:tag and usersId = :usersId order by updated DESC limit :limit ");
 		$consulta->bindParam(":usersId", $usersId);
 		$consulta->bindParam(":tag", $tag);
 		$consulta->bindParam(":limit", $limit);
@@ -63,7 +63,7 @@ class log extends ModelBase
 
 	public function getLast20ByTag($tag, $limit = 20)
 	{
-		$consulta = $this->db->prepare("SELECT * FROM logs where tag=:tag  order by updated DESC limit :limit ");
+		$consulta = $this->db->prepare("SELECT * FROM log where tag=:tag  order by updated DESC limit :limit ");
 		$consulta->bindParam(":tag", $tag);
 		$consulta->bindParam(":limit", $limit);
 		$consulta->execute();
@@ -73,7 +73,7 @@ class log extends ModelBase
 
 	public function getAllErrors($webId, $limit = 20)
 	{
-		$consulta = $this->db->prepare("SELECT * FROM logs where tag='error' and object ='webs' and objectid= :websId order by logsId DESC limit :limit ");
+		$consulta = $this->db->prepare("SELECT * FROM log where tag='error' and object ='webs' and objectid= :websId order by logsId DESC limit :limit ");
 		$consulta->bindParam(":websId", $webId);
 		$consulta->bindParam(":limit", $limit);
 		//			$consulta->bindParam(":customersId",$_SESSION['user']['customersId']);
@@ -84,7 +84,7 @@ class log extends ModelBase
 
 	public function getFeed($limit = 20)
 	{
-		$consulta = $this->db->prepare("SELECT * FROM logs where tag='error' order by logsId DESC limit :limit");
+		$consulta = $this->db->prepare("SELECT * FROM log where tag='error' order by logsId DESC limit :limit");
 
 		$consulta->bindParam(":limit", $limit);
 		//			$consulta->bindParam(":customersId",$_SESSION['user']['customersId']);
@@ -95,7 +95,7 @@ class log extends ModelBase
 	{
 		$hash = $tag . "-" . $usersId . "-" . fingerprint($label);
 
-		$q  = $this->db->prepare("INSERT INTO logs (hash,week,usersId,body,tag) VALUES (:hash,YEARWEEK(CURDATE(),:uid,:b,:tag) ON DUPLICATE KEY UPDATE    
+		$q  = $this->db->prepare("INSERT INTO log (hash,week,usersId,body,tag) VALUES (:hash,YEARWEEK(CURDATE()),:uid,:b,:tag) ON DUPLICATE KEY UPDATE    
 total =total + 1");
 		$q->bindParam(":uid", $usersId);
 		$q->bindParam(":tag", $tag);
