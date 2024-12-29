@@ -57,6 +57,10 @@
                   <?= _('Download') ?>
                   <span class="text-purple-200" aria-hidden="true">&rarr;</span>
                 </a>
+                <a href="<?= APP_DOMAIN ?>#demo" class="inline-block rounded-lg bg-blue-600 px-6 py-3 text-lg font-bold leading-7 text-white shadow-sm ring-1 ring-blue-600 hover:bg-blue-700 hover:ring-blue-700">
+  <?= _('Demo') ?>
+  <span class="text-purple-200" aria-hidden="true">&rarr;</span>
+</a>
   <a href="<?= APP_DOMAIN ?>documentation" class="inline-block rounded-lg bg-blue-600 px-6 py-3 text-lg font-bold leading-7 text-white shadow-sm ring-1 ring-blue-600 hover:bg-blue-700 hover:ring-blue-700">
   <?= _('Documentation') ?>
   <span class="text-purple-200" aria-hidden="true">&rarr;</span>
