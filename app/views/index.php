@@ -1,7 +1,6 @@
-<header class="py-6 border-gray-600  bg-gray-900">
+<header class="py-6 border-gray-600  bg-gray-800">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
         <h1 class="text-3xl font-bold tracking-tight text-gray-100">Dashboard</h1>
-        <p class="text-base leading-8 text-gray-300">You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p>
     </div>
 </header>
 
@@ -14,7 +13,8 @@
         <? include_once "layout/sidebar-private.php"; ?>
 
         <main class="flex-1 text-gray-100">
-            <h2 class="font-bold text-2xl text-white">My Awesome Protected Tool</h2>
+            <h2 class="font-bold text-2xl text-white">Your Awesome Protected Tool</h2>
+            <p class="text-base leading-8 text-gray-300">You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p>
 
             <p>You are loged in, this is what a user will see after signing up via stripe + webhook + password in an email.<br>
                 <br>
