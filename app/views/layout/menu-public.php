@@ -63,7 +63,7 @@
 
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="login" class="text-sm font-semibold leading-6 text-gray-600">Log in <span aria-hidden="true">&rarr;</span></a>
+        <a href="<?= APP_DOMAIN ?>login" class="text-sm font-semibold leading-6 text-gray-600">Log in <span aria-hidden="true">&rarr;</span></a>
       </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
