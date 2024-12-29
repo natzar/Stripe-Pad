@@ -172,7 +172,7 @@
   <? endif; ?>
 </head>
 
-<body class="bg-black">
+<body class="bg-gray-900">
   <!-- Your content -->
   <? if (!empty($_SESSION['errors'])): ?>
 
