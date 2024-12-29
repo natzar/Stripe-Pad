@@ -321,6 +321,14 @@ class StripePad
         exit(0);
     }
 
+    public function actionStripeSync(){
+        $stripe = new StripePad_Stripe();
+        $stripe->syncStripeCustomers();
+        $stripe->syncStripeSubscriptions();
+        $stripe->syncStripeInvoices();
+        $stripe->syncStripeProducts();
+        $_SESSION['alerts'][] = "Stripe Import Completed";
+    }
     public function stripePortal()
     {
         if (empty($_SESSION['user']['stripe_customer_id'])):
@@ -551,7 +559,9 @@ class StripePad
     }
     public function superadmin()
     {
-        $data = array();
+        $data = array(
+            "log" => $this->log->getAll()
+        );
         $this->view->show('superadmin/dashboard.php', $data);
     }
 
