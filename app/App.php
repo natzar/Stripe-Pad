@@ -59,12 +59,13 @@ class App extends StripePad
       $this->home();
     }
   }
-  public function download(){
+  public function download()
+  {
     # Redirect directly
     header("location: https://github.com/natzar/Stripe-Pad/releases/download/v1/StripePad-v1.0.0.zip");
 
     # Count downloads!
-    $this->log->push("stripepad-downloads","counter");
+    $this->log->push("stripepad-downloads", "counter");
   }
   /**
    * app
@@ -107,7 +108,8 @@ class App extends StripePad
   }
   public function documentation()
   {
-    $this->view->show('landing/documentation.php', array());
+    header("location: https://github.com/natzar/Stripe-Pad/wiki");
+    //$this->view->show('landing/documentation.php', array());
   }
   public function support()
   {

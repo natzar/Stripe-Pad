@@ -18,7 +18,7 @@
           <div class="flex items-start">
             <div class="flex-shrink-0">
               <!-- Heroicon name: outline/check-circle -->
-              <svg class="h-6 w-6 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <svg class="h-6 w-6 text-sky-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -44,25 +44,25 @@
 </div>
 
 <? if ($page != "forgot-password.php" and $page != "landing/documentation.php" and $page != "signup.php" and  !isset($_SESSION['user'])): ?>
-  <div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl border-b border-gray-800  sm:px-16 ">
+  <div class="relative isolate overflow-hidden bg-gray-800 px-6 py-24 text-center shadow-2xl border-b border-gray-800  sm:px-16 ">
     <!-- <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">Start your SaaS now!</h2>
     <p class="mx-auto mt-6 max-w-xl text-sm leading-8 text-gray-300">The GPL3-licensed PHP boilerplate to build SaaS with Stripe, that saves you months of development by starting you off with all the features that are the same in every product, so you can focus on what makes your app unique.</p> -->
     <div class="mt-10 flex items-center justify-center gap-x-6">
-      <a href="https://github.com/natzar/Stripe-Pad" target="_blank" class="text-sm font-semibold leading-6 text-white  hover:rounded-md hover:bg-blue-600 px-3.5 py-2.5 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white
+      <a href="https://github.com/natzar/Stripe-Pad" target="_blank" class="text-sm font-semibold leading-6 text-white  hover:rounded-md hover:bg-sky-600 px-3.5 py-2.5 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white
       
      "> CLONE THE REPO
         <span class="text-purple-200" aria-hidden="true">&rarr;</span>
       </a>
-      <a href="<?= APP_DOMAIN ?>documentation" target="_blank" class="text-sm font-semibold leading-6 text-white  hover:rounded-md hover:bg-blue-600 px-3.5 py-2.5 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">READ THE DOCUMENTATION <span aria-hidden="true">→</span></a>
-      <a href="https://discord.com/channels/1321059009012432980/1321059060576944130" target="_blank" class="text-sm font-semibold leading-6 text-white  hover:rounded-md hover:bg-blue-600 px-3.5 py-2.5 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">JOIN US ON DISCORD <span aria-hidden="true">→</span></a>
-      <a href="https://github.com/sponsors/natzar" target="_blank" class="text-sm font-semibold leading-6 text-white  hover:rounded-md hover:bg-blue-600 px-3.5 py-2.5 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">SPONSOR THE PROJECT <span aria-hidden="true">→</span></a>
+      <a href="<?= APP_DOMAIN ?>documentation" target="_blank" class="text-sm font-semibold leading-6 text-white  hover:rounded-md hover:bg-sky-600 px-3.5 py-2.5 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">READ THE DOCUMENTATION <span aria-hidden="true">→</span></a>
+      <a href="https://discord.com/channels/1321059009012432980/1321059060576944130" target="_blank" class="text-sm font-semibold leading-6 text-white  hover:rounded-md hover:bg-sky-600 px-3.5 py-2.5 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">JOIN US ON DISCORD <span aria-hidden="true">→</span></a>
+      <a href="https://github.com/sponsors/natzar" target="_blank" class="text-sm font-semibold leading-6 text-white  hover:rounded-md hover:bg-sky-600 px-3.5 py-2.5 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">SPONSOR THE PROJECT <span aria-hidden="true">→</span></a>
     </div>
     <svg viewBox="0 0 1024 1024" class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]" aria-hidden="true">
       <circle cx="512" cy="512" r="512" fill="url(#827591b1-ce8c-4110-b064-7cb85a0b1217)" fill-opacity="0.7"></circle>
       <defs>
         <radialGradient id="827591b1-ce8c-4110-b064-7cb85a0b1217">
-          <stop stop-color="#87CEEB"></stop> <!-- Light sky blue -->
-          <stop offset="1" stop-color="#00BFFF"></stop> <!-- Deep sky blue -->
+          <stop stop-color="#87CEEB"></stop> <!-- Light sky sky -->
+          <stop offset="1" stop-color="#00BFFF"></stop> <!-- Deep sky sky -->
         </radialGradient>
       </defs>
     </svg>
@@ -72,7 +72,7 @@
 <? endif; ?>
 
 <!-- FOOTer -->
-<footer class="bg-gray-900 " aria-labelledby="footer-heading">
+<footer class="bg-gray-800 " aria-labelledby="footer-heading">
   <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
     <div class="xl:grid xl:grid-cols-3 xl:gap-8">
       <div class="space-y-8">
@@ -86,6 +86,7 @@
           Stripe Pad is a PHP SaaS-in-a-Box that saves developers months of effort and new founders tens of thousands of dollars.
 
         </p>
+        <iframe src="https://github.com/sponsors/natzar/button" title="Sponsor natzar" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe>
         <div class="flex space-x-6">
           <!--  <a href="#" class="text-gray-500 hover:text-gray-400">
             <span class="sr-only">Facebook</span>
@@ -204,7 +205,7 @@
         <label for="email-address" class="sr-only">Email address</label>
         <input type="email" name="email" id="email" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6" placeholder="Enter your email">
         <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
-          <button type="button" onclick="alert('Not collecting emails but you can do it easily');" class="flex w-full items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">Subscribe</button>
+          <button type="button" onclick="alert('Not collecting emails but you can do it easily');" class="flex w-full items-center justify-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500">Subscribe</button>
         </div>
       </form>
     </div>

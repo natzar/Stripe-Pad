@@ -6,7 +6,7 @@
 </div>
 
 
-<div class="bg-gray-900 text-gray-400 shadow-md rounded-lg max-w-3xl mx-auto p-6 mt-10 mb-10">
+<div class="text-gray-400 shadow-md rounded-lg max-w-3xl mx-auto p-6 mt-10 mb-10">
 
   This site is committed to protecting the privacy of our users. We do not collect any personal information about you unless you voluntarily provide it to us. Any personal information that you provide to us will be used only to fulfill your specific request, unless you give us permission to use it in another manner. We will not sell or share your personal information with any third parties without your express permission. Please contact us if you have any questions or concerns about our privacy policy.<br>
   <?= ADMIN_EMAIL ?>

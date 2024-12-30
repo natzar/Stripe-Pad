@@ -6,7 +6,7 @@
 </div>
 
 
-<div class="bg-gray-900 text-gray-400 shadow-md rounded-lg max-w-3xl mx-auto p-6 mt-10 mb-10">
+<div class=" text-gray-400 shadow-md rounded-lg max-w-3xl mx-auto p-6 mt-10 mb-10">
   <div class=" space-y-1">
 
 
