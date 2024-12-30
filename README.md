@@ -1,4 +1,4 @@
-> 👋 **Looking for Beta-Testers** Individuals (with or without web development skills) wanting the get their hands dirty building their own SaaS while having support from our team (we will be resolving any issues and helping you find ways of getting your idea out there) with Stripe Pad. Get in touch beta@stripepad.com
+> 👋 We're Looking for Beta Testers! Whether you have web development skills or not, join us to build your own SaaS with support from our team. We'll help resolve any issues and assist in getting your idea out there with Stripe Pad. Interested? Get in touch at beta@stripepad.com
 
 #  Stripe Pad
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
@@ -18,6 +18,8 @@ Website: [stripepad.com](https://stripepad.com)
 
 ![Structure Overview](https://stripepad.com/cdn/demo/superadmin-dashboard.png)
 
+## Demo
+Check Public, Private and Superadmin parts here [https://demo.stripepad.com/](https://demo.stripepad.com/).
 
 ## Quick Install
 [Download latest stable release here](https://stripepad.com/download), then run the installer at yourdomain.com/install.
