@@ -24,18 +24,10 @@ class cronJob
 	{
 
 		if (empty($name)) die("need name for cronjob");
-
-
-
-
-
 		$this->log = log::singleton();
-
-
-
-		$this->db = SPDO::singleton();
+		$this->db = SPDO::singleton(); // ¿?
 		$this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-		$this->logs = logsModel::singleton();
+	
 		$this->mails = new mailsModel();
 		$this->name = $name;
 
