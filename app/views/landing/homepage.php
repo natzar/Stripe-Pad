@@ -118,7 +118,7 @@
   </div>
 </div>
 
-<section>
+<section id="download">
   <div class="text-gray-300">
     <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
       <h2 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl">Download & Install</h2>
