@@ -183,7 +183,8 @@ class StripePad
         $email = $this->params['email'];
         $users = new usersModel();
         $users->sendResetPassword($email);
-        header("location: " . APP_DOMAIN . "forgotPassword?success=1");
+        $_SESSION['alerts'][] = "New password sent to your inbox";
+        header("location: " . APP_DOMAIN . "login");
     }
 
 
@@ -516,27 +517,6 @@ class StripePad
         }
 
         $this->view->show('checkout.php', $data, false);
-    }
-    public function invoices()
-    {
-        // assert($_SESSION['user']['group'] == 'superadmin');
-        $invoices = new invoicesModel();
-
-        $data = [
-            'invoices' => $invoices->getAll(),
-        ];
-        $this->view->show('staff/invoices.php', $data);
-    }
-
-    public function newInvoice()
-    {
-        assert($_SESSION['user']['group'] == 'superadmin');
-        $invoices = new invoicesModel();
-
-        $data = [
-            'invoices' => $invoices->getLast100(),
-        ];
-        $this->view->show('invoice/invoice.php', $data);
     }
 
     public function products()

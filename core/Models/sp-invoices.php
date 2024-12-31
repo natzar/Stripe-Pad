@@ -143,7 +143,7 @@ class invoicesModel extends ModelBase
 	public function pdf($invoiceId)
 	{
 
-		$invoice = $this->getByInvoicesId($invoiceId);
+		$invoice = $this->getById($invoiceId);
 		$filename = $this->pdfName($invoice);
 
 
