@@ -42,7 +42,7 @@ class mailsModel extends ModelBase
 		$mail->SMTPDebug = 0;
 		$mail->Port = SMTP_PORT;                                    // Set the SMTP port
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
-		$mail->Username = SMTP_USER;
+		$mail->Username = SMTP_USER_EMAIL;
 		$mail->Password = SMTP_PASSWORD;                  // SMTP password
 		$mail->SMTPSecure = 'tls';                             // Set the SMTP port
 		$mail->SMTPAuth = true;
