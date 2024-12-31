@@ -13,7 +13,8 @@ class mailsModel extends ModelBase
 		parent::__construct();
 		$this->log = log::singleton();
 
-		include CORE_PATH . "classes/EmailValidator.php";
+		// Fix include email validator
+		include CORE_PATH . "Classes/EmailValidator.php";
 		$this->emailValidator = new emailValidator();
 	}
 
