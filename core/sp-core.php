@@ -236,7 +236,7 @@ class StripePad
         if (!empty($_POST['huny'])) die();
 
         // not included by default : find a better way
-        include CORE_PATH . "Classes/EmailValidator.php";
+        include_once CORE_PATH . "Classes/EmailValidator.php";
         $emailValidator = new emailValidator();
 
         // verify valid email

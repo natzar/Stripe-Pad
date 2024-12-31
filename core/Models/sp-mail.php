@@ -14,7 +14,7 @@ class mailsModel extends ModelBase
 		$this->log = log::singleton();
 
 		// Fix include email validator
-		include CORE_PATH . "Classes/EmailValidator.php";
+		include_once CORE_PATH . "Classes/EmailValidator.php";
 		$this->emailValidator = new emailValidator();
 	}
 
