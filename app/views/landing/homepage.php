@@ -46,7 +46,7 @@
             <span class="">PHP SaaS Boilerplate</span>
             <span class=" bg-gradient-to-r text-sky-800 from-sky-400 to-sky-900 bg-clip-text pb-3 text-transparent sm:pb-5">Stripe Pad</span>
           </h1>
-          <p class="text-base text-gray-400 sm:text-xl lg:text-lg xl:text-xl mt-5 pb-5"><?= _('Stripe Pad is the PHP SaaS-in-a-Box that saves developers months of effort and new founders tens of thousands of dollars.') ?></p>
+          <p class="text-base text-gray-300 sm:text-xl lg:text-lg xl:text-xl mt-5 pb-5"><?= _('Stripe Pad is the PHP SaaS-in-a-Box that saves developers months of effort and new founders tens of thousands of dollars.') ?></p>
 
 
           <div class="text-center mx-auto">
@@ -212,91 +212,47 @@
     <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl text-center mb-5">Demo</h2>
     <p class="leading-8 text-gray-300 text-lg text-center mb-10">The 3 main parts of every SaaS</p>
     <div class="mx-auto max-w-7xl ">
-      <div class="mx-auto max-w-2xl lg:max-w-none">
+      <div class="mx-auto max-w-2xl lg:max-w-none text-lg">
 
         <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-3">
           <div class="flex flex-col bg-white/5 p-8">
-            <dt class="text-sm/6 font-semibold text-gray-300">The website with main offer, faq, pricing, etc."</dt>
-            <dd class="order-first text-3xl font-semibold tracking-tight text-white">Public</dd>
-          </div>
-          <div class="flex flex-col bg-white/5 p-8">
-            <dt class="text-sm/6 font-semibold text-gray-300">Registered users and customers only</dt>
-            <dd class="order-first text-3xl font-semibold tracking-tight text-white">Private</dd>
-          </div>
+            <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="https://demo.stripepad.com" class="text-sky-500 hover:text-sky-700" target="_blank">
 
-          <div class="flex flex-col bg-white/5 p-8">
-            <dt class="text-sm/6 font-semibold text-gray-300">Control everything</dt>
-            <dd class="order-first text-3xl font-semibold tracking-tight text-white">Superadmin</dd>
-          </div>
-        </dl>
-      </div>
-    </div>
-
-
-    <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:gap-x-8 mb-16">
-
-      <div class="group relative ">
-        <!-- <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
-      <img src="<?= APP_CDN ?>refboost.png" alt="Screenshot of Refboost homepage" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
-    </div> -->
-
-        <div class="mt-4 flex justify-between">
-          <div>
-            <h3 class="text-sm text-gray-500">
-              <a href="https://demo.stripepad.com" class="text-sky-500 hover:text-sky-700" target="_blank">
-                <span aria-hidden="true" class="absolute inset-0"></span>
                 demo.stripepad.com
-              </a>
-            </h3>
-            <p class="mt-1 text-sm text-gray-500">Public access</p>
+              </a></dt>
+            <dd class="order-first  font-semibold tracking-tight text-gray-400">
+
+              <p class="mt-1 text-xl text-gray-300">Public access</p>
+              The website with main offer, faq, pricing, etc.
+            </dd>
           </div>
+          <div class="flex flex-col bg-white/5 p-8">
+            <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="https://demo.stripepad.com/login" class="text-sky-500 hover:text-sky-700" target="_blank">
 
-          <!-- <p class="text-sm font-medium text-gray-200">$30  </p> -->
-          <!-- <a href="" class="p-4 bg-indigo-600 text-white">Buy it</a> -->
-
-        </div>
-      </div>
-      <div class="group relative ">
-        <!-- <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
-      <img src="<?= APP_CDN ?>refboost.png" alt="Screenshot of Refboost homepage" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
-    </div> -->
-
-        <div class="mt-4 flex justify-between">
-          <div>
-            <h3 class="text-sm text-gray-500">
-              <a href="https://demo.stripepad.com/login" class="text-sky-500 hover:text-sky-700" target="_blank">
-                <span aria-hidden="true" class="absolute inset-0"></span>
                 demo.stripepad.com/login
-              </a>
-            </h3>
-            <p class="mt-1 text-sm text-gray-500">User: demo@demo.com / Password: demo</p>
+              </a></dt>
+            <dd class="order-first  font-semibold tracking-tight text-gray-400">
+
+              <p class="mt-1 text-xl text-gray-300">Registered users and customers only</p>
+              User: demo@demo.com / Password: demo
+            </dd>
           </div>
 
-          <!-- <p class="text-sm font-medium text-gray-200">$30  </p> -->
-          <!-- <a href="" class="p-4 bg-indigo-600 text-white">Buy it</a> -->
+          <div class="flex flex-col bg-white/5 p-8">
+            <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="https://demo.stripepad.com/login" class="text-sky-500 hover:text-sky-700" target="_blank">
 
-        </div>
-      </div>
-      <div class="group relative ">
-        <!-- <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none mb-10">
-      <img src="<?= APP_CDN ?>refboost.png" alt="Screenshot of Refboost homepage" class="w-full h-full object-center object-cover lg:w-full lg:h-full">
-    </div> -->
-
-        <div class="mt-4 flex justify-between">
-          <div>
-            <h3 class="text-sm text-gray-500">
-              <a href="https://demo.stripepad.com/login" class="text-sky-500 hover:text-sky-700" target="_blank">
-                <span aria-hidden="true" class="absolute inset-0"></span>
                 demo.stripepad.com/login
-              </a>
-            </h3>
-            <p class="mt-1 text-sm text-gray-500">User: superadmin@demo.com / Password: superadmin</p>
+              </a></dt>
+            <dd class="order-first  font-semibold tracking-tight text-gray-400">
+
+              <p class="mt-1 text-xl text-gray-300">Superadmin</p>
+              User: superadmin@demo.com / Password: superadmin
+            </dd>
           </div>
 
-          <!-- <p class="text-sm font-medium text-gray-200">$30  </p> -->
-          <!-- <a href="" class="p-4 bg-indigo-600 text-white">Buy it</a> -->
 
-        </div>
+
+        </dl>
       </div>
     </div>
 
@@ -370,8 +326,8 @@
     <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">a SaaS in a box</p>
     <p class="mt-6 text-lg leading-8 text-gray-300">Stripe Pad is a GPL3-licensed PHP-based boilerplate to build SaaS with Stripe that saves you months of development by starting you off with all the features that are the same in every product, so you can focus on what makes your app unique.</p>
   </div>
-  <div class="divide-y divide-gray-200 overflow-hidden rounded-xl bg-gray-900 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
-    <div class="group relative rounded-tl-lg rounded-tr-lg bg-gray-900  p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-sky-500 sm:rounded-tr-none">
+  <div class="divide-y divide-gray-600 overflow-hidden rounded-xl bg-gray-900 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
+    <div class="group relative rounded-tl-lg rounded-tr-lg  bg-white/5  p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-sky-500 sm:rounded-tr-none">
       <div>
         <span class="inline-flex rounded-lg bg-gray-800 p-3 text-teal-700 ring-4 ring-gray-700">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">

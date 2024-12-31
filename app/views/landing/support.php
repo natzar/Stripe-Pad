@@ -13,7 +13,7 @@
         <p class="text-sm">With Stripe Pad costs are reduced dramatically. We can just focus on your unique idea, everything else like user management, invoicing, etc ... it's alreadyd done.</p>
 
         <br>
-        <a href="https://github.com/sponsors/natzar" target="_blank" class=" inline-block rounded-lg bg-blue-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-blue-600 hover:bg-blue-700 hover:ring-blue-700 AirClassicBold">
+        <a href="https://github.com/sponsors/natzar" target="_blank" class=" inline-block rounded-lg bg-sky-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-sky-600 hover:bg-sky-700 hover:ring-sky-700 AirClassicBold">
             Read more
             <span class="text-purple-200" aria-hidden="true">&rarr;</span>
         </a>
@@ -27,7 +27,7 @@
         <p class="text-sm">If your team runs into a nasty bug, rather than wasting hours or days with chatgpt, scouring the forums and Stack Overflow, shoot a message to PHP NINJA instead and we'll get you headed in the right direction asap.</p>
 
         <br>
-        <a href="https://github.com/sponsors/natzar" target="_blank" class=" inline-block rounded-lg bg-blue-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-blue-600 hover:bg-blue-700 hover:ring-blue-700 AirClassicBold">
+        <a href="https://github.com/sponsors/natzar" target="_blank" class=" inline-block rounded-lg bg-sky-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-sky-600 hover:bg-sky-700 hover:ring-sky-700 AirClassicBold">
             Get help
             <span class="text-purple-200" aria-hidden="true">&rarr;</span>
         </a>
