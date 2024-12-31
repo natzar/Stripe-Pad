@@ -16,7 +16,6 @@ Website: [stripepad.com](https://stripepad.com)
 
 **Not affiliated with Stripe.com**
 
-![Structure Overview](https://stripepad.com/cdn/demo/superadmin-dashboard.png)
 
 ## Demo
 Check Public, Private and Superadmin parts here [https://demo.stripepad.com/](https://demo.stripepad.com/).
