@@ -30,97 +30,105 @@
  *   You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
  */
 
+/*
+*     Default Routes for your SaaS
+*/
 
 # Include Custom App helpers.php
-if (file_exists(dirname(__FILE__) . "/helpers.php")) {
-  include_once(dirname(__FILE__) . "/helpers.php");
-}
+if (file_exists(dirname(__FILE__) . "/helpers.php")) include_once(dirname(__FILE__) . "/helpers.php");
 
+/**
+ * Your Custom App
+ */
 class App extends StripePad
 {
 
-  public function __construct()
-  {
-    parent::__construct(); // !important
-  }
+	public function __construct()
+	{
+		parent::__construct(); // !important
+	}
 
-  /**
-   * @return [type]
-   */
-  public function index()
-  {
+	/**
+	 * index
+	 * default main method
+	 * @return void
+	 */
+	public function index()
+	{
+		# check if user is authenticated
+		if ($this->isAuthenticated) {
+			# Load Dashboard (main-first screen of your app for logged users)
+			$this->app();
+		} else {
+			# Redirect to login if not authenticated, or to home or landing
+			$this->home();
+		}
+	}
 
-    # check if user is authenticated
-    if ($this->isAuthenticated) {
-      # Load Dashboard (main-first screen of your app for logged users)
-      $this->app();
-    } else {
-      # Redirect to login if not authenticated, or to home or landing
-      $this->home();
-    }
-  }
-  public function download()
-  {
-    # Redirect directly
-    header("location: https://github.com/natzar/Stripe-Pad/releases/download/v1/StripePad-v1.0.0.zip");
+	/**
+	 * app (Private part entry point, registered users only)
+	 * If a registered user logs in, this method will be called. MODIFY THIS FUNCTION.
+	 * @return void
+	 */
+	public function app()
+	{
 
-    # Count downloads!
-    $this->log->push("stripepad-downloads", "counter");
-  }
-  /**
-   * app
-   * If a registered user logs in, this method will be called
-   * @return void
-   */
-  public function app()
-  {
-    # 
-    # YOUR CODE GOES HERE :
+		# Sample render of view with $data
+		$data = array(
+			"user" => $_SESSION['user'], # user->name, user->email, user->active (have paid 1/0)
+			"date" => Date("Y-m-d"),
+			"xyz" => 123
+		);
 
-    # Sample render of view with $data
-    $data = array(
-      "user" => $_SESSION['user'], # user->name, user->email, user->active (have paid 1/0)
-      "date" => Date("Y-m-d"),
-      "xyz" => 123
-    );
+		# show app/views/index.php passing $data
+		$this->view->show('index.php', $data);
+	}
 
-    # show app/views/index.php passing $data
-    $this->view->show('index.php', $data);
-  }
-  public function home()
-  {
-    $data = array();
-    $this->view->show("landing/homepage.php", $data);
-  }
+	/**
+	 * home
+	 * Main Public Website
+	 * @return void
+	 */
+	public function home()
+	{
+		$data = array();
+		$this->view->show("demo/homepage.php", $data);
+	}
 
 
+	/**
+	 * Default User's Profile
+	 * profile
+	 *
+	 * @return void
+	 */
+	public function profile()
+	{
+		$users = new usersModel();
 
-  public function examples()
-  {
-    $data = array();
-    $this->view->show("landing/examples.php", $data);
-  }
+		$data = array(
+			"user" => $users->getById($_SESSION['user']['usersId'])
+		);
 
-  public function sample()
-  {
-    $data = array();
-    $this->view->show("sample-page.php", $data);
-  }
-  public function documentation()
-  {
-    header("location: https://github.com/natzar/Stripe-Pad/wiki");
-    //$this->view->show('landing/documentation.php', array());
-  }
-  public function support()
-  {
-    $this->view->show('landing/support.php', array());
-  }
-  public function tos()
-  {
-    $this->view->show('common/tos.php', array());
-  }
-  public function privacy()
-  {
-    $this->view->show('common/privacy.php', array());
-  }
+		$this->view->show("user/profile.php", $data, true);
+	}
+
+	/**
+	 * tos
+	 * Default terms of service url
+	 * @return void
+	 */
+	public function tos()
+	{
+		$this->view->show('common/tos.php', array());
+	}
+	/**
+	 * privacy
+	 * Default privacy page
+	 * @return void
+	 */
+	public function privacy()
+	{
+		$this->view->show('common/privacy.php', array());
+	}
 }

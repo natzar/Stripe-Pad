@@ -31,14 +31,13 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 
-
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+
   <base href="<?= APP_BASE_URL ?>">
 
   <!-- MAIN CSS -->
-  <link href="<?= APP_CDN ?>css/app.css" rel="stylesheet">
+  <link href="<?= APP_CDN ?>css/app.css?v=<?= rand() ?>" rel="stylesheet">
   <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
   <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
   <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet"> -->
