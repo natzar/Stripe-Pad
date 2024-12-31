@@ -234,7 +234,7 @@
             <dd class="order-first  font-semibold tracking-tight text-gray-400">
 
               <p class="mt-1 text-xl text-gray-300">Registered users and customers only</p>
-              User: demo@demo.com / Password: demo
+              User: demo@demo.com <br> Password: demo
             </dd>
           </div>
 
@@ -246,7 +246,7 @@
             <dd class="order-first  font-semibold tracking-tight text-gray-400">
 
               <p class="mt-1 text-xl text-gray-300">Superadmin</p>
-              User: superadmin@demo.com / Password: superadmin
+              User: superadmin@demo.com <br> Password: superadmin
             </dd>
           </div>
 
