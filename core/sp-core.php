@@ -235,7 +235,8 @@ class StripePad
 
         if (!empty($_POST['huny'])) die();
 
-        include CORE_PATH . "classes/EmailValidator.php";
+        // not included by default : find a better way
+        include CORE_PATH . "Classes/EmailValidator.php";
         $emailValidator = new emailValidator();
 
         // verify valid email
@@ -321,7 +322,8 @@ class StripePad
         exit(0);
     }
 
-    public function actionStripeSync(){
+    public function actionStripeSync()
+    {
         $stripe = new StripePad_Stripe();
         $stripe->syncStripeCustomers();
         $stripe->syncStripeSubscriptions();
