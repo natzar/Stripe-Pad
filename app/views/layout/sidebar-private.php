@@ -12,7 +12,7 @@
                     The APP
                 </a>
             </li>
-            <? if ($_SESSION['user']['group'] == 'superadmn') : ?>
+            <? if ($_SESSION['user']['group'] == 'superadmin') : ?>
                 <li>
                     <!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-400 hover:text-indigo-600 hover:bg-gray-50" -->
                     <a href="<?= APP_DOMAIN ?>superadmin" class="group flex gap-x-3 rounded-md bg-sky-700 p-2 text-sm/6 font-semibold text-gray-100">
