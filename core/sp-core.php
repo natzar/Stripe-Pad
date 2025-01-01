@@ -600,12 +600,22 @@ class StripePad
         $this->view->show('superadmin/form.php', $data);
     }
 
+    /**
+     * update
+     *
+     * @return void
+     */
     public function update()
     {
         $orm = new Orm();
         $rid = $this->params['rid'];
         $table = $this->params['table'];
-        $return_url = isset($this->params['return_url']) and -1 != $this->params['return_url'] ? $this->params['return_url'] : $_SESSION['return_url'];
+
+        $return_url = $_SESSION['return_url'];
+
+        if (isset($this->params['return_url']) and -1 != $this->params['return_url']) {
+            $return_url = $this->params['return_url'];
+        }
 
         if ($rid == -1) {
             $id = $orm->add($table, $this->params);
