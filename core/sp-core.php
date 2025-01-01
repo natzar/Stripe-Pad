@@ -157,16 +157,12 @@ class StripePad
         }
         $this->view->show("user/login.php", $data, true);
     }
-    public function profile()
-    {
-        $users = new usersModel();
 
-        $data = array(
-            "user" => $users->getById($_SESSION['user']['usersId'])
-        );
-
-        $this->view->show("user/profile.php", $data, true);
-    }
+    /**
+     * forgotPassword
+     *
+     * @return void
+     */
     public function forgotPassword()
     {
         $data = array();
@@ -181,6 +177,9 @@ class StripePad
     public function actionRecoverPassword()
     {
         $email = $this->params['email'];
+        # Demo
+        if (strpos($email, "stripepad.com") > -1) header("location: " . APP_DOMAIN . "login");
+
         $users = new usersModel();
         $users->sendResetPassword($email);
         $_SESSION['alerts'][] = "New password sent to your inbox";
