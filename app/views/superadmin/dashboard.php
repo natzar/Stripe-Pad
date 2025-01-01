@@ -1,4 +1,4 @@
-<header class="py-6  ">
+<header class="pb-6  ">
     <div class="mx-auto flex items-center space-x-4 ">
         <h1 class="text-3xl font-bold tracking-tight text-gray-800">Superadmin's Special Dashboard</h1>
         <!-- <p class="text-base leading-8 text-gray-300">You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p> -->
@@ -18,7 +18,7 @@
 
         <main class="flex-1 text-gray-800">
 
-            <div class="flex items-center gap-x-6 bg-sky-600 hover:bg-sky-900 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 rounded-xl mb-3">
+            <div class="flex items-center gap-x-6 bg-sky-500 hover:bg-sky-900 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 rounded-xl mb-3">
                 <p class="text-sm/6 text-white">
                     <a href="javascript:if (confirm('This will import all data from Stripe, don\'t close this tab. Continue?')) window.location.href='<?= APP_DOMAIN ?>actionStripeSync';">
                         <strong class="font-semibold">Stripe Connection</strong><svg viewBox="0 0 2 2" class="mx-2 inline size-0.5 fill-current" aria-hidden="true">
@@ -36,27 +36,27 @@
                 </div>
             </div>
 
-            <div class="mx-auto max-w-7xl ">
+            <div class="mx-auto  ">
                 <div class="mx-auto max-w-2xl lg:max-w-none">
 
                     <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-5">
-                        <div class="flex flex-col bg-white/5 p-8">
+                        <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">Visitors now</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">67</dd>
                         </div>
-                        <div class="flex flex-col bg-white/5 p-8">
+                        <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">Revenue</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">$0</dd>
                         </div>
-                        <div class="flex flex-col bg-white/5 p-8">
+                        <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">$/Visitor</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">$0</dd>
                         </div>
-                        <div class="flex flex-col bg-white/5 p-8">
+                        <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">Session Time</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">90s</dd>
                         </div>
-                        <div class="flex flex-col bg-white/5 p-8">
+                        <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">Bounce Rate</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">23%</dd>
                         </div>
@@ -110,23 +110,23 @@
                 <div class="mx-auto max-w-2xl lg:max-w-none">
 
                     <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-5">
-                        <div class="flex flex-col bg-white/5 p-8">
+                        <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">Visitors</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">8,000+</dd>
                         </div>
-                        <div class="flex flex-col bg-white/5 p-8">
+                        <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">Visitor ➞ User</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">3%</dd>
                         </div>
-                        <div class="flex flex-col bg-white/5 p-8">
+                        <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">Users</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">2,098</dd>
                         </div>
-                        <div class="flex flex-col bg-white/5 p-8">
+                        <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">User ➞ Customer</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">0%</dd>
                         </div>
-                        <div class="flex flex-col bg-white/5 p-8">
+                        <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">Customers</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-white">0</dd>
                         </div>
@@ -141,11 +141,11 @@
                     <div class="mx-auto max-w-2xl lg:max-w-none">
 
                         <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
-                            <div class="flex flex-col bg-white/5 p-8">
+                            <div class="flex flex-col bg-gray-500 p-8">
                                 <dt class="text-sm/6 font-semibold text-gray-300">Downloads</dt>
                                 <dd class="order-first text-3xl font-semibold tracking-tight text-white">8,000+</dd>
                             </div>
-                            <div class="flex flex-col bg-white/5 p-8">
+                            <div class="flex flex-col bg-gray-500 p-8">
                                 <dt class="text-sm/6 font-semibold text-gray-300">Redirections to Stripe</dt>
                                 <dd class="order-first text-3xl font-semibold tracking-tight text-white">3%</dd>
                             </div>
@@ -160,7 +160,7 @@
                     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <h2 class="mx-auto max-w-2xl text-base font-semibold text-gray-800 lg:mx-0 lg:max-w-none">Recent Activity</h2>
                     </div>
-                    <div class="mt-6 overflow-hidden border-t bg-white/5  rounded-xl border-gray-900">
+                    <div class="mt-6 overflow-hidden border-t bg-gray-500  rounded-xl border-gray-900">
                         <div class="mx-auto max-w-7xl ">
                             <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                                 <table class="w-full text-left">
