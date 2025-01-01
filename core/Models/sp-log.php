@@ -72,7 +72,7 @@ total =total + 1");
 	{
 
 		// SUPERADMIN only
-		$consulta = $this->db->prepare("SELECT * FROM log  order by updated DESC limit :limit ");
+		$consulta = $this->db->prepare("SELECT * FROM logs  order by updated DESC limit :limit ");
 
 		$consulta->bindParam(":limit", $limit);
 		$consulta->execute();
