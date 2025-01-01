@@ -1,19 +1,20 @@
 <!-- Uncomment for super top header banner -->
-
-<!-- <div class="flex items-center gap-x-6 bg-sky-800 px-6 py-2.5 sm:px-3.5 hidden  sm:flex sm:before:flex-1">
+<div class="flex items-center gap-x-6 bg-sky-800 px-6 py-2.5 sm:px-3.5 hidden  sm:flex sm:before:flex-1">
   <p class="text-sm leading-6 text-white">
     <a href="#">
-      <strong class="font-semibold">Welcome!</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true"><circle cx="1" cy="1" r="1" /></svg>Get a 20% discount with <strong>"WELCOME20"</strong> coupon code
+      <strong class="font-semibold">Welcome!</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
+        <circle cx="1" cy="1" r="1" />
+      </svg>Get a 20% discount with <strong>"WELCOME20"</strong> coupon code
     </a>
   </p>
   <div class="flex flex-1 justify-end">
-    
+
   </div>
 </div>
- -->
 
 
-<div class=" bg-gray-800  shadow-lg ">
+
+<div class=" bg-gray-900  shadow-lg ">
   <header class="mx-auto w-full z-50   relative   ">
     <nav class="flex items-center justify-between p-6 lg:px-8 " aria-label="Global">
       <div class="flex lg:flex-1">
