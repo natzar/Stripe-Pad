@@ -30,15 +30,13 @@
  *   You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
  */
 
-/*
-*     Default Routes for your SaaS
-*/
 
 # Include Custom App helpers.php
 if (file_exists(dirname(__FILE__) . "/helpers.php")) include_once(dirname(__FILE__) . "/helpers.php");
 
 /**
  * Your Custom App
+ * Default Routes for your SaaS
  */
 class App extends StripePad
 {
@@ -66,7 +64,8 @@ class App extends StripePad
 	}
 
 	/**
-	 * app (Private part entry point, registered users only)
+	 * app 
+	 * (Private part entry point, registered users only)
 	 * If a registered user logs in, this method will be called. MODIFY THIS FUNCTION.
 	 * @return void
 	 */
@@ -81,7 +80,7 @@ class App extends StripePad
 		);
 
 		# show app/views/index.php passing $data
-		$this->view->show('index.php', $data);
+		$this->view->show('custom/index.php', $data);
 	}
 
 	/**
@@ -122,6 +121,7 @@ class App extends StripePad
 	{
 		$this->view->show('common/tos.php', array());
 	}
+
 	/**
 	 * privacy
 	 * Default privacy page

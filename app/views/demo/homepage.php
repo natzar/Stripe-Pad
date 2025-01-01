@@ -18,7 +18,7 @@
             </div>
             <div class="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
                 <div class="mx-auto max-w-2xl shrink-0 lg:mx-0 lg:pt-8">
-                    <img class="h-11" src="<?= APP_CDN ?>demo/logos/mark.svg?color=sky&shade=500" alt="Your Company">
+                    <img class="h-11" src="<?= APP_CDN ?>logo.png" alt="Your Company">
                     <div class="mt-24 sm:mt-32 lg:mt-16">
                         <a href="#" class="inline-flex space-x-6">
                             <span class="rounded-full bg-sky-500/10 px-3 py-1 text-sm/6 font-semibold text-sky-400 ring-1 ring-inset ring-sky-500/20">What's new</span>
@@ -49,11 +49,11 @@
         <div class="mx-auto mt-8 max-w-7xl px-6 sm:mt-16 lg:px-8">
             <h2 class="text-center text-lg/8 font-semibold text-white">The world’s most innovative companies use our app</h2>
             <div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="<?= APP_CDN ?>demo/logos/158x48/transistor-logo-white.svg" alt="Transistor" width="158" height="48">
-                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="<?= APP_CDN ?>demo/logos/158x48/reform-logo-white.svg" alt="Reform" width="158" height="48">
-                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="<?= APP_CDN ?>demo/logos/158x48/tuple-logo-white.svg" alt="Tuple" width="158" height="48">
-                <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1" src="<?= APP_CDN ?>demo/logos/158x48/savvycal-logo-white.svg" alt="SavvyCal" width="158" height="48">
-                <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" src="<?= APP_CDN ?>demo/logos/158x48/statamic-logo-white.svg" alt="Statamic" width="158" height="48">
+                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="<?= APP_CDN ?>demo/transistor-logo-white.svg" alt="Transistor" width="158" height="48">
+                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="<?= APP_CDN ?>demo/reform-logo-white.svg" alt="Reform" width="158" height="48">
+                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="<?= APP_CDN ?>demo/tuple-logo-white.svg" alt="Tuple" width="158" height="48">
+                <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1" src="<?= APP_CDN ?>demo/savvycal-logo-white.svg" alt="SavvyCal" width="158" height="48">
+                <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" src="<?= APP_CDN ?>demo/statamic-logo-white.svg" alt="Statamic" width="158" height="48">
             </div>
         </div>
 
@@ -129,7 +129,7 @@
             </div>
             <div class="relative overflow-hidden pt-16">
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                    <img src="<?= APP_CDN ?>demo/component-images/dark-project-app-screenshot.png" alt="App screenshot" class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10" width="2432" height="1442">
+                    <img src="<?= APP_CDN ?>demo/dark-project-app-screenshot.png" alt="App screenshot" class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10" width="2432" height="1442">
                     <div class="relative" aria-hidden="true">
                         <div class="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-gray-900 pt-[7%]"></div>
                     </div>

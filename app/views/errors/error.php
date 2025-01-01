@@ -34,9 +34,9 @@
         <br>
 
         <p>
-            <a class="bg-purple-600 hover:bg-purple-800 text-base text-white py-2 px-4 rounded-full shadow-xl" href="#" onclick="window.location.reload();">Reload</a>
+            <a class="bg-sky-600 hover:bg-sky-900 text-base text-white py-2 px-4 rounded-full shadow-xl" href="#" onclick="window.location.reload();">Reload</a>
 
-            <a class="bg-blue-600 hover:bg-blue-800 text-base text-white py-2 px-4 rounded-full shadow-xl" href="https://stripepad.com/support" target="_blank">Contact Support</a>
+            <a class="bg-sky-800 hover:bg-sky-900 text-base text-white py-2 px-4 rounded-full shadow-xl" href="https://github.com/natzar/Stripe-Pad/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=" target="_blank">Report Issue</a>
         </p>
 
 
