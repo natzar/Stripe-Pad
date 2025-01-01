@@ -65,19 +65,23 @@ class View
 			exit;
 		}
 
-		include $viewsFolder . "layout/header.php";
-		if ($show_menu) {
-			if ($isAuthenticated) {
-				include $viewsFolder . "layout/menu-private.php";
-			} else {
-				include $viewsFolder . "layout/menu-public.php";
-			}
+		if (DEBUG_MODE) {
+			echo '<!-- Template StripePad: ' . $template . ' -->';
 		}
-		include($template);
-		echo '<!-- Template StripePad: ' . $template . ' -->';
 
-		include $viewsFolder . "layout/footer.php";
-		echo '<!-- Powered by StripePad -->';
+		if ($isAuthenticated) {
+			include $viewsFolder . "layout/private/header.php";
+			include $viewsFolder . "layout/private/menu-private.php";
+			include($template);
+			include $viewsFolder . "layout/private/footer.php";
+		} else {
+			include $viewsFolder . "layout/public/header.php";
+			include $viewsFolder . "layout/public/menu-public.php";
+			include($template);
+			include $viewsFolder . "layout/public/footer.php";
+		}
+
+		echo '<!-- Powered by StripePad {STRIPE_PAD_VERSION}-->';
 
 		$this->log->push(str_replace(APP_DOMAIN, '/', getCurrentUrl()), 'pageview');
 		if (isset($_SESSION['errors'])) unset($_SESSION['errors']);
