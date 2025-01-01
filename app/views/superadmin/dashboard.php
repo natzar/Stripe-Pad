@@ -1,6 +1,6 @@
-<header class="py-6  bg-gray-800">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center space-x-4 ">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-100">Superadmin's Special Dashboard</h1>
+<header class="py-6  ">
+    <div class="mx-auto flex items-center space-x-4 ">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-800">Superadmin's Special Dashboard</h1>
         <!-- <p class="text-base leading-8 text-gray-300">You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p> -->
 
     </div>
@@ -12,11 +12,11 @@
 <div class="flex min-h-screen flex-col">
 
 
-    <div class="mx-auto flex min-h-screen w-full  items-start gap-x-8 px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto flex min-h-screen w-full  items-start gap-x-8 ">
 
 
 
-        <main class="flex-1 text-gray-100">
+        <main class="flex-1 text-gray-800">
 
             <div class="flex items-center gap-x-6 bg-sky-600 hover:bg-sky-900 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 rounded-xl mb-3">
                 <p class="text-sm/6 text-white">
@@ -99,10 +99,10 @@
                     });
                 });
             </script>
-            <!-- <h2 class="mx-auto max-w-2xl text-base font-semibold text-gray-100 lg:mx-0 lg:max-w-none"></h2> -->
+            <!-- <h2 class="mx-auto max-w-2xl text-base font-semibold text-gray-800 lg:mx-0 lg:max-w-none"></h2> -->
 
             <!-- <span class="isolate inline-flex rounded-md shadow-sm">
-                <button type="button" class="relative inline-flex items-center rounded-l-md bg-white/8 px-3 py-2 text-sm font-semibold text-gray-100 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">This Week</button>
+                <button type="button" class="relative inline-flex items-center rounded-l-md bg-white/8 px-3 py-2 text-sm font-semibold text-gray-800 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">This Week</button>
                 <button type="button" class="relative -ml-px inline-flex items-center bg-gray-900  px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">This Month</button>
                 <button type="button" class="relative -ml-px inline-flex items-center rounded-r-md bg-gray-900 px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">This Year</button>
             </span> -->
@@ -135,7 +135,7 @@
             </div>
             <section>
 
-                <h2 class="pl-6 mx-auto max-w-2xl text-base font-semibold text-gray-100 py-8 lg:mx-0 lg:max-w-none">Custom Counters</h2>
+                <h2 class="pl-6 mx-auto max-w-2xl text-base font-semibold text-gray-800 py-8 lg:mx-0 lg:max-w-none">Custom Counters</h2>
 
                 <div class="mx-auto max-w-7xl ">
                     <div class="mx-auto max-w-2xl lg:max-w-none">
@@ -158,7 +158,7 @@
                 <!-- Recent activity table -->
                 <div>
                     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <h2 class="mx-auto max-w-2xl text-base font-semibold text-gray-100 lg:mx-0 lg:max-w-none">Recent Activity</h2>
+                        <h2 class="mx-auto max-w-2xl text-base font-semibold text-gray-800 lg:mx-0 lg:max-w-none">Recent Activity</h2>
                     </div>
                     <div class="mt-6 overflow-hidden border-t bg-white/5  rounded-xl border-gray-900">
                         <div class="mx-auto max-w-7xl ">
