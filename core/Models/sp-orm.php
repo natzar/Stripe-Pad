@@ -231,10 +231,16 @@ class Orm extends ModelBase
 		return $consulta->fetch();
 	}
 
-	public function add($table)
+	public function add($table, $params)
 	{
 
-		include_once CORE_PATH . "setup/" . $table . ".php";
+		$data = $this->getOrmDescription($table);
+		$fields_to_show = $data['fields_to_show'];
+		$fields = $data['fields'];
+		$fields_labels = $data['fields_labels'];
+		$fields_types = $data['fields_types'];
+		$table_aux = $table;
+		$table_no_prefix = $table;
 
 		$add_info_form = "";
 		$tmp_path = APP_UPLOAD_PATH;
@@ -243,8 +249,8 @@ class Orm extends ModelBase
 
 			if ($fields[$i] != $table . 'Id') {
 				$retrieved = '';
-				if ($fields_types[$i] != 'file_img' and $fields_types[$i] != 'file_file') {
-					$retrieved = $this->params['$fields[$i]'];
+				if (isset($params[$fields[$i]]) and $fields_types[$i] != 'file_img' and $fields_types[$i] != 'file_file') {
+					$retrieved = $params[$fields[$i]];
 				} else $retrieved = -1;
 
 				if (!class_exists($fields_types[$i])) die("La clase " . $fields_types[$i] . " no existe");
@@ -256,8 +262,8 @@ class Orm extends ModelBase
 		$info = substr($add_info_form, 0, strlen($add_info_form) - 1);
 		$consulta = $this->db->prepare("INSERT INTO " . $table . " (" . implode(",", $fields) . ") VALUES ($info)");
 		$consulta->execute();
-		$id =  $this->getLastInsertedId($table);
-		$this->datatracker->push($table . "-add");
+		$id =  $this->getLastId($table);
+		$this->log->push($table . "-add");
 
 		return $id;
 	}
@@ -307,10 +313,16 @@ class Orm extends ModelBase
 		$consulta->execute();
 	}
 
-	public function edit($table, $rid)
+	public function edit($table, $rid, $params)
 	{
 
-		include_once CORE_PATH . "setup/" . $table . ".php";
+		$data = $this->getOrmDescription($table);
+		$fields_to_show = $data['fields_to_show'];
+		$fields = $data['fields'];
+		$fields_labels = $data['fields_labels'];
+		$fields_types = $data['fields_types'];
+		$table_aux = $table;
+		$table_no_prefix = $table;
 
 		$edit_info_form = "";
 		$current = $this->getFormValues($table, $rid);
@@ -320,8 +332,8 @@ class Orm extends ModelBase
 			if (isset($_POST[$fields[$i]]) or isset($_GET[$fields[$i]])) {
 				if ($fields[$i] != $table . 'Id') {
 					$retrieved = '';
-					if (!strstr($fields_types[$i], 'file_') and  get_param($fields[$i]) != -1) {
-						$retrieved = get_param($fields[$i]);
+					if (isset($params[$fields[$i]]) and !strstr($fields_types[$i], 'file_') and  $params[$fields[$i]] != -1) {
+						$retrieved = $params[$fields[$i]];
 					}
 
 					if ($retrieved == -1) $retrieved = '';
@@ -354,7 +366,7 @@ class Orm extends ModelBase
 		}
 
 
-		$this->datatracker->push($table . "-edit");
+		$this->log->push($table . "-edit");
 	}
 
 	public function form_js($table)

@@ -608,9 +608,9 @@ class StripePad
         $return_url = isset($this->params['return_url']) and -1 != $this->params['return_url'] ? $this->params['return_url'] : $_SESSION['return_url'];
 
         if ($rid == -1) {
-            $id = $orm->add($table);
+            $id = $orm->add($table, $this->params);
         } else {
-            $orm->edit($table, $rid);
+            $orm->edit($table, $rid, $this->params);
         }
 
         header('location: ' . $return_url);
