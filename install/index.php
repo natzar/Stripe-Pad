@@ -48,25 +48,29 @@
         }
         $content .= "        
 define('ADMIN_EMAIL', 'support@stripepad.com');
-        # ENVIRONMENT
+define('SMTP_GLOBAL_EMAIL_FROM', '');
+# ENVIRONMENT
 define('DEBUG_MODE', true);
 define('INTERNAL_ENCODING', 'UTF-8');
 define('TIMEZONE', 'Europe/Madrid');
 define('LOCALE_LANG', 'es_ES.ISO8859-1');
 define('LOCALE_TIME', 'spanish');
-
+# GOOGLE
+define('GOOGLE_CLIENT_ID', '');
+define('GOOGLE_CLIENT_SECRET', '');
+define('GOOGLE_REDIRECT_URI', '');
 # EXTRAS - MODULES
 define('COUNTERIFY_TOKEN', ''); // Counterify.com
 define('OPENAI_CHATGPT_APIKEY', ''); // platform.openai.com
-        define('APP_DOMAIN', HOMEPAGE_URL);   
+define('APP_DOMAIN', HOMEPAGE_URL);   
 define('APP_BASE_URL', HOMEPAGE_URL);        
-        define('ROOT_PATH', dirname(__FILE__) . '/');
+define('ROOT_PATH', dirname(__FILE__) . '/');
 define('CORE_PATH', dirname(__FILE__) . '/core/');
 define('APP_PATH', dirname(__FILE__) . '/app/');
 define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 define('BOT_BLOCKER', false);
 define('APP_CDN', HOMEPAGE_URL.'/cdn/');
-        ?>";
+?>";
 
         // IMPORT DATABASE
         if ($mysqli = new mysqli($_POST['APP_DB_HOST'], $_POST['APP_DB_USER'], $_POST['APP_DB_PASSWORD'], $_POST['APP_DB'])) {
@@ -232,7 +236,7 @@ define('APP_CDN', HOMEPAGE_URL.'/cdn/');
 
             <label class="block mb-4 text-sm">
                 <span class="text-gray-400">SMTP User</span>
-                <input type="text" class="w-full p-2 rounded bg-gray-800 border border-gray-700" name="SMTP_USER" value="<?php echo defined('SMTP_USER_EMAIL') ? SMTP_USER_EMAIL : ''; ?>">
+                <input type="text" class="w-full p-2 rounded bg-gray-800 border border-gray-700" name="SMTP_USER_EMAIL" value="<?php echo defined('SMTP_USER_EMAIL') ? SMTP_USER_EMAIL : ''; ?>">
             </label>
 
             <label class="block mb-4 text-sm">
