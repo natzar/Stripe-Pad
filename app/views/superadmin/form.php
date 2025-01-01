@@ -1,6 +1,6 @@
-<header class="py-6 border-gray-600  bg-gray-800">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
-		<h1 class="text-3xl font-bold tracking-tight text-gray-100"><? if ($rid != -1) {
+<header class="pb-6 ">
+	<div class="mx-auto  ">
+		<h1 class="text-3xl font-bold tracking-tight text-gray-700"><? if ($rid != -1) {
 																		echo ucfirst($table_label) . ' #' . $rid; ?>
 				<!-- Meta data -->
 				<small class="text-xs text-gray-400 block font-italic"></small>
@@ -12,10 +12,9 @@
 	</div>
 </header>
 
-<div class="flex min-h-screen flex-col bg-gray-800">
-	<div class="mx-auto flex w-full max-w-7xl items-start gap-x-8 px-4 py-10 sm:px-6 lg:px-8">
-		<!-- SIDEBAR -->
-		<? include_once dirname(__FILE__) . "/../layout/sidebar-private.php"; ?>
+<div class="flex min-h-screen flex-col">
+	<div class="mx-auto flex w-full  items-start gap-x-8 ">
+
 		<main class="flex-1 text-gray-800">
 			<div class=" main max-w-2xl mx-auto bg-white rounded-lg px-6 py-5 mb-10">
 				<!-- Notification -->
@@ -44,7 +43,7 @@
 
 							</ol>
 						</a>
-						<button class='flex items-center justify-end px-4 py-1 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-orange-500 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900' onclick="check_form_values(this.form);" type="submit"><i class="glyphicon glyphicon-ok"></i> Save <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+						<button class='flex items-center justify-end px-4 py-1 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-orange-500 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900' onclick="check_form_values(this.form);" type="submit"><i class="glyphicon glyphicon-ok"></i> Save <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ml-2">
 								<path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 							</svg>
 						</button>

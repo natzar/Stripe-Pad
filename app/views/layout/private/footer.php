@@ -1,5 +1,5 @@
 <!-- FOOTer -->
-<footer class="bg-gray-900 " aria-labelledby="footer-heading">
+<footer class="" aria-labelledby="footer-heading">
   <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
     <div class="mt-10 border-t border-white/10 pt-8 ">
       <p class="text-xs leading-5 text-gray-400">&copy; <a href="<?= APP_BASE_URL ?>"><?= APP_DOMAIN ?></a> <?= $SEO_TITLE ?> &copy; <?= Date("Y") ?> Ayesa Digital SLU. All rights reserved</p>

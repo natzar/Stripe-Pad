@@ -1,6 +1,6 @@
-<header class="py-6 border-gray-600  bg-gray-800">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center space-x-4 ">
-    <h1 class="text-3xl font-bold tracking-tight text-gray-100"><?= ucfirst($table) ?> (<?= count($items) ?>)</h1>
+<header class="pb-6 border-gray-600  bg-gray-100">
+  <div class="mx-auto  flex items-center space-x-4 ">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-800"><?= ucfirst($table) ?> (<?= count($items) ?>)</h1>
     <!-- <p class="text-base leading-8 text-gray-300">You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p> -->
     <a href="<?= APP_DOMAIN ?>form/<?= $table ?>" class="items-center  rounded-full bg-sky-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
 
@@ -13,10 +13,10 @@
 
 
 
-<div class="flex min-h-screen flex-col bg-gray-800">
+<div class="flex min-h-screen flex-col bg-gray-100">
 
 
-  <div class="mx-auto flex min-h-screen w-full max-w-7xl items-start gap-x-8 px-4 py-10 sm:px-6 lg:px-8">
+  <div class="mx-auto flex min-h-screen w-full  items-start gap-x-8 ">
 
 
 

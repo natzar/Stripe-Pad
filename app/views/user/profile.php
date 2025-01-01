@@ -13,7 +13,7 @@
 
 
   <div class="mx-auto flex min-h-screen w-full max-w-7xl items-start gap-x-8 px-4 py-10 sm:px-6 lg:px-8">
-    <? include_once dirname(__FILE__) . "/../layout/sidebar-private.php"; ?>
+
 
 
     <main class="flex-1 text-gray-700">

@@ -1,18 +1,18 @@
-<header class="py-6 border-gray-600  bg-gray-800">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-100">The App</h1>
+<header class="pb-6 ">
+    <div class="mx-auto  ">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-700">The App</h1>
     </div>
 </header>
 
 
 
-<div class="flex min-h-screen flex-col bg-gray-800">
+<div class="flex min-h-screen flex-col">
 
 
-    <div class="mx-auto flex w-full max-w-7xl items-start gap-x-8 px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto flex w-full items-start gap-x-8 ">
 
 
-        <main class="flex-1 text-gray-100">
+        <main class="flex-1 text-gray-600">
             <h2 class="font-bold text-2xl text-white">Your Awesome Protected Tool</h2>
             <p class="text-base leading-8 text-gray-300">This could be a great place to insert your code. You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p>
 
