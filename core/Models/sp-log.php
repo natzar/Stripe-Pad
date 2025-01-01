@@ -33,7 +33,8 @@ class log extends ModelBase
 {
 	private static $instance = null;
 
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 	}
 	public static function singleton()
@@ -52,11 +53,11 @@ class log extends ModelBase
 	 * @param  mixed $usersId
 	 * @return void
 	 */
-	public function push($label, $tag ="system", $body= "", $usersId = 0)
+	public function push($label, $tag = "system", $body = "", $usersId = 0)
 	{
 		$hash = $tag . "-"  . fingerprint($label);
 
-		$q  = $this->db->prepare("INSERT INTO log (hash,month,week,usersId,label,tag,body) VALUES (:hash,extract(YEAR_MONTH FROM CURDATE()),YEARWEEK(CURDATE()),:uid,:label,:tag,:body) ON DUPLICATE KEY UPDATE    
+		$q  = $this->db->prepare("INSERT INTO logs (hash,month,week,usersId,label,tag,body) VALUES (:hash,extract(YEAR_MONTH FROM CURDATE()),YEARWEEK(CURDATE()),:uid,:label,:tag,:body) ON DUPLICATE KEY UPDATE    
 total =total + 1");
 		$q->bindParam(":uid", $usersId);
 		$q->bindParam(":tag", $tag);
@@ -80,7 +81,7 @@ total =total + 1");
 
 	public function getLogsByTag($usersId, $tag, $limit = 20)
 	{
-		$consulta = $this->db->prepare("SELECT * FROM log where tag=:tag and usersId = :usersId order by updated DESC limit :limit ");
+		$consulta = $this->db->prepare("SELECT * FROM logs where tag=:tag and usersId = :usersId order by updated DESC limit :limit ");
 		$consulta->bindParam(":usersId", $usersId);
 		$consulta->bindParam(":tag", $tag);
 		$consulta->bindParam(":limit", $limit);
