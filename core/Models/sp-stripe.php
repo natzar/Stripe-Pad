@@ -258,7 +258,7 @@ class StripePad_Stripe extends ModelBase
     {
         $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
         $subscriptions = $stripe->subscriptions->all(['limit' => 100]);
-    
+        $_SESSION['alerts'][] = "Syncing ". count($subscriptions->data)." subscriptions";
         foreach ($subscriptions->autoPagingIterator() as $subscription) {
             // Get the user ID from the users table based on the Stripe customer ID
             $userStmt = $this->db->prepare("SELECT usersId FROM users WHERE stripe_customer_id = ?");
@@ -282,7 +282,7 @@ class StripePad_Stripe extends ModelBase
 {
     $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
     $customers = $stripe->customers->all(['limit' => 100]);
-
+    $_SESSION['alerts'][] = "Syncing ". count($customers->data)." customers";
     foreach ($customers->autoPagingIterator() as $customer) {
         // Prepare SQL statement to upsert customer data into the users table
         $stmt = $this->db->prepare("
@@ -307,7 +307,7 @@ public function syncStripeInvoices()
 {
     $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
     $invoices = $stripe->invoices->all(['limit' => 100]);
-
+    $_SESSION['alerts'][] = "Syncing ". count($invoices->data)." invoices";
     foreach ($invoices->autoPagingIterator() as $invoice) {
         // Get the user ID from the users table based on the Stripe customer ID
         $userStmt = $this->db->prepare("SELECT usersId FROM users WHERE stripe_customer_id = ?");
@@ -332,7 +332,7 @@ public function syncStripeInvoices()
     {
         $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
         $products = $stripe->products->all(['limit' => 100]);
-
+        $_SESSION['alerts'][] = "Syncing ". count($products->data)." products";
         foreach ($products->autoPagingIterator() as $product) {
             $stmt = $this->db->prepare("REPLACE INTO products (stripe_product_id, name, description, visible, created, updated) VALUES (?, ?, ?, ?, NOW(), NOW())");
             $stmt->execute([

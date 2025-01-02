@@ -66,7 +66,12 @@ class StripePad
         # check if user is authenticated
         if ($this->isAuthenticated) {
             # Load Dashboard (main-first screen of your app for logged users)
-            $this->app();
+            if ($this->isSuperadmin){
+                $this->superadmin();
+            }else {
+                $this->app();
+            }
+            
         } else {
             # Redirect to login if not authenticated
             $this->home();
@@ -341,7 +346,7 @@ class StripePad
         $_SESSION['alerts'][] = _("Stripe Import Completed");
 
         // ~ Redirection
-        $this->app();
+        $this->superadmin();
     }
     public function stripePortal()
     {

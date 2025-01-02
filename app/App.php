@@ -104,9 +104,10 @@ class App extends StripePad
 	public function profile()
 	{
 		$users = new usersModel();
-
+		$invoices = new invoicesModel();
 		$data = array(
-			"user" => $users->getById($_SESSION['user']['usersId'])
+			"user" => $users->getById($_SESSION['user']['usersId']),
+			"invoices" => $invoices->getByUsersId($_SESSION['user']['usersId'])
 		);
 
 		$this->view->show("user/profile.php", $data, true);

@@ -30,7 +30,7 @@
                   <div class="w-full border-t border-gray-300"></div>
                 </div>
                 <div class="relative flex justify-start">
-                  <span class="bg-white  text-base font-semibold leading-6 text-gray-900">Perfil Usuario</span>
+                  <span class="bg-white  text-base font-semibold leading-6 text-gray-900"><?= _('User Profile') ?></span>
                 </div>
               </div>
               Rol: <span class="inline-flex items-center gap-x-1.5 rounded-full bg-orange-100 px-2 py-1 text-xs font-medium text-orange-700">
@@ -41,39 +41,32 @@
               </span>
               <form action="<?= APP_DOMAIN ?>actionUpdateUser" method="POST">
                 <div class="mb-4">
-                  <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+                  <label for="name" class="block text-sm font-medium text-gray-700"><?= _('Name') ?></label>
                   <input type="text" name="name" value="<?= $user['name'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required="required">
                 </div>
                 <div class="mb-4">
                   <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                   <input type="email" name="email" value="<?= $user['email'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required="required">
                 </div>
+               
 
-                <div class="relative">
-                  <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-300"></div>
-                  </div>
-                  <div class="relative flex justify-start">
-                    <span class="bg-white  text-base font-semibold leading-6 text-gray-900">Cambio de contraseña</span>
-                  </div>
-                </div>
+              <div class="mb-4">
+                <label for="company" class="block text-sm font-medium text-gray-700"><?= _('Company') ?></label>
+                <input required="required" type="text" name="name" value="<?= $user['name'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+              </div>
+              <div class="mb-4">
+                <label for="address" class="block text-sm font-medium text-gray-700"><?= _('Address') ?></label>
+                <input required="required" type="text" name="address" value="<?= $user['address'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+              </div>
+              <div class="mb-4">
+                <label for="vat" class="block text-sm font-medium text-gray-700"><?= _('Bussiness Id / VAT / CIF / NIF (Taxes)') ?></label>
+                <input required="required" type="text" name="nif" value="<?= $user['tax_id'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+              </div>
 
-                <p class="text-xs text-gray-500">Dejar en blanco para no modificar</p>
-                <div class="mb-4">
-                  <label for="current_password" class="block text-sm font-medium text-gray-700">Contraseña Actual</label>
-                  <input type="password" name="current_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                </div>
-                <div class="mb-4">
-                  <label for="new_password" class="block text-sm font-medium text-gray-700">Nueva Contraseña</label>
-                  <input type="password" name="new_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                </div>
-                <div class="mb-4">
-                  <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirmar Nueva Contraseña</label>
-                  <input type="password" name="confirm_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                </div>
+              
 
 
-                <input type="submit" class="rounded-full  bg-gray-100 text-gray-400 hover:bg-blue-800 hover:text-white px-4 py-2 rounded text-sm font-bold" value="Guardar datos de usuario">
+                <input type="submit" class="rounded-full  bg-gray-100 text-gray-400 hover:bg-sky-800 hover:text-white px-4 py-2 rounded text-sm font-bold" value="<?= _('Update Profile') ?>">
               </form>
             </div>
           </div>
@@ -88,48 +81,43 @@
 
           <div class="bg-white p-6 rounded-lg shadow-md mb-5 text-gray-600">
 
-            <div class="relative">
-              <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                <div class="w-full border-t border-gray-300"></div>
-              </div>
-              <div class="relative flex justify-start">
-                <span class="bg-white  text-base font-semibold leading-6 text-gray-900">Datos de Cliente y Facturación</span>
-              </div>
-            </div>
-
+            
             <form action="<?= APP_DOMAIN ?>actionUpdateuser" method="POST">
-              <div class="mb-4">
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input required="required" type="email" name="email" value="<?= $user['email'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-              </div>
+            
+            <div class="relative">
+                  <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div class="w-full border-t border-gray-300"></div>
+                  </div>
+                  <div class="relative flex justify-start">
+                    <span class="bg-white  text-base font-semibold leading-6 text-gray-900"><?= _('Change your password') ?></span>
+                  </div>
+                </div>
 
-              <div class="mb-4">
-                <label for="company" class="block text-sm font-medium text-gray-700">Empresa</label>
-                <input required="required" type="text" name="name" value="<?= $user['name'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-              </div>
-              <div class="mb-4">
-                <label for="address" class="block text-sm font-medium text-gray-700">Dirección</label>
-                <input required="required" type="text" name="address" value="<?= $user['address'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-              </div>
-              <div class="mb-4">
-                <label for="vat" class="block text-sm font-medium text-gray-700">Bussiness Id / VAT / CIF / NIF (Taxes)</label>
-                <input required="required" type="text" name="nif" value="<?= $user['tax_id'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-              </div>
+               
+                <div class="mb-4">
+                  <label for="current_password" class="block text-sm font-medium text-gray-700"><?= _('Current Password') ?></label>
+                  <input type="password" name="current_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                </div>
+                <div class="mb-4">
+                  <label for="new_password" class="block text-sm font-medium text-gray-700"><?= _('New Password') ?></label>
+                  <input type="password" name="new_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                </div>
+                <div class="mb-4">
+                  <label for="confirm_password" class="block text-sm font-medium text-gray-700"><?= _('Repeat new Password') ?></label>
+                  <input type="password" name="confirm_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                </div>
 
-
-
-              <input type="submit" class="rounded-full bg-gray-100 text-gray-400 hover:bg-blue-800 hover:text-white px-4 py-2 rounded text-sm font-bold" value="Guardar datos de cliente">
+              <input type="submit" class="rounded-full bg-gray-100 text-gray-400 hover:bg-sky-800 hover:text-white px-4 py-2 rounded text-sm font-bold" value="<?= _('Update Password') ?>">
             </form>
           </div>
           <section aria-labelledby="recent-hires-title" class="mb-10">
 
 
-            <? if ($_SESSION['user']['group'] == "users"): // DISABLED 
-            ?>
+          
               <div class="rounded-lg bg-white overflow-hidden shadow mb-5">
                 <div class="p-6">
-                  <h2 class="text-base font-medium text-gray-900">Facturas</h2>
-                  <a href="/account" target="_blank" class="border-transparent rounded-md bg-blue-600 text-gray-100 hover:bg-blue-800 inline-flex items-center px-3 py-2 text-sm font-bold">
+                  <h2 class="text-base font-medium text-gray-900"><?= _('Invoices') ?></h2>
+                  <a href="/account" target="_blank" class="border-transparent rounded-md bg-sky-600 text-gray-100 hover:bg-sky-800 inline-flex items-center px-3 py-2 text-sm font-bold">
                     Ver todas las Facturas
                   </a>
                   <p class="text-xs text-gray-500">Se abrirá Stripe en una nueva ventana</p>
@@ -181,7 +169,7 @@
 
                 </div>
               </div>
-            <? endif; ?>
+     
 
           </section>
 
@@ -205,7 +193,7 @@ Listado de Facturas
               <td class="py-2 px-4 border-b">2024-06-14</td>
               <td class="py-2 px-4 border-b">INV-001</td>
               <td class="py-2 px-4 border-b">€500.00</td>
-              <td class="py-2 px-4 border-b"><a href="#" class="text-blue-500">Descargar</a></td>
+              <td class="py-2 px-4 border-b"><a href="#" class="text-sky-500">Descargar</a></td>
             </tr>
            
           </tbody>

@@ -13,6 +13,7 @@
 </div>
 </div>
 
+<? include dirname(__FILE__)."/../../common/modal.php"; ?>
 
 <!-- PHP to JS -->
 <script>
