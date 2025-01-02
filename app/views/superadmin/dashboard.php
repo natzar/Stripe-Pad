@@ -189,7 +189,7 @@
                                                         <div class="flex-auto">
                                                             <div class="flex items-start gap-x-3">
                                                                 <div class="rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"><?= $item['tag'] ?></div>
-                                                                <div class="text-sm/6 font-medium text-gray-400"><?= $item['label'] ?></div>
+                                                                <div class="text-sm/6 font-medium text-gray-600"><?= $item['label'] ?></div>
 
                                                             </div>
                                                             <div class="mt-1 text-xs/5 text-gray-500"><?= $item['body'] ?></div>

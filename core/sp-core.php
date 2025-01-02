@@ -78,7 +78,10 @@ class StripePad
         echo 'default home, overwrite public function home.php in App.php';
     }
 
-
+    public function comingsoon()
+    {
+        $this->view->show("common/coming-soon.php", array(), true);
+    }
     /**
      * Blog
      * Manages general blog view + post (1) view
@@ -335,7 +338,10 @@ class StripePad
         $stripe->syncStripeSubscriptions();
         $stripe->syncStripeInvoices();
         $stripe->syncStripeProducts();
-        $_SESSION['alerts'][] = "Stripe Import Completed";
+        $_SESSION['alerts'][] = _("Stripe Import Completed");
+
+        // ~ Redirection
+        $this->app();
     }
     public function stripePortal()
     {
