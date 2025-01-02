@@ -233,7 +233,7 @@ class StripePad
 
         $users = new usersModel();
 
-        if (!empty($_POST['huny'])) die();
+        if (!empty($_POST['hney'])) die();
 
         // not included by default : find a better way
         include_once CORE_PATH . "Classes/EmailValidator.php";
