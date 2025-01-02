@@ -279,31 +279,41 @@ class StripePad_Stripe extends ModelBase
             }
         }
     }
-    
     public function syncStripeCustomers()
-{
-
-    $customers = $this->stripe->customers->all(['limit' => 100]);
-    $_SESSION['alerts'][] = "Syncing ". count($customers->data)." customers";
-    foreach ($customers->autoPagingIterator() as $customer) {
-        // Prepare SQL statement to upsert customer data into the users table
-        $stmt = $this->db->prepare("
-            INSERT INTO users (email, name, stripe_customer_id, created, updated)
-            VALUES (:email, :name, :stripe_customer_id, NOW(), NOW())
-            ON DUPLICATE KEY UPDATE
-                name = VALUES(name),
-                stripe_customer_id = VALUES(stripe_customer_id),
-                updated = NOW()
-        ");
-
-        // Execute the prepared statement
-        $stmt->execute([
-            ':email' => $customer->email,
-            ':name' => $customer->name,
-            ':stripe_customer_id' => $customer->id
-        ]);
+    {
+        try {
+            $customers = $this->stripe->customers->all(['limit' => 100]);
+            $_SESSION['alerts'][] = "Syncing " . count($customers->data) . " customers";
+    
+            foreach ($customers->autoPagingIterator() as $customer) {
+                // Check if necessary fields are present
+                $email = $customer->email ?? 'default@email.com'; // Provide a default email or handle it differently
+                $name = $customer->name ?? 'No Name Provided';
+                $customerId = $customer->id; // id should always be present
+    
+                // Prepare SQL statement to upsert customer data into the users table
+                $stmt = $this->db->prepare("
+                    INSERT INTO users (email, name, stripe_customer_id, created, updated)
+                    VALUES (:email, :name, :stripe_customer_id, NOW(), NOW())
+                    ON DUPLICATE KEY UPDATE
+                        name = VALUES(name),
+                        stripe_customer_id = VALUES(stripe_customer_id),
+                        updated = NOW()
+                ");
+    
+                // Execute the prepared statement
+                $stmt->execute([
+                    ':email' => $email,
+                    ':name' => $name,
+                    ':stripe_customer_id' => $customerId
+                ]);
+            }
+        } catch (\Exception $e) {
+            // Log or handle exceptions here
+            $_SESSION['alerts'][] = "Error syncing customers: " . $e->getMessage();
+        }
     }
-}
+    
 
 public function syncStripeInvoices()
 {
