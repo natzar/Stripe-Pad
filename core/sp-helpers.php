@@ -110,7 +110,23 @@ function replaceTemplateValues($body, $p)
 }
 
 
+function get_masked_ip() {
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $parts = explode('.', $ip);
 
+    // Check if the IP address format is valid (should have 4 parts for IPv4)
+    if (count($parts) === 4) {
+        // Replace the last three octets with 'xxx'
+        // $parts[1] = 'xxx';
+        // $parts[2] = 'xxx';
+        $parts[3] = 'xxx';
+
+        return implode('.', $parts);
+    }
+
+    // Return original IP if format is incorrect, or not IPv4
+    return $ip;
+}
 
 
 

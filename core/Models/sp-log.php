@@ -164,4 +164,15 @@ total =total + 1");
 
 		return $q->fetchAll();
 	}
+
+	public function get_online_visitors_count(){
+		
+		$q = $this->db->prepare("SELECT COUNT(DISTINCT body) AS unique_pageviews
+			FROM logs
+			WHERE tag = 'pageview'
+  			AND created >= NOW() - INTERVAL 10 MINUTE;");		
+		$q->execute();
+		$r = $q->fetch();
+		return $r['unique_pageviews'];	
+	}
 }

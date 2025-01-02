@@ -538,17 +538,19 @@ class StripePad
         $data = array();
         $this->view->show('superadmin/system.php', $data);
     }
-    public function superadmin()
-    {
-        $data = array(
-            "log" => $this->log->getAll()
-        );
-        $this->view->show('superadmin/dashboard.php', $data);
-    }
+
 
     /* SuperAdmin magic functions: Forms creation and Rows Inserting and updating. One day someone will come.
     ---------------------------------------*/
-
+    
+    public function superadmin()
+    {
+        $data = array(
+            "log" => $this->log->getAll(),
+            "online_visitors" => $this->log->get_online_visitors_count()
+        );
+        $this->view->show('superadmin/dashboard.php', $data);
+    }
 
     /**
      * table

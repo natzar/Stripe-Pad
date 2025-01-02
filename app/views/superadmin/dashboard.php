@@ -42,7 +42,7 @@
                     <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-5">
                         <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">Visitors now</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">67</dd>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-white"><?= $online_visitors ?></dd>
                         </div>
                         <div class="flex flex-col bg-gray-500 p-8">
                             <dt class="text-sm/6 font-semibold text-gray-300">Revenue</dt>
