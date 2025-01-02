@@ -107,7 +107,8 @@ define('APP_CDN', HOMEPAGE_URL.'/cdn/');
     ?>
 
             <script>
-                var content = `<?php echo $content; ?>`;
+                var content = `<?php echo htmlspecialchars($content, ENT_QUOTES, 'UTF-8'); ?>`;
+
 
                 // Convert the PHP output string to a Blob
                 var blob = new Blob([content], {
