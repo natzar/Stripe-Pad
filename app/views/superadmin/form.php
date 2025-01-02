@@ -43,7 +43,7 @@
 
 							</ol>
 						</a>
-						<button class='flex items-center justify-end px-4 py-1 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-orange-500 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900' onclick="check_form_values(this.form);" type="submit"><i class="glyphicon glyphicon-ok"></i> Save <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ml-2">
+						<button class='flex items-center justify-end px-4 py-1 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-sky-500 hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900' onclick="check_form_values(this.form);" type="submit"><i class="glyphicon glyphicon-ok"></i> Save <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ml-2">
 								<path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 							</svg>
 						</button>
@@ -70,7 +70,7 @@
 						<hr>
 
 						&nbsp;&nbsp;
-						<!-- <button class='inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-500 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900' onclick="check_form_values(this.form);" type="button"><i class="glyphicon glyphicon-ok"></i> Guardar</button> -->
+						<!-- <button class='inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-sky-500 hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900' onclick="check_form_values(this.form);" type="button"><i class="glyphicon glyphicon-ok"></i> Guardar</button> -->
 					</fieldset>
 
 				</form>
