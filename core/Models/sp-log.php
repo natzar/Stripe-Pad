@@ -55,7 +55,7 @@ class log extends ModelBase
 	 */
 	public function push($label, $tag = "system", $body = "", $usersId = 0)
 	{
-		$hash = $tag . "-"  . fingerprint($label);
+		$hash = $tag . "-"  . fingerprint($label."-".$body);
 
 		$q  = $this->db->prepare("INSERT INTO logs (hash,month,week,usersId,label,tag,body) VALUES (:hash,extract(YEAR_MONTH FROM CURDATE()),YEARWEEK(CURDATE()),:uid,:label,:tag,:body) ON DUPLICATE KEY UPDATE    
 total =total + 1");

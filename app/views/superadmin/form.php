@@ -7,7 +7,7 @@
 			<? } else echo ucfirst($table) . ' ➞ Add New '; ?>
 		</h1>
 		<? if ($rid != -1): ?>
-			<p class="text-base leading-8 text-gray-300"> Created <?= strftime(" %d %B %Y %H:%M", strtotime($raw['created'])) ?> - Updated: <?= strftime(" %d %B %Y %H:%M", strtotime($raw['updated'])) ?></p>
+			<p class="text-base leading-8 text-gray-500"> Created <?= strftime(" %d %B %Y %H:%M", strtotime($raw['created'])) ?> - Updated: <?= strftime(" %d %B %Y %H:%M", strtotime($raw['updated'])) ?></p>
 		<? endif; ?>
 	</div>
 </header>

@@ -2,7 +2,7 @@
   <div class="mx-auto  flex items-center space-x-4 ">
     <h1 class="text-3xl font-bold tracking-tight text-gray-800"><?= ucfirst($table) ?> (<?= count($items) ?>)</h1>
     <!-- <p class="text-base leading-8 text-gray-300">You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p> -->
-    <a href="<?= APP_DOMAIN ?>form/<?= $table ?>" class="items-center  rounded-full bg-sky-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+    <a href="<?= APP_DOMAIN ?>form/<?= $table ?>" class="items-center  rounded-full bg-sky-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
 
       Add new +
     </a>
@@ -66,7 +66,7 @@
             ?>
               <tr id="recordsArray_<?= $row[$table_no_prefix . 'Id'] ?>" class="<?= $rowClass ?>">
                 <td class="px-4 py-5 text-sm font-semibold text-gray-900">
-                  <a alt='edit' title='edit' href='<?= APP_DOMAIN ?>form/<?= $table ?>/<?= $row[$table . "Id"] ?>' style="font-size:16px;font-weight:bold;" class="ls-modal-no">#<?= $row[$table . "Id"] ?></a>
+                  <a alt='edit' title='edit' href='<?= APP_DOMAIN ?>form/<?= $table ?>/<?= $row[$table . "Id"] ?>' style="font-size:16px;font-weight:bold;" class="underline font-bold hover:text-sky-500 ls-modal-no">#<?= $row[$table . "Id"] ?></a>
                 </td>
 
                 <?php
@@ -86,7 +86,7 @@
                 ?>
 
                 <td class="px-4 py-5 text-right">
-                  <a class="text-xs bg-red-100 hover:bg-red-600 text-red-800 font-medium mr-2 px-2.5 py-0.5 rounded" alt='delete' title='delete' href="javascript: DeleteRegistro('recordsArray_<?= $row[$table . 'Id'] ?>', '<?= $row[$table . 'Id'] ?>', '', '<?= $table ?>');">Eliminar</a>
+                  <a class="text-xs bg-red-100 hover:bg-red-600 hover:text-white text-red-800 font-medium mr-2 px-2.5 py-0.5 rounded" alt='delete' title='delete' href="javascript: DeleteRegistro('recordsArray_<?= $row[$table . 'Id'] ?>', '<?= $row[$table . 'Id'] ?>', '', '<?= $table ?>');"><?= _('Delete') ?></a>
                   <a href='<?= APP_BASE_URL ?>form/<?= $table ?>/<?= $row[$table . 'Id'] ?>' rel="nofollow">
                     <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />

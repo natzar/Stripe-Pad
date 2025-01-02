@@ -133,7 +133,7 @@ function get_masked_ip() {
 function fingerPrint($result)
 {
     // Remove all accents. Compatibility for Spanish strings
-    $result = trim(preg_replace('/[^a-zA-Z0-9\s]/', '', strtolower($result)));
+    $result = trim(preg_replace('/[^a-zA-Z0-9]/', '', strtolower($result)));
     // Every char to lowercase
     //$result = strtolower($result);
     // Remove all chars that are not letters

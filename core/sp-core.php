@@ -131,6 +131,9 @@ class StripePad
 
     public function signup()
     {
+        if ($this->isAuthenticated){
+            return $this->app();
+        }
         $this->view->show("user/signup.php", array(), true);
     }
 
@@ -142,7 +145,10 @@ class StripePad
     public function login()
     {
         $data = array();
-
+        
+        if ($this->isAuthenticated){
+            return $this->app();
+        }
         # Login function
         if (!empty(GOOGLE_CLIENT_ID)) {
             # Login with Google
