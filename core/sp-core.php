@@ -348,50 +348,19 @@ class StripePad
         // ~ Redirection
         $this->superadmin();
     }
-    public function stripePortal()
-    {
-        if (empty($_SESSION['user']['stripe_customer_id'])):
 
-            $_SESSION['errors'][] = "This section is not enabled for your user";
-            header("location: " . APP_DOMAIN . "/dashboard");
-
-        else:
-
-
-
-            \Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY);
-            $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
-
-            try {
-                // Authenticate your user.
-                $session = \Stripe\BillingPortal\Session::create([
-                    'customer' => $_SESSION['user']['stripe_customer_id'],
-                    'return_url' => 'https://app.phpninja.net/dashboard',
-                ]);
-                header("Location: " . $session->url);
-            } catch (Exception $e) {
-                $_SESSION['errors'][] = $e->getMessage();
-                header("location: " . APP_DOMAIN . "/dashboard");
-            }
-
-
-        // Redirect to the customer portal.
-
-
-        endif;
-    }
     /**
      * account
      *
      * @return void
      */
-    public function account()
+    public function stripe_portal()
     {
 
 
         if (empty($_SESSION['user']['stripe_customer_id'])):
 
-            $_SESSION['errors'][] = "NOT_ENABLED;";
+            $_SESSION['errors'][] = "NOT_ENABLED, NO PURCHASE YET;";
             header("location: " . APP_DOMAIN . "/dashboard");
 
         else:
