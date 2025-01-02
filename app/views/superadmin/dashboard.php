@@ -1,7 +1,7 @@
 <header class="pb-6  ">
     <div class="mx-auto flex items-center space-x-4 ">
         <h1 class="text-3xl font-bold tracking-tight text-gray-800">Superadmin's Special Dashboard</h1>
-        <!-- <p class="text-base leading-8 text-gray-300">You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p> -->
+        <!-- <p class="text-base leading-8 text-gray-500">You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p> -->
 
     </div>
 
@@ -19,7 +19,7 @@
         <main class="flex-1 text-gray-800">
 
             <div class="flex items-center gap-x-6 bg-sky-500 hover:bg-sky-900 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 rounded-xl mb-3">
-                <p class="text-sm/6 text-white">
+                <p class="text-sm/6 text-gray-100">
                     <a href="javascript:if (confirm('This will import all data from Stripe, don\'t close this tab. Continue?')) window.location.href='<?= APP_DOMAIN ?>actionStripeSync';">
                         <strong class="font-semibold">Stripe Connection</strong><svg viewBox="0 0 2 2" class="mx-2 inline size-0.5 fill-current" aria-hidden="true">
                             <circle cx="1" cy="1" r="1" />
@@ -29,7 +29,7 @@
                 <div class="flex flex-1 justify-end">
                     <button type="button" class="-m-3 p-3 focus-visible:outline-offset-[-4px]">
                         <span class="sr-only">Dismiss</span>
-                        <svg class="size-5 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                        <svg class="size-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                             <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
                         </svg>
                     </button>
@@ -40,25 +40,25 @@
                 <div class="mx-auto max-w-2xl lg:max-w-none">
 
                     <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-5">
-                        <div class="flex flex-col bg-gray-500 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Visitors now</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white"><?= $online_visitors ?></dd>
+                        <div class="flex flex-col bg-gray-200 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-500">Visitors now</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700"><?= $online_visitors ?></dd>
                         </div>
-                        <div class="flex flex-col bg-gray-500 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Revenue</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">$0</dd>
+                        <div class="flex flex-col bg-gray-200 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-500">Revenue</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700">$0</dd>
                         </div>
-                        <div class="flex flex-col bg-gray-500 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">$/Visitor</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">$0</dd>
+                        <div class="flex flex-col bg-gray-200 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-500">$/Visitor</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700">$0</dd>
                         </div>
-                        <div class="flex flex-col bg-gray-500 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Session Time</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">90s</dd>
+                        <div class="flex flex-col bg-gray-200 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-500">Session Time</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700">90s</dd>
                         </div>
-                        <div class="flex flex-col bg-gray-500 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Bounce Rate</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">23%</dd>
+                        <div class="flex flex-col bg-gray-200 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-500">Bounce Rate</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700">23%</dd>
                         </div>
                     </dl>
                 </div>
@@ -110,25 +110,25 @@
                 <div class="mx-auto max-w-2xl lg:max-w-none">
 
                     <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-5">
-                        <div class="flex flex-col bg-gray-500 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Visitors</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">8,000+</dd>
+                        <div class="flex flex-col bg-gray-200 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-500">Visitors</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700">8,000+</dd>
                         </div>
-                        <div class="flex flex-col bg-gray-500 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Visitor ➞ User</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">3%</dd>
+                        <div class="flex flex-col bg-gray-200 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-500">Visitor ➞ User</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700">3%</dd>
                         </div>
-                        <div class="flex flex-col bg-gray-500 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Users</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">2,098</dd>
+                        <div class="flex flex-col bg-gray-200 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-500">Users</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700">2,098</dd>
                         </div>
-                        <div class="flex flex-col bg-gray-500 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">User ➞ Customer</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">0%</dd>
+                        <div class="flex flex-col bg-gray-200 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-500">User ➞ Customer</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700">0%</dd>
                         </div>
-                        <div class="flex flex-col bg-gray-500 p-8">
-                            <dt class="text-sm/6 font-semibold text-gray-300">Customers</dt>
-                            <dd class="order-first text-3xl font-semibold tracking-tight text-white">0</dd>
+                        <div class="flex flex-col bg-gray-200 p-8">
+                            <dt class="text-sm/6 font-semibold text-gray-500">Customers</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700">0</dd>
                         </div>
                     </dl>
                 </div>
@@ -141,13 +141,13 @@
                     <div class="mx-auto max-w-2xl lg:max-w-none">
 
                         <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
-                            <div class="flex flex-col bg-gray-500 p-8">
-                                <dt class="text-sm/6 font-semibold text-gray-300">Downloads</dt>
-                                <dd class="order-first text-3xl font-semibold tracking-tight text-white">8,000+</dd>
+                            <div class="flex flex-col bg-gray-200 p-8">
+                                <dt class="text-sm/6 font-semibold text-gray-500">Downloads</dt>
+                                <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700">8,000+</dd>
                             </div>
-                            <div class="flex flex-col bg-gray-500 p-8">
-                                <dt class="text-sm/6 font-semibold text-gray-300">Redirections to Stripe</dt>
-                                <dd class="order-first text-3xl font-semibold tracking-tight text-white">3%</dd>
+                            <div class="flex flex-col bg-gray-200 p-8">
+                                <dt class="text-sm/6 font-semibold text-gray-500">Redirections to Stripe</dt>
+                                <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700">3%</dd>
                             </div>
 
                         </dl>
@@ -160,7 +160,7 @@
                     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <h2 class="mx-auto max-w-2xl text-base font-semibold text-gray-800 lg:mx-0 lg:max-w-none">Recent Activity</h2>
                     </div>
-                    <div class="mt-6 overflow-hidden border-t bg-gray-500  rounded-xl border-gray-900">
+                    <div class="mt-6 overflow-hidden border-t bg-gray-200  rounded-xl border-gray-100">
                         <div class="mx-auto max-w-7xl ">
                             <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                                 <table class="w-full text-left">
@@ -173,14 +173,14 @@
                                                 <tr class="text-sm/6 text-gray-200 ">
                                                     <th scope="colgroup" colspan="3" class="relative pl-6 isolate py-2 font-semibold">
                                                         <time datetime="2023-03-22"><?= time_elapsed_string($item['updated']) ?></time>
-                                                        <div class="absolute inset-y-0 right-full -z-10 w-screen border-b border-gray-900 bg-sky-900"></div>
-                                                        <div class="absolute inset-y-0 left-0 -z-10 w-screen border-b border-gray-900 bg-sky-900"></div>
+                                                        <div class="absolute inset-y-0 right-full -z-10 w-screen border-b border-sky-900 bg-sky-500"></div>
+                                                        <div class="absolute inset-y-0 left-0 -z-10 w-screen border-b border-sky-900 bg-sky-500"></div>
                                                     </th>
                                                 </tr>
                                             <?
                                                 $last_date = $item['updated'];
                                             endif; ?>
-                                            <tr class="border-gray-600 border-1 border-b ">
+                                            <tr class="border-gray-100 border-1 border-b ">
                                                 <td class="relative py-5 pl-6 ">
                                                     <div class="flex gap-x-6">
                                                         <svg class="hidden h-6 w-5 flex-none text-gray-400 sm:block" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
@@ -199,11 +199,11 @@
                                                 </td>
 
                                                 <td class="py-5 text-right pr-6">
-                                                    <div class="flex justify-end space-x-2">
+                                                    <div class="flex justify-end space-x-2 text-gray-400">
                                                         <!-- <a href="#" class="text-sm/6 font-medium text-indigo-600 hover:text-indigo-500">View<span class="hidden sm:inline"> transaction</span><span class="sr-only">, invoice #00012, Reform</span></a> -->
 
-                                                        <div class="mt-1 text-xs/5 text-gray-500">Count <span class="text-gray-300"><?= $item['total'] ?></span></div>
-                                                        <div class="mt-1 text-xs/5 text-gray-500">Last <span class="text-gray-300"><?= time_elapsed_string($item['updated']) ?></span></div>
+                                                        <div class="mt-1 text-xs/5 ">Count <span class="text-gray-800"><?= $item['total'] ?></span></div>
+                                                        <div class="mt-1 text-xs/5 ">Last <span class="text-gray-800"><?= time_elapsed_string($item['updated']) ?></span></div>
                                                     </div>
 
                                                 </td>
@@ -251,7 +251,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                        <h2 class="text-white text-lg">Checklist</h2>
+                        <h2 class="text-gray-700 text-lg">Checklist</h2>
 
                         <ul class="list-disc pl-5 space-y-2">
                             <li>
@@ -315,7 +315,7 @@
 
                     </div>
                     <div>
-                        <h2 class="text-white text-lg">Database</h2>
+                        <h2 class="text-gray-700 text-lg">Database</h2>
                         <canvas id="pieChart" width="400" height="400"></canvas>
                         <script>
                             var ctx = document.getElementById('pieChart').getContext('2d');
@@ -361,7 +361,7 @@
                         </script>
                     </div>
                     <div>
-                        <h2 class="text-white text-lg">Disk</h2>
+                        <h2 class="text-gray-700 text-lg">Disk</h2>
                         <?php
                         function getDirectorySize($dir)
                         {
