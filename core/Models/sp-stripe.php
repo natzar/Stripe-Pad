@@ -30,10 +30,12 @@ use Stripe\StripeClient;
 class StripePad_Stripe extends ModelBase
 {
     var $log;
+    var $stripe;
 
     function __construct()
     {
-        \Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY_TEST);
+        parent::__construct();
+        $this->stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
         $this->log = log::singleton();
     }
 
@@ -256,8 +258,8 @@ class StripePad_Stripe extends ModelBase
 
     public function syncStripeSubscriptions()
     {
-        $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
-        $subscriptions = $stripe->subscriptions->all(['limit' => 100]);
+        
+        $subscriptions = $this->stripe->subscriptions->all(['limit' => 100]);
         $_SESSION['alerts'][] = "Syncing ". count($subscriptions->data)." subscriptions";
         foreach ($subscriptions->autoPagingIterator() as $subscription) {
             // Get the user ID from the users table based on the Stripe customer ID
@@ -280,8 +282,8 @@ class StripePad_Stripe extends ModelBase
     
     public function syncStripeCustomers()
 {
-    $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
-    $customers = $stripe->customers->all(['limit' => 100]);
+
+    $customers = $this->stripe->customers->all(['limit' => 100]);
     $_SESSION['alerts'][] = "Syncing ". count($customers->data)." customers";
     foreach ($customers->autoPagingIterator() as $customer) {
         // Prepare SQL statement to upsert customer data into the users table
@@ -305,8 +307,8 @@ class StripePad_Stripe extends ModelBase
 
 public function syncStripeInvoices()
 {
-    $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
-    $invoices = $stripe->invoices->all(['limit' => 100]);
+    
+    $invoices = $this->stripe->invoices->all(['limit' => 100]);
     $_SESSION['alerts'][] = "Syncing ". count($invoices->data)." invoices";
     foreach ($invoices->autoPagingIterator() as $invoice) {
         // Get the user ID from the users table based on the Stripe customer ID
@@ -330,8 +332,8 @@ public function syncStripeInvoices()
 
     public function syncStripeProducts()
     {
-        $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
-        $products = $stripe->products->all(['limit' => 100]);
+        
+        $products = $this->stripe->products->all(['limit' => 100]);
         $_SESSION['alerts'][] = "Syncing ". count($products->data)." products";
         foreach ($products->autoPagingIterator() as $product) {
             $stmt = $this->db->prepare("REPLACE INTO products (stripe_product_id, name, description, visible, created, updated) VALUES (?, ?, ?, ?, NOW(), NOW())");
