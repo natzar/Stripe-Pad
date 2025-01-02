@@ -18,7 +18,17 @@ Website: [stripepad.com](https://stripepad.com)
 
 
 ## Demo
-Check Public, Private and Superadmin parts here [https://demo.stripepad.com/](https://demo.stripepad.com/).
+Public
+![Stripe Pad Homepage](https://demo.stripepad.com/cdn/demo/screenshot-demo-homepage.png)
+Private
+![App](https://demo.stripepad.com/cdn/demo/screenshot-private.png)
+Dashboard
+![Stripe Pad Dashboard](https://demo.stripepad.com/cdn/demo/screenshot-dashboard.png)
+
+
+### Try it [https://demo.stripepad.com/](https://demo.stripepad.com)
+- **superadmin**: user: superadmin@stripepad.com / pass: superadmin
+- **user**: user: demo@stripepad.com / pass: demo
 
 ## Quick Install
 [Download latest stable release here](https://stripepad.com/download), then run the installer at yourdomain.com/install.
