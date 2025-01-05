@@ -33,7 +33,7 @@ The 3 main parts of every SaaS: A public page, a private area where only registe
 - **user**: user: demo@stripepad.com / pass: demo
 
 ## Quick Install
-[Download latest stable release here](https://stripepad.com/download), then run the installer at yourdomain.com/install.
+Follow [installation instructions](https://github.com/natzar/Stripe-Pad/wiki/Installation) to have your environment setup as soon as posible.
 
 
 ## Official Documentation
