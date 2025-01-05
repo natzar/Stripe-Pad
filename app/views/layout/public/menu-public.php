@@ -55,6 +55,10 @@
 
 
 
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-5">
+
+
 
         <div class="flex items-center gap-2 space-x-2">
           <a href="https://github.com/natzar/stripe-pad" target="_blank" rel="noreferrer" class="group hidden items-center space-x-2 rounded px-2.5 py-1 text-xs text-gray-300 transition duration-200 ease-out hover:bg-neutral-200 lg:flex">
@@ -81,9 +85,6 @@
         </div>
 
 
-
-      </div>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="<?= APP_DOMAIN ?>login" class="text-sm font-semibold leading-6 text-gray-400">Log in <span aria-hidden="true">&rarr;</span></a>
       </div>
     </nav>
