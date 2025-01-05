@@ -5,7 +5,7 @@ include_once dirname(__FILE__) . "/../load.php";
 /**
  * cron Job
  */
-class cronJob
+class cronJob extends ModelBase
 {
 
 	var $name;
@@ -22,12 +22,10 @@ class cronJob
 
 	function __construct($name, $showOutput = false)
 	{
-
+		parent::__construct();
 		if (empty($name)) die("need name for cronjob");
 		$this->log = log::singleton();
-		$this->db = SPDO::singleton(); // ¿?
-		$this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-	
+
 		$this->mails = new mailsModel();
 		$this->name = $name;
 
