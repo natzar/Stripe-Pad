@@ -141,7 +141,7 @@ define('APP_CDN', HOMEPAGE_URL.'/cdn/');
         <form action="" method="post" class="">
             <? include "../core/sp-version.php"; ?>
 
-            <h1 class="text-xl text-blue-500 font-bold mb-4 air">Stripe Pad v. <?= $STRIPE_PAD_VERSION ?> Installer</h1>
+            <h1 class="text-xl text-blue-500 font-bold mb-4 air">Stripe Pad v. <?= STRIPE_PAD_VERSION ?> Installer</h1>
             <!-- <p>You are a form away of signning up to your application</p> -->
 
             <? if (!empty($output)): ?>
@@ -149,7 +149,10 @@ define('APP_CDN', HOMEPAGE_URL.'/cdn/');
                     Installation output:<br>
                     <?= $output ?>
                     <hr>
-                    Remove /install folder afterwards
+                    <br>
+                    - Remove /install folder afterwards<br>
+                    - Stripe Connection: Set up a webhook from your Stripe dashboard to handle Stripe events.
+                    https://yourdomain.com/webhooks/stripe.php
                 </blockquote>
             <? else: ?>
 
