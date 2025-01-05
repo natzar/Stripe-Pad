@@ -66,12 +66,11 @@ class StripePad
         # check if user is authenticated
         if ($this->isAuthenticated) {
             # Load Dashboard (main-first screen of your app for logged users)
-            if ($this->isSuperadmin){
+            if ($this->isSuperadmin) {
                 $this->superadmin();
-            }else {
+            } else {
                 $this->app();
             }
-            
         } else {
             # Redirect to login if not authenticated
             $this->home();
@@ -139,7 +138,7 @@ class StripePad
 
     public function signup()
     {
-        if ($this->isAuthenticated){
+        if ($this->isAuthenticated) {
             return $this->app();
         }
         $this->view->show("user/signup.php", array(), true);
@@ -153,8 +152,8 @@ class StripePad
     public function login()
     {
         $data = array();
-        
-        if ($this->isAuthenticated){
+
+        if ($this->isAuthenticated) {
             return $this->app();
         }
         # Login function
@@ -219,10 +218,7 @@ class StripePad
 
             header("location: " . APP_DOMAIN . "/login");
         } else {
-
-
             $user = $users->find($this->params['email']);
-
             $pass =  hash('sha256', $this->params['password']);
 
             if (!empty($user) and $user['password'] == $pass) {
@@ -281,9 +277,6 @@ class StripePad
         $user = $users->find($this->params['email']);
         if (empty($user)) {
             $user = $users->create($this->params['email']);
-
-
-
             $_SESSION['errors'][] = "The password of your account is in your email inbox";
             header("location: " . APP_DOMAIN . "/login");
         } else {
@@ -321,21 +314,34 @@ class StripePad
             echo '</pre>';
         }
     }
+
+    /**
+     * isAuthenticated
+     *
+     * @return void
+     */
     protected function isAuthenticated()
     {
-
         return !empty($_SESSION['user']) and isset($_SESSION['app_' . APP_NAME . '_logged_in']);
     }
 
+    /**
+     * actionLogout
+     *
+     * @return void
+     */
     public function actionLogout()
     {
-
         session_destroy();
-
         header("location: " . APP_DOMAIN);
         exit(0);
     }
 
+    /**
+     * actionStripeSync
+     *
+     * @return void
+     */
     public function actionStripeSync()
     {
         $stripe = new StripePad_Stripe();
@@ -350,7 +356,7 @@ class StripePad
     }
 
     /**
-     * account
+     * stripe_portal
      *
      * @return void
      */
@@ -358,39 +364,31 @@ class StripePad
     {
 
 
-        if (empty($_SESSION['user']['stripe_customer_id'])):
+        if (empty($_SESSION['user']['stripe_customer_id'])) {
 
             $_SESSION['errors'][] = "NOT_ENABLED, NO PURCHASE YET;";
             header("location: " . APP_DOMAIN . "/dashboard");
-
-        else:
-
-
-            require_once(CORE_PATH . 'vendor/stripe-php-7.77.0/init.php');
+        } else {
             \Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY);
-            $stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
-
+            //$stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
             try {
                 // Authenticate your user.
                 $session = \Stripe\BillingPortal\Session::create([
                     'customer' => $_SESSION['user']['stripe_customer_id'],
                     'return_url' => 'https://xxxxx',
                 ]);
+
+                // Redirect to stripe portal
                 header("Location: " . $session->url);
             } catch (Exception $e) {
                 $_SESSION['errors'][] = $e->getMessage();
                 header("location: " . APP_DOMAIN . "/dashboard");
             }
-
-
-        // Redirect to the customer portal.
-
-
-        endif;
+        }
     }
 
     /**
-     * stripe_create_session
+     * stripe_create_session // CHECKOUT!!
      *
      * @return void
      */
@@ -409,8 +407,8 @@ class StripePad
         $customer = isset($_POST['customer']) ? $_POST['customer'] : array();
         $product = isset($_POST['product']) ? $_POST['product'] : array();
 
-        $surl = 'https://';
-        $curl = 'https://';
+        $surl = APP_DOMAIN . 'welcome';
+        $curl = APP_DOMAIN . 'cancelled';
 
 
         if (isset($product['stripe_price_id'])) {
@@ -477,7 +475,7 @@ class StripePad
         $data['customer'] = null;
         $data['cart'] = null;
         $data['product'] = null;
-
+        $users = new usersModel();
         $products = new productsModel();
         //     $customers = new customersModel();
 
@@ -491,12 +489,12 @@ class StripePad
 
             $data['payment_type'] = 'free';
         } elseif (!empty($product) or !empty($client)) {
-            $data['cart'] = $products->getCart($product);
-            $data['customer'] = $customers->getByCustomersId($client);
-            $data['product'] = $products->getProduct($product);
+            $data['cart'] = $products->getById($product);
+            $data['customer'] = $users->find($client);
+            $data['product'] = $products->getById($product);
             $data['payment_type'] = 'catalog';
         } else {
-            $data['store'] = $products->getProducts();
+            $data['store'] = $products->getAll();
             $this->view->show('shop.php', $data, false);
             exit();
         }
@@ -528,7 +526,7 @@ class StripePad
 
     /* SuperAdmin magic functions: Forms creation and Rows Inserting and updating. One day someone will come.
     ---------------------------------------*/
-    
+
     public function superadmin()
     {
         $data = array(
