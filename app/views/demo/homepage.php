@@ -44,6 +44,61 @@
                 </div>
             </div>
         </div>
+        <div class="mx-auto max-w-7xl ">
+            <div class="mx-auto max-w-2xl lg:max-w-none text-lg">
+                <h2 class="text-2xl font-bold tracking-tight text-white  text-center mb-5">Demo Credentials</h2>
+                <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="flex flex-col bg-white/5 p-8">
+                        <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="https://demo.stripepad.com" class="text-sky-500 px-3 py-1 hover:bg-gray-900 hover:text-sky-500 rounded-full" target="_blank">
+
+                                demo.stripepad.com
+                            </a></dt>
+                        <dd class="order-first  font-semibold tracking-tight text-gray-400 text-center items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 mx-auto">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z"></path>
+                            </svg>
+
+
+                            <p class="mt-1 text-xl text-gray-300">Public access</p>
+                            The website with main offer, faq, pricing, etc.
+                        </dd>
+                    </div>
+                    <div class="flex flex-col bg-white/5 p-8">
+                        <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="https://demo.stripepad.com/login" class="text-sky-500 px-3 py-1 hover:bg-gray-900 hover:text-sky-500 rounded-full" target="_blank">
+
+                                demo.stripepad.com/login
+                            </a></dt>
+                        <dd class="order-first  font-semibold tracking-tight text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 mx-auto">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"></path>
+                            </svg>
+
+
+                            <p class="mt-1 text-xl text-gray-300">Registered users only</p>
+                            User: demo@stripepad.com <br> Password: demo
+                        </dd>
+                    </div>
+
+                    <div class="flex flex-col bg-white/5 p-8">
+                        <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="https://demo.stripepad.com/login" class="text-sky-500 px-3 py-1 hover:bg-gray-900 hover:text-sky-500 rounded-full" target="_blank">
+
+                                demo.stripepad.com/login
+                            </a></dt>
+                        <dd class="order-first  font-semibold tracking-tight text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 mx-auto">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33"></path>
+                            </svg>
+
+                            <p class="mt-1 text-xl text-gray-300">Superadmin</p>
+                            User: superadmin@stripepad.com <br> Password: superadmin
+                        </dd>
+                    </div>
+
+
+
+                </dl>
+            </div>
+        </div>
 
         <!-- Logo cloud -->
         <div class="mx-auto mt-8 max-w-7xl px-6 sm:mt-16 lg:px-8">
