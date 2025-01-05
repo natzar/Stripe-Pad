@@ -18,11 +18,13 @@ Website: [stripepad.com](https://stripepad.com)
 
 
 ## Demo
-Public
+The 3 main parts of every SaaS: A public page, a private area where only registered users and customers can login and a Superadmin private part to manage and maintain the SaaS.
+
+### Public
 ![Stripe Pad Homepage](https://demo.stripepad.com/cdn/demo/screenshot-demo-homepage.png)
-Private
+### Private
 ![App](https://demo.stripepad.com/cdn/demo/screenshot-private.png)
-Dashboard
+### Dashboard
 ![Stripe Pad Dashboard](https://demo.stripepad.com/cdn/demo/screenshot-dashboard.png)
 
 
