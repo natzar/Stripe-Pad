@@ -177,7 +177,7 @@
         <h3 class="text-sm font-semibold leading-6 text-white">Subscribe to our newsletter</h3>
         <p class="mt-2 text-sm leading-6 text-gray-400">The latest news, about your amazing SaaS sent to your inbox weekly.</p>
       </div>
-      <form class="mt-6 sm:flex sm:max-w-md lg:mt-0" action="actionSignup" method="POST">
+      <form class="mt-6 sm:flex sm:max-w-md lg:mt-0" action="<?= APP_DOMAIN ?>submit_newsletter_signup" method="POST">
         <label for="email-address" class="sr-only">Email address</label>
         <input type="email" name="email" id="email" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6" placeholder="Enter your email">
         <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
@@ -204,39 +204,22 @@
 
   $ = $ || jQuery;
 
+  var active_link_class = "text-sky-500 font-bold";
+
   $(document).ready(function() {
     console.log("StripePad! Loaded...");
     // Add style to the link hrefing the current page
     var uri = unescape(document.location.href);
     uri = uri.substr(uri.indexOf(base_url) + base_url.length);
+    $("nav:first-child a[href='" + uri + "']").each(function() {
+      $(this).addClass(active_link_class);
+    });
 
-    if (uri == "/" || uri == "") {
-      var obj = $("nav:first-child a[href='/dashboard']");
-      obj.addClass("border-indigo-500 border-b-2");
-
-    } else {
-      var obj = $("nav:first-child a[href='" + uri + "']");
-      var aux = uri.split("/");
-      uri = aux[0] + "/" + aux[1];
-      obj.each(function() {
-        if ($(this).parent().get(0).tagName == 'LI') {
-          $(this).parent().addClass("border-indigo-500 border-b-2");
-        } else {
-          $(this).addClass("border-indigo-500 border-b-2");
-        }
-      });
-    }
 
     // Toggle Menu Mobile
     $('#button_open_mobile_menu').click(function() {
-      $('#mobile_menu').removeClass("hidden");
+      $('#mobile_menu').toggleClass("hidden");
     })
-
-    $('#button_close_mobile_menu').click(function() {
-      $('#mobile_menu').addClass("hidden");
-    })
-
-
 
   });
 

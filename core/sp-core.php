@@ -523,6 +523,26 @@ class StripePad
         $this->view->show('superadmin/system.php', $data);
     }
 
+    /* Modules */
+
+    // Method to handle form submission
+    public function submit_newsletter_signup()
+    {
+        $email = $_POST['email'] ?? '';
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            // Handle invalid email
+            echo "Please enter a valid email address.";
+            return;
+        }
+
+        // Assuming NewsletterModel extends modelBase and handles DB
+        $newsletterModel = new NewsletterModel();
+        $newsletterModel->addSubscriber($email);
+
+        $_SESSION['alerts'][] = "Thank you for subscribing!";
+        header("location: " . $_SERVER['HTTP_REFERER']);
+    }
+
 
     /* SuperAdmin magic functions: Forms creation and Rows Inserting and updating. One day someone will come.
     ---------------------------------------*/
