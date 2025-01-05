@@ -12,7 +12,7 @@
  * 
  */
 
-function friendlyUrl($input)
+function friendly_slug($input)
 {
     $words_array = array('a', 'an', 'the', 'and', 'or', 'but', 'so', 'on', 'in', 'out', 'by', 'as', 'at', 'of');
     $replace = '-';
@@ -110,7 +110,8 @@ function replaceTemplateValues($body, $p)
 }
 
 
-function get_masked_ip() {
+function get_masked_ip()
+{
     $ip = $_SERVER['REMOTE_ADDR'];
     $parts = explode('.', $ip);
 
