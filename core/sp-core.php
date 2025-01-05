@@ -549,11 +549,15 @@ class StripePad
     }
 
     // App.php
+    public function settings()
+    {
+        $this->view->show('user/settings.php', []);
+    }
 
     // Method to display the maintenance page
     public function maintenance()
     {
-        $this->view->show('common/maintenance', []);
+        $this->view->show('common/maintenance.php', []);
     }
 
     // Check if maintenance mode is active by checking the file existence
