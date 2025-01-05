@@ -13,12 +13,22 @@
 </div>
 </div>
 
-<? include dirname(__FILE__)."/../../common/modal.php"; ?>
+<? include dirname(__FILE__) . "/../../common/modal.php"; ?>
 
 <!-- PHP to JS -->
 <script>
   var isAuthorized = <?= $isAuthenticated ? 1 : 0 ?>;
   var base_url = '<?= APP_BASE_URL ?>';
+  $(document).ready(function() {
+    console.log("StripePad! Loaded...");
+    // Add style to the link hrefing the current page
+    var uri = unescape(document.location.href);
+    uri = uri.substr(uri.indexOf(base_url) + base_url.length);
+    $("nav:first-child a[href='" + uri + "']").each(function() {
+      $(this).addClass(active_link_class);
+    });
+
+  });
   <?= $HOOK_JS ?>
 </script>
 
