@@ -53,7 +53,7 @@ class blogModel extends ModelBase
 
             $body = $r['choices'][0]['message']['content'];
             $slug = friendly_slug($title);
-            $q = $n->db->prepare("INSERT INTO blog (title,slug,body) VALUES (:t,:s,:b)");
+            $q = $this->db->prepare("INSERT INTO blog (title,slug,body) VALUES (:t,:s,:b)");
             $q->bindParam(":t", $title);
             $q->bindParam(":b", $body);
             $q->bindParam(":s", $slug);
