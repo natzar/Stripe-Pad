@@ -48,6 +48,11 @@ class StripePad
         if (!isset($_SESSION['errors'])) $_SESSION['errors'] = array();
         if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = array();
 
+        # Maintenance Mode
+        if ($this->is_maintenance_enabled() && $_SERVER['REQUEST_URI'] != "/maintenance") {
+            header("Location: /maintenance");
+            exit;
+        }
         # Block aggresive bots
         if (BOT_BLOCKER && $t = requestBlocker()) {
             $error_msg = "Possible BOT detected - " . implode("<br>", $t);
@@ -542,6 +547,24 @@ class StripePad
         $_SESSION['alerts'][] = "Thank you for subscribing!";
         header("location: " . $_SERVER['HTTP_REFERER']);
     }
+
+    // App.php
+
+    // Method to display the maintenance page
+    public function maintenance()
+    {
+        $this->view->show('common/maintenance', []);
+    }
+
+    // Check if maintenance mode is active by checking the file existence
+    public function is_maintenance_enabled()
+    {
+        return file_exists(ROOT_PATH . '.maintenance');
+    }
+
+
+
+
 
 
     /* SuperAdmin magic functions: Forms creation and Rows Inserting and updating. One day someone will come.
