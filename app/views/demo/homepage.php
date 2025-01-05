@@ -30,11 +30,11 @@
                             </span>
                         </a>
                     </div>
-                    <h1 class="mt-10 text-pretty text-5xl font-semibold tracking-tight text-white sm:text-7xl">Deploy to the cloud with confidence</h1>
-                    <p class="mt-8 text-pretty text-lg font-medium text-gray-400 sm:text-xl/8">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.</p>
+                    <h1 class="mt-10 text-pretty text-5xl font-semibold tracking-tight text-white sm:text-7xl">Your Awesomic SaaS based on Free Software & Stripe!</h1>
+                    <p class="mt-8 text-pretty text-lg font-medium text-gray-400 sm:text-xl/8">Everything here is just a demo and fake content to demonstrate stripepad.com features.</p>
                     <div class="mt-10 flex items-center gap-x-6">
                         <a href="<?= APP_DOMAIN ?>signup" class="rounded-md bg-sky-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400">Get started</a>
-                        <a href="#pricing" class="text-sm/6 font-semibold text-white">Learn more <span aria-hidden="true">→</span></a>
+                        <a href="https://stripepad.com" class="text-sm/6 font-semibold text-white">Learn more about Stripe Pad <span aria-hidden="true">→</span></a>
                     </div>
                 </div>
                 <div class="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
