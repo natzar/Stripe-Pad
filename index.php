@@ -31,7 +31,7 @@
  */
 
 # Load Environment
-include_once  dirname(__FILE__) . '/sp-load.php'; // 
+include_once  dirname(__FILE__) . '/core/sp-load.php'; // 
 include_once CORE_PATH . 'sp-core.php';
 
 # Load Custom App
@@ -44,8 +44,10 @@ if (!$actionName) {
     $actionName = 'index'; // Default action
 }
 
+# Include app/App.php that extends core/sp-core.php
 $App = new App();
 
+# Url = Method
 if (!is_callable(array('App', $actionName))) {
     $App->view->error404();
 } else {
