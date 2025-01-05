@@ -1,5 +1,5 @@
 <!-- Uncomment for super top header banner -->
-<div class="flex items-center gap-x-6 bg-sky-800 px-6 py-2.5 sm:px-3.5 hidden  sm:flex sm:before:flex-1">
+<div class="flex items-center gap-x-6 bg-sky-600 px-6 py-2.5 sm:px-3.5 hidden  sm:flex sm:before:flex-1">
   <p class="text-sm leading-6 text-white">
     <a href="#">
       <strong class="font-semibold">Welcome!</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
