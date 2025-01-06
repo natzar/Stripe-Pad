@@ -2,7 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 
-class usersModelTest extends TestCase
+require_once dirname(__FILE__) . "/../sp-load.php";
+class TestUserModel extends TestCase
 {
     protected $usersModel;
     protected $db;
@@ -11,7 +12,7 @@ class usersModelTest extends TestCase
     {
         // Mock the database or use a testing database
         $this->db = $this->createMock(PDO::class);
-        $this->usersModel = new usersModel($this->db);
+        $this->usersModel = new usersModel();
     }
 
     public function testCreateUser()

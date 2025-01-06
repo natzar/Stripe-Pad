@@ -38,7 +38,7 @@ if (file_exists(dirname(__FILE__) . "/helpers.php")) include_once(dirname(__FILE
  * Your Custom App
  * Default Routes for your SaaS
  */
-class App extends StripePad
+class App extends StripePadController
 {
 
 	public function __construct()

@@ -12,6 +12,8 @@
  * 
  */
 
+use StripePad\Exceptions;
+
 # Include configuration file
 if (!file_exists(dirname(__FILE__) . '/../sp-config.php')) {
     header("location: install");
@@ -49,7 +51,7 @@ if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()) {
 if (is_file(dirname(__FILE__) . "/../vendor/autoload.php")) require(dirname(__FILE__) . "/../vendor/autoload.php");
 
 # Include base classes
-include_once CORE_PATH . "sp-errors.php";
+include_once CORE_PATH . "Exceptions/sp-exceptions.php";
 include_once CORE_PATH . "sp-helpers.php";
 include_once CORE_PATH . "Classes/sp-model-base.php";
 include_once CORE_PATH . 'Classes/sp-spdo.php';
@@ -84,9 +86,11 @@ register_shutdown_function(function () {
         $errstr  = $error["message"];
 
         $error_msg = "[FATAL ERROR] " . date("d/m/Y H:i:s") . "<br>" . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
-        @file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND);
-
         include_once ROOT_PATH . "app/views/errors/error.php";
+        if (!file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND)) {
+            throw new StripePad\Exceptions\FileSystemException('No permissions on sp-errors.log');
+        }
+
         exit();  // Ensure script termination after a fatal error
     } else {
         flush();  // This is applicable if output buffering is turned off
@@ -98,8 +102,9 @@ register_shutdown_function(function () {
 # Capture any error to file
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
     $error_msg = date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
-    @file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND);
+
     if (DEBUG_MODE) {
-        throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
+        //  throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
     }
+    @file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND);
 });

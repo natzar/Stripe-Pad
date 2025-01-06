@@ -255,9 +255,9 @@
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <div class="mx-auto max-w-4xl text-center">
                     <h2 class="text-base/7 font-semibold text-sky-400">Pricing</h2>
-                    <p class="mt-2 text-balance text-5xl font-semibold tracking-tight text-white sm:text-6xl">Pricing that grows with you</p>
+                    <p class="mt-2 text-balance text-5xl font-semibold tracking-tight text-white sm:text-6xl">Fake Pricing</p>
                 </div>
-                <p class="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-gray-400 sm:text-xl/8">Choose an affordable plan that’s packed with the best features for engaging your audience, creating customer loyalty, and driving sales.</p>
+                <p class="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-gray-400 sm:text-xl/8">Show here the different plans of your service.</p>
                 <div class="mt-16 flex justify-center">
                     <fieldset aria-label="Payment frequency">
                         <div class="grid grid-cols-2 gap-x-1 rounded-full bg-white/5 p-1 text-center text-xs/5 font-semibold text-white">

@@ -83,7 +83,7 @@ class View
 
 		echo '<!-- Powered by StripePad {STRIPE_PAD_VERSION}-->';
 
-		$this->log->push(str_replace(APP_DOMAIN, '/', getCurrentUrl()), 'pageview',get_masked_ip());
+		$this->log->push(str_replace(APP_DOMAIN, '/', getCurrentUrl()), 'pageview', get_masked_ip());
 		if (isset($_SESSION['errors'])) unset($_SESSION['errors']);
 		if (isset($_SESSION['alerts'])) unset($_SESSION['alerts']);
 	}

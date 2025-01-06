@@ -27,7 +27,7 @@
 use Stripe\Invoice;
 use Stripe\StripeClient;
 
-class StripePad_Stripe extends ModelBase
+class Stripe extends ModelBase
 {
     var $log;
     var $stripe;
@@ -258,15 +258,15 @@ class StripePad_Stripe extends ModelBase
 
     public function syncStripeSubscriptions()
     {
-        
+
         $subscriptions = $this->stripe->subscriptions->all(['limit' => 100]);
-        $_SESSION['alerts'][] = "Syncing ". count($subscriptions->data)." subscriptions";
+        $_SESSION['alerts'][] = "Syncing " . count($subscriptions->data) . " subscriptions";
         foreach ($subscriptions->autoPagingIterator() as $subscription) {
             // Get the user ID from the users table based on the Stripe customer ID
             $userStmt = $this->db->prepare("SELECT usersId FROM users WHERE stripe_customer_id = ?");
             $userStmt->execute([$subscription->customer]);
             $user = $userStmt->fetch();
-    
+
             if ($user) {
                 $stmt = $this->db->prepare("REPLACE INTO subscriptions (usersId, productsId, active, start_date, end_date, created, updated) VALUES (?, ?, ?, ?, ?, NOW(), NOW())");
                 $stmt->execute([
@@ -284,13 +284,13 @@ class StripePad_Stripe extends ModelBase
         try {
             $customers = $this->stripe->customers->all(['limit' => 100]);
             $_SESSION['alerts'][] = "Syncing " . count($customers->data) . " customers";
-    
+
             foreach ($customers->autoPagingIterator() as $customer) {
                 // Check if necessary fields are present
                 $email = $customer->email ?? 'default@email.com'; // Provide a default email or handle it differently
                 $name = $customer->name ?? 'No Name Provided';
                 $customerId = $customer->id; // id should always be present
-    
+
                 // Prepare SQL statement to upsert customer data into the users table
                 $stmt = $this->db->prepare("
                     INSERT INTO users (email, name, stripe_customer_id, created, updated)
@@ -300,7 +300,7 @@ class StripePad_Stripe extends ModelBase
                         stripe_customer_id = VALUES(stripe_customer_id),
                         updated = NOW()
                 ");
-    
+
                 // Execute the prepared statement
                 $stmt->execute([
                     ':email' => $email,
@@ -313,38 +313,38 @@ class StripePad_Stripe extends ModelBase
             $_SESSION['alerts'][] = "Error syncing customers: " . $e->getMessage();
         }
     }
-    
 
-public function syncStripeInvoices()
-{
-    
-    $invoices = $this->stripe->invoices->all(['limit' => 100]);
-    $_SESSION['alerts'][] = "Syncing ". count($invoices->data)." invoices";
-    foreach ($invoices->autoPagingIterator() as $invoice) {
-        // Get the user ID from the users table based on the Stripe customer ID
-        $userStmt = $this->db->prepare("SELECT usersId FROM users WHERE stripe_customer_id = ?");
-        $userStmt->execute([$invoice->customer]);
-        $user = $userStmt->fetch();
 
-        if ($user) {
-            $stmt = $this->db->prepare("REPLACE INTO invoices (invoicesId, stripe_payment_id, usersId, subtotal, vat, total, created, updated) VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())");
-            $stmt->execute([
-                $invoice->id,
-                $invoice->payment_intent,
-                $user['usersId'], // Use the local user ID
-                $invoice->subtotal,
-                $invoice->tax,
-                $invoice->total
-            ]);
+    public function syncStripeInvoices()
+    {
+
+        $invoices = $this->stripe->invoices->all(['limit' => 100]);
+        $_SESSION['alerts'][] = "Syncing " . count($invoices->data) . " invoices";
+        foreach ($invoices->autoPagingIterator() as $invoice) {
+            // Get the user ID from the users table based on the Stripe customer ID
+            $userStmt = $this->db->prepare("SELECT usersId FROM users WHERE stripe_customer_id = ?");
+            $userStmt->execute([$invoice->customer]);
+            $user = $userStmt->fetch();
+
+            if ($user) {
+                $stmt = $this->db->prepare("REPLACE INTO invoices (invoicesId, stripe_payment_id, usersId, subtotal, vat, total, created, updated) VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())");
+                $stmt->execute([
+                    $invoice->id,
+                    $invoice->payment_intent,
+                    $user['usersId'], // Use the local user ID
+                    $invoice->subtotal,
+                    $invoice->tax,
+                    $invoice->total
+                ]);
+            }
         }
     }
-}
 
     public function syncStripeProducts()
     {
-        
+
         $products = $this->stripe->products->all(['limit' => 100]);
-        $_SESSION['alerts'][] = "Syncing ". count($products->data)." products";
+        $_SESSION['alerts'][] = "Syncing " . count($products->data) . " products";
         foreach ($products->autoPagingIterator() as $product) {
             $stmt = $this->db->prepare("REPLACE INTO products (stripe_product_id, name, description, visible, created, updated) VALUES (?, ?, ?, ?, NOW(), NOW())");
             $stmt->execute([

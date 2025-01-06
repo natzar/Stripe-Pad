@@ -17,7 +17,7 @@ class SPDO extends PDO
 			$this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 		} catch (PDOException $e) {
 
-			echo ("Error: " . $e->getMessage());
+			throw new \StripePad\Exceptions\DatabaseException($e->getMessage());
 		}
 	}
 

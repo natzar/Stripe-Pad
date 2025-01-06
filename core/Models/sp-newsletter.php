@@ -7,14 +7,7 @@ class newsletterModel extends ModelBase
     {
         $sql = "INSERT INTO subscribers (email) VALUES (?)";
         $this->db->prepare($sql)->execute([$email]);
-    }
 
-    public function install()
-    {
-        // CREATE TABLE subscribers (
-        //     id INT AUTO_INCREMENT PRIMARY KEY,
-        //     email VARCHAR(255) UNIQUE NOT NULL
-        // );
-
+        return true;
     }
 }

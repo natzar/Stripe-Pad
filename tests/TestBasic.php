@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 //require_once dirname(__FILE__) . "/../sp-load.php";
 
-class BasticTest extends TestCase
+class TestBasic extends TestCase
 {
     public function testCMS()
     {

@@ -55,7 +55,7 @@ class log extends ModelBase
 	 */
 	public function push($label, $tag = "system", $body = "", $usersId = 0)
 	{
-		$hash = $tag . "-"  . fingerprint($label."-".$body);
+		$hash = $tag . "-"  . fingerprint($label . "-" . $body);
 
 		$q  = $this->db->prepare("INSERT INTO logs (hash,month,week,usersId,label,tag,body) VALUES (:hash,extract(YEAR_MONTH FROM CURDATE()),YEARWEEK(CURDATE()),:uid,:label,:tag,:body) ON DUPLICATE KEY UPDATE    
 total =total + 1");
@@ -165,14 +165,15 @@ total =total + 1");
 		return $q->fetchAll();
 	}
 
-	public function get_online_visitors_count(){
-		
+	public function get_online_visitors_count()
+	{
+
 		$q = $this->db->prepare("SELECT COUNT(DISTINCT body) AS unique_pageviews
 			FROM logs
 			WHERE tag = 'pageview'
-  			AND updated >= NOW() - INTERVAL 10 MINUTE;");		
+  			AND updated >= NOW() - INTERVAL 10 MINUTE;");
 		$q->execute();
 		$r = $q->fetch();
-		return $r['unique_pageviews'];	
+		return $r['unique_pageviews'];
 	}
 }

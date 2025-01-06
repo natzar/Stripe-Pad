@@ -33,13 +33,15 @@
 /**
  * StripePad
  */
-class StripePad
+
+
+
+class StripePadController
 {
     var $params;
     var $view;
-    var $isAuthenticated;
-    var $isSuperadmin;
-    var $version = '0.1';
+    var $isAuthenticated = false;
+    var $isSuperadmin = false;
     var $log;
 
     public function __construct()
@@ -63,6 +65,7 @@ class StripePad
         $this->params = get_parameters();
         $this->view = new View();
         $this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();
+        $this->isSuperadmin = isset($_SESSION['user']) and $_SESSION['user']['group'] == "superadmin";
     }
 
     # Default app home page
@@ -200,7 +203,7 @@ class StripePad
 
         $users = new usersModel();
         $users->sendResetPassword($email);
-        $_SESSION['alerts'][] = "New password sent to your inbox";
+        $_SESSION['alerts'][] = _("New password sent to your inbox");
         header("location: " . APP_DOMAIN . "login");
     }
 
@@ -255,14 +258,8 @@ class StripePad
         $emailValidator = new emailValidator();
 
         // verify valid email
-        if (!$emailValidator->isValid($this->params['email'])) {
-            $_SESSION['errors'][] = ERR_EMAIL_NOT_VALID;
-            header("location: " . APP_DOMAIN . "/signup");
-            return;
-        }
-
-        if (empty($this->params['email'])) {
-            $_SESSION['errors'][] = ERR_EMAIL_NOT_BLANK;
+        if (empty($this->params['email']) or !$emailValidator->isValid($this->params['email'])) {
+            $_SESSION['errors'][] = _('Email not valid');
             header("location: " . APP_DOMAIN . "/signup");
             return;
         }
@@ -349,7 +346,7 @@ class StripePad
      */
     public function actionStripeSync()
     {
-        $stripe = new StripePad_Stripe();
+        $stripe = new Stripe();
         $stripe->syncStripeCustomers();
         $stripe->syncStripeSubscriptions();
         $stripe->syncStripeInvoices();
@@ -507,16 +504,7 @@ class StripePad
         $this->view->show('checkout.php', $data, false);
     }
 
-    public function products()
-    {
-        assert($_SESSION['user']['group'] == 'superadmin');
-        $products = new productsModel();
 
-        $data = [
-            'products' => $products->getAll(),
-        ];
-        $this->view->show('staff/products.php', $data);
-    }
     public function reports()
     {
         $data = array();
@@ -576,6 +564,9 @@ class StripePad
 
     public function superadmin()
     {
+        if (!$this->isSuperadmin) {
+            throw new StripePad\Exceptions\PermissionsException('Not superadmin');
+        }
         $data = array(
             "log" => $this->log->getAll(),
             "online_visitors" => $this->log->get_online_visitors_count()
@@ -590,7 +581,10 @@ class StripePad
      */
     public function table()
     {
-        //  assert($this->isSuperadmin == true);        
+        if (!$this->isSuperadmin) {
+            throw new StripePad\Exceptions\PermissionsException('Not superadmin');
+        }
+
         $items = new Orm();
 
         $table = $this->params['m'];
@@ -624,6 +618,10 @@ class StripePad
 
     public function form()
     {
+        if (!$this->isSuperadmin) {
+            throw new StripePad\Exceptions\PermissionsException('Not superadmin');
+        }
+
         $table = isset($this->params['m']) ? $this->params['m'] : -1;
         $rid = isset($this->params['a']) ? $this->params['a'] : -1;
         $op = isset($this->params['i']) ? $this->params['i'] : '';
@@ -640,6 +638,9 @@ class StripePad
      */
     public function update()
     {
+        if (!$this->isSuperadmin) {
+            throw new StripePad\Exceptions\PermissionsException('Not superadmin');
+        }
         $orm = new Orm();
         $rid = $this->params['rid'];
         $table = $this->params['table'];

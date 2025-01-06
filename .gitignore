@@ -4,3 +4,4 @@ node_modules/
 *.log
 app/build/node_modules/
 sp-config.php
+sp-errors.log

@@ -40,11 +40,11 @@ class subscriptionsModel extends ModelBase
     $this->log = log::singleton();
   }
 
-  public function getByUsersId($customersId)
+  public function getByUsersId($usersId)
   {
 
-    $q  = $this->db->prepare("SELECT * FROM subscriptions JOIN products on (subscriptions.productsId = products.productsId) where customersId = :cid order by subscriptions.created DESC");
-    $q->bindParam(":cid", $customersId);
+    $q  = $this->db->prepare("SELECT * FROM subscriptions JOIN products on (subscriptions.productsId = products.productsId) where usersId = :cid order by subscriptions.created DESC");
+    $q->bindParam(":cid", $usersId);
     $q->execute();
     return $q->fetchAll();
   }
@@ -52,13 +52,16 @@ class subscriptionsModel extends ModelBase
   public function create($data)
   {
 
-    $q = $this->db->prepare("INSERT INTO subscriptions (customersId,productsId) VALUES (:cid,:pid)");
-    $q->bindParam(":cid", $data['customersId']);
+    $q = $this->db->prepare("INSERT INTO subscriptions (usersId,productsId) VALUES (:cid,:pid)");
+    $q->bindParam(":cid", $data['usersId']);
     $q->bindParam(":pid", $data['productsId']);
     #  $q->bindParam(":invid", $data['invoicesId']);
 
     $q->execute();
-
+    $data = array();
+    $subject = "Welcome on board!";
+    $mails->sendTemplate('subscription_created', $data, $this->user['email'], $subject);
+    $this->log->push();
     return $this->getLastId();
   }
 
