@@ -79,45 +79,47 @@ total =total + 1");
 		return $consulta->fetchAll();
 	}
 
-	public function getLogsByTag($usersId, $tag, $limit = 20)
+	public function getLogsByTag($tag, $usersId = -1, $limit = 20)
 	{
-		$consulta = $this->db->prepare("SELECT * FROM logs where tag=:tag and usersId = :usersId order by updated DESC limit :limit ");
-		$consulta->bindParam(":usersId", $usersId);
+		$consulta = null;
+		if ($usersId > -1) {
+			$consulta = $this->db->prepare("SELECT * FROM logs where tag=:tag and usersId = :usersId order by updated DESC limit :limit ");
+			$consulta->bindParam(":usersId", $usersId);
+		} else {
+			$consulta = $this->db->prepare("SELECT * FROM logs where tag=:tag  order by updated DESC limit :limit ");
+		}
 		$consulta->bindParam(":tag", $tag);
 		$consulta->bindParam(":limit", $limit);
 		$consulta->execute();
 		return $consulta->fetchAll();
 	}
 
-	public function getThisWeek()
-	{
-		$c = $this->db->prepare("SELECT q,v FROM datatracker where datatracker.week = YEARWEEK(CURDATE())");
-		$c->execute();
-		return $this->transform($c->fetchAll());
-	}
 
-	private function transform($origin)
-	{
-
-		$result = array();
-		foreach ($origin as $o) {
-			$result[$o['q']] = $o['v'];
-		}
-		return $result;
-	}
-
-	public function get($key, $dateA = null, $dateB = null)
+	/**
+	 * get_counters
+	 *
+	 * @param  mixed $period
+	 * @param  mixed $dateA
+	 * @param  mixed $dateB
+	 * @return void
+	 */
+	public function get_counters($period = null, $dateA = null, $dateB = null)
 	{
 		if (is_null($dateA)) $dateA = Date("Y-m-d");
 		if (is_null($dateB)) $dateB = Date("Y-m-d");
-		$consulta = $this->db->prepare("SELECT * FROM datatracker where q = :q and created BETWEEN :a AND :b");
-		$consulta->bindParam(":q", $key);
-		$consulta->bindParam(":a", $dateA);
-		$consulta->bindParam(":b", $dateB);
+		$consulta = $this->db->prepare("SELECT distinct label,sum(total) as total FROM logs where tag='counter' "); // and created BETWEEN :a AND :b
+		//$consulta->bindParam(":q", $key);
+		//$consulta->bindParam(":a", $dateA);
+		//$consulta->bindParam(":b", $dateB);
 		$consulta->execute();
-		$aux2 = $consulta->fetchAll();
-
-		return $aux2;
+		$result = array();
+		$origin = $consulta->fetchAll();
+		return $origin;
+		// foreach ($origin as $o) {
+		// 	$result[$o['q']] = $o['v'];
+		// }
+		// return $result;
+		// return $aux2;
 	}
 	public function calculate_total($key, $dateA = null, $dateB = null)
 	{
@@ -134,37 +136,11 @@ total =total + 1");
 		return $aux2['total'];
 	}
 
-
-	// COUNTER
-
-	public function counters_findIdByLabel($label)
-	{
-		$label = trim($label);
-
-		if (empty($label)) return -1;
-
-		$q = $this->db->prepare("SELECT countersId FROM counters where label = :label and usersId = :usersId limit 1");
-		$q->bindParam(":label", $label);
-		$q->bindParam(":usersId", $_SESSION['user']['usersId']);
-		$q->execute();
-		$counter = $q->fetch();
-
-		if (isset($counter['countersId'])) {
-			return $counter['countersId'];
-		}
-
-		return -1;
-	}
-
-	public function counters_all()
-	{
-		$q = $this->db->prepare("SELECT * FROM log where usersId = :id");
-		$q->bindParam(":id", $_SESSION['user']['usersId']);
-		$q->execute();
-
-		return $q->fetchAll();
-	}
-
+	/**
+	 * get_online_visitors_count
+	 *
+	 * @return int
+	 */
 	public function get_online_visitors_count()
 	{
 

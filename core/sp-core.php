@@ -569,6 +569,7 @@ class StripePadController
         }
         $data = array(
             "log" => $this->log->getAll(),
+            "counters" => $this->log->get_counters(),
             "online_visitors" => $this->log->get_online_visitors_count()
         );
         $this->view->show('superadmin/dashboard.php', $data);
