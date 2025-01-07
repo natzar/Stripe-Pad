@@ -154,15 +154,6 @@
                                         Invoices
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="<?= APP_DOMAIN ?>reports" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-600 hover:bg-gray-50 hover:text-sky-600">
-                                        <svg class="size-6 shrink-0 text-gray-600 group-hover:text-sky-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
-                                        </svg>
-                                        Reports
-                                    </a>
-                                </li>
 
                                 <li>
                                     <a href="<?= APP_DOMAIN ?>table/crons" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-600 hover:bg-gray-50 hover:text-sky-600">
