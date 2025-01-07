@@ -79,30 +79,25 @@ class StripeWebhook
 	private function process_event()
 	{
 
-		//$invoices = new invoicesModel();		
+		$invoices = new invoicesModel();
 		$mails = new mailsModel();
+		$subscriptions = new subscriptionsModel();
 
 		echo $this->event->type . "\n";
 		switch ($this->event->type):
-			case 'customer.subscription.updated':
-				/* */
-				// Subscription->update
+			case 'customer.subscription.updated':				
+				$subscriptions->update($this->user);				
 				break;
 			case 'customer.subscription.deleted':
 				/* */
+				$subscriptions->archive($this->user);	
 				// Subscription->delete
 				break;
 			case 'customer.subscription.created':
-// Subscription->create
-				// $subject = "[INFO] Servicio Contratado Php Ninja";
-				// $data = array(
-				// 	"persona_contacto" => $this->customer['persona_contacto'],
-				// 	"user" => $this->customer['email'],
-				// );
+				$subscriptions->create($this->user);	
+				
+				
 
-				// # TO-DO: Manntenimiento o Hosting ?
-
-				// $mails->sendTemplate('subscription_created', $data, $this->customer['email'], $subject);
 				// $mails->internal("Nuevo Plan! y nuevo usuario en area de clientes", $this->customer['email']);
 				// //$this->datatracker->push("areaclientes-send-bienvenida-plan");
 				break;
