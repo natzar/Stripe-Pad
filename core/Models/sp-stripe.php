@@ -1,4 +1,4 @@
-<?
+<?php
 
 /* 
 	Stripe Pad - PHP SaaS boilerplate
@@ -24,7 +24,7 @@
 	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
 */
 
-use Stripe\Invoice;
+
 use Stripe\StripeClient;
 
 class Stripe extends ModelBase

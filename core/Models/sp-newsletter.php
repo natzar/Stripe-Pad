@@ -1,4 +1,4 @@
-<?
+<?php
 // NewsletterModel.php
 
 class newsletterModel extends ModelBase
