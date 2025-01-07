@@ -86,9 +86,10 @@ register_shutdown_function(function () {
         $errstr  = $error["message"];
 
         $error_msg = "[FATAL ERROR] " . date("d/m/Y H:i:s") . "<br>" . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
+        $_SESSION['errors'][] =  $error_msg;
         include_once ROOT_PATH . "app/views/errors/error.php";
-        if (!file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND)) {
-            throw new StripePad\Exceptions\FileSystemException('No permissions on sp-errors.log');
+        if (!@file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND)) {
+            $_SESSION['errors'][] = _('No permissions on sp-errors.log');
         }
 
         exit();  // Ensure script termination after a fatal error
@@ -101,10 +102,12 @@ register_shutdown_function(function () {
 
 # Capture any error to file
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-    $error_msg = date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
 
-    if (DEBUG_MODE) {
-        //  throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
+    $msg = date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
+    //  throw new StripePad\Exceptions\StripePadException($error_msg);
+    $_SESSION['errors'][] =  $msg;
+    include_once ROOT_PATH . "app/views/errors/error.php";
+    if (!@file_put_contents(ROOT_PATH . "sp-errors.log", $msg . PHP_EOL, FILE_APPEND)) {
+        $_SESSION['errors'][] = _('No permissions on sp-errors.log');
     }
-    @file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND);
 });

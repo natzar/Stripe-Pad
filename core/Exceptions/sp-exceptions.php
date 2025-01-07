@@ -12,12 +12,11 @@ class StripePadException extends Exception
     {
         parent::__construct($message, $code, $previous);
         $_SESSION['errors'][] = $message;
+        include_once ROOT_PATH . "app/views/errors/error.php";
     }
 }
 
 class PermissionsException extends StripePadException {}
 class DatabaseException extends StripePadException {}
-
 class FileSystemException extends StripePadException {}
-
 class ValidationException extends StripePadException {}

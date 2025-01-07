@@ -29,7 +29,7 @@
         <p>[Stripe Pad] <span class="text-blue-600">An error occurred</span></p>
         <hr>
 
-        <p class="text-gray-800"><?= nl2br($error_msg) ?> </p>
+        <p class="text-gray-800"><?= nl2br(implode("<hr>\n", $_SESSION['errors'])) ?> </p>
         <hr>
         <br>
 
