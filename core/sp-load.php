@@ -106,7 +106,7 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
     $msg = date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
     //  throw new StripePad\Exceptions\StripePadException($error_msg);
     $_SESSION['errors'][] =  $msg;
-    include_once ROOT_PATH . "app/views/errors/error.php";
+    // include_once ROOT_PATH . "app/views/errors/error.php";
     if (!@file_put_contents(ROOT_PATH . "sp-errors.log", $msg . PHP_EOL, FILE_APPEND)) {
         $_SESSION['errors'][] = _('No permissions on sp-errors.log');
     }
