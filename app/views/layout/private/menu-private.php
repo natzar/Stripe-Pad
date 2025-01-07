@@ -192,7 +192,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?= APP_DOMAIN ?>comingsoon" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-600 hover:bg-gray-50 hover:text-sky-600">
+                                    <a href="<?= APP_DOMAIN ?>table/subscribers" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-600 hover:bg-gray-50 hover:text-sky-600">
 
 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -200,7 +200,7 @@
                                         </svg>
 
 
-                                        Newsletter
+                                        Subscribers (email)
                                     </a>
                                 </li>
 
