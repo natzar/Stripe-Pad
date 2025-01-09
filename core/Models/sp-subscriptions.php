@@ -40,6 +40,12 @@ class subscriptionsModel extends ModelBase
     $this->log = log::singleton();
   }
 
+  /**
+   * getByUsersId
+   *
+   * @param  mixed $usersId
+   * @return void
+   */
   public function getByUsersId($usersId)
   {
 
@@ -49,24 +55,47 @@ class subscriptionsModel extends ModelBase
     return $q->fetchAll();
   }
 
-  public function create($data)
+  /**
+   * create
+   *
+   * @param  mixed $usersId
+   * @param  mixed $productsId
+   * @return void
+   */
+  public function create($usersId, $productsId)
   {
 
+    $this->log->push("New subscription: " . $usersId . " - " . $productsId, 'system');
     $q = $this->db->prepare("INSERT INTO subscriptions (usersId,productsId) VALUES (:cid,:pid)");
-    $q->bindParam(":cid", $data['usersId']);
-    $q->bindParam(":pid", $data['productsId']);
+    $q->bindParam(":cid", $usersId);
+    $q->bindParam(":pid", $productsId);
     #  $q->bindParam(":invid", $data['invoicesId']);
 
     $q->execute();
     $data = array();
+
+
+
+    // $mails->internal("Nuevo Plan! y nuevo usuario en area de clientes", $this->customer['email']);
+    // //$this->datatracker->push("areaclientes-send-bienvenida-plan");
     $subject = "Welcome on board!";
     $mails->sendTemplate('subscription_created', $data, $this->user['email'], $subject);
     $this->log->push();
     return $this->getLastId();
   }
 
-  public function activate($subscriptionsId) {}
-  public function cancel($subscriptionsId) {}
+  /**
+   * @param mixed $subscriptionsId
+   * 
+   * @return [type]
+   */
+  public function archive($subscriptionsId) {}
 
-  public function renew($subscriptionsId) {}
+  /**
+   * update
+   *
+   * @param  mixed $subscriptionsId
+   * @return void
+   */
+  public function update($subscriptionsId) {}
 }
