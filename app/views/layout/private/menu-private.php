@@ -191,7 +191,7 @@
                                         </svg>
 
 
-                                        Subscribers (email)
+                                        Email Subscribers
                                     </a>
                                 </li>
 
