@@ -84,82 +84,25 @@ class StripeWebhook
 		$subscriptions = new subscriptionsModel();
 
 		echo $this->event->type . "\n";
+		$subscriptionsId = null;
+
+		$productsId = null;
 		switch ($this->event->type):
-			case 'customer.subscription.updated':				
-				$subscriptions->update($this->user);				
+			case 'customer.subscription.updated':
+				$subscriptions->update($this->user, $this->metadata['productsId']);
 				break;
 			case 'customer.subscription.deleted':
-				/* */
-				$subscriptions->archive($this->user);	
-				// Subscription->delete
+
+				$subscriptions->archive($this->user, $this->metadata['productsId']);
 				break;
 			case 'customer.subscription.created':
-				$subscriptions->create($this->user);	
-				
-				
+				$subscriptions->create($this->user, $this->metadata['productsId']);
 
-				// $mails->internal("Nuevo Plan! y nuevo usuario en area de clientes", $this->customer['email']);
-				// //$this->datatracker->push("areaclientes-send-bienvenida-plan");
 				break;
 			case 'charge.succeeded':
-				$chargeId = $this->event->data->object->id;
-				$charge = $this->stripe->charges->retrieve($chargeId);
-				$total = $charge->amount;
-				$currency = $charge->currency;
-				$description = $charge->description;
-				// Retrieve the PaymentIntent associated with the charge
-				$paymentIntentId = $charge->payment_intent;
-				$paymentIntent = $this->stripe->paymentIntents->retrieve($paymentIntentId);
 
-				// Attempt to retrieve the Subscription associated with the PaymentIntent (if any)
-				$subscriptionId = $paymentIntent->subscription;
+				# Log Purchase and Make Invoice
 
-				if ($subscriptionId) {
-					// Retrieve the subscription object
-					$subscription = $this->stripe->subscriptions->retrieve($subscriptionId);
-
-					// Extract product details from subscription items
-					foreach ($subscription->items->data as $item) {
-						$price = $this->stripe->prices->retrieve($item->price->id);
-						$product = $this->stripe->products->retrieve($price->product);
-						$this->productDetails[] = [
-							'product_id' => $product->id,
-							'product_name' => $product->name,
-							'price_id' => $price->id,
-							'price' => $price->unit_amount,
-							'currency' => $price->currency,
-							'quantity' => $item->quantity,
-							'product_description' => $product->description,
-						];
-					}
-				} else {
-					// If no subscription, check for available information in PaymentIntent
-					foreach ($paymentIntent->charges->data as $chargeItem) {
-						if (!empty($chargeItem->metadata['product_id'])) {
-							$productId = $chargeItem->metadata['product_id'];
-							$priceId = $chargeItem->metadata['price_id'];
-
-							$price = $this->stripe->prices->retrieve($priceId);
-							$product = $this->stripe->products->retrieve($price->product);
-
-							$this->productDetails[] = [
-								'product_id' => $product->id,
-								'product_name' => $product->name,
-								'price_id' => $price->id,
-								'price' => $price->unit_amount,
-								'currency' => $price->currency,
-								'quantity' => 1, // Default to 1 if not available
-								'product_description' => $product->description,
-							];
-						}
-					}
-				}
-
-				$amount = $this->event->data->object->metadata->subtotal ? $this->event->data->object->metadata->subtotal : $this->event->data->object->amount / 100;
-				$amount = number_format($amount, 2, ".", "");
-				//$dt->push('stripe-amount',$amount);
-
-				# Make Invoice
 				// $subtotal = $this->productDetails[0]['price'];
 				// $tax = $total - $subtotal;
 
@@ -176,6 +119,65 @@ class StripeWebhook
 				// );
 				// print_r($invoice);
 				// $invoice =  $invoices->create($invoice);
+
+				// $chargeId = $this->event->data->object->id;
+				// $charge = $this->stripe->charges->retrieve($chargeId);
+				// $total = $charge->amount;
+				// $currency = $charge->currency;
+				// $description = $charge->description;
+				// // Retrieve the PaymentIntent associated with the charge
+				// $paymentIntentId = $charge->payment_intent;
+				// $paymentIntent = $this->stripe->paymentIntents->retrieve($paymentIntentId);
+
+				// // Attempt to retrieve the Subscription associated with the PaymentIntent (if any)
+				// $subscriptionId = $paymentIntent->subscription;
+
+				// if ($subscriptionId) {
+				// 	// Retrieve the subscription object
+				// 	$subscription = $this->stripe->subscriptions->retrieve($subscriptionId);
+
+				// 	// Extract product details from subscription items
+				// 	foreach ($subscription->items->data as $item) {
+				// 		$price = $this->stripe->prices->retrieve($item->price->id);
+				// 		$product = $this->stripe->products->retrieve($price->product);
+				// 		$this->productDetails[] = [
+				// 			'product_id' => $product->id,
+				// 			'product_name' => $product->name,
+				// 			'price_id' => $price->id,
+				// 			'price' => $price->unit_amount,
+				// 			'currency' => $price->currency,
+				// 			'quantity' => $item->quantity,
+				// 			'product_description' => $product->description,
+				// 		];
+				// 	}
+				// } else {
+				// 	// If no subscription, check for available information in PaymentIntent
+				// 	foreach ($paymentIntent->charges->data as $chargeItem) {
+				// 		if (!empty($chargeItem->metadata['product_id'])) {
+				// 			$productId = $chargeItem->metadata['product_id'];
+				// 			$priceId = $chargeItem->metadata['price_id'];
+
+				// 			$price = $this->stripe->prices->retrieve($priceId);
+				// 			$product = $this->stripe->products->retrieve($price->product);
+
+				// 			$this->productDetails[] = [
+				// 				'product_id' => $product->id,
+				// 				'product_name' => $product->name,
+				// 				'price_id' => $price->id,
+				// 				'price' => $price->unit_amount,
+				// 				'currency' => $price->currency,
+				// 				'quantity' => 1, // Default to 1 if not available
+				// 				'product_description' => $product->description,
+				// 			];
+				// 		}
+				// 	}
+				// }
+
+				// $amount = $this->event->data->object->metadata->subtotal ? $this->event->data->object->metadata->subtotal : $this->event->data->object->amount / 100;
+				// $amount = number_format($amount, 2, ".", "");
+				// //$dt->push('stripe-amount',$amount);
+
+
 
 				break;
 		endswitch;

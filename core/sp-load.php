@@ -87,7 +87,7 @@ register_shutdown_function(function () {
 
         $error_msg = "[FATAL ERROR] " . date("d/m/Y H:i:s") . "<br>" . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
         $_SESSION['errors'][] =  $error_msg;
-        include_once ROOT_PATH . "app/views/errors/error.php";
+        //include_once ROOT_PATH . "app/views/errors/error.php";
         if (!@file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND)) {
             $_SESSION['errors'][] = _('No permissions on sp-errors.log');
         }

@@ -52,7 +52,6 @@ class Cart extends ModelBase
     public function showCategories()
     {
         $categories = $this->db->query("SELECT * FROM categories");
-        $this->views->show('custom/categories', ['categories' => $categories]);
     }
 
     // Display products by category
@@ -60,7 +59,6 @@ class Cart extends ModelBase
     {
         $stmt = $this->db->prepare("SELECT p.* FROM products p JOIN categories c ON p.category_id = c.id WHERE c.url_slug = ?");
         $stmt->execute([$urlSlug]);
-        $this->views->show('custom/category', ['products' => $stmt->fetchAll()]);
     }
 
     // Display individual product
@@ -68,9 +66,7 @@ class Cart extends ModelBase
     {
         $stmt = $this->db->prepare("SELECT * FROM products WHERE id = ?");
         $stmt->execute([$productId]);
-        $this->views->show('custom/product', ['product' => $stmt->fetch()]);
     }
-
     // Add to cart
     public function addToCart($userId, $productId, $quantity)
     {
@@ -85,7 +81,6 @@ class Cart extends ModelBase
     {
         $stmt = $this->db->prepare("SELECT p.title, p.description, p.image_url, p.price, ci.quantity FROM cart_items ci JOIN products p ON ci.product_id = p.id WHERE ci.user_id = ?");
         $stmt->execute([$userId]);
-        $this->views->show('custom/cart', ['cartItems' => $stmt->fetchAll()]);
     }
 
     // Update Cart Item Quantity
