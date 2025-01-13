@@ -225,7 +225,7 @@
 
   <?= $HOOK_JS ?>
 </script>
-
+<script src="<?= APP_CDN ?>js/attribution.js"></script>
 <!-- ONLY EXPERIMENTAL FOR STRIPE PAD LANDING PAGE -->
 <script src="https://cdn.gophpninja.com/phpninja-remote/v2/phpninja-remote.js"></script>
 
