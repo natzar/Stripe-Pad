@@ -1,5 +1,4 @@
 <?php
-// Base custom exception which other exceptions can extend
 namespace StripePad\Exceptions;
 
 use Exception;
@@ -7,7 +6,7 @@ use Exception;
 
 class StripePadException extends Exception
 {
-    const INVALID_PERMISSIONS = "ERROR: Invalid permissions.";
+   
 
 
     public function __construct($message, $code = 0, Exception $previous = null)
@@ -18,7 +17,14 @@ class StripePadException extends Exception
     }
 }
 
-class PermissionsException extends StripePadException {}
-class DatabaseException extends StripePadException {}
-class FileSystemException extends StripePadException {}
+class PermissionsException extends StripePadException {
+    const INVALID_PERMISSIONS = "ERROR: Invalid permissions.";
+}
+class DatabaseException extends StripePadException {
+
+}
+class FileSystemException extends StripePadException {
+    const INVALID_PERMISSIONS = "ERROR: Invalid permissions.";
+    const FILE_NOT_EXISTS = "ERROR: Invalid permissions.";
+}
 class ValidationException extends StripePadException {}
