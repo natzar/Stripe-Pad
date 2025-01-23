@@ -47,7 +47,7 @@ if (!$actionName) {
 # Include app/App.php that extends core/sp-core.php
 $App = new App();
 
-# Url = Method
+# Url = Method = Does the url exist?
 if (!is_callable(array('App', $actionName))) {
     $App->view->error404();
 } else {
