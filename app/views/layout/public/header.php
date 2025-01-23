@@ -49,21 +49,17 @@
       scroll-behavior: smooth;
     }
 
-    .nunito {
-      /*	font-family: 'Nunito',sans-serif;*/
-      font-family: Inter var, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-      -webkit-font-smoothing: antialiased;
-      font-weight: 600;
-    }
-
     html,
     body {
       font-family: Inter var, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       -webkit-font-smoothing: antialiased;
     }
- 
+    html,
+    body {
+      font-family: 'PT Mono', 'Courier New', 'Courier', serif !important;
+      /* Use your custom font for the body or any specific element */
+    }
     @font-face {
       font-family: 'AirClassicMedium';
       /* Give your font a name */
@@ -75,8 +71,6 @@
       /* Adjust font-style if needed */
     }
 
-
-
     @font-face {
       font-family: 'AirClassicBlack';
       /* Give your font a name */
@@ -86,12 +80,6 @@
       /* Adjust font-weight if needed */
       font-style: normal;
       /* Adjust font-style if needed */
-    }
-
-    html,
-    body {
-      font-family: 'PT Mono', serif !important;
-      /* Use your custom font for the body or any specific element */
     }
 
     h1,
