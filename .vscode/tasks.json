@@ -1,0 +1,16 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "PHPUnit Tests",
+            "type": "shell",
+            "command": "./vendor/bin/phpunit ./tests/*.php",
+            "group": "test",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": [],
+            "detail": "PHP unit tests runner"
+        }
+    ]
+}
