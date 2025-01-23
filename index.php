@@ -38,6 +38,7 @@ include_once CORE_PATH . 'sp-core.php';
 include_once  APP_PATH . "App.php";
 
 # Sanitize 'p' parameter to prevent injection
+# Deprecated PHP 8
 $actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
 
 if (!$actionName) {

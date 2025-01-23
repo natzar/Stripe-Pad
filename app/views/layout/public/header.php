@@ -107,51 +107,6 @@
       font-family: 'AirClassicMedium';
     }
   </style>
-  <style>
-    @font-face {
-      font-family: 'AirClassicMedium';
-      /* Give your font a name */
-      src: url('https://cdn.gophpninja.com/fonts/airclassic-medium.woff2') format('woff2');
-      /* Specify the path to your WOFF2 file */
-      font-weight: normal;
-      /* Adjust font-weight if needed */
-      font-style: normal;
-      /* Adjust font-style if needed */
-    }
-
-
-
-    @font-face {
-      font-family: 'AirClassicBlack';
-      /* Give your font a name */
-      src: url('https://cdn.gophpninja.com/fonts/airclassic.woff2') format('woff2');
-      /* Specify the path to your WOFF2 file */
-      font-weight: bold;
-      /* Adjust font-weight if needed */
-      font-style: normal;
-      /* Adjust font-style if needed */
-    }
-
-    html,
-    body {
-      font-family: 'PT Mono', 'Courier New', 'Courier', serif !important;
-      /* Use your custom font for the body or any specific element */
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    strong,
-    .font-black {
-      font-family: 'AirClassicBlack' !important;
-      font-weight: 600
-    }
-
-    .font-medium {
-      font-family: 'AirClassicMedium';
-    }
-  </style>
 
   <!-- Include here your JS -->
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -182,7 +137,7 @@
               <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                 <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title"><?= APP_NAME ?> </h3>
                 <div class="mt-2">
-                  <? foreach ($_SESSION['errors'] as $k => $v): ?>
+                  <? foreach ($_SESSION['errors'] as  $v): ?>
                     <p class="text-sm text-gray-500"><?= $v ?></p>
                   <? endforeach; ?>
                 </div>
@@ -199,9 +154,9 @@
 
   <? endif; ?>
 
-  <? if (!empty($_SESSION['alerts'])): ?>
+  <? if (!empty($_SESSION['alerts']) and count($_SESSION['alerts']) > 0): ?>
     <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-      <? foreach ($_SESSION['alerts'] as $k => $v): ?>
+      <? foreach ($_SESSION['alerts'] as $v): ?>
         <span class="block sm:inline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 inline">
             <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
           </svg>
