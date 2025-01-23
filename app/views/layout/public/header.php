@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+/* Header */
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -61,8 +63,7 @@
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       -webkit-font-smoothing: antialiased;
     }
-  </style>
-  <style>
+ 
     @font-face {
       font-family: 'AirClassicMedium';
       /* Give your font a name */
@@ -118,8 +119,8 @@
 </head>
 
 <body class="bg-gray-900">
-  <!-- Your content -->
-  <? if (!empty($_SESSION['errors'])): ?>
+
+<?php if (!empty($_SESSION['errors']) and count($_SESSION['errors']) > 0): ?>
 
 
     <div id="modal-alert" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -137,9 +138,9 @@
               <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                 <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title"><?= APP_NAME ?> </h3>
                 <div class="mt-2">
-                  <? foreach ($_SESSION['errors'] as  $v): ?>
+                  <?php foreach ($_SESSION['errors'] as  $v): ?>
                     <p class="text-sm text-gray-500"><?= $v ?></p>
-                  <? endforeach; ?>
+                  <?php endforeach; ?>
                 </div>
               </div>
             </div>
@@ -152,16 +153,16 @@
       </div>
     </div>
 
-  <? endif; ?>
+  <?php endif; ?>
 
-  <? if (!empty($_SESSION['alerts']) and count($_SESSION['alerts']) > 0): ?>
+  <?php if (!empty($_SESSION['alerts']) and count($_SESSION['alerts']) > 0): ?>
     <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-      <? foreach ($_SESSION['alerts'] as $v): ?>
+      <?php foreach ($_SESSION['alerts'] as $v): ?>
         <span class="block sm:inline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 inline">
             <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
           </svg>
 
           <?= $v ?></span><br>
-      <? endforeach; ?>
+      <?php endforeach; ?>
     </div>
-  <? endif; ?>
+  <?php endif; ?>
