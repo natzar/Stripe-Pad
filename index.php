@@ -38,8 +38,10 @@ include_once CORE_PATH . 'sp-core.php';
 include_once  APP_PATH . "App.php";
 
 # Sanitize 'p' parameter to prevent injection
+# $actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
 # Deprecated PHP 8
-$actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
+
+$actionName = isset($_GET['p']) ?? preg_replace('/[^a-zA-Z0-9_]/', '',  $_GET['p']);
 
 if (!$actionName) {
     $actionName = 'index'; // Default action

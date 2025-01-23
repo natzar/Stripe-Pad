@@ -45,17 +45,28 @@ function friendly_slug($input)
     return str_replace(' ', $replace, $input);
 }
 
+function sanitize($input) {
+    // Allow only alphanumeric characters and underscore
+    $tmp = trim(preg_replace('/[^a-zA-Z0-9_]/', '', $input));
+    if ($tmp != '') {
+        return $tmp;
+
+    }
+    return false;
+}
+
+
 
 function get_parameters()
 {
     $params = array();
-    $filter = FILTER_SANITIZE_STRING;
+    
     // Check if the key exists in the $_GET array
     if (isset($_GET)) {
         // Return the sanitized value using a specified filter
         // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
         foreach ($_GET as $k => $v) {
-            if (filter_input(INPUT_GET, $k, $filter)) {
+            if ($v = sanitize($k)) {
                 $params[$k] = $v;
             }
         }
@@ -63,8 +74,9 @@ function get_parameters()
     if (isset($_POST)) {
         // Return the sanitized value using a specified filter
         // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
+        // DEPRECATED
         foreach ($_POST as $k => $v) {
-            if (filter_input(INPUT_POST, $k, $filter)) {
+            if ($v = sanitize($v)) {
                 $params[$k] = $v;
             }
         }
