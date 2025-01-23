@@ -1,4 +1,4 @@
-<?
+<?php
 class emailValidator
 {
 	var $email;

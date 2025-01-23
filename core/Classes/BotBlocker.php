@@ -1,4 +1,4 @@
-<?
+<?php
 /* Function which can Block unwanted Requests
  * @return array of error messages
  */

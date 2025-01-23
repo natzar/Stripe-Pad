@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Package Name: Stripe Pad <> Counterify
  * File Description: This file handles connection with counterify.com server. Counterify is a service to track and count everything from anything.
