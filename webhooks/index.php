@@ -1,4 +1,4 @@
-<?
+<?php
 /* 
 	Stripe Pad - Micro SaaS boilerplate
 	Main Controller

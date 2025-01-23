@@ -1,4 +1,4 @@
-<?
+<?php
 
 final class combo_child extends field{
 

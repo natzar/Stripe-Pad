@@ -1,4 +1,4 @@
-<?
+<?php
 
 final class password extends field
 {

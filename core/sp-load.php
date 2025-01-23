@@ -88,7 +88,7 @@ register_shutdown_function(function () {
 
         $error_msg = "[FATAL ERROR] " . date("d/m/Y H:i:s") . "<br>" . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
         $_SESSION['errors'][] =  $error_msg;
-        $logs = $log::singleton();
+        $logs = log::singleton();
         $logs->push("error", "system.error",$error_msg);
 
         //include_once ROOT_PATH . "app/views/errors/error.php";
@@ -110,7 +110,7 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
     $msg = date("d/m/Y H:i:s") . " " . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
     //  throw new StripePad\Exceptions\StripePadException($error_msg);
     $_SESSION['errors'][] =  $msg;
-    $logs = $log::singleton();
+    $logs = log::singleton();
     $logs->push("error", "system.error",$msg);
     // include_once ROOT_PATH . "app/views/errors/error.php";
     if (!@file_put_contents(ROOT_PATH . "sp-errors.log", $msg . PHP_EOL, FILE_APPEND)) {

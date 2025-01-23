@@ -1,4 +1,4 @@
-<?
+<?php
 
 final class ticketstatus extends field{
 

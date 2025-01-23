@@ -1,4 +1,4 @@
-<?
+<?php
 
 final class time_spent extends field{
  

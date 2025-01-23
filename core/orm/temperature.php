@@ -1,4 +1,4 @@
-<?
+<?php
 
 final class temperature extends field{
  

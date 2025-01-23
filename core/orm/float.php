@@ -1,4 +1,4 @@
-<?
+<?php
 
 final class float_number extends field{
 

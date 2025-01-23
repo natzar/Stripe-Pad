@@ -1,4 +1,4 @@
-<?
+<?php
 							
 final class file_img_multi extends field{
 // TO-DO APP_UPLOAD_PATH

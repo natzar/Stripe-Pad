@@ -1,4 +1,4 @@
-<?
+<?php
 
 final class products extends field{
 
