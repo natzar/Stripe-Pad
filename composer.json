@@ -8,7 +8,9 @@
         "phpmailer/phpmailer": "^6.5",
         "google/apiclient": "^2.0",
         "google/apiclient-services": "^0.200",                  
-        "dompdf/dompdf": "^2.0"
+        "dompdf/dompdf": "^2.0",
+        "league/oauth2-client": "^2.8",
+        "league/oauth2-google": "^4.0"
     },
     "require-dev": {
         "phplint/phplint": "^0.0.1",
