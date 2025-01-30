@@ -75,6 +75,9 @@
             </svg>
             <span class="text-sm/6 font-semibold">GitHub</span>
           </a>
+   <a href="/redirectToProvider/google" class="bg-red-500 text-white p-2 inline-block rounded">Login with Google</a>
+    <a href="/redirectToProvider/facebook" class="bg-blue-600 text-white p-2 inline-block rounded">Login with Facebook</a>
+
         </div>
       </div>
     </div>
