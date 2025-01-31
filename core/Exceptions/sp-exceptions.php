@@ -17,6 +17,12 @@ class StripePadException extends Exception
     }
 }
 
+
+class ViewException extends StripePadException {
+    const INVALID_PERMISSIONS = "ERROR: Invalid permissions.";
+    const TPL_NOT_FOUND = "ERROR: Template file not found.";
+}
+
 class PermissionsException extends StripePadException {
     const INVALID_PERMISSIONS = "ERROR: Invalid permissions.";
 }

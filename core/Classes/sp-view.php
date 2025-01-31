@@ -1,5 +1,6 @@
 <?php
 
+use StripePad\Exceptions\ViewException;
 /**
  * View
  */
@@ -33,18 +34,26 @@ class View
 	function __construct()
 	{
 		$this->log = log::singleton();
+		
 	}
 
-	public function show($name = 'home.php', $vars = array(), $show_menu = true)
+	public function show($name = 'custom/home.php', $vars = array(), $show_menu = true)
 	{
-
+		try{
+			$this->renderTemplate($name,$vars,$show_menu);		
+		
+		}catch(ViewException $e){
+		
+		}
+	}	
+	
+	public function renderTemplate($name,$vars,$show_menu){
 		$isAuthenticated = $this->isAuthenticated;
-
 		/* Template meta data */
 		$page = $name;
 		$base_url = APP_DOMAIN;
 		$base_title =  APP_NAME;
-
+		$hookBeforeApp = '';
 		# Defaults (not empty)
 		$HOOK_JS = '';
 		$SEO_TITLE = SEO_TITLE; # Default Meta Title
@@ -60,9 +69,8 @@ class View
 		$template = $viewsFolder . $name;
 
 		if (file_exists($template) == false) {
-
-			$this->error404();
-			exit;
+			throw new ViewException(ViewException::TPL_NOT_FOUND);
+			
 		}
 
 		if (DEBUG_MODE) {

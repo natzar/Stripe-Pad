@@ -147,7 +147,7 @@ class usersModel extends ModelBase
 	 * find
 	 *
 	 * @param  mixed $email
-	 * @return void
+	 * @return array
 	 */
 	public function find($email)
 	{

@@ -320,7 +320,7 @@ class StripePadController
     /**
      * isAuthenticated
      *
-     * @return void
+     * @return bool
      */
     protected function isAuthenticated()
     {
@@ -660,4 +660,54 @@ class StripePadController
 
         header('location: ' . $return_url);
     }
+
+    # SOCIAL LOGIN
+
+// Redirect to provider for authentication
+public function redirectToProvider($provider) {
+    $client = $this->getOAuthClient($provider);
+    header('Location: ' . $client->getAuthorizationUrl());
+    exit;
+}
+
+// Handle provider callback
+public function handleProviderCallback($provider) {
+    try {
+        $client = $this->getOAuthClient($provider);
+        $token = $client->getAccessToken('authorization_code', [
+            'code' => $_GET['code']
+        ]);
+        $userDetails = $client->getResourceOwner($token);
+
+        // Assuming UserModel handles database interactions
+        $userModel = new UserModel();
+        $user = $userModel->findOrCreateUser($userDetails, $provider);
+        // Login the user
+        $_SESSION['user_id'] = $user['id'];
+        header('Location: /dashboard');
+    } catch (\Exception $e) {
+        $_SESSION['errors'][] = "Failed to authenticate with $provider. Please try again.";
+        header('Location: /login');
+    }
+    exit;
+}
+
+private function getOAuthClient($provider) {
+    switch ($provider) {
+        case 'google':
+            return new \League\OAuth2\Client\Provider\Google([
+                'clientId'          => 'your-google-client-id',
+                'clientSecret'      => 'your-google-client-secret',
+                'redirectUri'       => 'https://your-domain.com/handleProviderCallback/google',
+            ]);
+        case 'facebook':
+            return new \League\OAuth2\Client\Provider\Facebook([
+                'clientId'          => 'your-facebook-client-id',
+                'clientSecret'      => 'your-facebook-client-secret',
+                'redirectUri'       => 'https://your-domain.com/handleProviderCallback/facebook',
+                'graphApiVersion'   => 'v2.10',
+            ]);
+        // Add more providers as needed
+    }
+}
 }

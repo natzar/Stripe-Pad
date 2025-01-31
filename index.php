@@ -41,7 +41,7 @@ include_once  APP_PATH . "App.php";
 # $actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
 # Deprecated PHP 8
 
-$actionName = isset($_GET['p']) ?? preg_replace('/[^a-zA-Z0-9_]/', '',  $_GET['p']);
+$actionName = isset($_GET['p']) ? preg_replace('/[^a-zA-Z0-9_]/', '',  $_GET['p']) : false;
 
 if (!$actionName) {
     $actionName = 'index'; // Default action
@@ -50,9 +50,10 @@ if (!$actionName) {
 # Include app/App.php that extends core/sp-core.php
 $App = new App();
 
+
 # Url = Method = Does the url exist?
-if (!is_callable(array('App', $actionName))) {
-    $App->view->error404();
+if (!method_exists($App, $actionName)){
+    View::error404();
 } else {
     $App->$actionName();
 }

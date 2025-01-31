@@ -48,10 +48,7 @@ function friendly_slug($input)
 function sanitize($input) {
     // Allow only alphanumeric characters and underscore
     $tmp = trim(preg_replace('/[^a-zA-Z0-9_]/', '', $input));
-    if ($tmp != '') {
-        return $tmp;
-
-    }
+   return $tmp;
     return false;
 }
 
@@ -66,7 +63,7 @@ function get_parameters()
         // Return the sanitized value using a specified filter
         // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
         foreach ($_GET as $k => $v) {
-            if ($v = sanitize($k)) {
+            if ($v = sanitize($_GET[$k])) {
                 $params[$k] = $v;
             }
         }
@@ -76,7 +73,7 @@ function get_parameters()
         // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
         // DEPRECATED
         foreach ($_POST as $k => $v) {
-            if ($v = sanitize($v)) {
+            if ($v = sanitize(input: $_POST[$k])) {
                 $params[$k] = $v;
             }
         }
