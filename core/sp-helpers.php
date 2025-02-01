@@ -73,7 +73,7 @@ function get_parameters()
         // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
         // DEPRECATED
         foreach ($_POST as $k => $v) {
-            if ($v = sanitize(input: $_POST[$k])) {
+            if ($v = sanitize($_POST[$k])) {
                 $params[$k] = $v;
             }
         }
