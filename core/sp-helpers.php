@@ -47,7 +47,7 @@ function friendly_slug($input)
 
 function sanitize($input) {
     // Allow only alphanumeric characters and underscore
-    $tmp = trim(preg_replace('/[^a-zA-Z0-9_]/', '', $input));
+    $tmp = trim(preg_replace('/[^a-zA-Z0-9-@\._]/', '', $input));
    return $tmp;
     return false;
 }

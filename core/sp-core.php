@@ -320,7 +320,7 @@ class StripePadController
     /**
      * isAuthenticated
      *
-     * @return bool
+     * @return boolean
      */
     protected function isAuthenticated()
     {
