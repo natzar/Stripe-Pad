@@ -155,18 +155,18 @@ class StripePadController
     }
 
     public function upgrade()
-	{
+    {
         if (!$this->isAuthenticated) {
-throw new PermissionsException("You need to be logged in");
+            throw new PermissionsException("You need to be logged in");
         }
         $products = new productsModel();
         $data = array(
             "products" => $products->getAll()
 
         );
-        
-		$this->view->show('user/upgrade.php', $data);
-	}
+
+        $this->view->show('user/upgrade.php', $data);
+    }
 
     /**
      * login
@@ -438,7 +438,7 @@ throw new PermissionsException("You need to be logged in");
             $line_items = array(array(
                 "price" => $product['stripe_price_id'],
                 "quantity" => 1,
-               // "tax_rates" => array(APP_STRIPE_TAX_RATE)
+                // "tax_rates" => array(APP_STRIPE_TAX_RATE)
 
             ));
         } else {
@@ -491,7 +491,7 @@ throw new PermissionsException("You need to be logged in");
         echo json_encode($session);
     }
 
-    
+
     public function checkout()
     {
         $data = ['params' => $this->params];
@@ -686,51 +686,69 @@ throw new PermissionsException("You need to be logged in");
 
     # SOCIAL LOGIN
 
-// Redirect to provider for authentication
-public function redirectToProvider($provider) {
-    $client = $this->getOAuthClient($provider);
-    header('Location: ' . $client->getAuthorizationUrl());
-    exit;
-}
-
-// Handle provider callback
-public function handleProviderCallback($provider) {
-    try {
+    // Redirect to provider for authentication
+    public function redirectToProvider($provider)
+    {
         $client = $this->getOAuthClient($provider);
-        $token = $client->getAccessToken('authorization_code', [
-            'code' => $_GET['code']
-        ]);
-        $userDetails = $client->getResourceOwner($token);
-
-        // Assuming UserModel handles database interactions
-        $userModel = new UserModel();
-        $user = $userModel->findOrCreateUser($userDetails, $provider);
-        // Login the user
-        $_SESSION['user_id'] = $user['id'];
-        header('Location: /dashboard');
-    } catch (\Exception $e) {
-        $_SESSION['errors'][] = "Failed to authenticate with $provider. Please try again.";
-        header('Location: /login');
+        header('Location: ' . $client->getAuthorizationUrl());
+        exit;
     }
-    exit;
-}
 
-private function getOAuthClient($provider) {
-    switch ($provider) {
-        case 'google':
-            return new \League\OAuth2\Client\Provider\Google([
-                'clientId'          => 'your-google-client-id',
-                'clientSecret'      => 'your-google-client-secret',
-                'redirectUri'       => 'https://your-domain.com/handleProviderCallback/google',
+    // Handle provider callback
+    public function handleProviderCallback($provider)
+    {
+        try {
+            $client = $this->getOAuthClient($provider);
+            $token = $client->getAccessToken('authorization_code', [
+                'code' => $_GET['code']
             ]);
-        case 'facebook':
-            return new \League\OAuth2\Client\Provider\Facebook([
-                'clientId'          => 'your-facebook-client-id',
-                'clientSecret'      => 'your-facebook-client-secret',
-                'redirectUri'       => 'https://your-domain.com/handleProviderCallback/facebook',
-                'graphApiVersion'   => 'v2.10',
-            ]);
-        // Add more providers as needed
+            $userDetails = $client->getResourceOwner($token);
+
+            // Assuming UserModel handles database interactions
+            $userModel = new UserModel();
+            $user = $userModel->findOrCreateUser($userDetails, $provider);
+            // Login the user
+            $_SESSION['user_id'] = $user['id'];
+            header('Location: /dashboard');
+        } catch (\Exception $e) {
+            $_SESSION['errors'][] = "Failed to authenticate with $provider. Please try again.";
+            header('Location: /login');
+        }
+        exit;
     }
-}
+
+    private function getOAuthClient($provider)
+    {
+        switch ($provider) {
+            case 'google':
+                return new \League\OAuth2\Client\Provider\Google([
+                    'clientId'          => 'your-google-client-id',
+                    'clientSecret'      => 'your-google-client-secret',
+                    'redirectUri'       => 'https://your-domain.com/handleProviderCallback/google',
+                ]);
+            case 'facebook':
+                return new \League\OAuth2\Client\Provider\Facebook([
+                    'clientId'          => 'your-facebook-client-id',
+                    'clientSecret'      => 'your-facebook-client-secret',
+                    'redirectUri'       => 'https://your-domain.com/handleProviderCallback/facebook',
+                    'graphApiVersion'   => 'v2.10',
+                ]);
+                // Add more providers as needed
+        }
+    }
+    
+    // Stripe 
+
+    public function stripe_success()
+    {
+        $data = array();
+        $this->view->show("stripe/success-checkout.php", $data, true);
+    }
+
+    public function stripe_cancelled()
+    {
+        $data = array();
+
+        $this->view->show("stripe/cancelled-checkout.php", $data, true);
+    }
 }
