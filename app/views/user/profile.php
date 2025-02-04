@@ -78,7 +78,63 @@
         <div class="w-1/2   ml-4">
           <!-- Documentos -->
 
-
+          <div class="mt-5">
+        <h2 class="text-xl font-bold mb-3">Subscriptions</h2>
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full">
+                <thead class="bg-gray-200">
+                    <tr>
+                                              <th class="px-4 py-2 text-left">Date</th>
+                        <th class="px-4 py-2 text-left">Membership</th>
+                        <th class="px-4 py-2 text-left">Status</th>
+                        <th class="px-4 py-2 text-left">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td colspan="4"><?= _('No subscriptions found') ?></td></tr>
+                    <!-- <tr class="border-b">
+                        <td class="px-4 py-2">0001</td>
+                        <td class="px-4 py-2">2024-03-31</td>
+                        <td class="px-4 py-2">$100.00</td>
+                        <td class="px-4 py-2 text-green-500">Paid</td>
+                        <td class="px-4 py-2">
+                            <a href="#" class="text-blue-500 hover:text-blue-800">View</a>
+                        </td>
+                    </tr> -->
+                    <!-- Repeat for other invoices -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="mt-5">
+        <h2 class="text-xl font-bold mb-3">Invoices</h2>
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="px-4 py-2 text-left">Invoice ID</th>
+                        <th class="px-4 py-2 text-left">Date</th>
+                        <th class="px-4 py-2 text-left">Amount</th>
+                        <th class="px-4 py-2 text-left">Status</th>
+                        <th class="px-4 py-2 text-left">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td colspan="4"><?= _('No invoices found') ?></td></tr>  
+                <!-- <tr class="border-b">
+                        <td class="px-4 py-2">0001</td>
+                        <td class="px-4 py-2">2024-03-31</td>
+                        <td class="px-4 py-2">$100.00</td>
+                        <td class="px-4 py-2 text-green-500">Paid</td>
+                        <td class="px-4 py-2">
+                            <a href="#" class="text-blue-500 hover:text-blue-800">View</a>
+                        </td>
+                    </tr> -->
+                    <!-- Repeat for other invoices -->
+                </tbody>
+            </table>
+        </div>
+    </div>
           <div class="bg-white p-6 rounded-lg shadow-md mb-5 text-gray-600">
 
             

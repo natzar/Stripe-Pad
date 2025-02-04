@@ -46,10 +46,12 @@ function friendly_slug($input)
 }
 
 function sanitize($input) {
-    // Allow only alphanumeric characters and underscore
-    $tmp = trim(preg_replace('/[^a-zA-Z0-9-@\._]/', '', $input));
-   return $tmp;
-    return false;
+    if (is_array($input)) {
+        return array_map('sanitize', $input);
+    }
+    
+    // Allow only alphanumeric characters, underscore, dash, dot, and @
+    return trim(preg_replace('/[^a-zA-Z0-9@\._\w\s\,-]/', '', $input));
 }
 
 
@@ -57,6 +59,7 @@ function sanitize($input) {
 function get_parameters()
 {
     $params = array();
+
     
     // Check if the key exists in the $_GET array
     if (isset($_GET)) {

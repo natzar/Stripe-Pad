@@ -76,7 +76,7 @@ class productsModel extends ModelBase
 	 */
 	public function getAll()
 	{
-		$consulta = $this->db->prepare("SELECT * FROM products order by title ASC");
+		$consulta = $this->db->prepare("SELECT * FROM products where visible > 0 order by name ASC");
 		$consulta->execute();
 		$aux2 = $consulta->fetchAll();
 		return $aux2;
@@ -90,7 +90,7 @@ class productsModel extends ModelBase
 	 */
 	public function find($params)
 	{
-		$consulta = $this->db->prepare("SELECT * FROM products where title like '%" . $params['query'] . "%' ");
+		$consulta = $this->db->prepare("SELECT * FROM products where name like '%" . $params['query'] . "%' ");
 		$consulta->execute();
 		$aux2 = $consulta->fetchAll();
 		return $aux2;

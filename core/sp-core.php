@@ -1,5 +1,7 @@
 <?php
 
+use StripePad\Exceptions\PermissionsException;
+
 /**
  * Package Name: Stripe Pad
  * File Description: Main Controller
@@ -152,6 +154,20 @@ class StripePadController
         $this->view->show("user/signup.php", array(), true);
     }
 
+    public function upgrade()
+	{
+        if (!$this->isAuthenticated) {
+throw new PermissionsException("You need to be logged in");
+        }
+        $products = new productsModel();
+        $data = array(
+            "products" => $products->getAll()
+
+        );
+        
+		$this->view->show('user/upgrade.php', $data);
+	}
+
     /**
      * login
      *
@@ -197,6 +213,7 @@ class StripePadController
      */
     public function actionRecoverPassword()
     {
+        if (!isset($this->params['email']) or empty($this->params['email'])) die();
         $email = $this->params['email'];
         # Demo
         if (strpos($email, "stripepad.com") > -1) header("location: " . APP_DOMAIN . "login");
@@ -216,6 +233,8 @@ class StripePadController
      */
     public function actionLogin()
     {
+        if (!isset($this->params['email']) or empty($this->params['email'])) die();
+        if (!isset($this->params['password']) or empty($this->params['password'])) die();
 
         $users = new usersModel();
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 1;
@@ -406,18 +425,20 @@ class StripePadController
         );
 
         $items = $_POST['items'];
-        $customer = isset($_POST['customer']) ? $_POST['customer'] : array();
+        $user = isset($_POST['user']) ? $_POST['user'] : array();
         $product = isset($_POST['product']) ? $_POST['product'] : array();
 
-        $surl = APP_DOMAIN . 'welcome';
-        $curl = APP_DOMAIN . 'cancelled';
+        #TODO: multiple products
+        $product = $product[0];
+        $surl = APP_DOMAIN . 'stripe_success';
+        $curl = APP_DOMAIN . 'stripe_cancelled';
 
 
         if (isset($product['stripe_price_id'])) {
             $line_items = array(array(
                 "price" => $product['stripe_price_id'],
                 "quantity" => 1,
-                "tax_rates" => array(APP_STRIPE_TAX_RATE)
+               // "tax_rates" => array(APP_STRIPE_TAX_RATE)
 
             ));
         } else {
@@ -469,12 +490,14 @@ class StripePadController
         $session = \Stripe\Checkout\Session::create($params);
         echo json_encode($session);
     }
+
+    
     public function checkout()
     {
         $data = ['params' => $this->params];
-        $product = $this->params['a'];
-        $client = $this->params['i'];
-        $data['customer'] = null;
+        $product = $this->params['m'];
+        $client = $this->params['a'];
+        $data['user'] = null;
         $data['cart'] = null;
         $data['product'] = null;
         $users = new usersModel();
@@ -492,7 +515,7 @@ class StripePadController
             $data['payment_type'] = 'free';
         } elseif (!empty($product) or !empty($client)) {
             $data['cart'] = $products->getById($product);
-            $data['customer'] = $users->find($client);
+            $data['user'] = $users->find($client);
             $data['product'] = $products->getById($product);
             $data['payment_type'] = 'catalog';
         } else {
@@ -501,7 +524,7 @@ class StripePadController
             exit();
         }
 
-        $this->view->show('checkout.php', $data, false);
+        $this->view->show('stripe/checkout.php', $data, false);
     }
 
 

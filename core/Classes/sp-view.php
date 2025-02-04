@@ -69,7 +69,7 @@ class View
 		$template = $viewsFolder . $name;
 
 		if (file_exists($template) == false) {
-			throw new ViewException(ViewException::TPL_NOT_FOUND);
+			throw new ViewException(ViewException::TPL_NOT_FOUND." ".$template);
 			
 		}
 
@@ -96,10 +96,11 @@ class View
 		if (isset($_SESSION['alerts'])) unset($_SESSION['alerts']);
 	}
 
-	public function error404()
+	static function error404()
 	{
-		$this->log->push(getCurrentUrl(), '404');
+		$log = log::singleton();
+		$log->push(getCurrentUrl(), '404');
 		header('HTTP/1.0 404 Not Found');
-		$this->show('errors/404.php');
+		include(APP_PATH.'views/errors/404.php');
 	}
 }

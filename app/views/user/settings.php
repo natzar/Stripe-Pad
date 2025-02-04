@@ -1,3 +1,12 @@
+<header class="pb-6 ">
+  <div class="mx-auto  ">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-800">Settings</h1>
+
+
+  </div>
+
+</header>
+
 <div class="max-w-4xl mx-auto bg-white p-5 rounded-md shadow">
     <h1 class="text-xl font-semibold mb-4">Manage Settings</h1>
 

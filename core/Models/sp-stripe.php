@@ -342,17 +342,31 @@ class Stripe extends ModelBase
 
     public function syncStripeProducts()
     {
-
         $products = $this->stripe->products->all(['limit' => 100]);
         $_SESSION['alerts'][] = "Syncing " . count($products->data) . " products";
+    
         foreach ($products->autoPagingIterator() as $product) {
-            $stmt = $this->db->prepare("REPLACE INTO products (stripe_product_id, name, description, visible, created, updated) VALUES (?, ?, ?, ?, NOW(), NOW())");
-            $stmt->execute([
-                $product->id,
-                $product->name,
-                $product->description,
-                $product->active ? 1 : 0
-            ]);
+            // Obtener precios asociados al producto
+            $prices = $this->stripe->prices->all(['product' => $product->id, 'limit' => 100]);
+    
+            foreach ($prices->autoPagingIterator() as $price) {
+                // Insertar cada precio como un nuevo registro en la tabla 'products'
+                $stmt = $this->db->prepare("
+                    INSERT INTO products (stripe_product_id, stripe_price_id, name, description, amount, `interval`, visible, created, updated)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW())
+                ");
+                $stmt->execute([
+                    $product->id,
+                    $price->id,
+                    $product->name,
+                    $product->description,
+                    $price->unit_amount,
+                    $price->recurring ? $price->recurring->interval : null, // Guardar intervalo si es un precio recurrente
+                    $product->active ? 1 : 0
+                ]);
+            }
         }
     }
+    
+
 }

@@ -31,11 +31,11 @@
  */
 
 # Load Environment
-include_once  dirname(__FILE__) . '/core/sp-load.php'; // 
+require_once  dirname(__FILE__) . '/core/sp-load.php'; // 
 include_once CORE_PATH . 'sp-core.php';
 
 # Load Custom App
-include_once  APP_PATH . "App.php";
+include_once APP_PATH . "App.php";
 
 # Sanitize 'p' parameter to prevent injection
 # $actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
