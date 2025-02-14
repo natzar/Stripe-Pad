@@ -67,7 +67,7 @@ class StripePadController
         $this->params = get_parameters();
         $this->view = new View();
         $this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();
-        $this->isSuperadmin = isset($_SESSION['user']) and $_SESSION['user']['group'] == "superadmin";
+        $this->isSuperadmin = isset($_SESSION['user']) and isset($_SESSION['user']['group']) and $_SESSION['user']['group'] == "superadmin";
     }
 
     # Default app home page
@@ -683,7 +683,11 @@ class StripePadController
 
         header('location: ' . $return_url);
     }
-
+    # ¿?
+    public function deadbeef(){
+        die('deadbeef? #000000');
+    }
+    
     # SOCIAL LOGIN
 
     // Redirect to provider for authentication

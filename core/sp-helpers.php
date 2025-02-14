@@ -51,7 +51,7 @@ function sanitize($input) {
     }
     
     // Allow only alphanumeric characters, underscore, dash, dot, and @
-    return trim(preg_replace('/[^a-zA-Z0-9@\._\w\s\,-]/', '', $input));
+    return trim(preg_replace('/[^a-zA-Z0-9@\.\_\w\s\,-]/', '', $input));
 }
 
 

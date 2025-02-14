@@ -17,13 +17,13 @@ class View
 	 *
 	 * @var mixed
 	 */
-	var $path;
+	var $path = APP_PATH.'views/';
 	/**
 	 * isAuthenticated
 	 *
 	 * @var mixed
 	 */
-	var $isAuthenticated;
+	var $isAuthenticated = false;
 	/**
 	 * log
 	 *
@@ -31,10 +31,17 @@ class View
 	 */
 	var $log;
 
+	var $currentUrl;
+
+	var $defaults = [];
+
 	function __construct()
 	{
 		$this->log = log::singleton();
 		
+	}
+	function set_defaults($defs){
+		$this->defaults = $defs;
 	}
 
 	public function show($name = 'custom/home.php', $vars = array(), $show_menu = true)
@@ -58,8 +65,9 @@ class View
 		$HOOK_JS = '';
 		$SEO_TITLE = SEO_TITLE; # Default Meta Title
 		$SEO_DESCRIPTION = SEO_DESCRIPTION; # Default meta tag description
-
+		$SEO_KEYWORDS = "";//SEO_KEYWORDS; # Default meta tag keywords
 		/* Template Data */
+		foreach ($this->defaults as $key => $value) $$key = $value;
 		if (is_array($vars)) foreach ($vars as $key => $value) $$key = $value;
 
 		/* TEMPLATE
