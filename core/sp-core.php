@@ -214,6 +214,9 @@ class StripePadController
     public function actionRecoverPassword()
     {
         if (!isset($this->params['email']) or empty($this->params['email'])) die();
+        if (!empty($_POST['name'])) {
+            die();
+        }
         $email = $this->params['email'];
         # Demo
         if (strpos($email, "stripepad.com") > -1) header("location: " . APP_DOMAIN . "login");
@@ -271,6 +274,8 @@ class StripePadController
         $users = new usersModel();
 
         if (!empty($_POST['hney'])) die();
+        // FIX ONLY FOR DOMSTRY
+        if (!empty($_POST['name'])) die();
 
         // not included by default : find a better way
         include_once CORE_PATH . "Classes/EmailValidator.php";

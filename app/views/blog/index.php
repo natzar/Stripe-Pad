@@ -18,7 +18,7 @@
         <div class="max-w-xl">
 
           <div class="group relative">
-            <h3 class="mt-3 text-lg font-semibold leading-6 text-sky-500 group-hover:text-gray-600 nunito">
+            <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-800 group-hover:text-gray-600 ">
               <a href="blog/<?= $item['slug'] ?>" class="">
                 <span class="absolute inset-0"></span>
                 <?= $item['title'] ?> ➽
@@ -28,7 +28,7 @@
           </div>
           <div class="mt-8 flex items-center gap-x-4 text-xs">
             <time datetime="<?= $item['created'] ?>" class="text-gray-600">Published: <?= $item['created'] ?></time>
-            <a href="#" class="relative z-10 rounded-full bg-sky-700 px-3 py-1 font-medium text-gray-100 hover:bg-gray-100">Marketing</a>
+            <a href="#" class="relative z-10 rounded-full bg-sky-700 px-3 py-1 font-medium text-gray-400 hover:bg-gray-100">Marketing</a>
           </div>
           <!--  <div class="relative mt-8 flex items-center gap-x-4">
             <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-10 w-10 rounded-full bg-gray-100">

@@ -20,7 +20,7 @@ function getCookie(cname) {
 if (getCookie("stripepad_user") == "" || getCookie("stripepad_user") == "undefined"){
 	var x = new Date();
 	document.cookie = "stripepad_user="+ x.getTime();
-	dt('visits-total',1);
+	
 
 	// First visit
 	var x = new Date();
@@ -34,14 +34,17 @@ if (getCookie("stripepad_user") == "" || getCookie("stripepad_user") == "undefin
 	if (queryString){
 		var urlParams = new URLSearchParams(queryString);
 		if ( urlParams.get('hsa_kw')){
-			document.cookie = "stripepad_source=adwords"+urlParams.get('hsa_kw');
+			document.cookie = "stripepad_source=adwords_"+urlParams.get('hsa_kw');
 
 		}
 		if(urlParams.get('source')){
 			document.cookie = "stripepad_source="+urlParams.get('source');			
 		} 
 	}else if (document.referrer.indexOf('google') > -1){
-		document.cookie = "stripepad_source=seo";							
+		document.cookie = "stripepad_source=seo";		
+	}else if (document.referrer){
+		document.cookie = "stripepad_source=referrer_document.referrer)";		
+						
 	}else{
 		document.cookie = "stripepad_source=direct";
 	}
