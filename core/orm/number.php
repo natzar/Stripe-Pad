@@ -5,7 +5,8 @@ final class number extends field
 
 	function view()
 	{
-		return number_format($this->value, 2, ",", ".");
+		if (!is_null($this->value)) return number_format($this->value, 2, ",", ".");
+		return "";
 	}
 	function bake_field()
 	{

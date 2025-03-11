@@ -7,7 +7,8 @@ final class literal extends field
 
 	function view()
 	{
-		return stripslashes($this->value);
+		if (!is_null($this->value))	return stripslashes($this->value);
+		return "";
 	}
 	function bake_field()
 	{

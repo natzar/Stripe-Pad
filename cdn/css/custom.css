@@ -1,0 +1,106 @@
+@font-face {
+  font-family: 'AirClassicMedium';
+  /* Give your font a name */
+  src: url('https://cdn.gophpninja.com/fonts/airclassic-medium.woff2') format('woff2');
+  /* Specify the path to your WOFF2 file */
+  font-weight: normal;
+  /* Adjust font-weight if needed */
+  font-display: swap;
+  font-style: normal;
+  /* Adjust font-style if needed */
+}
+
+#mobile-menu {
+  overflow: hidden;
+  transform-origin: top;
+  transition: transform 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  transform: scaleY(0);
+  visibility: hidden;
+}
+
+#mobile-menu:not(.hidden) {
+  transform: scaleY(1);
+  visibility: visible;
+}
+
+
+
+
+@font-face {
+  font-family: 'AirClassicBlack';
+  /* Give your font a name */
+  src: url('https://cdn.gophpninja.com/fonts/airclassic.woff2') format('woff2');
+  /* Specify the path to your WOFF2 file */
+  font-weight: bold;
+  /* Adjust font-weight if needed */
+  font-style: normal;
+  /* Adjust font-style if needed */
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  /*/font-family: 'AirClassicMedium', sans-serif !important;*/
+  /* Use your custom font for the body or any specific element */
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+strong,
+.font-bold,
+.font-black {
+  font-family: 'AirClassicBlack' !important;
+  font-weight: 800
+}
+
+.loader {
+  border-top-color: #ff0000;
+  -webkit-animation: spinner 1.5s linear infinite;
+  animation: spinner 1.5s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#tagsButtons::-webkit-scrollbar {
+  width: 5px;
+  /* width of the entire scrollbar */
+}
+
+#tagsButtons::-webkit-scrollbar-track {
+  background: #111827;
+  /* color of the tracking area */
+}
+
+#tagsButtons::-webkit-scrollbar-thumb {
+  background-color: #777;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  width: 5px;
+}

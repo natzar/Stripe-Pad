@@ -1,6 +1,7 @@
 <?php
 
 use StripePad\Exceptions\ViewException;
+
 /**
  * View
  */
@@ -17,7 +18,7 @@ class View
 	 *
 	 * @var mixed
 	 */
-	var $path = APP_PATH.'views/';
+	var $path = APP_PATH . 'views/';
 	/**
 	 * isAuthenticated
 	 *
@@ -38,23 +39,30 @@ class View
 	function __construct()
 	{
 		$this->log = log::singleton();
-		
+
+
+
+		// bindtextdomain('messages', ROOT_PATH . 'locale/' . $lang . '/LC_MESSAGES/');
+		// bind_textdomain_codeset('messages', 'UTF-8');  // Make sure to set UTF-8 encoding if necessary
+		// textdomain('messages');
 	}
-	function set_defaults($defs){
+	function set_defaults($defs)
+	{
 		$this->defaults = $defs;
 	}
 
 	public function show($name = 'custom/home.php', $vars = array(), $show_menu = true)
 	{
-		try{
-			$this->renderTemplate($name,$vars,$show_menu);		
-		
-		}catch(ViewException $e){
-		
+		try {
+			$this->renderTemplate($name, $vars, $show_menu);
+		} catch (ViewException $e) {
 		}
-	}	
-	
-	public function renderTemplate($name,$vars,$show_menu){
+	}
+
+	public function renderTemplate($name, $vars, $show_menu)
+	{
+
+		## Strings
 		$isAuthenticated = $this->isAuthenticated;
 		/* Template meta data */
 		$page = $name;
@@ -65,7 +73,7 @@ class View
 		$HOOK_JS = '';
 		$SEO_TITLE = SEO_TITLE; # Default Meta Title
 		$SEO_DESCRIPTION = SEO_DESCRIPTION; # Default meta tag description
-		$SEO_KEYWORDS = "";//SEO_KEYWORDS; # Default meta tag keywords
+		$SEO_KEYWORDS = ""; //SEO_KEYWORDS; # Default meta tag keywords
 		/* Template Data */
 		foreach ($this->defaults as $key => $value) $$key = $value;
 		if (is_array($vars)) foreach ($vars as $key => $value) $$key = $value;
@@ -77,15 +85,14 @@ class View
 		$template = $viewsFolder . $name;
 
 		if (file_exists($template) == false) {
-			throw new ViewException(ViewException::TPL_NOT_FOUND." ".$template);
-			
+			throw new ViewException(ViewException::TPL_NOT_FOUND . " " . $template);
 		}
 
 		if (DEBUG_MODE) {
 			echo '<!-- Template StripePad: ' . $template . ' -->';
 		}
 
-		if ($isAuthenticated) {
+		if ($this->isAuthenticated) {
 			include $viewsFolder . "layout/private/header.php";
 			include $viewsFolder . "layout/private/menu-private.php";
 			include($template);
@@ -106,9 +113,14 @@ class View
 
 	static function error404()
 	{
+		$viewsFolder = APP_PATH . "views/";
 		$log = log::singleton();
 		$log->push(getCurrentUrl(), '404');
 		header('HTTP/1.0 404 Not Found');
-		include(APP_PATH.'views/errors/404.php');
+
+		include $viewsFolder . "layout/public/header.php";
+		include $viewsFolder . "layout/public/menu-public.php";
+		include $viewsFolder . 'errors/404.php';
+		include $viewsFolder . "layout/public/footer.php";
 	}
 }

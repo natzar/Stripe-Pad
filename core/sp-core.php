@@ -58,10 +58,11 @@ class StripePadController
             exit;
         }
         # Block aggresive bots
-        if (BOT_BLOCKER && $t = requestBlocker()) {
-            $error_msg = "Possible BOT detected - " . implode("<br>", $t);
-            include "app/themes/" . APP_THEME . "/error.php";
-            die();
+        if (BOT_BLOCKER) {
+            // $error_msg = "Possible BOT detected - " . implode("<br>", $t);
+            // include "app/themes/" . APP_THEME . "/error.php";
+            // die();
+            $Guardian = new BotBlocker(); // IT will die in case bot is detected
         }
         $this->log = log::singleton();
         $this->params = get_parameters();
@@ -214,9 +215,6 @@ class StripePadController
     public function actionRecoverPassword()
     {
         if (!isset($this->params['email']) or empty($this->params['email'])) die();
-        if (!empty($_POST['name'])) {
-            die();
-        }
         $email = $this->params['email'];
         # Demo
         if (strpos($email, "stripepad.com") > -1) header("location: " . APP_DOMAIN . "login");
@@ -274,11 +272,9 @@ class StripePadController
         $users = new usersModel();
 
         if (!empty($_POST['hney'])) die();
-        // FIX ONLY FOR DOMSTRY
-        if (!empty($_POST['name'])) die();
 
         // not included by default : find a better way
-        include_once CORE_PATH . "Classes/EmailValidator.php";
+        include_once CORE_PATH . "Classes/sp-emailvalidator.php";
         $emailValidator = new emailValidator();
 
         // verify valid email
@@ -689,10 +685,11 @@ class StripePadController
         header('location: ' . $return_url);
     }
     # ¿?
-    public function deadbeef(){
+    public function deadbeef()
+    {
         die('deadbeef? #000000');
     }
-    
+
     # SOCIAL LOGIN
 
     // Redirect to provider for authentication
@@ -745,7 +742,7 @@ class StripePadController
                 // Add more providers as needed
         }
     }
-    
+
     // Stripe 
 
     public function stripe_success()
@@ -759,5 +756,16 @@ class StripePadController
         $data = array();
 
         $this->view->show("stripe/cancelled-checkout.php", $data, true);
+    }
+    public function bot_detected()
+    {
+        file_put_contents('bots.log', $_SERVER['REMOTE_ADDR'] . " - Detected WebDriver\n", FILE_APPEND);
+        $_SESSION['bot'] = true;
+    }
+
+    public function impressum()
+    {
+        $data = array();
+        $this->view->show("common/impressum.php", $data);
     }
 }

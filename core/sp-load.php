@@ -32,11 +32,19 @@ ini_set('display_startup_errors', DEBUG_MODE ? 1 : 1);
 # Locale
 mb_internal_encoding(INTERNAL_ENCODING);
 date_default_timezone_set(TIMEZONE);
+putenv("LC_ALL=" . LOCALE_LANG);
 setlocale(LC_ALL, LOCALE_LANG);
-setlocale(LC_TIME, LOCALE_TIME);
+//setlocale(LC_ALL, );
 
-## Strings
-bindtextdomain('messages', ROOT_PATH . 'locale/');
+
+// O 'es' si usaste esa carpeta
+bindtextdomain('messages', ROOT_PATH . 'locale');
+bind_textdomain_codeset('messages', 'UTF-8');
+textdomain('messages');
+//setlocale(LC_TIME, LOCALE_TIME);
+
+
+
 ## ... (more to come)
 
 # Session 
@@ -58,6 +66,7 @@ include_once CORE_PATH . 'Classes/sp-spdo.php';
 include_once CORE_PATH . 'Classes/sp-view.php';
 include_once CORE_PATH . 'Models/sp-mail.php';
 include_once CORE_PATH . 'Models/sp-user.php';
+include_once CORE_PATH . 'Models/sp-cronjob.php';
 include_once CORE_PATH . 'Models/sp-blog.php';
 include_once CORE_PATH . 'Models/sp-stripe.php';
 include_once CORE_PATH . 'Models/sp-orm.php';
@@ -65,7 +74,7 @@ include_once CORE_PATH . 'Models/sp-log.php';
 include_once CORE_PATH . 'Models/sp-subscriptions.php';
 include_once CORE_PATH . 'Models/sp-invoices.php';
 include_once CORE_PATH . 'Models/sp-products.php';
-include_once CORE_PATH . "Classes/BotBlocker.php";
+include_once CORE_PATH . "Classes/sp-botblocker.php";
 
 # include all models from app dynamically
 foreach (glob(APP_PATH . "models/*.php") as $filename) {
@@ -84,12 +93,12 @@ register_shutdown_function(function () {
         $errfile = $error["file"];
         $errline = $error["line"];
         $errstr  = $error["message"];
-     
+
 
         $error_msg = "[FATAL ERROR] " . date("d/m/Y H:i:s") . "<br>" . $errstr . " [" . $errno . "]" . " File: " . $errfile . " // Line: " . $errline . " ";
         $_SESSION['errors'][] =  $error_msg;
         $logs = log::singleton();
-        $logs->push("error", "system.error",$error_msg);
+        $logs->push("error", "system.error", $error_msg);
 
         //include_once ROOT_PATH . "app/views/errors/error.php";
         if (!@file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND)) {
@@ -111,7 +120,7 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
     //  throw new StripePad\Exceptions\StripePadException($error_msg);
     $_SESSION['errors'][] =  $msg;
     $logs = log::singleton();
-    $logs->push("error", "system.error",$msg);
+    $logs->push("error", "system.error", $msg);
     // include_once ROOT_PATH . "app/views/errors/error.php";
     if (!@file_put_contents(ROOT_PATH . "sp-errors.log", $msg . PHP_EOL, FILE_APPEND)) {
         $_SESSION['errors'][] = _('No permissions on sp-errors.log');
