@@ -1,16 +1,15 @@
 <?php
-require 'vendor/autoload.php';
+
+require "../core/sp-load.php";
 
 use GuzzleHttp\Client;
 
-const LANGUAGES = ['es', 'fr', 'de', 'it', 'nl', 'pt', 'ru', 'pl', 'sv', 'fi', 'da', 'no', 'el', 'cs', 'hu', 'ro', 'bg', 'hr', 'sk', 'lt', 'lv', 'et'];
-const API_KEY = 'TU_API_KEY'; // Reemplaza con tu clave de OpenAI o DeepL
-
-function translateText($text, $targetLang) {
+function translateText($text, $targetLang)
+{
     $client = new Client();
     $response = $client->post('https://api.openai.com/v1/chat/completions', [
         'headers' => [
-            'Authorization' => 'Bearer ' . API_KEY,
+            'Authorization' => 'Bearer ' . OPENAI_CHATGPT_APIKEY,
             'Content-Type' => 'application/json',
         ],
         'json' => [
@@ -27,24 +26,29 @@ function translateText($text, $targetLang) {
 }
 
 foreach (LANGUAGES as $lang) {
-    $poFile = "locale/$lang/LC_MESSAGES/messages.po";
+    $poFile = dirname(__FILE__) . "/../locale/$lang/LC_MESSAGES/messages.po";
     if (!file_exists($poFile)) continue;
-    
-    $po = new Sepia\PoParser\Parser();
-    $entries = $po->parseFile($poFile);
-    $translations = [];
-    
-    foreach ($entries as $entry) {
-        if (empty($entry['msgstr'])) {
-            $translation = translateText($entry['msgid'], $lang);
-            $entry['msgstr'][] = $translation;
+
+    // Initialize FileSystem source handler
+    $fileHandler = new Sepia\PoParser\SourceHandler\FileSystem($poFile);
+
+    // Initialize the parser with the source handler
+    $poParser = new Sepia\PoParser\Parser($fileHandler);
+    $catalog = $poParser->parse();  // Parse the file into a catalog
+
+    foreach ($catalog->getEntries() as $entry) {
+        if (empty($entry->getMsgstr())) {  // Check if msgstr is empty
+            $translation = translateText($entry->getMsgid(), $lang);
+            $entry->setMsgstr($translation);  // Set the translation
         }
-        $translations[] = $entry;
     }
-    
-    $poWriter = new Sepia\PoParser\PoCompiler();
-    file_put_contents($poFile, $poWriter->compile($translations));
+
+    // Initialize PoCompiler and save the catalog back to the file
+    $poCompiler = new Sepia\PoParser\PoCompiler();
+    $fileHandler->save($poCompiler->compile($catalog));
+
     echo "✅ $lang traducido correctamente.\n";
 }
+
 
 echo "Traducción finalizada.";
