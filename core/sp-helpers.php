@@ -45,13 +45,14 @@ function friendly_slug($input)
     return str_replace(' ', $replace, $input);
 }
 
-function sanitize($input) {
+function sanitize($input)
+{
     if (is_array($input)) {
         return array_map('sanitize', $input);
     }
-    
+    return cleanInput($input);
     // Allow only alphanumeric characters, underscore, dash, dot, and @
-    return trim(preg_replace('/[^a-zA-Z0-9@\.\_\w\s\,-]/', '', $input));
+    //return trim(preg_replace('/[^a-zA-Z0-9@\.\_\w\s\,-]/', '', $input));
 }
 
 
@@ -60,7 +61,7 @@ function get_parameters()
 {
     $params = array();
 
-    
+
     // Check if the key exists in the $_GET array
     if (isset($_GET)) {
         // Return the sanitized value using a specified filter
