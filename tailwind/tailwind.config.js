@@ -1,13 +1,13 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
- content: ["./../app/views/*.php","./../app/views/*/*.php","./../app/views/*/*/*.php"],
- plugins:[
- require('postcss-import'),
+  content: ["./../app/views/*.php", "./../app/views/*/*.php", "./../app/views/*/*/*.php"],
+  plugins: [
+    require('postcss-import'),
     require('tailwindcss'),
     require('autoprefixer'),
- require('@tailwindcss/forms')],
- 
+    require('@tailwindcss/forms')],
+
   theme: {
     extend: {
       fontFamily: {
