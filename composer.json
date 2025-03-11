@@ -7,19 +7,22 @@
         "stripe/stripe-php": "^7.67",
         "phpmailer/phpmailer": "^6.5",
         "google/apiclient": "^2.0",
-        "google/apiclient-services": "^0.200",                  
+        "google/apiclient-services": "^0.200",
         "dompdf/dompdf": "^2.0",
         "league/oauth2-client": "^2.8",
-        "league/oauth2-google": "^4.0"
+        "league/oauth2-google": "^4.0",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.8",
+        "sepia/po-parser": "^6.0"
     },
     "require-dev": {
         "phplint/phplint": "^0.0.1",
         "wp-coding-standards/wpcs": "^3.1",
-        "phpstan/phpstan": "^1.10",        
+        "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9",
         "erusev/parsedown": "^1.7"
     },
-    "license": "GPL-3.0-or-later", 
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Beto Ayesa",
@@ -28,14 +31,14 @@
     ],
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "install-tailwind": "cd tailwind; npm install;",        
-        "rebuild-css": "cd tailwind; npx tailwindcss -i ./src/input.css -o ./../cdn/css/app.css --minify",
+        "install-tailwind": "cd tailwind; npm install;",
+        "rebuild-css": "cd tailwind; npx tailwindcss -i ./src/input.css -o ./../cdn/css/things-to-do-near-you.css --minify",
         "tailwind-update-browser": "cd tailwind; npx update-browserslist-db@latest",
         "rebuild-locale": "msgfmt messages.po -o messages.mo",
-        "locale-strings":"xgettext -o ./locale/en_EN.utf8/LC_MESSAGES/messages.po --from-code=UTF-8 -k_ -n ./app/views/landing/*.php",
-        "locale-merge":"msgmerge -U existing.po messages.po",
-        "locale-build": "msgfmt -o messages.mo existing.po"
-
+        "locale-strings": "xgettext -o ./locale/messages.pot --from-code=UTF-8 -k_ -n ./app/views/*/*.php",
+        "locale-init": "for lang in en es fr de it nl pt ru pl sv fi da no el cs hu ro bg hr sk lt lv et; do msginit --no-translator --input=./locale/messages.pot --locale=$lang.UTF-8 --output-file=./locale/$lang/LC_MESSAGES/messages.po; done",
+        "locale-merge": "msgmerge -U existing.po messages.po",
+        "locale-build-all": "for lang in en es fr de it nl pt ru pl sv fi da no el cs hu ro bg hr sk lt lv et; do msgfmt -o ./locale/$lang/LC_MESSAGES/messages.mo ./locale/$lang/LC_MESSAGES/messages.po; done"
     },
     "config": {
         "allow-plugins": {
