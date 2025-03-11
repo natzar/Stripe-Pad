@@ -1,12 +1,12 @@
-<div class=" px-6 py-24 pb-8 sm:pt-16 sm:pb-16 lg:px-8 border-gray-800 border-b">
+<div class=" px-6 py-24 pb-8 sm:pt-16 sm:pb-16 lg:px-8 ">
   <div class="mx-auto max-w-2xl text-center">
-    <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl nunito">Terms and Conditions</h1>
+    <h1 class="text-4xl font-bold tracking-tight text-black sm:text-6xl nunito">Terms and Conditions</h1>
     <p class="mt-4 text-sm leading-8 text-gray-500">Read carefully</p>
   </div>
 </div>
 
 
-<div class=" text-gray-400 shadow-md rounded-lg max-w-3xl mx-auto p-6 mt-10 mb-10">
+<div class=" text-gray-600 shadow-md rounded-lg max-w-3xl mx-auto p-6 mt-10 mb-10">
   <div class=" space-y-1">
 
 
