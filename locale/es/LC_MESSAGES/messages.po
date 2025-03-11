@@ -1,0 +1,145 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-09 16:45+0100\n"
+"PO-Revision-Date: 2025-02-09 16:45+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/views/custom/event-template-list.php:72
+msgid "From"
+msgstr "Desde"
+
+#: app/views/custom/event.php:127
+msgid "Price:"
+msgstr "Precio:"
+
+#: app/views/custom/event.php:177
+msgid "Get More Info"
+msgstr "Obtén Más Información"
+
+#: app/views/custom/event.php:185
+msgid "Add to Calendar"
+msgstr "Añadir al Calendario"
+
+#: app/views/custom/event.php:191
+msgid "Send to WhatsApp"
+msgstr "Enviar a WhatsApp"
+
+#: app/views/custom/tags.php:14
+msgid "Everything"
+msgstr "Todo"
+
+#: app/views/custom/tags.php:22
+msgid "Music"
+msgstr "Música"
+
+#: app/views/custom/tags.php:33
+msgid "Art"
+msgstr "Arte"
+
+#: app/views/custom/tags.php:41 app/views/custom/tags.php:48
+msgid "Kids"
+msgstr "Peques"
+
+#: app/views/custom/tags.php:55
+msgid "Sports"
+msgstr "Deporte"
+
+#: app/views/custom/tags.php:70
+msgid "Theatre"
+msgstr "Teatro"
+
+#: app/views/custom/tags.php:77
+msgid "Markets"
+msgstr "Mercados"
+
+#: app/views/custom/tags.php:84
+msgid "Meetups"
+msgstr "Encuentros"
+
+#: app/views/custom/tags.php:92
+msgid "Free"
+msgstr "Gratis"
+
+#: app/views/landing/homepage.php:49
+msgid ""
+"Stripe Pad is the PHP SaaS-in-a-Box that saves developers months of effort and "
+"new founders tens of thousands of dollars."
+msgstr ""
+"Stripe Pad es el PHP SaaS-en-una-Caja que ahorra a los desarrolladores meses de "
+"esfuerzo y a los nuevos fundadores decenas de miles de dólares."
+
+#: app/views/landing/homepage.php:57
+msgid "Download"
+msgstr "Descargar"
+
+#: app/views/landing/homepage.php:61
+msgid "Demo"
+msgstr "Demostración"
+
+#: app/views/superadmin/table.php:89
+msgid "Delete"
+msgstr "Eliminar"
+
+#: app/views/user/profile copy.php:33 app/views/user/profile.php:33
+msgid "User Profile"
+msgstr "Perfil de usuario"
+
+#: app/views/user/profile copy.php:44 app/views/user/profile.php:44
+msgid "Name"
+msgstr "Nombre"
+
+#: app/views/user/profile copy.php:54 app/views/user/profile.php:54
+msgid "Company"
+msgstr "Compañía"
+
+#: app/views/user/profile copy.php:58 app/views/user/profile.php:58
+msgid "Address"
+msgstr "Dirección"
+
+#: app/views/user/profile copy.php:62 app/views/user/profile.php:62
+msgid "Bussiness Id / VAT / CIF / NIF (Taxes)"
+msgstr "Id de Negocio / IVA / CIF / NIF (Impuestos)"
+
+#: app/views/user/profile copy.php:69 app/views/user/profile.php:69
+msgid "Update Profile"
+msgstr "Actualizar perfil"
+
+#: app/views/user/profile copy.php:92 app/views/user/profile.php:148
+msgid "Change your password"
+msgstr "Cambia tu contraseña"
+
+#: app/views/user/profile copy.php:98 app/views/user/profile.php:154
+msgid "Current Password"
+msgstr "Contraseña actual"
+
+#: app/views/user/profile copy.php:102 app/views/user/profile.php:158
+msgid "New Password"
+msgstr "Nueva Contraseña"
+
+#: app/views/user/profile copy.php:106 app/views/user/profile.php:162
+msgid "Repeat new Password"
+msgstr "Repetir nueva contraseña"
+
+#: app/views/user/profile copy.php:110 app/views/user/profile.php:166
+msgid "Update Password"
+msgstr "Actualizar Contraseña"
+
+#: app/views/user/profile copy.php:119 app/views/user/profile.php:175
+msgid "Invoices"
+msgstr "Facturas"
+
+#: app/views/user/profile.php:94
+msgid "No subscriptions found"
+msgstr "No se encontraron suscripciones"
+
+#: app/views/user/profile.php:123
+msgid "No invoices found"
+msgstr "No se encontraron facturas"
