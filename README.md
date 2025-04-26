@@ -1,4 +1,5 @@
-> 👋 We're Looking for Beta Testers! Whether you have web development skills or not, join us to build your own SaaS with support from our team. We'll help resolve any issues and assist in getting your idea out there with Stripe Pad. Interested? Get in touch at beta@stripepad.com
+> 👋 Not ready for production. 26/04/2025, stay tunned.
+> FOR EDUCATIONAL PURPOSES - GPL3
 
 #  Stripe Pad
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
