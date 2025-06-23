@@ -7,13 +7,12 @@
 [![Psalm Security Scan](https://github.com/natzar/Stripe-Pad/actions/workflows/psalm.yml/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/psalm.yml)
 [![DevSkim](https://github.com/natzar/Stripe-Pad/actions/workflows/devskim.yml/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/devskim.yml)
 [![CodeQL](https://github.com/natzar/Stripe-Pad/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/github-code-scanning/codeql)
-![Stripe Pad Image](https://stripepad.com/cdn/img/open-graph.png)
+![Stripe Pad Image](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/img/open-graph.png)
 
 ## Introduction
 
 **Stripe Pad** is the PHP boilerplate to build SaaS with Stripe. Stripe Pad is a GPL3-licensed PHP-based MVC framework that saves you months of development by starting you off with all the features that are the same in every product, so you can focus on what makes your app unique. Suitable for Educational purposes.
 
-Website: [stripepad.com](https://stripepad.com)
 
 **Not affiliated with Stripe.com**
 
@@ -22,20 +21,19 @@ Website: [stripepad.com](https://stripepad.com)
 The 3 main parts of every SaaS: A public page, a private area where only registered users and customers can login and a Superadmin private part to manage and maintain the SaaS.
 
 ### Public
-![Stripe Pad Homepage](https://demo.stripepad.com/cdn/demo/screenshot-demo-homepage.png)
+![Stripe Pad Homepage](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/demo/screenshot-demo-homepage.png)
 ### Private
-![App](https://demo.stripepad.com/cdn/demo/screenshot-private.png)
+![App](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/demo/screenshot-private.png)
 ### Dashboard
-![Stripe Pad Dashboard](https://demo.stripepad.com/cdn/demo/screenshot-dashboard.png)
+![Stripe Pad Dashboard](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/demo/screenshot-dashboard.png)
 
 
-### Try it [https://demo.stripepad.com/](https://demo.stripepad.com)
-- **superadmin**: user: superadmin@stripepad.com / pass: superadmin
-- **user**: user: demo@stripepad.com / pass: demo
 
 ## Quick Install
 Follow [installation instructions](https://github.com/natzar/Stripe-Pad/wiki/Installation) to have your environment setup as soon as posible.
 
+- **superadmin**: user: superadmin@stripepad.com / pass: superadmin
+- **user**: user: demo@stripepad.com / pass: demo
 
 ## Official Documentation
 
