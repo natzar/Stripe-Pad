@@ -37,7 +37,7 @@ Follow [installation instructions](https://github.com/natzar/Stripe-Pad/wiki/Ins
 
 ## Official Documentation
 
-You can read the official documentation on the [stripepad.com/documentation](https://www.stripepad.com/documentation) website.
+You can read the official documentation on the [Wiki](https://github.com/natzar/Stripe-Pad/wiki)
 
 ## Contributing
 
