@@ -6,7 +6,7 @@
   <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
 
-      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-100">Recover your password</h2>
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-90">Recover your password</h2>
     </div>
 
     <? if (isset($_SESSION['errors']) and !empty($_SESSION['errors'])): ?>
@@ -16,13 +16,13 @@
     <? endif; ?>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="actionRecoverPassword" method="POST">
+      <form class="space-y-6" action="actionRecoverPassword" autocomplete="no" method="POST">
         <div>
-          <label for="email" class="block text-sm font-medium leading-6 text-gray-100">Email address</label>
+          <label for="email" class="block text-sm font-medium leading-6 text-gray-700">Email address</label>
           <div class="mt-2">
             <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6">
 
-            <input type="text" name="name" value="" style="height:0px;width:0px;overflow:hidden;border:none;padding:0px">
+            <input type="text" name="name" value="" autocomplete="no" style="height:0px;width:0px;overflow:hidden;border:none;padding:0px">
           </div>
         </div>
 
@@ -35,7 +35,7 @@
 
       <p class="mt-10 text-center text-sm text-gray-500">
         Not a member?
-        <a href="<?= APP_DOMAIN ?><?= $_SESSION['user']['lang'] ?>/signup" class="font-semibold leading-6 text-sky-600 hover:text-sky-500">Signup</a>
+        <a href="signup" class="font-semibold leading-6 text-sky-600 hover:text-sky-500">Signup</a>
       </p>
     </div>
   </div>

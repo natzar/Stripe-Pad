@@ -131,7 +131,7 @@ class usersModel extends ModelBase
 			$new_password = $this->resetPassword($user['usersId']);
 			$mails = new mailsModel();
 
-			$subject = '[INFO] Password modificado';
+			$subject = '[INFO] Password Reset';
 			$data = [
 				'persona_contacto' => $user['name'],
 				'user' => $user['email'],
@@ -188,7 +188,7 @@ class usersModel extends ModelBase
 			$password .= $alphabet[$n];
 		}
 
-		return $password;
+		return trim($password);
 	}
 
 	public function getOrmDescription($table = "users")

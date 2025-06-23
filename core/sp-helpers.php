@@ -50,9 +50,10 @@ function sanitize($input)
     if (is_array($input)) {
         return array_map('sanitize', $input);
     }
+
     return cleanInput($input);
     // Allow only alphanumeric characters, underscore, dash, dot, and @
-    //return trim(preg_replace('/[^a-zA-Z0-9@\.\_\w\s\,-]/', '', $input));
+    return trim(preg_replace('/[^a-zA-Z0-9@\._\w\s\,-]/', '', $input));
 }
 
 
@@ -238,8 +239,8 @@ function time_elapsed_string($datetime, $full = false)
     $ago = new DateTime($datetime);
     $diff = $now->diff($ago);
 
-    $diff->w = floor($diff->d / 7);
-    $diff->d -= $diff->w * 7;
+    $w = floor($diff->d / 7);
+    $diff->d -= $w * 7;
 
     $string = array(
         'y' => 'año',
