@@ -63,25 +63,25 @@ if (isLocalhost()) { # Localhost
 
 	define('DEBUG_MODE', true);
 
-	define('APP_DOMAIN', 'http://localhost/secretario/');
-	define('APP_BASE_URL', 'http://localhost/secretario/');
-	define('API_BASE_URL', 'http://localhost/secretario/api/');
-	define('HOMEPAGE_URL', 'http://localhost/secretario/');
+	define('APP_DOMAIN', 'http://localhost/stripepad/');
+	define('APP_BASE_URL', 'http://localhost/stripepad/');
+	define('API_BASE_URL', 'http://localhost/stripepad/api/');
+	define('HOMEPAGE_URL', 'http://localhost/stripepad/');
 	define('APP_TABLE_PREFIX', '');
-	define('APP_DB_HOST', 'hy9m.your-database.de');
-	define('APP_DB', 'david_support');
-	define('APP_DB_USER', 'gophpj_8');
-	define('APP_DB_PASSWORD', 'HHVwYgq2bma79BJs');
-	define('APP_CDN', 'http://localhost/secretario/cdn/');
+	define('APP_DB_HOST', '');
+	define('APP_DB', '');
+	define('APP_DB_USER', '');
+	define('APP_DB_PASSWORD', '');
+	define('APP_CDN', APP_DOMAIN . 'cdn/');
 } else {    # Server / Production
 
 	define('DEBUG_MODE', false);
 
-	define('APP_DOMAIN', 'https://david.gophpninja.com/');
-	define('APP_BASE_URL', 'https://david.gophpninja.com/');
-	define('API_BASE_URL', 'https://david.gophpninja.com/');
-	define('HOMEPAGE_URL', 'https://david.gophpninja.com');
-	define('APP_CDN', 'https://david.gophpninja.com/cdn/');
+	define('APP_DOMAIN', 'https://domain.com/');
+	define('APP_BASE_URL', 'https://domain.com/');
+	define('API_BASE_URL', 'https://domain.com/');
+	define('HOMEPAGE_URL', 'https://domain.com');
+	define('APP_CDN', 'https://domain.com/cdn/');
 
 	define('APP_TABLE_PREFIX', '');
 	define('APP_DB_HOST', '');
