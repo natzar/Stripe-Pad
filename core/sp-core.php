@@ -58,10 +58,11 @@ class StripePadController
             exit;
         }
         # Block aggresive bots
-        if (BOT_BLOCKER && $t = requestBlocker()) {
-            $error_msg = "Possible BOT detected - " . implode("<br>", $t);
-            include "app/themes/" . APP_THEME . "/error.php";
-            die();
+        if (BOT_BLOCKER) {
+            // $error_msg = "Possible BOT detected - " . implode("<br>", $t);
+            // include "app/themes/" . APP_THEME . "/error.php";
+            // die();
+            $Guardian = new BotBlocker(); // IT will die in case bot is detected
         }
         $this->log = log::singleton();
         $this->params = get_parameters();
@@ -213,12 +214,7 @@ class StripePadController
      */
     public function actionRecoverPassword()
     {
-        if (!isset($this->params['email']) or empty($this->params['email']) or !empty($this->params['name'])) {
-
-            $_SESSION['errors'][] = _("Some error occurred, please try again");
-            header("location: " . APP_DOMAIN . "forgotPassword");
-            return;
-        }
+        if (!isset($this->params['email']) or empty($this->params['email'])) die();
         $email = $this->params['email'];
         # Demo
         if (strpos($email, "stripepad.com") > -1) header("location: " . APP_DOMAIN . "login");
@@ -242,10 +238,10 @@ class StripePadController
         if (!isset($this->params['password']) or empty($this->params['password'])) die();
 
         $users = new usersModel();
-        if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 1;
-        $_SESSION['login_attemp'] = 1;
+        if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 0;
+        $_SESSION['login_attemp']++;
 
-        if ($_SESSION['login_attemp'] > 4) {
+        if ($_SESSION['login_attemp'] > 3) {
             $_SESSION['errors'][] = "Too many intents.";
 
             header("location: " . APP_DOMAIN . "/login");
@@ -259,7 +255,7 @@ class StripePadController
                 exit();
             }
 
-            $_SESSION['login_attemp']++;
+            $_SESSION['login_attemp'] = 0;
             $_SESSION['errors'][] = "User or password not correct";
 
             header("location: " . APP_DOMAIN . "/login");
@@ -275,15 +271,10 @@ class StripePadController
 
         $users = new usersModel();
 
-        if (!empty($_POST['hney']) or !empty($_POST['name'])) {
-            $_SESSION['bot'] = true;
-            die("Bot");
-        }
-        // FIX ONLY FOR DOMSTRY
+        if (!empty($_POST['hney'])) die();
 
         // not included by default : find a better way
         include_once CORE_PATH . "Classes/sp-emailvalidator.php";
-        include_once CORE_PATH . "Classes/EmailValidator.php";
         $emailValidator = new emailValidator();
 
         // verify valid email
@@ -652,15 +643,23 @@ class StripePadController
 
     public function form()
     {
-        if (!$this->isSuperadmin) {
-            throw new StripePad\Exceptions\PermissionsException('Not superadmin');
-        }
+
+
 
         $table = isset($this->params['m']) ? $this->params['m'] : -1;
         $rid = isset($this->params['a']) ? $this->params['a'] : -1;
         $op = isset($this->params['i']) ? $this->params['i'] : '';
-        $form = new Orm();
+        $modelName = $table . 'Model';
+        $form = new $modelName();
+
         $data = $form->generateForm($table, $rid, $op);
+        $data['SEO_TITLE'] = ucfirst($table) . ' ➞ Add New ';
+        $data['SEO_DESCRIPTION'] = 'Añade un nuevo ' . ucfirst($table) . ' a la base de datos';
+
+        if ($rid != -1) {
+            $data['SEO_TITLE'] = ucfirst($table) . ' #' . $rid;
+            $data['SEO_DESCRIPTION'] = "sp-core.php linea 659"; //Created " . strftime(" %d %B %Y %H:%M", strtotime($data['created'])) . " - Updated: " . strftime(" %d %B %Y %H:%M", strtotime($data['updated']));
+        }
 
         $this->view->show('superadmin/form.php', $data);
     }
@@ -672,26 +671,35 @@ class StripePadController
      */
     public function update()
     {
-        if (!$this->isSuperadmin) {
-            throw new StripePad\Exceptions\PermissionsException('Not superadmin');
-        }
-        $orm = new Orm();
+        // if (!$this->isSuperadmin) {
+        //     throw new StripePad\Exceptions\PermissionsException('Not superadmin');
+        // }
+        //        $orm = new Orm();
         $rid = $this->params['rid'];
         $table = $this->params['table'];
+        $modelName = $table . 'Model';
+        $orm = new $modelName();
+        $return_url = null;
 
-        $return_url = $_SESSION['return_url'];
+
+        if (isset($_SESSION['return_url']))    $return_url = $_SESSION['return_url'];
 
         if (isset($this->params['return_url']) and -1 != $this->params['return_url']) {
             $return_url = $this->params['return_url'];
         }
 
         if ($rid == -1) {
-            $id = $orm->add($table, $this->params);
+            $id = $orm->add($this->params);
         } else {
-            $orm->edit($table, $rid, $this->params);
+            $orm->edit($this->params);
         }
-
+        $_SESSION['alerts'][] = _('Actualizado correctamente');
         header('location: ' . $return_url);
+    }
+    # ¿?
+    public function deadbeef()
+    {
+        die('deadbeef? #000000');
     }
 
     # SOCIAL LOGIN
@@ -745,5 +753,31 @@ class StripePadController
                 ]);
                 // Add more providers as needed
         }
+    }
+
+    // Stripe 
+
+    public function stripe_success()
+    {
+        $data = array();
+        $this->view->show("stripe/success-checkout.php", $data, true);
+    }
+
+    public function stripe_cancelled()
+    {
+        $data = array();
+
+        $this->view->show("stripe/cancelled-checkout.php", $data, true);
+    }
+    public function bot_detected()
+    {
+        file_put_contents('bots.log', $_SERVER['REMOTE_ADDR'] . " - Detected WebDriver\n", FILE_APPEND);
+        $_SESSION['bot'] = true;
+    }
+
+    public function impressum()
+    {
+        $data = array();
+        $this->view->show("common/impressum.php", $data);
     }
 }

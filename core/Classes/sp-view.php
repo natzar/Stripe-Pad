@@ -41,14 +41,17 @@ class View
 		$this->log = log::singleton();
 
 
-
 		// bindtextdomain('messages', ROOT_PATH . 'locale/' . $lang . '/LC_MESSAGES/');
 		// bind_textdomain_codeset('messages', 'UTF-8');  // Make sure to set UTF-8 encoding if necessary
 		// textdomain('messages');
 	}
 	function set_defaults($defs)
 	{
-		$this->defaults = $defs;
+		if (!empty($this->defaults)) {
+			$this->defaults = array_merge($this->defaults, $defs);
+		} else {
+			$this->defaults = $defs;
+		}
 	}
 
 	public function show($name = 'custom/home.php', $vars = array(), $show_menu = true)
@@ -95,6 +98,8 @@ class View
 		if ($this->isAuthenticated) {
 			include $viewsFolder . "layout/private/header.php";
 			include $viewsFolder . "layout/private/menu-private.php";
+
+
 			include($template);
 			include $viewsFolder . "layout/private/footer.php";
 		} else {

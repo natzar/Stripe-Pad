@@ -50,10 +50,9 @@ function sanitize($input)
     if (is_array($input)) {
         return array_map('sanitize', $input);
     }
-
     return cleanInput($input);
     // Allow only alphanumeric characters, underscore, dash, dot, and @
-    return trim(preg_replace('/[^a-zA-Z0-9@\._\w\s\,-]/', '', $input));
+    //return trim(preg_replace('/[^a-zA-Z0-9@\.\_\w\s\,-]/', '', $input));
 }
 
 
@@ -179,32 +178,7 @@ function cleanInput($input)
 
 function gett()
 {
-    // Takes USER INPUT, normalize, sanitize, and returns and array
-    $retrieved = -1;
-    $params = array();
-    $filter = FILTER_SANITIZE_STRING;
-
-    // Check if the key exists in the $_GET array
-    if (isset($_GET)) {
-        // Return the sanitized value using a specified filter
-        // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
-        foreach ($_GET as $k => $v) {
-            if (filter_input(INPUT_GET, $k, $filter)) {
-                $params[$k] = $v;
-            }
-        }
-    }
-    if (isset($_POST)) {
-        // Return the sanitized value using a specified filter
-        // Default filter is FILTER_SANITIZE_STRING which removes tags and encode special characters
-        foreach ($_POST as $k => $v) {
-            if (filter_input(INPUT_POST, $k, $filter)) {
-                $params[$k] = $v;
-            }
-        }
-    }
-
-    return $params;
+    return get_parameters();
 }
 
 
@@ -239,8 +213,8 @@ function time_elapsed_string($datetime, $full = false)
     $ago = new DateTime($datetime);
     $diff = $now->diff($ago);
 
-    $w = floor($diff->d / 7);
-    $diff->d -= $w * 7;
+    $weeks = floor($diff->d / 7);
+    $diff->d -= $weeks * 7;
 
     $string = array(
         'y' => 'año',
@@ -252,7 +226,7 @@ function time_elapsed_string($datetime, $full = false)
         's' => 'segundo',
     );
     foreach ($string as $k => &$v) {
-        if ($diff->$k) {
+        if (!empty($diff->$k)) {
             $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
         } else {
             unset($string[$k]);
