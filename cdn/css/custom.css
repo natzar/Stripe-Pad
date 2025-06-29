@@ -46,6 +46,7 @@ html,
 body {
   /*/font-family: 'AirClassicMedium', sans-serif !important;*/
   /* Use your custom font for the body or any specific element */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
 }
