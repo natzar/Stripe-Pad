@@ -14,14 +14,11 @@
 
 use StripePad\Exceptions;
 
-# Deprecated: if sp-config.php is not found, redirect to install
-# if (!file_exists(dirname(__FILE__) . '/../sp-config.php')) {
-#  header("location: install");
-#   exit();
-#}
-#####
-
 # Include configuration file
+if (!file_exists(dirname(__FILE__) . '/../sp-config.php')) {
+    header("location: install");
+    exit();
+}
 include_once dirname(__FILE__) . '/../sp-config.php';
 
 # Defaults 
