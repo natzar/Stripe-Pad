@@ -1,10 +1,12 @@
 <?php
 /* Header */
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title><?= $SEO_TITLE ?></title>
   <meta name="title" content="<?= $SEO_TITLE ?>">
   <meta charset='utf-8'>
@@ -55,11 +57,13 @@
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       -webkit-font-smoothing: antialiased;
     }
+
     html,
     body {
       font-family: 'PT Mono', 'Courier New', 'Courier', serif !important;
       /* Use your custom font for the body or any specific element */
     }
+
     @font-face {
       font-family: 'AirClassicMedium';
       /* Give your font a name */
@@ -108,7 +112,7 @@
 
 <body class="bg-gray-900">
 
-<?php if (!empty($_SESSION['errors']) and count($_SESSION['errors']) > 0): ?>
+  <?php if (!empty($_SESSION['errors']) and count($_SESSION['errors']) > 0): ?>
 
 
     <div id="modal-alert" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
