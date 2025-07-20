@@ -32,8 +32,13 @@
   <?= $HOOK_JS ?>
 </script>
 
-<!-- ONLY EXPERIMENTAL FOR STRIPE PAD LANDING PAGE -->
-<script src="https://cdn.gophpninja.com/phpninja-remote/v2/phpninja-remote.js"></script>
+<script src="<?= APP_CDN ?>js/feedback.js"></script>
+<script src="<?= APP_CDN ?>js/system.js"></script>
+
+<script>
+  <? if (!empty($HOOK_FOOTER)) echo $HOOK_FOOTER; ?>
+  <? if (!empty($HOOK_JS)) echo $HOOK_JS; ?>
+</script>
 
 </body>
 

@@ -17,7 +17,7 @@
   <meta name="keywords" content="<?= implode(",", explode(" ", $SEO_TITLE)) ?>">
   <meta property="og:title" content="<?= $SEO_TITLE ?>" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://www.stripepad.com/cdn/img/open-graph.png" />
+  <meta property="og:image" content="<?= APP_CDN ?>img/open-graph.png" />
   <meta property="og:url" content="<?= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>" />
   <meta property="og:description" content="<?= $SEO_DESCRIPTION ?>" />
   <meta property="og:site_name" content="Domstry" />
@@ -26,7 +26,7 @@
   <meta name="twitter:site" content="@betoayesa" />
   <meta name="twitter:title" content="<?= $SEO_TITLE ?>" />
   <meta name="twitter:description" content="<?= $SEO_DESCRIPTION ?>" />
-  <meta name="twitter:image" content="https://www.stripepad.com/cdn/img/open-graph.png" />
+  <meta name="twitter:image" content="<?= APP_CDN ?>img/open-graph.png" />
   <meta name="twitter:creator" content="@betoayesa" />
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -41,7 +41,7 @@
   <base href="<?= APP_BASE_URL ?>">
 
   <!-- MAIN CSS -->
-  <link href="<?= APP_CDN ?>css/app.css?v=<?= rand() ?>" rel="stylesheet">
+  <link href="<?= APP_CDN ?>css/app.css" rel="stylesheet">
   <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
   <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
   <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet"> -->
@@ -58,16 +58,12 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    html,
-    body {
-      font-family: 'PT Mono', 'Courier New', 'Courier', serif !important;
-      /* Use your custom font for the body or any specific element */
-    }
+
 
     @font-face {
       font-family: 'AirClassicMedium';
       /* Give your font a name */
-      src: url('https://cdn.gophpninja.com/fonts/airclassic-medium.woff2') format('woff2');
+      src: url('<?= APP_CDN ?>fonts/airclassic-medium.woff2') format('woff2');
       /* Specify the path to your WOFF2 file */
       font-weight: normal;
       /* Adjust font-weight if needed */
@@ -78,7 +74,7 @@
     @font-face {
       font-family: 'AirClassicBlack';
       /* Give your font a name */
-      src: url('https://cdn.gophpninja.com/fonts/airclassic.woff2') format('woff2');
+      src: url('<?= APP_CDN ?>/fonts/airclassic.woff2') format('woff2');
       /* Specify the path to your WOFF2 file */
       font-weight: bold;
       /* Adjust font-weight if needed */
@@ -102,15 +98,11 @@
   </style>
 
   <!-- Include here your JS -->
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="<?= APP_CDN ?>js/jquery-1.12.4.min.js"></script>
 
-
-  <? if ($page == "app.php"): ?>
-    <!-- header hardcoded hook: custom code exclusive for your app -->
-  <? endif; ?>
 </head>
 
-<body class="bg-gray-900">
+<body class="bg-white">
 
   <?php if (!empty($_SESSION['errors']) and count($_SESSION['errors']) > 0): ?>
 

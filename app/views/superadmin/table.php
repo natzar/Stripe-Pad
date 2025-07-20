@@ -1,10 +1,11 @@
-<header class="pb-6 border-gray-600  bg-gray-100">
-  <div class="mx-auto  flex items-center space-x-4 ">
-    <h1 class="text-3xl font-bold tracking-tight text-gray-800"><?= ucfirst($table) ?> (<?= count($items) ?>)</h1>
-    <!-- <p class="text-base leading-8 text-gray-300">You are signed up as "<?= $_SESSION['user']['group'] ?>" - Only registered users can see this</p> -->
-    <a href="<?= APP_DOMAIN ?>form/<?= $table ?>" class="items-center  rounded-full bg-sky-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+<? include "app/views/layout/page_header.php"; ?>
+<header class="pb-6 ">
 
-      Add new +
+  <div class="mx-auto  flex items-center space-x-4 ">
+
+    <a href="<?= APP_DOMAIN ?>form/<?= $table ?>" class="items-center  rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+
+      <?= _('Añadir nuevo &raquo;') ?>
     </a>
 
   </div>
@@ -13,17 +14,9 @@
 
 
 
-<div class="flex min-h-screen flex-col bg-gray-100">
-
-
+<div class="flex min-h-screen flex-col ">
   <div class="mx-auto flex min-h-screen w-full  items-start gap-x-8 ">
-
-
-
     <main class="flex-1 text-gray-100">
-
-
-
 
       <? if (isset($HOOK_TOP)) echo $HOOK_TOP; ?>
       <? if (isset($_GET['i']) and $_GET['i'] == 'success'): ?>
@@ -48,7 +41,8 @@
         <table id="leads" class="rounded-lg shadow-xl w-full whitespace-no-wrap text-left overflow-hidden  text-clip">
           <thead class="bg-gray-50">
             <tr>
-              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+              <!-- <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th> -->
+              <th class="px-4 py-3"></th>
               <?php foreach ($items_head as $header): ?>
                 <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><?= $header ?></th>
               <?php endforeach; ?>
@@ -62,11 +56,14 @@
 
             for ($i = 0; $i < $itemsTotal; $i++):
               $row = $items[$i];
-              $rowClass = ($table == "tickets" && $row['prioritysId'] == "Urgente") ? 'bg-red-100 border-red-400 b-1 text-white' : 'hover:bg-gray-50';
+              $rowClass = ($table == "tickets" && $row['prioritysId'] == "Urgente") ? 'bg-blue-100 border-blue-400 b-1 text-white' : 'hover:bg-gray-50';
             ?>
-              <tr id="recordsArray_<?= $row[$table_no_prefix . 'Id'] ?>" class="<?= $rowClass ?>">
-                <td class="px-4 py-5 text-sm font-semibold text-gray-900">
-                  <a alt='edit' title='edit' href='<?= APP_DOMAIN ?>form/<?= $table ?>/<?= $row[$table . "Id"] ?>' style="font-size:16px;font-weight:bold;" class="underline font-bold hover:text-sky-500 ls-modal-no">#<?= $row[$table . "Id"] ?></a>
+              <tr id="recordsArray_<?= $row[$table_no_prefix . 'Id'] ?>" class="<?= $rowClass ?> items-center">
+                <td class="px-4 py-5 text-sm font-semibold text-gray-900 items-center">
+                  <a class="hover:text-blue-500" href='<?= APP_BASE_URL ?>app_<?= $table ?>/<?= $row[$table . 'Id'] ?>' rel="nofollow"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                    </svg>
+                  </a>
                 </td>
 
                 <?php
@@ -74,7 +71,7 @@
                 foreach ($row as $cell):
                   if ($j > 0):
                     $sort_data = strip_tags($cell);
-                    $sort_data = fingerprint($sort_data);
+                    // $sort_data = fingerprint($sort_data);
                 ?>
                     <td class="px-4 py-5 text-sm text-gray-600  overflow-hidden  text-clip">
                       <span class="font-semibold md:hidden"><?= $items_head[$j - 1] ?></span> <?= $cell; ?>
@@ -85,13 +82,13 @@
                 endforeach;
                 ?>
 
-                <td class="px-4 py-5 text-right">
-                  <a class="text-xs bg-red-100 hover:bg-red-600 hover:text-white text-red-800 font-medium mr-2 px-2.5 py-0.5 rounded" alt='delete' title='delete' href="javascript: DeleteRegistro('recordsArray_<?= $row[$table . 'Id'] ?>', '<?= $row[$table . 'Id'] ?>', '', '<?= $table ?>');"><?= _('Delete') ?></a>
-                  <a href='<?= APP_BASE_URL ?>form/<?= $table ?>/<?= $row[$table . 'Id'] ?>' rel="nofollow">
-                    <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                <td class="px-4 py-5 text-right text-center space-x-4 text-gray-700 flex items-center justify-center">
+
+                  <a class="hover:text-blue-500" alt='delete' title='delete' href="javascript: Emilio.DeleteRegistro('recordsArray_<?= $row[$table . 'Id'] ?>', '<?= $row[$table . 'Id'] ?>', '', '<?= $table ?>');"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                     </svg>
                   </a>
+
                 </td>
               </tr>
             <?php endfor; ?>
@@ -129,4 +126,3 @@
       <? endif; ?>
     </main>
   </div>
-  <? if (!empty($HOOK_FOOTER)) echo $HOOK_FOOTER; ?>
