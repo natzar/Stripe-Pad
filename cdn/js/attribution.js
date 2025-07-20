@@ -1,4 +1,4 @@
-$ = $ || jQuery;	
+$ = $ || jQuery;	
 
 function getCookie(cname) {
   let name = cname + "=";

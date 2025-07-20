@@ -200,11 +200,12 @@ abstract class ModelBase
 	public function search($params)
 	{
 
-		$model = $table . 'Model';
+		$model = $params['table'] . 'Model';
 		$instance = new $model();
 		$data = $instance->getOrmDescription();
 		$fields_to_show = $data['fields_to_show'];
 		$fields = $data['fields'];
+		$fields_types = $data['fields_types'];
 		$fields_labels = $data['fields_labels'];
 		$order = ($this->params['sorder'] != -1) ? $this->params['sorder'] : $default_order;
 		$table = $table_aux = $params['table'];
@@ -298,7 +299,12 @@ abstract class ModelBase
 	public function getById($id)
 	{
 
-		$consulta = $this->db->prepare('SELECT * FROM ' . $this->table . ' where ' . $this->table . 'Id ="' . $id . 'limit 1');
+		return $this->get_by_id($id);
+	}
+	public function get_by_id($id)
+	{
+		$consulta = $this->db->prepare('SELECT * FROM ' . $this->table . ' where ' . $this->table . 'Id = :id limit 1');
+		$consulta->bindParam(':id', $id);
 		$consulta->execute();
 
 		return $consulta->fetch();
@@ -375,7 +381,7 @@ abstract class ModelBase
 		$consulta = $this->db->prepare("INSERT INTO " . $table . " (" . implode(",", $fields) . ") VALUES ($info)");
 		$consulta->execute();
 		$id =  $this->getLastId($table);
-		$this->log->push($table . "-add");
+		//$this->log->push($table . "-add");
 
 		return $id;
 	}
@@ -383,10 +389,21 @@ abstract class ModelBase
 
 	public function edit($params)
 	{
+
 		$table = $this->table;
+		assert(!is_null($table));
+		$data = null;
+		if (class_exists($table . 'Model')) {
+			$model = $table . 'Model';
+			$instance = new $model();
+			$data = $instance->getOrmDescription();
+		} else {
+			$data = $this->getOrmDescription();
+		}
+
 		$rid = isset($params[$table . 'Id']) ? $params[$table . 'Id'] : $params['rid'];
 
-		$data = $this->getOrmDescription($table);
+
 		$fields_to_show = $data['fields_to_show'];
 		$fields = $data['fields'];
 		$fields_labels = $data['fields_labels'];
@@ -399,32 +416,27 @@ abstract class ModelBase
 		$new = array();
 
 		for ($i = 0; $i < count($fields); $i++) {
-			if (isset($_POST[$fields[$i]]) or isset($_GET[$fields[$i]])) {
-				if ($fields[$i] != $table . 'Id') {
-					$retrieved = '';
-					if (isset($params[$fields[$i]]) and !strstr($fields_types[$i], 'file_') and  $params[$fields[$i]] != -1) {
-						$retrieved = $params[$fields[$i]];
-					}
 
-					if ($retrieved == -1) $retrieved = '';
+			if ($fields[$i] != $table . 'Id' and isset($params[$fields[$i]]) and $fields_types[$i] != 'file_img' and $fields_types[$i] != 'file_file') {
+				$retrieved = $params[$fields[$i]];
+				if (!class_exists($fields_types[$i])) die("La clase " . $fields_types[$i] . " no existe");
+				if (strstr($fields_types[$i], 'file_') and $_FILES[$fields[$i]]['name'] != "" or !strstr($fields_types[$i], 'file_')) {
 
-					if (!class_exists($fields_types[$i])) die("La clase " . $fields_types[$i] . " no existe");
-					if (strstr($fields_types[$i], 'file_') and $_FILES[$fields[$i]]['name'] != "" or !strstr($fields_types[$i], 'file_')) {
-
-						if ($retrieved == "" and $fields_types[$i] == "password") {
-						} else {
-							$field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $retrieved, $table, $rid);
-							$edit_info_form .= " " . $table . "." . $fields[$i] . " = '" . $field_aux->exec_edit() . "',";
-							$new[$fields[$i]] = $field_aux->exec_edit();
-						}
+					if ($retrieved == "" and $fields_types[$i] == "password") {
+					} else {
+						$field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $retrieved, $table, $rid);
+						$edit_info_form .= " " . $table . "." . $fields[$i] . " = '" . $field_aux->exec_edit() . "',";
+						$new[$fields[$i]] = $field_aux->exec_edit();
 					}
 				}
 			}
 		}
-
+		//echo 'xxxxx';
 		$info = substr($edit_info_form, 0, strlen($edit_info_form) - 1);
 		$table_no_prefix =  $table;
-		$consulta = $this->db->prepare("UPDATE " . $table . " set  $info   where " . $table_no_prefix . "Id='" . $rid . "'");
+		$rid = intval($rid);
+		//echo "UPDATE " . $table . " set  $info   where " . $table_no_prefix . "Id=" . $rid;
+		$consulta = $this->db->prepare("UPDATE " . $table . " set  $info   where " . $table_no_prefix . "Id=" . $rid);
 		$consulta->execute();
 
 
@@ -614,7 +626,8 @@ abstract class ModelBase
 
 	public function deleteRow($table, $id)
 	{
-		// NEED SECURITY CHECK IF USER CAN DELETE THIS TABLE
+		// TO-DO
+		// NEED SECURITY CHECK IF USER CAN DELETE ROWS THIS TABLE
 		$model = $table . 'Model';
 		$instance = new $model();
 		$data = $instance->getOrmDescription($table);
@@ -695,24 +708,16 @@ abstract class ModelBase
 		$raw = ($rid != -1) ? $this->getFormValues($table, $rid) : '';
 
 		for ($i = 0; $i < count($fields); ++$i) {
-
-			$form_html .= "<div class='form-group mb-4'><label class='form-label text-sm font-semibold text-gray-600'>";
-			$form_html .= ucfirst($fields_labels[$i]);
-			$form_html .= '</label>';
-
-			// Not used: added to provide hints about the field
-			if (isset($fields_hints[$i]) and !empty($fields_hints[$i])) {
-				$form_html .= '<span class="block text-xs mb-2 text-gray-500">' . $fields_hints[$i] . '</span>';
-			}
-			$form_html .= "<div class='controls'>";
 			if (!class_exists($fields_types[$i])) {
 				exit('La clase ' . $fields_types[$i] . ' no existe');
 			}
+
 			$VALUE = isset($raw[$fields[$i]]) ? $raw[$fields[$i]] : '';
+			//$VALUE .= $fields_types[$i];
 			$field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $VALUE, $table, $rid);
+			$form_html .= $field_aux->bake_field_label($fields_labels, $fields_hints, $i);
 			$form_html .= $field_aux->bake_field();
 			$form_html .= '</div>';
-			$form_html .= ' </div>';
 		}
 
 		return [

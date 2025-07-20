@@ -14,7 +14,7 @@
   <meta name="keywords" content="<?= implode(",", explode(" ", $SEO_TITLE)) ?>">
   <meta property="og:title" content="<?= $SEO_TITLE ?>" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://www.stripepad.com/cdn/img/open-graph.png" />
+  <meta property="og:image" content="<?= APP_CDN ?>img/open-graph.png" />
   <meta property="og:url" content="<?= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>" />
   <meta property="og:description" content="<?= $SEO_DESCRIPTION ?>" />
   <meta property="og:site_name" content="Domstry" />
@@ -23,7 +23,7 @@
   <meta name="twitter:site" content="@betoayesa" />
   <meta name="twitter:title" content="<?= $SEO_TITLE ?>" />
   <meta name="twitter:description" content="<?= $SEO_DESCRIPTION ?>" />
-  <meta name="twitter:image" content="https://www.stripepad.com/cdn/img/open-graph.png" />
+  <meta name="twitter:image" content="<?= APP_CDN ?>img/open-graph.png" />
   <meta name="twitter:creator" content="@betoayesa" />
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -38,10 +38,8 @@
   <link href="<?= APP_CDN ?>css/app.css" rel="stylesheet">
   <link href="<?= APP_CDN ?>css/custom.css" rel="stylesheet">
   <!-- Include here your JS -->
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <?php if ($page == "app.php"): ?>
-    <!-- header hardcoded hook: custom code exclusive for your app -->
-  <?php endif; ?>
+  <script src="<?= APP_CDN ?>js/jquery-1.12.4.min.js"></script>
+
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-50">

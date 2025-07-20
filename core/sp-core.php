@@ -62,12 +62,13 @@ class StripePadController
             // $error_msg = "Possible BOT detected - " . implode("<br>", $t);
             // include "app/themes/" . APP_THEME . "/error.php";
             // die();
-            $Guardian = new BotBlocker(); // IT will die in case bot is detected
+            //  $Guardian = new BotBlocker(); // IT will die in case bot is detected
         }
         $this->log = log::singleton();
         $this->params = get_parameters();
         $this->view = new View();
-        $this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();
+        $this->view->isAuthenticated = $this->isAuthenticated();
+        $this->isAuthenticated = $this->isAuthenticated();
         $this->isSuperadmin = isset($_SESSION['user']) and isset($_SESSION['user']['group']) and $_SESSION['user']['group'] == "superadmin";
     }
 
@@ -250,15 +251,29 @@ class StripePadController
             $pass =  hash('sha256', $this->params['password']);
 
             if (!empty($user) and $user['password'] == $pass) {
-                $this->createSession($user);
+                // if ($this->createSession($user)) {
+
+                //   echo 'Session created successfully';
+                $_SESSION['app_emilio'] = 1;
+                $_SESSION['login_attemp'] = 0;
+                $_SESSION['user'] = $user;
+                $_SESSION['HTTP_USER_AGENT'] = hash('sha256', ($_SERVER['HTTP_USER_AGENT'] . $user['email']));
+
+
+
+                $users->saveLastLogin($user['usersId']);
+
+
+
+                $_SESSION['errors'][] = "Welcome back " . $user['email'];
+                //print_r($_SESSION);
+                //session_write_close();
                 header("location: " . APP_DOMAIN);
-                exit();
+            } else {
+                $_SESSION['errors'][] = "User or password not correct";
+
+                header("location: " . APP_DOMAIN . "/login");
             }
-
-            $_SESSION['login_attemp'] = 0;
-            $_SESSION['errors'][] = "User or password not correct";
-
-            header("location: " . APP_DOMAIN . "/login");
         }
     }
     /**
@@ -308,12 +323,9 @@ class StripePadController
     }
     private function createSession($user, $saveLogin = true)
     {
-        $_SESSION['app_' . APP_NAME . '_logged_in'] = 1;
-        $_SESSION['login_attemp'] = 0;
-        $_SESSION['user'] = $user;
-        $_SESSION['HTTP_USER_AGENT'] = hash('sha256', ($_SERVER['HTTP_USER_AGENT'] . $user['email']));
-        $users = new usersModel();
-        if ($saveLogin) $users->saveLastLogin($user['usersId']);
+
+
+        return true;
     }
 
 

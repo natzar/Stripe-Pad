@@ -31,19 +31,30 @@
  */
 
 
-# Include Custom App helpers.php
-if (file_exists(dirname(__FILE__) . "/helpers.php")) include_once(dirname(__FILE__) . "/helpers.php");
+
 
 /**
  * Your Custom App
  * Default Routes for your SaaS
  */
+
 class App extends StripePadController
 {
+	var $agentsId;
 
 	public function __construct()
 	{
 		parent::__construct(); // !important
+		$defaults = array();
+		if (isset($this->params['p']) and strstr($this->params['p'], "app_") and !$this->isAuthenticated()) {
+			$this->login();
+			return;
+		}
+
+		if ($this->isAuthenticated()) {
+			$this->view->isAuthenticated = true;
+		}
+		$this->view->set_defaults($defaults);
 	}
 
 	/**
@@ -103,11 +114,15 @@ class App extends StripePadController
 	 */
 	public function profile()
 	{
+		assert($_SESSION['user']);
 		$users = new usersModel();
 		$invoices = new invoicesModel();
 		$data = array(
 			"user" => $users->getById($_SESSION['user']['usersId']),
-			"invoices" => $invoices->getByUsersId($_SESSION['user']['usersId'])
+			"invoices" => $invoices->getByUsersId($_SESSION['user']['usersId']),
+			"SEO_TITLE" => "Preferencias",
+			"SEO_DESCRIPTION" => "Desde aquí es posible gestionar todos los datos de la cuenta",
+			"breadcrumb" => array(array("label" => "Preferencias", "url" => "profile")),
 		);
 
 		$this->view->show("user/profile.php", $data, true);
@@ -131,5 +146,27 @@ class App extends StripePadController
 	public function privacy()
 	{
 		$this->view->show('common/privacy.php', array());
+	}
+	public function form()
+	{
+
+
+
+		$table = isset($this->params['m']) ? $this->params['m'] : -1;
+		$rid = isset($this->params['a']) ? $this->params['a'] : -1;
+		$op = isset($this->params['i']) ? $this->params['i'] : '';
+		$modelName = $table . 'Model';
+		$form = new $modelName();
+
+		$data = $form->generateForm($table, $rid, $op);
+		$data['SEO_TITLE'] = 'Añadir nuevo ';
+		$data['SEO_DESCRIPTION'] = 'Añade un nuevo ' . ucfirst($table) . ' a la base de datos';
+		$data["breadcrumb"] = array("label" => ucfirst($table), "url" => "app_" . $table);
+		if ($rid != -1) {
+			$data['SEO_TITLE'] = ucfirst($table) . ' #' . $rid;
+			$data['SEO_DESCRIPTION'] = "sp-core.php linea 659"; //Created " . strftime(" %d %B %Y %H:%M", strtotime($data['created'])) . " - Updated: " . strftime(" %d %B %Y %H:%M", strtotime($data['updated']));
+		}
+
+		$this->view->show('superadmin/form.php', $data);
 	}
 }

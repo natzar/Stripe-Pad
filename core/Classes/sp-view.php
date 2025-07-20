@@ -109,7 +109,7 @@ class View
 			include $viewsFolder . "layout/public/footer.php";
 		}
 
-		echo '<!-- Powered by StripePad {STRIPE_PAD_VERSION}-->';
+		//echo '<!-- Powered by StripePad {STRIPE_PAD_VERSION}-->';
 
 		$this->log->push(str_replace(APP_DOMAIN, '/', getCurrentUrl()), 'pageview', get_masked_ip());
 		if (isset($_SESSION['errors'])) unset($_SESSION['errors']);
@@ -122,7 +122,10 @@ class View
 		$log = log::singleton();
 		$log->push(getCurrentUrl(), '404');
 		header('HTTP/1.0 404 Not Found');
-
+		$SEO_TITLE = "404 Not Found";
+		$SEO_DESCRIPTION = "The page you are looking for does not exist.";
+		$SEO_KEYWORDS = "404, not found, error";
+		$HOOK_JS = '';
 		include $viewsFolder . "layout/public/header.php";
 		include $viewsFolder . "layout/public/menu-public.php";
 		include $viewsFolder . 'errors/404.php';

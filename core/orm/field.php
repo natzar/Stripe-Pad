@@ -31,6 +31,17 @@ abstract class field
 		$this->table = $table;
 		$this->rid = $rid;
 	}
+	public function bake_field_label($fields_labels, $fields_hints, $i)
+	{
+		$form_html = "<div class='form-group mb-4'><label class='form-label text-sm font-semibold text-gray-600'>";
+		$form_html .= ucfirst($fields_labels[$i]);
+		$form_html .= '</label>';
+
+		if (isset($fields_hints[$i]) and !empty($fields_hints[$i])) {
+			$form_html .= '<span class="block text-xs mb-2 text-gray-500">' . $fields_hints[$i] . '</span>';
+		}
+		return $form_html;
+	}
 	public final function bake_field_html($id, $name, $value, $placeholder = "")
 	{
 		//class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
@@ -57,7 +68,7 @@ require_once dirname(__FILE__) . "/file_file.php";
 require_once dirname(__FILE__) . "/file_img.php";
 require_once dirname(__FILE__) . "/file_img_multi.php";
 
-
+require_once dirname(__FILE__) . "/enum.php";
 require_once dirname(__FILE__) . "/float.php";
 require_once dirname(__FILE__) . "/hora.php";
 require_once dirname(__FILE__) . "/literal.php";

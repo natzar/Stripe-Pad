@@ -20,10 +20,11 @@
 class usersModel extends ModelBase
 {
 	var $log;
-
+	var $table = 'users';
 	public function __construct()
 	{
-		parent::__construct();
+
+		parent::__construct($this->table);
 		$this->log = log::singleton();
 	}
 

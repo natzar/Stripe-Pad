@@ -58,9 +58,13 @@ if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()) {
 # Include composer autoload
 if (is_file(dirname(__FILE__) . "/../vendor/autoload.php")) require(dirname(__FILE__) . "/../vendor/autoload.php");
 
+
 # Include base classes
 include_once CORE_PATH . "Exceptions/sp-exceptions.php";
 include_once CORE_PATH . "sp-helpers.php";
+# Include Custom App helpers.php
+if (file_exists(dirname(__FILE__) . "/../app/helpers.php")) include_once(dirname(__FILE__) . "/../app/helpers.php");
+
 include_once CORE_PATH . "Classes/sp-model-base.php";
 include_once CORE_PATH . 'Classes/sp-spdo.php';
 include_once CORE_PATH . 'Classes/sp-view.php';
@@ -69,15 +73,19 @@ include_once CORE_PATH . 'Models/sp-user.php';
 include_once CORE_PATH . 'Models/sp-cronjob.php';
 include_once CORE_PATH . 'Models/sp-blog.php';
 include_once CORE_PATH . 'Models/sp-stripe.php';
-include_once CORE_PATH . 'Models/sp-orm.php';
+
 include_once CORE_PATH . 'Models/sp-log.php';
 include_once CORE_PATH . 'Models/sp-subscriptions.php';
 include_once CORE_PATH . 'Models/sp-invoices.php';
 include_once CORE_PATH . 'Models/sp-products.php';
 include_once CORE_PATH . "Classes/sp-botblocker.php";
-
+include CORE_PATH . "orm/field.php";
 # include all models from app dynamically
 foreach (glob(APP_PATH . "models/*.php") as $filename) {
+    include_once $filename;
+}
+
+foreach (glob(APP_PATH . "services/*.php") as $filename) {
     include_once $filename;
 }
 
