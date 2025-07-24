@@ -19,22 +19,13 @@
 <script>
   var isAuthorized = <?= $isAuthenticated ? 1 : 0 ?>;
   var base_url = '<?= APP_BASE_URL ?>';
-  $(document).ready(function() {
-    console.log("StripePad! Loaded...");
-    // Add style to the link hrefing the current page
-    var uri = unescape(document.location.href);
-    uri = uri.substr(uri.indexOf(base_url) + base_url.length);
-    $("nav:first-child a[href='" + uri + "']").each(function() {
-      $(this).addClass(active_link_class);
-    });
-
-  });
-  <?= $HOOK_JS ?>
+  var agent = <?= json_encode($_SESSION['agent']) ?>;
+  var usersId = <?= $_SESSION['user']['usersId']; ?>;
 </script>
 
 <script src="<?= APP_CDN ?>js/feedback.js"></script>
 <script src="<?= APP_CDN ?>js/system.js"></script>
-
+<script src="<?= APP_CDN ?>js/import.js"></script>
 <script>
   <? if (!empty($HOOK_FOOTER)) echo $HOOK_FOOTER; ?>
   <? if (!empty($HOOK_JS)) echo $HOOK_JS; ?>

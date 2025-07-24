@@ -33,10 +33,13 @@ abstract class field
 	}
 	public function bake_field_label($fields_labels, $fields_hints, $i)
 	{
-		$form_html = "<div class='form-group mb-4'><label class='form-label text-sm font-semibold text-gray-600'>";
-		$form_html .= ucfirst($fields_labels[$i]);
-		$form_html .= '</label>';
+		$form_html = "";
 
+		if (isset($fields_labels[$i]) and !empty($fields_labels[$i])) {
+			$form_html = "<div class='form-group mb-4'><label class='form-label text-sm font-semibold text-gray-600'>";
+			$form_html .= ucfirst($fields_labels[$i]);
+			$form_html .= '</label>';
+		}
 		if (isset($fields_hints[$i]) and !empty($fields_hints[$i])) {
 			$form_html .= '<span class="block text-xs mb-2 text-gray-500">' . $fields_hints[$i] . '</span>';
 		}

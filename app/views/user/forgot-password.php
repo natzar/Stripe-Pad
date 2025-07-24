@@ -6,7 +6,7 @@
   <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
 
-      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-90">Recover your password</h2>
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-100">Recover your password</h2>
     </div>
 
     <? if (isset($_SESSION['errors']) and !empty($_SESSION['errors'])): ?>
@@ -35,7 +35,7 @@
 
       <p class="mt-10 text-center text-sm text-gray-500">
         Not a member?
-        <a href="signup" class="font-semibold leading-6 text-sky-600 hover:text-sky-500">Signup</a>
+        <a href="<?= APP_DOMAIN ?><?= $_SESSION['user']['lang'] ?>/signup" class="font-semibold leading-6 text-sky-600 hover:text-sky-500">Signup</a>
       </p>
     </div>
   </div>

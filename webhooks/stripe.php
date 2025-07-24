@@ -97,7 +97,7 @@ class StripeWebhook
 				break;
 			case 'customer.subscription.created':
 				$subscriptions->create($this->user, $this->metadata['productsId']);
-
+				$mails->internal("New SUBSCRIPTION · {APP_NAME}", "Oh yeah!");
 				break;
 			case 'charge.succeeded':
 

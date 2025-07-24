@@ -701,7 +701,7 @@ class StripePadController
         }
 
         if ($rid == -1) {
-            $id = $orm->add($this->params);
+            $rid = $orm->add($this->params);
         } else {
             $orm->edit($this->params);
         }

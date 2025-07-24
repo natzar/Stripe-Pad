@@ -317,7 +317,7 @@ abstract class ModelBase
 		//$output .="$('#tablaMain').pagination();";
 
 
-		$output .= "        // $('.tablaMain').bdt({ pageRowCount:200, search: false});";
+		//$output .= "        // $('.tablaMain').bdt({ pageRowCount:200, search: false});";
 
 
 
@@ -362,14 +362,15 @@ abstract class ModelBase
 
 		$add_info_form = "";
 		$tmp_path = APP_UPLOAD_PATH;
-
+		$filled_fields = array();
 		for ($i = 0; $i < count($fields); $i++) {
 
-			if ($fields[$i] != $table . 'Id') {
-				$retrieved = '';
+			if ($fields[$i] != $table . 'Id' and isset($params[$fields[$i]])) {
+				$filled_fields[] = $fields[$i];
+				$retrieved = -1;
 				if (isset($params[$fields[$i]]) and $fields_types[$i] != 'file_img' and $fields_types[$i] != 'file_file') {
 					$retrieved = $params[$fields[$i]];
-				} else $retrieved = -1;
+				}
 
 				if (!class_exists($fields_types[$i])) die("La clase " . $fields_types[$i] . " no existe");
 				$field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $retrieved, $table);
@@ -378,12 +379,12 @@ abstract class ModelBase
 		}
 
 		$info = substr($add_info_form, 0, strlen($add_info_form) - 1);
-		$consulta = $this->db->prepare("INSERT INTO " . $table . " (" . implode(",", $fields) . ") VALUES ($info)");
+		$consulta = $this->db->prepare("INSERT INTO " . $table . " (" . implode(",", $filled_fields) . ") VALUES ($info)");
 		$consulta->execute();
 		$id =  $this->getLastId($table);
 		//$this->log->push($table . "-add");
-
-		return $id;
+		log::system('Añadido nuevo registro a la tabla ' . $table);
+		return $this->get_by_id($id);
 	}
 
 
@@ -715,9 +716,10 @@ abstract class ModelBase
 			$VALUE = isset($raw[$fields[$i]]) ? $raw[$fields[$i]] : '';
 			//$VALUE .= $fields_types[$i];
 			$field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $VALUE, $table, $rid);
-			$form_html .= $field_aux->bake_field_label($fields_labels, $fields_hints, $i);
+			$field_label = $field_aux->bake_field_label($fields_labels, $fields_hints, $i);
+			$form_html .= $field_label;
 			$form_html .= $field_aux->bake_field();
-			$form_html .= '</div>';
+			if (!empty($field_label)) $form_html .= '</div>';
 		}
 
 		return [

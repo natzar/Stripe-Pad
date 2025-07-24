@@ -55,19 +55,30 @@ class log extends ModelBase
 	 */
 	public function push($label, $tag = "system", $body = "", $usersId = 0)
 	{
-		$hash = $tag . "-"  . fingerprint($label . "-" . $body);
-		$hash = substr($hash, 0, 200);
 
-		$body = substr($body, 0, 255);
+		switch ($tag):
+			case 'system':
+			case 'system.error':
+				self::system($label . " " . $body);
+				break;
+			default:
+				$hash = $tag . "-"  . fingerprint($label . "-" . $body);
+				$hash = substr($hash, 0, 200);
 
-		$q  = $this->db->prepare("INSERT INTO logs (hash,month,week,usersId,label,tag,body) VALUES (:hash,extract(YEAR_MONTH FROM CURDATE()),YEARWEEK(CURDATE()),:uid,:label,:tag,:body) ON DUPLICATE KEY UPDATE    
-total =total + 1");
-		$q->bindParam(":uid", $usersId);
-		$q->bindParam(":tag", $tag);
-		$q->bindParam(":hash", $hash);
-		$q->bindParam(":label", $label);
-		$q->bindParam(":body", $body);
-		$q->execute();
+				$body = substr($body, 0, 255);
+
+				$q  = $this->db->prepare("INSERT INTO logs (hash,month,week,usersId,label,tag,body) VALUES (:hash,extract(YEAR_MONTH FROM CURDATE()),YEARWEEK(CURDATE()),:uid,:label,:tag,:body) ON DUPLICATE KEY UPDATE    
+	total =total + 1");
+				$q->bindParam(":uid", $usersId);
+				$q->bindParam(":tag", $tag);
+				$q->bindParam(":hash", $hash);
+				$q->bindParam(":label", $label);
+				$q->bindParam(":body", $body);
+				$q->execute();
+				//	self::system($tag . " - " . $label . " " . $body);
+
+				break;
+		endswitch;
 	}
 
 
@@ -154,5 +165,36 @@ total =total + 1");
 		$q->execute();
 		$r = $q->fetch();
 		return $r['unique_pageviews'];
+	}
+
+	public static function write(string $filename, string $message)
+	{
+		$logDir = dirname(__FILE__) . "/../../logs/";
+		if (!is_dir($logDir)) mkdir($logDir, 0777, true);
+
+		$path = $logDir . $filename;
+		$line = "[" . date("Y-m-d H:i:s") . "] " . $message . PHP_EOL;
+		file_put_contents($path, $line, FILE_APPEND);
+	}
+
+	public static function system(string $message)
+	{
+		self::write('system.log', $message);
+	}
+	public static function crons(string $message)
+	{
+		self::write('crons.log', $message);
+	}
+	public static function openai(string $message)
+	{
+		self::write('openai.log', $message);
+	}
+	public static function tool_calls(int $emailId, string $message)
+	{
+		self::write("tool_calls_{$emailId}.log", $message);
+	}
+	public static function email(int $emailId, string $message)
+	{
+		self::write("email_{$emailId}.log", $message);
 	}
 }

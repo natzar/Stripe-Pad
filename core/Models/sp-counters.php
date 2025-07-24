@@ -1,197 +1,209 @@
-<?
+<?php
 
-class counterModel extends ModelBase
-{	
+class CountersModel extends ModelBase
+{
+	private string $tenantType;
+	private int $tenantId;
+	var $table = 'counters';
 
-		public function findIdByLabel($label){
+	public function __construct(string $tenantType, int $tenantId)
+	{
+		parent::__construct($this->table);
+		$this->tenantType = $tenantType;
+		$this->tenantId = $tenantId;
+	}
 
-			$q = $this->db->prepare("SELECT countersId FROM counters where label = :label and usersId = :usersId limit 1");
-			$q->bindParam(":label",$label);
-			$q->bindParam(":usersId",$_SESSION['user']['usersId']);
-			$q->execute();
-			$counter = $q->fetch();
+	private function scopeSql(): string
+	{
+		return "tenant_type = :tenant_type AND tenant_id = :tenant_id";
+	}
 
-			if (isset($counter['countersId'])){
- 				return $counter['countersId'];
-			}
+	private function bindScope($stmt)
+	{
+		$stmt->bindParam(':tenant_type', $this->tenantType);
+		$stmt->bindParam(':tenant_id', $this->tenantId);
+	}
 
-			return -1;			
-			
+	public function all(): array
+	{
+		$q = $this->db->prepare("SELECT * FROM counters WHERE " . $this->scopeSql());
+		$this->bindScope($q);
+		$q->execute();
+		return $q->fetchAll();
+	}
+
+	public function findIdByLabel(string $label): int
+	{
+
+		$q = $this->db->prepare(
+			"
+			SELECT countersId FROM counters 
+			WHERE label = :label AND " . $this->scopeSql() . " LIMIT 1"
+		);
+		$q->bindParam(":label", $label);
+		$this->bindScope($q);
+		$q->execute();
+		$row = $q->fetch();
+
+		if (is_null($row) or empty($row)) {
+			$counter = $this->create($label);
+			return $counter['countersId'];
 		}
 
-		public function all(){
-			$q = $this->db->prepare("SELECT * FROM counters where usersId = :id");
-			$q->bindParam(":id",$_SESSION['user']['usersId']);
-			$q->execute();
-		
-			return $q->fetchAll();
+		return $row['countersId'] ?? -1;
+	}
+
+	public function get(string $label): ?array
+	{
+		$countersId = $this->findIdByLabel($label);
+
+		$q = $this->db->prepare("SELECT * FROM counters WHERE countersId = :id AND " . $this->scopeSql());
+		$q->bindParam(":id", $countersId);
+		$this->bindScope($q);
+		$q->execute();
+		return $q->fetch() ?: null;
+	}
+
+	public function create(string $label): array
+	{
+		$hash = $this->generateHash($label);
+
+		$q = $this->db->prepare("
+			INSERT INTO counters (tenant_type, tenant_id, label, hash)
+			VALUES (:tenant_type, :tenant_id, :label, :hash)
+		");
+		$q->bindParam(':label', $label);
+		$q->bindParam(':hash', $hash);
+		$this->bindScope($q);
+		$q->execute();
+
+		return $this->db->query("SELECT * FROM counters WHERE countersId = LAST_INSERT_ID()")->fetch();
+	}
+
+	public function update(int $id, string $label, int $addToCount = 0): ?array
+	{
+		$q = $this->db->prepare(
+			"
+			UPDATE counters SET label = :label WHERE countersId = :id AND " . $this->scopeSql()
+		);
+		$q->bindParam(":label", $label);
+		$q->bindParam(":id", $id);
+		$this->bindScope($q);
+		$q->execute();
+
+		if ($addToCount > 0) {
+			$this->count($id, $addToCount);
 		}
 
-		public function getByGroup($groupsId, $period){
+		return $this->get($id);
+	}
 
-			$datatracker = new datatrackerModel();
-			
-			$q = $this->db->prepare("SELECT * FROM counters where groupsId = :id and usersId = :usersId");
-			$q->bindParam(":id",$groupsId);
-			$q->bindParam(":usersId",$_SESSION['user']['usersId']);
-			$q->execute();
+	public function delete(int $id): void
+	{
+		$q = $this->db->prepare("DELETE FROM counters WHERE countersId = :id AND " . $this->scopeSql());
+		$q->bindParam(":id", $id);
+		$this->bindScope($q);
+		$q->execute();
 
-			$counters = $q->fetchAll();
+		$q = $this->db->prepare("DELETE FROM counters_data WHERE countersId = :id AND " . $this->scopeSql());
+		$q->bindParam(":id", $id);
+		$this->bindScope($q);
+		$q->execute();
+	}
 
-			if ($period != "total"){
-				for($i=0;$i<count($counters);$i++){				
-					$counters[$i]['total'] = $datatracker->getByPeriod($counters[$i]['countersId'], $period);
-				}
-			}
-			
-			return $counters;
+	public function count($label, int $value): bool
+	{
+		// Buscar el contador (lo crea si no existe)
+		$countersId = $this->findIdByLabel($label);
+		// Suma al total
+		$this->db->prepare("UPDATE counters SET total = total + :value WHERE countersId = :id")
+			->execute([':value' => $value, ':id' => $countersId]);
+
+		// Registrar en counters_data
+		$week = date('oW');       // Semana ISO: 202407
+		$month = date('Ym');      // Año y mes: 202407
+
+
+		$q = $this->db->prepare("
+			INSERT INTO counters_data (
+				countersId,  week, month, counter
+			) VALUES (
+				:id, :week, :month, :counter
+			)
+		");
+
+		$q->execute([
+			':id' => $countersId,
+
+			':week' => $week,
+			':month' => $month,
+			':counter' => $value
+		]);
+
+		return true;
+	}
+
+	public function getByPeriod(int $id, string $period): int
+	{
+		$field = match ($period) {
+			'month' => 'month = :value',
+			'week'  => 'week = :value',
+			'year'  => 'LEFT(month,4) = :value',
+			default => '1=0'
+		};
+
+		$value = match ($period) {
+			'month' => date('Ym'),
+			'week'  => date('oW'),
+			'year'  => date('Y'),
+			default => null
+		};
+
+		$q = $this->db->prepare(
+			"
+			SELECT SUM(counter) AS total FROM counters_data 
+			WHERE countersId = :id AND $field AND " . $this->scopeSql()
+		);
+
+		$q->bindParam(':id', $id);
+		$q->bindParam(':value', $value);
+		$this->bindScope($q);
+		$q->execute();
+
+		return intval($q->fetch()['total']);
+	}
+
+	public function getHistory(int $id, string $period): array
+	{
+		$field = match ($period) {
+			'month' => 'month',
+			'week'  => 'week',
+			'year'  => 'LEFT(month,4)',
+			default => null
+		};
+
+		if (!$field) {
+			throw new Exception("Invalid period for history");
 		}
 
-		public function get($id){
+		$q = $this->db->prepare("
+			SELECT $field AS period, SUM(counter) AS total
+			FROM counters_data
+			WHERE countersId = :id AND " . $this->scopeSql() . "
+			GROUP BY period ORDER BY period DESC
+		");
+		$q->bindParam(':id', $id);
+		$this->bindScope($q);
+		$q->execute();
 
+		return $q->fetchAll();
+	}
 
-
-			$q = $this->db->prepare("SELECT * FROM counters where countersId = :id and usersId = :usersId limit 1");
-			$q->bindParam(":id",$id);
-			$q->bindParam(":usersId",$_SESSION['user']['usersId']);
-			$q->execute();
-
-			$counter = $q->fetch();
-
-			return $counter;
-
-		}
-		public function getWithHistory($id){
-			$dt = new datatrackerModel();
-
-			$counter = $this->get($id);
-			$counter['history'] = $dt->getHistory($id,'week');
-
-			return $counter;
-
-		}
-
-		public function create($label, $group = 0){			
-
-			// Get last id to generate hash
-			$q = $this->db->prepare("SELECT countersId from counters order by countersId DESC");
-			$q->execute();
-			$c = $q->fetch();
-
-			// hash
-			$hash = (1+$c['countersId'])."-".fingerprint($label);
-			
-			// Save new counter in db
-			$q = $this->db->prepare("INSERT INTO counters (usersId, groupsId, label, hash ) VALUES (:user,:group,:label,:hash)");			
-			$q->bindParam(":user", $_SESSION['user']['usersId']);
-			$q->bindParam(":group", $group);
-			$q->bindParam(":hash", $hash);
-			$q->bindParam(":label", $label);
-			$q->execute();
-
-			// Return counter array
-			if ($q->rowCount() > 0){	
-				$q = $this->db->prepare("SELECT * from counters where countersId = LAST_INSERT_ID()");
-				$q->execute();
-				return $q->fetch();
-			}else {
-				die("Could not create counter");
-				return array();
-			}
-
-		}
-
-        public function fastcount($id, $value){
-
-            assert(!empty($id));
-            assert($value > 0);
-
-            $value = intval($value);
-
-            $q = $this->db->prepare("UPDATE counters set total = total + :value where countersId = :id");
-            $q->bindParam(":id",$id);
-            $q->bindParam(":value",$value);
-            $q->execute();
-
-            // Data point
-            $consulta = $this->db->prepare("INSERT INTO datatracker (week,month,customersId,usersId,countersId,counter)
-                VALUES  (YEARWEEK(CURDATE()),extract(YEAR_MONTH FROM CURDATE()), :customersId,:usersId, :kpi, :counter)");
-                                
-            $consulta->bindParam(":customersId",$_SESSION['user']['customersId']);
-            $consulta->bindParam(":usersId",$_SESSION['user']['usersId']);
-            $consulta->bindParam(":kpi",$id);
-            $consulta->bindParam(":counter",$value);
-            if ($consulta->execute()){
-                return true;
-            }else{
-                return false;
-            }
-
-        }
-
-
-		public function count($id, $value){
-
-			assert(!empty($id));
-			$value = intval($value);
-
-			$q = $this->db->prepare("UPDATE counters set total = total + :value where countersId = :id");
-			$q->bindParam(":id",$id);
-			$q->bindParam(":value",$value);
-			$q->execute();
-
-			// Data point
-			$consulta = $this->db->prepare("INSERT INTO datatracker (week,month,customersId,usersId,countersId,counter)
-				VALUES  (YEARWEEK(CURDATE()),extract(YEAR_MONTH FROM CURDATE()), :customersId,:usersId, :kpi, :counter)");
-						
-		//	$consulta->bindParam(":hash",$hash);
-			$consulta->bindParam(":customersId",$_SESSION['user']['customersId']);
-			$consulta->bindParam(":usersId",$_SESSION['user']['usersId']);
-			$consulta->bindParam(":kpi",$id);
-			$consulta->bindParam(":counter",$value);
-			$consulta->execute();
-			
-			if ($consulta->rowCount() > 0){	
-				$q = $this->db->prepare("SELECT * from datatracker where id = LAST_INSERT_ID()");
-				$q->execute();
-				return $q->fetch();
-			}else {
-				return array();
-			}
-
-
-
-		}
-
-		public function update($id, $label, $group, $addToCount = 0){
-
-			$q = $this->db->prepare("UPDATE counters set label = :label, groupsId = :group where countersId = :id");
-			$q->bindParam(":label",$label);
-			$q->bindParam(":group",$group);
-			$q->bindParam(":id",$id);
-			$q->execute();
-
-			if (intval($addToCount) > 0){
-				$this->count($id, $addToCount);
-			}
-
-			return $this->get($id);
-
-		}
-
-		public function delete($id){
-
-			$q = $this->db->prepare("DELETE FROM counters where countersId = :id");
-			$q->bindParam(":id",$id);
-			$q->execute();
-
-			// Delete data points
-			$q = $this->db->prepare("DELETE FROM datatracker where countersId = :id");
-			$q->bindParam(":id",$id);
-			$q->execute();		
-
-			// Empty array()
-			return array();	
-		}		
+	private function generateHash(string $label): string
+	{
+		$label = strtolower(preg_replace('/[^a-z0-9 ]/i', '', $label));
+		$words = array_unique(explode(' ', $label));
+		sort($words);
+		return implode('-', $words);
+	}
 }
-

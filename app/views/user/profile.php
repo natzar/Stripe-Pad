@@ -65,10 +65,11 @@
                       <label for="name" class="block text-sm font-medium text-gray-700"><?= _('Nombre') ?></label>
                       <input type="text" name="name" value="<?= $user['name'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required="required">
                     </div>
-                    <div class="mb-4">
+                    <!-- <div class="mb-4">
                       <label class="block text-sm font-medium">Teléfono para mensajes SMS / WhatsApp</label>
-                      <input type="text" name="notify_phone" value="<?= $secretario['notify_phone'] ?>" class=" block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
-                    </div>
+                      <input type="text" name="notify_phone" value="<? // $secretario['notify_phone'] 
+                                                                    ?>" class=" block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                    </div> -->
 
                     <div class="mb-4">
                       <label for="language" class="block text-sm font-medium text-gray-700">Idioma</label>

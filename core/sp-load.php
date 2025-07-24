@@ -23,7 +23,7 @@ include_once dirname(__FILE__) . '/../sp-config.php';
 
 # Defaults 
 ini_set('log_errors', 1);
-ini_set('error_log', APP_PATH . APP_NAME . "-errors.log");
+ini_set('error_log', ROOT_PATH . "logs/sp-errors.log");
 
 error_reporting(DEBUG_MODE ? E_ALL : 1);
 ini_set('display_errors', DEBUG_MODE ? 1 : 1);
@@ -67,12 +67,17 @@ if (file_exists(dirname(__FILE__) . "/../app/helpers.php")) include_once(dirname
 
 include_once CORE_PATH . "Classes/sp-model-base.php";
 include_once CORE_PATH . 'Classes/sp-spdo.php';
+include_once CORE_PATH . "Classes/sp-emailvalidator.php";
+//include_once CORE_PATH . 'Classes/EmailValidator.php';
 include_once CORE_PATH . 'Classes/sp-view.php';
+include_once CORE_PATH . 'Classes/php-pii.php';
 include_once CORE_PATH . 'Models/sp-mail.php';
 include_once CORE_PATH . 'Models/sp-user.php';
 include_once CORE_PATH . 'Models/sp-cronjob.php';
 include_once CORE_PATH . 'Models/sp-blog.php';
+include_once CORE_PATH . 'Models/sp-counters.php';
 include_once CORE_PATH . 'Models/sp-stripe.php';
+include_once CORE_PATH . 'Models/sp-feedback.php';
 
 include_once CORE_PATH . 'Models/sp-log.php';
 include_once CORE_PATH . 'Models/sp-subscriptions.php';
@@ -108,10 +113,7 @@ register_shutdown_function(function () {
         $logs = log::singleton();
         $logs->push("error", "system.error", $error_msg);
 
-        //include_once ROOT_PATH . "app/views/errors/error.php";
-        if (!@file_put_contents(ROOT_PATH . "sp-errors.log", $error_msg . PHP_EOL, FILE_APPEND)) {
-            $_SESSION['errors'][] = _('No permissions on sp-errors.log');
-        }
+
 
         exit();  // Ensure script termination after a fatal error
     } else {
@@ -130,7 +132,5 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
     $logs = log::singleton();
     $logs->push("error", "system.error", $msg);
     // include_once ROOT_PATH . "app/views/errors/error.php";
-    if (!@file_put_contents(ROOT_PATH . "sp-errors.log", $msg . PHP_EOL, FILE_APPEND)) {
-        $_SESSION['errors'][] = _('No permissions on sp-errors.log');
-    }
+
 });

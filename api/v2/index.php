@@ -21,7 +21,7 @@ if ($method == "OPTIONS") {
 	die();
 }
 
-include "../../sp-load.php";
+include dirname(__FILE__) . "/../../core/sp-load.php";
 
 header('Content-type: application/json');
 
@@ -32,7 +32,7 @@ class Api
 	var $view;
 	var $bearer;
 	var $data;
-
+	var $agent;
 	public function __construct()
 	{
 
@@ -41,13 +41,20 @@ class Api
 			die("401 Not authorized");
 			exit();
 		}
-
+		$this->data = array();
 		if (count($_GET)) {
-			$this->params = $_GET;
-		} else if (count($_POST)) {
-			$this->data = $_POST;
-		} else {
-			$this->data = json_decode(file_get_contents('php://input'), true);
+			$this->data = array_merge($this->data, $_GET);
+		}
+		if (count($_POST)) {
+			$this->data = array_merge($this->data, $_POST);
+		}
+		if ($aux = file_get_contents('php://input')) {
+			if (!is_null($aux) && !empty($aux) && is_string($aux)) {
+				$aux = json_decode($aux, true);
+				if (is_array($aux)) {
+					$this->data = array_merge($this->data, $aux);
+				}
+			}
 		}
 	}
 
@@ -56,16 +63,11 @@ class Api
 
 		//echo json_encode(array("index" => true));
 
-
+		echo 'xindex';
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-			$this->counter();
+			http_response_code(404);
 		} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-			if (!empty($this->data['label'])) {
-				$this->counter();
-			} else {
-				$this->group();
-			}
+			http_response_code(404);
 		} else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
 			http_response_code(404);
 		} else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
@@ -79,118 +81,61 @@ class Api
 		// echo json_encode($data);		
 
 	}
-	public function group()
+	public function contact()
 	{
-		//TO-DO group/id/period
-
-		$group = new groupModel();
-		$output = "";
-
+		echo 'xcontact';
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$contacts = new contactsModel();
+			$this->data['agentsId'] = $this->agent['agentsId'];
 
-			$output = $group->create($_SESSION['user']['usersId'], $this->data['label']);
+			$output = $contacts->add($this->data);
+			echo json_encode($output);
 		} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-			$this->params['id'] = intval($this->params['id']);
-
-			if (intval($this->params['id']) > -1 and !empty($this->params['period'])) {
-				// if period				
-				$output = $group->get($this->params['id'], $this->params['period']);
-			} else {
-				$output = $group->all();
-			}
-		} else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-
-			$output = $group->delete($this->params['id']);
-		} else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-
-			$output = $group->update($this->params['id'], $this->data['label']);
+			http_response_code(404);
 		}
-
-		echo json_encode($output);
 	}
-	public function counter()
+	public function email()
 	{
-		//$datatracker = new datatrackerModel();
-		$counter = new counterModel();
-		$output = array();
-
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-			$counterId = null;
-
-			if (empty($this->params['id'])) {
-
-				// find counter by label
-				$counterId = $counter->findIdByLabel($this->data['label']);
-
-				// If not exists create it
-				if ($counterId < 0) {
-
-					// Set Default group
-					if (!isset($this->data['group'])) {
-						$this->data['group'] = 0;
-					}
-					$counterId = $counter->create($this->data['label'], $this->data['group'])['countersId'];
-				}
-			} else {
-				$counterId = $this->params['id'];
-			}
-
-
-			$output = $counter->count($counterId, $this->data['count']);
+			$emails = new emailsModel();
+			$this->data['agentsId'] = $this->agent['agentsId'];
+			$contacts = new contactsModel();
+			$contact = $contacts->get_by_email($this->data['from_email'], $this->agent['agentsId']);
+			$this->data['contactsId'] = $contact['contactsId'];
+			$this->data['status'] = 'new';
+			$this->data['folder'] = 'inbox';
+			$this->data['scenariosId'] = null;
+			$this->data['message_id'] = 0;
+			$output = $emails->add($this->data);
+			echo json_encode($output);
 		} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-
-			if (empty($this->params['id'])) {
-				$output = $counter->all();
-			} else {
-				$output = $counter->getWithHistory($this->params['id']);
-			}
-		} else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-
-			$output = $counter->delete($this->params['id']);
-		} else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-
-
-			$output = $counter->update($this->params['id'], $this->data['label'], $this->data['groupsId'], $this->data['count']);
-			//$data = $datatracker->updateLabel($_SESSION['user']['usersId'],$data['id'], $data['kpi']);
-
-
+			http_response_code(404);
 		}
-
-		echo json_encode($output);
-	}
-
-	public function users()
-	{
-
-		$users = new usersModel();
-		$data = $users->getChildren($_SESSION['user']['usersId']);
-
-		echo json_encode($data);
 	}
 
 	private function isAuthenticated()
 	{
 
 		$token = null;
-		$users = new usersModel();
+		$agents = new agentsModel();
 		$headers = apache_request_headers();
 
 		if (isset($headers['Authorization']) && preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)) {
 			$token = $matches[1];
 		} else if (isset($_POST['bearer']) and !empty($_POST['bearer'])) {
 			$token = $_POST['bearer'];
-		} else if (isset($_GET['apikey']) and !empty($_GET['apikey'])) {
-			$token = $_GET['apikey'];
+		} else if (isset($_GET['bearer']) and !empty($_GET['bearer'])) {
+			$token = $_GET['bearer'];
 		}
 
 		if (is_null($token)) return false;
 
-		$user = $users->getByBearer($token);
+		$agent = $agents->get_by_bearer($token);
 
-		if (!empty($user)) {
+		if (!empty($agent)) {
+			$this->agent = $agent;
 			$this->bearer = $token;
-			$_SESSION['user'] = $user;
+			//$_SESSION['user'] = $user;
 			return true;
 		} else {
 			return false;
@@ -200,18 +145,21 @@ class Api
 
 
 $actionName = 'index';
+$params = get_parameters();
 
-if (get_param('m') != -1) $actionName = get_param('m');
+if ($params['m'] != -1) $actionName = $params['m'];
 
-if (!isset($_SESSION['errors'])) $_SESSION['errors'] = "";
-if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = "";
+//if (!isset($_SESSION['errors'])) $_SESSION['errors'] = "";
+//if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = "";
 
-if (!is_callable(array('Api', $actionName))) {
+$App = new Api();
+if (!is_callable(array($App, $actionName))) {
+	echo 'not';
 	header('HTTP/1.0 404 Not Found');
 	die("404 Not Found");
 
 	exit();
 }
 
-$App = new Api();
+
 $App->$actionName();

@@ -216,10 +216,24 @@
     });
 
 
+
     // Toggle Menu Mobile
-    $('#button_open_mobile_menu').click(function() {
-      $('#mobile_menu').toggleClass("hidden");
-    })
+    var openBtn = document.getElementById('button_open_mobile_menu');
+    var closeBtn = document.getElementById('button_close_mobile_menu');
+    var mobileMenu = document.getElementById('mobile_menu');
+
+    if (openBtn && mobileMenu) {
+      openBtn.addEventListener('click', function() {
+        mobileMenu.classList.remove('hidden');
+      });
+    }
+
+    if (closeBtn && mobileMenu) {
+      closeBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+      });
+    }
+
 
   });
 

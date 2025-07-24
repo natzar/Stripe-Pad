@@ -55,7 +55,8 @@ class usersModel extends ModelBase
 			$data = array("email" => $email, "name" => $name, "password" => $password);
 			$subject = "[INFO] Welcome to " . APP_NAME;
 			$mails->sendTemplate('welcome_user', $data, $email, $subject);
-			$this->log->push('Welcome to new user ' . $email, 'users.new');
+
+			log::system('New user: ' . $email);
 			return $user;
 		}
 	}
@@ -106,6 +107,7 @@ class usersModel extends ModelBase
 		$c = $this->db->prepare('UPDATE users set last_login = NOW() where usersId = :id');
 		$c->bindParam(':id', $usersId);
 		$c->execute();
+		log::system($usersId . " has logged in");
 	}
 
 	/**
@@ -122,6 +124,7 @@ class usersModel extends ModelBase
 		$c->bindParam(':p', $sha1p);
 		$c->bindParam(':id', $usersId);
 		$c->execute();
+		log::system('Reset password for ' . $usersId);
 		return $new_password;
 	}
 
@@ -138,6 +141,7 @@ class usersModel extends ModelBase
 				'user' => $user['email'],
 				'password' => $new_password,
 			];
+
 
 			//$this->datatracker->push('areaclientes-send-password-reset');
 			$mails->sendTemplate('recover_password', $data, $user['email'], $subject);

@@ -55,7 +55,7 @@ class cronJob extends ModelBase
 		parent::__construct();
 		if (empty($name)) die("need name for cronjob");
 		$this->log = log::singleton();
-
+		log::crons('CRON STARTED: ' . $name . ' =======');
 		$this->mails = new mailsModel();
 		$this->name = $name;
 
@@ -143,6 +143,7 @@ class cronJob extends ModelBase
 			echo $this->output;
 			echo "Execution time: " . $this->execution_time;
 		}
+		log::crons('CRON FINISHED - ' . $this->name . '  =======');
 		$this->status = 1;
 		$this->saveStatus();
 	}
