@@ -1,29 +1,27 @@
 # ************************************************************
-# Sequel Pro SQL dump
-# Versión 4541
-#
-# http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
-#
-# Host: dedi6205.your-server.de (MySQL 5.5.5-10.11.6-MariaDB-hetzner1)
-# Base de datos: stripn_db1
-# Tiempo de Generación: 2025-01-02 12:15:58 +0000
+# Antares - SQL Client
+# Version 0.7.35
+# 
+# https://antares-sql.app/
+# https://github.com/antares-sql/antares
+# 
+# Host: dedi6205.your-server.de (Debian 12 10.11.11)
+# Database: stripn_db1
+# Generation time: 2025-07-24T20:50:03+02:00
 # ************************************************************
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+SET NAMES utf8mb4;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Volcado de tabla blog
+# Dump of table blog
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `blog`;
 
 CREATE TABLE `blog` (
   `blogId` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -35,24 +33,47 @@ CREATE TABLE `blog` (
   `created` datetime DEFAULT current_timestamp(),
   `updated` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`blogId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-LOCK TABLES `blog` WRITE;
-/*!40000 ALTER TABLE `blog` DISABLE KEYS */;
-
-INSERT INTO `blog` (`blogId`, `slug`, `title`, `meta_title`, `meta_description`, `body`, `created`, `updated`)
-VALUES
-	(1,'hosting-for-saas','Hosting for your SaaS','','','HOSTING FOR YOUR SAAS\r\nGet Hosting for your SaaS at Hetzner for $2/month (you can upgrade later). 10Gb disk space, unlimited traffic, FTP, SMTP, SSL.\r\nAll the infrastructure you need to start your SaaS for $2/month.\r\nHetzner doesn\'t have any affiliate program, no comission. It is the recommended hosting service for Stripe Pad projects\r\n','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-	(2,'test','test','','','test','2025-01-01 14:31:35','2025-01-01 14:31:35');
-
-/*!40000 ALTER TABLE `blog` ENABLE KEYS */;
-UNLOCK TABLES;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-# Volcado de tabla crons
+
+# Dump of table counters
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `crons`;
+CREATE TABLE `counters` (
+  `countersId` int(11) NOT NULL AUTO_INCREMENT,
+  `tenant_type` varchar(50) NOT NULL,
+  `tenant_id` int(11) NOT NULL,
+  `label` varchar(150) NOT NULL,
+  `hash` varchar(255) NOT NULL,
+  `total` int(11) NOT NULL DEFAULT 0,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`countersId`),
+  UNIQUE KEY `tenant_type` (`tenant_type`,`tenant_id`,`label`)
+) ENGINE=InnoDB AUTO_INCREMENT=220 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+# Dump of table counters_data
+# ------------------------------------------------------------
+
+CREATE TABLE `counters_data` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `countersId` int(11) NOT NULL,
+  `week` int(11) NOT NULL,
+  `month` int(11) NOT NULL,
+  `counter` int(11) NOT NULL DEFAULT 1,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `idx_period` (`countersId`,`week`,`month`)
+) ENGINE=InnoDB AUTO_INCREMENT=884 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+# Dump of table crons
+# ------------------------------------------------------------
 
 CREATE TABLE `crons` (
   `cronsId` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -67,10 +88,75 @@ CREATE TABLE `crons` (
 
 
 
-# Volcado de tabla invoices
+# Dump of table customers
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `invoices`;
+CREATE TABLE `customers` (
+  `customersId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL DEFAULT 'Account Name',
+  `stripe_customer_id` varchar(255) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`customersId`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+# Dump of table datatracker
+# ------------------------------------------------------------
+
+CREATE TABLE `datatracker` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `customersId` int(11) NOT NULL,
+  `month` int(11) NOT NULL,
+  `week` int(11) NOT NULL,
+  `usersId` int(11) NOT NULL,
+  `countersId` int(11) NOT NULL,
+  `counter` int(11) NOT NULL DEFAULT 1,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `usersId` (`usersId`),
+  KEY `countersId` (`countersId`),
+  KEY `week` (`week`),
+  KEY `month` (`month`)
+) ENGINE=InnoDB AUTO_INCREMENT=4945986 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+
+
+# Dump of table feedbacks
+# ------------------------------------------------------------
+
+CREATE TABLE `feedbacks` (
+  `feedbacksId` int(10) NOT NULL AUTO_INCREMENT,
+  `usersId` tinyint(4) unsigned zerofill DEFAULT NULL,
+  `hash` varchar(100) NOT NULL,
+  `points` tinyint(4) unsigned zerofill NOT NULL,
+  `context` varchar(50) NOT NULL,
+  `comment` text DEFAULT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`feedbacksId`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+
+
+# Dump of table groups
+# ------------------------------------------------------------
+
+CREATE TABLE `groups` (
+  `groupsId` int(11) NOT NULL AUTO_INCREMENT,
+  `usersId` int(11) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`groupsId`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+# Dump of table invoices
+# ------------------------------------------------------------
 
 CREATE TABLE `invoices` (
   `invoicesId` varchar(9) NOT NULL DEFAULT '',
@@ -93,10 +179,8 @@ CREATE TABLE `invoices` (
 
 
 
-# Volcado de tabla logs
+# Dump of table logs
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `logs`;
 
 CREATE TABLE `logs` (
   `logsId` int(11) NOT NULL AUTO_INCREMENT,
@@ -114,14 +198,12 @@ CREATE TABLE `logs` (
   `updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`logsId`),
   UNIQUE KEY `hash` (`hash`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=41850 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 
-# Volcado de tabla products
+# Dump of table products
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `products`;
 
 CREATE TABLE `products` (
   `productsId` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -140,10 +222,33 @@ CREATE TABLE `products` (
 
 
 
-# Volcado de tabla subscriptions
+# Dump of table social_logins
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `subscriptions`;
+CREATE TABLE `social_logins` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `provider` varchar(50) NOT NULL,
+  `provider_id` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_provider_user` (`provider`,`provider_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+# Dump of table subscribers
+# ------------------------------------------------------------
+
+CREATE TABLE `subscribers` (
+  `subscribersId` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`subscribersId`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+# Dump of table subscriptions
+# ------------------------------------------------------------
 
 CREATE TABLE `subscriptions` (
   `subscriptionsId` int(11) NOT NULL AUTO_INCREMENT,
@@ -165,10 +270,8 @@ CREATE TABLE `subscriptions` (
 
 
 
-# Volcado de tabla users
+# Dump of table users
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `usersId` int(11) NOT NULL AUTO_INCREMENT,
@@ -181,22 +284,14 @@ CREATE TABLE `users` (
   `address` int(11) DEFAULT NULL,
   `country` int(11) DEFAULT NULL,
   `stripe_customer_id` varchar(255) DEFAULT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'es',
+  `daily_newsletter` tinyint(4) NOT NULL DEFAULT 1,
+  `weekly_newsletter` tinyint(4) NOT NULL DEFAULT 1,
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   `updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`usersId`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-
-INSERT INTO `users` (`usersId`, `email`, `name`, `password`, `group`, `last_login`, `tax_id`, `address`, `country`, `stripe_customer_id`, `created`, `updated`)
-VALUES
-	(1,'demo@stripepad.com','Mike Doe','2a97516c354b68848cdbd8f54a226a0a55b21ed138e207ad6c5cbb9c00aa5aea','customers','2025-01-01 11:30:02',NULL,NULL,NULL,NULL,'2024-12-21 15:26:05','2025-01-01 12:34:55'),
-	(2,'superadmin@stripepad.com','John Doe','186cf774c97b60a1c106ef718d10970a6a06e06bef89553d9ae65d938a886eae','superadmin','2025-01-02 11:37:26',NULL,NULL,NULL,NULL,'2024-12-21 15:15:26','2025-01-02 11:37:26');
-
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 
 
@@ -206,3 +301,5 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+# Dump completed on 2025-07-24T20:50:03+02:00
