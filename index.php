@@ -31,7 +31,7 @@
  */
 
 # Load Environment
-require_once  dirname(__FILE__) . '/core/sp-load.php'; // 
+include_once  dirname(__FILE__) . '/core/sp-load.php'; // 
 include_once CORE_PATH . 'sp-core.php';
 
 # Load Custom App
@@ -41,18 +41,14 @@ include_once APP_PATH . "App.php";
 # $actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
 # Deprecated PHP 8
 
-$actionName = isset($_GET['p']) ? sanitize($_GET['p']) : false;
-
-if (!$actionName) {
-    $actionName = 'index'; // Default action
-}
+$actionName = isset($_GET['p']) ? sanitize($_GET['p']) : 'index';
 
 # Include app/App.php that extends core/sp-core.php
 $App = new App();
 
 
 # Url = Method = Does the url exist?
-if (!method_exists($App, $actionName)){
+if (!method_exists($App, $actionName)) {
     View::error404();
 } else {
     $App->$actionName();
