@@ -13,8 +13,12 @@ abstract class ModelBase
 	public function __construct($table = null)
 	{
 		$this->table = $table;
-		$this->db = SPDO::singleton();
+		try{
+			$this->db = SPDO::singleton();
+		} catch(\StripePad\Exceptions\DatabaseException $e){
+
 		//	$this->log = log::singleton();
+		}
 	}
 
 	/**
