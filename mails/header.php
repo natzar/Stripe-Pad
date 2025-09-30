@@ -328,4 +328,4 @@
                         <!-- START MAIN CONTENT AREA -->
                         <tr>
                             <td class="wrapper">
-                                <img src="<?= APP_LOGO ?>" width="160"><br><br>
+                                <img src="<?= APP_LOGO ?>" width="80"><br><br>

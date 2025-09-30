@@ -169,7 +169,7 @@ class log extends ModelBase
 
 	public static function write(string $filename, string $message)
 	{
-		$logDir = dirname(__FILE__) . "/../../logs/";
+		$logDir = ROOT_PATH . "logs/";
 		if (!is_dir($logDir)) mkdir($logDir, 0777, true);
 
 		$path = $logDir . $filename;
@@ -187,14 +187,20 @@ class log extends ModelBase
 	}
 	public static function openai(string $message)
 	{
+		$message = "===================================================\n" . $message;
 		self::write('openai.log', $message);
 	}
 	public static function tool_calls(int $emailId, string $message)
 	{
+		self::write("tool_calls.log", $message);
 		self::write("tool_calls_{$emailId}.log", $message);
 	}
 	public static function email(int $emailId, string $message)
 	{
 		self::write("email_{$emailId}.log", $message);
+	}
+	public static function traffic(string $message)
+	{
+		self::write("traffic.log", $message);
 	}
 }

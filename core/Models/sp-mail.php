@@ -27,7 +27,10 @@ class mailsModel extends ModelBase
 
 		if (empty($params['to'])) return false; //("Falta destino");
 
-		if (!$this->emailValidator->isValid($params['to'])) return false;
+		if (!$this->emailValidator->isValid($params['to'])) {
+			log::system("Email not sent, invalid email address: " . $params['to']);
+			return false;
+		}
 
 		if (empty($params['tag'])) $params['tag'] = "Default";
 		if (empty($params['from_name'])) $params['from_name'] = APP_NAME;
@@ -66,6 +69,8 @@ class mailsModel extends ModelBase
 			$mail->AddAddress($params['to']);
 		}
 
+		log::system("Sending email to " . $params['to'] . " with subject: " . $params['subject']);
+
 		if (!empty($_FILES['attach_file'])) {
 			if (count($_FILES['attach_file']) > 0 and !empty($_FILES['attach_file']['name'][0])) {
 				for ($ct = 0; $ct < count($_FILES['attach_file']['tmp_name']); $ct++) {
@@ -88,7 +93,6 @@ class mailsModel extends ModelBase
 		if ($mail->Send()) {
 			return true;
 		}
-		$mail = null;
 		return false;
 	}
 
@@ -112,7 +116,7 @@ class mailsModel extends ModelBase
 		$body = ob_get_contents();
 		//$body = nl2br($body);
 		ob_clean();
-
+		ob_end_clean();
 
 
 		return replaceTemplateValues($body, $data);
@@ -132,6 +136,7 @@ class mailsModel extends ModelBase
 		return $q->fetchAll();
 	}
 
+	// System notification
 	public function sendTemplate($templateName, $data, $to, $subject, $attachments = array())
 	{
 

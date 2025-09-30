@@ -55,8 +55,8 @@ class Stripe extends ModelBase
 
         $lang = isset($_POST['lang']) ? $_POST['lang'] : 'es';
 
-        $surl = 'https://app.phpninja.net/login?success=1';
-        $curl = 'https://www.phpninja.es/pedido-cancelado/';
+        $surl = APP_DOMAIN . "stripe_success";
+        $curl = APP_DOMAIN . "stripe_cancelled";
 
         switch ($lang):
             case 'en':
@@ -344,11 +344,11 @@ class Stripe extends ModelBase
     {
         $products = $this->stripe->products->all(['limit' => 100]);
         $_SESSION['alerts'][] = "Syncing " . count($products->data) . " products";
-    
+
         foreach ($products->autoPagingIterator() as $product) {
             // Obtener precios asociados al producto
             $prices = $this->stripe->prices->all(['product' => $product->id, 'limit' => 100]);
-    
+
             foreach ($prices->autoPagingIterator() as $price) {
                 // Insertar cada precio como un nuevo registro en la tabla 'products'
                 $stmt = $this->db->prepare("
@@ -367,6 +367,4 @@ class Stripe extends ModelBase
             }
         }
     }
-    
-
 }

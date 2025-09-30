@@ -257,7 +257,7 @@ class StripePadController
                 $_SESSION['app_emilio'] = 1;
                 $_SESSION['login_attemp'] = 0;
                 $_SESSION['user'] = $user;
-                $_SESSION['HTTP_USER_AGENT'] = hash('sha256', ($_SERVER['HTTP_USER_AGENT'] . $user['email']));
+                //   $_SESSION['HTTP_USER_AGENT'] = hash('sha256', ($_SERVER['HTTP_USER_AGENT'] . $user['email']));
 
 
 
@@ -265,7 +265,7 @@ class StripePadController
 
 
 
-                $_SESSION['errors'][] = "Welcome back " . $user['email'];
+                // $_SESSION['errors'][] = "Welcome back " . $user['email'];
                 //print_r($_SESSION);
                 //session_write_close();
                 header("location: " . APP_DOMAIN);
@@ -328,35 +328,17 @@ class StripePadController
         return true;
     }
 
-
-    public function GoogleLoginCallback()
-    {
-        if (isset($_GET['code'])) {
-            $client = new Google_Client();
-            $client->setClientId(GOOGLE_CLIENT_ID);
-            $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-            $_SESSION['access_token'] = $token;
-
-            // Get user info
-            $google_service = new Google_Service_Oauth2($client);
-            $data = $google_service->userinfo->get();
-
-            // Now you have $data which contains user info. You can save this info in your database.
-            // For demonstration purposes, we're just printing it.
-            echo '<pre>';
-            print_r($data);
-            echo '</pre>';
-        }
-    }
-
     /**
      * isAuthenticated
      *
      * @return boolean
      */
-    protected function isAuthenticated()
+    public function isAuthenticated()
     {
-        return !empty($_SESSION['user']) and isset($_SESSION['app_' . APP_NAME . '_logged_in']);
+
+        $x = !empty($_SESSION['user']) and isset($_SESSION['app_emilio']) and isset($_SESSION['agent']);
+        //  echo "isAuthenticated: " . ($x ? "true" : "false") . "<br>";
+        return $x;
     }
 
     /**
@@ -716,56 +698,19 @@ class StripePadController
 
     # SOCIAL LOGIN
 
-    // Redirect to provider for authentication
-    public function redirectToProvider($provider)
+    public function auth()
     {
-        $client = $this->getOAuthClient($provider);
-        header('Location: ' . $client->getAuthorizationUrl());
-        exit;
-    }
-
-    // Handle provider callback
-    public function handleProviderCallback($provider)
-    {
-        try {
-            $client = $this->getOAuthClient($provider);
-            $token = $client->getAccessToken('authorization_code', [
-                'code' => $_GET['code']
-            ]);
-            $userDetails = $client->getResourceOwner($token);
-
-            // Assuming UserModel handles database interactions
-            $userModel = new UserModel();
-            $user = $userModel->findOrCreateUser($userDetails, $provider);
-            // Login the user
-            $_SESSION['user_id'] = $user['id'];
-            header('Location: /dashboard');
-        } catch (\Exception $e) {
-            $_SESSION['errors'][] = "Failed to authenticate with $provider. Please try again.";
-            header('Location: /login');
-        }
-        exit;
-    }
-
-    private function getOAuthClient($provider)
-    {
-        switch ($provider) {
-            case 'google':
-                return new \League\OAuth2\Client\Provider\Google([
-                    'clientId'          => 'your-google-client-id',
-                    'clientSecret'      => 'your-google-client-secret',
-                    'redirectUri'       => 'https://your-domain.com/handleProviderCallback/google',
-                ]);
-            case 'facebook':
-                return new \League\OAuth2\Client\Provider\Facebook([
-                    'clientId'          => 'your-facebook-client-id',
-                    'clientSecret'      => 'your-facebook-client-secret',
-                    'redirectUri'       => 'https://your-domain.com/handleProviderCallback/facebook',
-                    'graphApiVersion'   => 'v2.10',
-                ]);
-                // Add more providers as needed
+        $social = new SocialLogin();
+        if ($this->params['m'] == "callback") {
+            $provider = $this->params['a'];
+            $social->handleProviderCallback($provider);
+        } else {
+            $provider = $this->params['m'];
+            $social->redirectToProvider($provider);
         }
     }
+
+
 
     // Stripe 
 

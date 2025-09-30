@@ -8,16 +8,16 @@
       <button data-tab="tab-account" class="tab-btn group inline-flex items-center border-b-2 px-1 py-4 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
         <svg class="-ml-0.5 mr-2 size-5 text-gray-400 group-hover:text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
           <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z" />
-        </svg> Datos
+        </svg> <?= _('Datos') ?>
       </button>
       <button data-tab="tab-notifications" class="tab-btn group inline-flex items-center border-b-2 px-1 py-4 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
-        Notificaciones
+        <?= _('Notificaciones') ?>
       </button>
       <button data-tab="tab-team" class="tab-btn group inline-flex items-center border-b-2 px-1 py-4 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
-        Acceso y Permisos
+        <?= _('Acceso y Permisos') ?>
       </button>
       <button data-tab="tab-billing" class="tab-btn group inline-flex items-center border-b-2 px-1 py-4 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
-        Facturas y Membresías
+        <?= _('Facturas y Membresías') ?>
       </button>
     </nav>
   </div>
@@ -59,7 +59,7 @@
                     <div class="mb-4">
                       <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                       <input type="email" name="email" value="<?= $user['email'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required="required" disabled="disabled">
-                      <p class="text-sm">Importante para todas las notificaciones y alertas. Este email no se puede modificar, contacta con ventas si necesitas recibir las notificaciones en otras cuentas de email</p>
+                      <p class="text-sm"><?= _('Importante para todas las notificaciones y alertas. Este email no se puede modificar, contacta con ventas si necesitas recibir las notificaciones en otras cuentas de email') ?></p>
                     </div>
                     <div class="mb-4">
                       <label for="name" class="block text-sm font-medium text-gray-700"><?= _('Nombre') ?></label>
@@ -72,7 +72,7 @@
                     </div> -->
 
                     <div class="mb-4">
-                      <label for="language" class="block text-sm font-medium text-gray-700">Idioma</label>
+                      <label for="language" class="block text-sm font-medium text-gray-700"><?= _('Idioma') ?></label>
                       <select id="language" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
                         <option value="en">English (US)</option>
                         <option value="es" selected>Spanish (ES)</option>
@@ -90,7 +90,7 @@
                       <input type="text" name="address" value="<?= $user['address'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                     </div>
                     <div class="mb-4">
-                      <label for="vat" class="block text-sm font-medium text-gray-700"><?= _('Bussiness Id / VAT / CIF / NIF (Taxes)') ?></label>
+                      <label for="vat" class="block text-sm font-medium text-gray-700"><?= _('ID / VAT / CIF / NIF (Taxes)') ?></label>
                       <input required="required" type="text" name="nif" value="<?= $user['tax_id'] ?>" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                     </div>
 

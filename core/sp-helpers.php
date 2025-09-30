@@ -45,6 +45,22 @@ function friendly_slug($input)
     return str_replace(' ', $replace, $input);
 }
 
+
+function encrypt($plaintext)
+{
+    $iv = random_bytes(16);
+    $ciphertext = openssl_encrypt($plaintext, 'AES-256-CBC', APP_SECRET_KEY, OPENSSL_RAW_DATA, $iv);
+    return base64_encode($iv . $ciphertext);
+}
+
+function decrypt($encrypted)
+{
+    $data = base64_decode($encrypted);
+    $iv = substr($data, 0, 16);
+    $ciphertext = substr($data, 16);
+    return openssl_decrypt($ciphertext, 'AES-256-CBC', APP_SECRET_KEY, OPENSSL_RAW_DATA, $iv);
+}
+
 function sanitize($input)
 {
     if (is_array($input)) {

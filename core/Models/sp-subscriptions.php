@@ -62,26 +62,27 @@ class subscriptionsModel extends ModelBase
    * @param  mixed $productsId
    * @return void
    */
-  public function create($usersId, $productsId)
+  public function create($user, $productsId)
   {
 
-    $this->log->push("New subscription: " . $usersId . " - " . $productsId, 'system');
+    log::system("New subscription: " . $user['email'] . " - " . $productsId, 'system');
+
     $q = $this->db->prepare("INSERT INTO subscriptions (usersId,productsId) VALUES (:cid,:pid)");
-    $q->bindParam(":cid", $usersId);
+    $q->bindParam(":cid", $user['usersId']);
     $q->bindParam(":pid", $productsId);
     #  $q->bindParam(":invid", $data['invoicesId']);
 
     $q->execute();
     $data = array();
 
-
+    $mails = new mailsModel();
 
     // $mails->internal("Nuevo Plan! y nuevo usuario en area de clientes", $this->customer['email']);
     // //$this->datatracker->push("areaclientes-send-bienvenida-plan");
     $subject = "Welcome on board!";
-    $mails->sendTemplate('subscription_created', $data, $this->user['email'], $subject);
-    $this->log->push();
-    return $this->getLastId();
+    //$mails->sendTemplate('subscription_created', $data, $user['email'], $subject);
+
+    return $this->get_by_id($this->getLastId());
   }
 
   /**

@@ -1,10 +1,8 @@
-<p>Welcome {{name}},</p>
+<p>Hi {{name}},</p>
 
 <p>
-    <br><br>
-    <strong>Usuario:</strong> {{email}}<br>
 
-    <strong>Password:</strong> {{password}}
+    {{body}}
 </p><br>
 
 

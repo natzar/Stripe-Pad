@@ -64,7 +64,9 @@ class View
 
 	public function renderTemplate($name, $vars, $show_menu)
 	{
-
+		bindtextdomain('messages', ROOT_PATH . 'locale');
+		bind_textdomain_codeset('messages', 'UTF-8');
+		textdomain('messages');
 		## Strings
 		$isAuthenticated = $this->isAuthenticated;
 		/* Template meta data */
@@ -111,7 +113,7 @@ class View
 
 		//echo '<!-- Powered by StripePad {STRIPE_PAD_VERSION}-->';
 
-		$this->log->push(str_replace(APP_DOMAIN, '/', getCurrentUrl()), 'pageview', get_masked_ip());
+		log::traffic('[Pageview] ' . getCurrentUrl() . '-' . get_masked_ip());
 		if (isset($_SESSION['errors'])) unset($_SESSION['errors']);
 		if (isset($_SESSION['alerts'])) unset($_SESSION['alerts']);
 	}

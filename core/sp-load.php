@@ -20,7 +20,9 @@ if (!file_exists(dirname(__FILE__) . '/../sp-config.php')) {
     exit();
 }
 include_once dirname(__FILE__) . '/../sp-config.php';
-
+bindtextdomain('messages', ROOT_PATH . 'locale');
+bind_textdomain_codeset('messages', 'UTF-8');
+textdomain('messages');
 # Defaults 
 ini_set('log_errors', 1);
 ini_set('error_log', ROOT_PATH . "logs/sp-errors.log");
@@ -38,9 +40,7 @@ setlocale(LC_ALL, LOCALE_LANG);
 
 
 // O 'es' si usaste esa carpeta
-bindtextdomain('messages', ROOT_PATH . 'locale');
-bind_textdomain_codeset('messages', 'UTF-8');
-textdomain('messages');
+
 //setlocale(LC_TIME, LOCALE_TIME);
 
 
@@ -84,6 +84,9 @@ include_once CORE_PATH . 'Models/sp-subscriptions.php';
 include_once CORE_PATH . 'Models/sp-invoices.php';
 include_once CORE_PATH . 'Models/sp-products.php';
 include_once CORE_PATH . "Classes/sp-botblocker.php";
+
+include_once CORE_PATH . "Services/sp-social-login.php";
+
 include CORE_PATH . "orm/field.php";
 # include all models from app dynamically
 foreach (glob(APP_PATH . "models/*.php") as $filename) {

@@ -60,6 +60,46 @@ class usersModel extends ModelBase
 			return $user;
 		}
 	}
+	public function findOrCreateUserFromSocial(array $profile): array
+	{
+		// Buscar por proveedor
+		$stmt = $this->db->prepare("SELECT * FROM user_providers WHERE provider = ? AND provider_id = ?");
+		$stmt->execute([$profile['provider'], $profile['provider_id']]);
+		$providerRow = $stmt->fetch();
+
+		if ($providerRow) {
+			$stmt = $this->db->prepare("SELECT * FROM users WHERE usersId = ?");
+			$stmt->execute([$providerRow['usersId']]);
+			return $stmt->fetch();
+		}
+
+		// Buscar por email
+		$stmt = $this->db->prepare("SELECT * FROM users WHERE email = ?");
+		$stmt->execute([$profile['email']]);
+		$user = $stmt->fetch();
+
+		$userId = null;
+		if (!$user) {
+			// Crear nuevo usuario
+			$stmt = $this->db->prepare("INSERT INTO users (email, name,avatar) VALUES (?, ?,?)");
+			$stmt->execute([$profile['email'], $profile['name'], $profile['avatar']]);
+			$userId = $this->getLastId();
+		} else {
+			$userId = $user['usersId'];
+		}
+
+		log::system("Social login " . $userId);
+
+		// Guardar relación proveedor
+		$stmt = $this->db->prepare("INSERT INTO user_providers (usersId, provider, provider_id) VALUES (?, ?, ?)");
+		$stmt->execute([$userId, $profile['provider'], $profile['provider_id']]);
+
+		// Devolver el usuario
+		$stmt = $this->db->prepare("SELECT * FROM users WHERE usersId = ?");
+		$stmt->execute([$userId]);
+		return $stmt->fetch();
+	}
+
 
 	public function update($id, $data)
 	{
