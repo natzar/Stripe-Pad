@@ -105,7 +105,7 @@ class App extends StripePadController
 	 */
 	public function home()
 	{
-		$this->view->show("landing/homepage.php", array());
+		$this->view->show("demo/homepage.php", array());
 	}
 	public function contact()
 	{
