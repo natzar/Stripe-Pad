@@ -1,0 +1,156 @@
+[2025-07-26 17:46:41] CRON STARTED: read-emails =======
+[2025-07-26 17:46:45] CRON FINISHED - read-emails  =======
+[2025-07-26 17:53:48] CRON STARTED: read-emails =======
+[2025-07-26 17:53:52] CRON FINISHED - read-emails  =======
+[2025-07-27 21:20:10] CRON STARTED: read-emails =======
+[2025-07-27 21:20:11] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-07-27 21:20:11] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-07-27 21:20:11] CRON FINISHED - read-emails  =======
+[2025-07-28 08:23:27] CRON STARTED: read-emails =======
+[2025-07-28 08:23:27] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-07-28 08:23:27] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-07-28 08:23:27] CRON FINISHED - read-emails  =======
+[2025-07-28 08:24:05] CRON STARTED: read-emails =======
+[2025-07-28 08:24:06] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-07-28 08:24:06] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-07-28 08:24:06] CRON FINISHED - read-emails  =======
+[2025-07-28 09:31:55] CRON STARTED: read-emails =======
+[2025-07-28 09:31:55] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-07-28 09:31:55] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-07-28 09:31:55] CRON FINISHED - read-emails  =======
+[2025-08-01 19:48:36] CRON STARTED: daily-email =======
+[2025-08-01 19:50:00] CRON STARTED: daily-email =======
+[2025-08-01 19:50:04] CRON FINISHED - daily-email  =======
+[2025-08-01 19:53:56] CRON STARTED: daily-email =======
+[2025-08-01 19:53:58] CRON FINISHED - daily-email  =======
+[2025-08-01 19:56:39] CRON STARTED: daily-email =======
+[2025-08-01 19:56:42] CRON FINISHED - daily-email  =======
+[2025-08-01 19:57:54] CRON STARTED: daily-email =======
+[2025-08-01 19:57:56] CRON FINISHED - daily-email  =======
+[2025-08-01 19:58:49] CRON STARTED: daily-email =======
+[2025-08-01 19:58:52] CRON FINISHED - daily-email  =======
+[2025-08-01 19:59:33] CRON STARTED: daily-email =======
+[2025-08-01 19:59:35] CRON FINISHED - daily-email  =======
+[2025-08-01 20:01:25] CRON STARTED: daily-email =======
+[2025-08-01 20:01:28] CRON FINISHED - daily-email  =======
+[2025-08-01 20:22:44] CRON STARTED: daily-email =======
+[2025-08-01 20:22:47] CRON FINISHED - daily-email  =======
+[2025-08-01 20:23:37] CRON STARTED: daily-email =======
+[2025-08-01 20:23:39] CRON FINISHED - daily-email  =======
+[2025-08-01 20:26:40] CRON STARTED: daily-email =======
+[2025-08-01 20:26:43] CRON FINISHED - daily-email  =======
+[2025-08-01 20:36:20] CRON STARTED: daily-email =======
+[2025-08-01 20:36:22] CRON FINISHED - daily-email  =======
+[2025-08-01 21:01:49] CRON STARTED: daily-email =======
+[2025-08-01 21:01:52] CRON FINISHED - daily-email  =======
+[2025-08-01 21:02:37] CRON STARTED: daily-email =======
+[2025-08-01 21:02:39] CRON FINISHED - daily-email  =======
+[2025-08-01 21:49:36] CRON STARTED: daily-email =======
+[2025-08-01 21:49:39] CRON FINISHED - daily-email  =======
+[2025-08-01 23:06:56] CRON STARTED: daily-email =======
+[2025-08-01 23:06:59] CRON FINISHED - daily-email  =======
+[2025-08-22 12:15:03] CRON STARTED: read-emails =======
+[2025-08-22 12:15:04] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:15:04] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:15:04] CRON FINISHED - read-emails  =======
+[2025-08-22 12:15:07] CRON STARTED: read-emails =======
+[2025-08-22 12:15:08] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:15:08] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:15:08] CRON FINISHED - read-emails  =======
+[2025-08-22 12:15:29] CRON STARTED: read-emails =======
+[2025-08-22 12:15:29] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:15:30] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:15:30] CRON FINISHED - read-emails  =======
+[2025-08-22 12:15:42] CRON STARTED: read-emails =======
+[2025-08-22 12:15:43] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:15:43] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:15:43] CRON FINISHED - read-emails  =======
+[2025-08-22 12:16:05] CRON STARTED: read-emails =======
+[2025-08-22 12:16:06] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:06] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:06] CRON FINISHED - read-emails  =======
+[2025-08-22 12:16:07] CRON STARTED: read-emails =======
+[2025-08-22 12:16:07] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:07] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:07] CRON FINISHED - read-emails  =======
+[2025-08-22 12:16:08] CRON STARTED: read-emails =======
+[2025-08-22 12:16:09] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:09] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:09] CRON FINISHED - read-emails  =======
+[2025-08-22 12:16:26] CRON STARTED: read-emails =======
+[2025-08-22 12:16:27] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:27] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:27] CRON FINISHED - read-emails  =======
+[2025-08-22 12:16:28] CRON STARTED: read-emails =======
+[2025-08-22 12:16:29] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:29] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:29] CRON FINISHED - read-emails  =======
+[2025-08-22 12:16:30] CRON STARTED: read-emails =======
+[2025-08-22 12:16:30] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:30] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:30] CRON FINISHED - read-emails  =======
+[2025-08-22 12:16:31] CRON STARTED: read-emails =======
+[2025-08-22 12:16:32] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:32] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:32] CRON FINISHED - read-emails  =======
+[2025-08-22 12:16:32] CRON STARTED: read-emails =======
+[2025-08-22 12:16:33] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:33] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:33] CRON FINISHED - read-emails  =======
+[2025-08-22 12:16:34] CRON STARTED: read-emails =======
+[2025-08-22 12:16:35] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:35] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:35] CRON FINISHED - read-emails  =======
+[2025-08-22 12:16:36] CRON STARTED: read-emails =======
+[2025-08-22 12:16:36] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:36] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:36] CRON FINISHED - read-emails  =======
+[2025-08-22 12:16:37] CRON STARTED: read-emails =======
+[2025-08-22 12:16:38] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:38] ⚠️ Invalid IMAP config: Directory "/opt/lampp/htdocs/secretario/crons/../tmp" not found
+[2025-08-22 12:16:38] CRON FINISHED - read-emails  =======
+[2025-08-22 12:17:41] CRON STARTED: read-emails =======
+[2025-08-22 12:17:42] No new emails for agent: 1
+[2025-08-22 12:17:44] No new emails for agent: 2
+[2025-08-22 12:17:44] CRON FINISHED - read-emails  =======
+[2025-08-22 12:18:46] CRON STARTED: read-emails =======
+[2025-08-22 12:18:48] No new emails for agent: 1
+[2025-08-22 12:18:49] No new emails for agent: 2
+[2025-08-22 12:18:50] CRON FINISHED - read-emails  =======
+[2025-08-22 12:19:11] CRON STARTED: read-emails =======
+[2025-08-22 12:19:14] CRON FINISHED - read-emails  =======
+[2025-08-22 12:22:05] CRON STARTED: read-emails =======
+[2025-08-22 12:22:07] No new emails for agent: 1
+[2025-08-22 12:22:09] No new emails for agent: 2
+[2025-08-22 12:22:09] CRON FINISHED - read-emails  =======
+[2025-08-22 12:22:25] CRON STARTED: read-emails =======
+[2025-08-22 12:22:30] No new emails for agent: 2
+[2025-08-22 12:22:30] CRON FINISHED - read-emails  =======
+[2025-08-22 12:22:32] CRON STARTED: read-emails =======
+[2025-08-22 12:22:34] No new emails for agent: 1
+[2025-08-22 12:22:35] No new emails for agent: 2
+[2025-08-22 12:22:35] CRON FINISHED - read-emails  =======
+[2025-08-22 12:22:36] CRON STARTED: read-emails =======
+[2025-08-22 12:22:38] No new emails for agent: 1
+[2025-08-22 12:22:39] No new emails for agent: 2
+[2025-08-22 12:22:40] CRON FINISHED - read-emails  =======
+[2025-08-22 12:22:41] CRON STARTED: read-emails =======
+[2025-08-22 12:22:42] No new emails for agent: 1
+[2025-08-22 12:22:44] No new emails for agent: 2
+[2025-08-22 12:22:44] CRON FINISHED - read-emails  =======
+[2025-08-22 12:22:45] CRON STARTED: read-emails =======
+[2025-08-22 12:22:47] No new emails for agent: 1
+[2025-08-22 12:22:48] No new emails for agent: 2
+[2025-08-22 12:22:48] CRON FINISHED - read-emails  =======
+[2025-08-22 12:22:51] CRON STARTED: read-emails =======
+[2025-08-22 12:22:53] No new emails for agent: 1
+[2025-08-22 12:22:54] No new emails for agent: 2
+[2025-08-22 12:22:54] CRON FINISHED - read-emails  =======
+[2025-08-22 12:23:03] CRON STARTED: read-emails =======
+[2025-08-22 12:23:05] No new emails for agent: 1
+[2025-08-22 12:23:07] No new emails for agent: 2
+[2025-08-22 12:23:07] CRON FINISHED - read-emails  =======
+[2025-08-22 12:23:08] CRON STARTED: read-emails =======
+[2025-08-22 12:23:10] No new emails for agent: 1
+[2025-08-22 12:23:11] No new emails for agent: 2
+[2025-08-22 12:23:11] CRON FINISHED - read-emails  =======
