@@ -31,12 +31,6 @@
  */
 
 # BASIC DETAILS
-
-
-
-
-
-
 define('APP_NAME', 'Stripe Pad');
 define('APP_SLUG', 'stripepad');
 define('APP_LOGO', '');
@@ -44,25 +38,13 @@ define('SEO_TITLE', 'Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_DESCRIPTION', 'Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_KEYWORDS', 'php stripe boilerplate, php micro saas, stripe pad, stripe payment, php stripe payment, stripe integration, php microservice, php saas boilerplate');
 
-# Enable bot blocker if you have too many requests
-define('BOT_BLOCKER', false);
+define('APP_SECRET_KEY', '[Generate secret key, used for encryption functions]');
 
-# EMAIL
-define('ADMIN_EMAIL', '');
-define('SMTP_SERVER', '');                // Specify smtp server
-define('SMTP_PORT', 587);
-define('SMTP_GLOBAL_EMAIL_FROM', ''); // Set Email from address
-define('SMTP_USER_EMAIL', ''); // Set user name / email for SMTP
-define('SMTP_PASSWORD', ''); // Set password for SMTP user
-
-
-// Define supported  languages
-define('LANGUAGES', ['en']); // Add any other languages you want to support, e.g., ['de', 'es', 'fr']
-
+# Same sp-config.php file for localhost and production
+# Detect if we are running on localhost or on a server
 if (isLocalhost()) { # Localhost
 
 	define('DEBUG_MODE', true);
-
 	define('APP_DOMAIN', 'http://localhost/stripepad/');
 	define('APP_BASE_URL', 'http://localhost/stripepad/');
 	define('API_BASE_URL', 'http://localhost/stripepad/api/');
@@ -76,7 +58,6 @@ if (isLocalhost()) { # Localhost
 } else {    # Server / Production
 
 	define('DEBUG_MODE', false);
-
 	define('APP_DOMAIN', 'https://domain.com/');
 	define('APP_BASE_URL', 'https://domain.com/');
 	define('API_BASE_URL', 'https://domain.com/');
@@ -85,10 +66,22 @@ if (isLocalhost()) { # Localhost
 
 	define('APP_TABLE_PREFIX', '');
 	define('APP_DB_HOST', '');
-	define('APP_DB', 'david_support');
+	define('APP_DB', '');
 	define('APP_DB_USER', '');
 	define('APP_DB_PASSWORD', '');
 }
+
+# EMAIL
+define('ADMIN_EMAIL', '');
+define('SMTP_SERVER', '');                // Specify smtp server
+define('SMTP_PORT', 587);
+define('SMTP_GLOBAL_EMAIL_FROM', ''); // Set Email from address
+define('SMTP_USER_EMAIL', ''); // Set user name / email for SMTP
+define('SMTP_PASSWORD', ''); // Set password for SMTP user
+
+# EXTRAS - MODULES
+define('BOT_BLOCKER', false); # Enable bot blocker if you have too many requests
+define('OPENAI_CHATGPT_APIKEY', ''); // platform.openai.com
 
 # Stripe 
 define('APP_STRIPE_PUBKEY', '');
@@ -105,32 +98,25 @@ define('APP_STRIPE_CURRENCY', 'eur');
 define('APP_STRIPE_DEFAULTCOUNTRY', 'ES');
 define('APP_STRIPE_TAX_RATE', '');
 
-# PATHS
-define('ROOT_PATH', dirname(__FILE__) . "/");
-define('CORE_PATH', dirname(__FILE__) . "/core/");
-define('APP_PATH', dirname(__FILE__) . "/app/");
-define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
-
 # GOOGLE
 define('GOOGLE_CLIENT_ID', '');
 define('GOOGLE_CLIENT_SECRET', '');
 define('GOOGLE_REDIRECT_URI', '');
 
-# ENVIRONMENT
-define("INTERNAL_ENCODING", "UTF-8");
-define("TIMEZONE", "Europe/Madrid");
-
 # LANGUAGE
 // Define the default language and supported languages
-// If the user has set a language via ?lang=, use that; otherwise, use the browser's language preference.
-// If neither is set, default to English ('en').
-// Get language from ?lang= OR browser (default: 'en')
+define('LANGUAGES', ['en']); // Add any other languages you want to support, e.g., ['de', 'es', 'fr']
+
 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+	// If the user has set a language via ?lang=, use that; otherwise, use the browser's language preference.
+	// If neither is set, default to English ('en').
+	// Get language from ?lang= OR browser (default: 'en')
+
 	$accept = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'en';
 	$lang_from_browser = substr($accept, 0, 2);
 	$user_lang = strtolower($_GET['lang'] ?? $lang_from_browser);
 } else {
-	$user_lang = 'en'; // Default to Spanish if no language is set
+	$user_lang = 'en'; // Default to English if no language is set
 }
 
 // Use only supported languages, fallback to English
@@ -139,11 +125,18 @@ $lang = in_array($user_lang, LANGUAGES) ? $user_lang : 'en';
 $locale = strtoupper($lang) . '_' . strtoupper($lang) . '.utf8';
 
 define("LOCALE_LANG", $locale);
-define("LOCALE_TIME", "english");
+define("LOCALE_TIME", $locale);
 
-# EXTRAS - MODULES
-define('COUNTERIFY_TOKEN', ''); // Counterify.com
-define('OPENAI_CHATGPT_APIKEY', ''); // platform.openai.com
+# PATHS
+define('ROOT_PATH', dirname(__FILE__) . "/");
+define('CORE_PATH', dirname(__FILE__) . "/core/");
+define('APP_PATH', dirname(__FILE__) . "/app/");
+define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
+
+# ENVIRONMENT
+define("INTERNAL_ENCODING", "UTF-8");
+define("TIMEZONE", "Europe/Madrid");
+
 
 
 # Helper functions
