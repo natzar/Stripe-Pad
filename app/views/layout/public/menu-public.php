@@ -4,15 +4,15 @@
 
 <div class="sticky w-full  z-50 bg-white items-center  shadow-xl  ">
   <div class="text-gray-100 flex gap-x-2 bg-blue-900 px-6 py-0.5 sm:px-3.5 text-center items-center ">
-    <a class="text-sm z-50 hover:underline mx-auto hover:font-semibold" href="<?= APP_DOMAIN ?>demo"> <strong class="text-sm leading-6 text-gray-100 font-semibold inline"><?= _('Automatice su primera linea de atención al cliente por email  ⟶ Solicite prueba personalizada') ?></strong>
+    <a class="text-sm z-50 hover:underline mx-auto hover:font-semibold" href="<?= APP_DOMAIN ?>demo"> <strong class="text-sm leading-6 text-gray-100 font-semibold inline"><?= _('TOP CTA - app/views/layout/public/menu-public.php') ?></strong>
 
     </a>
     <div class="flex items-center justify-end">
-      <a href="https://www.agentedesoporte.es" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/es.png"></a>
-      <a href="https://www.meetemilio.com" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/us.png"></a>
+      <a href="<?= APP_DOMAIN ?>/?lang='es'" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/es.png"></a>
+      <a href="<?= APP_DOMAIN ?>/?lang='en'" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/us.png"></a>
       <!-- <a href=" <?= APP_DOMAIN ?>signup"">
         <button class=" hidden rounded-full bg-blue-900 px-4 py-1 text-xs text-black font-semibold transition duration-200 ease-out hover:bg-blue-400 lg:block">
-          <?= _('Empezar ahora') ?>
+          <?= _('Login') ?>
 
         </button>
       </a> -->
@@ -26,7 +26,7 @@
         <a href="<?= APP_DOMAIN ?>" class=" -m-1.5 p-1.5 text-gray-900 hover:text-blue-900 font-bold">
           <span class="sr-only"><?= APP_NAME ?></span>
           <img src="<?= APP_LOGO ?>" width="40" class="inline">
-          <span class="">Emilio <span class="hidden xl:inline-block">| <?= _('Agente de Soporte') ?></span></span>
+          <span class="">Stripe Pad <span class="hidden xl:inline-block">| <?= _('Agente de Soporte') ?></span></span>
         </a>
       </div>
       <div class="flex ml-auto  lg:hidden">
