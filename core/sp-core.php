@@ -91,7 +91,7 @@ class StripePadController
 
     public function home()
     {
-        echo 'default home, overwrite public function home.php in App.php';
+        echo 'default home, overwrite public function home() in App.php';
     }
 
     public function comingsoon()
@@ -251,20 +251,8 @@ class StripePadController
             $pass =  hash('sha256', $this->params['password']);
 
             if (!empty($user) and $user['password'] == $pass) {
-                // if ($this->createSession($user)) {
-
-                //   echo 'Session created successfully';
-                $_SESSION['app_emilio'] = 1;
-                $_SESSION['login_attemp'] = 0;
-                $_SESSION['user'] = $user;
-                //   $_SESSION['HTTP_USER_AGENT'] = hash('sha256', ($_SERVER['HTTP_USER_AGENT'] . $user['email']));
-
-
-
+                $this->createSession($user);
                 $users->saveLastLogin($user['usersId']);
-
-
-
                 // $_SESSION['errors'][] = "Welcome back " . $user['email'];
                 //print_r($_SESSION);
                 //session_write_close();
@@ -323,7 +311,9 @@ class StripePadController
     }
     private function createSession($user, $saveLogin = true)
     {
-
+        $_SESSION[APP_NAME] = 1;
+        $_SESSION['login_attemp'] = 0;
+        $_SESSION['user'] = $user;
 
         return true;
     }
@@ -336,9 +326,8 @@ class StripePadController
     public function isAuthenticated()
     {
 
-        $x = !empty($_SESSION['user']) and isset($_SESSION['app_emilio']) and isset($_SESSION['agent']);
-        //  echo "isAuthenticated: " . ($x ? "true" : "false") . "<br>";
-        return $x;
+        $is_logged = !empty($_SESSION['user']) and isset($_SESSION[APP_NAME]);
+        return $is_logged;
     }
 
     /**
@@ -577,7 +566,7 @@ class StripePadController
 
 
 
-    /* SuperAdmin magic functions: Forms creation and Rows Inserting and updating. One day someone will come.
+    /* SuperAdmin magic functions: Forms creation and Rows Inserting and updating. One day someone will come asking questions about this shit.
     ---------------------------------------*/
 
     public function superadmin()
