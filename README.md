@@ -22,9 +22,10 @@
 
 
 1. Download or clone the repo
-2. Create a MYSQL database and import install/database.sql
-3. Edit .htaccess (Rewrite base in case it is inside a subfolder)
-4. Edit sp-config.php (Add mysql credentials and other details)
+2. Run `composer install`
+3. Create a MYSQL database and import install/database.sql
+4. Edit .htaccess (Rewrite base in case it is inside a subfolder)
+5. Edit sp-config.php (Add mysql credentials and other details)
 
 You will be able to login:
 
