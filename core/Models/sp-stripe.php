@@ -41,7 +41,7 @@ class Stripe extends ModelBase
 
     function create_checkout_session()
     {
-        if (!$_POST) die("PhpNinja Stripe Token Service");
+        if (!$_POST) die("No data received");
 
         \Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY); //APP_STRIPE_SECRETKEY);
 
@@ -60,8 +60,8 @@ class Stripe extends ModelBase
 
         switch ($lang):
             case 'en':
-                $surl = 'https://www.phpninja.net/thank-you-order-successful/';
-                $curl = 'https://www.phpninja.net/order-cancel/';
+                $surl = APP_DOMAIN . 'thank-you-order-successful/';
+                $curl = APP_DOMAIN . 'order-cancel/';
 
                 break;
         endswitch;
@@ -151,7 +151,7 @@ class Stripe extends ModelBase
             'amount' => number_format($amount, 2, "", ""),
             "description" => "Producto test",
             "currency" => "eur",
-            "tax_rates" => array('txr_1IiJI2A3z90NEC4eGR0I4pB2')
+            "tax_rates" => array(APP_STRIPE_TAX_RATE)
         ]);
 
 
@@ -237,8 +237,8 @@ class Stripe extends ModelBase
                 'quantity' => $totalLines,
             ]],
             'mode' => 'payment',
-            'success_url' => 'https://domstry.com/success?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => 'https://domstry.com/browse',
+            'success_url' => APP_DOMAIN . 'success?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => APP_DOMAIN . 'cancel-stripe-session',
             'billing_address_collection' => 'auto',
             'payment_intent_data' => array("metadata" => $metadata),
             'allow_promotion_codes' => true,

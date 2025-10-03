@@ -35,7 +35,7 @@ class PermissionsException extends StripePadException
 
 class DatabaseException extends StripePadException
 {
-    public const CONNECTION_FAILED = "DATABASE not connected. Please check your database connection settings at sp-config.php";
+    public const CONNECTION_FAILED = "DATABASE ERROR: Please check your database server is running and your connection settings at sp-config.php are correct.";
 
     public function __construct(string $message = self::CONNECTION_FAILED, int $code = 0, \Throwable $previous = null)
     {

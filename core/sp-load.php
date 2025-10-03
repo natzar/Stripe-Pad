@@ -20,9 +20,11 @@ if (!file_exists(dirname(__FILE__) . '/../sp-config.php')) {
     exit();
 }
 include_once dirname(__FILE__) . '/../sp-config.php';
+
 bindtextdomain('messages', ROOT_PATH . 'locale');
 bind_textdomain_codeset('messages', 'UTF-8');
 textdomain('messages');
+
 # Defaults 
 ini_set('log_errors', 1);
 ini_set('error_log', ROOT_PATH . "logs/sp-errors.log");
@@ -36,16 +38,6 @@ mb_internal_encoding(INTERNAL_ENCODING);
 date_default_timezone_set(TIMEZONE);
 putenv("LC_ALL=" . LOCALE_LANG);
 setlocale(LC_ALL, LOCALE_LANG);
-//setlocale(LC_ALL, );
-
-
-// O 'es' si usaste esa carpeta
-
-//setlocale(LC_TIME, LOCALE_TIME);
-
-
-
-## ... (more to come)
 
 # Session 
 if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()) {
@@ -68,9 +60,9 @@ if (file_exists(dirname(__FILE__) . "/../app/helpers.php")) include_once(dirname
 include_once CORE_PATH . "Classes/sp-model-base.php";
 include_once CORE_PATH . 'Classes/sp-spdo.php';
 include_once CORE_PATH . "Classes/sp-emailvalidator.php";
-//include_once CORE_PATH . 'Classes/EmailValidator.php';
 include_once CORE_PATH . 'Classes/sp-view.php';
 include_once CORE_PATH . 'Classes/php-pii.php';
+
 include_once CORE_PATH . 'Models/sp-mail.php';
 include_once CORE_PATH . 'Models/sp-user.php';
 include_once CORE_PATH . 'Models/sp-cronjob.php';

@@ -31,10 +31,10 @@
  */
 
 
-
-
 /**
  * Your Custom App
+ * @ this controller by default extends StripePadController located at core/sp-core.php
+ * 
  * Each method of this class can be accessed from //your-domain/{method}
  * $this->params contains all get/post params
  * App.php is just the main and solo controller of your custom app. 

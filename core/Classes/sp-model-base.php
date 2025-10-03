@@ -18,8 +18,6 @@ abstract class ModelBase
 		} catch (StripePad\Exceptions\DatabaseException $e) {
 			//	die("Database connection error: " . $e->getMessage());
 		}
-		//$this->db = SPDO::singleton();
-		//	$this->log = log::singleton();
 	}
 
 	/**
@@ -122,20 +120,6 @@ abstract class ModelBase
 		$description['fields_to_show'] = $fields_to_show;
 		$description['default_order'] = $table . "Id DESC";
 		return $description;
-
-		// DEPRECATED
-		// 		$aux = fopen(APP_UPLOAD_PATH . $tabla . '.php', 'w');
-		// 		$resultx =  '<?        
-		// $table_label = "' . $table . '";
-		// $default_order = "' . $table . 'Id ASC";
-		// $fields= array(' . $campos_a_mostrar . ');        
-		// $fields_labels= array(' . $labels . ');        
-		// $fields_types=array(' . $types . ');
-		// ';
-
-		// 		fwrite($aux, $resultx);	fclose($aux);
-
-
 	}
 
 
@@ -265,44 +249,6 @@ abstract class ModelBase
 
 
 
-	public function get_by_agentsId($agentsId)
-	{
-		$table = $this->table;
-
-
-
-		$data = $this->getOrmDescription($table);
-		$fields_to_show = $data['fields_to_show'];
-		$fields = $data['fields'];
-		$fields_labels = $data['fields_labels'];
-		$fields_types = $data['fields_types'];
-
-		$order = $data['default_order'];
-		$table_aux = $table;
-		$table_no_prefix = $table;
-		$consulta = null;
-
-		$consulta = $this->db->prepare('SELECT * FROM ' . $table . ' where agentsId = ' . $agentsId . ' order by ' . $table . '.' . $order);
-
-		$consulta->execute();
-		$array_return = array();
-
-		while ($r = $consulta->fetch()):
-			$row_array = array();
-			$row_array[$table_no_prefix . 'Id'] = $r[$table_no_prefix . 'Id'];
-			for ($i = 0; $i < count($fields); $i++):
-				if (!isset($fields_to_show) or in_array($fields[$i], $fields_to_show) or empty($fields_to_show)):
-					if (!class_exists($fields_types[$i]))
-						die("La clase " . $fields_types[$i] . " no existe");
-					$field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $r[$fields[$i]], $table, $row_array[$table_no_prefix . 'Id']);
-					$row_array[$fields[$i]] = $field_aux->view();
-				endif;
-			endfor;
-			$array_return[] = $row_array;
-
-		endwhile;
-		return $array_return;
-	}
 
 	public function getAll()
 	{
@@ -354,27 +300,7 @@ abstract class ModelBase
 
 		return $consulta->fetch();
 	}
-	public function table_js($table)
-	{
 
-		$output = "";
-		$output .= "$(document).ready(function(){";
-		//$output .="$('#tablaMain').pagination();";
-
-
-		//$output .= "        // $('.tablaMain').bdt({ pageRowCount:200, search: false});";
-
-
-
-
-
-
-		$output .= "});"; // End $(document).ready();
-
-
-		// final funciones de check form
-		return $output;
-	}
 
 	public function getFormValues($table, $rid)
 	{
@@ -727,6 +653,7 @@ abstract class ModelBase
 	/**
 	 * generateForm
 	 * Returns the HTML for a form
+	 * Some day a guy and an old guy will come to ask you questions about this function
 	 * @param  mixed $table
 	 * @param  mixed $rid
 	 * @param  mixed $fields
