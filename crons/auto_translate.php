@@ -40,6 +40,7 @@ foreach (LANGUAGES as $lang) {
         if (empty($entry->getMsgstr())) {  // Check if msgstr is empty
             $translation = translateText($entry->getMsgid(), $lang);
             $entry->setMsgstr($translation);  // Set the translation
+            echo "Translated '{$entry->getMsgid()}' to '{$translation}' in {$lang}.\n";
         }
     }
 

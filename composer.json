@@ -13,7 +13,8 @@
         "league/oauth2-google": "^4.0",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.8",
-        "sepia/po-parser": "^6.0"
+        "sepia/po-parser": "^6.0",
+        "php-imap/php-imap": "^5.0"
     },
     "require-dev": {
         "phplint/phplint": "^0.0.1",
@@ -32,13 +33,14 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "install-tailwind": "cd tailwind; npm install;",
-        "rebuild-css": "cd tailwind; npx tailwindcss -i ./src/input.css -o ./../cdn/css/things-to-do-near-you.css --minify",
+        "rebuild-css": "cd tailwind; npx tailwindcss -i ./src/input.css -o ./../cdn/css/app.css --minify",
         "tailwind-update-browser": "cd tailwind; npx update-browserslist-db@latest",
-        "rebuild-locale": "msgfmt messages.po -o messages.mo",
-        "locale-strings": "xgettext -o ./locale/messages.pot --from-code=UTF-8 -k_ -n ./app/views/*/*.php",
-        "locale-init": "for lang in en es fr de it nl pt ru pl sv fi da no el cs hu ro bg hr sk lt lv et; do msginit --no-translator --input=./locale/messages.pot --locale=$lang.UTF-8 --output-file=./locale/$lang/LC_MESSAGES/messages.po; done",
-        "locale-merge": "msgmerge -U existing.po messages.po",
-        "locale-build-all": "for lang in en es fr de it nl pt ru pl sv fi da no el cs hu ro bg hr sk lt lv et; do msgfmt -o ./locale/$lang/LC_MESSAGES/messages.mo ./locale/$lang/LC_MESSAGES/messages.po; done"
+        "locale-strings": "find ./app/views/ -name '*.php' | xargs xgettext -o ./locale/messages.pot --from-code=UTF-8 -k_ -n",
+        "locale-init": "for lang in en_US.utf8 es_ES.utf8; do msginit --no-translator --input=./locale/messages.pot --locale=$lang.utf8 --output-file=./locale/$lang/LC_MESSAGES/messages.po; done",
+        "locale-merge": "msgmerge -U ./locale/es_ES.utf8/LC_MESSAGES/messages.po ./locale/messages.pot && msgmerge -U ./locale/en_US.utf8/LC_MESSAGES/messages.po ./locale/messages.pot",
+        "locale-clear-fuzzy": "for lang in en_US.utf8 es_ES.utf8; do msgattrib --clear-fuzzy -o ./locale/$lang/LC_MESSAGES/messages.po ./locale/$lang/LC_MESSAGES/messages.po; done",
+        "locale-build-all": "for lang in en_US.utf8 es_ES.utf8; do msgfmt -o ./locale/$lang/LC_MESSAGES/messages.mo ./locale/$lang/LC_MESSAGES/messages.po; done",
+        "locale-update": "composer locale-strings && composer locale-merge && composer locale-clear-fuzzy && composer locale-build-all"
     },
     "config": {
         "allow-plugins": {
