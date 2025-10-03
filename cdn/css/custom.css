@@ -7,6 +7,9 @@
   /* Adjust font-weight if needed */
   font-display: swap;
   font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   /* Adjust font-style if needed */
 }
 
@@ -36,19 +39,23 @@
   font-style: normal;
   /* Adjust font-style if needed */
   font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+
 
 html,
 body {
   /*/font-family: 'AirClassicMedium', sans-serif !important;*/
   /* Use your custom font for the body or any specific element */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+
+  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
