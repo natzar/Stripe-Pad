@@ -41,7 +41,8 @@ include_once APP_PATH . "App.php";
 # $actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
 # Deprecated PHP 8
 
-$actionName = isset($_GET['p']) ? sanitize($_GET['p']) : 'index';
+$actionName = isset($_GET['p']) ? sanitize($_GET['p']) :  'index';
+
 
 # Include app/App.php that extends core/sp-core.php
 $App = new App();

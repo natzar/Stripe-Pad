@@ -40,15 +40,19 @@ define('SEO_KEYWORDS', 'php stripe boilerplate, php micro saas, stripe pad, stri
 
 define('APP_SECRET_KEY', '[Generate secret key, used for encryption functions]');
 
+# ENVIRONMENT
+define("INTERNAL_ENCODING", "UTF-8");
+define("TIMEZONE", "Europe/Madrid"); // Check https://www.php.net/manual/en/timezones.php
+
 # Same sp-config.php file for localhost and production
 # Detect if we are running on localhost or on a server
 if (isLocalhost()) { # Localhost
 
 	define('DEBUG_MODE', true);
-	define('APP_DOMAIN', 'http://localhost/stripepad/');
-	define('APP_BASE_URL', 'http://localhost/stripepad/');
-	define('API_BASE_URL', 'http://localhost/stripepad/api/');
-	define('HOMEPAGE_URL', 'http://localhost/stripepad/');
+	define('APP_DOMAIN', 'http://localhost/stripe-pad/');
+	define('APP_BASE_URL', 'http://localhost/stripe-pad/');
+	define('API_BASE_URL', 'http://localhost/stripe-pad/api/');
+	define('HOMEPAGE_URL', 'http://localhost/stripe-pad/');
 	define('APP_TABLE_PREFIX', '');
 	define('APP_DB_HOST', '');
 	define('APP_DB', '');
@@ -133,9 +137,7 @@ define('CORE_PATH', dirname(__FILE__) . "/core/");
 define('APP_PATH', dirname(__FILE__) . "/app/");
 define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
-# ENVIRONMENT
-define("INTERNAL_ENCODING", "UTF-8");
-define("TIMEZONE", "Europe/Madrid");
+
 
 
 

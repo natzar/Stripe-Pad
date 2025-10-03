@@ -5,3 +5,4 @@ node_modules/
 app/build/node_modules/
 
 sp-errors.log
+vendor
