@@ -84,41 +84,14 @@ class App extends StripePadController
 	 */
 	public function app() // DASHBOARD
 	{
-		assert(!is_null($this->agentsId));
-		$counters = new CountersModel('agent', $this->agentsId);
-
-
-		// Emails del mes actual
-		//$mesActual = $model->getByPeriod($counterId, 'month');
-
-		// Historial por mes (últimos 12 meses)
-		//$historial = $model->getHistory($counterId, 'month');
-
-		//echo "Total: $total<br>";
-		//echo "Este mes: $mesActual<br>";
-
-		//foreach ($historial as $row) {
-		//	echo "{$row['period']}: {$row['total']}<br>";
-		//}
-
-		$emails = new emailsModel();
-		$scenarios = new scenariosModel();
 
 		# Sample render of view with $data
 		$data = array(
-			"SEO_TITLE" => "Departamento de Atención al Cliente de " . $_SESSION['agent']['agent_organization'],
-			"SEO_DESCRIPTION" => "Bievenido al panel de control. Si tienes cualquier duda puedes contactar con emilio@agentedesoporte.es o humanos@agentedesoporte.es",
+			"SEO_TITLE" => "xyz",
+			"SEO_DESCRIPTION" => "xyz",
 			"breadcrumb" => array(array("label" => "Inicio", "url" => "#")),
 			"user" => $_SESSION['user'],
-			"stats" => array(
-				"totals" => array(
-					"total_sent" => $counters->get('total_sent')['total'], // Not used To-do
-					"total_inbox" => 0,
-					"total_contacts" => 0,
-				),
-				"per_contact" => $emails->get_total_by_contact($this->agentsId),
-				"per_scenario" => $scenarios->get_totals($this->agentsId)
-			)
+
 		);
 
 		# show app/views/index.php passing $data

@@ -1,35 +1,50 @@
 <?php
+
 namespace StripePad\Exceptions;
 
-use Exception;
-
-
-class StripePadException extends Exception
+class StripePadException extends \Exception
 {
-   
-
-
-    public function __construct($message, $code = 0, Exception $previous = null)
+    public function __construct(string $message = '', int $code = 0, \Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
+        // Si quieres, conserva esta línea; si no, sácala del constructor.
         $_SESSION['errors'][] = $message;
-        //include_once ROOT_PATH . "app/views/errors/error.php";
     }
 }
 
+class ViewException extends StripePadException
+{
+    public const INVALID_PERMISSIONS = "ERROR: Invalid permissions.";
+    public const TPL_NOT_FOUND       = "ERROR: Template file not found.";
 
-class ViewException extends StripePadException {
-    const INVALID_PERMISSIONS = "ERROR: Invalid permissions.";
-    const TPL_NOT_FOUND = "ERROR: Template file not found.";
+    public function __construct(string $message = self::INVALID_PERMISSIONS, int $code = 0, \Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+    }
 }
 
-class PermissionsException extends StripePadException {
-    const INVALID_PERMISSIONS = "ERROR: Invalid permissions.";
-}
-class DatabaseException extends StripePadException {
+class PermissionsException extends StripePadException
+{
+    public const INVALID_PERMISSIONS = "ERROR: Invalid permissions.";
 
+    public function __construct(string $message = self::INVALID_PERMISSIONS, int $code = 0, \Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+    }
 }
-class FileSystemException extends StripePadException {
+
+class DatabaseException extends StripePadException
+{
+    public const CONNECTION_FAILED = "DATABASE not connected. Please check your database connection settings at sp-config.php";
+
+    public function __construct(string $message = self::CONNECTION_FAILED, int $code = 0, \Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+    }
+}
+
+class FileSystemException extends StripePadException
+{
     const INVALID_PERMISSIONS = "ERROR: Invalid permissions.";
     const FILE_NOT_EXISTS = "ERROR: Invalid permissions.";
 }

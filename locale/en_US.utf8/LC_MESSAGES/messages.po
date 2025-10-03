@@ -1,0 +1,1367 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-31 17:35+0200\n"
+"PO-Revision-Date: 2025-07-24 20:30+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/views/superadmin/table.php:8
+msgid "Añadir nuevo &raquo;"
+msgstr "Add new &raquo;"
+
+#: app/views/superadmin/form.php:8 app/views/superadmin/form.php:159
+#: app/views/custom/config_inbox.php:90
+msgid "Guardar Cambios"
+msgstr "Save Changes"
+
+#: app/views/superadmin/form.php:51 app/views/user/profile.php:14
+msgid "Notificaciones"
+msgstr "Notifications"
+
+#: app/views/superadmin/form.php:52
+msgid ""
+"Recibe una notificación en caso de que se hayan conseguido todos los campos "
+"requeridos del escenario"
+msgstr ""
+"Receive a notification in case all the required fields of the scenario have been"
+" obtained."
+
+#: app/views/superadmin/form.php:84
+msgid "Configurar preferencias de usuario"
+msgstr "Set up user preferences"
+
+#: app/views/superadmin/form.php:88
+msgid "Acciones Escenario Completado"
+msgstr "Actions Scenario Completed"
+
+#: app/views/superadmin/form.php:89
+msgid ""
+"Acciones a realizar en caso de que se consigan los datos requeridos y se "
+"complete el escenario de forma exitosa"
+msgstr ""
+"Actions to be taken in case the required data is obtained and the scenario is "
+"successfully completed."
+
+#: app/views/superadmin/form.php:118
+msgid "Tipus d'acció"
+msgstr "Type of action"
+
+#: app/views/superadmin/form.php:122
+msgid "Añadir al calendario"
+msgstr "Add to calendar"
+
+#: app/views/superadmin/form.php:123
+msgid "No responder"
+msgstr "Do not respond"
+
+#: app/views/superadmin/form.php:126
+msgid "API: Petición GET/POST "
+msgstr "API: GET/POST Request"
+
+#: app/views/superadmin/form.php:150
+msgid "Añadir acción"
+msgstr "Add action"
+
+#: app/views/landing/demo.php:3
+msgid "Demostración Personalizada"
+msgstr "Personalized demonstration"
+
+#: app/views/landing/demo.php:4
+msgid ""
+"Rellene este formulario y evaluaremos si su caso encaja con la prueba gratuita. "
+"Se configurará un agente para su negocio para que pueda probar el servicio "
+"durante 40 días <u>sin coste</u>"
+msgstr ""
+"Fill out this form and we will evaluate if your case fits with the free trial. "
+"An agent will be set up for your business so you can test the service for 40 "
+"days at <u>no cost</u>."
+
+#: app/views/landing/demo.php:8
+msgid "¿Qué tipo de negocio tienes?"
+msgstr "Business Type"
+
+#: app/views/landing/demo.php:10
+msgid "Selecciona una opción"
+msgstr "Select an option"
+
+#: app/views/landing/demo.php:11
+msgid "Tienda online"
+msgstr "Online store"
+
+#: app/views/landing/demo.php:12
+msgid "Alojamiento turístico"
+msgstr "Tourist accommodation"
+
+#: app/views/landing/demo.php:13
+msgid "Clínica o consulta"
+msgstr "Clinic or consultation"
+
+#: app/views/landing/demo.php:14
+msgid "Freelancer o autónomo"
+msgstr "Freelancer or self-employed"
+
+#: app/views/landing/demo.php:15
+msgid "Otro"
+msgstr "Another"
+
+#: app/views/landing/demo.php:20
+msgid "Sitio Web"
+msgstr "Website"
+
+#: app/views/landing/demo.php:21
+msgid "https://domain.com"
+msgstr "https://domain.com"
+
+#: app/views/landing/demo.php:26
+msgid "¿Cuántos correos recibes al día?"
+msgstr "How many emails do you receive a day?"
+
+#: app/views/landing/demo.php:27
+msgid "Ej: 30"
+msgstr "Example: 30"
+
+#: app/views/landing/demo.php:32
+msgid "¿Qué tipo de mensajes te quitan más tiempo o son más repetitivos o comunes?"
+msgstr ""
+"What kind of messages take up most of your time or are more repetitive or "
+"common?"
+
+#: app/views/landing/demo.php:33
+msgid "Reservas, preguntas frecuentes, incidencias..."
+msgstr "Reservations, frequently asked questions, incidents..."
+
+#: app/views/landing/demo.php:38
+msgid "Tu email"
+msgstr "Your email"
+
+#: app/views/landing/demo.php:39
+msgid "tucorreo@ejemplo.com"
+msgstr "yourmail@example.com"
+
+#: app/views/landing/demo.php:44
+msgid "Solicitar Demostración"
+msgstr "Request Demonstration"
+
+#: app/views/landing/demo.php:45
+msgid ""
+"Recibirá una confirmación en 24-48h. Email de bienvenida con accesos a su cuenta"
+" y su agente de soporte listo para usarse."
+msgstr ""
+"You will receive a confirmation in 24-48h. Welcome email with access to your "
+"account and your support agent ready for use."
+
+#: app/views/landing/faq.php:4 app/views/landing/homepage.php:28
+msgid "Preguntas frecuentes"
+msgstr "Frequently Asked Questions"
+
+#: app/views/landing/faq.php:12
+msgid "¿Cómo funciona? Modo Manual o Modo Piloto Automático"
+msgstr "How does it work? Manual Mode or Automatic Pilot Mode"
+
+#: app/views/landing/faq.php:24
+msgid ""
+"Funciona con Gmail, Outlook o qualquier tipo de buzón de correo. Se recomienda "
+"usar una dirección de email dedicada para sus agentes AI. Defina ajustes y "
+"escenarios; Explique las situaciones comunes: reservas, incidencias, consultas "
+"frecuentes... Dispone del modo MANUAL (se requiere de su permiso para enviar "
+"cualquier respuesta antes de ser enviada) y AUTO-PILOT (atención al cliente "
+"automática y supervisable). Si un correo no se puede identificar completamente, "
+"se marca para posterior revisión. Cuando todos los datos requeridos de un "
+"escenario son conseguidos, se le notificará, no antes. No perderá más tiempo "
+"pidiendo datos faltantes."
+msgstr ""
+"It works with Gmail, Outlook or any type of mailbox. It is recommended to use a "
+"dedicated email address for your AI agents. Define settings and scenarios; "
+"explain common situations: reservations, incidents, frequent inquiries... It has"
+" a MANUAL mode (requires your permission to send any response before it is sent)"
+" and AUTO-PILOT (automatic and supervisable customer service). If an email "
+"cannot be fully identified, it is marked for later review. When all required "
+"data from a scenario are obtained, you will be notified, not before. You will no"
+" longer waste time asking for missing data."
+
+#: app/views/landing/faq.php:34
+msgid "¿Emilio (agente de IA) responde solo?"
+msgstr "Does Emilio (AI agent) respond on his own?"
+
+#: app/views/landing/faq.php:46
+msgid ""
+"Sí, gracias al algoritmo de inteligencia artificial que hemos diseñado, está "
+"capacitado para enviar respuestas automáticas según los escenarios de respuesta "
+"definidos. Sin embargo, también puedes activar el modo de prueba (Manual Mode) "
+"para comprobar cómo funciona antes de enviar las respuestas reales."
+msgstr ""
+"Yes, thanks to the artificial intelligence algorithm we have designed, it is "
+"capable of sending automatic responses according to defined response scenarios. "
+"However, you can also activate test mode (Manual Mode) to check how it works "
+"before sending the actual responses."
+
+#: app/views/landing/faq.php:54
+msgid "¿Puedo personalizar las respuestas?"
+msgstr "Can I customize the responses?"
+
+#: app/views/landing/faq.php:66
+msgid ""
+"Sí, puedes definir múltiples escenarios para personalizar totalmente las "
+"respuestas según las necesidades de tu empresa u organización. También puedes "
+"añadir ejemplos de respuesta, plantillas, elegir el tono de la comunicación, "
+"añadir una firma personalizada."
+msgstr ""
+"Yes, you can define multiple scenarios to fully customize responses according to"
+" the needs of your company or organization. You can also add response examples, "
+"templates, choose the tone of communication, add a personalized signature."
+
+#: app/views/landing/faq.php:74
+msgid "¿Qué es un escenario?"
+msgstr "What is a scenario?"
+
+#: app/views/landing/faq.php:86
+msgid ""
+"Un escenario es cada una de las posibles situaciones que Emilio se puede "
+"encontrar cuando quiere responder a tus emails, como por ejemplo una solicitud "
+"de reserva, la necesidad de reparar algo que no funciona de tu página web o un "
+"error 500 en tu API, etc."
+msgstr ""
+"A scenario is each of the possible situations that Emilio could encounter when "
+"he wants to respond to your emails, such as a reservation request, the need to "
+"fix something that is not working on your website or a 500 error in your API, "
+"etc."
+
+#: app/views/landing/faq.php:94
+msgid "¿Cómo es el proceso de configuración?"
+msgstr "What is the configuration process?"
+
+#: app/views/landing/faq.php:106
+msgid ""
+"El proceso es muy sencillo, simplemente necesitamos saber los datos básicos de "
+"tu empresa u organización y el tipo de solicitudes que suelen hacer tus "
+"clientes. Con esta información, que podemos obtener desde tu página web y tu "
+"buzón de entrada, tenemos suficiente para personalizar tus escenarios de "
+"respuesta."
+msgstr ""
+"The process is very simple, we just need to know the basic information about "
+"your company or organization and the types of requests your customers usually "
+"make. With this information, which we can get from your website and your inbox, "
+"we have enough to customize your response scenarios."
+
+#: app/views/landing/faq.php:114
+msgid "¿Se me notifica acerca de los emails procesados?"
+msgstr "Am I notified about the processed emails?"
+
+#: app/views/landing/faq.php:126
+msgid ""
+"Sí, las notificaciones son personalizables y puedes escoger si recibirlas por "
+"email, WhatsApp o SMS. Puedes elegir que se te ponga en CC (copia) o en BCC "
+"(copia oculta) en todos los emails procesados, que se te notifique solo de los "
+"enviados por ciertos contactos, que se te envíe un resumen del contenido de cada"
+" correo o un resumen de la actividad diaria."
+msgstr ""
+"Yes, notifications are customizable and you can choose to receive them by email,"
+" WhatsApp, or SMS. You can choose to be CC'd (carbon copied) or BCC'd (blind "
+"carbon copied) on all processed emails, to be notified only of those sent by "
+"certain contacts, to be sent a summary of each email's content or a summary of "
+"daily activity."
+
+#: app/views/landing/faq.php:134
+msgid "¿Qué pasa si hay alguna consulta que Emilio (agente de IA) no sabe responder?"
+msgstr ""
+"What happens if there is a question that Emilio (AI agent) doesn't know how to "
+"answer?"
+
+#: app/views/landing/faq.php:146
+msgid ""
+"En este caso se aplica un escenario específicamente diseñado para cubrir esta "
+"situación y que también puedes personalizar. Por defecto se notifica al "
+"remitente que se ha pasado la consulta al departamento correspondiente para que "
+"le dé una respuesta lo antes posible y se te envía a ti la solicitud para que "
+"puedas dar respuesta de forma manual. Una vez la respuesta esté en el sistema, "
+"Emilio la conocerá y será capaz de responder automáticamente en el futuro."
+msgstr ""
+"In this case, a specifically designed scenario is applied to cover this "
+"situation, which you can also customize. By default, the sender is notified that"
+" the query has been forwarded to the relevant department to provide a response "
+"as soon as possible and the request is sent to you so that you can respond "
+"manually. Once the response is in the system, Emilio will be aware of it and "
+"will be able to respond automatically in the future."
+
+#: app/views/landing/faq.php:154
+msgid "¿Es compatible con Gmail, Outlook o el servidor de correo de mi web?"
+msgstr "Is it compatible with Gmail, Outlook, or my webmail server?"
+
+#: app/views/landing/faq.php:166
+msgid ""
+"Sí, el sistema accede a tu correo vía IMAP (Protocolo de Acceso a Mensajes de "
+"Internet), de forma segura, y puede procesar todos los emails que recibas."
+msgstr ""
+"Yes, the system accesses your email via IMAP (Internet Message Access Protocol),"
+" securely, and can process all the emails you receive."
+
+#: app/views/landing/faq.php:174
+msgid "¿Qué integraciones están disponibles?"
+msgstr "What integrations are available?"
+
+#: app/views/landing/faq.php:186
+msgid ""
+"Actualmente estamos trabajando con distintas plataformas para integrar Emilio. "
+"Aceptamos peticiones."
+msgstr ""
+"We are currently working with different platforms to integrate Emilio. We accept"
+" requests."
+
+#: app/views/landing/faq.php:194
+msgid "¿Tiene coste por uso?"
+msgstr "Is there a usage cost?"
+
+#: app/views/landing/faq.php:206
+msgid ""
+"El precio de los packs depende de la cantidad de emails a procesar mensualmente."
+" Es posible dar de alta varios agentes bajo la misma cuenta, mientras todos "
+"ellos no sumen la cantidad total del plan contratado, no habrá interrupción del "
+"servicio."
+msgstr ""
+"The price of the packs depends on the number of emails to be processed monthly. "
+"It is possible to register multiple agents under the same account, as long as "
+"they do not exceed the total amount of the contracted plan, there will be no "
+"interruption of the service."
+
+#: app/views/landing/pricing.php:5
+msgid "Un Agente de Atención al cliente 24h, en todos los idiomas"
+msgstr "A 24-hour customer service agent, in all languages"
+
+#: app/views/landing/pricing.php:6 app/views/layout/public/menu-public.php:108
+#: app/views/layout/public/menu-public.php:160
+msgid "Precios"
+msgstr "Prices"
+
+#: app/views/landing/pricing.php:8
+msgid ""
+"365 días al año, 24 horas al día, fines de semana, noches y festivos incluidos. "
+"Sin altas en la seguridad social ni permanencia, puedes cancelar tu cuenta "
+"cuando quieras."
+msgstr ""
+"365 days a year, 24 hours a day, including weekends, nights, and holidays. No "
+"need for social security registration or contract, you can cancel your account "
+"whenever you want."
+
+#: app/views/landing/pricing.php:14
+msgid "Base"
+msgstr "Base"
+
+#: app/views/landing/pricing.php:16
+msgid "Escribe y envía tu última respuesta por email, ya eres libre"
+msgstr "Write and send your last response by email, you are now free."
+
+#: app/views/landing/pricing.php:21 app/views/landing/pricing.php:55
+msgid "Empezar ahora »"
+msgstr "Start Now"
+
+#: app/views/landing/pricing.php:25
+msgid "Hasta 350 emails gestionados"
+msgstr "Up to 350 emails managed"
+
+#: app/views/landing/pricing.php:28 app/views/landing/pricing.php:62
+msgid "24h / Todos los idiomas"
+msgstr "24h / All languages"
+
+#: app/views/landing/pricing.php:31
+msgid "Escenarios y tipos de respuesta ilimitados"
+msgstr "Unlimited scenarios and response types"
+
+#: app/views/landing/pricing.php:34 app/views/landing/pricing.php:68
+msgid "Productos y Servicios"
+msgstr "Products and Services"
+
+#: app/views/landing/pricing.php:37
+msgid "Integración Google Calendar"
+msgstr "Google Calendar Integration"
+
+#: app/views/landing/pricing.php:40 app/views/landing/pricing.php:74
+msgid "Integración API GET/POST"
+msgstr "API: GET/POST Request"
+
+#: app/views/landing/pricing.php:47
+msgid "Startup"
+msgstr "Startup"
+
+#: app/views/landing/pricing.php:48
+msgid "Más popular"
+msgstr "Most popular"
+
+#: app/views/landing/pricing.php:50
+msgid "Maneja documentos, adjuntos y más capacidad"
+msgstr "Manage documents, attachments and more capacity."
+
+#: app/views/landing/pricing.php:59
+msgid "Hasta 1000 emails gestionados"
+msgstr "Up to 1000 emails managed"
+
+#: app/views/landing/pricing.php:65
+msgid "Escenarios ilimitados"
+msgstr "Detected scenario"
+
+#: app/views/landing/pricing.php:71
+msgid "Múltiples integraciones"
+msgstr "Multiple integrations"
+
+#: app/views/landing/pricing.php:77
+msgid "Documentos"
+msgstr "Documents"
+
+#: app/views/landing/pricing.php:80
+msgid "Procesamiento de archivos adjuntos"
+msgstr "Processing of attached files"
+
+#: app/views/landing/pricing.php:83
+msgid "Automatizaciones Email"
+msgstr "Email Automations"
+
+#: app/views/landing/pricing.php:90
+msgid "Enterprise"
+msgstr "Enterprise"
+
+#: app/views/landing/pricing.php:92
+msgid "Plan a medida para empresas"
+msgstr "Custom plan for businesses"
+
+#: app/views/landing/pricing.php:94
+msgid "Contacta con nosotros"
+msgstr "Contact us"
+
+#: app/views/landing/pricing.php:98
+msgid "Emails gestionados sin límite"
+msgstr "Unlimited managed emails"
+
+#: app/views/landing/pricing.php:101
+msgid "Varios buzones de correo"
+msgstr "Several mailboxes"
+
+#: app/views/landing/pricing.php:104
+msgid "Gestión de departamentos"
+msgstr "Department Management"
+
+#: app/views/landing/pricing.php:107
+msgid "Soporte y atención prioritaria"
+msgstr "Priority support and attention"
+
+#: app/views/landing/pricing.php:110
+msgid "Informes y estadísticas avanzadas"
+msgstr "Advanced reports and statistics"
+
+#: app/views/landing/homepage.php:12
+msgid "Prueba personalizada"
+msgstr "Free Trial"
+
+#: app/views/landing/homepage.php:14
+msgid "Pruebe el servicio durante 40 días"
+msgstr "Try the service for 40 days."
+
+#: app/views/landing/homepage.php:22
+msgid "Nos encargamos de sus emails"
+msgstr "We'll take care of your emails"
+
+#: app/views/landing/homepage.php:23
+msgid ""
+"Emilio Agente de Soporte, es un servicio de atención al cliente basado en "
+"inteligencia artificial que puede integrar fácilmente en su negocio"
+msgstr ""
+"Emilio Support Agent is an artificial intelligence-based customer service that "
+"you can easily integrate into your business."
+
+#: app/views/landing/homepage.php:27
+msgid "Empezar Ahora"
+msgstr "Start Now"
+
+#: app/views/landing/homepage.php:42
+msgid "Opinión de los clientes"
+msgstr "Customer Opinion"
+
+#: app/views/landing/homepage.php:49
+msgid ""
+"Emilio cumple con la normativa GDPR y CCPA. Se realizan auditorías de seguridad "
+"periódicamente."
+msgstr ""
+"Emilio complies with GDPR and CCPA regulations. Security audits are performed "
+"periodically."
+
+#: app/views/landing/homepage.php:49
+msgid "Puedes leer más"
+msgstr "You can read more"
+
+#: app/views/landing/homepage.php:49
+msgid "aquí"
+msgstr "here"
+
+#: app/views/landing/homepage.php:74
+msgid "Contrate un agente IA de atención al cliente"
+msgstr "A Customer Service Representative"
+
+#: app/views/landing/homepage.php:77
+msgid ""
+"Gracias a las posibilidades de configuración que ofrece Emilio, es muy fácil "
+"estandarizar respuestas para las preguntas o escenarios más comunes; Las "
+"plantillas de email son cosa del pasado, la IA escribe como vd."
+msgstr ""
+"Thanks to the configuration possibilities that Emilio offers, it is very easy to"
+" standardize responses for the most common questions or scenarios; Email "
+"templates are a thing of the past, AI writes like you."
+
+#: app/views/landing/homepage.php:84
+msgid "Disponible 24/7 para responder sus correos"
+msgstr "Available 24/7 to respond to your emails"
+
+#: app/views/landing/homepage.php:90
+msgid "Se integra fácilmente con Gmail, IMAP o su propio servidor"
+msgstr "It easily integrates with Gmail, IMAP or your own server."
+
+#: app/views/landing/homepage.php:96
+msgid "Personalizable con su estilo de comunicación"
+msgstr "Customizable with your communication style"
+
+#: app/views/landing/homepage.php:102
+msgid "Le ayuda a organizar escenarios y respuestas automáticas"
+msgstr "It helps you organize scenarios and automatic responses."
+
+#: app/views/landing/homepage.php:108
+msgid "Reduce el tiempo de respuesta y mejora la satisfacción"
+msgstr "Reduce response time and improve satisfaction"
+
+#: app/views/landing/homepage.php:114
+msgid "Modo MANUAL para revisar antes de enviar"
+msgstr "MANUAL mode for review before sending"
+
+#: app/views/landing/homepage.php:120
+msgid "Le avisa por email si hay dudas"
+msgstr "It notifies you by email if there are any doubts."
+
+#: app/views/landing/homepage.php:126
+msgid "Ideal para organizaciones de todos los tamaños"
+msgstr "Ideal for organizations of all sizes"
+
+#: app/views/landing/homepage.php:132
+msgid "Solicitar Prueba personalizada →"
+msgstr "Personalized demonstration"
+
+#: app/views/landing/homepage.php:135
+msgid "Preguntas Frecuentes →"
+msgstr "Frequently Asked Questions"
+
+#: app/views/landing/homepage.php:139
+msgid "Escríbenos a"
+msgstr "Write to us at"
+
+#: app/views/landing/homepage.php:139
+msgid "para resolver cualquier duda"
+msgstr "Solve any situation"
+
+#: app/views/landing/homepage.php:160
+msgid "Testimonios"
+msgstr "Testimonies"
+
+#: app/views/landing/homepage.php:161
+msgid "¿Qué dicen nuestros clientes?"
+msgstr "Customer Reviews"
+
+#: app/views/landing/homepage.php:166
+msgid ""
+"“Funciona sin complicaciones. Por fin tenemos alguien que responde fuera del "
+"horario y sin protestar. Por 129 € al mes, no hay nada igual.”"
+msgstr ""
+"\"It works without any complications. Finally, we have someone who responds "
+"outside of working hours and without complaining. For 129€ per month, there's "
+"nothing like it.\""
+
+#: app/views/landing/homepage.php:171
+msgid "Carlos Méndez"
+msgstr "Carlos Mendez"
+
+#: app/views/landing/homepage.php:172
+msgid "cafeteríasantana.es"
+msgstr "santanacafeteria.us"
+
+#: app/views/landing/homepage.php:181
+msgid ""
+"“Pensaba que esto sería complicado de usar, pero en 5 minutos ya estaba "
+"atendiendo mensajes por mí. Ahora puedo centrarme en cocinar.”"
+msgstr ""
+"\"I thought this would be complicated to use, but within 5 minutes it was already"
+" handling messages for me. Now I can focus on cooking.\""
+
+#: app/views/landing/homepage.php:186
+msgid "Marta Lozano"
+msgstr "Marta Lozano"
+
+#: app/views/landing/homepage.php:187
+msgid "empanadasgallegas.com"
+msgstr "empanadasgallegas.com"
+
+#: app/views/landing/homepage.php:193
+msgid ""
+"“Responde con educación, en todos los idiomas y sin errores. Parece una persona "
+"de verdad. Para nuestra casa rural es perfecto.”"
+msgstr ""
+"\"Responds politely, in all languages and without errors. It seems like a real "
+"person. It's perfect for our country house.\""
+
+#: app/views/landing/homepage.php:198
+msgid "Luis Aranda"
+msgstr "Luis Aranda"
+
+#: app/views/landing/homepage.php:199
+msgid "casalavanda.com"
+msgstr "casalavanda.com"
+
+#: app/views/landing/homepage.php:205
+msgid ""
+"“Llevamos dos meses con Emilio y ya no podemos vivir sin él. Atiende WhatsApp, "
+"responde emails y nos avisa si falta algo.”"
+msgstr ""
+"\"We've been with Emilio for two months and we can't live without him now. He "
+"checks WhatsApp, responds to emails, and lets us know if anything is missing.\""
+
+#: app/views/landing/homepage.php:210
+msgid "Nerea Pérez"
+msgstr "Nerea Perez"
+
+#: app/views/landing/homepage.php:211
+msgid "centroarcoiris.es"
+msgstr "rainbowcenter.us"
+
+#: app/views/landing/homepage.php:224
+msgid ""
+"“Con Emilio dejamos de perder reservas por no contestar a tiempo. Es como tener "
+"una recepcionista de guardia sin descanso.”"
+msgstr ""
+"\"With Emilio, we stopped losing reservations due to not responding in time. It's"
+" like having a receptionist on duty without rest.\""
+
+#: app/views/landing/homepage.php:229
+msgid "Ana Beltrán"
+msgstr "Ana Beltran"
+
+#: app/views/landing/homepage.php:230
+msgid "apartamentoselpuerto.com"
+msgstr "apartamentoselpuerto.com"
+
+
+#: app/views/landing/homepage.php:236
+msgid ""
+"“Lo recomendamos a todos nuestros colegas. Ahorra tiempo, evita errores y "
+"contesta con una paciencia que ni yo tengo.”"
+msgstr ""
+"\"We recommend it to all our colleagues. It saves time, avoids mistakes, and "
+"responds with a patience that even I don't have.\""
+
+#: app/views/landing/homepage.php:241
+msgid "Jordi Ferrer"
+msgstr "Jordi Ferrer"
+
+#: app/views/landing/homepage.php:242
+msgid "clínicaveterinaria.cat"
+msgstr "veterinaryclinic.cat"
+
+#: app/views/landing/homepage.php:251
+msgid ""
+"“Antes revisábamos el correo tres veces al día. Ahora todo lo urgente se "
+"responde al momento, y nos avisa si hay algo importante.”"
+msgstr ""
+"\"Before, we used to check the mail three times a day. Now everything urgent is "
+"responded to immediately, and we are notified if there is anything important.\""
+
+#: app/views/landing/homepage.php:256
+msgid "Laura Domínguez"
+msgstr "Laura Dominguez"
+
+#: app/views/landing/homepage.php:257
+msgid "serviciotecnicomadrid.com"
+msgstr "techservicesmadrid.com"
+
+#: app/views/landing/homepage.php:263
+msgid ""
+"“Emilio es como tener un equipo de atención al cliente dentro del ordenador. "
+"Siempre está disponible, y no se le escapa nada.”"
+msgstr ""
+"\"Emilio is like having a customer service team inside the computer. He's always "
+"available, and he doesn't miss a thing.\""
+
+#: app/views/landing/homepage.php:268
+msgid "Gabriel Ortega"
+msgstr "Gabriel Ortega"
+
+#: app/views/landing/homepage.php:269
+msgid "tintorerialucia.com"
+msgstr "tintorerialucia.com"
+
+#: app/views/landing/homepage.php:284
+msgid "10 razones por las que confiar en Emilio"
+msgstr "10 reasons to trust Emilio"
+
+#: app/views/landing/homepage.php:285
+msgid "Recopilatorio de frases de nuestros clientes"
+msgstr "Compilation of quotes from our customers"
+
+#: app/views/landing/homepage.php:292
+msgid "1. Porque puede activar el modo manual y probar con el simulador"
+msgstr "Because you can activate manual mode and test with the simulator."
+
+#: app/views/landing/homepage.php:293
+msgid ""
+"El modo manual interrumpe la cola de envíos emails automática. Los emails se "
+"responden y quedan pendientes de su aprobación para ser enviados. El simulador "
+"permite probar la detección de escenarios y generación de respuestas."
+msgstr ""
+"The manual mode interrupts the automatic email sending queue. Emails are "
+"responded to and remain pending for approval to be sent. The simulator allows "
+"testing the detection of scenarios and generation of responses."
+
+#: app/views/landing/homepage.php:298
+msgid "2. Porque cumple los estándares de seguridad y privacidad"
+msgstr "Because it meets safety and privacy standards."
+
+#: app/views/landing/homepage.php:299
+msgid ""
+"Los datos se almacenan cifrados, los servidores están en Alemania y el acceso al"
+" buzón es mínimo y temporal. Anonimiza los mensajes antes de enviarlos a OpenAI,"
+" solo accede a los datos imprescindibles y nunca guarda más de lo necesario. "
+"Puedo desconectarlo en cualquier momento."
+msgstr ""
+"The data is stored encrypted, the servers are in Germany and access to the "
+"mailbox is minimal and temporary. It anonymizes the messages before sending them"
+" to OpenAI, only accesses essential data and never saves more than necessary. I "
+"can disconnect it at any time."
+
+#: app/views/landing/homepage.php:304
+msgid "3. Porque cada respuesta pasa por una doble verificación"
+msgstr "3. Because each answer goes through a double verification."
+
+#: app/views/landing/homepage.php:305
+msgid ""
+"Primero analiza el correo y propone una respuesta. Luego revisa que esa "
+"respuesta realmente responde a lo que se le pidió."
+msgstr ""
+"First, it analyzes the email and proposes a response. Then it checks that this "
+"response actually answers what was asked."
+
+#: app/views/landing/homepage.php:310
+msgid "4. Porque los escenarios funcionan"
+msgstr "4. Because the scenarios work"
+
+#: app/views/landing/homepage.php:311
+msgid ""
+"Todo se puede definir mediante un escenario, incluso los casos como spam, los "
+"casos que sólo involucran a clientes o a proveedores o los casos en los que hay "
+"que avisar inmediatamente. Los campos requeridos de cada escenario permiten "
+"verlo como algo más parecido a un secretario."
+msgstr ""
+"Everything can be defined through a scenario, even cases such as spam, cases "
+"that only involve customers or suppliers, or cases where you need to notify "
+"immediately. The required fields of each scenario allow you to view it as "
+"something more like a secretary."
+
+#: app/views/landing/homepage.php:316
+msgid "5. Porque el flujo está bien pensado"
+msgstr "5. Because the flow is well thought out"
+
+#: app/views/landing/homepage.php:317
+msgid ""
+"Lee, analiza, propone, compara y decide. No improvisa. Cada paso tiene sentido y"
+" está bajo control."
+msgstr ""
+"Lee reads, analyzes, proposes, compares, and decides. He doesn't improvise. "
+"Every step is meaningful and under control."
+
+#: app/views/landing/homepage.php:322
+msgid "6. Porque OpenAI funciona y da confianza, y hay plan B"
+msgstr "6. Because OpenAI works and is reliable, and there is a plan B."
+
+#: app/views/landing/homepage.php:323
+msgid ""
+"OpenAI ha demostrado ser fiable. Pero si fallara o dejara de estar disponible, "
+"Emilio está listo para usar otro modelo."
+msgstr ""
+"OpenAI has proven to be reliable. But if it fails or becomes unavailable, Emilio"
+" is ready to use another model."
+
+#: app/views/landing/homepage.php:328
+msgid "7. Porque sabe decir “no lo sé”"
+msgstr "7. Because he knows how to say \"I don't know\""
+
+#: app/views/landing/homepage.php:329
+msgid ""
+"Si Emilio no lo tiene claro, no se arriesga. Reenvía el correo o lo deja en "
+"espera. No improvisa ni adivina. "
+msgstr ""
+"If Emilio is not sure, he does not take risks. He either forwards the email or "
+"leaves it on hold. He does not improvise or guess."
+
+#: app/views/landing/homepage.php:334
+msgid "8. Porque usa una cuenta aislada de correo"
+msgstr "8. Because it uses an isolated email account."
+
+#: app/views/landing/homepage.php:335
+msgid ""
+"Eso evita interferencias con el resto del equipo y permite medir su impacto con "
+"total precisión. "
+msgstr ""
+"This avoids interference with the rest of the team and allows measuring its "
+"impact with total precision."
+
+#: app/views/landing/homepage.php:340
+msgid "9. Porque todo queda trazado"
+msgstr "9. Because everything is traced."
+
+#: app/views/landing/homepage.php:341
+msgid ""
+"Es posible revisar qué correos ha leído, qué respuestas ha propuesto y qué se ha"
+" enviado. Emilio es auditable. "
+msgstr ""
+"It is possible to review which emails have been read, what responses have been "
+"proposed, and what has been sent. Emilio is auditable."
+
+#: app/views/landing/homepage.php:346
+msgid "10. Porque envia con copia"
+msgstr "10. Because it sends with a copy"
+
+#: app/views/landing/homepage.php:347
+msgid ""
+"Cada correo puede incluir automáticamente copia CC o BCC, permitiendo "
+"monitorización en tiempo real y la posibilidad de intervenir en cualquier "
+"momento cómo en cualquier conversación por email."
+msgstr ""
+"Each email can automatically include a CC or BCC copy, allowing real-time "
+"monitoring and the possibility to intervene at any time as in any email "
+"conversation."
+
+#: app/views/landing/homepage.php:358
+msgid "Ajustes del Agente"
+msgstr "Agent Settings"
+
+#: app/views/landing/homepage.php:359
+msgid "Un Agente de Atención al cliente "
+msgstr "A Customer Service Representative"
+
+#: app/views/landing/homepage.php:360
+msgid "Emilio es totalmente configurable."
+msgstr "Emilio is fully customizable."
+
+#: app/views/landing/homepage.php:367
+msgid "Datos Personales"
+msgstr "Data found"
+
+#: app/views/landing/homepage.php:369
+msgid ""
+"Nombre del Agente, Tono de respuesta, Tiempo de respuesta, Firma de E-mail, "
+"etc..."
+msgstr "Agent's Name, Response Tone, Response Time, Email Signature, etc..."
+
+#: app/views/landing/homepage.php:376
+msgid "Datos de la organización y contexto"
+msgstr "Organization data and context"
+
+#: app/views/landing/homepage.php:378
+msgid ""
+"Imagine la información que tendría que darle a una nueva secretaria para que "
+"fuera productiva el primer dia"
+msgstr ""
+"Imagine the information you would have to give to a new secretary in order for "
+"her to be productive on the first day."
+
+#: app/views/landing/homepage.php:386
+msgid "Información importante"
+msgstr "Important information"
+
+#: app/views/landing/homepage.php:388
+msgid ""
+"Los términos y condiciones, faqs, horarios, precios, productos, etc.. la "
+"información que Emilio siempre debe tener en cuenta tanto si analiza e-mails "
+"como si escribe respuestas"
+msgstr ""
+"The terms and conditions, FAQs, schedules, prices, products, etc.. the "
+"information that Emilio should always take into account, whether he is analyzing"
+" emails or writing responses."
+
+#: app/views/landing/homepage.php:406
+msgid "Escenarios"
+msgstr "Scenario"
+
+#: app/views/landing/homepage.php:407
+msgid "Resuelve cualquier situación "
+msgstr "Solve any situation"
+
+#: app/views/landing/homepage.php:408
+msgid ""
+"Gracias a los escenarios es fácil explicar a Emilio los diferentes tipos de "
+"mensajes en los que se encontrará."
+msgstr ""
+"Thanks to the scenarios, it's easy to explain to Emilio the different types of "
+"messages he will encounter."
+
+#: app/views/landing/homepage.php:415
+msgid "Análisis y detección"
+msgstr "Analysis and detection"
+
+#: app/views/landing/homepage.php:417
+msgid ""
+"Con una descripción y un par de ejemplos Emilio ya es capaz de detectar si un "
+"mensaje coincide con un escenario o con otro. Desde escenario de SPAM, hasta "
+"escenario de un cliente pide una factura o detectar que el contacto es un "
+"proveedor, y por tanto diferenciar por el tipo de contacto "
+msgstr ""
+"With a description and a couple of examples, Emilio is now able to determine "
+"whether a message matches one scenario or another. From a SPAM scenario, to a "
+"scenario where a client is asking for an invoice, or detecting that the contact "
+"is a supplier, and therefore differentiate by the type of contact."
+
+#: app/views/landing/homepage.php:424
+msgid "Campos requeridos y opcionales"
+msgstr "Required and optional fields"
+
+#: app/views/landing/homepage.php:426
+msgid ""
+"Los escenarios pueden contener campos obligatorios. Por ejemplo en una reserva "
+"de un alojamiento tenemos el nombre, fechas, número de personas, etc.. Estos "
+"datos son el objetivo de Emilio, y manejará toda la conversación para "
+"conseguirlos. Es en ese momento en que te avisará, no antes. "
+msgstr ""
+"Scenarios may contain mandatory fields. For example, in a lodging reservation, "
+"we have the name, dates, number of people, etc. These data are Emilio's goal, "
+"and he will manage the entire conversation to obtain them. It is at that moment "
+"that he will notify you, not before."
+
+#: app/views/landing/homepage.php:434
+msgid " Instrucciones para responder"
+msgstr "Instructions to respond"
+
+#: app/views/landing/homepage.php:449
+msgid " Ahora pruébelo en acción, hable con Emilio a través de "
+msgstr "Now try it in action, talk to Emilio through"
+
+#: app/views/landing/homepage.php:457
+msgid ""
+"No sabíem com gestionar més de 100 emails diaris... Ara Emilio ho fa sol. És com"
+" tenir una persona més a l’equip."
+msgstr ""
+"We didn't know how to manage over 100 emails a day... Now Emilio does it alone. "
+"It's like having an extra person on the team."
+
+#: app/views/custom/settings.php:6 app/views/custom/settings.php:108
+msgid "Save Changes"
+msgstr "Save Changes"
+
+#: app/views/custom/settings.php:12
+msgid "Person's replying identity"
+msgstr "Identity of the person replying"
+
+#: app/views/custom/emails_detail.php:49
+msgid "Editar Respuesta"
+msgstr "Edit Response"
+
+#: app/views/custom/emails_detail.php:59
+msgid "Asignar Escenario"
+msgstr "Scenario"
+
+#: app/views/custom/emails_detail.php:68
+msgid "Enviar Ahora"
+msgstr "Start Now"
+
+#: app/views/custom/emails_detail.php:77
+msgid "Mover a SPAM / Descartar"
+msgstr "Move to SPAM / Discard"
+
+#: app/views/custom/contact_sales.php:19
+msgid "Contacte con el equipo"
+msgstr "Contact the team"
+
+#: app/views/custom/contact_sales.php:20
+msgid ""
+"Emilio, agente de soporte y atención al cliente, es desarrollado y mantenido por"
+" el equipo de Ayesa Digital SL."
+msgstr ""
+"Emilio, a customer support and service agent, is developed and maintained by the"
+" team at Ayesa Digital SL."
+
+#: app/views/custom/contact_sales.php:70
+msgid "Reserve una sesión para consultas o asistencia con la configuración"
+msgstr "Book a session for consultations or assistance with the setup."
+
+#: app/views/custom/contact_sales.php:83 app/views/user/profile.php:65
+msgid "Nombre"
+msgstr "Name"
+
+#: app/views/custom/contact_sales.php:108
+msgid "Enviar Mensaje"
+msgstr "Send Message"
+
+#: app/views/custom/help.php:21
+msgid "¿Cómo puedo ayudarte?"
+msgstr "How can I help you?"
+
+#: app/views/custom/index.php:58
+msgid "E-mails salientes"
+msgstr "Outgoing emails"
+
+#: app/views/custom/index.php:73
+msgid "Acceso rápido"
+msgstr "Quick access"
+
+#: app/views/custom/config_inbox.php:11
+msgid "Emails Salientes (SMTP)"
+msgstr "Outgoing Emails (SMTP)"
+
+#: app/views/custom/config_inbox.php:14
+msgid "Servidor SMTP"
+msgstr "SMTP Server"
+
+#: app/views/custom/config_inbox.php:18 app/views/custom/config_inbox.php:59
+msgid "Port"
+msgstr "Harbor"
+
+#: app/views/custom/config_inbox.php:22 app/views/custom/config_inbox.php:63
+msgid "Usuario"
+msgstr "User"
+
+#: app/views/custom/config_inbox.php:26 app/views/custom/config_inbox.php:67
+msgid "Contraseña"
+msgstr "Password"
+
+#: app/views/custom/config_inbox.php:30
+msgid "Encriptación"
+msgstr "Encryption"
+
+#: app/views/custom/config_inbox.php:43
+msgid "Enviar prueba a"
+msgstr "Send test to"
+
+#: app/views/custom/config_inbox.php:52
+msgid "Recepción de correos (IMAP/POP3)"
+msgstr "Reception of emails (IMAP/POP3)"
+
+#: app/views/custom/config_inbox.php:55
+msgid "Servidor"
+msgstr "Server"
+
+#: app/views/custom/config_inbox.php:83
+msgid "Probar conexión"
+msgstr "Test connection"
+
+#: app/views/custom/emails.php:38
+msgid "Fecha"
+msgstr "Date"
+
+#: app/views/custom/emails.php:39
+msgid "Cliente"
+msgstr "Customer"
+
+#: app/views/custom/emails.php:40
+msgid "Escenario"
+msgstr "Scenario"
+
+#: app/views/custom/emails.php:41
+msgid "Conversación"
+msgstr "Conversation"
+
+#: app/views/custom/emails.php:43
+msgid "Status"
+msgstr "Status"
+
+#: app/views/custom/simulator.php:19
+msgid "Escenario detectado"
+msgstr "Detected scenario"
+
+#: app/views/custom/simulator.php:20
+msgid "Datos encontrados"
+msgstr "Data found"
+
+#: app/views/custom/simulator.php:21
+msgid "Datos faltantes"
+msgstr "Missing data"
+
+#: app/views/custom/onboarding.php:26
+msgid "Configuración Agente"
+msgstr "Agent Configuration"
+
+#: app/views/custom/onboarding.php:36 app/views/custom/onboarding.php:44
+msgid "Definición Escenarios"
+msgstr "Scenarios Definition"
+
+#: app/views/custom/new_account.php:8
+msgid "Crear nuevo Agente"
+msgstr "Create new Agent"
+
+#: app/views/layout/public/footer.php:50
+msgid "Valore esta página"
+msgstr "Rate this page"
+
+#: app/views/layout/public/footer.php:50
+msgid "¿Cree que la información está completa?"
+msgstr "Do you think the information is complete?"
+
+#: app/views/layout/public/footer.php:51
+msgid "Deje su opinión"
+msgstr "Leave your opinion"
+
+#: app/views/layout/public/footer.php:64
+msgid "En proceso de auditoría de ISO 27001 / 27701 / 9001"
+msgstr "In the process of ISO 27001/27701/9001 audit"
+
+#: app/views/layout/public/footer.php:69
+msgid "Privacidad y aviso legal GDPR"
+msgstr "Privacy and GDPR Legal Notice"
+
+#: app/views/layout/public/footer.php:70
+msgid "Términos y condiciones"
+msgstr "Terms and Conditions"
+
+#: app/views/layout/public/footer.php:177
+msgid "¿Qué hace Emilio?"
+msgstr "What is Emilio doing?"
+
+#: app/views/layout/public/footer.php:180
+msgid ""
+"Entra en su buzón de correo, igual que su aplicación de correo. Cualquier email "
+"que llegue desde que Emilio está activo, se clasifica según el escenario "
+"definido que mejor encaja."
+msgstr ""
+"Log into your mailbox, just like your mail app. Any email that arrives while "
+"Emilio is active is categorized according to the pre-defined scenario that fits "
+"best."
+
+#: app/views/layout/public/footer.php:183
+msgid ""
+"Se envían respuestas al cliente y se mantiene la conversación mientras el "
+"cliente siga respondiendo y aún no se hayan conseguido los datos de los campos "
+"obligatorios."
+msgstr ""
+"Responses are sent to the client and the conversation is maintained as long as "
+"the client continues to respond and the data from the mandatory fields have not "
+"yet been obtained."
+
+#: app/views/layout/public/footer.php:186
+msgid ""
+"¿Qué son los datos obligatorios? Cada escenario puede contener campos "
+"obligatorios. (En una reserva de ejemplo, estos serían pax, noches, fechas)."
+msgstr ""
+"What are mandatory data? Each scenario may contain mandatory fields. (In a "
+"sample reservation, these would be pax, nights, dates)."
+
+#: app/views/layout/public/footer.php:189
+msgid ""
+"¿Qué es un escenario? Es cada \"tipo\" de email que se recibe, ejemplo: reservas "
+"sería un escenario, devoluciones otro, información general otro."
+msgstr ""
+"What is a scenario? It is each \"type\" of email that is received, for example: "
+"reservations would be one scenario, returns another, general information "
+"another."
+
+#: app/views/layout/public/footer.php:192
+msgid ""
+"Emilio tratará de conseguir la información para rellenar los campos obligatorios"
+" antes de notificarle. Le filtrará toda la conversación anterior a la obtención "
+"de los datos importantes."
+msgstr ""
+"Emilio will try to get the information to fill in the mandatory fields before "
+"notifying you. He will filter out all the previous conversation prior to "
+"obtaining the important data."
+
+#: app/views/layout/public/footer.php:195
+msgid ""
+"Y todo esto puede seguirlo desde el panel de control, que funciona como un "
+"cliente de correo, pero sin función de responder, dónde además puede ver "
+"estadísticas sobre los escenarios y los contactos más activos."
+msgstr ""
+"And all this can be followed from the control panel, which works like a mail "
+"client, but without the reply function, where you can also see statistics about "
+"the scenarios and the most active contacts."
+
+#: app/views/layout/public/menu-public.php:3
+msgid "Solicite una prueba personalizada"
+msgstr "Personalized demonstration"
+
+#: app/views/layout/public/menu-public.php:9
+#: app/views/layout/public/menu-public.php:127
+#: app/views/layout/public/menu-public.php:180
+msgid "Empezar ahora"
+msgstr "Start Now"
+
+#: app/views/layout/public/menu-public.php:25
+msgid "Agente de Soporte"
+msgstr "Support Agent"
+
+#: app/views/layout/public/menu-public.php:44
+msgid "Inicio"
+msgstr "Home"
+
+#: app/views/layout/public/menu-public.php:103
+#: app/views/layout/public/menu-public.php:159
+msgid "Preguntas Frecuentes"
+msgstr "Frequently Asked Questions"
+
+#: app/views/layout/public/menu-public.php:115
+#: app/views/layout/public/menu-public.php:161
+msgid "Contacto"
+msgstr "Contact"
+
+#: app/views/layout/public/menu-public.php:124
+msgid "Prueba Personalizada"
+msgstr "Personalized demonstration"
+
+#: app/views/layout/public/menu-public.php:130
+msgid "Área de Clientes"
+msgstr "Client Access"
+
+#: app/views/layout/public/menu-public.php:158
+msgid "Home"
+msgstr "Home"
+
+#: app/views/layout/public/menu-public.php:162
+msgid "Demo"
+msgstr "Demo"
+
+#: app/views/layout/public/menu-public.php:179
+msgid "Login"
+msgstr "Login"
+
+#: app/views/layout/private/menu-private.php:464
+msgid "Preferencias"
+msgstr "Preferences"
+
+#: app/views/layout/private/menu-private.php:466
+msgid "Cerrar Sesión"
+msgstr "Log Out"
+
+#: app/views/user/login.php:7
+msgid "Acceso Clientes"
+msgstr "Client Access"
+
+#: app/views/user/login.php:9
+msgid "¿Todavía no tiene automatizada la atención al cliente de su negocio?"
+msgstr "Has your business not yet automated its customer service?"
+
+#: app/views/user/login.php:10
+msgid "Contratar ahora"
+msgstr "Contact"
+
+#: app/views/user/login.php:18
+msgid "Email address"
+msgstr "Outgoing emails"
+
+#: app/views/user/login.php:25
+msgid "Password"
+msgstr "New Password"
+
+#: app/views/user/login.php:42
+msgid "Guarda la sesión"
+msgstr "Save the session"
+
+#: app/views/user/login.php:46
+msgid "Has olvidado tu password?"
+msgstr "Have you forgotten your password?"
+
+#: app/views/user/login.php:51
+msgid "Entrar"
+msgstr "Enter"
+
+#: app/views/user/forgot-password.php:9
+msgid "Recover your password"
+msgstr "Change your password"
+
+#: app/views/user/forgot-password.php:32
+msgid "Reset password"
+msgstr "Repetir nueva contraseña"
+
+#: app/views/user/forgot-password.php:37
+msgid "Not a member?"
+msgstr "Not a member?"
+
+#: app/views/user/forgot-password.php:38
+msgid "Signup"
+msgstr "Signup"
+
+#: app/views/user/profile.php:11
+msgid "Datos"
+msgstr "Data"
+
+#: app/views/user/profile.php:17
+msgid "Acceso y Permisos"
+msgstr "Quick access"
+
+#: app/views/user/profile.php:20
+msgid "Facturas y Membresías"
+msgstr "Invoices and Memberships"
+
+#: app/views/user/profile.php:53
+msgid "Perfil de Usuario"
+msgstr "User Profile"
+
+#: app/views/user/profile.php:62
+msgid ""
+"Importante para todas las notificaciones y alertas. Este email no se puede "
+"modificar, contacta con ventas si necesitas recibir las notificaciones en otras "
+"cuentas de email"
+msgstr ""
+"Important for all notifications and alerts. This email cannot be modified, "
+"contact sales if you need to receive notifications on other email accounts."
+
+#: app/views/user/profile.php:75
+msgid "Idioma"
+msgstr "Language"
+
+#: app/views/user/profile.php:85
+msgid "Organización"
+msgstr "Organization"
+
+#: app/views/user/profile.php:89
+msgid "Dirección"
+msgstr "Address"
+
+#: app/views/user/profile.php:93
+msgid "ID / VAT / CIF / NIF (Taxes)"
+msgstr "Business ID / VAT / CIF / NIF (Taxes)"
+
+#: app/views/user/profile.php:100
+msgid "Update Profile"
+msgstr "Update Profile"
+
+#: app/views/user/profile.php:124
+msgid "Change your password"
+msgstr "Change your password"
+
+#: app/views/user/profile.php:130
+msgid "Current Password"
+msgstr "Current Password"
+
+#: app/views/user/profile.php:134
+msgid "New Password"
+msgstr "New Password"
+
+#: app/views/user/profile.php:138
+msgid "Repeat new Password"
+msgstr "Repetir nueva contraseña"
+
+#: app/views/user/profile.php:142
+msgid "Update Password"
+msgstr "Update Password"
+
+#: app/views/user/profile.php:197
+msgid "Resumen de Actividad"
+msgstr "Activity Summary"
+
+#: app/views/user/profile.php:248
+msgid "Invoices"
+msgstr "Invoices"
+
+#: app/views/user/profile.php:319
+msgid "No subscriptions found"
+msgstr "No subscriptions found"
+
+#: app/views/user/profile.php:350
+msgid "No invoices found"
+msgstr "No invoices found"
+
+#~ msgid "Demostración personalizada"
+#~ msgstr "Free Trial"

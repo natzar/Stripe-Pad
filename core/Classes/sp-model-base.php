@@ -8,17 +8,18 @@ abstract class ModelBase
 	public $db = null;
 	public $model = null;
 	public $table = null;
-
+	var $log;
 
 	public function __construct($table = null)
 	{
 		$this->table = $table;
-		try{
+		try {
 			$this->db = SPDO::singleton();
-		} catch(\StripePad\Exceptions\DatabaseException $e){
-
-		//	$this->log = log::singleton();
+		} catch (StripePad\Exceptions\DatabaseException $e) {
+			//	die("Database connection error: " . $e->getMessage());
 		}
+		//$this->db = SPDO::singleton();
+		//	$this->log = log::singleton();
 	}
 
 	/**
@@ -90,6 +91,7 @@ abstract class ModelBase
 			if ($type == 'string' or $type == 'varchar') $type = 'literal';
 			if ($type == 'blob' or $type == "mediumtext") $type = 'text';
 			if (strstr($name, "Id")) $type = 'combo';
+			if (strstr($name, "_pass")) $type = 'encrypted';
 			if ($type == 'date') $type = 'fecha';
 			if ($type == 'tinyint') $type = 'truefalse';
 			if ($type == 'datetime') $type = 'fecha';
@@ -211,7 +213,7 @@ abstract class ModelBase
 		$fields = $data['fields'];
 		$fields_types = $data['fields_types'];
 		$fields_labels = $data['fields_labels'];
-		$order = ($this->params['sorder'] != -1) ? $this->params['sorder'] : $default_order;
+		$order = ($params['sorder'] != -1) ? $params['sorder'] : $data['default_order'];
 		$table = $table_aux = $params['table'];
 
 		//	if (isset($group_by) and !empty($group_by)) $table_aux.= ' GROUP BY '.$group_by.' ';  
@@ -262,6 +264,45 @@ abstract class ModelBase
 	}
 
 
+
+	public function get_by_agentsId($agentsId)
+	{
+		$table = $this->table;
+
+
+
+		$data = $this->getOrmDescription($table);
+		$fields_to_show = $data['fields_to_show'];
+		$fields = $data['fields'];
+		$fields_labels = $data['fields_labels'];
+		$fields_types = $data['fields_types'];
+
+		$order = $data['default_order'];
+		$table_aux = $table;
+		$table_no_prefix = $table;
+		$consulta = null;
+
+		$consulta = $this->db->prepare('SELECT * FROM ' . $table . ' where agentsId = ' . $agentsId . ' order by ' . $table . '.' . $order);
+
+		$consulta->execute();
+		$array_return = array();
+
+		while ($r = $consulta->fetch()):
+			$row_array = array();
+			$row_array[$table_no_prefix . 'Id'] = $r[$table_no_prefix . 'Id'];
+			for ($i = 0; $i < count($fields); $i++):
+				if (!isset($fields_to_show) or in_array($fields[$i], $fields_to_show) or empty($fields_to_show)):
+					if (!class_exists($fields_types[$i]))
+						die("La clase " . $fields_types[$i] . " no existe");
+					$field_aux = new $fields_types[$i]($fields[$i], $fields_labels[$i], $fields_types[$i], $r[$fields[$i]], $table, $row_array[$table_no_prefix . 'Id']);
+					$row_array[$fields[$i]] = $field_aux->view();
+				endif;
+			endfor;
+			$array_return[] = $row_array;
+
+		endwhile;
+		return $array_return;
+	}
 
 	public function getAll()
 	{
@@ -716,6 +757,11 @@ abstract class ModelBase
 			if (!class_exists($fields_types[$i])) {
 				exit('La clase ' . $fields_types[$i] . ' no existe');
 			}
+
+			//if ($fields[$i] == "agentsId") continue;
+			if ($fields[$i] == "total") continue;
+			if ($fields[$i] == "actions") continue;
+
 
 			$VALUE = isset($raw[$fields[$i]]) ? $raw[$fields[$i]] : '';
 			//$VALUE .= $fields_types[$i];

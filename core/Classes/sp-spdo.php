@@ -1,5 +1,7 @@
 <?php
 
+use StripePad\Exceptions\DatabaseException;
+
 /**
  * SPDO
  */
@@ -15,9 +17,9 @@ class SPDO extends PDO
 			$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 			$this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-		} catch (PDOException $e) {
-
-			throw new \StripePad\Exceptions\DatabaseException($e->getMessage());
+		} catch (\PDOException $e) {
+			// Propaga con mensaje propio y conserva la excepción original
+			throw new DatabaseException(DatabaseException::CONNECTION_FAILED, 0, $e);
 		}
 	}
 
