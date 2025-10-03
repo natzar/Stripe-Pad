@@ -4,6 +4,29 @@
             <h2 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl"><?= _('Preguntas frecuentes'); ?></h2>
             <dl class="mt-16 divide-y divide-gray-900/10">
 
+
+                <!-- 0 -->
+                <div class="py-6 first:pt-0 last:pb-0">
+                    <dt>
+                        <button type="button" class="flex w-full items-start justify-between text-left text-gray-900" aria-controls="faq-0" aria-expanded="false">
+                            <span class="text-base/7 font-semibold"><?= _('¿Cómo funciona? Modo Manual o Modo Piloto Automático'); ?></span>
+                            <span class="ml-6 flex h-7 items-center">
+                                <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                                </svg>
+                                <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+                                </svg>
+                            </span>
+                        </button>
+                    </dt>
+                    <dd class="mt-2 pr-12" id="faq-0">
+                        <p class="text-base/7 text-gray-600"><?= _('Funciona con Gmail, Outlook o qualquier tipo de buzón de correo. Se recomienda usar una dirección de email dedicada para sus agentes AI. Defina ajustes y escenarios; Explique las situaciones comunes: reservas, incidencias, consultas frecuentes... Dispone del modo MANUAL (se requiere de su permiso para enviar cualquier respuesta antes de ser enviada) y AUTO-PILOT (atención al cliente automática y supervisable). Si un correo no se puede identificar completamente, se marca para posterior revisión. Cuando todos los datos requeridos de un escenario son conseguidos, se le notificará, no antes. No perderá más tiempo pidiendo datos faltantes.'); ?></p>
+                    </dd>
+                </div>
+
+
+
                 <!-- 1 -->
                 <div class="py-6 first:pt-0 last:pb-0">
                     <dt>
