@@ -8,8 +8,8 @@
 
     </a>
     <div class="flex items-center justify-end">
-      <a href="<?= APP_DOMAIN ?>/?lang='es'" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/es.png"></a>
-      <a href="<?= APP_DOMAIN ?>/?lang='en'" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/us.png"></a>
+      <a href="<?= APP_DOMAIN ?>?lang=es" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/es.png"></a>
+      <a href="<?= APP_DOMAIN ?>?lang=en" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/us.png"></a>
       <!-- <a href=" <?= APP_DOMAIN ?>signup"">
         <button class=" hidden rounded-full bg-blue-900 px-4 py-1 text-xs text-black font-semibold transition duration-200 ease-out hover:bg-blue-400 lg:block">
           <?= _('Login') ?>
@@ -26,7 +26,7 @@
         <a href="<?= APP_DOMAIN ?>" class=" -m-1.5 p-1.5 text-gray-900 hover:text-blue-900 font-bold">
           <span class="sr-only"><?= APP_NAME ?></span>
           <img src="<?= APP_LOGO ?>" width="40" class="inline">
-          <span class="">Stripe Pad <span class="hidden xl:inline-block">| <?= _('Agente de Soporte') ?></span></span>
+          <span class=""><?= APP_NAME ?></span>
         </a>
       </div>
       <div class="flex ml-auto  lg:hidden">
@@ -111,12 +111,6 @@
           </svg>
           <?= _('Precios') ?></a>
 
-        <a href="<?= APP_DOMAIN ?>contact" class="text-md font-semibold leading-6 text-gray-600 px-3 py-1 hover:bg-gray-50 hover:text-blue-900 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z" />
-          </svg>
-
-
-          <?= _('Contacto') ?></a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-2">
 
@@ -125,13 +119,13 @@
         <div class="flex items-center ">
 
 
-          <a class="bg-yellow-400 nowrap no-break no-wrap text-sm font-semibold hover:bg-yellow-700 text-yellow-700 shadow-lg hover:text-white rounded-full py-2 px-4 shadow-sm" href="<?= APP_DOMAIN ?>demo" rel="nofollow"><?= _('Prueba Personalizada') ?></a>
+          <!-- space for another button  -->
 
         </div>
-        <a class="bg-blue-900 text-sm font-semibold hover:bg-blue-700 text-white rounded-full py-2 px-4 shadow-sm" href="<?= APP_DOMAIN ?>signup"><?= _('Empezar ahora') ?></a>
+        <a class="bg-blue-900 text-sm font-semibold hover:bg-blue-700 text-white rounded-full py-2 px-4 shadow-sm" href="<?= APP_DOMAIN ?>signup"><?= _('Signup') ?></a>
         <!-- <a href="<?= APP_DOMAIN ?>signup" class="text-sm font-semibold leading-6 text-gray-400">Empezar ahora </a> -->
 
-        <a href="<?= APP_DOMAIN ?>login" class="text-sm font-semibold leading-6 text-gray-600 hover:text-black"><?= _('Área de Clientes') ?> <span aria-hidden="true">&rarr;</span></a>
+        <a href="<?= APP_DOMAIN ?>login" class="text-sm font-semibold leading-6 text-gray-600 hover:text-black"><?= _('Login') ?> <span aria-hidden="true">&rarr;</span></a>
       </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
