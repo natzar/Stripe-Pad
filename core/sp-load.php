@@ -33,7 +33,9 @@ mb_internal_encoding(INTERNAL_ENCODING);
 date_default_timezone_set(TIMEZONE);
 putenv("LC_ALL=" . LOCALE_LANG);
 setlocale(LC_ALL, LOCALE_LANG);
-
+bindtextdomain('messages', ROOT_PATH . 'locale');
+bind_textdomain_codeset('messages', 'UTF-8');
+textdomain('messages');
 # Session 
 if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()) {
     ini_set('session.cookie_lifetime', 3600 * 24);
