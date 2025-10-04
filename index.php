@@ -34,23 +34,5 @@
 include_once  dirname(__FILE__) . '/core/sp-load.php'; // 
 include_once CORE_PATH . 'sp-core.php';
 
-# Load Custom App
-include_once APP_PATH . "App.php";
-
-# Sanitize 'p' parameter to prevent injection
-# $actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
-# Deprecated PHP 8
-
-$actionName = isset($_GET['p']) ? sanitize($_GET['p']) :  'index';
-
-
-# Include app/App.php that extends core/sp-core.php
-$App = new App();
-
-
-# Url = Method = Does the url exist?
-if (!method_exists($App, $actionName)) {
-    View::error404();
-} else {
-    $App->$actionName();
-}
+$STRIPE_PAD = new StripePadController();
+$STRIPE_PAD->init();
