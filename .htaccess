@@ -5,7 +5,7 @@
 #
 
 
-DirectoryIndex index.php index.html 
+DirectoryIndex index.html index.php 
 Options -Indexes
 
 RewriteEngine On
@@ -14,8 +14,8 @@ RewriteEngine On
 RewriteBase /
 
 # Rewrite non www to www (Uncomment)
-# RewriteCond %{HTTP_HOST} !^www\. [NC]
-# RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
 # Allow any files or directories that exist to be displayed directly
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -62,3 +62,12 @@ ExpiresByType text/css A2592000
 ExpiresByType text/javascript A2592000
 ExpiresByType application/x-javascript A2592000
 
+# storage/.htaccess
+<FilesMatch "\.sqlite$">
+    Require all denied
+</FilesMatch>
+
+# (opcional) bloquea todo el dir storage
+<Directory "/app/storage">
+    Require all denied
+</Directory>
