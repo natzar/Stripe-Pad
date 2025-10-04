@@ -21,14 +21,9 @@ if (!file_exists(dirname(__FILE__) . '/../sp-config.php')) {
 }
 include_once dirname(__FILE__) . '/../sp-config.php';
 
-bindtextdomain('messages', ROOT_PATH . 'locale');
-bind_textdomain_codeset('messages', 'UTF-8');
-textdomain('messages');
-
 # Defaults 
 ini_set('log_errors', 1);
 ini_set('error_log', ROOT_PATH . "logs/sp-errors.log");
-
 error_reporting(DEBUG_MODE ? E_ALL : 1);
 ini_set('display_errors', DEBUG_MODE ? 1 : 1);
 ini_set('display_startup_errors', DEBUG_MODE ? 1 : 1);
