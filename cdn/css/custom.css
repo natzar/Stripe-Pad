@@ -1,17 +1,19 @@
-@font-face {
-  font-family: 'AirClassicMedium';
-  /* Give your font a name */
-  src: url('https://cdn.gophpninja.com/fonts/airclassic-medium.woff2') format('woff2');
-  /* Specify the path to your WOFF2 file */
-  font-weight: normal;
-  /* Adjust font-weight if needed */
-  font-display: swap;
-  font-style: normal;
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  /* Adjust font-style if needed */
 }
+
 
 #mobile-menu {
   overflow: hidden;
@@ -26,48 +28,6 @@
   visibility: visible;
 }
 
-
-
-
-@font-face {
-  font-family: 'AirClassicBlack';
-  /* Give your font a name */
-  src: url('https://cdn.gophpninja.com/fonts/airclassic.woff2') format('woff2');
-  /* Specify the path to your WOFF2 file */
-  font-weight: bold;
-  /* Adjust font-weight if needed */
-  font-style: normal;
-  /* Adjust font-style if needed */
-  font-display: swap;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-
-
-html,
-body {
-  /*/font-family: 'AirClassicMedium', sans-serif !important;*/
-  /* Use your custom font for the body or any specific element */
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-h1,
-h2,
-h3,
-h4,
-strong,
-.font-bold,
-.font-black {
-  font-family: 'AirClassicBlack' !important;
-  font-weight: 800
-}
 
 .loader {
   border-top-color: #ff0000;
