@@ -52,11 +52,7 @@ class StripePadController
         if (!isset($_SESSION['errors'])) $_SESSION['errors'] = array();
         if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = array();
 
-        # Maintenance Mode
-        if ($this->is_maintenance_enabled() && $_SERVER['REQUEST_URI'] != "/maintenance") {
-            header("Location: /maintenance");
-            exit;
-        }
+        
         # Block aggresive bots
         if (BOT_BLOCKER) {
             // $error_msg = "Possible BOT detected - " . implode("<br>", $t);
@@ -70,6 +66,13 @@ class StripePadController
         $this->view->isAuthenticated = $this->isAuthenticated();
         $this->isAuthenticated = $this->isAuthenticated();
         $this->isSuperadmin = isset($_SESSION['user']) and isset($_SESSION['user']['group']) and $_SESSION['user']['group'] == "superadmin";
+
+        # Maintenance Mode
+        if ($this->is_maintenance_enabled() && $_SERVER['REQUEST_URI'] != "/maintenance") {
+            header("Location: /maintenance");
+            exit;
+        }
+        
     }
 
     # Default app home page

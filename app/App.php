@@ -42,6 +42,9 @@
  * Old skool, php sevver side rendering, as less javascript as possible.
  */
 
+
+/* Define here landing (public) and app (private, registered users only) routes as class methods */
+
 class App extends StripePadController
 {
 	var $isAuthenticated = false;
