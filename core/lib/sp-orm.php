@@ -47,9 +47,9 @@ class Orm extends ModelBase
 		return $data[$attribute];
 	}
 
-	public function getItemsHead($table)
+	public function getItemsHead()
 	{
-		$data = $this->getOrmDescription($table);
+		$data = $this->getOrmDescription($this->table);
 		$fr = $data['fields_labels'];
 		$fields_to_show = $data['fields_to_show'];
 		$fields = $data['fields'];
@@ -162,7 +162,7 @@ class Orm extends ModelBase
 
 
 
-	public function getAll($table, $custom_order = null)
+	public function getAll($table = null, $custom_order = null)
 	{
 
 		$data = $this->getOrmDescription($table);
@@ -194,7 +194,7 @@ class Orm extends ModelBase
 		return $array_return;
 	}
 
-	public function getById($table, $id)
+	public function getById($id, $table = null)
 	{
 		$consulta = $this->db->prepare('SELECT * FROM ' . $table . ' where ' . $table . 'Id ="' . $id . 'limit 1');
 		$consulta->execute();
@@ -231,9 +231,9 @@ class Orm extends ModelBase
 		return $consulta->fetch();
 	}
 
-	public function add($table, $params)
+	public function add($params)
 	{
-
+		$table = $this->table;
 		$data = $this->getOrmDescription($table);
 		$fields_to_show = $data['fields_to_show'];
 		$fields = $data['fields'];
@@ -313,9 +313,10 @@ class Orm extends ModelBase
 		$consulta->execute();
 	}
 
-	public function edit($table, $rid, $params)
+	public function edit($params)
 	{
-
+		$table = $this->table;
+		$rid = $params[$table . 'Id'];
 		$data = $this->getOrmDescription($table);
 		$fields_to_show = $data['fields_to_show'];
 		$fields = $data['fields'];
