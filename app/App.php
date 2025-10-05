@@ -54,32 +54,14 @@ class App extends StripePadController
 		parent::__construct(); // !important
 
 		# Some default values for views
-		$defaults = array();
+		$this->isAuthenticated = $this->isAuthenticated();
 
-		$this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();
+		$this->view->set_views_path(APP_PATH . "views/");
+		$this->view->set_isAuthenticated($this->isAuthenticated);
 
-		if (isset($this->params['p']) and strstr($this->params['p'], "app_") and !$this->isAuthenticated) {
-			header("location: " . APP_DOMAIN . "login");
+		if (!$this->isAuthenticated) {
+			header("location: " . LANDING_URL . "login");
 			return;
-		}
-
-		$this->view->set_defaults($defaults);
-	}
-
-	/**
-	 * index
-	 * default main method
-	 * @return void
-	 */
-	public function index()
-	{
-		# check if user is authenticated
-		if ($this->isAuthenticated()) {
-			# Load Dashboard (main-first screen of your app for logged users)
-			$this->app();
-		} else {
-			# Redirect to login if not authenticated, or to home or landing
-			$this->home();
 		}
 	}
 
@@ -89,7 +71,7 @@ class App extends StripePadController
 	 * If a registered user logs in, this method will be called. MODIFY THIS FUNCTION.
 	 * @return void
 	 */
-	public function app() // DASHBOARD
+	public function index() // DASHBOARD
 	{
 
 		# Sample render of view with $data
@@ -105,22 +87,7 @@ class App extends StripePadController
 		$this->view->show('custom/index.php', $data);
 	}
 
-	/**
-	 * home
-	 * Main Public Website
-	 * @return void
-	 */
-	public function home()
-	{
-		$this->view->show("demo/homepage.php", array());
-	}
-	public function contact()
-	{
-		$data = array(
-			"SEO_TITLE" => ""
-		);
-		$this->view->show("custom/contact_sales.php", $data);
-	}
+
 
 	/**
 	 * Default User's Profile
@@ -142,39 +109,6 @@ class App extends StripePadController
 		);
 
 		$this->view->show("user/profile.php", $data, true);
-	}
-
-	/**
-	 * tos
-	 * Default terms of service url
-	 * @return void
-	 */
-	public function tos()
-	{
-		$this->view->show('common/tos.php', array());
-	}
-
-	/**
-	 * privacy
-	 * Default privacy page
-	 * @return void
-	 */
-	public function privacy()
-	{
-		$this->view->show('common/privacy.php', array());
-	}
-	public function pricing()
-	{
-		$this->view->show('landing/pricing.php', array());
-	}
-	public function faq()
-	{
-		$this->view->show('landing/faq.php', array());
-	}
-	public function use_cases()
-	{
-		$this->blog();
-		//		$this->view->show('common/privacy.php', array());
 	}
 
 	public function app_settings()

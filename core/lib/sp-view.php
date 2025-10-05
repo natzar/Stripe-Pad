@@ -71,7 +71,7 @@ class View
 		$SEO_DESCRIPTION = SEO_DESCRIPTION; # Default meta tag description
 		$SEO_KEYWORDS = ""; //SEO_KEYWORDS; # Default meta tag keywords
 		/* Template Data */
-		foreach ($this->defaults as $key => $value) $$key = $value;
+
 		if (is_array($vars)) foreach ($vars as $key => $value) $$key = $value;
 
 		/* TEMPLATE
@@ -121,9 +121,10 @@ class View
 		$SEO_DESCRIPTION = "The page you are looking for does not exist.";
 		$SEO_KEYWORDS = "404, not found, error";
 		$HOOK_JS = '';
-		include $this->path . "layout/public/header.php";
-		include $this->path . "layout/public/menu-public.php";
-		include $this->path . 'errors/404.php';
-		include $this->path . "layout/public/footer.php";
+		echo '404<!-- 404 Page Not Found -->';
+		// include $this->path . "layout/public/header.php";
+		// include $this->path . "layout/public/menu-public.php";
+		// include $this->path . 'errors/404.php';
+		// include $this->path . "layout/public/footer.php";
 	}
 }

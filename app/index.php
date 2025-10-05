@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Package Name: Stripe Pad
- * File Description: Index.php
+ * Package Name: Stripe Pad - Super Admin
+ * File Description: Index.php (Admin)
  * 
  * @author Beto Ayesa <beto.phpninja@gmail.com>
  * @version 1.0.0
@@ -31,9 +31,13 @@
  */
 
 # Load Environment
-include_once  dirname(__FILE__) . '/core/sp-load.php'; // 
+include_once  dirname(__FILE__) . '/../core/sp-load.php'; // 
 include_once CORE_PATH . 'sp-core.php';
-include_once ROOT_PATH . 'landing/Landing.php';
 
-$App = new StripePad_Landing();
+# Load Custom App
+include_once dirname(__FILE__) . "/App.php";
+
+
+# Include admin/Admin.php that extends core/sp-core.php
+$App = new App();
 $App->init();

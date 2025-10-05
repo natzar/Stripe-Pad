@@ -52,7 +52,7 @@ class StripePadController
         if (!isset($_SESSION['errors'])) $_SESSION['errors'] = array();
         if (!isset($_SESSION['alerts'])) $_SESSION['alerts'] = array();
 
-        
+
         # Block aggresive bots
         if (BOT_BLOCKER) {
             // $error_msg = "Possible BOT detected - " . implode("<br>", $t);
@@ -63,7 +63,7 @@ class StripePadController
         $this->log = log::singleton();
         $this->params = get_parameters();
         $this->view = new View();
-        $this->view->isAuthenticated = $this->isAuthenticated();
+        $this->view->set_isAuthenticated($this->isAuthenticated());
         $this->isAuthenticated = $this->isAuthenticated();
         $this->isSuperadmin = isset($_SESSION['user']) and isset($_SESSION['user']['group']) and $_SESSION['user']['group'] == "superadmin";
 
@@ -72,9 +72,24 @@ class StripePadController
             header("Location: /maintenance");
             exit;
         }
-        
     }
 
+    public function init()
+    {
+
+        # Sanitize 'p' parameter to prevent injection
+        # $actionName = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_STRING);
+        # Deprecated PHP 8
+
+        $actionName = isset($_GET['p']) ? sanitize($_GET['p']) :  'index';
+
+        # Url = Method = Does the url exist?
+        if (!method_exists($this, $actionName)) {
+            View::error404();
+        } else {
+            $this->$actionName();
+        }
+    }
     # Default app home page
     public function index()
     {
@@ -94,7 +109,7 @@ class StripePadController
 
     public function home()
     {
-        echo 'default home, overwrite public function home() in App.php';
+        echo 'Welcome to your SaaS. This is a default message, overwrite public function home() in App.php';
     }
 
     public function comingsoon()
@@ -197,7 +212,7 @@ class StripePadController
 
             $data['google_auth_url'] = $client->createAuthUrl();
         }
-        $this->view->show("user/login.php", $data, true);
+        $this->view->show("login.php", $data, true);
     }
 
     /**
@@ -208,7 +223,7 @@ class StripePadController
     public function forgotPassword()
     {
         $data = array();
-        $this->view->show("user/forgot-password.php", $data, true);
+        $this->view->show("forgot-password.php", $data, true);
     }
 
     /**
