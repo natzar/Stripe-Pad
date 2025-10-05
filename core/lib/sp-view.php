@@ -30,23 +30,20 @@ class View
 	 *
 	 * @var mixed
 	 */
-	var $log;
-
-	var $currentUrl;
-
-	var $defaults = [];
+	var $current_url;
 
 	function __construct()
 	{
-		$this->log = log::singleton();
+		$this->current_url = getCurrentUrl();
 	}
-	function set_defaults($defs)
+
+	function set_views_path($path)
 	{
-		if (!empty($this->defaults)) {
-			$this->defaults = array_merge($this->defaults, $defs);
-		} else {
-			$this->defaults = $defs;
-		}
+		$this->path = $path;
+	}
+	function set_isAuthenticated($val)
+	{
+		$this->isAuthenticated = $val;
 	}
 
 	public function show($name = 'custom/home.php', $vars = array(), $show_menu = true)
@@ -79,9 +76,9 @@ class View
 
 		/* TEMPLATE
 	    ***********************/
-		$viewsFolder = APP_PATH . "views/";
 
-		$template = $viewsFolder . $name;
+
+		$template = $this->path . $name;
 
 		if (file_exists($template) == false) {
 			throw new ViewException(ViewException::TPL_NOT_FOUND . " " . $template);
@@ -91,19 +88,21 @@ class View
 			echo '<!-- Template StripePad: ' . $template . ' -->';
 		}
 
-		if ($this->isAuthenticated) {
-			include $viewsFolder . "layout/private/header.php";
-			include $viewsFolder . "layout/private/menu-private.php";
+		include $this->path . "layout/header.php";
+		include $this->path . "layout/menu-public.php";
+		include($template);
+		include $this->path . "layout/footer.php";
+
+		// if ($this->isAuthenticated) {
+		// 	include $this->path . "layout/private/header.php";
+		// 	include $this->path . "layout/private/menu-private.php";
 
 
-			include($template);
-			include $viewsFolder . "layout/private/footer.php";
-		} else {
-			include $viewsFolder . "layout/public/header.php";
-			include $viewsFolder . "layout/public/menu-public.php";
-			include($template);
-			include $viewsFolder . "layout/public/footer.php";
-		}
+		// 	include($template);
+		// 	include $this->path . "layout/private/footer.php";
+		// } else {
+
+		// }
 
 		//echo '<!-- Powered by StripePad {STRIPE_PAD_VERSION}-->';
 
@@ -114,7 +113,7 @@ class View
 
 	static function error404()
 	{
-		$viewsFolder = APP_PATH . "views/";
+		//$this->path = APP_PATH . "views/";
 		$log = log::singleton();
 		$log->push(getCurrentUrl(), '404');
 		header('HTTP/1.0 404 Not Found');
@@ -122,9 +121,9 @@ class View
 		$SEO_DESCRIPTION = "The page you are looking for does not exist.";
 		$SEO_KEYWORDS = "404, not found, error";
 		$HOOK_JS = '';
-		include $viewsFolder . "layout/public/header.php";
-		include $viewsFolder . "layout/public/menu-public.php";
-		include $viewsFolder . 'errors/404.php';
-		include $viewsFolder . "layout/public/footer.php";
+		include $this->path . "layout/public/header.php";
+		include $this->path . "layout/public/menu-public.php";
+		include $this->path . 'errors/404.php';
+		include $this->path . "layout/public/footer.php";
 	}
 }

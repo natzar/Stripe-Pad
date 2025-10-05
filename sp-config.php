@@ -137,7 +137,8 @@ define('CORE_PATH', dirname(__FILE__) . "/core/");
 define('APP_PATH', dirname(__FILE__) . "/app/");
 define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
-
+define('LANDING_PATH', dirname(__FILE__) . "/landing/");
+define('ADMIN_PATH', dirname(__FILE__) . "/admin/");
 
 
 
