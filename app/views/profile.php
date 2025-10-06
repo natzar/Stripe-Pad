@@ -1,4 +1,4 @@
-<? include "app/views/layout/page_header.php"; ?>
+<? include "layout/page_header.php"; ?>
 
 
 

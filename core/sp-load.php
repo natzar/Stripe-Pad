@@ -61,6 +61,11 @@ foreach (glob(CORE_PATH . "lib/*.php") as $filename) {
 }
 
 
+# include all core dynamically # Fix!
+foreach (glob(ROOT_PATH . "modules/*.php") as $filename) {
+    include_once $filename;
+}
+
 
 
 # Register fatal errors

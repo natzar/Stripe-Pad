@@ -1,0 +1,63 @@
+
+DirectoryIndex index.html index.php 
+Options -Indexes
+
+RewriteEngine On
+
+# Installation directory
+RewriteBase /stripe-pad/app/
+
+# Rewrite non www to www (Uncomment)
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# HTTP Strict Transport Security (HSTS)
+Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+# Content Security Policy (CSP)
+# Note: You'll need to customize the policy directives based on your site's specific needs
+#Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';"
+
+# Secure Referrer Policy
+Header set Referrer-Policy "no-referrer-when-downgrade"
+
+# X-Frame-Options
+Header set X-Frame-Options "SAMEORIGIN"
+
+# X-Content-Type-Options
+Header set X-Content-Type-Options "nosniff"
+
+
+# Redirections & Rewrites
+
+RewriteRule ^([a-zA-Z_0-9-]*)/?([a-zA-Z0-9-\s\.]*)?/?([a-zA-Z0-9_-]*)?/?([a-zA-Z0-9-]*)?/?([a-zA-Z0-9-]*)?/?([a-zA-Z0-9-]*)?/?$ index.php?p=$1&m=$2&a=$3&i=$4&z=$5&w=$6 [NC,L,QSA]
+
+ErrorDocument 404 /404
+
+# Activate compression
+AddOutputFilterByType DEFLATE text/html text/css application/x-javascript text/plain text/javascript application/javascript application/json
+
+# Deactivate compression for buggy browsers
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+# Expiration Headers
+ExpiresActive On
+ExpiresByType image/gif A2592000
+ExpiresByType image/png A2592000
+ExpiresByType image/jpg A2592000
+ExpiresByType image/jpeg A2592000
+ExpiresByType text/css A2592000
+ExpiresByType text/javascript A2592000
+ExpiresByType application/x-javascript A2592000
+
+# storage/.htaccess
+<FilesMatch "\.sqlite$">
+    Require all denied
+</FilesMatch>
+

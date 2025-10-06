@@ -21,7 +21,7 @@ class SPDO_sqlite extends PDO
             $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             $this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-            // Activar claves foráneas en SQLite (por defecto están desactivadas)
+            // Activate foreign keys support
             $this->exec('PRAGMA foreign_keys = ON;');
             // Create NOW() returning UTC like MySQL's default timezone can vary
             $this->sqliteCreateFunction('NOW', function () {

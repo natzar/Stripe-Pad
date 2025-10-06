@@ -84,7 +84,7 @@ class App extends StripePadController
 		);
 
 		# show app/views/index.php passing $data
-		$this->view->show('custom/index.php', $data);
+		$this->view->show('index.php', $data);
 	}
 
 
@@ -108,7 +108,7 @@ class App extends StripePadController
 			"breadcrumb" => array(array("label" => "Preferencias", "url" => "profile")),
 		);
 
-		$this->view->show("user/profile.php", $data, true);
+		$this->view->show("profile.php", $data, true);
 	}
 
 	public function app_settings()

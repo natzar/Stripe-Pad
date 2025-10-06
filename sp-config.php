@@ -49,7 +49,8 @@ define("TIMEZONE", "Europe/Madrid"); // Check https://www.php.net/manual/en/time
 if (isLocalhost()) { # Localhost
 
 	define('DEBUG_MODE', true);
-	define('APP_DOMAIN', 'http://localhost/stripe-pad/');
+	define('APP_DOMAIN', 'http://localhost/stripe-pad/app/');
+
 	define('APP_BASE_URL', 'http://localhost/stripe-pad/app');
 
 	define('API_BASE_URL', 'http://localhost/stripe-pad/api/');
@@ -62,7 +63,7 @@ if (isLocalhost()) { # Localhost
 	define('APP_DB', '');
 	define('APP_DB_USER', '');
 	define('APP_DB_PASSWORD', '');
-	define('APP_CDN', APP_DOMAIN . 'cdn/');
+	define('APP_CDN', LANDING_URL . 'cdn/');
 } else {    # Server / Production
 
 	define('DEBUG_MODE', false);
