@@ -110,6 +110,24 @@ class StripePadController
         //     # Redirect to login if not authenticated
         //     $this->home();
         // }
+        // if ($this->isAuthenticated) {
+
+        //     # Do here any logic your app needs
+        //     # Include any library you need
+        //     # $model = new model(); /models files are already available
+
+        //     #example 
+        //     $user = new usersModel();
+
+        //     $this->view->show('dashboard.php', array(
+
+        //         "user" => $_SESSION['user'],
+        //         "example" => "Lorem ipsum sit dolor",
+        //         "date" => Date("Y-m-d")
+        //     ));
+        // } else {
+        //     $this->login();
+        // }
         echo "Stripe Pad Index - nothing here. Go to /login or /signup";
     }
 
@@ -136,39 +154,21 @@ class StripePadController
     }
 
     /**
-     * App: This method will be overwritten by app/App.php
+     * Method signup
      *
      * @return void
      */
-    public function app()
-    {
-        if ($this->isAuthenticated) {
-
-            # Do here any logic your app needs
-            # Include any library you need
-            # $model = new model(); /models files are already available
-
-            #example 
-            $user = new usersModel();
-
-            $this->view->show('dashboard.php', array(
-
-                "user" => $_SESSION['user'],
-                "example" => "Lorem ipsum sit dolor",
-                "date" => Date("Y-m-d")
-            ));
-        } else {
-            $this->login();
-        }
-    }
-
-
     public function signup()
     {
 
         $this->view->show("signup.php", array(), true);
     }
 
+    /**
+     * Method upgrade
+     *
+     * @return void
+     */
     public function upgrade()
     {
         if (!$this->isAuthenticated) {
@@ -192,9 +192,7 @@ class StripePadController
     {
         $data = array();
 
-        if ($this->isAuthenticated) {
-            return $this->app();
-        }
+
         # Login function
         if (!empty(GOOGLE_CLIENT_ID)) {
             # Login with Google
@@ -263,7 +261,7 @@ class StripePadController
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 0;
         $_SESSION['login_attemp']++;
 
-        if ($_SESSION['login_attemp'] > 3) {
+        if ($_SESSION['login_attemp'] > 5) {
             $_SESSION['errors'][] = "Too many intents.";
 
             header("location: " . APP_DOMAIN . "/login");
@@ -277,7 +275,7 @@ class StripePadController
                 // $_SESSION['errors'][] = "Welcome back " . $user['email'];
                 //print_r($_SESSION);
                 //session_write_close();
-                header("location: " . APP_DOMAIN);
+                header("location: " . APP_BASE_URL);
             } else {
                 $_SESSION['errors'][] = "User or password not correct";
 

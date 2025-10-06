@@ -80,7 +80,7 @@ register_shutdown_function(function () {
 
         log::system("error", "system.error", $error_msg);
 
-        echo 'FATAL error occurred. Please check the logs.';
+        echo 'FATAL error occurred. Please check the logs.<br>' . $error_msg;
 
         // exit();  // Ensure script termination after a fatal error
     } else {

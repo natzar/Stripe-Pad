@@ -76,7 +76,7 @@ class View
 		}
 
 		include $this->path . "layout/header.php";
-		include $this->path . "layout/menu-public.php";
+		include $this->path . "layout/menu.php";
 		if (file_exists($template) == false) {
 			include $this->path . '404.php';
 		} else {

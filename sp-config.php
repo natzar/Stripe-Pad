@@ -50,10 +50,13 @@ if (isLocalhost()) { # Localhost
 
 	define('DEBUG_MODE', true);
 	define('APP_DOMAIN', 'http://localhost/stripe-pad/');
-	define('APP_BASE_URL', 'http://localhost/stripe-pad/');
+	define('APP_BASE_URL', 'http://localhost/stripe-pad/app');
+
 	define('API_BASE_URL', 'http://localhost/stripe-pad/api/');
 	define('HOMEPAGE_URL', 'http://localhost/stripe-pad/');
 	define('LANDING_URL', 'http://localhost/stripe-pad/');
+
+
 	define('APP_TABLE_PREFIX', '');
 	define('APP_DB_HOST', '');
 	define('APP_DB', '');
@@ -69,7 +72,7 @@ if (isLocalhost()) { # Localhost
 	define('HOMEPAGE_URL', 'https://domain.com');
 	define('APP_CDN', 'https://domain.com/cdn/');
 	define('LANDING_URL', 'http://localhost/stripe-pad/');
-	
+
 
 	define('APP_TABLE_PREFIX', '');
 	define('APP_DB_HOST', '');
