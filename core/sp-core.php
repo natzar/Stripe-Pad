@@ -718,7 +718,7 @@ class StripePadController
         $SEO_KEYWORDS = "404, not found, error";
         $HOOK_JS = '';
 
-        $this->view->show('errors/404.php', array());
+        $this->view->show('404.php', array());
     }
 
     # ¿?

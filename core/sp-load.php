@@ -98,5 +98,5 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
     $_SESSION['errors'][] =  $msg;
     log::system("error", "system.error", $msg);
     // include_once ROOT_PATH . "app/views/errors/error.php";
-    echo 'axlhoa';
+    if (DEBUG_MODE)     echo $msg; // 'axlhoa';
 });
