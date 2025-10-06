@@ -23,10 +23,16 @@ class SPDO_sqlite extends PDO
 
             // Activar claves foráneas en SQLite (por defecto están desactivadas)
             $this->exec('PRAGMA foreign_keys = ON;');
+            // Create NOW() returning UTC like MySQL's default timezone can vary
+            $this->sqliteCreateFunction('NOW', function () {
+                return (new DateTime('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s');
+            }, 0);
         } catch (\PDOException $e) {
             throw new DatabaseException(DatabaseException::CONNECTION_FAILED, 0, $e);
         }
     }
+
+
 
     public static function singleton()
     {

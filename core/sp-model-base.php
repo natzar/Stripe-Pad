@@ -14,7 +14,7 @@ abstract class ModelBase
 	{
 		$this->table = $table;
 		try {
-			$this->db = SPDO::singleton();
+			$this->db = SPDO_sqlite::singleton();
 		} catch (StripePad\Exceptions\DatabaseException $e) {
 			//	die("Database connection error: " . $e->getMessage());
 		}
