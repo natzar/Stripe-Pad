@@ -127,4 +127,9 @@ class StripePad_Landing extends StripePadController
         $this->blog();
         //		$this->view->show('common/privacy.php', array());
     }
+    public function impressum()
+    {
+        $data = array();
+        $this->view->show("common/impressum.php", $data);
+    }
 }

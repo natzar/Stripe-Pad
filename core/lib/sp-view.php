@@ -48,14 +48,7 @@ class View
 
 	public function show($name = 'custom/home.php', $vars = array(), $show_menu = true)
 	{
-		try {
-			$this->renderTemplate($name, $vars, $show_menu);
-		} catch (ViewException $e) {
-		}
-	}
 
-	public function renderTemplate($name, $vars, $show_menu)
-	{
 		/* INITIALIZE
 	    ***********************/
 		## Strings
@@ -70,19 +63,13 @@ class View
 		$SEO_TITLE = SEO_TITLE; # Default Meta Title
 		$SEO_DESCRIPTION = SEO_DESCRIPTION; # Default meta tag description
 		$SEO_KEYWORDS = ""; //SEO_KEYWORDS; # Default meta tag keywords
-		/* Template Data */
 
+		/* Template Data */
 		if (is_array($vars)) foreach ($vars as $key => $value) $$key = $value;
 
 		/* TEMPLATE
 	    ***********************/
-
-
 		$template = $this->path . $name;
-
-		if (file_exists($template) == false) {
-			throw new ViewException(ViewException::TPL_NOT_FOUND . " " . $template);
-		}
 
 		if (DEBUG_MODE) {
 			echo '<!-- Template StripePad: ' . $template . ' -->';
@@ -90,41 +77,17 @@ class View
 
 		include $this->path . "layout/header.php";
 		include $this->path . "layout/menu-public.php";
-		include($template);
+		if (file_exists($template) == false) {
+			include $this->path . 'errors/404.php';
+		} else {
+			include($template);
+		}
 		include $this->path . "layout/footer.php";
-
-		// if ($this->isAuthenticated) {
-		// 	include $this->path . "layout/private/header.php";
-		// 	include $this->path . "layout/private/menu-private.php";
-
-
-		// 	include($template);
-		// 	include $this->path . "layout/private/footer.php";
-		// } else {
-
-		// }
 
 		//echo '<!-- Powered by StripePad {STRIPE_PAD_VERSION}-->';
 
 		log::traffic('[Pageview] ' . getCurrentUrl() . '-' . get_masked_ip());
 		if (isset($_SESSION['errors'])) unset($_SESSION['errors']);
 		if (isset($_SESSION['alerts'])) unset($_SESSION['alerts']);
-	}
-
-	static function error404()
-	{
-		//$this->path = APP_PATH . "views/";
-		$log = log::singleton();
-		$log->push(getCurrentUrl(), '404');
-		header('HTTP/1.0 404 Not Found');
-		$SEO_TITLE = "404 Not Found";
-		$SEO_DESCRIPTION = "The page you are looking for does not exist.";
-		$SEO_KEYWORDS = "404, not found, error";
-		$HOOK_JS = '';
-		echo '404<!-- 404 Page Not Found -->';
-		// include $this->path . "layout/public/header.php";
-		// include $this->path . "layout/public/menu-public.php";
-		// include $this->path . 'errors/404.php';
-		// include $this->path . "layout/public/footer.php";
 	}
 }

@@ -85,7 +85,7 @@ class StripePadController
 
         # Url = Method = Does the url exist?
         if (!method_exists($this, $actionName)) {
-            View::error404();
+            $this->error404();
         } else {
             $this->$actionName();
         }
@@ -94,28 +94,20 @@ class StripePadController
     public function index()
     {
         # check if user is authenticated
-        if ($this->isAuthenticated) {
-            # Load Dashboard (main-first screen of your app for logged users)
-            if ($this->isSuperadmin) {
-                $this->superadmin();
-            } else {
-                $this->app();
-            }
-        } else {
-            # Redirect to login if not authenticated
-            $this->home();
-        }
+        // if ($this->isAuthenticated) {
+        //     # Load Dashboard (main-first screen of your app for logged users)
+        //     if ($this->isSuperadmin) {
+        //         $this->superadmin();
+        //     } else {
+        //         $this->app();
+        //     }
+        // } else {
+        //     # Redirect to login if not authenticated
+        //     $this->home();
+        // }
+        echo "Stripe Pad Index - nothing here. Go to /login or /signup";
     }
 
-    public function home()
-    {
-        echo 'Welcome to your SaaS. This is a default message, overwrite public function home() in App.php';
-    }
-
-    public function comingsoon()
-    {
-        $this->view->show("common/coming-soon.php", array(), true);
-    }
     /**
      * Blog
      * Manages general blog view + post (1) view
@@ -168,10 +160,8 @@ class StripePadController
 
     public function signup()
     {
-        if ($this->isAuthenticated) {
-            return $this->app();
-        }
-        $this->view->show("user/signup.php", array(), true);
+
+        $this->view->show("signup.php", array(), true);
     }
 
     public function upgrade()
@@ -697,6 +687,22 @@ class StripePadController
         $_SESSION['alerts'][] = _('Actualizado correctamente');
         header('location: ' . $return_url);
     }
+
+    /* In case a method does not exist */
+    public function error404()
+    {
+        //$this->path = APP_PATH . "views/";
+        $log = log::singleton();
+        $log::traffic(getCurrentUrl() . ' 404');
+        header('HTTP/1.0 404 Not Found');
+        $SEO_TITLE = "404 Not Found";
+        $SEO_DESCRIPTION = "The page you are looking for does not exist.";
+        $SEO_KEYWORDS = "404, not found, error";
+        $HOOK_JS = '';
+
+        $this->view->show('errors/404.php', array());
+    }
+
     # ¿?
     public function deadbeef()
     {
@@ -737,11 +743,5 @@ class StripePadController
     {
         file_put_contents('bots.log', $_SERVER['REMOTE_ADDR'] . " - Detected WebDriver\n", FILE_APPEND);
         $_SESSION['bot'] = true;
-    }
-
-    public function impressum()
-    {
-        $data = array();
-        $this->view->show("common/impressum.php", $data);
     }
 }
