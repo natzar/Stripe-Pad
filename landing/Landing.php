@@ -90,7 +90,7 @@ class StripePad_Landing extends StripePadController
         $data = array(
             "SEO_TITLE" => ""
         );
-        $this->view->show("custom/contact_sales.php", $data);
+        $this->view->show("contact.php", $data);
     }
 
 
@@ -102,7 +102,7 @@ class StripePad_Landing extends StripePadController
      */
     public function tos()
     {
-        $this->view->show('common/tos.php', array());
+        $this->view->show('tos.php', array());
     }
 
     /**
@@ -116,11 +116,11 @@ class StripePad_Landing extends StripePadController
     }
     public function pricing()
     {
-        $this->view->show('landing/pricing.php', array());
+        $this->view->show('pricing.php', array());
     }
     public function faq()
     {
-        $this->view->show('landing/faq.php', array());
+        $this->view->show('faq.php', array());
     }
     public function use_cases()
     {
@@ -130,6 +130,6 @@ class StripePad_Landing extends StripePadController
     public function impressum()
     {
         $data = array();
-        $this->view->show("common/impressum.php", $data);
+        $this->view->show("impressum.php", $data);
     }
 }
