@@ -37,7 +37,6 @@ include_once CORE_PATH . 'sp-core.php';
 # Load Custom App
 include_once dirname(__FILE__) . "/App.php";
 
-
 # Include admin/Admin.php that extends core/sp-core.php
 $App = new App();
 $App->init();

@@ -112,7 +112,7 @@ class StripePad_Landing extends StripePadController
      */
     public function privacy()
     {
-        $this->view->show('common/privacy.php', array("variable" => "value", "something" => "you want to send to the view"));
+        $this->view->show('privacy.php', array("variable" => "value", "something" => "you want to send to the view"));
     }
     public function pricing()
     {

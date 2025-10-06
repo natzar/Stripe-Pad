@@ -74,6 +74,11 @@ class StripePadController
         }
     }
 
+    /**
+     * Method init
+     *
+     * @return void
+     */
     public function init()
     {
 

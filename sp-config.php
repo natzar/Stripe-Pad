@@ -68,6 +68,8 @@ if (isLocalhost()) { # Localhost
 	define('API_BASE_URL', 'https://domain.com/');
 	define('HOMEPAGE_URL', 'https://domain.com');
 	define('APP_CDN', 'https://domain.com/cdn/');
+	define('LANDING_URL', 'http://localhost/stripe-pad/');
+	
 
 	define('APP_TABLE_PREFIX', '');
 	define('APP_DB_HOST', '');

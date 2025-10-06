@@ -1,0 +1,7 @@
+{
+    "php-docblocker.returnGap": false,
+    "php-docblocker.useShortNames": true,
+    "php-docblocker.extra": [
+        
+    ]
+}

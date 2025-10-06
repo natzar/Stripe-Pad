@@ -55,19 +55,11 @@ include_once CORE_PATH . "sp-model-base.php";
 if (file_exists(dirname(__FILE__) . "/../app/helpers.php")) include_once(dirname(__FILE__) . "/../app/helpers.php");
 
 
-# include all models from app dynamically
+# include all core dynamically # Fix!
 foreach (glob(CORE_PATH . "lib/*.php") as $filename) {
     include_once $filename;
 }
 
-# include all models from app dynamically
-foreach (glob(APP_PATH . "models/*.php") as $filename) {
-    include_once $filename;
-}
-
-foreach (glob(APP_PATH . "services/*.php") as $filename) {
-    include_once $filename;
-}
 
 
 
