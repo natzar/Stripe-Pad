@@ -229,6 +229,9 @@ class StripePadController
         if (strpos($email, "stripepad.com") > -1) header("location: " . APP_DOMAIN . "login");
 
         $users = new usersModel();
+        # Make it friendly, if no db connection die with error
+        if (is_null($users->db)) die("Stripe Pad: You need to set a database connection to make login/signup work");
+
         $users->sendResetPassword($email);
         $_SESSION['alerts'][] = _("New password sent to your inbox");
         header("location: " . APP_DOMAIN . "login");
@@ -247,6 +250,11 @@ class StripePadController
         if (!isset($this->params['password']) or empty($this->params['password'])) die();
 
         $users = new usersModel();
+
+        # Make it friendly, if no db connection die with error
+        if (is_null($users->db)) die("Stripe Pad: You need to set a database connection to make login/signup work");
+
+        # Login flow
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 0;
         $_SESSION['login_attemp']++;
 
@@ -280,8 +288,13 @@ class StripePadController
     public function actionSignup()
     {
 
+
         $users = new usersModel();
 
+        # Make it friendly, if no db connection die with error
+        if (is_null($users->db)) die("Stripe Pad: You need to set a database connection to make login/signup work");
+
+        # shitty nonce
         if (!empty($_POST['hney'])) die();
 
         // not included by default : find a better way
