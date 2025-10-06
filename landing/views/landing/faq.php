@@ -1,7 +1,7 @@
 <div class="bg-white">
     <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
         <div class="mx-auto max-w-4xl">
-            <h2 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl"><?= _('Preguntas frecuentes'); ?></h2>
+            <h2 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl"><?= _('F.a.q.'); ?></h2>
             <dl class="mt-16 divide-y divide-gray-900/10">
 
 

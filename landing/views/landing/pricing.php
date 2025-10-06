@@ -2,8 +2,8 @@
 <div id="pricing" class="bg-gray-50 py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-4xl text-center">
-            <h2 class="text-base/7 font-semibold text-blue-700"><?= _('Un Agente de Atención al cliente 24h, en todos los idiomas') ?></h2>
-            <p class="mt-2 text-balance text-5xl font-semibold tracking-tight text-gray-800 sm:text-6xl"><?= _('Precios') ?></p>
+            <h2 class="text-base/7 font-semibold text-blue-700"><?= _('Super SaaS') ?></h2>
+            <p class="mt-2 text-balance text-5xl font-semibold tracking-tight text-gray-800 sm:text-6xl"><?= _('Pricing') ?></p>
         </div>
         <p class="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-gray-500 sm:text-xl/8"><?= _('365 días al año, 24 horas al día, fines de semana, noches y festivos incluidos. Sin altas en la seguridad social ni permanencia, puedes cancelar tu cuenta cuando quieras.') ?></p>
 
