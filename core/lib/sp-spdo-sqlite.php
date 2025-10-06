@@ -13,7 +13,7 @@ class SPDO_sqlite extends PDO
     {
         try {
             // Ruta absoluta al archivo SQLite
-            $dsn = 'sqlite:' . ROOT_PATH . 'database.sqlite';
+            $dsn = 'sqlite:' . ROOT_PATH . 'storage/database.sqlite';
             parent::__construct($dsn);
 
             // Opciones comunes
