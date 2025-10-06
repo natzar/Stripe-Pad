@@ -83,7 +83,7 @@ class StripePad_Landing extends StripePadController
      */
     public function home()
     {
-        $this->view->show("demo/homepage.php", array());
+        $this->view->show("homepage.php", array());
     }
     public function contact()
     {
