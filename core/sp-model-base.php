@@ -31,7 +31,17 @@ abstract class ModelBase
 		$c  = $stmt->fetch(PDO::FETCH_ASSOC);
 		$cid = $c['LAST_INSERT_ID()'];
 		return $cid;
-	}
+	}	
+	/**
+	 * Method setField
+	 *
+	 * @param $table $table [explicite description]
+	 * @param $id $id [explicite description]
+	 * @param $field $field [explicite description]
+	 * @param $value $value [explicite description]
+	 *
+	 * @return void
+	 */
 	public function setField($table, $id, $field, $value)
 	{
 		$q = $this->db->prepare("UPDATE :t set :f = :v where :fid = :id");

@@ -53,16 +53,18 @@ class App extends StripePadController
 	{
 		parent::__construct(); // !important
 
-		# Some default values for views
+		// We're in APP (private area) so we need to check if user is authenticated
 		$this->isAuthenticated = $this->isAuthenticated();
-
-		$this->view->set_views_path(APP_PATH . "views/");
-		$this->view->set_isAuthenticated($this->isAuthenticated);
 
 		if (!$this->isAuthenticated) {
 			header("location: " . LANDING_URL . "login");
-			return;
+			// die don't continue. All methods are for registered users only
+			exit;
 		}
+
+		# Some default values for views
+		$this->view->set_views_path(APP_PATH . "views/");
+		$this->view->set_isAuthenticated($this->isAuthenticated);
 	}
 
 	/**
