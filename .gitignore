@@ -3,6 +3,6 @@ _recycle/
 node_modules/
 *.log
 app/build/node_modules/
-
+logs/
 sp-errors.log
 vendor
