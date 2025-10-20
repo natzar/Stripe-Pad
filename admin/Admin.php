@@ -49,18 +49,17 @@ class Admin extends StripePadController
 	public function __construct()
 	{
 		parent::__construct(); // !important
-
+		$this->view->set_views_path(ADMIN_PATH . "views/");
+		$this->view->set_isAuthenticated(false);
 		# Some default values for views
 		$defaults = array();
 
-		$this->view->isAuthenticated = $this->isAuthenticated = $this->isAuthenticated();
+		$this->isAuthenticated();
 
-		if (isset($this->params['p']) and strstr($this->params['p'], "app_") and !$this->isAuthenticated) {
-			header("location: " . APP_DOMAIN . "login");
+		if (isset($this->params['p']) and !strstr($this->params['p'], "login") and !$this->isAuthenticated) {
+			header("location: " . ADMIN_URL . "login");
 			return;
 		}
-
-		$this->view->set_defaults($defaults);
 	}
 
 	/**
@@ -309,30 +308,6 @@ class Admin extends StripePadController
 
 		$_SESSION['return_url'] = $_SERVER['REQUEST_URI'];
 		$this->view->show('superadmin/table.php', $data);
-	}
-
-
-	public function form()
-	{
-
-
-
-		$table = isset($this->params['m']) ? $this->params['m'] : -1;
-		$rid = isset($this->params['a']) ? $this->params['a'] : -1;
-		$op = isset($this->params['i']) ? $this->params['i'] : '';
-		$modelName = $table . 'Model';
-		$form = new $modelName();
-
-		$data = $form->generateForm($table, $rid, $op);
-		$data['SEO_TITLE'] = ucfirst($table) . ' ➞ Add New ';
-		$data['SEO_DESCRIPTION'] = 'Añade un nuevo ' . ucfirst($table) . ' a la base de datos';
-
-		if ($rid != -1) {
-			$data['SEO_TITLE'] = ucfirst($table) . ' #' . $rid;
-			$data['SEO_DESCRIPTION'] = "sp-core.php linea 659"; //Created " . strftime(" %d %B %Y %H:%M", strtotime($data['created'])) . " - Updated: " . strftime(" %d %B %Y %H:%M", strtotime($data['updated']));
-		}
-
-		$this->view->show('superadmin/form.php', $data);
 	}
 
 	/**
