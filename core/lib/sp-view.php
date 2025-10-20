@@ -32,6 +32,7 @@ class View
 	 */
 	var $current_url;
 
+	var $hide_menu = false;
 	function __construct()
 	{
 		$this->current_url = getCurrentUrl();
@@ -40,6 +41,11 @@ class View
 	function set_views_path($path)
 	{
 		$this->path = $path;
+	}
+
+	function hide_menu()
+	{
+		$this->hide_menu = true;
 	}
 	function set_isAuthenticated($val)
 	{
@@ -75,8 +81,10 @@ class View
 			echo '<!-- Template StripePad: ' . $template . ' -->';
 		}
 
+
+
 		include $this->path . "layout/header.php";
-		include $this->path . "layout/menu.php";
+		if (!$this->hide_menu) include $this->path . "layout/menu.php";
 		if (file_exists($template) == false) {
 			include $this->path . '404.php';
 		} else {

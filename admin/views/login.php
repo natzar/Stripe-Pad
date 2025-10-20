@@ -1,15 +1,4 @@
-<!doctype html>
-<html lang="es">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Stripe Pad · Admin Login</title>
-    <!-- Tailwind via CDN for the demo. Replace with your build in production. -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="min-h-screen bg-slate-950 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(99,102,241,.25),transparent)] text-slate-100 flex items-center justify-center p-6">
+<div class="min-h-screen bg-slate-950 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(99,102,241,.25),transparent)] text-slate-100 flex items-center justify-center p-6">
     <main class="w-full max-w-md">
         <section class="relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur shadow-xl">
             <div class="p-8">
@@ -93,6 +82,4 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
-</body>
-
-</html>
+</div>

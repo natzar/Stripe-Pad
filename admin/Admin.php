@@ -50,6 +50,7 @@ class Admin extends StripePadController
 	{
 		parent::__construct(); // !important
 		$this->view->set_views_path(ADMIN_PATH . "views/");
+		$this->view->hide_menu();
 		$this->view->set_isAuthenticated(false);
 		# Some default values for views
 		$defaults = array();
@@ -72,10 +73,10 @@ class Admin extends StripePadController
 		# check if user is authenticated
 		if ($this->isAuthenticated()) {
 			# Load Dashboard (main-first screen of your app for logged users)
-			$this->app();
+			$this->dashboard();
 		} else {
 			# Redirect to login if not authenticated, or to home or landing
-			$this->home();
+			$this->login();
 		}
 	}
 
@@ -85,7 +86,7 @@ class Admin extends StripePadController
 	 * If a registered user logs in, this method will be called. MODIFY THIS FUNCTION.
 	 * @return void
 	 */
-	public function app() // DASHBOARD
+	public function dashboard() // DASHBOARD
 	{
 
 		# Sample render of view with $data
@@ -98,7 +99,7 @@ class Admin extends StripePadController
 		);
 
 		# show app/views/index.php passing $data
-		$this->view->show('custom/index.php', $data);
+		$this->view->show('index.php', $data);
 	}
 
 	/**
@@ -141,94 +142,10 @@ class Admin extends StripePadController
 	}
 
 	/**
-	 * tos
-	 * Default terms of service url
+	 * form
+	 * Generic Form generator for Orm based models
 	 * @return void
 	 */
-	public function tos()
-	{
-		$this->view->show('common/tos.php', array());
-	}
-
-	/**
-	 * privacy
-	 * Default privacy page
-	 * @return void
-	 */
-	public function privacy()
-	{
-		$this->view->show('common/privacy.php', array());
-	}
-	public function pricing()
-	{
-		$this->view->show('landing/pricing.php', array());
-	}
-	public function faq()
-	{
-		$this->view->show('landing/faq.php', array());
-	}
-	public function use_cases()
-	{
-		$this->blog();
-		//		$this->view->show('common/privacy.php', array());
-	}
-
-	public function app_settings()
-	{
-
-		$_SESSION['return_url'] = $_SERVER['REQUEST_URI'];
-		$this->view->show('custom/settings.php', array(
-			"SEO_TITLE" => "Configuración de las Respuestas ",
-			"SEO_DESCRIPTION" => "Emilia  responderá los emails entrantes en el buzón de correo configurado, siguiendo los ajustes e instrucciones siguientes:",
-			"breadcrumb" => array(
-				array("label" => "Configuración Respuestas Automáticas", "url" => "app_settings")
-			),
-
-		));
-	}
-
-	public function app_change_account()
-	{
-		// SECURITY
-		// Fix agents = other accounts under same user ownsership or access
-
-		$c = new agentsModel();
-		$cs = $c->get_agents_by_user($_SESSION['user']['usersId']);
-		$aux = [];
-		foreach ($cs as $x):
-			$aux[] = $x['agentsId'];
-		endforeach;
-
-		if (!in_array($this->params['m'], $aux)) {
-			$this->view->show('custom/error.php', array("msg" => "No tens permisos per accedir a aquesta empresa"));
-			return;
-		}
-		$company = $c->getById($this->params['m']);
-		$_SESSION['agent'] = $company;
-		//$this->app();
-		header("location: " . APP_DOMAIN);
-	}
-
-	public function app_new_account()
-	{
-		//print_r($this->params);
-		if (isset($this->params['agent_organization']) and !empty($this->params['agent_organization'])) {
-			$agents = new agentsModel();
-			$_SESSION['alerts'][] = "Nuevo agente añadido";
-			$new_agent = $agents->create($this->params['agent_organization'], $_SESSION['user']['usersId']);
-
-
-			$_SESSION['user']['agents'] =  $agents->get_agents_by_user($_SESSION['user']['usersId']);
-
-			header("location: " . APP_DOMAIN . 'app_change_account/' . $new_agent['agentsId']);
-			return;
-		}
-		$this->view->show('custom/new_account.php', array(
-			'SEO_TITLE' => "Añadir Agente Nuevo",
-			'SEO_DESCRIPTION' => "Añade un nuevoo agente a tu cuenta para gestionar otro buzón de correo."
-		));
-	}
-
 	public function form()
 	{
 
