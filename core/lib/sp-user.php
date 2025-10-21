@@ -41,11 +41,13 @@ class usersModel extends ModelBase
 
 			# Password here
 			$password = $this->randomPassword();
-			$sha1p = hash('sha256', $password);
+			$hash = password_hash($password, PASSWORD_ARGON2ID); // o PASSWORD_BCRYPT
+
+
 			$consulta = $this->db->prepare("INSERT INTO users (name,email,password,`group`) VALUES (:name,:email,:pass,:group)");
 			$consulta->bindParam(':name', $name);
 			$consulta->bindParam(':email', $email);
-			$consulta->bindParam(':pass', $sha1p);
+			$consulta->bindParam(':pass', $hash);
 			$consulta->bindParam(':group', $group);
 
 			$consulta->execute();
@@ -159,9 +161,9 @@ class usersModel extends ModelBase
 	public function resetPassword($usersId)
 	{
 		$new_password = $this->randomPassword();
-		$sha1p = hash('sha256', $new_password);
+		$hash = password_hash($new_password, PASSWORD_ARGON2ID); // o 
 		$c = $this->db->prepare('UPDATE users set password = :p where usersId = :id');
-		$c->bindParam(':p', $sha1p);
+		$c->bindParam(':p', $hash);
 		$c->bindParam(':id', $usersId);
 		$c->execute();
 		log::system('Reset password for ' . $usersId);

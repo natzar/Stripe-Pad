@@ -205,6 +205,11 @@ class StripePadController
 
             $data['google_auth_url'] = $client->createAuthUrl();
         }
+        // Al renderizar el login GET
+        if (empty($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+
         $this->view->show("login.php", $data, true);
     }
 
@@ -257,6 +262,24 @@ class StripePadController
         # Make it friendly, if no db connection die with error
         if (is_null($users->db)) die("Stripe Pad: You need to set a database connection to make login/signup work");
 
+        // 3) CSRF
+        if (empty($csrf) || !hash_equals($_SESSION['csrf_token'] ?? '', $csrf)) {
+            $_SESSION['errors'][] = "Solicitud inválida. Vuelve a intentarlo.";
+            header("location: " . APP_DOMAIN . "login");
+            return;
+        }
+
+        // 4) Rate-limit (IP + email)
+        $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+        $key = "login_" . hash('sha256', strtolower($email) . '|' . $ip);
+        $_SESSION[$key] = $_SESSION[$key] ?? ['count' => 0, 'until' => 0];
+
+        if (time() < $_SESSION[$key]['until']) {
+            $_SESSION['errors'][] = "Demasiados intentos. Espera un poco y vuelve a intentarlo.";
+            header("location: " . APP_DOMAIN . "login");
+            return;
+        }
+
         # Login flow
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 0;
         $_SESSION['login_attemp']++;
@@ -267,7 +290,9 @@ class StripePadController
             header("location: " . APP_DOMAIN . "/login");
         } else {
             $user = $users->find($this->params['email']);
-            $pass =  hash('sha256', $this->params['password']);
+            $pass =  password_hash($this->params['password'], PASSWORD_ARGON2ID);
+
+
 
             if (!empty($user) and $user['password'] == $pass) {
                 $this->createSession($user);
@@ -366,23 +391,6 @@ class StripePadController
         exit(0);
     }
 
-    /**
-     * actionStripeSync
-     *
-     * @return void
-     */
-    public function actionStripeSync()
-    {
-        $stripe = new Stripe();
-        $stripe->syncStripeCustomers();
-        $stripe->syncStripeSubscriptions();
-        $stripe->syncStripeInvoices();
-        $stripe->syncStripeProducts();
-        $_SESSION['alerts'][] = _("Stripe Import Completed");
-
-        // ~ Redirection
-        $this->superadmin();
-    }
 
     /**
      * stripe_portal
@@ -536,16 +544,7 @@ class StripePadController
     }
 
 
-    public function reports()
-    {
-        $data = array();
-        $this->view->show('superadmin/reports.php', $data);
-    }
-    public function system()
-    {
-        $data = array();
-        $this->view->show('superadmin/system.php', $data);
-    }
+
 
     /* Modules */
 
@@ -590,119 +589,6 @@ class StripePadController
 
 
 
-    /* SuperAdmin magic functions: Forms creation and Rows Inserting and updating. One day someone will come asking questions about this shit.
-    ---------------------------------------*/
-
-    public function superadmin()
-    {
-        if (!$this->isSuperadmin) {
-            throw new StripePad\Exceptions\PermissionsException('Not superadmin');
-        }
-        $data = array(
-            "log" => $this->log->getAll(),
-            "counters" => $this->log->get_counters(),
-            "online_visitors" => $this->log->get_online_visitors_count()
-        );
-        $this->view->show('superadmin/dashboard.php', $data);
-    }
-
-    /**
-     * table
-     * Part of Orm, it generates a table 
-     * @return void
-     */
-    public function table()
-    {
-        if (!$this->isSuperadmin) {
-            throw new StripePad\Exceptions\PermissionsException('Not superadmin');
-        }
-
-        $items = new Orm();
-
-        $table = $this->params['m'];
-
-        $itemsFinal = null;
-        $items_head = $items->getItemsHead($table);
-        $fields = $items->getTableAttribute($table, 'fields');
-        $user_group = $_SESSION['user']['group'];
-
-        if (isset($this->params['i']) and in_array($this->params['i'], $fields)) {
-            $params = ['table' => $table, $this->params['i'] => $this->params['z']];
-            $itemsFinal = $items->search($params);
-        } else {
-            $itemsFinal = $items->getAll($table);
-        }
-
-        $data = [/* "table_label" => $table_label, */
-            'title' => "BackOffice | $table",
-            'items_head' => $items_head,
-            'items' => $itemsFinal,
-            'HOOK_JS' => $items->table_js($table),
-            'table' => $table,
-            'table_label' => $items->getTableAttribute($table, 'table_label'),
-            'notification' => isset($this->params['i']) and $this->params['i'] != -1 ? 'Se ha guardado correctamente' : '',
-        ];
-
-        $_SESSION['return_url'] = $_SERVER['REQUEST_URI'];
-        $this->view->show('superadmin/table.php', $data);
-    }
-
-
-    public function form()
-    {
-
-
-
-        $table = isset($this->params['m']) ? $this->params['m'] : -1;
-        $rid = isset($this->params['a']) ? $this->params['a'] : -1;
-        $op = isset($this->params['i']) ? $this->params['i'] : '';
-        $modelName = $table . 'Model';
-        $form = new $modelName();
-
-        $data = $form->generateForm($table, $rid, $op);
-        $data['SEO_TITLE'] = ucfirst($table) . ' ➞ Add New ';
-        $data['SEO_DESCRIPTION'] = 'Añade un nuevo ' . ucfirst($table) . ' a la base de datos';
-
-        if ($rid != -1) {
-            $data['SEO_TITLE'] = ucfirst($table) . ' #' . $rid;
-            $data['SEO_DESCRIPTION'] = "sp-core.php linea 659"; //Created " . strftime(" %d %B %Y %H:%M", strtotime($data['created'])) . " - Updated: " . strftime(" %d %B %Y %H:%M", strtotime($data['updated']));
-        }
-
-        $this->view->show('superadmin/form.php', $data);
-    }
-
-    /**
-     * update
-     *
-     * @return void
-     */
-    public function update()
-    {
-        // if (!$this->isSuperadmin) {
-        //     throw new StripePad\Exceptions\PermissionsException('Not superadmin');
-        // }
-        //        $orm = new Orm();
-        $rid = $this->params['rid'];
-        $table = $this->params['table'];
-        $modelName = $table . 'Model';
-        $orm = new $modelName();
-        $return_url = null;
-
-
-        if (isset($_SESSION['return_url']))    $return_url = $_SESSION['return_url'];
-
-        if (isset($this->params['return_url']) and -1 != $this->params['return_url']) {
-            $return_url = $this->params['return_url'];
-        }
-
-        if ($rid == -1) {
-            $rid = $orm->add($this->params);
-        } else {
-            $orm->edit($this->params);
-        }
-        $_SESSION['alerts'][] = _('Actualizado correctamente');
-        header('location: ' . $return_url);
-    }
 
     /* In case a method does not exist */
     public function error404()

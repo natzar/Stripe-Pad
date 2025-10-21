@@ -46,7 +46,8 @@
             <a href="<?= APP_DOMAIN ?>forgotPassword" class="font-semibold text-sky-600 hover:text-sky-500"><?= _('Has olvidado tu password?') ?></a>
           </div>
         </div>
-        <input type="text" name="hney" value="" style="display: none;" ;>
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES) ?>">
+        <input type="text" name="hney" value="" style="display:none;">
         <div>
           <button type="submit" class="flex w-full justify-center rounded-md bg-sky-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"><?= _('Entrar') ?></button>
         </div>
