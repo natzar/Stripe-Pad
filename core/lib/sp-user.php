@@ -32,7 +32,7 @@ class usersModel extends ModelBase
 	public function create($email, $name = '', $group = 'customers')
 	{
 		$user = $this->find($email);
-		$mails = new mailsModel();
+		$mails = new emailsModel();
 
 		if (!empty($user)) {
 			$_SESSION['errors'][] = "User already exists";
@@ -41,7 +41,7 @@ class usersModel extends ModelBase
 
 			# Password here
 			$password = $this->randomPassword();
-			$hash = password_hash($password, PASSWORD_ARGON2ID); // o PASSWORD_BCRYPT
+			$hash = password_hash($password, PASSWORD_BCRYPT); // o PASSWORD_BCRYPT
 
 
 			$consulta = $this->db->prepare("INSERT INTO users (name,email,password,`group`) VALUES (:name,:email,:pass,:group)");
@@ -161,7 +161,7 @@ class usersModel extends ModelBase
 	public function resetPassword($usersId)
 	{
 		$new_password = $this->randomPassword();
-		$hash = password_hash($new_password, PASSWORD_ARGON2ID); // o 
+		$hash = password_hash($new_password, PASSWORD_BCRYPT); // o 
 		$c = $this->db->prepare('UPDATE users set password = :p where usersId = :id');
 		$c->bindParam(':p', $hash);
 		$c->bindParam(':id', $usersId);

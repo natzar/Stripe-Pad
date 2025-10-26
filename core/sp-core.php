@@ -254,7 +254,8 @@ class StripePadController
      */
     public function actionLogin()
     {
-        log::system("Login action called");
+        log::system("Login action called " . $this->params['email']);
+
         if (!isset($this->params['email']) or empty($this->params['email'])) die();
 
         if (!isset($this->params['password']) or empty($this->params['password'])) die();
@@ -273,7 +274,7 @@ class StripePadController
 
         // 4) Rate-limit (IP + email)
         $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
-        $key = "login_" . hash('sha256', strtolower($email) . '|' . $ip);
+        $key = "login_" . hash('sha256', strtolower($this->params['email']) . '|' . $ip);
         $_SESSION[$key] = $_SESSION[$key] ?? ['count' => 0, 'until' => 0];
 
         if (time() < $_SESSION[$key]['until']) {
@@ -293,7 +294,7 @@ class StripePadController
             header("location: " . APP_DOMAIN . "/login");
         } else {
             $user = $users->find($this->params['email']);
-            $pass =  password_hash($this->params['password'], PASSWORD_ARGON2ID);
+            $pass =  password_hash($this->params['password'], PASSWORD_BCRYPT);
 
 
 
