@@ -40,23 +40,21 @@ textdomain('messages');
 if (PHP_SESSION_ACTIVE != session_status() and !headers_sent()) {
     ini_set('session.cookie_lifetime', 3600 * 24);
     ini_set('session.gc_maxlifetime', 3600 * 24);
-    session_set_cookie_params(3600 * 24);
+
+    ini_set('session.use_strict_mode', 1);
+    session_set_cookie_params([
+        'lifetime' => 3600 * 24,
+        'path' => '/',
+        'domain' => APP_COOKIE_DOMAIN ?? '',
+        'secure' => true,        // obliga HTTPS
+        'httponly' => true,
+        'samesite' => 'Lax',     // o 'Strict' si no usas OAuth/externos
+    ]);
+    session_name(APP_SLUG . '_SID');
     session_start();
 }
 
 
-// init.php (al principio de la app, antes de session_start)
-ini_set('session.use_strict_mode', 1);
-session_set_cookie_params([
-    'lifetime' => 0,
-    'path' => '/',
-    'domain' => APP_COOKIE_DOMAIN ?? '',
-    'secure' => true,        // obliga HTTPS
-    'httponly' => true,
-    'samesite' => 'Lax',     // o 'Strict' si no usas OAuth/externos
-]);
-session_name(APP_NAME . '_SID');
-session_start();
 
 
 # Include composer autoload

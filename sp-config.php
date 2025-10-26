@@ -32,7 +32,7 @@
 
 # BASIC DETAILS
 define('APP_NAME', 'Stripe Pad');
-define('APP_SLUG', 'stripepad');
+define('APP_SLUG', 'stripepad'); // no spaces, lowercase, cannot contain any of the following '=,;.[ \t\r\n\013\014'
 define('APP_LOGO', '');
 define('SEO_TITLE', 'Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_DESCRIPTION', 'Stripe Pad · PHP Micro Saas Boilerplate');
@@ -94,7 +94,7 @@ define('SMTP_PASSWORD', ''); // Set password for SMTP user
 # EXTRAS - MODULES
 define('BOT_BLOCKER', false); # Enable bot blocker if you have too many requests
 define('OPENAI_CHATGPT_APIKEY', ''); // platform.openai.com
-
+define('APP_COOKIE_DOMAIN', ''); // Set to your domain to share cookies across subdomains, e.g., '.yourdomain.com'. Leave empty for default behavior.
 # Stripe 
 define('APP_STRIPE_PUBKEY', '');
 define('APP_STRIPE_SECRETKEY', '');
