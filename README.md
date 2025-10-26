@@ -16,9 +16,9 @@
 
 🫠 **Not affiliated with Stripe.com**
 
-## Official Documentation
+## Installation & Official Documentation
 
-You can read the official documentation on the [Wiki](https://github.com/natzar/Stripe-Pad/wiki)
+You can read the official documentation and installation instructions on the [Wiki](https://github.com/natzar/Stripe-Pad/wiki)
 
 ## Demo
 > Public Demo online soon.
