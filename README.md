@@ -1,5 +1,4 @@
-> 👋 Not ready for production. 26/04/2025, stay tunned.
-> FOR EDUCATIONAL PURPOSES - GPL3
+> 👋 FOR EDUCATIONAL PURPOSES - GPL3
 
 #  Stripe Pad
 [![License: GPL3](https://img.shields.io/github/license/natzar/Stripe-Pad)](https://github.com/natzar/Stripe-Pad/blob/main/LICENSE.md)
@@ -11,34 +10,19 @@
 
 ## Introduction
 
-**Stripe Pad** is the PHP boilerplate to build SaaS with Stripe. Stripe Pad is a GPL3-licensed PHP-based MVC framework that saves you months of development by starting you off with all the features that are the same in every product, so you can focus on what makes your app unique. 
+**Stripe Pad** is the PHP boilerplate to build SaaS with Stripe. Stripe Pad is a GPL3-licensed PHP-based MVC framework that saves you months of development by starting you off with all the features, Stripe integration included, that are the same in every product, so you can focus on what makes your app unique. 
 
 🤠 **Suitable for Educational purposes**
 
 🫠 **Not affiliated with Stripe.com**
-
-
-## Quick Install
-
-
-1. Download or clone the repo
-2. Run `composer install`
-3. Create a MYSQL database and import install/database.sql
-4. Edit .htaccess (Rewrite base in case it is inside a subfolder)
-5. Edit sp-config.php (Add mysql credentials and other details)
-
-You will be able to login:
-
-- **superadmin**: user: superadmin@stripepad.com / pass: superadmin
-- **user**: user: demo@stripepad.com / pass: demo
-
-Follow [complete installation instructions](https://github.com/natzar/Stripe-Pad/wiki/Installation) to have your environment setup as soon as posible.
 
 ## Official Documentation
 
 You can read the official documentation on the [Wiki](https://github.com/natzar/Stripe-Pad/wiki)
 
 ## Demo
+> Public Demo online soon.
+
 The 3 main parts of every SaaS: A public page, a private area where only registered users and customers can login and a Superadmin private part to manage and maintain the SaaS.
 
 #### Public
