@@ -254,7 +254,9 @@ class StripePadController
      */
     public function actionLogin()
     {
+        log::system("Login action called");
         if (!isset($this->params['email']) or empty($this->params['email'])) die();
+
         if (!isset($this->params['password']) or empty($this->params['password'])) die();
 
         $users = new usersModel();
@@ -263,7 +265,7 @@ class StripePadController
         if (is_null($users->db)) die("Stripe Pad: You need to set a database connection to make login/signup work");
 
         // 3) CSRF
-        if (empty($csrf) || !hash_equals($_SESSION['csrf_token'] ?? '', $csrf)) {
+        if (empty($this->params['csrf_token']) || !hash_equals($_SESSION['csrf_token'] ?? '', $this->params['csrf_token'])) {
             $_SESSION['errors'][] = "Solicitud inválida. Vuelve a intentarlo.";
             header("location: " . APP_DOMAIN . "login");
             return;
@@ -281,6 +283,7 @@ class StripePadController
         }
 
         # Login flow
+        log::system("Login attempt for " . $this->params['email'] . " from IP " . $ip);
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 0;
         $_SESSION['login_attemp']++;
 
@@ -300,10 +303,11 @@ class StripePadController
                 // $_SESSION['errors'][] = "Welcome back " . $user['email'];
                 //print_r($_SESSION);
                 //session_write_close();
+                log::system("Successful login for " . $this->params['email'] . " from IP " . $ip);
                 header("location: " . APP_BASE_URL);
             } else {
                 $_SESSION['errors'][] = "User or password not correct";
-
+                log::system("Failed login for " . $this->params['email'] . " from IP " . $ip);
                 header("location: " . APP_DOMAIN . "/login");
             }
         }

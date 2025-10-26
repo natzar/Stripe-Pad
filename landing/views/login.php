@@ -13,7 +13,7 @@
 
   <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-[480px]">
     <div class="bg-white px-6 py-6 shadow sm:rounded-lg ">
-      <form class="space-y-6" action="<?= APP_DOMAIN ?>actionLogin" method="POST">
+      <form class="space-y-6" action="<?= LANDING_URL ?>actionLogin" method="POST">
         <div>
           <label for="email" class="block text-sm/6 font-medium text-gray-900"><?= _('Email address') ?></label>
           <div class="mt-2">
