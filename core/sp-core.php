@@ -288,17 +288,17 @@ class StripePadController
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 0;
         $_SESSION['login_attemp']++;
 
-        if ($_SESSION['login_attemp'] > 5) {
+        if ($_SESSION['login_attemp'] > 4445) {
             $_SESSION['errors'][] = "Too many intents.";
 
             header("location: " . APP_DOMAIN . "/login");
         } else {
             $user = $users->find($this->params['email']);
-            $pass =  password_hash($this->params['password'], PASSWORD_BCRYPT);
+            //     $pass =  password_hash($this->params['password'], PASSWORD_DEFAULT);
 
+            $_SESSION['errors'][] = $pass;
 
-
-            if (!empty($user) and $user['password'] == $pass) {
+            if (!empty($user) and password_verify($this->params['password'], $user['password'])) {
                 $this->createSession($user);
                 $users->saveLastLogin($user['usersId']);
                 // $_SESSION['errors'][] = "Welcome back " . $user['email'];

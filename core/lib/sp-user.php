@@ -41,7 +41,7 @@ class usersModel extends ModelBase
 
 			# Password here
 			$password = $this->randomPassword();
-			$hash = password_hash($password, PASSWORD_BCRYPT); // o PASSWORD_BCRYPT
+			$hash = password_hash($password, PASSWORD_DEFAULT); // o PASSWORD_DEFAULT
 
 
 			$consulta = $this->db->prepare("INSERT INTO users (name,email,password,`group`) VALUES (:name,:email,:pass,:group)");
@@ -161,7 +161,7 @@ class usersModel extends ModelBase
 	public function resetPassword($usersId)
 	{
 		$new_password = $this->randomPassword();
-		$hash = password_hash($new_password, PASSWORD_BCRYPT); // o 
+		$hash = password_hash($new_password, PASSWORD_DEFAULT); // o 
 		$c = $this->db->prepare('UPDATE users set password = :p where usersId = :id');
 		$c->bindParam(':p', $hash);
 		$c->bindParam(':id', $usersId);
@@ -175,7 +175,7 @@ class usersModel extends ModelBase
 		$user = $this->find($email);
 		if (!empty($user)) {
 			$new_password = $this->resetPassword($user['usersId']);
-			$mails = new mailsModel();
+			$mails = new emailsModel();
 
 			$subject = '[INFO] Password Reset';
 			$data = [
