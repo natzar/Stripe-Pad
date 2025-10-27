@@ -1,3 +1,4 @@
+ > THIS DOCUMENT & INSTALLATION PROCESS IS DEPRECATED, kept here until having time to make an install wizard-
 # Stripe Pad
 v.1.0.0 
 [www.stripepad.com](https://www.stripepad.com)
