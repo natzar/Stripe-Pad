@@ -14,8 +14,8 @@ RewriteEngine On
 RewriteBase /
 
 # Rewrite non www to www (Uncomment)
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
 # Allow any files or directories that exist to be displayed directly
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -42,7 +42,7 @@ Header set X-Content-Type-Options "nosniff"
 
 RewriteRule ^([a-zA-Z_0-9-]*)/?([a-zA-Z0-9-\s\.]*)?/?([a-zA-Z0-9_-]*)?/?([a-zA-Z0-9-]*)?/?([a-zA-Z0-9-]*)?/?([a-zA-Z0-9-]*)?/?$ index.php?p=$1&m=$2&a=$3&i=$4&z=$5&w=$6 [NC,L,QSA]
 
-ErrorDocument 404 /errors/e404
+ErrorDocument 404 /404
 
 # Activate compression
 AddOutputFilterByType DEFLATE text/html text/css application/x-javascript text/plain text/javascript application/javascript application/json
@@ -67,7 +67,3 @@ ExpiresByType application/x-javascript A2592000
     Require all denied
 </FilesMatch>
 
-# (opcional) bloquea todo el dir storage
-<Directory "/app/storage">
-    Require all denied
-</Directory>
