@@ -7,7 +7,7 @@
         <li>Legitimación: Consentimiento.</li>
         <li>Destinatarios: tus datos de contacto se almacenarán en nuestra base de datos.</li>
         <li>Derechos: Cambios, rectificaciones, borrados, escríbenos a <?= ADMIN_EMAIL ?></li>
-        <li>Puedes consultar la información adicional y detallada sobre Protección de Datos en <a href="<?= APP_DOMAIN ?>privacy">aviso legal y protección de datos</a>
+        <li>Puedes consultar la información adicional y detallada sobre Protección de Datos en <a href="<?= LANDING_URL ?>privacy">aviso legal y protección de datos</a>
         </li>
     </ul>
 </div>

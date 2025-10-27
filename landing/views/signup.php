@@ -147,7 +147,7 @@
           <p>⟶ Maria Amanda Dolores, tienda online nautica Alicante: Las mismas dudas de siempre ya se respoden sólas. Cuando llega una nueva, la añado y a esperar a la siguiente duda. Me gusta cómo ayuda a que esté todo claro.</p>
           <!-- Más comentarios -->
 
-          <? include dirname(__FILE__) . "/../common/forms-rgpd.php"; ?>
+          <? include dirname(__FILE__) . "/forms-rgpd.php"; ?>
         </div>
       </div>
     </div>
