@@ -52,7 +52,7 @@
   </div>
 </div>
 
-<? include dirname(__FILE__) . "/../modal.php"; ?>
+
 
 <!-- PHP to JS -->
 <script>

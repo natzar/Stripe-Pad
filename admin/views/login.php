@@ -9,12 +9,12 @@
                     </div>
                     <div>
                         <h1 class="text-lg font-semibold leading-tight">Stripe Pad Admin</h1>
-                        <p class="text-sm text-slate-400">Acceso de superadmin</p>
+                        <p class="text-sm text-slate-400">Superadmin for MYSQL only, use DB Browser for SQLite</p>
                     </div>
                 </div>
 
                 <!-- Form -->
-                <form action="/admin/login" method="post" class="space-y-6" novalidate>
+                <form action="actionSuperAdminLogin" method="post" class="space-y-6" novalidate>
                     <!-- CSRF -->
                     <!-- <input type="hidden" name="csrf_token" value="{{ token }}" /> -->
 
@@ -58,7 +58,8 @@
                         class="inline-flex w-full items-center justify-center rounded-lg bg-indigo-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-400/40 disabled:opacity-60">
                         Entrar
                     </button>
-
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES) ?>">
+                    <input type="text" name="hney" value="" style="display:none;">
                     <!-- Error placeholder (show conditionally from backend) -->
                     <!-- <p class="text-sm text-rose-300">Credenciales no válidas.</p> -->
                 </form>

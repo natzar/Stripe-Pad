@@ -41,6 +41,7 @@ define('SEO_KEYWORDS', 'php stripe boilerplate, php micro saas, stripe pad, stri
 define('APP_SECRET_KEY', '[Generate secret key, used for encryption functions]');
 
 # ENVIRONMENT
+define("APP_STORAGE", "sqlite"); // Options: sqlite / mysql
 define("INTERNAL_ENCODING", "UTF-8");
 define("TIMEZONE", "Europe/Madrid"); // Check https://www.php.net/manual/en/timezones.php
 

@@ -42,15 +42,20 @@
  * Old skool, php sevver side rendering, as less javascript as possible.
  */
 
+include dirname(__FILE__) . '/orm/sp-orm.php'; // include the core controller
 class Admin extends StripePadController
 {
 	var $isAuthenticated = false;
 
 	public function __construct()
 	{
+
+		if (APP_STORAGE != "mysql") {
+			die("Stripe Pad<br>Admin area is only available for MYSQL storage, please use DB Browser for SQLite to manage your local database or switch to MYSQL storage in sp-config.php<br>I love raw times new roman error messages.");
+		}
 		parent::__construct(); // !important
 		$this->view->set_views_path(ADMIN_PATH . "views/");
-		$this->view->hide_menu();
+		//$this->view->hide_menu();
 		$this->view->set_isAuthenticated(false);
 		# Some default values for views
 		$defaults = array();
@@ -71,13 +76,7 @@ class Admin extends StripePadController
 	public function index()
 	{
 		# check if user is authenticated
-		if ($this->isAuthenticated()) {
-			# Load Dashboard (main-first screen of your app for logged users)
-			$this->dashboard();
-		} else {
-			# Redirect to login if not authenticated, or to home or landing
-			$this->login();
-		}
+		$this->dashboard();
 	}
 
 	/**
@@ -196,10 +195,19 @@ class Admin extends StripePadController
 		if (!$this->isSuperadmin) {
 			throw new StripePad\Exceptions\PermissionsException('Not superadmin');
 		}
-
-		$items = new Orm();
-
+		print_r($this->params);
 		$table = $this->params['m'];
+		$items = null;
+		$class = $table . 'Model';
+		echo $class;
+		if (class_exists($class)) {
+			$items = new $class();
+		} else {
+			//	$items = new Orm($table);
+		}
+
+
+
 
 		$itemsFinal = null;
 		$items_head = $items->getItemsHead($table);

@@ -37,7 +37,7 @@ class Orm extends ModelBase
 	{
 		parent::__construct();
 		$this->log = log::singleton();
-		include CORE_PATH . "orm/field.php";
+		include dirname(__FILE__) . "/field.php";
 	}
 
 

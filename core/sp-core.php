@@ -245,14 +245,22 @@ class StripePadController
         header("location: " . APP_DOMAIN . "login");
     }
 
-
-
+    /**
+     * actionSuperAdminLogin
+     *
+     * @return void
+     */
+    public function actionSuperAdminLogin()
+    {
+        log::system("Superadmin intent " . $this->params['email']);
+        $this->actionLogin(true);
+    }
     /**
      * actionLogin
      *
      * @return void
      */
-    public function actionLogin()
+    public function actionLogin($is_superadmin = false)
     {
         log::system("Login action called " . $this->params['email']);
 
@@ -274,24 +282,24 @@ class StripePadController
 
         // 4) Rate-limit (IP + email)
         $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
-        $key = "login_" . hash('sha256', strtolower($this->params['email']) . '|' . $ip);
-        $_SESSION[$key] = $_SESSION[$key] ?? ['count' => 0, 'until' => 0];
+        // $key = "login_" . hash('sha256', strtolower($this->params['email']) . '|' . $ip);
+        // $_SESSION[$key] = $_SESSION[$key] ?? ['count' => 0, 'until' => 0];
 
-        if (time() < $_SESSION[$key]['until']) {
-            $_SESSION['errors'][] = "Demasiados intentos. Espera un poco y vuelve a intentarlo.";
-            header("location: " . APP_DOMAIN . "login");
-            return;
-        }
+        // if (time() < $_SESSION[$key]['until']) {
+        //     $_SESSION['errors'][] = "Demasiados intentos. Espera un poco y vuelve a intentarlo.";
+        //     header("location: " . APP_DOMAIN . "login");
+        //     return;
+        // }
 
         # Login flow
         log::system("Login attempt for " . $this->params['email'] . " from IP " . $ip);
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 0;
         $_SESSION['login_attemp']++;
 
-        if ($_SESSION['login_attemp'] > 4445) {
+        if ($_SESSION['login_attemp'] > 5) {
             $_SESSION['errors'][] = "Too many intents.";
 
-            header("location: " . APP_DOMAIN . "/login");
+            header("location: " . LANDING_URL);
         } else {
             $user = $users->find($this->params['email']);
             //     $pass =  password_hash($this->params['password'], PASSWORD_DEFAULT);
@@ -305,11 +313,20 @@ class StripePadController
                 //print_r($_SESSION);
                 //session_write_close();
                 log::system("Successful login for " . $this->params['email'] . " from IP " . $ip);
-                header("location: " . APP_BASE_URL);
+                if ($is_superadmin) {
+                    header("location: " . ADMIN_URL . "dashboard");
+                } else {
+                    header("location: " . APP_URL);
+                }
             } else {
                 $_SESSION['errors'][] = "User or password not correct";
                 log::system("Failed login for " . $this->params['email'] . " from IP " . $ip);
-                header("location: " . APP_DOMAIN . "/login");
+                if ($is_superadmin) {
+                    header("location: " . ADMIN_URL . "login");
+                    return;
+                } else {
+                    header("location: " . APP_URL . "login");
+                }
             }
         }
     }
@@ -368,7 +385,9 @@ class StripePadController
         $_SESSION[APP_NAME] = 1;
         $_SESSION['login_attemp'] = 0;
         $_SESSION['user'] = $user;
-
+        if ($user['group'] == 'superadmin') {
+            $_SESSION['is_superadmin'] = true;
+        }
         return true;
     }
 
