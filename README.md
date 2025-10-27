@@ -21,7 +21,7 @@
 You can read the official documentation and installation instructions on the [Wiki](https://github.com/natzar/Stripe-Pad/wiki)
 
 ## Demo
-> Public Demo online soon.
+[Online demo](https://demo.stripepad.com)
 
 The 3 main parts of every SaaS: A public page, a private area where only registered users and customers can login and a Superadmin private part to manage and maintain the SaaS.
 
