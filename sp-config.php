@@ -59,7 +59,7 @@ if (isLocalhost()) { # Localhost
 	define('LANDING_URL', 'http://localhost/stripe-pad/');
 	define('ADMIN_URL', 'http://localhost/stripe-pad/admin/');
 	define('APP_URL', 'http://localhost/stripe-pad/app/');
-
+	# MYSQL ONLY - Adjust your mysql database details here
 	define('APP_TABLE_PREFIX', '');
 	define('APP_DB_HOST', '');
 	define('APP_DB', '');
@@ -69,14 +69,14 @@ if (isLocalhost()) { # Localhost
 } else {    # Server / Production
 
 	define('DEBUG_MODE', false);
-	define('APP_DOMAIN', 'https://domain.com/');
-	define('APP_BASE_URL', 'https://domain.com/');
-	define('API_BASE_URL', 'https://domain.com/');
+	define('APP_DOMAIN', 'https://demo.stripepad.com/');
+	define('APP_BASE_URL', 'https://demo.stripepad.com/');
+	define('API_BASE_URL', 'https://demo.stripepad.com/');
 	define('HOMEPAGE_URL', 'https://domain.com');
-	define('APP_CDN', 'https://domain.com/cdn/');
-	define('LANDING_URL', 'http://localhost/stripe-pad/');
+	define('APP_CDN', 'https://demo.stripepad.com/cdn/');
+	define('LANDING_URL', 'https://demo.stripepad.com/');
 
-
+	# MYSQL ONLY - Adjust your mysql database details here
 	define('APP_TABLE_PREFIX', '');
 	define('APP_DB_HOST', '');
 	define('APP_DB', '');
