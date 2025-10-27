@@ -35,6 +35,10 @@
  */
 class blogModel extends ModelBase
 {
+    public function __construct()
+    {
+        parent::__construct('blog');
+    }
 
     public function getBySlug($slug)
     {
