@@ -296,7 +296,7 @@ class StripePadController
             $user = $users->find($this->params['email']);
             //     $pass =  password_hash($this->params['password'], PASSWORD_DEFAULT);
 
-            $_SESSION['errors'][] = $pass;
+
 
             if (!empty($user) and password_verify($this->params['password'], $user['password'])) {
                 $this->createSession($user);
