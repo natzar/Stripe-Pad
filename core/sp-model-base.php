@@ -13,10 +13,15 @@ abstract class ModelBase
 	public function __construct($table = null)
 	{
 		$this->table = $table;
+
+		// Database connection, that IF should be removed to a singleton class
 		try {
-			$this->db = SPDO_sqlite::singleton();
+			if (APP_STORAGE == "mysql")
+				$this->db = SPDO_mysql::singleton();
+			else
+				$this->db = SPDO_sqlite::singleton();
 		} catch (StripePad\Exceptions\DatabaseException $e) {
-			//	die("Database connection error: " . $e->getMessage());
+			die("Database connection error: "  . "[APP STORAGE: " . APP_STORAGE . " " . $e->getMessage());
 		}
 	}
 
@@ -31,7 +36,7 @@ abstract class ModelBase
 		$c  = $stmt->fetch(PDO::FETCH_ASSOC);
 		$cid = $c['LAST_INSERT_ID()'];
 		return $cid;
-	}	
+	}
 	/**
 	 * Method setField
 	 *
