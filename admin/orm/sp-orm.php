@@ -33,10 +33,10 @@ class Orm extends ModelBase
 {
 	var $log;
 
-	public function __construct()
+	public function __construct($table = null)
 	{
-		parent::__construct();
-		$this->log = log::singleton();
+		parent::__construct($table);
+
 		include dirname(__FILE__) . "/field.php";
 	}
 
