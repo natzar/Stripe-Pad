@@ -7,7 +7,7 @@
     <h2 class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-700"><?= _('Acceso Clientes') ?></h2>
     <p class="text-center mt-3 text-sm/6 text-gray-500">
       <?= _('¿Todavía no tiene automatizada la atención al cliente de su negocio?') ?>
-      <a href="<?= APP_DOMAIN ?>signup" class="font-semibold text-sky-600 hover:text-sky-500"><?= _('Contratar ahora') ?></a>
+      <a href="<?= LANDING_URL ?>signup" class="font-semibold text-sky-600 hover:text-sky-500"><?= _('Contratar ahora') ?></a>
     </p>
   </div>
 
@@ -43,7 +43,7 @@
           </div>
 
           <div class="text-sm/6">
-            <a href="<?= APP_DOMAIN ?>forgotPassword" class="font-semibold text-sky-600 hover:text-sky-500"><?= _('Has olvidado tu password?') ?></a>
+            <a href="<?= LANDING_URL ?>forgotPassword" class="font-semibold text-sky-600 hover:text-sky-500"><?= _('Has olvidado tu password?') ?></a>
           </div>
         </div>
         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES) ?>">
@@ -80,7 +80,7 @@
             </svg>
             <span class="text-sm/6 font-semibold">GitHub</span>
           </a> -->
-          <!-- <a href="<?= APP_DOMAIN ?>auth/google" class="bg-red-500 text-white p-2 inline-block rounded">Login with Google</a> -->
+          <!-- <a href="<?= LANDING_URL ?>auth/google" class="bg-red-500 text-white p-2 inline-block rounded">Login with Google</a> -->
           <!-- <a href="/redirectToProvider/facebook" class="bg-blue-600 text-white p-2 inline-block rounded">Login with Facebook</a> -->
 
         </div>

@@ -49,9 +49,9 @@
                 <h2 class="text-2xl font-bold tracking-tight text-white  text-center mb-5">Demo Credentials</h2>
                 <dl class=" grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-3">
                     <div class="flex flex-col bg-white/5 p-8">
-                        <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="<?= APP_DOMAIN ?>" class="text-sky-500 px-3 py-1 hover:bg-gray-900 hover:text-sky-500 rounded-full" target="_blank">
+                        <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="<?= LANDING_URL ?>" class="text-sky-500 px-3 py-1 hover:bg-gray-900 hover:text-sky-500 rounded-full" target="_blank">
 
-                                <?= APP_DOMAIN ?>
+                                <?= LANDING_URL ?>
                             </a></dt>
                         <dd class="order-first  font-semibold tracking-tight text-gray-400 text-center items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 mx-auto">
@@ -64,9 +64,9 @@
                         </dd>
                     </div>
                     <div class="flex flex-col bg-white/5 p-8">
-                        <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="<?= APP_DOMAIN ?>login" class="text-sky-500 px-3 py-1 hover:bg-gray-900 hover:text-sky-500 rounded-full" target="_blank">
+                        <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="<?= LANDING_URL ?>login" class="text-sky-500 px-3 py-1 hover:bg-gray-900 hover:text-sky-500 rounded-full" target="_blank">
 
-                                <?= APP_DOMAIN ?>login
+                                <?= LANDING_URL ?>login
                             </a></dt>
                         <dd class="order-first  font-semibold tracking-tight text-gray-400">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 mx-auto">
@@ -80,9 +80,9 @@
                     </div>
 
                     <div class="flex flex-col bg-white/5 p-8">
-                        <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="<?= APP_DOMAIN ?>admin" class="text-sky-500 px-3 py-1 hover:bg-gray-900 hover:text-sky-500 rounded-full" target="_blank">
+                        <dt class="text-sm/6 font-semibold text-gray-300 text-xl"> <a href="<?= LANDING_URL ?>admin" class="text-sky-500 px-3 py-1 hover:bg-gray-900 hover:text-sky-500 rounded-full" target="_blank">
 
-                                <?= APP_DOMAIN ?>admin
+                                <?= LANDING_URL ?>admin
                             </a></dt>
                         <dd class="order-first  font-semibold tracking-tight text-gray-400">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12 mx-auto">

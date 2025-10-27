@@ -102,12 +102,12 @@
             <h3 class="text-sm font-semibold leading-6 text-white">Stripe Pad</h3>
             <ul role="list" class="mt-6 space-y-4">
               <li>
-                <a href="<?= APP_DOMAIN ?>" class="text-sm leading-6 text-gray-300 hover:text-white">Home</a>
+                <a href="<?= LANDING_URL ?>" class="text-sm leading-6 text-gray-300 hover:text-white">Home</a>
               </li>
 
 
               <li>
-                <a href="<?= APP_DOMAIN ?>documentation" class="text-sm leading-6 text-gray-300 hover:text-white">Documentation</a>
+                <a href="<?= LANDING_URL ?>documentation" class="text-sm leading-6 text-gray-300 hover:text-white">Documentation</a>
               </li>
 
               <li>
@@ -115,7 +115,7 @@
               </li>
 
               <!-- <li>
-                <a href="<?= APP_DOMAIN ?>examples" class="text-sm leading-6 text-gray-300 hover:text-white">Examples</a>
+                <a href="<?= LANDING_URL ?>examples" class="text-sm leading-6 text-gray-300 hover:text-white">Examples</a>
               </li>
               <li><a href="https://github.com/natzar/Stripe-Pad" class="text-sm leading-6 text-gray-300 hover:text-white">Download</a></li> -->
 
@@ -134,7 +134,7 @@
               <li><a href="throw-an-error" class="text-sm leading-6 text-gray-300 hover:text-white">Errors</a></li>
 
               <li>
-                <a href="<?= APP_DOMAIN ?>blog" class="text-sm leading-6 text-gray-300 hover:text-white">Blog</a>
+                <a href="<?= LANDING_URL ?>blog" class="text-sm leading-6 text-gray-300 hover:text-white">Blog</a>
               </li>
 
 
@@ -177,7 +177,7 @@
         <h3 class="text-sm font-semibold leading-6 text-white">Subscribe to our newsletter</h3>
         <p class="mt-2 text-sm leading-6 text-gray-400">The latest news, about your amazing SaaS sent to your inbox weekly.</p>
       </div>
-      <form class="mt-6 sm:flex sm:max-w-md lg:mt-0" action="<?= APP_DOMAIN ?>submit_newsletter_signup" method="POST">
+      <form class="mt-6 sm:flex sm:max-w-md lg:mt-0" action="<?= LANDING_URL ?>submit_newsletter_signup" method="POST">
         <label for="email-address" class="sr-only">Email address</label>
         <input type="email" name="email" id="email" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6" placeholder="Enter your email">
         <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
@@ -186,7 +186,7 @@
       </form>
     </div>
     <div class="mt-10 border-t border-white/10 pt-8 ">
-      <p class="text-xs leading-5 text-gray-400">&copy; <a href="<?= APP_BASE_URL ?>"><?= APP_DOMAIN ?></a> <?= $SEO_TITLE ?> &copy; <?= Date("Y") ?> Ayesa Digital SLU. All rights reserved</p>
+      <p class="text-xs leading-5 text-gray-400">&copy; <a href="<?= LANDING_URL ?>"><?= LANDING_URL ?></a> <?= $SEO_TITLE ?> &copy; <?= Date("Y") ?> Ayesa Digital SLU. All rights reserved</p>
       <p class="text-xs leading-5 text-gray-500">
         Powered by <a href="//stripepad.com">Stripe Pad v.0.0.1 </a> · Get Support: <a href="mailto:<?= ADMIN_EMAIL ?>"><?= ADMIN_EMAIL ?></a></p>
 
@@ -200,7 +200,7 @@
 <!-- PHP to JS -->
 <script>
   var isAuthenticated = 0;
-  var base_url = '<?= APP_BASE_URL ?>';
+  var base_url = '<?= LANDING_URL ?>';
 
   $ = $ || jQuery;
 

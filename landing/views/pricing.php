@@ -18,7 +18,7 @@
                     <span class="text-4xl font-semibold tracking-tight text-gray-800">39€</span>
                     <span class="text-sm/6 font-semibold text-gray-300">/month</span>
                 </p>
-                <a href="<?= APP_DOMAIN ?>signup" aria-describedby="tier-freelancer" class="mt-6 block rounded-md bg-blue-900 px-3 py-2 text-center text-sm/6 font-semibold text-gray-100 hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><?= _('Empezar ahora »') ?></a>
+                <a href="<?= LANDING_URL ?>signup" aria-describedby="tier-freelancer" class="mt-6 block rounded-md bg-blue-900 px-3 py-2 text-center text-sm/6 font-semibold text-gray-100 hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><?= _('Empezar ahora »') ?></a>
                 <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600 xl:mt-10">
                     <li class="flex gap-x-3"> <svg class="h-6 w-5 flex-none text-gray-800" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                             <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
@@ -52,7 +52,7 @@
                     <span class="text-4xl font-semibold tracking-tight text-gray-800">79€</span>
                     <span class="text-sm/6 font-semibold text-gray-300">/month</span>
                 </p>
-                <a href="<?= APP_DOMAIN ?>signup" aria-describedby="tier-startup" class="mt-6 block rounded-md bg-blue-900 px-3 py-2 text-center text-sm/6 font-semibold text-gray-100 shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-900"><?= _('Empezar ahora »') ?></a>
+                <a href="<?= LANDING_URL ?>signup" aria-describedby="tier-startup" class="mt-6 block rounded-md bg-blue-900 px-3 py-2 text-center text-sm/6 font-semibold text-gray-100 shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-900"><?= _('Empezar ahora »') ?></a>
                 <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600 xl:mt-10">
                     <li class="flex gap-x-3"> <svg class="h-6 w-5 flex-none text-gray-800" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                             <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
@@ -91,7 +91,7 @@
                 </div>
                 <p class="mt-4 text-sm/6 text-gray-700"><?= _('Plan a medida para empresas') ?></p>
                 <p class="mt-6 flex items-baseline gap-x-1"></p>
-                <a href="<?= APP_DOMAIN ?>contact" aria-describedby="tier-enterprise" class="mt-6 block rounded-md bg-blue-900 px-3 py-2 text-center text-sm/6 font-semibold text-gray-100 hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><?= _('Contacta con nosotros') ?></a>
+                <a href="<?= LANDING_URL ?>contact" aria-describedby="tier-enterprise" class="mt-6 block rounded-md bg-blue-900 px-3 py-2 text-center text-sm/6 font-semibold text-gray-100 hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><?= _('Contacta con nosotros') ?></a>
                 <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600 xl:mt-10">
                     <li class="flex gap-x-3"> <svg class="h-6 w-5 flex-none text-gray-800" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                             <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />

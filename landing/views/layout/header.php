@@ -32,7 +32,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
 
-  <base href="<?= APP_BASE_URL ?>">
+  <base href="<?= LANDING_URL ?>">
 
   <!-- MAIN CSS -->
   <link href="<?= APP_CDN ?>css/app.css" rel="stylesheet">

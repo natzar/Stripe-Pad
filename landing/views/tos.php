@@ -12,15 +12,15 @@
 
 
     <h2><?= APP_NAME ?> terms and conditions</h2>
-    <p>These terms and conditions outline the rules and regulations for the use of <?= APP_NAME ?>'s Website, located at <?= HOMEPAGE_URL ?>.</p>
+    <p>These terms and conditions outline the rules and regulations for the use of <?= APP_NAME ?>'s Website, located at <?= LANDING_URL ?>.</p>
 
-    <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use <?= HOMEPAGE_URL ?> if you do not agree to take all of the terms and conditions stated on this page.</p>
+    <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use <?= LANDING_URL ?> if you do not agree to take all of the terms and conditions stated on this page.</p>
 
     <h2>Cookies</h2>
-    <p>We employ the use of cookies. By accessing <?= HOMEPAGE_URL ?>, you agreed to use cookies in agreement with the <?= APP_NAME ?>'s Privacy Policy.</p>
+    <p>We employ the use of cookies. By accessing <?= LANDING_URL ?>, you agreed to use cookies in agreement with the <?= APP_NAME ?>'s Privacy Policy.</p>
 
     <h2>License</h2>
-    <p>Unless otherwise stated, <?= APP_NAME ?> and/or its licensors own the intellectual property rights for all material on <?= HOMEPAGE_URL ?>. All intellectual property rights are reserved. You may access this from <?= HOMEPAGE_URL ?> for your own personal use subjected to restrictions set in these terms and conditions.</p>
+    <p>Unless otherwise stated, <?= APP_NAME ?> and/or its licensors own the intellectual property rights for all material on <?= LANDING_URL ?>. All intellectual property rights are reserved. You may access this from <?= LANDING_URL ?> for your own personal use subjected to restrictions set in these terms and conditions.</p>
 
     <h2>User Comments</h2>
     <ol>

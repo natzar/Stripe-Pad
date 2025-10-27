@@ -61,7 +61,7 @@ class View
 		$isAuthenticated = $this->isAuthenticated;
 		/* Template meta data */
 		$page = $name;
-		$base_url = APP_DOMAIN;
+		$base_url = LANDING_URL;
 		$base_title =  APP_NAME;
 		$hookBeforeApp = '';
 		# Defaults (not empty)

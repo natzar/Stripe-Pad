@@ -11,7 +11,7 @@ Options -Indexes
 RewriteEngine On
 
 # Installation directory
-RewriteBase /
+#RewriteBase /
 
 # Rewrite non www to www (Uncomment)
 #RewriteCond %{HTTP_HOST} !^www\. [NC]

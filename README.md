@@ -21,7 +21,7 @@
 You can read the official documentation and installation instructions on the [Wiki](https://github.com/natzar/Stripe-Pad/wiki)
 
 ## Demo
-[Online demo](https://demo.stripepad.com)
+[Online demo: https://demo.stripepad.com](https://demo.stripepad.com)
 
 The 3 main parts of every SaaS: A public page, a private area where only registered users and customers can login and a Superadmin private part to manage and maintain the SaaS.
 
@@ -29,9 +29,12 @@ The 3 main parts of every SaaS: A public page, a private area where only registe
 ![Stripe Pad Homepage](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/demo/screenshot-demo-homepage.png)
 
 #### Private
+Example of the restricted part to members only (your unique app).
 ![Example App: for members only](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/demo/screenshot-private.png) 
 
 #### Superadmin's dashboard
+Available if using MySQL only.
+
 ![Stripe Pad Dashboard](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/demo/screenshot-dashboard.png)
 
 

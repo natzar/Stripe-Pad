@@ -31,6 +31,7 @@
  */
 
 # BASIC DETAILS
+define('DEBUG_MODE', true);
 define('APP_NAME', 'Stripe Pad');
 define('APP_SLUG', 'stripepad'); // no spaces, lowercase, cannot contain any of the following '=,;.[ \t\r\n\013\014'
 define('APP_LOGO', '');
@@ -38,43 +39,62 @@ define('SEO_TITLE', 'Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_DESCRIPTION', 'Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_KEYWORDS', 'php stripe boilerplate, php micro saas, stripe pad, stripe payment, php stripe payment, stripe integration, php microservice, php saas boilerplate');
 
-define('APP_SECRET_KEY', '[Generate secret key, used for encryption functions]');
-
-# ENVIRONMENT
+# STORAGE
 define("APP_STORAGE", "sqlite"); // Options: sqlite / mysql
+
+# ENCODING & TIMEZONE
 define("INTERNAL_ENCODING", "UTF-8");
 define("TIMEZONE", "Europe/Madrid"); // Check https://www.php.net/manual/en/timezones.php
+
+
+# LANGUAGE
+// Define the default language and supported languages
+// Add any other languages you want to support, e.g., ['de', 'es', 'fr']
+define('LANGUAGES', ['en']);
+
+$locale = get_locale();
+define("LOCALE_LANG", $locale);
+define("LOCALE_TIME", $locale);
+
+# SECURITY
+define('APP_SECRET_KEY', '[Generate secret key, used for encryption functions]');
+define('BOT_BLOCKER', false); # Enable bot blocker if you have too many requests
+
+
+define('APP_COOKIE_DOMAIN', ''); // Set to your domain to share cookies across subdomains, e.g., '.yourdomain.com'. Leave empty for default behavior.
+
+# PATHS
+define('ROOT_PATH', dirname(__FILE__) . "/");
+define('CORE_PATH', dirname(__FILE__) . "/core/");
+define('APP_PATH', dirname(__FILE__) . "/app/");
+define('LANDING_PATH', dirname(__FILE__) . "/landing/");
+define('ADMIN_PATH', dirname(__FILE__) . "/admin/");
+define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
 # Same sp-config.php file for localhost and production
 # Detect if we are running on localhost or on a server
 if (isLocalhost()) { # Localhost
 
-	define('DEBUG_MODE', true);
-	define('APP_DOMAIN', 'http://localhost/stripe-pad/app/');
-
-	define('APP_BASE_URL', 'http://localhost/stripe-pad/app');
-	define('API_BASE_URL', 'http://localhost/stripe-pad/api/');
-	define('HOMEPAGE_URL', 'http://localhost/stripe-pad/');
-
 	define('LANDING_URL', 'http://localhost/stripe-pad/');
-	define('ADMIN_URL', 'http://localhost/stripe-pad/admin/');
 	define('APP_URL', 'http://localhost/stripe-pad/app/');
+	define('ADMIN_URL', 'http://localhost/stripe-pad/admin/');
+	define('API_URL', 'http://localhost/stripe-pad/api/');
+	define('APP_CDN', LANDING_URL . 'cdn/');
+
 	# MYSQL ONLY - Adjust your mysql database details here
 	define('APP_TABLE_PREFIX', '');
 	define('APP_DB_HOST', '');
 	define('APP_DB', '');
 	define('APP_DB_USER', '');
 	define('APP_DB_PASSWORD', '');
-	define('APP_CDN', LANDING_URL . 'cdn/');
 } else {    # Server / Production
 
-	define('DEBUG_MODE', false);
-	define('APP_DOMAIN', 'https://demo.stripepad.com/');
-	define('APP_BASE_URL', 'https://demo.stripepad.com/');
-	define('API_BASE_URL', 'https://demo.stripepad.com/');
-	define('HOMEPAGE_URL', 'https://domain.com');
-	define('APP_CDN', 'https://demo.stripepad.com/cdn/');
+
 	define('LANDING_URL', 'https://demo.stripepad.com/');
+	define('APP_URL', 'https://demo.stripepad.com/');
+	define('ADMIN_URL', 'https://demo.stripepad.com/');
+	define('API_URL', 'https://domain.com');
+	define('APP_CDN', 'https://demo.stripepad.com/cdn/');
 
 	# MYSQL ONLY - Adjust your mysql database details here
 	define('APP_TABLE_PREFIX', '');
@@ -84,7 +104,7 @@ if (isLocalhost()) { # Localhost
 	define('APP_DB_PASSWORD', '');
 }
 
-# EMAIL
+# EMAIL SMTP
 define('ADMIN_EMAIL', '');
 define('SMTP_SERVER', '');                // Specify smtp server
 define('SMTP_PORT', 587);
@@ -92,10 +112,6 @@ define('SMTP_GLOBAL_EMAIL_FROM', ''); // Set Email from address
 define('SMTP_USER_EMAIL', ''); // Set user name / email for SMTP
 define('SMTP_PASSWORD', ''); // Set password for SMTP user
 
-# EXTRAS - MODULES
-define('BOT_BLOCKER', false); # Enable bot blocker if you have too many requests
-define('OPENAI_CHATGPT_APIKEY', ''); // platform.openai.com
-define('APP_COOKIE_DOMAIN', ''); // Set to your domain to share cookies across subdomains, e.g., '.yourdomain.com'. Leave empty for default behavior.
 # Stripe 
 define('APP_STRIPE_PUBKEY', '');
 define('APP_STRIPE_SECRETKEY', '');
@@ -116,38 +132,11 @@ define('GOOGLE_CLIENT_ID', '');
 define('GOOGLE_CLIENT_SECRET', '');
 define('GOOGLE_REDIRECT_URI', '');
 
-# LANGUAGE
-// Define the default language and supported languages
-define('LANGUAGES', ['en']); // Add any other languages you want to support, e.g., ['de', 'es', 'fr']
+# OPENAI
+define('OPENAI_CHATGPT_APIKEY', ''); // platform.openai.com
 
-if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-	// If the user has set a language via ?lang=, use that; otherwise, use the browser's language preference.
-	// If neither is set, default to English ('en').
-	// Get language from ?lang= OR browser (default: 'en')
 
-	$accept = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'en';
-	$lang_from_browser = substr($accept, 0, 2);
-	$user_lang = strtolower($_GET['lang'] ?? $lang_from_browser);
-} else {
-	$user_lang = 'en'; // Default to English if no language is set
-}
 
-// Use only supported languages, fallback to English
-$lang = in_array($user_lang, LANGUAGES) ? $user_lang : 'en';
-// Convert to locale format (e.g., "es_ES.utf8", "en_EN.utf8")
-$locale = strtoupper($lang) . '_' . strtoupper($lang) . '.utf8';
-
-define("LOCALE_LANG", $locale);
-define("LOCALE_TIME", $locale);
-
-# PATHS
-define('ROOT_PATH', dirname(__FILE__) . "/");
-define('CORE_PATH', dirname(__FILE__) . "/core/");
-define('APP_PATH', dirname(__FILE__) . "/app/");
-define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
-
-define('LANDING_PATH', dirname(__FILE__) . "/landing/");
-define('ADMIN_PATH', dirname(__FILE__) . "/admin/");
 
 
 
@@ -173,5 +162,32 @@ function isLocalhost()
 	return in_array($serverAddr, $localhostIPs) || in_array($remoteAddr, $localhostIPs);
 }
 
+/**
+ * Method get_locale (Get Current Language from the environment)
+ *
+ * @return void
+ */
+function get_locale()
+{
+	if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+		// If the user has set a language via ?lang=, use that; otherwise, use the browser's language preference.
+		// If neither is set, default to English ('en').
+		// Get language from ?lang= OR browser (default: 'en')
+
+		$accept = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ??  LANGUAGES[0];
+		$lang_from_browser = substr($accept, 0, 2);
+		$lang_from_query = isset($_GET['lang']) ? htmlspecialchars($_GET['lang'], ENT_QUOTES, 'UTF-8') : null;
+		$user_lang = strtolower($lang_from_query ?? $lang_from_browser);
+	} else {
+		$user_lang = LANGUAGES[0]; // Default to English if no language is set
+	}
+
+	// Use only supported languages, fallback to English
+	$lang = in_array($user_lang, LANGUAGES) ? $user_lang :  LANGUAGES[0];
+	// Convert to locale format (e.g., "es_ES.utf8", "en_EN.utf8")
+	$locale = strtoupper($lang) . '_' . strtoupper($lang) . '.utf8';
+
+	return $locale;
+}
 # Stripe Pad Version
 include_once dirname(__FILE__) . "/core/sp-version.php";
