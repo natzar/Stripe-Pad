@@ -38,8 +38,6 @@ Available if using MySQL only.
 ![Stripe Pad Dashboard](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/demo/screenshot-dashboard.png)
 
 
-
-
 ## Contributing
 
 You can read the contribution guide [here](https://github.com/natzar/Stripe-Pad/blob/main/CONTRIBUTING.md). Feel free to log an issue on our [GitHub issues page](https://github.com/natzar/Stripe-Pad/issues).
@@ -52,9 +50,6 @@ In order to ensure that the PHP community is welcoming to all, please review and
 ## Security Vulnerabilities
 Please review [our security policy](https://github.com/natzar/stripe-pad/security/policy) on how to report security vulnerabilities.
 
-## Roadmap
-
-[Find the roadmap here](https://github.com/natzar/Stripe-Pad/wiki)
 
 ## License
 Stripe Pad is free software, and is released under the terms of the GPL (GNU General Public License) Version 3.0 [Copy of the license](LICENSE).
