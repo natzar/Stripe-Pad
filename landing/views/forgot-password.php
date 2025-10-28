@@ -35,7 +35,7 @@
 
       <p class="mt-10 text-center text-sm text-gray-500">
         <?= _('Not a member?') ?>
-        <a href="<?= APP_DOMAIN ?>signup" class="font-semibold leading-6 text-sky-600 hover:text-sky-500"><?= _('Signup') ?></a>
+        <a href="<?= LANDING_URL ?>signup" class="font-semibold leading-6 text-sky-600 hover:text-sky-500"><?= _('Signup') ?></a>
       </p>
     </div>
   </div>
