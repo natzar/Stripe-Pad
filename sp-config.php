@@ -34,7 +34,7 @@
 define('DEBUG_MODE', true);
 define('APP_NAME', 'Stripe Pad');
 define('APP_SLUG', 'stripepad'); // no spaces, lowercase, cannot contain any of the following '=,;.[ \t\r\n\013\014'
-define('APP_LOGO', '');
+define('APP_LOGO', 'https://demo.stripepad.com/cdn/old-logo.png');
 define('SEO_TITLE', 'Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_DESCRIPTION', 'Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_KEYWORDS', 'php stripe boilerplate, php micro saas, stripe pad, stripe payment, php stripe payment, stripe integration, php microservice, php saas boilerplate');

@@ -234,7 +234,7 @@ class StripePadController
         if (!isset($this->params['email']) or empty($this->params['email'])) die();
         $email = $this->params['email'];
         # Demo
-        if (strpos($email, "stripepad.com") > -1) header("location: " . APP_DOMAIN . "login");
+        if (strpos($email, "stripepad.com") > -1) header("location: " . APP_URL . "login");
 
         $users = new usersModel();
         # Make it friendly, if no db connection die with error
@@ -242,7 +242,7 @@ class StripePadController
 
         $users->sendResetPassword($email);
         $_SESSION['alerts'][] = _("New password sent to your inbox");
-        header("location: " . APP_DOMAIN . "login");
+        header("location: " . APP_URL . "login");
     }
 
     /**
@@ -276,7 +276,7 @@ class StripePadController
         // 3) CSRF
         if (empty($this->params['csrf_token']) || !hash_equals($_SESSION['csrf_token'] ?? '', $this->params['csrf_token'])) {
             $_SESSION['errors'][] = "Solicitud inválida. Vuelve a intentarlo.";
-            header("location: " . APP_DOMAIN . "login");
+            header("location: " . APP_URL . "login");
             return;
         }
 
@@ -287,7 +287,7 @@ class StripePadController
 
         // if (time() < $_SESSION[$key]['until']) {
         //     $_SESSION['errors'][] = "Demasiados intentos. Espera un poco y vuelve a intentarlo.";
-        //     header("location: " . APP_DOMAIN . "login");
+        //     header("location: " . APP_URL . "login");
         //     return;
         // }
 
@@ -354,19 +354,19 @@ class StripePadController
         // verify valid email
         if (empty($this->params['email']) or !$emailValidator->isValid($this->params['email'])) {
             $_SESSION['errors'][] = _('Email not valid');
-            header("location: " . APP_DOMAIN . "/signup");
+            header("location: " . LANDING_URL . "/signup");
             return;
         }
 
         if (isset($this->params['passwordConfirm']) and $this->params['password'] != $this->params['passwordConfirm']) {
             $_SESSION['errors'][] = "Passwords no coinciden";
-            header("location: " . APP_DOMAIN . "/signup");
+            header("location: " . LANDING_URL . "/signup");
             return;
         }
 
         if (isset($this->params['privacy']) and empty($this->params['privacy'])) {
             $_SESSION['errors'][] = "You have to accept privacy policy";
-            header("location: " . APP_DOMAIN . "/signup");
+            header("location: " . LANDING_URL . "/signup");
             return;
         }
 
@@ -374,10 +374,10 @@ class StripePadController
         if (empty($user)) {
             $user = $users->create($this->params['email']);
             $_SESSION['errors'][] = "The password of your account is in your email inbox";
-            header("location: " . APP_DOMAIN . "/login");
+            header("location: " . LANDING_URL . "/login");
         } else {
             $_SESSION['errors'][] = "The user already exists, please login";
-            header("location: " . APP_DOMAIN . "/login");
+            header("location: " . LANDING_URL . "/login");
         }
     }
     private function createSession($user, $saveLogin = true)
@@ -411,7 +411,7 @@ class StripePadController
     public function actionLogout()
     {
         session_destroy();
-        header("location: " . APP_DOMAIN);
+        header("location: " . LANDING_URL);
         exit(0);
     }
 
@@ -428,7 +428,7 @@ class StripePadController
         if (empty($_SESSION['user']['stripe_customer_id'])) {
 
             $_SESSION['errors'][] = "NOT_ENABLED, NO PURCHASE YET;";
-            header("location: " . APP_DOMAIN . "/dashboard");
+            header("location: " . APP_URL . "/dashboard");
         } else {
             \Stripe\Stripe::setApiKey(APP_STRIPE_SECRETKEY);
             //$stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
@@ -443,7 +443,7 @@ class StripePadController
                 header("Location: " . $session->url);
             } catch (Exception $e) {
                 $_SESSION['errors'][] = $e->getMessage();
-                header("location: " . APP_DOMAIN . "/dashboard");
+                header("location: " . APP_URL . "/dashboard");
             }
         }
     }
@@ -470,8 +470,8 @@ class StripePadController
 
         #TODO: multiple products
         $product = $product[0];
-        $surl = APP_DOMAIN . 'stripe_success';
-        $curl = APP_DOMAIN . 'stripe_cancelled';
+        $surl = APP_URL . 'stripe_success';
+        $curl = APP_URL . 'stripe_cancelled';
 
 
         if (isset($product['stripe_price_id'])) {
