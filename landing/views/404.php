@@ -14,7 +14,7 @@
         </p>
 
         <div class="mt-6">
-          <a href="<?= APP_BASE_URL ?>" class="text-base font-medium text-red-100 hover:text-red-800">
+          <a href="<?= APP_URL ?>" class="text-base font-medium text-red-100 hover:text-red-800">
             Go back home
             <span aria-hidden="true"> &rarr;</span>
           </a>

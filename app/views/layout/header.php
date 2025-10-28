@@ -33,7 +33,7 @@
 
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
-  <base href="<?= APP_BASE_URL ?>">
+  <base href="<?= APP_URL ?>">
   <!-- MAIN CSS -->
   <link href="<?= APP_CDN ?>css/app.css" rel="stylesheet">
   <link href="<?= APP_CDN ?>css/custom.css" rel="stylesheet">

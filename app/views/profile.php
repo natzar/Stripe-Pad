@@ -44,7 +44,7 @@
               <div class="col-span-1">
 
                 <div class="">
-                  <form action="<?= APP_DOMAIN ?>actionUpdateUser" method="POST">
+                  <form action="<?= APP_URL ?>actionUpdateUser" method="POST">
                     <!-- <div class="relative">
                       <div class="absolute inset-0 flex items-center" aria-hidden="true">
                         <div class="w-full border-t border-gray-300"></div>
@@ -114,7 +114,7 @@
 
 
               <div class="bg-white p-6 rounded-lg shadow-md mb-5">
-                <form action="<?= APP_DOMAIN ?>actionUpdateuser" method="POST">
+                <form action="<?= APP_URL ?>actionUpdateuser" method="POST">
 
                   <div class="relative">
                     <div class="absolute inset-0 flex items-center" aria-hidden="true">
