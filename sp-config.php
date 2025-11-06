@@ -91,9 +91,9 @@ if (isLocalhost()) { # Localhost
 
 
 	define('LANDING_URL', 'https://demo.stripepad.com/');
-	define('APP_URL', 'https://demo.stripepad.com/');
-	define('ADMIN_URL', 'https://demo.stripepad.com/');
-	define('API_URL', 'https://domain.com');
+	define('APP_URL', 'https://demo.stripepad.com/app/');
+	define('ADMIN_URL', 'https://demo.stripepad.com/admin/');
+	define('API_URL', 'https://demo.stripepad.com/api/');
 	define('APP_CDN', 'https://demo.stripepad.com/cdn/');
 
 	# MYSQL ONLY - Adjust your mysql database details here

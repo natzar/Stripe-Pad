@@ -325,7 +325,7 @@ class StripePadController
                     header("location: " . ADMIN_URL . "login");
                     return;
                 } else {
-                    header("location: " . APP_URL . "login");
+                    header("location: " . LANDING_URL . "login");
                 }
             }
         }
