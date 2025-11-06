@@ -192,6 +192,10 @@ class StripePadController
     {
         $data = array();
 
+        if ($this->isAuthenticated) {
+            header("location: " . APP_URL);
+            exit();
+        }
 
         # Login function
         if (!empty(GOOGLE_CLIENT_ID)) {
