@@ -5,7 +5,7 @@ Options -Indexes
 RewriteEngine On
 
 # Installation directory
-RewriteBase /stripe-pad/app/
+#RewriteBase /stripe-pad/app/
 
 # Rewrite non www to www (Uncomment)
 #RewriteCond %{HTTP_HOST} !^www\. [NC]
