@@ -4,10 +4,10 @@
 <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
     <img class="mx-auto h-10 w-auto" src="<?= APP_LOGO ?>" alt="<?= APP_NAME ?>">
-    <h2 class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-700"><?= _('Acceso Clientes') ?></h2>
+    <h2 class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-700"><?= _('Welcome') ?></h2>
     <p class="text-center mt-3 text-sm/6 text-gray-500">
-      <?= _('¿Todavía no tiene automatizada la atención al cliente de su negocio?') ?>
-      <a href="<?= LANDING_URL ?>signup" class="font-semibold text-sky-600 hover:text-sky-500"><?= _('Contratar ahora') ?></a>
+      <?= _('¿Lorem ipsum dolor sit amet?') ?>
+      <a href="<?= LANDING_URL ?>signup" class="font-semibold text-sky-600 hover:text-sky-500"><?= _('Signup now') ?></a>
     </p>
   </div>
 
@@ -39,11 +39,11 @@
                 </svg>
               </div>
             </div>
-            <label for="remember-me" class="block text-sm/6 text-gray-900"><?= _('Guarda la sesión') ?></label>
+            <label for="remember-me" class="block text-sm/6 text-gray-900"><?= _('Keep session') ?></label>
           </div>
 
           <div class="text-sm/6">
-            <a href="<?= LANDING_URL ?>forgotPassword" class="font-semibold text-sky-600 hover:text-sky-500"><?= _('Has olvidado tu password?') ?></a>
+            <a href="<?= LANDING_URL ?>forgotPassword" class="font-semibold text-sky-600 hover:text-sky-500"><?= _('Recover password') ?></a>
           </div>
         </div>
         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES) ?>">

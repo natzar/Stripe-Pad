@@ -103,7 +103,7 @@
           <input type="radio" onclick="document.getElementById('buy_now_button').href=this.value;" name="plan" class="inline" value="https://buy.stripe.com/5kQ00igt0f8n3bvfPCak001" selected checked="checked"> Plan Base 39€/mes
           <input type="radio" name="plan" onclick="document.getElementById('buy_now_button').href=this.value;" value="https://buy.stripe.com/fZu3cu5Om5xN13n46Uak002"> Plan Startup 79€/mes
         </div>
-        <a id="buy_now_button" href="https://buy.stripe.com/5kQ00igt0f8n3bvfPCak001" target="_blank" class="bg-blue-500 w-full px-3 hover:bg-white hover:border text-center hover:border-blue-500 hover:border-2 hover:text-blue-500 text-white py-3 font-semibold rounded">Empezar ahora &raquo;</a>
+        <a id="buy_now_button" href="https://buy.stripe.com/5kQ00igt0f8n3bvfPCak001" target="_blank" class="bg-blue-500 w-full px-3 hover:bg-white hover:border text-center hover:border-blue-500 hover:border-2 hover:text-blue-500 text-white py-3 font-semibold rounded">Start Now &raquo;</a>
         <p class="text-xs text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a nunc ut elit laoreet porta.</p>
       </form>
 
