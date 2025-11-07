@@ -31,7 +31,7 @@
                         </a>
                     </div>
                     <h1 class="mt-10 text-pretty text-5xl font-semibold tracking-tight text-white sm:text-7xl">Your Awesomic SaaS based on Free Software & Stripe!</h1>
-                    <p class="mt-8 text-pretty text-lg font-medium text-gray-400 sm:text-xl/8">Everything here is just a demo and fake content to demonstrate stripepad.com features.</p>
+                    <p class="mt-8 text-pretty text-lg font-medium text-gray-400 sm:text-xl/8">Everything here is just a demo and fake content to demonstrate Stripe Pad features. You are in the landing area until logged in</p>
                     <div class="mt-10 flex items-center gap-x-6">
                         <a href="https://github.com/natzar/Stripe-Pad" class="rounded-md bg-sky-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400">Download Stripe Pad 1.0.0</a>
                         <a href="https://github.com/natzar/Stripe-Pad/wiki" class="text-sm/6 font-semibold text-white">Learn more about Stripe Pad <span aria-hidden="true">→</span></a>
