@@ -236,7 +236,7 @@ Listado de Facturas
   </div>
 
   <div id="tab-billing" class="tab-content hidden">
-    <h2 class="text-xl font-semibold mb-4">Facturas y Membresías</h2>
+    <h2 class="text-xl font-semibold mb-4"><?= _('Memberships & Invoices') ?></h2>
     <p>Gestionas Membresías, consulta y descarga facturas.</p>
 
     <section aria-labelledby="recent-hires-title" class="mb-10">

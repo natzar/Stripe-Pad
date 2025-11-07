@@ -107,7 +107,7 @@
 
 
               <li>
-                <a href="<?= LANDING_URL ?>documentation" class="text-sm leading-6 text-gray-300 hover:text-white">Documentation</a>
+                <a href="https://www.github.com/natzar/Stripe-Pad/wiki" class="text-sm leading-6 text-gray-300 hover:text-white">Documentation</a>
               </li>
 
               <li>
