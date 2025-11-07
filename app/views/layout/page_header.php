@@ -56,7 +56,7 @@
 
 
     <div class="flex items-center space-x-4">
-        <img src="<?= APP_CDN ?>emilio-agente-atencion-cliente-email-ai.png" alt="Foto" class="w-12 h-12 rounded-full" />
+        <img src="<?= APP_LOGO ?>" alt="Foto" class="w-12 h-12 rounded-full" />
         <p class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-950 sm:text-4xl"><?= $SEO_TITLE ?></p>
 
     </div>

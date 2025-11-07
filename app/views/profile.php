@@ -222,10 +222,10 @@ Listado de Facturas
           </tr>
         </thead>
         <tbody>
-          <? foreach ($_SESSION['user']['agents'] as $agent): ?>
+          <? foreach ($_SESSION['user']['accounts'] as $account): ?>
             <tr>
-              <td> <?= $agent['agent_organization'] ?></td>
-              <td><? if ($_SESSION['user']['usersId'] == $agent['usersId']) echo 'Admin';
+              <td> <?= $account['account_name'] ?></td>
+              <td><? if ($_SESSION['user']['usersId'] == $account['usersId']) echo 'Admin';
                   else echo 'Regular Access'; ?></td>
             </tr>
           <? endforeach; ?>
@@ -247,9 +247,9 @@ Listado de Facturas
         <div class="p-6">
           <h2 class="text-base font-medium text-gray-900"><?= _('Invoices') ?></h2>
           <a href="/account" target="_blank" class="border-transparent rounded-md bg-sky-600 text-gray-100 hover:bg-sky-800 inline-flex items-center px-3 py-2 text-sm font-bold">
-            Ver todas las Facturas
+            Open Stripe Billing Portal
           </a>
-          <p class="text-xs text-gray-500">Se abrirá Stripe en una nueva ventana</p>
+          <p class="text-xs text-gray-500"><?= _('A new window will be opened'); ?></p>
 
 
           <ul role="list" class="hidden divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl">
