@@ -36,10 +36,11 @@
 class productsModel extends ModelBase
 {
 	var $log;
+	var $table = 'products';
 
 	public function __construct()
 	{
-		parent::__construct();
+		parent::__construct($this->table);
 		$this->log = log::singleton();
 	}
 	/**

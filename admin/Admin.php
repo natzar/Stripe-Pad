@@ -50,9 +50,7 @@ class Admin extends StripePadController
 	public function __construct()
 	{
 
-		if (APP_STORAGE != "mysql") {
-			die("Stripe Pad<br>Admin area is only available for MYSQL storage, please use DB Browser for SQLite to manage your local database or switch to MYSQL storage in sp-config.php<br>I love raw times new roman error messages.");
-		}
+
 		parent::__construct(); // !important
 		$this->view->set_views_path(ADMIN_PATH . "views/");
 		//$this->view->hide_menu();
@@ -196,14 +194,16 @@ class Admin extends StripePadController
 			throw new StripePad\Exceptions\PermissionsException('Not superadmin');
 		}
 		print_r($this->params);
+
 		$table = $this->params['m'];
 		$items = null;
 		$class = $table . 'Model';
 		echo $class;
+
 		if (class_exists($class)) {
 			$items = new $class();
 		} else {
-			//	$items = new Orm($table);
+			$items = new Orm($table);
 		}
 
 
@@ -225,7 +225,7 @@ class Admin extends StripePadController
 			'title' => "BackOffice | $table",
 			'items_head' => $items_head,
 			'items' => $itemsFinal,
-			'HOOK_JS' => $items->table_js($table),
+			'HOOK_JS' => '', /// $items->table_js($table),
 			'table' => $table,
 			'table_label' => $items->getTableAttribute($table, 'table_label'),
 			'notification' => isset($this->params['i']) and $this->params['i'] != -1 ? 'Se ha guardado correctamente' : '',

@@ -31,7 +31,7 @@
  */
 class Orm extends ModelBase
 {
-	var $log;
+
 
 	public function __construct($table = null)
 	{
@@ -47,23 +47,6 @@ class Orm extends ModelBase
 		return $data[$attribute];
 	}
 
-	public function getItemsHead()
-	{
-		$data = $this->getOrmDescription($this->table);
-		$fr = $data['fields_labels'];
-		$fields_to_show = $data['fields_to_show'];
-		$fields = $data['fields'];
-		$fields_labels = $data['fields_labels'];
-		if (isset($fields_to_show) and is_array($fields_to_show) and count($fields_to_show) > 0) {
-			$fr = array();
-			for ($i = 0; $i < count($fields); $i++):
-				if (in_array($fields[$i], $fields_to_show))
-					$fr[] = $fields_labels[$i];
-			endfor;
-		}
-
-		return $fr;
-	}
 	public function getAllByField($table, $field, $rid_in_field, $custom_order = null)
 	{
 		$model = $table . 'Model';
@@ -201,7 +184,7 @@ class Orm extends ModelBase
 
 		return $consulta->fetch();
 	}
-	public function table_js($table)
+	public function ADMIN_URL($table)
 	{
 
 		$output = "";
@@ -263,7 +246,7 @@ class Orm extends ModelBase
 		$consulta = $this->db->prepare("INSERT INTO " . $table . " (" . implode(",", $fields) . ") VALUES ($info)");
 		$consulta->execute();
 		$id =  $this->getLastId($table);
-		$this->log->push($table . "-add");
+		log::system($table . "-add");
 
 		return $id;
 	}
@@ -367,7 +350,7 @@ class Orm extends ModelBase
 		}
 
 
-		$this->log->push($table . "-edit");
+		log::system($table . "-edit");
 	}
 
 	public function form_js($table)

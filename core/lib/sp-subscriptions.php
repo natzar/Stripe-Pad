@@ -32,12 +32,11 @@
 
 class subscriptionsModel extends ModelBase
 {
-  var $log;
+  var $table = 'subscriptions';
 
   public function __construct()
   {
-    parent::__construct();
-    $this->log = log::singleton();
+    parent::__construct($this->table);
   }
 
   /**

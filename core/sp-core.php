@@ -622,8 +622,8 @@ class StripePadController
     public function error404()
     {
         //$this->path = APP_PATH . "views/";
-        $log = log::singleton();
-        $log::traffic(getCurrentUrl() . ' 404');
+
+        log::traffic(getCurrentUrl() . ' 404');
         header('HTTP/1.0 404 Not Found');
         $SEO_TITLE = "404 Not Found";
         $SEO_DESCRIPTION = "The page you are looking for does not exist.";
@@ -671,7 +671,8 @@ class StripePadController
     }
     public function bot_detected()
     {
-        file_put_contents('bots.log', $_SERVER['REMOTE_ADDR'] . " - Detected WebDriver\n", FILE_APPEND);
+        log::system("Bot detected: " . $_SERVER['REMOTE_ADDR']);
+
         $_SESSION['bot'] = true;
     }
 }

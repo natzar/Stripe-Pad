@@ -86,6 +86,7 @@ class View
 		include $this->path . "layout/header.php";
 		if (!$this->hide_menu) include $this->path . "layout/menu.php";
 		if (file_exists($template) == false) {
+			log::system("View Error 404: " . $template);
 			include $this->path . '404.php';
 		} else {
 			include($template);

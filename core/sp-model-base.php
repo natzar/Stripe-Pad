@@ -68,72 +68,183 @@ abstract class ModelBase
 	 * @param  mixed $table
 	 * @return void
 	 */
-	public function getOrmDescription()
+	public function getOrmDescription($table = null)
 	{
-		$table = $this->table;
-		if (!isset($table) or $table == '')
-			die("no table selected");
+		if ($table == null)
+			$table = $this->table ?? null;
 
-		$description = array(
-			"table_label" => $table,
-			"fields" => array(),
-			"fields_types" => array(),
-			"fields_labels" => array(),
-			"fields_hints" => array(),
-			"fields_to_show" => array(),
-		);
-
-		$recordset = $this->db->prepare("DESCRIBE $table");
-		$recordset->execute();
-
-		$cols = $recordset->fetchAll(PDO::FETCH_ASSOC);
-
-		foreach ($cols as $field) {
-
-			$name = $field['Field'];
-			$feature = explode("(", $field['Type']);
-			$type  = strtolower($feature[0]);
-
-			if ($name != $table . "Id" and $name != "created" and $name != "updated")
-				$description['fields'][] = $name;
-
-
-			if ($type == 'int') $type = 'number';
-			if ($type == 'double') $type = 'number';
-			if ($type == 'time') $type = 'hora';
-			if ($type == 'string' or $type == 'varchar') $type = 'literal';
-			if ($type == 'blob' or $type == "mediumtext") $type = 'text';
-			if (strstr($name, "Id")) $type = 'combo';
-			if (strstr($name, "_pass")) $type = 'encrypted';
-			if ($type == 'date') $type = 'fecha';
-			if ($type == 'tinyint') $type = 'truefalse';
-			if ($type == 'datetime') $type = 'fecha';
-			if ($name == 'password') $type = 'password';
-			if ($name == 'agentsId') $type = 'agents';
-			if ($name == 'actions') $type = 'actions';
-			#if ($name == 'metadata_conditions') $type = 'scenario_actions';
-			if (strstr($name, "_file")) $type = 'file_file';
-			if (strstr($name, "image")) $type = 'file_img';
-			if (strstr($name, "content") or $type == 'text') $type = "text"; // remove WYSIWYG editor (tinymce)
-
-			if (in_array($name, array('no_reply', 'send_resumen', 'resend', 'add_cc', 'send_sms'))) {
-				$type = 'scenario_option';
-			}
-			if ($name != $table . "Id" and $name != "created") $description['fields_types'][] =  $type;
+		if (empty($table)) {
+			throw new RuntimeException("No table selected");
 		}
 
+		$description = [
+			"table_label"     => $table,
+			"fields"          => [],
+			"fields_types"    => [],
+			"fields_labels"   => [],
+			"fields_hints"    => [],
+			"fields_to_show"  => [],
+		];
 
-		// Default labels
+		$pdo    = $this->db;              // PDO
+		$driver = $pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+
+		// --- 1) Obtener columnas según driver ---
+		$cols = [];
+
+		if ($driver === 'mysql') {
+			// DESCRIBE devuelve Field, Type, Null, Key, Default, Extra
+			$stmt = $pdo->prepare("DESCRIBE `$table`");
+			$stmt->execute();
+			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			foreach ($rows as $row) {
+				$cols[] = [
+					'name' => $row['Field'],
+					'type' => strtolower(preg_replace('/\(.*/', '', $row['Type'])),
+					'pk'   => ($row['Key'] === 'PRI') ? 1 : 0,
+				];
+			}
+		} elseif ($driver === 'sqlite') {
+			// PRAGMA table_info() devuelve: cid, name, type, notnull, dflt_value, pk
+			// OJO: no admite parámetros, así que escapamos el nombre mínimamente
+			$safeTable = preg_replace('/[^a-zA-Z0-9_]/', '', $table);
+			$stmt = $pdo->query("PRAGMA table_info('$safeTable')");
+			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			foreach ($rows as $row) {
+				$cols[] = [
+					'name' => $row['name'],
+					'type' => strtolower(preg_replace('/\(.*/', '', $row['type'] ?? '')),
+					'pk'   => (int)$row['pk'],
+				];
+			}
+		} else {
+			throw new RuntimeException("Unsupported driver: $driver");
+		}
+
+		// --- 2) Mapear tipos a tus tipos de UI ---
+		foreach ($cols as $field) {
+			$name = $field['name'];
+			$rawType = $field['type'];
+			$isPk = !empty($field['pk']);
+
+			// Saltar PK y campos técnicos
+			// Soporta tanto "tableId" como "id" si es PK
+			if (
+				$isPk ||
+				$name === $table . "Id" ||
+				$name === "created" ||
+				$name === "updated"
+			) {
+				continue;
+			}
+
+			$type = $rawType;
+
+			// Normalizar según tipos comunes MySQL + SQLite
+			if (in_array($type, ['int', 'integer', 'bigint', 'smallint'])) {
+				$type = 'number';
+			}
+
+			if (in_array($type, ['double', 'float', 'real', 'numeric', 'decimal'])) {
+				$type = 'number';
+			}
+
+			if (in_array($type, ['varchar', 'char', 'string'])) {
+				$type = 'literal';
+			}
+
+			if (in_array($type, ['blob', 'mediumtext', 'text'])) {
+				$type = 'text';
+			}
+
+			if (in_array($type, ['date'])) {
+				$type = 'fecha';
+			}
+
+			if (in_array($type, ['datetime', 'timestamp'])) {
+				$type = 'fecha';
+			}
+
+			if (in_array($type, ['time'])) {
+				$type = 'hora';
+			}
+
+			if (in_array($type, ['tinyint', 'boolean'])) {
+				$type = 'truefalse';
+			}
+
+			// Reglas por nombre de campo
+			if (str_contains($name, "Id")) {
+				$type = 'combo';
+			}
+
+			if (str_contains($name, "_pass")) {
+				$type = 'encrypted';
+			}
+
+			if ($name === 'password') {
+				$type = 'password';
+			}
+
+			if ($name === 'agentsId') {
+				$type = 'agents';
+			}
+
+			if ($name === 'actions') {
+				$type = 'actions';
+			}
+
+			if (str_contains($name, "_file")) {
+				$type = 'file_file';
+			}
+
+			if (str_contains($name, "image")) {
+				$type = 'file_img';
+			}
+
+			if (str_contains($name, "content") || $type === 'text') {
+				$type = 'text'; // sin WYSIWYG
+			}
+
+			if (in_array($name, ['no_reply', 'send_resumen', 'resend', 'add_cc', 'send_sms'])) {
+				$type = 'scenario_option';
+			}
+
+			// Añadir al descriptor
+			$description['fields'][] = $name;
+			$description['fields_types'][] = $type;
+		}
+
+		// Labels y fields_to_show por defecto
 		$description['fields_labels'] = $description['fields'];
-		$fields_to_show = $description['fields']; // array();
-		// $allowed = array('label', 'email', 'contacts_categoryId', 'description', 'info', 'from_email', 'to_email', 'name', 'subject', 'body');
-		// foreach ($description['fields'] as $field) {
-		// 	if (in_array($field, $allowed)) {
-		// 		$fields_to_show[] = $field;
-		// 	}
-		// }
-		$description['fields_to_show'] = $fields_to_show;
-		$description['default_order'] = $table . "Id DESC";
+		$description['fields_to_show'] = $description['fields'];
+
+		// Orden por defecto:
+		// 1) Si hay PK detectada, úsala
+		// 2) Si no, intenta tableId
+		// 3) Si no, id
+		$pkField = null;
+		foreach ($cols as $field) {
+			if (!empty($field['pk'])) {
+				$pkField = $field['name'];
+				break;
+			}
+		}
+		if (!$pkField && in_array($table . 'Id', array_column($cols, 'name'))) {
+			$pkField = $table . 'Id';
+		}
+		if (!$pkField && in_array('id', array_column($cols, 'name'))) {
+			$pkField = 'id';
+		}
+
+		if ($pkField) {
+			$description['default_order'] = $pkField . " DESC";
+		} else {
+			$description['default_order'] = $table . "Id DESC";
+		}
+
 		return $description;
 	}
 
@@ -145,12 +256,15 @@ abstract class ModelBase
 		return $data[$attribute];
 	}
 
+
+	/**
+	 * Method getItemsHead
+	 * returns table headers (columns) for the admin listing
+	 * @return void
+	 */
 	public function getItemsHead()
 	{
-		$data = $this->getOrmDescription();
-		//	print_r($data);
-
-
+		$data = $this->getOrmDescription($this->table);
 		$fr = $data['fields_labels'];
 		$fields_to_show = $data['fields_to_show'];
 		$fields = $data['fields'];
@@ -165,6 +279,8 @@ abstract class ModelBase
 
 		return $fr;
 	}
+
+
 	public function getAllByField($table, $field, $rid_in_field, $custom_order = null)
 	{
 		$model = $table . 'Model';

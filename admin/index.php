@@ -46,11 +46,4 @@ $actionName = isset($_GET['p']) ? sanitize($_GET['p']) :  'index';
 
 # Include admin/Admin.php that extends core/sp-core.php
 $Admin = new Admin();
-
-
-# Url = Method = Does the url exist?
-if (!method_exists($Admin, $actionName)) {
-    View::error404();
-} else {
-    $Admin->$actionName();
-}
+$Admin->init();

@@ -157,6 +157,7 @@ class log extends ModelBase
 	 */
 	public function get_online_visitors_count()
 	{
+		return 0;
 
 		$q = $this->db->prepare("SELECT COUNT(DISTINCT body) AS unique_pageviews
 			FROM logs
