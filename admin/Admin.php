@@ -50,17 +50,22 @@ class Admin extends StripePadController
 	public function __construct()
 	{
 
-
+		print_r($this->params);
 		parent::__construct(); // !important
 		$this->view->set_views_path(ADMIN_PATH . "views/");
-		//$this->view->hide_menu();
-		$this->view->set_isAuthenticated(false);
+
+
 		# Some default values for views
 		$defaults = array();
 
-		$this->isAuthenticated();
-
-		if (isset($this->params['p']) and !strstr($this->params['p'], "login") and !$this->isAuthenticated) {
+		$this->isAuthenticated = $this->isAuthenticated();
+		if (!$this->isAuthenticated) {
+			$this->view->set_isAuthenticated(false);
+			$this->view->hide_menu();
+		} else {
+			$this->view->set_isAuthenticated(true);
+		}
+		if (!$this->isAuthenticated and isset($this->params['p']) and !strstr($this->params['p'], "login")) {
 			header("location: " . ADMIN_URL . "login");
 			return;
 		}
@@ -73,6 +78,10 @@ class Admin extends StripePadController
 	 */
 	public function index()
 	{
+		if (!$this->isAuthenticated) {
+			header("location: " . ADMIN_URL . "login");
+			return;
+		}
 		# check if user is authenticated
 		$this->dashboard();
 	}

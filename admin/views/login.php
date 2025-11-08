@@ -9,7 +9,7 @@
                     </div>
                     <div>
                         <h1 class="text-lg font-semibold leading-tight">Stripe Pad Admin</h1>
-                        <p class="text-sm text-slate-400">Superadmin for MYSQL only, use DB Browser for SQLite</p>
+                        <p class="text-sm text-slate-400"><?= STRIPE_PAD_VERSION ?></p>
                     </div>
                 </div>
 
