@@ -4,7 +4,7 @@
 
 <div class="sticky w-full  z-50 bg-white items-center  shadow-xl  ">
   <div class="text-gray-100 flex gap-x-2 bg-blue-900 px-6 py-0.5 sm:px-3.5 text-center items-center ">
-    <a class="text-sm z-50 hover:underline mx-auto hover:font-semibold" href="<?= LANDING_URL ?>demo"> <strong class="text-sm leading-6 text-gray-100 font-semibold inline"><?= _('Build your SaaS today - modify landing/views/layout/menu.php to change this message') ?></strong>
+    <a class="text-sm z-50 hover:underline mx-auto hover:font-semibold" href="<?= LANDING_URL ?>demo"> <strong class="text-sm leading-6 text-gray-100 font-semibold inline"><?= _('Build your SaaS today') ?></strong>
 
     </a>
     <div class="flex items-center justify-end">
