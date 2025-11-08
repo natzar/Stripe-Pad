@@ -1,6 +1,6 @@
 <?php
 
-//namespace StripePad\Exceptions;
+namespace StripePad\Exceptions;
 
 class StripePadException extends \Exception
 {
@@ -9,7 +9,6 @@ class StripePadException extends \Exception
         parent::__construct($message, $code, $previous);
         // Si quieres, conserva esta línea; si no, sácala del constructor.
         $_SESSION['errors'][] = $message;
-        log::system($message);
     }
 }
 
