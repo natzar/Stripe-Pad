@@ -1,6 +1,6 @@
 <?php
 
-namespace StripePad\Exceptions;
+//namespace StripePad\Exceptions;
 
 class StripePadException extends \Exception
 {
