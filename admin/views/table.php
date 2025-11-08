@@ -1,9 +1,9 @@
-<? include "app/views/layout/page_header.php"; ?>
+<? include dirname(__FILE__) . "/layout/page_header.php"; ?>
 <header class="pb-6 ">
 
   <div class="mx-auto  flex items-center space-x-4 ">
 
-    <a href="<?= APP_DOMAIN ?>form/<?= $table ?>" class="items-center  rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+    <a href="<?= ADMIN_URL ?>form/<?= $table ?>" class="items-center  rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
 
       <?= _('Añadir nuevo &raquo;') ?>
     </a>

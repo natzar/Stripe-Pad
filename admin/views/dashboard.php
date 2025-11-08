@@ -20,7 +20,7 @@
 
             <div class="flex items-center gap-x-6 bg-sky-500 hover:bg-sky-900 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 rounded-xl mb-3">
                 <p class="text-sm/6 text-gray-100">
-                    <a href="javascript:if (confirm('This will import all data from Stripe, don\'t close this tab. Continue?')) window.location.href='<?= APP_DOMAIN ?>actionStripeSync';">
+                    <a href="javascript:if (confirm('This will import all data from Stripe, don\'t close this tab. Continue?')) window.location.href='<?= ADMIN_URL ?>actionStripeSync';">
                         <strong class="font-semibold">Stripe Connection</strong><svg viewBox="0 0 2 2" class="mx-2 inline size-0.5 fill-current" aria-hidden="true">
                             <circle cx="1" cy="1" r="1" />
                         </svg> Import products, customers and subscriptions <span aria-hidden="true">&rarr;</span>

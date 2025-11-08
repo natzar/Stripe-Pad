@@ -86,57 +86,20 @@ class Admin extends StripePadController
 	public function dashboard() // DASHBOARD
 	{
 
-		# Sample render of view with $data
+		if (!$this->isSuperadmin) {
+			throw new StripePad\Exceptions\PermissionsException('Not superadmin');
+		}
 		$data = array(
-			"SEO_TITLE" => "xyz",
-			"SEO_DESCRIPTION" => "xyz",
-			"breadcrumb" => array(array("label" => "Inicio", "url" => "#")),
-			"user" => $_SESSION['user'],
-
+			"log" => $this->log->getAll(),
+			"counters" => $this->log->get_counters(),
+			"online_visitors" => $this->log->get_online_visitors_count()
 		);
-
-		# show app/views/index.php passing $data
-		$this->view->show('index.php', $data);
+		$this->view->show('dashboard.php', $data);
 	}
 
-	/**
-	 * home
-	 * Main Public Website
-	 * @return void
-	 */
-	public function home()
-	{
-		$this->view->show("demo/homepage.php", array());
-	}
-	public function contact()
-	{
-		$data = array(
-			"SEO_TITLE" => ""
-		);
-		$this->view->show("custom/contact_sales.php", $data);
-	}
 
-	/**
-	 * Default User's Profile
-	 * profile
-	 *
-	 * @return void
-	 */
-	public function profile()
-	{
-		assert($_SESSION['user']);
-		$users = new usersModel();
-		$invoices = new invoicesModel();
-		$data = array(
-			"user" => $users->getById($_SESSION['user']['usersId']),
-			"invoices" => $invoices->getByUsersId($_SESSION['user']['usersId']),
-			"SEO_TITLE" => "Preferencias",
-			"SEO_DESCRIPTION" => "Desde aquí es posible gestionar todos los datos de la cuenta",
-			"breadcrumb" => array(array("label" => "Preferencias", "url" => "profile")),
-		);
 
-		$this->view->show("user/profile.php", $data, true);
-	}
+
 
 	/**
 	 * form
@@ -170,18 +133,6 @@ class Admin extends StripePadController
 	/* SuperAdmin magic functions: Forms creation and Rows Inserting and updating. One day someone will come asking questions about this shit.
     ---------------------------------------*/
 
-	public function superadmin()
-	{
-		if (!$this->isSuperadmin) {
-			throw new StripePad\Exceptions\PermissionsException('Not superadmin');
-		}
-		$data = array(
-			"log" => $this->log->getAll(),
-			"counters" => $this->log->get_counters(),
-			"online_visitors" => $this->log->get_online_visitors_count()
-		);
-		$this->view->show('superadmin/dashboard.php', $data);
-	}
 
 	/**
 	 * table
@@ -193,12 +144,12 @@ class Admin extends StripePadController
 		if (!$this->isSuperadmin) {
 			throw new StripePad\Exceptions\PermissionsException('Not superadmin');
 		}
-		print_r($this->params);
+
 
 		$table = $this->params['m'];
 		$items = null;
 		$class = $table . 'Model';
-		echo $class;
+
 
 		if (class_exists($class)) {
 			$items = new $class();
@@ -232,7 +183,7 @@ class Admin extends StripePadController
 		];
 
 		$_SESSION['return_url'] = $_SERVER['REQUEST_URI'];
-		$this->view->show('superadmin/table.php', $data);
+		$this->view->show('table.php', $data);
 	}
 
 	/**

@@ -39,12 +39,11 @@ use Dompdf\Dompdf;
  */
 class invoicesModel extends ModelBase
 {
-	var $log;
 
+	var $table = 'invoices';
 	public function __construct()
 	{
-		parent::__construct();
-		$this->log = log::singleton();
+		parent::__construct($this->table);
 	}
 	/**
 	 * getById

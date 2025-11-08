@@ -55,12 +55,14 @@
     <!-- Static sidebar for desktop -->
     <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
-        <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-100 px-4 pb-4">
+        <div class="flex grow flex-col overflow-y-auto bg-gray-100 px-4 pb-4">
+
+            <div class="flex h-16 shrink-0 items-center">
+                <img class="h-8 w-auto" src="<?= APP_LOGO ?>" alt="<?= APP_NAME ?>">
+            </div>
 
 
-
-
-            <nav id="sidebar" class="pt-5">
+            <nav id="sidebar" class="p">
                 <ul class="-mx-2 space-y-1">
                     <li>
                         <!-- Current: "bg-gray-50 text-blue-600", Default: "text-gray-700 hover:text-blue-600 hover:bg-gray-50" -->
@@ -68,7 +70,7 @@
                             <svg class="size-6 " fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                             </svg>
-                            Inicio
+                            Dashboard
                         </a>
                     </li>
 
@@ -82,20 +84,10 @@
                             Usuarios con acceso
                         </a>
                     </li> -->
-                    <li>
-                        <!-- Current: "bg-gray-50 text-blue-600", Default: "text-gray-700 hover:text-blue-600 hover:bg-gray-50" -->
-                        <a href="<?= ADMIN_URL ?>profile" class="group flex gap-x-3 rounded-md p-2 text-sm text-gray-800 hover:bg-gray-50 hover:text-blue-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            </svg>
 
 
-                            Preferencias Usuario
-                        </a>
-                    </li>
 
-
-                    <li class="mt-5 pt-10">
+                    <li class="mt-5 ">
                         <div class="text-xs/6 font-semibold text-gray-400">Superadmin's only</div>
                     </li>
                     <li>
@@ -103,15 +95,7 @@
                         <ul role="list" class=" space-y-1">
 
 
-                            <li>
-                                <!-- Current: "bg-gray-50 text-blue-600", Default: "text-gray-400 hover:text-blue-600 hover:bg-gray-50" -->
-                                <a href="<?= ADMIN_URL ?>superadmin" class="group flex gap-x-3 rounded-md p-2 text-sm text-gray-800 hover:bg-gray-50 hover:text-blue-600">
-                                    <svg class="size-6 shrink-0 text-gray-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                                    </svg>
-                                    Dashboard
-                                </a>
-                            </li>
+
                             <li>
                                 <a href="<?= ADMIN_URL ?>table/blog" class="group flex gap-x-3 rounded-md p-2 text-sm text-gray-800 hover:bg-gray-50 hover:text-blue-600">
 
