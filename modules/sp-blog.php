@@ -40,22 +40,26 @@ class blogModel extends ModelBase
         parent::__construct('blog');
     }
 
-    public function getBySlug($slug)
-    {
-        $q = $this->db->prepare("SELECT *,DATE_FORMAT(created, '%d-%m-%Y') as created from blog where slug = :slug limit 1");
-        $q->bindParam(":slug", $slug);
-        $q->execute();
-        return $q->fetch();
-    }
-    public function getAll($limit = 20)
-    {
-        $q = $this->db->prepare("SELECT *,DATE_FORMAT(created, '%d-%m-%Y') as created from blog limit :limit");
-        $q->bindParam(":limit", $limit);
-        $q->execute();
-        return $q->fetchAll();
-    }
-    public function AIgenerateBlogPosts()
-    {
+	public function getBySlug($slug)
+	{
+		$q = $this->db->prepare("SELECT * FROM blog WHERE slug = :slug LIMIT 1");
+		$q->bindParam(":slug", $slug);
+		$q->execute();
+		$row = $q->fetch();
+		return $this->formatBlogRow($row);
+	}
+	public function getAll($limit = 20)
+	{
+		$q = $this->db->prepare("SELECT * FROM blog ORDER BY created DESC LIMIT :limit");
+		$q->bindValue(":limit", (int)$limit, PDO::PARAM_INT);
+		$q->execute();
+		$rows = $q->fetchAll();
+		return array_map(function ($row) {
+			return $this->formatBlogRow($row);
+		}, $rows);
+	}
+	public function AIgenerateBlogPosts()
+	{
 
         $blogTitles = [
             "Identifying Expiring Domains for Investment Opportunities",
@@ -80,24 +84,42 @@ class blogModel extends ModelBase
 
         $o = new Openai();
 
-        foreach ($blogTitles as $title) {
+		foreach ($blogTitles as $title) {
 
-            $r = $o->request($title);
-            $r = json_decode($r, true);
+			$r = $o->request($title);
+			$r = json_decode($r, true);
 
-            $body = $r['choices'][0]['message']['content'];
-            $slug = friendly_slug($title);
-            $q = $this->db->prepare("INSERT INTO blog (title,slug,body) VALUES (:t,:s,:b)");
-            $q->bindParam(":t", $title);
-            $q->bindParam(":b", $body);
-            $q->bindParam(":s", $slug);
-            $q->execute();
+			$body = $r['choices'][0]['message']['content'];
+			$slug = friendly_slug($title);
+			$q = $this->db->prepare("INSERT INTO blog (title,slug,body) VALUES (:t,:s,:b)");
+			$q->bindParam(":t", $title);
+			$q->bindParam(":b", $body);
+			$q->bindParam(":s", $slug);
+			$q->execute();
 
-            echo $title . PHP_EOL;
-            echo "= ========" . PHP_EOL;
-            echo $body;
+			echo $title . PHP_EOL;
+			echo "= ========" . PHP_EOL;
+			echo $body;
 
-            echo PHP_EOL . PHP_EOL;
-        }
-    }
+			echo PHP_EOL . PHP_EOL;
+		}
+	}
+
+	private function formatBlogRow(?array $row): ?array
+	{
+		if (!$row) {
+			return $row;
+		}
+
+		if (isset($row['created'])) {
+			$rawCreated = $row['created'];
+			$row['created_raw'] = $rawCreated;
+			$timestamp = strtotime($rawCreated);
+			$formatted = $timestamp !== false ? date('d-m-Y', $timestamp) : $rawCreated;
+			$row['created_formatted'] = $formatted;
+			$row['created'] = $formatted;
+		}
+
+		return $row;
+	}
 }

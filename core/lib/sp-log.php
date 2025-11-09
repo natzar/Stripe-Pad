@@ -66,14 +66,27 @@ class log extends ModelBase
 				$hash = substr($hash, 0, 200);
 
 				$body = substr($body, 0, 255);
+				$month = (int)date('Ym');
+				$week = (int)date('oW');
 
-				$q  = $this->db->prepare("INSERT INTO logs (hash,month,week,usersId,label,tag,body) VALUES (:hash,extract(YEAR_MONTH FROM CURDATE()),YEARWEEK(CURDATE()),:uid,:label,:tag,:body) ON DUPLICATE KEY UPDATE    
-	total =total + 1");
+				if (APP_STORAGE === 'mysql') {
+					$sql = "INSERT INTO logs (hash, month, week, usersId, label, tag, body)
+							VALUES (:hash, :month, :week, :uid, :label, :tag, :body)
+							ON DUPLICATE KEY UPDATE total = total + 1, updated = NOW()";
+				} else {
+					$sql = "INSERT INTO logs (hash, month, week, usersId, label, tag, body, created, updated)
+							VALUES (:hash, :month, :week, :uid, :label, :tag, :body, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+							ON CONFLICT(hash) DO UPDATE SET total = total + 1, updated = CURRENT_TIMESTAMP";
+				}
+
+				$q  = $this->db->prepare($sql);
 				$q->bindParam(":uid", $usersId);
 				$q->bindParam(":tag", $tag);
 				$q->bindParam(":hash", $hash);
 				$q->bindParam(":label", $label);
 				$q->bindParam(":body", $body);
+				$q->bindParam(":month", $month, PDO::PARAM_INT);
+				$q->bindParam(":week", $week, PDO::PARAM_INT);
 				$q->execute();
 				//	self::system($tag . " - " . $label . " " . $body);
 
@@ -88,7 +101,7 @@ class log extends ModelBase
 		// SUPERADMIN only
 		$consulta = $this->db->prepare("SELECT * FROM logs  order by updated DESC limit :limit ");
 
-		$consulta->bindParam(":limit", $limit);
+		$consulta->bindValue(":limit", (int)$limit, PDO::PARAM_INT);
 		$consulta->execute();
 		return $consulta->fetchAll();
 	}
@@ -103,7 +116,7 @@ class log extends ModelBase
 			$consulta = $this->db->prepare("SELECT * FROM logs where tag=:tag  order by updated DESC limit :limit ");
 		}
 		$consulta->bindParam(":tag", $tag);
-		$consulta->bindParam(":limit", $limit);
+		$consulta->bindValue(":limit", (int)$limit, PDO::PARAM_INT);
 		$consulta->execute();
 		return $consulta->fetchAll();
 	}
@@ -157,15 +170,89 @@ class log extends ModelBase
 	 */
 	public function get_online_visitors_count()
 	{
-		return 0;
+		$traffic = $this->getTrafficSummaryFromFile(1, 10);
+		return $traffic['online_visitors'];
+	}
 
-		$q = $this->db->prepare("SELECT COUNT(DISTINCT body) AS unique_pageviews
-			FROM logs
-			WHERE tag = 'pageview'
-  			AND updated >= NOW() - INTERVAL 10 MINUTE;");
-		$q->execute();
-		$r = $q->fetch();
-		return $r['unique_pageviews'];
+	/**
+	 * Parse logs/traffic.log and return aggregated stats.
+	 */
+	public function getTrafficSummaryFromFile(int $days = 30, int $minutesForOnline = 10): array
+	{
+		$summary = [
+			'online_visitors' => 0,
+			'daily_counts' => [],
+			'chart_labels' => [],
+			'chart_values' => [],
+			'total_pageviews' => 0,
+		];
+
+		$path = ROOT_PATH . 'logs/traffic.log';
+		if (!is_readable($path)) {
+			return $summary;
+		}
+
+		$lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+		if ($lines === false) {
+			return $summary;
+		}
+
+		$dailyCounts = [];
+		$recentIps = [];
+		$cutoff = time() - ($minutesForOnline * 60);
+
+		foreach ($lines as $line) {
+			$line = ltrim($line);
+			if ('' === $line) {
+				continue;
+			}
+
+			// Remove optional leading "#" used by some log entries
+			if ($line[0] === '#') {
+				$line = ltrim($line, "#");
+			}
+
+			if (!preg_match('/\[(?P<timestamp>[^]]+)\]\s+\[(?P<type>[^]]+)\]\s+(?P<payload>.+)$/', $line, $matches)) {
+				continue;
+			}
+
+			$ts = strtotime($matches['timestamp']);
+			if ($ts === false) {
+				continue;
+			}
+
+			$payload = trim($matches['payload']);
+			$ip = null;
+			$url = $payload;
+			$separator = strrpos($payload, '-');
+			if ($separator !== false) {
+				$url = trim(substr($payload, 0, $separator));
+				$ip = trim(substr($payload, $separator + 1));
+			}
+
+			$dateKey = date('Y-m-d', $ts);
+			if (!isset($dailyCounts[$dateKey])) {
+				$dailyCounts[$dateKey] = 0;
+			}
+			$dailyCounts[$dateKey]++;
+
+			if ($ip && $ts >= $cutoff) {
+				$recentIps[$ip] = true;
+			}
+		}
+
+		ksort($dailyCounts);
+		if ($days > 0 && count($dailyCounts) > $days) {
+			$dailyCounts = array_slice($dailyCounts, -$days, $days, true);
+		}
+
+		$summary['daily_counts'] = $dailyCounts;
+		$summary['chart_labels'] = array_keys($dailyCounts);
+		$summary['chart_values'] = array_values($dailyCounts);
+		$summary['total_pageviews'] = array_sum($dailyCounts);
+		$summary['online_visitors'] = count($recentIps);
+
+		return $summary;
 	}
 
 	public static function write(string $filename, string $message)

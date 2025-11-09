@@ -28,7 +28,17 @@
 
       <!--           <h3 class="page-header"><?= ucfirst($table_label) ?></h3> -->
       <? if (isset($_SESSION['errors']) and !empty($_SESSION['errors'])): ?>
-        <div id="errors" class="alert alert-success"> <?= $_SESSION['errors'] ?> </div>
+        <?php
+        $errors = $_SESSION['errors'];
+        if (is_array($errors)) {
+          $errors = implode('<br>', array_map(function ($msg) {
+            return htmlspecialchars((string)$msg, ENT_QUOTES, 'UTF-8');
+          }, $errors));
+        } else {
+          $errors = htmlspecialchars((string)$errors, ENT_QUOTES, 'UTF-8');
+        }
+        ?>
+        <div id="errors" class="alert alert-success"> <?= $errors ?> </div>
       <?
         unset($_SESSION['errors']);
       endif; ?>
@@ -70,11 +80,19 @@
                 $j = 0;
                 foreach ($row as $cell):
                   if ($j > 0):
-                    $sort_data = strip_tags($cell);
-                    // $sort_data = fingerprint($sort_data);
+                    $cellValue = $cell;
+                    if (is_array($cellValue)) {
+                      $cellValue = implode(', ', array_filter(array_map(function ($value) {
+                        return is_scalar($value) ? (string)$value : '';
+                      }, $cellValue)));
+                    } elseif (is_object($cellValue)) {
+                      $cellValue = method_exists($cellValue, '__toString') ? (string)$cellValue : json_encode($cellValue, JSON_UNESCAPED_UNICODE);
+                    }
+                    $cellValue = (string)$cellValue;
+                    $sort_data = strip_tags($cellValue ?? '');
                 ?>
                     <td class="px-4 py-5 text-xs text-gray-600  overflow-hidden  text-clip">
-                      <span class="font-semibold md:hidden"><?= $items_head[$j - 1] ?></span> <?= $cell; ?>
+                      <span class="font-semibold md:hidden"><?= $items_head[$j - 1] ?? '' ?></span> <?= $cellValue; ?>
                     </td>
                 <?php
                   endif;

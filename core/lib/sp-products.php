@@ -62,12 +62,14 @@ class productsModel extends ModelBase
 	 */
 	public function getByIds($ids)
 	{
-		$ids = implode(",", $ids);
-		$c = $this->db->prepare('SELECT * FROM products where productsId IN (:ids) ');
-		$c->bindParam(':ids', $ids);
-		$c->execute();
-		$r = $c->fetchAll();
-		return $r;
+		if (empty($ids)) {
+			return [];
+		}
+
+		$placeholders = implode(',', array_fill(0, count($ids), '?'));
+		$c = $this->db->prepare("SELECT * FROM products WHERE productsId IN ($placeholders)");
+		$c->execute(array_values($ids));
+		return $c->fetchAll();
 	}
 
 	/**
@@ -77,7 +79,7 @@ class productsModel extends ModelBase
 	 */
 	public function getAll()
 	{
-		$consulta = $this->db->prepare("SELECT * FROM products where visible > 0 order by name ASC");
+		$consulta = $this->db->prepare("SELECT * FROM products WHERE visible > 0 ORDER BY name ASC");
 		$consulta->execute();
 		$aux2 = $consulta->fetchAll();
 		return $aux2;
@@ -91,7 +93,9 @@ class productsModel extends ModelBase
 	 */
 	public function find($params)
 	{
-		$consulta = $this->db->prepare("SELECT * FROM products where name like '%" . $params['query'] . "%' ");
+		$query = isset($params['query']) ? '%' . $params['query'] . '%' : '%';
+		$consulta = $this->db->prepare("SELECT * FROM products WHERE name LIKE :query");
+		$consulta->bindParam(':query', $query, PDO::PARAM_STR);
 		$consulta->execute();
 		$aux2 = $consulta->fetchAll();
 		return $aux2;
@@ -105,15 +109,17 @@ class productsModel extends ModelBase
 	 */
 	public function add($params)
 	{
-		$consulta = $this->db->prepare("INSERT INTO products (customersId,name,amount,stripe_payment_id,productsId) VALUES ('" . $params['customersId'] . "','" . $params['name'] . "','" . $params['amount'] . "','" . $params['stripe_payment_id'] . "','" . $params['productsId'] . "')");
+		$sql = "INSERT INTO products (customersId, name, amount, stripe_payment_id, productsId) 
+				VALUES (:customersId, :name, :amount, :stripe_payment_id, :productsId)";
+        $consulta = $this->db->prepare($sql);
+		$consulta->bindParam(':customersId', $params['customersId']);
+		$consulta->bindParam(':name', $params['name']);
+		$consulta->bindParam(':amount', $params['amount']);
+		$consulta->bindParam(':stripe_payment_id', $params['stripe_payment_id']);
+		$consulta->bindParam(':productsId', $params['productsId']);
 		$consulta->execute();
 
-		$stmt               = $this->db->query("SELECT LAST_INSERT_ID()");
-		$last             = $stmt->fetch(PDO::FETCH_ASSOC);
-		$last = $last['LAST_INSERT_ID()'];
-
-
-		return $last;
+		return (int)$this->db->lastInsertId();
 	}
 
 	/**
@@ -124,10 +130,22 @@ class productsModel extends ModelBase
 	 */
 	public function edit($params)
 	{
-		$consulta = $this->db->prepare("UPDATE products SET customersId = '" . $params['customersId'] . "',name = '" . $params['name'] . "',amount = '" . $params['amount'] . "',created = '" . $params['created'] . "',updated = '" . $params['updated'] . "'  where productsId='" . $params['id'] . "'");
+		$sql = "UPDATE products 
+				SET customersId = :customersId,
+					name = :name,
+					amount = :amount,
+					created = :created,
+					updated = :updated
+				WHERE productsId = :id";
+		$consulta = $this->db->prepare($sql);
+		$consulta->bindParam(':customersId', $params['customersId']);
+		$consulta->bindParam(':name', $params['name']);
+		$consulta->bindParam(':amount', $params['amount']);
+		$consulta->bindParam(':created', $params['created']);
+		$consulta->bindParam(':updated', $params['updated']);
+		$consulta->bindParam(':id', $params['id']);
 		$consulta->execute();
-		if ($consulta->rowCount() > 0) return true;
-		else return false;
+		return $consulta->rowCount() > 0;
 	}
 
 	/**
@@ -138,9 +156,9 @@ class productsModel extends ModelBase
 	 */
 	public function delete($id)
 	{
-		$consulta = $this->db->prepare("DELETE FROM products where productsId='" . $id . "'");
+		$consulta = $this->db->prepare("DELETE FROM products WHERE productsId = :id");
+		$consulta->bindParam(':id', $id);
 		$consulta->execute();
-		if ($consulta->rowCount() > 0) return true;
-		else return false;
+		return $consulta->rowCount() > 0;
 	}
 }
