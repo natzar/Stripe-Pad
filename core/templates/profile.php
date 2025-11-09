@@ -80,9 +80,6 @@
       <button data-tab="tab-team" class="tab-btn group inline-flex items-center border-b-2 px-1 py-4 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
         <?= _('Acceso y Permisos') ?>
       </button>
-      <button data-tab="tab-billing" class="tab-btn group inline-flex items-center border-b-2 px-1 py-4 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
-        <?= _('Facturas y Membresías') ?>
-      </button>
     </nav>
   </div>
 
@@ -299,134 +296,7 @@ Listado de Facturas
     </div>
   </div>
 
-  <div id="tab-billing" class="tab-content hidden">
-    <h2 class="text-xl font-semibold mb-4"><?= _('Memberships & Invoices') ?></h2>
-    <p>Gestionas Membresías, consulta y descarga facturas.</p>
 
-    <section aria-labelledby="recent-hires-title" class="mb-10">
-
-
-
-      <div class="rounded-lg bg-white overflow-hidden shadow mb-5">
-        <div class="p-6">
-          <h2 class="text-base font-medium text-gray-900"><?= _('Invoices') ?></h2>
-          <a href="/account" target="_blank" class="border-transparent rounded-md bg-sky-600 text-gray-100 hover:bg-sky-800 inline-flex items-center px-3 py-2 text-sm font-bold">
-            Open Stripe Billing Portal
-          </a>
-          <p class="text-xs text-gray-500"><?= _('A new window will be opened'); ?></p>
-
-
-          <ul role="list" class="hidden divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl">
-
-            <? foreach ($invoices as $invoice): ?>
-
-
-
-              <li class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6">
-                <div class="flex min-w-0 gap-x-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                  </svg>
-
-                  <div class="min-w-0 flex-auto">
-                    <p class="text-sm font-semibold leading-6 text-gray-900">
-                      <a href="#">
-                        <span class="absolute inset-x-0 -top-px bottom-0"></span>
-                        #<?= $invoice['invoicesId'] ?>
-                      </a>
-                    </p>
-                    <p class="mt-1 flex text-xs leading-5 text-gray-500">
-                      <?= $invoice['cart'] ?>
-
-                    </p>
-                  </div>
-                </div>
-                <div class="flex shrink-0 items-center gap-x-4">
-                  <div class="hidden sm:flex sm:flex-col sm:items-end">
-                    <p class="text-sm leading-6 text-gray-900"><?= $invoice['total']; ?>&euro;</p>
-                    <p class="mt-1 text-xs leading-5 text-gray-500">Fecha Factura <time datetime="2023-01-23T13:23Z"><?= $invoice['created'] ?> </time></p>
-                  </div>
-                  <a target="_blank" alt="download" href="https://app.phpninja.net/uploads/users/<?= $invoice['pdf_path'] ?>" class="cursor-pointer">
-                    <svg class="h-8 w-8 cursor-pointer flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                      <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                    </svg>
-                  </a>
-                </div>
-              </li>
-
-
-
-            <? endforeach; ?>
-
-          </ul>
-
-        </div>
-      </div>
-
-
-    </section>
-
-    <div class="mt-5">
-      <h2 class="text-xl font-bold mb-3">Subscriptions</h2>
-      <div class="overflow-x-auto">
-        <table class="table-auto w-full">
-          <thead class="bg-gray-200">
-            <tr>
-              <th class="px-4 py-2 text-left">Date</th>
-              <th class="px-4 py-2 text-left">Membership</th>
-              <th class="px-4 py-2 text-left">Status</th>
-              <th class="px-4 py-2 text-left">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colspan="4"><?= _('No subscriptions found') ?></td>
-            </tr>
-            <!-- <tr class="border-b">
-                        <td class="px-4 py-2">0001</td>
-                        <td class="px-4 py-2">2024-03-31</td>
-                        <td class="px-4 py-2">$100.00</td>
-                        <td class="px-4 py-2 text-green-500">Paid</td>
-                        <td class="px-4 py-2">
-                            <a href="#" class="text-blue-500 hover:text-blue-800">View</a>
-                        </td>
-                    </tr> -->
-            <!-- Repeat for other invoices -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="mt-5">
-      <h2 class="text-xl font-bold mb-3">Invoices</h2>
-      <div class="overflow-x-auto">
-        <table class="table-auto w-full">
-          <thead class="bg-gray-200">
-            <tr>
-              <th class="px-4 py-2 text-left">Invoice ID</th>
-              <th class="px-4 py-2 text-left">Date</th>
-              <th class="px-4 py-2 text-left">Amount</th>
-              <th class="px-4 py-2 text-left">Status</th>
-              <th class="px-4 py-2 text-left">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colspan="4"><?= _('No invoices found') ?></td>
-            </tr>
-            <!-- <tr class="border-b">
-                        <td class="px-4 py-2">0001</td>
-                        <td class="px-4 py-2">2024-03-31</td>
-                        <td class="px-4 py-2">$100.00</td>
-                        <td class="px-4 py-2 text-green-500">Paid</td>
-                        <td class="px-4 py-2">
-                            <a href="#" class="text-blue-500 hover:text-blue-800">View</a>
-                        </td>
-                    </tr> -->
-            <!-- Repeat for other invoices -->
-          </tbody>
-        </table>
-      </div>
-    </div>
   </div>
 </div>
 
