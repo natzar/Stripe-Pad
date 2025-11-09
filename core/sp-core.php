@@ -218,6 +218,28 @@ class StripePadController
     }
 
     /**
+     * Default User's Profile
+     * profile
+     *
+     * @return void
+     */
+    public function profile()
+    {
+        assert($_SESSION['user']);
+        $users = new usersModel();
+        $invoices = new invoicesModel();
+        $data = array(
+            "user" => $users->getById($_SESSION['user']['usersId']),
+            "invoices" => $invoices->getByUsersId($_SESSION['user']['usersId']),
+            "SEO_TITLE" => "Preferencias",
+            "SEO_DESCRIPTION" => "Desde aquí es posible gestionar todos los datos de la cuenta",
+            "breadcrumb" => array(array("label" => "Preferencias", "url" => "profile")),
+        );
+
+        $this->view->show("profile.php", $data, true);
+    }
+
+    /**
      * forgotPassword
      *
      * @return void
