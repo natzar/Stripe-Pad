@@ -232,7 +232,7 @@ class StripePadController
             "user" => $users->getById($_SESSION['user']['usersId']),
             "invoices" => $invoices->getByUsersId($_SESSION['user']['usersId']),
             "SEO_TITLE" => "Preferencias",
-            "SEO_DESCRIPTION" => "Desde aquí es posible gestionar todos los datos de la cuenta",
+            "SEO_DESCRIPTION" => _("Manage your preferences and settings"),
             "breadcrumb" => array(array("label" => "Preferencias", "url" => "profile")),
         );
 

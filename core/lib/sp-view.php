@@ -80,14 +80,22 @@ class View
 		if (DEBUG_MODE) {
 			echo '<!-- Template StripePad: ' . $template . ' -->';
 		}
-
-
-
+		# Include HEADER template 
 		include $this->path . "layout/header.php";
+
+		# Menu only hidden in superadmin's login page 
 		if (!$this->hide_menu) include $this->path . "layout/menu.php";
+
+		# Include PAGE template
 		if (file_exists($template) == false) {
-			log::system("View Error 404: " . $template);
-			include $this->path . '404.php';
+			if (file_exists(CORE_PATH . 'templates/' . $name)) {
+				$template = CORE_PATH . 'templates/' . $name;
+				include($template);
+			} else {
+				//$template = '404.php'; //	throw new ViewException('Template not found: ' . $template);
+				include CORE_PATH . 'templates/'  . '404.php';
+				log::system("View Error 404: " . $template);
+			}
 		} else {
 			include($template);
 		}

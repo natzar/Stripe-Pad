@@ -2,20 +2,15 @@
 
 
 
-<div class="sticky w-full  z-50 bg-white items-center  shadow-xl  ">
-  <div class="text-gray-100 flex gap-x-2 bg-sky-900 px-6 py-0.5 sm:px-3.5 text-center items-center ">
-    <a class="text-sm z-50 hover:underline mx-auto hover:font-semibold" href="<?= LANDING_URL ?>demo"> <strong class="text-sm leading-6 text-gray-100 font-semibold inline"><?= _('Build your SaaS today') ?></strong>
+<div class="sticky w-full  z-50 bg-gray-900 items-center  shadow-xl  ">
+  <div class="text-gray-100 flex gap-x-2 bg-sky-500 px-6 py-0.5 sm:px-3.5 text-center items-center ">
+    <a class="text-sm z-50 hover:underline mx-auto hover:font-semibold" href="<?= LANDING_URL ?>demo"> <strong class="text-sm leading-6 text-gray-100 font-semibold inline"><?= _('Welcome to Stripe Pad Demo - Build your SaaS today') ?></strong>
 
     </a>
     <div class="flex items-center justify-end">
-      <!-- <a href="<?= LANDING_URL ?>?lang=es" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/es.png"></a>
-      <a href="<?= LANDING_URL ?>?lang=en" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/us.png"></a> -->
-      <!-- <a href=" <?= LANDING_URL ?>signup"">
-        <button class=" hidden rounded-full bg-sky-900 px-4 py-1 text-xs text-black font-semibold transition duration-200 ease-out hover:bg-sky-400 lg:block">
-          <?= _('Login') ?>
+      <a href="<?= LANDING_URL ?>?lang=es" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/es.png"></a>
+      <a href="<?= LANDING_URL ?>?lang=en" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/us.png"></a>
 
-        </button>
-      </a> -->
     </div>
   </div>
 
