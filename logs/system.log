@@ -1,1 +1,146 @@
-#
+#[2025-11-09 21:51:09] Login action called superadmin@stripepad.com
+[2025-11-09 21:51:09] Login attempt for superadmin@stripepad.com from IP ::1
+[2025-11-09 21:51:09] 2 has logged in
+[2025-11-09 21:51:09] Successful login for superadmin@stripepad.com from IP ::1
+[2025-11-09 21:51:09] [error] 09/11/2025 21:51:09 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:51:13] View Error 404: /opt/lampp/htdocs/stripe-pad/core/templates/404.php
+[2025-11-09 21:51:13] [error] 09/11/2025 21:51:13 include(/opt/lampp/htdocs/stripe-pad/app/views/404.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/lib/sp-view.php // Line: 95 
+[2025-11-09 21:51:13] [error] 09/11/2025 21:51:13 include(): Failed opening '/opt/lampp/htdocs/stripe-pad/app/views/404.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/lib/sp-view.php // Line: 95 
+[2025-11-09 21:51:13] [error] 09/11/2025 21:51:13 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:54:22] [error] 09/11/2025 21:54:22 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:54:23] [error] 09/11/2025 21:54:23 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:54:24] [error] 09/11/2025 21:54:24 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:54:24] [error] 09/11/2025 21:54:24 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:54:26] [error] 09/11/2025 21:54:26 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:54:26] [error] 09/11/2025 21:54:26 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:54:36] [error] 09/11/2025 21:54:36 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:54:43] [error] 09/11/2025 21:54:43 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:54:44] [error] 09/11/2025 21:54:44 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:54:49] [error] 09/11/2025 21:54:49 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:56:15] [error] 09/11/2025 21:56:15 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:56:17] [error] 09/11/2025 21:56:17 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:56:18] [error] 09/11/2025 21:56:18 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:57:02] [error] 09/11/2025 21:57:02 include(layout/page_header.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 21:57:02] [error] 09/11/2025 21:57:02 include(): Failed opening 'layout/page_header.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 21:57:02] [error] 09/11/2025 21:57:02 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 21:57:02] [error] 09/11/2025 21:57:02 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 21:57:02] [error] 09/11/2025 21:57:02 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:57:14] [error] 09/11/2025 21:57:14 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:57:16] [error] 09/11/2025 21:57:16 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:57:17] [error] 09/11/2025 21:57:17 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:57:18] [error] 09/11/2025 21:57:18 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:57:30] [error] 09/11/2025 21:57:30 include(layout/page_header.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 21:57:30] [error] 09/11/2025 21:57:30 include(): Failed opening 'layout/page_header.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 21:57:30] [error] 09/11/2025 21:57:30 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 21:57:30] [error] 09/11/2025 21:57:30 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 21:57:30] [error] 09/11/2025 21:57:30 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:59:07] [error] 09/11/2025 21:59:07 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:59:40] [error] 09/11/2025 21:59:40 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:59:53] [error] 09/11/2025 21:59:53 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:59:53] [error] 09/11/2025 21:59:53 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:59:55] [error] 09/11/2025 21:59:55 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:59:56] [error] 09/11/2025 21:59:56 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 21:59:57] [error] 09/11/2025 21:59:57 include(layout/page_header.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 21:59:57] [error] 09/11/2025 21:59:57 include(): Failed opening 'layout/page_header.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 21:59:57] [error] 09/11/2025 21:59:57 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 21:59:57] [error] 09/11/2025 21:59:57 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 21:59:57] [error] 09/11/2025 21:59:57 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:00:34] [error] 09/11/2025 22:00:34 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:00:40] [error] 09/11/2025 22:00:40 include(layout/page_header.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:00:40] [error] 09/11/2025 22:00:40 include(): Failed opening 'layout/page_header.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:00:40] [error] 09/11/2025 22:00:40 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:00:40] [error] 09/11/2025 22:00:40 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:00:40] [error] 09/11/2025 22:00:40 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:00:42] [error] 09/11/2025 22:00:42 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:00:43] [error] 09/11/2025 22:00:43 include(layout/page_header.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:00:43] [error] 09/11/2025 22:00:43 include(): Failed opening 'layout/page_header.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:00:43] [error] 09/11/2025 22:00:43 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:00:43] [error] 09/11/2025 22:00:43 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:00:43] [error] 09/11/2025 22:00:43 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:00:44] [error] 09/11/2025 22:00:44 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:00:44] [error] 09/11/2025 22:00:44 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:00:45] [error] 09/11/2025 22:00:45 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:09] Login action called superadmin@stripepad.com
+[2025-11-09 22:01:09] Login attempt for superadmin@stripepad.com from IP ::1
+[2025-11-09 22:01:09] 2 has logged in
+[2025-11-09 22:01:09] Successful login for superadmin@stripepad.com from IP ::1
+[2025-11-09 22:01:09] [error] 09/11/2025 22:01:09 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:12] [error] 09/11/2025 22:01:12 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:13] [error] 09/11/2025 22:01:13 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:14] [error] 09/11/2025 22:01:14 include(layout/page_header.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:01:14] [error] 09/11/2025 22:01:14 include(): Failed opening 'layout/page_header.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:01:14] [error] 09/11/2025 22:01:14 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:01:14] [error] 09/11/2025 22:01:14 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:01:14] [error] 09/11/2025 22:01:14 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:14] [error] 09/11/2025 22:01:14 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:15] [error] 09/11/2025 22:01:15 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:16] [error] 09/11/2025 22:01:16 include(layout/page_header.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:01:16] [error] 09/11/2025 22:01:16 include(): Failed opening 'layout/page_header.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:01:16] [error] 09/11/2025 22:01:16 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:01:16] [error] 09/11/2025 22:01:16 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:01:16] [error] 09/11/2025 22:01:16 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:16] [error] 09/11/2025 22:01:16 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:21] [error] 09/11/2025 22:01:21 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:22] [error] 09/11/2025 22:01:22 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:23] [error] 09/11/2025 22:01:23 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:24] [error] 09/11/2025 22:01:24 include(layout/page_header.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:01:24] [error] 09/11/2025 22:01:24 include(): Failed opening 'layout/page_header.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:01:24] [error] 09/11/2025 22:01:24 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:01:24] [error] 09/11/2025 22:01:24 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:01:24] [error] 09/11/2025 22:01:24 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:36] [error] 09/11/2025 22:01:36 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:01:41] [error] 09/11/2025 22:01:41 include(layout/page_header.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:01:41] [error] 09/11/2025 22:01:41 include(): Failed opening 'layout/page_header.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:01:41] [error] 09/11/2025 22:01:41 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:01:41] [error] 09/11/2025 22:01:41 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:01:41] [error] 09/11/2025 22:01:41 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:02:49] [error] 09/11/2025 22:02:49 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:02:50] [error] 09/11/2025 22:02:50 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:00] Login action called superadmin@stripepad.com
+[2025-11-09 22:08:00] Login attempt for superadmin@stripepad.com from IP ::1
+[2025-11-09 22:08:00] 2 has logged in
+[2025-11-09 22:08:00] Successful login for superadmin@stripepad.com from IP ::1
+[2025-11-09 22:08:00] [error] 09/11/2025 22:08:00 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:04] [error] 09/11/2025 22:08:04 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:22] [error] 09/11/2025 22:08:22 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:23] [error] 09/11/2025 22:08:23 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:24] [error] 09/11/2025 22:08:24 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:25] [error] 09/11/2025 22:08:25 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:28] [error] 09/11/2025 22:08:28 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:29] [error] 09/11/2025 22:08:29 include(layout/page_header.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:08:29] [error] 09/11/2025 22:08:29 include(): Failed opening 'layout/page_header.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:08:29] [error] 09/11/2025 22:08:29 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:08:29] [error] 09/11/2025 22:08:29 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:08:29] [error] 09/11/2025 22:08:29 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:30] [error] 09/11/2025 22:08:30 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:31] [error] 09/11/2025 22:08:31 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:49] [error] 09/11/2025 22:08:49 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:50] [error] 09/11/2025 22:08:50 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:50] [error] 09/11/2025 22:08:50 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:51] [error] 09/11/2025 22:08:51 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:52] [error] 09/11/2025 22:08:52 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:53] [error] 09/11/2025 22:08:53 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:08:59] [error] 09/11/2025 22:08:59 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:09:00] [error] 09/11/2025 22:09:00 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:09:05] [error] 09/11/2025 22:09:05 include(layout/page_header.php): Failed to open stream: No existe el archivo o el directorio [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:09:05] [error] 09/11/2025 22:09:05 include(): Failed opening 'layout/page_header.php' for inclusion (include_path='.:/opt/lampp/lib/php') [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 1 
+[2025-11-09 22:09:05] [error] 09/11/2025 22:09:05 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:09:05] [error] 09/11/2025 22:09:05 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 225 
+[2025-11-09 22:09:05] [error] 09/11/2025 22:09:05 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:09:38] [error] 09/11/2025 22:09:38 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 21 
+[2025-11-09 22:09:38] [error] 09/11/2025 22:09:38 Trying to access array offset on value of type null [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 21 
+[2025-11-09 22:09:38] [error] 09/11/2025 22:09:38 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 289 
+[2025-11-09 22:09:38] [error] 09/11/2025 22:09:38 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 289 
+[2025-11-09 22:09:38] [error] 09/11/2025 22:09:38 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:09:53] [error] 09/11/2025 22:09:53 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:09:54] [error] 09/11/2025 22:09:54 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:09:55] [error] 09/11/2025 22:09:55 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:09:56] [error] 09/11/2025 22:09:56 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:10:02] [error] 09/11/2025 22:10:02 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:10:14] [error] 09/11/2025 22:10:14 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:10:16] [error] 09/11/2025 22:10:16 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:10:20] [error] 09/11/2025 22:10:20 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 21 
+[2025-11-09 22:10:20] [error] 09/11/2025 22:10:20 Trying to access array offset on value of type null [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 21 
+[2025-11-09 22:10:20] [error] 09/11/2025 22:10:20 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 289 
+[2025-11-09 22:10:20] [error] 09/11/2025 22:10:20 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 289 
+[2025-11-09 22:10:20] [error] 09/11/2025 22:10:20 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 

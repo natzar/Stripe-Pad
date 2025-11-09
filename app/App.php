@@ -89,6 +89,27 @@ class App extends StripePadController
 		$this->view->show('index.php', $data);
 	}
 
+	public function bitcoin()
+	{
+		require_once APP_PATH . 'services/BitcoinTracker.php';
+
+		$tracker = new BitcoinTracker();
+		$snapshot = $tracker->getSnapshot();
+
+		$data = [
+			"SEO_TITLE" => "Bitcoin Tracker",
+			"SEO_DESCRIPTION" => "Live Bitcoin price and quick reference chart.",
+			"breadcrumb" => [
+				["label" => "Dashboard", "url" => APP_URL],
+				["label" => "Bitcoin Tracker", "url" => "bitcoin"],
+			],
+			"tracker" => $snapshot,
+			"currency" => $tracker->getCurrency(),
+		];
+
+		$this->view->show('bitcoin.php', $data);
+	}
+
 
 
 

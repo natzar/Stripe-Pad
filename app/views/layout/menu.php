@@ -30,6 +30,14 @@
                                             Inicio
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="<?= APP_URL ?>bitcoin" class="group flex gap-x-3 rounded-md p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600">
+                                            <svg class="size-6 shrink-0 text-gray-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3.75-9h7.5a2.25 2.25 0 1 0 0-4.5h-7.5V6Zm0 0V4.5a2.25 2.25 0 0 1 2.25-2.25H12a6.75 6.75 0 0 1 0 13.5h-3.75V15m0 0H6a2.25 2.25 0 1 0 0 4.5h2.25V18m0 0v1.5A2.25 2.25 0 0 0 10.5 21H12a6.75 6.75 0 0 0 0-13.5h-3.75V9" />
+                                            </svg>
+                                            <?= _('Bitcoin Tracker') ?>
+                                        </a>
+                                    </li>
 
                                 </ul>
                             </li>
@@ -84,6 +92,14 @@
                             </svg>
 
                             What Ever
+                        </a>
+                    </li>
+                    <li class="mb-5">
+                        <a href="<?= APP_URL ?>bitcoin" class="group flex gap-x-3 rounded-md p-2 text-sm text-gray-800 hover:bg-gray-50 hover:text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3.75-9h7.5a2.25 2.25 0 1 0 0-4.5h-7.5V6Zm0 0V4.5a2.25 2.25 0 0 1 2.25-2.25H12a6.75 6.75 0 0 1 0 13.5h-3.75V15m0 0H6a2.25 2.25 0 1 0 0 4.5h2.25V18m0 0v1.5A2.25 2.25 0 0 0 10.5 21H12a6.75 6.75 0 0 0 0-13.5h-3.75V9" />
+                            </svg>
+                            <?= _('Bitcoin Tracker') ?>
                         </a>
                     </li>
                     <li>
