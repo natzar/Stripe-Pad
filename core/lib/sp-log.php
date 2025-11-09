@@ -216,19 +216,22 @@ class log extends ModelBase
 		$line = "[" . date("Y-m-d H:i:s") . "] " . $message . PHP_EOL;
 		file_put_contents($path, $line, FILE_APPEND);
 	}
-
+	public static function error(string $message)
+	{
+		self::write('sp-errors.log', $message);
+	}
 	public static function system(string $message)
 	{
-		self::write('system.log', $message);
+		self::write('sp-system.log', $message);
 	}
 	public static function crons(string $message)
 	{
-		self::write('crons.log', $message);
+		self::write('sp-crons.log', $message);
 	}
 	public static function openai(string $message)
 	{
 		$message = "===================================================\n" . $message;
-		self::write('openai.log', $message);
+		self::write('sp-openai.log', $message);
 	}
 	public static function tool_calls(int $emailId, string $message)
 	{
@@ -241,6 +244,6 @@ class log extends ModelBase
 	}
 	public static function traffic(string $message)
 	{
-		self::write("traffic.log", $message);
+		self::write("sp-traffic.log", $message);
 	}
 }

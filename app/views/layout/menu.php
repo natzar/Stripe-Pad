@@ -134,6 +134,14 @@
                         </a>
                     </li>
                     <li>
+                        <a href="<?= APP_URL ?>account" class="group flex gap-x-3 rounded-md p-2 text-sm text-gray-800 hover:bg-gray-50 hover:text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5h18M3 12h18M3 16.5h18M6.75 6v12m10.5-12v12" />
+                            </svg>
+                            <?= _('Account Settings') ?>
+                        </a>
+                    </li>
+                    <li>
                         <!-- Current: "bg-gray-50 text-blue-600", Default: "text-gray-700 hover:text-blue-600 hover:bg-gray-50" -->
                         <a href="<?= APP_URL ?>contact" class="group flex gap-x-3 rounded-md p-2 text-sm text-gray-800 hover:bg-gray-50 hover:text-blue-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

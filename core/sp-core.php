@@ -240,6 +240,29 @@ class StripePadController
     }
 
     /**
+     * Account & Billing view
+     */
+    public function account()
+    {
+        assert($_SESSION['user']);
+        $users = new usersModel();
+        $invoices = new invoicesModel();
+        $subscriptions = new subscriptionsModel();
+
+        $usersId = $_SESSION['user']['usersId'];
+        $data = array(
+            "user" => $users->getById($usersId),
+            "invoices" => $invoices->getByUsersId($usersId),
+            "subscriptions" => $subscriptions->getByUsersId($usersId),
+            "SEO_TITLE" => _("Account & Billing"),
+            "SEO_DESCRIPTION" => _("Manage memberships, invoices, and payment preferences."),
+            "breadcrumb" => array(array("label" => _("Account Settings"), "url" => "account")),
+        );
+
+        $this->view->show("account.php", $data, true);
+    }
+
+    /**
      * forgotPassword
      *
      * @return void

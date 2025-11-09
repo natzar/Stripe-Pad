@@ -93,6 +93,7 @@ class View
 				include($template);
 			} else {
 				//$template = '404.php'; //	throw new ViewException('Template not found: ' . $template);
+				header("HTTP/1.0 404 Not Found");
 				include CORE_PATH . 'templates/'  . '404.php';
 				log::system("View Error 404: " . $template);
 			}

@@ -1,1 +1,13 @@
-#
+[2025-11-09 22:55:25] [error] 09/11/2025 22:55:25 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:57:01] [error] 09/11/2025 22:57:01 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:57:03] [error] 09/11/2025 22:57:03 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:57:03] [error] 09/11/2025 22:57:03 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:57:04] [error] 09/11/2025 22:57:04 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:58:02] [error] 09/11/2025 22:58:02 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:58:03] [error] 09/11/2025 22:58:03 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:58:05] [error] 09/11/2025 22:58:05 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
+[2025-11-09 22:58:06] [error] 09/11/2025 22:58:06 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 21 
+[2025-11-09 22:58:06] [error] 09/11/2025 22:58:06 Trying to access array offset on value of type null [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 21 
+[2025-11-09 22:58:06] [error] 09/11/2025 22:58:06 Undefined array key "accounts" [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 286 
+[2025-11-09 22:58:06] [error] 09/11/2025 22:58:06 foreach() argument must be of type array|object, null given [2] File: /opt/lampp/htdocs/stripe-pad/core/templates/profile.php // Line: 286 
+[2025-11-09 22:58:06] [error] 09/11/2025 22:58:06 Undefined array key "agent" [2] File: /opt/lampp/htdocs/stripe-pad/app/views/layout/footer.php // Line: 61 
