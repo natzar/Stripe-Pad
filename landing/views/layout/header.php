@@ -48,4 +48,4 @@
 
 </head>
 
-<body class="bg-white">
+<body class="bg-gray-900">

@@ -1,4 +1,4 @@
-<div class="max-w-4xl bg-white rounded-xl shadow-xl mx-auto px-4 py-4 mt-10 mb-10">
+<div class="max-w-4xl bg-slate-900 text-gray-100 rounded-xl shadow-2xl mx-auto px-6 py-6 mt-10 mb-10">
   <div class="grid sm:grid-cols-2 gap-4">
     <!-- Left Column -->
     <div class="p-4 space-y-4">
@@ -7,16 +7,16 @@
         <div class="flex items-start space-x-3 mb-4">
           <div class="text-xl">🎯</div>
           <div>
-            <p class="font-bold">Lorem ipsum dolor</p>
-            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel libero vitae mi mattis convallis.</p>
+            <p class="font-bold text-gray-50">Lorem ipsum dolor</p>
+            <p class="text-sm text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel libero vitae mi mattis convallis.</p>
           </div>
         </div>
 
         <div class="flex items-start space-x-3 mb-4">
           <div class="text-xl">🛡️</div>
           <div>
-            <p class="font-bold">Sed ut perspiciatis</p>
-            <p class="text-sm text-gray-600">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+            <p class="font-bold text-gray-50">Sed ut perspiciatis</p>
+            <p class="text-sm text-gray-400">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
           </div>
         </div>
 
@@ -88,7 +88,7 @@
     </div>
 
     <!-- Right Column -->
-    <div class="bg-white p-4 space-y-4">
+    <div class="bg-slate-800 p-4 space-y-4 rounded-xl border border-slate-700">
       <!-- YouTube Video -->
       <div class="aspect-w-16 aspect-h-9">
         <iframe width="100%" height="300" src="https://www.youtube.com/embed/xapiI8x5e8c?si=_yZX9bpVchOcR_-6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" class="rounded-xl overflow-hidden" allowfullscreen></iframe>
@@ -96,15 +96,21 @@
 
       <!-- Form -->
       <form class="flex flex-col space-y-2">
-        <input type="text" placeholder="Nombre y Apellidos" class="p-2 border border-gray-300 rounded">
-        <input type="email" placeholder="Empresa u organización" class="p-2 border border-gray-300 rounded">
-        <input type="email" placeholder="Tu email" class="p-2 border border-gray-300 rounded">
-        <div class="flex items-center gap-x-2 text-sm text-gray-600">
-          <input type="radio" onclick="document.getElementById('buy_now_button').href=this.value;" name="plan" class="inline" value="https://buy.stripe.com/5kQ00igt0f8n3bvfPCak001" selected checked="checked"> Plan Base 39€/mes
-          <input type="radio" name="plan" onclick="document.getElementById('buy_now_button').href=this.value;" value="https://buy.stripe.com/fZu3cu5Om5xN13n46Uak002"> Plan Startup 79€/mes
+        <input type="text" placeholder="Nombre y Apellidos" class="p-2 border border-slate-600 bg-slate-900 text-gray-100 rounded focus:ring-2 focus:ring-blue-500">
+        <input type="text" placeholder="Empresa u organización" class="p-2 border border-slate-600 bg-slate-900 text-gray-100 rounded focus:ring-2 focus:ring-blue-500">
+        <input type="email" placeholder="Tu email" class="p-2 border border-slate-600 bg-slate-900 text-gray-100 rounded focus:ring-2 focus:ring-blue-500">
+        <div class="flex flex-col gap-y-2 text-sm text-gray-300">
+          <label class="inline-flex items-center gap-x-2">
+            <input type="radio" onclick="document.getElementById('buy_now_button').href=this.value;" name="plan" class="inline text-blue-500 focus:ring-blue-500" value="https://buy.stripe.com/5kQ00igt0f8n3bvfPCak001" checked>
+            Plan Base 39€/mes
+          </label>
+          <label class="inline-flex items-center gap-x-2">
+            <input type="radio" name="plan" onclick="document.getElementById('buy_now_button').href=this.value;" class="inline text-blue-500 focus:ring-blue-500" value="https://buy.stripe.com/fZu3cu5Om5xN13n46Uak002">
+            Plan Startup 79€/mes
+          </label>
         </div>
-        <a id="buy_now_button" href="https://buy.stripe.com/5kQ00igt0f8n3bvfPCak001" target="_blank" class="bg-blue-500 w-full px-3 hover:bg-white hover:border text-center hover:border-blue-500 hover:border-2 hover:text-blue-500 text-white py-3 font-semibold rounded">Start Now &raquo;</a>
-        <p class="text-xs text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a nunc ut elit laoreet porta.</p>
+        <a id="buy_now_button" href="https://buy.stripe.com/5kQ00igt0f8n3bvfPCak001" target="_blank" class="bg-blue-600 w-full px-3 hover:bg-blue-500 text-center text-white py-3 font-semibold rounded transition"><?= _('Start Now') ?> &raquo;</a>
+        <p class="text-xs text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a nunc ut elit laoreet porta.</p>
       </form>
 
       <section class="payment-icons" style="display:flex;gap:1rem;align-items:center;">
@@ -118,7 +124,7 @@
         <img src="https://github.com/datatrans/payment-logos/raw/master/assets/apm/sepa.svg" alt="SEPA" width="60">
       </section>
 
-      <div class="overflow-y-auto text-gray-700 text-sm space-y-2">
+      <div class="overflow-y-auto text-gray-300 text-sm space-y-2">
         <p>⟶ John Doe, Lorem Corp: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue."</p>
         <p>⟶ Jane Smith, Ipsum Agency: "Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor."</p>
         <p>⟶ Alice Brown, Demo Ltd: "Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus."</p>
