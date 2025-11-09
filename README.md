@@ -8,9 +8,26 @@
 [![CodeQL](https://github.com/natzar/Stripe-Pad/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/natzar/Stripe-Pad/actions/workflows/github-code-scanning/codeql)
 ![Stripe Pad Image](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/img/open-graph.png)
 
+
+
+
+
 ## Introduction
 
-**Stripe Pad** is the PHP boilerplate to build SaaS with Stripe. Stripe Pad is a GPL3-licensed PHP-based MVC framework that saves you months of development by starting you off with all the features, Stripe integration included, that are the same in every product, so you can focus on what makes your app unique. 
+Stripe Pad is a ready-to-use PHP boilerplate for building SaaS products with Stripe.
+It’s a lightweight MVC framework powered by PHP, SQLite, Stripe, Google Login, SMTP, and an optional OpenAI module.
+
+Out of the box, it includes everything you need to launch fast:
+
+A public landing page
+
+A customer area with user profiles, invoices, and membership management
+
+An admin dashboard for the SaaS owner
+
+Built-in Stripe webhook handling for automatic payment updates
+
+Licensed under GPL-3.0, Stripe Pad gives you a complete, production-ready foundation so you can skip the setup work and focus on what makes your app unique.
 
 🤠 **Suitable for Educational purposes**
 
@@ -25,17 +42,8 @@ You can read the official documentation and installation instructions on the [Wi
 
 The 3 main parts of every SaaS: A public page, a private area where only registered users and customers can login and a Superadmin private part to manage and maintain the SaaS.
 
-#### Public
 ![Stripe Pad Homepage](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/demo/screenshot-demo-homepage.png)
 
-#### Private
-Example of the restricted part to members only (your unique app).
-![Example App: for members only](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/demo/screenshot-private.png) 
-
-#### Superadmin's dashboard
-Available if using MySQL only.
-
-![Stripe Pad Dashboard](https://raw.githubusercontent.com/natzar/Stripe-Pad/main/cdn/demo/screenshot-dashboard.png)
 
 
 ## Contributing
