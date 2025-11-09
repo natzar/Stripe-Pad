@@ -301,7 +301,7 @@ class StripePadController
 
         // 3) CSRF
         if (empty($this->params['csrf_token']) || !hash_equals($_SESSION['csrf_token'] ?? '', $this->params['csrf_token'])) {
-            $_SESSION['errors'][] = "Solicitud inválida. Vuelve a intentarlo.";
+            $_SESSION['errors'][] = _('Invalid request, try again');
             header("location: " . APP_URL . "login");
             return;
         }
@@ -330,7 +330,12 @@ class StripePadController
             $user = $users->find($this->params['email']);
             //     $pass =  password_hash($this->params['password'], PASSWORD_DEFAULT);
 
-
+            if (!empty($user) and $is_superadmin and ($user['group'] != 'superadmin')) {
+                $_SESSION['errors'][] = _('That login is for Superadmins, log in here.');
+                log::system("Failed superadmin login for " . $this->params['email'] . " from IP " . $ip);
+                header("location: " . LANDING_URL . "login");
+                return;
+            }
 
             if (!empty($user) and password_verify($this->params['password'], $user['password'])) {
                 $this->createSession($user);
@@ -339,6 +344,7 @@ class StripePadController
                 //print_r($_SESSION);
                 //session_write_close();
                 log::system("Successful login for " . $this->params['email'] . " from IP " . $ip);
+
                 if ($is_superadmin) {
                     header("location: " . ADMIN_URL . "dashboard");
                 } else {
@@ -347,6 +353,7 @@ class StripePadController
             } else {
                 $_SESSION['errors'][] = "User or password not correct";
                 log::system("Failed login for " . $this->params['email'] . " from IP " . $ip);
+
                 if ($is_superadmin) {
                     header("location: " . ADMIN_URL . "login");
                     return;

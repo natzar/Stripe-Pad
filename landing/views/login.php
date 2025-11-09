@@ -1,11 +1,11 @@
 <meta name="robots" content="noindex">
 
 
-<div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
+<div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-900">
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
     <img class="mx-auto h-10 w-auto" src="<?= APP_LOGO ?>" alt="<?= APP_NAME ?>">
-    <h2 class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-700"><?= _('Welcome') ?></h2>
-    <p class="text-center mt-3 text-sm/6 text-gray-500">
+    <h2 class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-100"><?= _('Welcome') ?></h2>
+    <p class="text-center mt-3 text-sm/6 text-gray-300">
       <?= _('¿Lorem ipsum dolor sit amet?') ?>
       <a href="<?= LANDING_URL ?>signup" class="font-semibold text-sky-600 hover:text-sky-500"><?= _('Signup now') ?></a>
     </p>
@@ -49,7 +49,7 @@
         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES) ?>">
         <input type="text" name="hney" value="" style="display:none;">
         <div>
-          <button type="submit" class="flex w-full justify-center rounded-md bg-sky-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"><?= _('Entrar') ?></button>
+          <button type="submit" class="flex w-full justify-center rounded-md bg-sky-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"><?= _('Login') ?></button>
         </div>
       </form>
 

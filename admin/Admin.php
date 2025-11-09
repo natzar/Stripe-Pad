@@ -96,10 +96,13 @@ class Admin extends StripePadController
 		if (!$this->isSuperadmin) {
 			throw new StripePad\Exceptions\PermissionsException('Not superadmin');
 		}
+		$trafficStats = $this->log->getTrafficSummaryFromFile(60, 10);
 		$data = array(
 			"log" => $this->log->getAll(),
 			"counters" => $this->log->get_counters(),
-			"online_visitors" => $this->log->get_online_visitors_count()
+			"online_visitors" => $trafficStats['online_visitors'],
+			"traffic" => $trafficStats,
+			"db_stats" => $this->getDatabaseStats()
 		);
 		$this->view->show('dashboard.php', $data);
 	}
@@ -251,5 +254,183 @@ class Admin extends StripePadController
 
 		// ~ Redirection
 		$this->superadmin();
+	}
+
+	/**
+	 * Gather database stats for the dashboard (supports MySQL & SQLite)
+	 */
+	private function getDatabaseStats(): array
+	{
+		$stats = [
+			'driver' => APP_STORAGE,
+			'connection_ok' => false,
+			'connection_error' => null,
+			'table_sizes' => [],
+			'available_pdo_drivers' => class_exists('PDO') ? PDO::getAvailableDrivers() : [],
+		];
+
+		try {
+			if (APP_STORAGE === 'mysql') {
+				$stats['table_sizes'] = $this->getMysqlTableSizes();
+				$stats['connection_ok'] = true;
+				$stats['database_label'] = APP_DB;
+			} else {
+				$sqliteStats = $this->getSqliteStats();
+				$stats = array_merge($stats, $sqliteStats);
+			}
+		} catch (Throwable $e) {
+			$stats['connection_error'] = $e->getMessage();
+		}
+
+		return $stats;
+	}
+
+	/**
+	 * Return MySQL table sizes in MB
+	 */
+	private function getMysqlTableSizes(): array
+	{
+		$pdo = SPDO_mysql::singleton();
+		$query = "
+			SELECT
+				table_name AS name,
+				ROUND(((data_length + index_length) / 1024 / 1024), 2) AS size_mb
+			FROM information_schema.TABLES
+			WHERE table_schema = :schema
+			ORDER BY (data_length + index_length) DESC";
+
+		$stmt = $pdo->prepare($query);
+		$stmt->execute(['schema' => APP_DB]);
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
+
+		return array_map(function ($row) {
+			return [
+				'name' => $row['name'],
+				'size_mb' => isset($row['size_mb']) ? (float)$row['size_mb'] : 0.0
+			];
+		}, $rows);
+	}
+
+	/**
+	 * Return SQLite-specific stats (table sizes, db file size, etc.)
+	 */
+	private function getSqliteStats(): array
+	{
+		$pdo = SPDO_sqlite::singleton();
+		$filePath = ROOT_PATH . 'storage/database.sqlite';
+		$databaseSizeMb = $this->getFileSizeInMb($filePath);
+		$tables = $this->fetchSqliteTables($pdo);
+		$tableSizes = $this->calculateSqliteTableSizes($pdo, $tables, $databaseSizeMb);
+
+		return [
+			'connection_ok' => true,
+			'database_path' => $filePath,
+			'database_size_mb' => $databaseSizeMb,
+			'table_sizes' => $tableSizes
+		];
+	}
+
+	/**
+	 * Fetch all user tables from SQLite schema
+	 */
+	private function fetchSqliteTables(PDO $pdo): array
+	{
+		$stmt = $pdo->query("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name");
+		$tables = $stmt ? $stmt->fetchAll(PDO::FETCH_COLUMN) : [];
+		return $tables ?: [];
+	}
+
+	/**
+	 * Calculate table sizes for SQLite (dbstat when available, fallback to row ratios)
+	 */
+	private function calculateSqliteTableSizes(PDO $pdo, array $tables, float $dbSizeMb): array
+	{
+		if (empty($tables)) {
+			return [];
+		}
+
+		$fromDbstat = $this->fetchSqliteDbstatSizes($pdo, $tables);
+		if (!empty($fromDbstat)) {
+			return $fromDbstat;
+		}
+
+		$rowCounts = [];
+		foreach ($tables as $table) {
+			try {
+				$sql = sprintf('SELECT COUNT(*) AS c FROM "%s"', $this->sanitizeSqliteIdentifier($table));
+				$stmt = $pdo->query($sql);
+				$rowCounts[$table] = (int)($stmt ? $stmt->fetchColumn() : 0);
+			} catch (PDOException $e) {
+				$rowCounts[$table] = 0;
+			}
+		}
+
+		$totalRows = array_sum($rowCounts);
+		if ($totalRows === 0 || $dbSizeMb <= 0) {
+			return array_map(function ($table) {
+				return ['name' => $table, 'size_mb' => 0.0];
+			}, $tables);
+		}
+
+		return array_map(function ($table) use ($rowCounts, $totalRows, $dbSizeMb) {
+			$ratio = $rowCounts[$table] / $totalRows;
+			return [
+				'name' => $table,
+				'size_mb' => round($ratio * $dbSizeMb, 4)
+			];
+		}, $tables);
+	}
+
+	/**
+	 * Try to use SQLite's dbstat virtual table for accurate size data
+	 */
+	private function fetchSqliteDbstatSizes(PDO $pdo, array $tables): array
+	{
+		$allowed = array_flip($tables);
+
+		try {
+			$pdo->exec("DROP TABLE IF EXISTS temp.dbstat");
+			$pdo->exec("CREATE VIRTUAL TABLE temp.dbstat USING dbstat(main)");
+			$stmt = $pdo->query("SELECT name, SUM(pgsize) AS size FROM temp.dbstat GROUP BY name");
+		} catch (PDOException $e) {
+			return [];
+		}
+
+		$result = [];
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$name = $row['name'] ?? null;
+			if (!$name || !isset($allowed[$name])) {
+				continue;
+			}
+			$bytes = (int)($row['size'] ?? 0);
+			$result[] = [
+				'name' => $name,
+				'size_mb' => round($bytes / 1024 / 1024, 4)
+			];
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Avoid double quotes poisoning the identifier
+	 */
+	private function sanitizeSqliteIdentifier(string $identifier): string
+	{
+		return str_replace('"', '""', $identifier);
+	}
+
+	private function getFileSizeInMb(string $path): float
+	{
+		if (!is_file($path)) {
+			return 0.0;
+		}
+
+		$size = filesize($path);
+		if ($size === false) {
+			return 0.0;
+		}
+
+		return round($size / 1024 / 1024, 4);
 	}
 }

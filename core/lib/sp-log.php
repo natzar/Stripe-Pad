@@ -2,7 +2,7 @@
 
 /**
  * Package Name: Stripe Pad
- * File Description: Logs Model
+ * File Description: Logs 
  * 
  * @author Beto Ayesa <beto.phpninja@gmail.com>
  * @version 1.0.0
@@ -44,55 +44,7 @@ class log extends ModelBase
 		}
 		return self::$instance;
 	}
-	/**
-	 * push
-	 * Store a new message in log table
-	 * @param  mixed $label
-	 * @param  mixed $tag
-	 * @param  mixed $body
-	 * @param  mixed $usersId
-	 * @return void
-	 */
-	public function push($label, $tag = "system", $body = "", $usersId = 0)
-	{
 
-		switch ($tag):
-			case 'system':
-			case 'system.error':
-				self::system($label . " " . $body);
-				break;
-			default:
-				$hash = $tag . "-"  . fingerprint($label . "-" . $body);
-				$hash = substr($hash, 0, 200);
-
-				$body = substr($body, 0, 255);
-				$month = (int)date('Ym');
-				$week = (int)date('oW');
-
-				if (APP_STORAGE === 'mysql') {
-					$sql = "INSERT INTO logs (hash, month, week, usersId, label, tag, body)
-							VALUES (:hash, :month, :week, :uid, :label, :tag, :body)
-							ON DUPLICATE KEY UPDATE total = total + 1, updated = NOW()";
-				} else {
-					$sql = "INSERT INTO logs (hash, month, week, usersId, label, tag, body, created, updated)
-							VALUES (:hash, :month, :week, :uid, :label, :tag, :body, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-							ON CONFLICT(hash) DO UPDATE SET total = total + 1, updated = CURRENT_TIMESTAMP";
-				}
-
-				$q  = $this->db->prepare($sql);
-				$q->bindParam(":uid", $usersId);
-				$q->bindParam(":tag", $tag);
-				$q->bindParam(":hash", $hash);
-				$q->bindParam(":label", $label);
-				$q->bindParam(":body", $body);
-				$q->bindParam(":month", $month, PDO::PARAM_INT);
-				$q->bindParam(":week", $week, PDO::PARAM_INT);
-				$q->execute();
-				//	self::system($tag . " - " . $label . " " . $body);
-
-				break;
-		endswitch;
-	}
 
 
 	public function getAll($limit = 20)

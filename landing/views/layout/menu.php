@@ -3,7 +3,7 @@
 
 
 <div class="sticky w-full  z-50 bg-white items-center  shadow-xl  ">
-  <div class="text-gray-100 flex gap-x-2 bg-blue-900 px-6 py-0.5 sm:px-3.5 text-center items-center ">
+  <div class="text-gray-100 flex gap-x-2 bg-sky-900 px-6 py-0.5 sm:px-3.5 text-center items-center ">
     <a class="text-sm z-50 hover:underline mx-auto hover:font-semibold" href="<?= LANDING_URL ?>demo"> <strong class="text-sm leading-6 text-gray-100 font-semibold inline"><?= _('Build your SaaS today') ?></strong>
 
     </a>
@@ -11,7 +11,7 @@
       <!-- <a href="<?= LANDING_URL ?>?lang=es" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/es.png"></a>
       <a href="<?= LANDING_URL ?>?lang=en" class="size-5 inline-block mr-2"><img src="<?= APP_CDN ?>flags/us.png"></a> -->
       <!-- <a href=" <?= LANDING_URL ?>signup"">
-        <button class=" hidden rounded-full bg-blue-900 px-4 py-1 text-xs text-black font-semibold transition duration-200 ease-out hover:bg-blue-400 lg:block">
+        <button class=" hidden rounded-full bg-sky-900 px-4 py-1 text-xs text-black font-semibold transition duration-200 ease-out hover:bg-sky-400 lg:block">
           <?= _('Login') ?>
 
         </button>
@@ -122,7 +122,7 @@
           <!-- space for another button  -->
 
         </div>
-        <a class="bg-blue-600 text-md font-semibold hover:bg-blue-700 text-white rounded-full py-2 px-4 shadow-sm" href="<?= LANDING_URL ?>signup"><?= _('Signup') ?></a>
+        <a class="bg-sky-600 text-md font-semibold hover:bg-sky-700 text-white rounded-full py-2 px-4 shadow-sm" href="<?= LANDING_URL ?>signup"><?= _('Signup') ?></a>
         <!-- <a href="<?= LANDING_URL ?>signup" class="text-sm font-semibold leading-6 text-gray-400">Empezar ahora </a> -->
 
         <a href="<?= LANDING_URL ?>login" class="text-md font-semibold leading-6 text-gray-500 hover:text-gray-600"><?= _('Login') ?> <span aria-hidden="true">&rarr;</span></a>

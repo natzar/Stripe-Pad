@@ -291,22 +291,42 @@ class Stripe extends ModelBase
                 $name = $customer->name ?? 'No Name Provided';
                 $customerId = $customer->id; // id should always be present
 
-                // Prepare SQL statement to upsert customer data into the users table
-                $stmt = $this->db->prepare("
-                    INSERT INTO users (email, name, stripe_customer_id, created, updated)
-                    VALUES (:email, :name, :stripe_customer_id, NOW(), NOW())
-                    ON DUPLICATE KEY UPDATE
-                        name = VALUES(name),
-                        stripe_customer_id = VALUES(stripe_customer_id),
-                        updated = NOW()
-                ");
-
-                // Execute the prepared statement
-                $stmt->execute([
-                    ':email' => $email,
-                    ':name' => $name,
-                    ':stripe_customer_id' => $customerId
+                // Determine if the customer already exists either by Stripe ID or email
+                $lookup = $this->db->prepare("SELECT usersId FROM users WHERE stripe_customer_id = :stripe_customer_id OR email = :email LIMIT 1");
+                $lookup->execute([
+                    ':stripe_customer_id' => $customerId,
+                    ':email' => $email
                 ]);
+                $existing = $lookup->fetch(PDO::FETCH_ASSOC);
+
+                if ($existing) {
+                    $stmt = $this->db->prepare("
+                        UPDATE users
+                        SET email = :email,
+                            name = :name,
+                            stripe_customer_id = :stripe_customer_id,
+                            updated = NOW()
+                        WHERE usersId = :usersId
+                    ");
+                    $stmt->execute([
+                        ':email' => $email,
+                        ':name' => $name,
+                        ':stripe_customer_id' => $customerId,
+                        ':usersId' => $existing['usersId']
+                    ]);
+                } else {
+                    $password = password_hash(bin2hex(random_bytes(12)), PASSWORD_BCRYPT);
+                    $stmt = $this->db->prepare("
+                        INSERT INTO users (email, name, password, stripe_customer_id, created, updated)
+                        VALUES (:email, :name, :password, :stripe_customer_id, NOW(), NOW())
+                    ");
+                    $stmt->execute([
+                        ':email' => $email,
+                        ':name' => $name,
+                        ':password' => $password,
+                        ':stripe_customer_id' => $customerId
+                    ]);
+                }
             }
         } catch (\Exception $e) {
             // Log or handle exceptions here

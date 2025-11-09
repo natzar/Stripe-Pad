@@ -1,3 +1,16 @@
+<?php
+$dbStats = $db_stats ?? [];
+$tableSizes = $dbStats['table_sizes'] ?? [];
+$pdoDrivers = $dbStats['available_pdo_drivers'] ?? [];
+$databaseDriverLabel = strtoupper($dbStats['driver'] ?? APP_STORAGE);
+$databaseSizeMb = $dbStats['database_size_mb'] ?? null;
+$trafficStats = $traffic ?? [
+    'chart_labels' => [],
+    'chart_values' => [],
+    'daily_counts' => [],
+    'online_visitors' => $online_visitors ?? 0,
+];
+?>
 <header class="pb-6  ">
     <div class="mx-auto flex items-center space-x-4 ">
         <h1 class="text-3xl font-bold tracking-tight text-gray-800">Superadmin's Special Dashboard</h1>
@@ -67,28 +80,35 @@
 
 
             <canvas id="trafficChart"></canvas>
+            <p id="trafficChartEmpty" class="mt-2 text-sm text-gray-500 hidden">No traffic data available yet.</p>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
-                    var ctx = document.getElementById('trafficChart').getContext('2d');
-                    var trafficData = {
-                        labels: Array.from({
-                            length: 365
-                        }, (_, i) => new Date(2023, 0, i + 1).toLocaleDateString('en-US')),
-                        datasets: [{
-                            label: 'Daily Website Visits',
-                            data: Array.from({
-                                length: 365
-                            }, () => Math.floor(Math.random() * 200 + 100)),
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1
-                        }]
-                    };
+                    const labels = <?= json_encode($trafficStats['chart_labels'] ?? []); ?>;
+                    const values = <?= json_encode($trafficStats['chart_values'] ?? []); ?>;
+                    const ctx = document.getElementById('trafficChart').getContext('2d');
+                    const emptyState = document.getElementById('trafficChartEmpty');
 
-                    var myChart = new Chart(ctx, {
+                    if (!labels.length) {
+                        document.getElementById('trafficChart').classList.add('hidden');
+                        emptyState.classList.remove('hidden');
+                        return;
+                    }
+
+                    new Chart(ctx, {
                         type: 'line',
-                        data: trafficData,
+                        data: {
+                            labels,
+                            datasets: [{
+                                label: 'Daily Website Visits',
+                                data: values,
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 2,
+                                tension: 0.3,
+                                fill: true
+                            }]
+                        },
                         options: {
                             scales: {
                                 y: {
@@ -254,39 +274,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                <?php
-
-
-                // Conectar a la base de datos
-                $conn = new mysqli(APP_DB_HOST, APP_DB_USER, APP_DB_PASSWORD, APP_DB);
-
-                // Checar conexión
-
-
-                // Obtener el tamaño de cada tabla
-                $sql = "SELECT 
-            table_name AS `Table`, 
-            round(((data_length + index_length) / 1024 / 1024), 2) `Size in MB` 
-        FROM information_schema.TABLES 
-        WHERE table_schema = '" . APP_DB . "'
-        ORDER BY (data_length + index_length) DESC;";
-
-                $result = $conn->query($sql);
-
-                $tableSizes = [];
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        $tableSizes[] = $row;
-                    }
-                } else {
-                    echo "0 results";
-                }
-
-                $conn->close();
-                ?>
-
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                         <h2 class="text-gray-700 text-lg">Checklist</h2>
@@ -325,26 +312,47 @@
                                 } ?>
                             </li>
                             <li>
-                                <strong>MySQL PDO:</strong>
-                                <?php if (class_exists('PDO')) {
-                                    $drivers = PDO::getAvailableDrivers();
-                                    if (in_array('mysql', $drivers)) {
-                                        echo "<span class='text-green-500'>✔︎ MySQL PDO is installed.</span>";
+                                <strong>PDO Drivers:</strong>
+                                <?php
+                                if (class_exists('PDO')) {
+                                    if (!empty($pdoDrivers)) {
+                                        $requiredDriver = APP_STORAGE === 'mysql' ? 'mysql' : 'sqlite';
+                                        if (in_array($requiredDriver, $pdoDrivers)) {
+                                            echo "<span class='text-green-500'>✔︎ " . strtoupper($requiredDriver) . " PDO ready (" . implode(', ', $pdoDrivers) . ")</span>";
+                                        } else {
+                                            echo "<span class='text-red-500'>[x] Missing " . strtoupper($requiredDriver) . " PDO driver. Found: " . implode(', ', $pdoDrivers) . "</span>";
+                                        }
                                     } else {
-                                        echo "<span class='text-red-500'>[x] MySQL PDO is not available.</span>";
+                                        echo "<span class='text-red-500'>[x] No PDO drivers found.</span>";
                                     }
                                 } else {
                                     echo "<span class='text-red-500'>[x] PDO is not installed.</span>";
-                                } ?>
+                                }
+                                ?>
+                            </li>
+                            <li>
+                                <strong>Storage Driver:</strong>
+                                <span class="text-gray-700"><?= $databaseDriverLabel; ?></span>
                             </li>
                             <li>
                                 <strong>Database Connection:</strong>
                                 <?php
-                                // Assuming $conn is your database connection variable
-                                if (isset($conn) && $conn->connect_error) {
-                                    echo "<span class='text-red-500'>[x] " . $conn->connect_error . "</span>";
+                                if (!empty($dbStats) && !empty($dbStats['connection_ok'])) {
+                                    echo "<span class='text-green-500'>✔︎ Connected</span>";
+                                } elseif (!empty($dbStats['connection_error'])) {
+                                    echo "<span class='text-red-500'>[x] " . htmlspecialchars($dbStats['connection_error'], ENT_QUOTES, 'UTF-8') . "</span>";
                                 } else {
-                                    echo "<span class='text-green-500'>✔︎ Connected successfully</span>";
+                                    echo "<span class='text-gray-500'>Pending check</span>";
+                                }
+                                ?>
+                            </li>
+                            <li>
+                                <strong>Database Size:</strong>
+                                <?php
+                                if ($databaseSizeMb !== null) {
+                                    echo "<span class='text-gray-700'>" . $databaseSizeMb . " MB</span>";
+                                } else {
+                                    echo "<span class='text-gray-500'>n/a</span>";
                                 }
                                 ?>
                             </li>
@@ -360,10 +368,10 @@
                             var pieChart = new Chart(ctx, {
                                 type: 'pie',
                                 data: {
-                                    labels: <?php echo json_encode(array_column($tableSizes, 'Table')); ?>,
+                                    labels: <?php echo json_encode(array_column($tableSizes, 'name')); ?>,
                                     datasets: [{
                                         label: 'MB',
-                                        data: <?php echo json_encode(array_column($tableSizes, 'Size in MB'), JSON_NUMERIC_CHECK); ?>,
+                                        data: <?php echo json_encode(array_column($tableSizes, 'size_mb'), JSON_NUMERIC_CHECK); ?>,
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)',
                                             'rgba(54, 162, 235, 0.2)',
