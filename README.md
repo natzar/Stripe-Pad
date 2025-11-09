@@ -14,20 +14,25 @@
 
 ## Introduction
 
-Stripe Pad is a ready-to-use PHP boilerplate for building SaaS products with Stripe.
-It’s a lightweight MVC framework powered by PHP, SQLite, Stripe, Google Login, SMTP, and an optional OpenAI module.
+Stripe Pad is a server-rendered PHP boilerplate for building SaaS products with Stripe — old-school, simple, and fast.
+It uses PHP as both backend and template engine, with as little JavaScript as possible. Everything runs directly on your server, no build steps or frontend frameworks required.
 
-Out of the box, it includes everything you need to launch fast:
+You get a complete foundation ready to customize:
 
-A public landing page
+* Landing page, admin dashboard, private area for registered users
+* User authentication, Stripe payments, and webhooks
+* SQLite database and MVC structure (Models, Views, Controllers)
+* Google login, SMTP transactional emails, and optional OpenAI module
 
-A customer area with user profiles, invoices, and membership management
+The code is meant to be edited directly:
 
-An admin dashboard for the SaaS owner
+* Change HTML by editing /views templates
+* Add routes or logic in /app/App.php or /landing/Landing.php
+* Create or extend database models in /app/models
 
-Built-in Stripe webhook handling for automatic payment updates
+Stripe Pad handles user access and payments, while giving you a clean base to build on — you can later plug in React, Vue, or any JS framework inside the /app private area if you need it.
 
-Licensed under GPL-3.0, Stripe Pad gives you a complete, production-ready foundation so you can skip the setup work and focus on what makes your app unique.
+Licensed under GPL-3.0, Stripe Pad is your minimal, transparent starting point for a fully functional SaaS.
 
 🤠 **Suitable for Educational purposes**
 
