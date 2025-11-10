@@ -13,7 +13,7 @@ $currencySymbol = $currency === 'USD' ? '$' : ($currency === 'EUR' ? '€' : $cu
 <header class="pb-6">
 	<div class="mx-auto">
 		<p class="text-sm font-medium text-indigo-400"><?= _('Sample App') ?></p>
-		<h1 class="text-3xl font-bold tracking-tight text-gray-100"><?= _('Bitcoin Price Tracker') ?></h1>
+		<h1 class="text-3xl font-bold tracking-tight text-gray-900"><?= _('Bitcoin Price Tracker') ?></h1>
 		<p class="mt-2 text-gray-400 max-w-2xl">
 			<?= _('This page fetches live market data from CoinGecko (with graceful fallbacks) to showcase how you can wire external APIs into your private app.') ?>
 		</p>

@@ -675,7 +675,7 @@ class StripePadController
     {
         //$this->path = APP_PATH . "views/";
 
-        log::traffic('[404]' . getCurrentUrl());
+        log::traffic('[404] ' . getCurrentUrl());
         header('HTTP/1.0 404 Not Found');
         $SEO_TITLE = "404 Not Found";
         $SEO_DESCRIPTION = "The page you are looking for does not exist.";

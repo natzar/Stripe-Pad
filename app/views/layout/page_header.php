@@ -1,7 +1,7 @@
 <div class="mx-auto mb-5">
 
 
-    <nav class="flex mb-4" aria-label="Breadcrumb">
+    <nav class="flex mb-10" aria-label="Breadcrumb">
         <ol role="list" class="flex items-center space-x-4">
             <li>
                 <div>

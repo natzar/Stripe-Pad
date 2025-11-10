@@ -105,7 +105,7 @@ if (isLocalhost()) { # Localhost
 }
 
 # EMAIL SMTP
-define('ADMIN_EMAIL', '');
+define('ADMIN_EMAIL', 'webmaster@stripepad.com');
 define('SMTP_SERVER', '');                // Specify smtp server
 define('SMTP_PORT', 587);
 define('SMTP_GLOBAL_EMAIL_FROM', ''); // Set Email from address

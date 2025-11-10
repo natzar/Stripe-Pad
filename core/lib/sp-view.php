@@ -33,9 +33,18 @@ class View
 	var $current_url;
 
 	var $hide_menu = false;
+
+
+	var $defaults = array();
+
 	function __construct()
 	{
 		$this->current_url = getCurrentUrl();
+	}
+
+	function set_defaults($arr)
+	{
+		$this->defaults = array_merge($this->defaults, $arr);
 	}
 
 	function set_views_path($path)
@@ -70,6 +79,9 @@ class View
 		$SEO_DESCRIPTION = SEO_DESCRIPTION; # Default meta tag description
 		$SEO_KEYWORDS = ""; //SEO_KEYWORDS; # Default meta tag keywords
 
+		/* Default Template Data */
+		if (is_array($this->defaults)) foreach ($this->defaults as $key => $value) $$key = $value;
+
 		/* Template Data */
 		if (is_array($vars)) foreach ($vars as $key => $value) $$key = $value;
 
@@ -95,7 +107,7 @@ class View
 				//$template = '404.php'; //	throw new ViewException('Template not found: ' . $template);
 				header("HTTP/1.0 404 Not Found");
 				include CORE_PATH . 'templates/'  . '404.php';
-				log::system("View Error 404: " . $template);
+				log::system("Template not found: " . $template);
 			}
 		} else {
 			include($template);

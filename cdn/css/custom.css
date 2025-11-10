@@ -1,19 +1,61 @@
-html {
-  scroll-behavior: smooth;
-}
-
 html,
 body {
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+  /* font-family: 'PT Mono', 'Courier New', 'Courier', serif !important; */
+  /* Use your custom font for the body or any specific element */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+
   scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
+
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
+
+
+
+
+
+
+@font-face {
+  font-family: 'AirClassicMedium';
+  /* Give your font a name */
+  src: url('fonts/airclassic-medium.woff2') format('woff2');
+  /* Specify the path to your WOFF2 file */
+  font-weight: normal;
+  /* Adjust font-weight if needed */
+  font-style: normal;
+  /* Adjust font-style if needed */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AirClassicBlack';
+  /* Give your font a name */
+  src: url('fonts/airclassic.woff2') format('woff2');
+  /* Specify the path to your WOFF2 file */
+  font-weight: bold;
+  /* Adjust font-weight if needed */
+  font-style: normal;
+  /* Adjust font-style if needed */
+  font-display: swap;
+}
+
+h1,
+h2,
+h3,
+h4,
+strong,
+.font-black {
+  font-family: 'AirClassicBlack' !important;
+  font-weight: 600
+}
+
+.font-medium {
+  font-family: 'AirClassicMedium';
+}
 
 #mobile-menu {
   overflow: hidden;
