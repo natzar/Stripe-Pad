@@ -74,6 +74,9 @@
           <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z" />
         </svg> <?= _('Datos') ?>
       </button>
+      <button data-tab="tab-password" class="tab-btn group inline-flex items-center border-b-2 px-1 py-4 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+        <?= _('Change your password') ?>
+      </button>
       <button data-tab="tab-notifications" class="tab-btn group inline-flex items-center border-b-2 px-1 py-4 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
         <?= _('Notificaciones') ?>
       </button>
@@ -101,7 +104,7 @@
           <div class="flex  ">
 
             <!-- Main Content Column -->
-            <div class="w-1/2  ">
+            <div class="w-full  ">
               <div class="col-span-1">
 
                 <div class="">
@@ -169,44 +172,7 @@
 
 
             </div>
-            <!-- Sidebar Column -->
-            <div class="w-1/2   ml-4">
-              <!-- Documentos -->
-
-
-              <div class="bg-white p-6 rounded-lg shadow-md mb-5">
-                <form action="<?= APP_URL ?>actionUpdateuser" method="POST">
-
-                  <div class="relative">
-                    <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                      <div class="w-full border-t border-gray-300"></div>
-                    </div>
-                    <div class="relative flex justify-start">
-                      <span class="bg-white  text-base font-semibold leading-6 text-gray-900"><?= _('Change your password') ?></span>
-                    </div>
-                  </div>
-
-
-                  <div class="mb-4">
-                    <label for="current_password" class="block text-sm font-medium text-gray-700"><?= _('Current Password') ?></label>
-                    <input type="password" name="current_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                  </div>
-                  <div class="mb-4">
-                    <label for="new_password" class="block text-sm font-medium text-gray-700"><?= _('New Password') ?></label>
-                    <input type="password" name="new_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                  </div>
-                  <div class="mb-4">
-                    <label for="confirm_password" class="block text-sm font-medium text-gray-700"><?= _('Repeat new Password') ?></label>
-                    <input type="password" name="confirm_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                  </div>
-
-                  <input type="submit" class="rounded-full bg-gray-100 text-gray-400 hover:bg-sky-800 hover:text-white px-4 py-2 rounded text-sm font-bold" value="<?= _('Update Password') ?>">
-                </form>
-              </div>
-
-
-
-              <!-- 
+            <!-- 
         <a href="/account" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
 Listado de Facturas
           </a>
@@ -245,6 +211,36 @@ Listado de Facturas
     </div>
 
     <!-- End my account -->
+  </div>
+
+  <div id="tab-password" class="tab-content hidden">
+    <div class="bg-white p-6 rounded-lg shadow-md mb-5">
+      <form action="<?= APP_URL ?>actionUpdateuser" method="POST">
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+          <div class="relative flex justify-start">
+            <span class="bg-white text-base font-semibold leading-6 text-gray-900"><?= _('Change your password') ?></span>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="current_password" class="block text-sm font-medium text-gray-700"><?= _('Current Password') ?></label>
+          <input type="password" name="current_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+        </div>
+        <div class="mb-4">
+          <label for="new_password" class="block text-sm font-medium text-gray-700"><?= _('New Password') ?></label>
+          <input type="password" name="new_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+        </div>
+        <div class="mb-4">
+          <label for="confirm_password" class="block text-sm font-medium text-gray-700"><?= _('Repeat new Password') ?></label>
+          <input type="password" name="confirm_password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+        </div>
+
+        <input type="submit" class="rounded-full bg-gray-100 text-gray-400 hover:bg-sky-800 hover:text-white px-4 py-2 rounded text-sm font-bold" value="<?= _('Update Password') ?>">
+      </form>
+    </div>
   </div>
 
   <div id="tab-notifications" class="tab-content hidden">
@@ -318,8 +314,3 @@ Listado de Facturas
     activarTab('tab-account');
   });
 </script>
-
-
-
-
-</form>
