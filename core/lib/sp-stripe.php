@@ -35,6 +35,7 @@ class Stripe extends ModelBase
     function __construct()
     {
         parent::__construct();
+        $this->bootstrapStripeClient();
         $this->stripe = new \Stripe\StripeClient(APP_STRIPE_SECRETKEY);
         $this->log = log::singleton();
     }
@@ -279,6 +280,7 @@ class Stripe extends ModelBase
             }
         }
     }
+
     public function syncStripeCustomers()
     {
         try {
@@ -385,6 +387,24 @@ class Stripe extends ModelBase
                     $product->active ? 1 : 0
                 ]);
             }
+        }
+    }
+
+    private function bootstrapStripeClient(): void
+    {
+        if (class_exists(\Stripe\StripeClient::class)) {
+            return;
+        }
+
+        $composerAutoload = ROOT_PATH . 'vendor/autoload.php';
+        if (is_file($composerAutoload)) {
+            require_once $composerAutoload;
+        }
+
+        if (!class_exists(\Stripe\StripeClient::class)) {
+            $message = 'Stripe SDK is not installed. Please run "composer install" or add stripe/stripe-php to your project.';
+            log::system('[error] ' . $message);
+            throw new StripePad\Exceptions\StripePadException($message);
         }
     }
 }
