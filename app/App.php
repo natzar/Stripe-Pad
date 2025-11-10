@@ -43,11 +43,12 @@
  */
 
 
-/* Define here landing (public) and app (private, registered users only) routes as class methods */
+
 
 class App extends StripePadController
 {
 	var $isAuthenticated = false;
+	var $accountsId = null; // Current account ID, 1 user can have > 1 accounts
 
 	public function __construct()
 	{
@@ -55,16 +56,32 @@ class App extends StripePadController
 
 		// We're in APP (private area) so we need to check if user is authenticated
 		$this->isAuthenticated = $this->isAuthenticated();
+		# Some default values for views
+		$this->view->set_views_path(APP_PATH . "views/");
+		$this->view->set_isAuthenticated($this->isAuthenticated);
 
 		if (!$this->isAuthenticated) {
 			header("location: " . LANDING_URL . "login");
 			// die don't continue. All methods are for registered users only
 			exit;
-		}
+		} else {
+			$this->view->isAuthenticated = true;
+			$c = new accountsModel();
+			$cs = $c->get_accounts_by_usersId($_SESSION['user']['usersId']);
 
-		# Some default values for views
-		$this->view->set_views_path(APP_PATH . "views/");
-		$this->view->set_isAuthenticated($this->isAuthenticated);
+			if (!isset($_SESSION['account'])) {
+				$_SESSION['account'] = $c->get_by_id($cs[0]['accountsId']);
+			}
+
+			if (!isset($_SESSION['user']['accounts'])) {
+				$_SESSION['user']['accounts'] = $cs;
+			}
+			$this->accountsId = $_SESSION['account']['accountsId'];
+			$this->view->set_defaults(array(
+				'accounts' => $_SESSION['user']['accounts'],
+				'account' => $_SESSION['account']
+			));
+		}
 	}
 
 	/**
@@ -111,7 +128,32 @@ class App extends StripePadController
 	}
 
 
+	public function upgrade()
+	{
+		if (!$this->isAuthenticated) {
+			throw new PermissionsException("You need to be logged in");
+		}
+		$products = new productsModel();
+		$data = array(
+			"products" => $products->getAll()
 
+		);
+
+		$this->view->show('upgrade.php', $data);
+	}
+
+
+	public function help()
+	{
+		$this->view->show('help.php', array(
+			"SEO_TITLE" => "Help",
+			"SEO_DESCRIPTION" => "Get help and support.",
+			"breadcrumb" => array(
+				array("label" => "Help", "url" => "help")
+			),
+
+		));
+	}
 
 
 	public function app_settings()

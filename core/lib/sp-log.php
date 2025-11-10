@@ -139,7 +139,7 @@ class log extends ModelBase
 			'total_pageviews' => 0,
 		];
 
-		$path = ROOT_PATH . 'logs/traffic.log';
+		$path = ROOT_PATH . 'logs/sp-traffic.log';
 		if (!is_readable($path)) {
 			return $summary;
 		}
