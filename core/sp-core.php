@@ -165,6 +165,18 @@ class StripePadController
     }
 
     /**
+     * Method signup
+     *
+     * @return void
+     */
+    public function paywall()
+    {
+
+        $this->view->show("signup-paywall.php", array(), true);
+    }
+
+
+    /**
      * Method upgrade
      *
      * @return void
