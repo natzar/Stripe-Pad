@@ -2,7 +2,7 @@
 <footer class="" aria-labelledby="footer-heading">
   <div class="mx-auto ">
     <div class="pt-8 ">
-      <p class="text-xs leading-5 text-gray-400"><a href="<?= APP_URL ?>"><?= APP_NAME ?></a> &copy; <?= Date("Y") ?> Ayesa Digital SLU. All rights reserved</p>
+      <p class="text-xs leading-5 text-gray-400"><a href="<?= APP_URL ?>"><?= APP_NAME ?></a> &copy; <?= Date("Y") ?> <?= APP_NAME ?>. All rights reserved</p>
       <p class="text-xs leading-5 text-gray-500">
         Get Support: <a href="mailto:<?= ADMIN_EMAIL ?>"><?= ADMIN_EMAIL ?></a></p>
     </div>
