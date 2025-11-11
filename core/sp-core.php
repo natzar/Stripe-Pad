@@ -306,22 +306,13 @@ class StripePadController
         header("location: " . APP_URL . "login");
     }
 
-    /**
-     * actionSuperAdminLogin
-     *
-     * @return void
-     */
-    public function actionSuperAdminLogin()
-    {
-        log::system("Superadmin intent " . $this->params['email']);
-        $this->actionLogin(true);
-    }
+
     /**
      * actionLogin
      *
      * @return void
      */
-    public function actionLogin($is_superadmin = false)
+    public function actionLogin()
     {
         log::system("Login action called " . $this->params['email']);
 
@@ -331,10 +322,7 @@ class StripePadController
 
         $users = new usersModel();
 
-        # Make it friendly, if no db connection die with error
-        if (is_null($users->db)) die("Stripe Pad: You need to set a database connection to make login/signup work");
-
-        // 3) CSRF
+        // CSRF
         if (empty($this->params['csrf_token']) || !hash_equals($_SESSION['csrf_token'] ?? '', $this->params['csrf_token'])) {
             $_SESSION['errors'][] = _('Invalid request, try again');
             header("location: " . APP_URL . "login");
@@ -354,7 +342,9 @@ class StripePadController
 
         # Login flow
         log::system("Login attempt for " . $this->params['email'] . " from IP " . $ip);
+
         if (!isset($_SESSION['login_attemp'])) $_SESSION['login_attemp'] = 0;
+
         $_SESSION['login_attemp']++;
 
         if ($_SESSION['login_attemp'] > 5) {
@@ -365,22 +355,13 @@ class StripePadController
             $user = $users->find($this->params['email']);
             //     $pass =  password_hash($this->params['password'], PASSWORD_DEFAULT);
 
-            if (!empty($user) and $is_superadmin and ($user['group'] != 'superadmin')) {
-                $_SESSION['errors'][] = _('That login is for Superadmins, log in here.');
-                log::system("Failed superadmin login for " . $this->params['email'] . " from IP " . $ip);
-                header("location: " . LANDING_URL . "login");
-                return;
-            }
-
             if (!empty($user) and password_verify($this->params['password'], $user['password'])) {
                 $this->createSession($user);
                 $users->saveLastLogin($user['usersId']);
-                // $_SESSION['errors'][] = "Welcome back " . $user['email'];
-                //print_r($_SESSION);
-                //session_write_close();
-                log::system("Successful login for " . $this->params['email'] . " from IP " . $ip);
 
-                if ($is_superadmin) {
+                log::system("Successful login for " . $this->params['email'] . " (" . $user['group'] . ") from IP " . $ip);
+
+                if ($user['group'] == 'superadmin') {
                     header("location: " . ADMIN_URL . "dashboard");
                 } else {
                     header("location: " . APP_URL);
@@ -389,12 +370,8 @@ class StripePadController
                 $_SESSION['errors'][] = "User or password not correct";
                 log::system("Failed login for " . $this->params['email'] . " from IP " . $ip);
 
-                if ($is_superadmin) {
-                    header("location: " . ADMIN_URL . "login");
-                    return;
-                } else {
-                    header("location: " . LANDING_URL . "login");
-                }
+
+                header("location: " . LANDING_URL . "login");
             }
         }
     }

@@ -49,24 +49,18 @@ class Admin extends StripePadController
 
 	public function __construct()
 	{
-		parent::__construct(); // !important
-		$this->view->set_views_path(ADMIN_PATH . "views/");
 
-		# Some default values for views
-		$defaults = array();
+		parent::__construct(); // !important
 
 		$this->isAuthenticated = $this->isAuthenticated() and isset($_SESSION['is_superadmin']) and $_SESSION['is_superadmin'] == true;
 
 		if (!$this->isAuthenticated) {
-			$this->view->set_isAuthenticated(false);
-			$this->view->hide_menu();
-		} else {
-			$this->view->set_isAuthenticated(true);
-		}
-		if (!$this->isAuthenticated and isset($this->params['p']) and !strstr($this->params['p'], "login")) {
-			header("location: " . ADMIN_URL . "login");
+			header("location: " . LANDING_URL . "login");
 			return;
 		}
+
+		$this->view->set_views_path(ADMIN_PATH . "views/");
+		$this->view->set_isAuthenticated(true);
 	}
 
 	/**

@@ -117,7 +117,7 @@
           <!-- space for another button  -->
 
         </div>
-        <a href="<?= ADMIN_URL ?>login" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-400 hover:bg-gray-800"><?= _('Superadmin') ?></a>
+
         <a class="bg-sky-600 text-md font-semibold hover:bg-sky-700 text-white rounded-full py-2 px-4 shadow-sm" href="<?= LANDING_URL ?>signup"><?= _('Signup ') ?></a>
 
         <!-- <a href="<?= LANDING_URL ?>signup" class="text-sm font-semibold leading-6 text-gray-400">Empezar ahora </a> --><a class="bg-sky-600 text-md font-semibold hover:bg-sky-700 text-white rounded-full py-2 px-4 shadow-sm" href="<?= LANDING_URL ?>paywall"><?= _('Paywall') ?></a>
