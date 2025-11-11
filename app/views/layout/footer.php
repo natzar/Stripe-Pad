@@ -68,6 +68,11 @@
 
   var active_link_class = "bg-white shadow-sm ";
 
+  function toggle_user_accounts_popup() {
+    const popup = document.getElementById("popup");
+    popup.classList.toggle("hidden");
+  }
+
   $(document).ready(function() {
     console.log("STRIPE PAD Loaded...");
     // Add style to the link hrefing the current page
@@ -95,6 +100,8 @@
         mobileMenu.classList.add('hidden');
       });
     }
+
+    // Multi account switch selector
 
 
   });

@@ -142,4 +142,34 @@
       </table>
     </div>
   </div>
+
+  <!-- Access -->
+  <section class="rounded-2xl bg-white shadow p-6">
+    <div class="mb-4">
+      <p class="text-sm uppercase tracking-wide text-sky-600"><?= _('Equipo') ?></p>
+      <h2 class="text-2xl font-semibold text-gray-900"><?= _('Acceso y permisos') ?></h2>
+      <p class="text-sm text-gray-500"><?= _('Consulta los miembros con acceso a esta cuenta.') ?></p>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><?= _('Cuenta') ?></th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><?= _('Acceso') ?></th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-100">
+          <? foreach ($_SESSION['user']['accounts'] as $account): ?>
+            <tr>
+              <td class="px-4 py-3 text-sm text-gray-900"><?= $account['account_name'] ?></td>
+              <td class="px-4 py-3 text-sm text-gray-500">
+                <? if ($_SESSION['user']['usersId'] == $account['usersId']) echo 'Admin';
+                else echo 'Regular Access'; ?>
+              </td>
+            </tr>
+          <? endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </section>
 </div>

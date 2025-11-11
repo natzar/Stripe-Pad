@@ -17,6 +17,8 @@
                     <div class="flex h-16 shrink-0 items-center">
                         <img class="h-8 w-auto" src="<?= APP_LOGO ?>" alt="<?= APP_NAME ?>">
                     </div>
+
+
                     <nav class="flex flex-1 flex-col">
                         <ul class="flex flex-1 flex-col gap-y-7 pt-4">
                             <li>
@@ -67,10 +69,28 @@
 
 
 
-            <div class="flex h-16 shrink-0 items-center">
-                <img class="h-8 w-auto" src="<?= APP_LOGO ?>" alt="<?= APP_NAME ?>">
-            </div>
+            <!-- Multi account - switch Selector -->
+            <div class="mt-2 relative inline-block text-left">
+                <button onclick="toggle_user_accounts_popup()" class="flex text-left items-center space-x-2 bg-gray-200 p-2 rounded-lg">
+                    <img src="<?= APP_LOGO ?>" alt="Php Ninja" class="w-6 h-6 rounded-full" />
+                    <span class="text-left text-sm text-gray-800 font-semibold"><?= $_SESSION['account']['account_name'] ?></span>
+                    <svg class="w-4 h-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
 
+                <!-- Popup -->
+                <div id="popup" class="absolute left-0 w-48 mt-2 origin-top-left  rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
+                    <div class="py-1">
+
+                        <? foreach ($_SESSION['user']['accounts'] as $c): ?>
+                            <a href="<?= APP_URL ?>change_account/<?= $c['accountsId'] ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:font-semibold"><?= $c['account_name'] ?></a>
+
+                        <? endforeach; ?>
+                        <a href="<?= APP_URL ?>new_account" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><?= _('Add new account') ?> ...</a>
+                    </div>
+                </div>
+            </div>
 
             <nav id="sidebar" class="pt-5">
                 <ul class="-mx-2 space-y-1">
@@ -133,9 +153,20 @@
                             <?= _('Account Settings') ?>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="<?= APP_URL ?>upgrade" class="group flex gap-x-3 rounded-md p-2 text-sm text-gray-800 hover:bg-gray-50 hover:text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m15 11.25-3-3m0 0-3 3m3-3v7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+
+                            <?= _('Upgrade') ?>
+                        </a>
+                    </li>
+
                     <li>
                         <!-- Current: "bg-gray-50 text-blue-600", Default: "text-gray-700 hover:text-blue-600 hover:bg-gray-50" -->
-                        <a href="<?= APP_URL ?>contact" class="group flex gap-x-3 rounded-md p-2 text-sm text-gray-800 hover:bg-gray-50 hover:text-blue-600">
+                        <a href="<?= APP_URL ?>help" class="group flex gap-x-3 rounded-md p-2 text-sm text-gray-800 hover:bg-gray-50 hover:text-blue-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5" />
                             </svg>
@@ -187,7 +218,7 @@
                             </svg>
 
                             <span class="hidden lg:flex lg:items-center">
-                                <span class="ml-4 text-sm text-gray-400" aria-hidden="true"><?= $_SESSION['user']['name'] ?></span>
+                                <span class="ml-4 text-sm text-gray-600" aria-hidden="true"><?= $_SESSION['user']['name'] ?></span>
                                 <svg class="ml-2 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                                     <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
                                 </svg>

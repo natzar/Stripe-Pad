@@ -114,15 +114,11 @@
                 <a href="https://www.github.com/natzar/Stripe-Pad" target="_blank" class="text-sm leading-6 text-gray-300 hover:text-white">Download - Github</a>
               </li>
 
-              <!-- <li>
-                <a href="<?= LANDING_URL ?>examples" class="text-sm leading-6 text-gray-300 hover:text-white">Examples</a>
-              </li>
-              <li><a href="https://github.com/natzar/Stripe-Pad" class="text-sm leading-6 text-gray-300 hover:text-white">Download</a></li> -->
 
 
             </ul>
           </div>
-          <!-- <div class="mt-10 md:mt-0">
+          <div class="mt-10 md:mt-0">
             <h3 class="text-sm font-semibold leading-6 text-white">Components</h3>
             <ul role="list" class="mt-6 space-y-4">
 
@@ -139,7 +135,7 @@
 
 
             </ul>
-          </div> -->
+          </div>
         </div>
         <div class="md:grid md:grid-cols-2 md:gap-8">
 
