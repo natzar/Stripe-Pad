@@ -56,12 +56,12 @@
 
 
   <div class="flex items-center space-x-4">
-    <img src="<?= APP_LOGO ?>" alt="Foto" class="w-12 h-12 rounded-full" />
-    <p class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-950 sm:text-4xl"><?= $SEO_TITLE ?></p>
-
+    <img src="<?= APP_LOGO ?>" alt="Logo" class="w-12 h-12 rounded-full" />
+    <div>
+      <p class="text-pretty text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl"><?= $SEO_TITLE ?></p>
+      <p class="text-gray-600 mt-1 text-base leading-6 max-w-3xl"><?= $SEO_DESCRIPTION ?></p>
+    </div>
   </div>
-  <p class="text-gray-600 mt-2 text-md block max-w-4xl leading-6"><?= $SEO_DESCRIPTION ?></p>
-
 </div>
 
 

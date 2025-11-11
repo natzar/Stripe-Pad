@@ -284,6 +284,6 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <main class="py-5 bg-white rounded-tl-[17px] shadow-lg min-h-screen">
+        <main class="py-5 bg-white rounded-tl-[17px] shadow-lg  min-h-screen">
             <div class="px-8">
                 <!-- This is closed in footer -->

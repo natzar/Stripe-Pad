@@ -1,5 +1,5 @@
 <!-- FOOTer -->
-<footer class="" aria-labelledby="footer-heading">
+<footer class="mt-10 border-t border-gray-200 border-t-1" aria-labelledby="footer-heading">
   <div class="mx-auto ">
     <div class="pt-8 ">
       <p class="text-xs leading-5 text-gray-400"><a href="<?= APP_URL ?>"><?= APP_NAME ?></a> &copy; <?= Date("Y") ?> <?= APP_NAME ?>. All rights reserved</p>
