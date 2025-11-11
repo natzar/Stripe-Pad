@@ -22,7 +22,7 @@ abstract class field
 
 	public final function __construct($fieldname, $label, $type, $value, $table = -1, $rid = -1)
 	{
-		$this->db = SPDO::singleton();
+		$this->db = SPDO_sqlite::singleton();
 
 		$this->label = $label;
 		$this->fieldname = $fieldname;

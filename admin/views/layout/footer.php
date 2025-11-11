@@ -58,7 +58,7 @@
 <script>
   var isAuthorized = <?= $isAuthenticated ? 1 : 0 ?>;
   var base_url = '<?= ADMIN_URL ?>';
-  var agent = <?= json_encode($_SESSION['agent']) ?>;
+
   var usersId = <?= $_SESSION['user']['usersId']; ?>;
 </script>
 
@@ -69,7 +69,7 @@
   var active_link_class = "bg-white shadow-sm ";
 
   $(document).ready(function() {
-    console.log("E-M-I-L-I-O! Loaded...");
+    console.log("STRIPE PAD Loaded...");
     // Add style to the link hrefing the current page
     var uri = unescape(document.location.href).trim();
     //  uri = uri.substr(uri.indexOf(base_url) + base_url.length);

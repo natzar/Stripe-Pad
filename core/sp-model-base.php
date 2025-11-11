@@ -28,14 +28,26 @@ abstract class ModelBase
 	/**
 	 * getLastId
 	 *
-	 * @return int id
+	 * @return int|string|null id
 	 */
-	public function getLastId()
+	public function getLastId($table = null)
 	{
-		$stmt  = $this->db->query("SELECT LAST_INSERT_ID()");
-		$c  = $stmt->fetch(PDO::FETCH_ASSOC);
-		$cid = $c['LAST_INSERT_ID()'];
-		return $cid;
+		// PDO::lastInsertId works for both MySQL and SQLite.
+		$lastId = $this->db->lastInsertId();
+		if ($lastId !== false && $lastId !== null && $lastId !== '0') {
+			return $lastId;
+		}
+
+		// Fallback to driver-specific function if PDO didn't return anything.
+		$driver = $this->db->getAttribute(PDO::ATTR_DRIVER_NAME);
+		if ($driver === 'sqlite') {
+			$stmt = $this->db->query("SELECT last_insert_rowid() AS id");
+		} else {
+			$stmt = $this->db->query("SELECT LAST_INSERT_ID() AS id");
+		}
+
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		return $row['id'] ?? null;
 	}
 	/**
 	 * Method setField

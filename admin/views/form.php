@@ -1,7 +1,7 @@
-<? include "app/views/layout/page_header.php"; ?>
+<? include "layout/page_header.php"; ?>
 
 
-<form id="orm_form" class='form  py-3' id="form<?= $table ?><?= $rid ?>" name="<?= APP_BASE_URL ?>form<?= $table ?><?= $rid ?>" action="update" method="POST" enctype="multipart/form-data">
+<form id="orm_form" class='form  py-3' id="form<?= $table ?><?= $rid ?>" name="<?= ADMIN_URL ?>form<?= $table ?><?= $rid ?>" action="update" method="POST" enctype="multipart/form-data">
 
 	<nav class=" items-center justify-between space-x-2 mb-5">
 

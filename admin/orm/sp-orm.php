@@ -29,6 +29,8 @@
  *
  *	You should have received a copy of the GNU General Public License along with  Stripe Pad. If not, see <https://www.gnu.org/licenses/>.
  */
+
+include dirname(__FILE__) . "/field.php";
 class Orm extends ModelBase
 {
 

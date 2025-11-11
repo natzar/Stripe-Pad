@@ -130,7 +130,7 @@ class Admin extends StripePadController
 			$data['SEO_DESCRIPTION'] = "sp-core.php linea 659"; //Created " . strftime(" %d %B %Y %H:%M", strtotime($data['created'])) . " - Updated: " . strftime(" %d %B %Y %H:%M", strtotime($data['updated']));
 		}
 
-		$this->view->show('superadmin/form.php', $data);
+		$this->view->show('form.php', $data);
 	}
 
 
@@ -225,12 +225,12 @@ class Admin extends StripePadController
 	public function reports()
 	{
 		$data = array();
-		$this->view->show('superadmin/reports.php', $data);
+		$this->view->show('reports.php', $data);
 	}
 	public function system()
 	{
 		$data = array();
-		$this->view->show('superadmin/system.php', $data);
+		$this->view->show('system.php', $data);
 	}
 	/**
 	 * actionStripeSync
@@ -247,7 +247,7 @@ class Admin extends StripePadController
 		$_SESSION['alerts'][] = _("Stripe Import Completed");
 
 		// ~ Redirection
-		$this->superadmin();
+		$this->dashboard();
 	}
 
 	/**
