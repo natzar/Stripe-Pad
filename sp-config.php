@@ -39,40 +39,21 @@ define('SEO_TITLE', 'Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_DESCRIPTION', 'Stripe Pad · PHP Micro Saas Boilerplate');
 define('SEO_KEYWORDS', 'php stripe boilerplate, php micro saas, stripe pad, stripe payment, php stripe payment, stripe integration, php microservice, php saas boilerplate');
 
-# STORAGE
+# General Settings
+define('LANGUAGES', ['en']); // Add any other languages you want to support, 2-code letter, e.g., ['de', 'es', 'fr']
+define('BOT_BLOCKER', false); # Enable bot blocker if you have too many requests
+define('MULTIPLE_ACCOUNTS_PER_USER', true); // Allow multiple accounts per user (same email)
 define("APP_STORAGE", "sqlite"); // Options: sqlite / mysql
-
-# ENCODING & TIMEZONE
-define("INTERNAL_ENCODING", "UTF-8");
+define("INTERNAL_ENCODING", "UTF-8"); // ENCODING & TIMEZONE
 define("TIMEZONE", "Europe/Madrid"); // Check https://www.php.net/manual/en/timezones.php
 
-
-# LANGUAGE
-// Define the default language and supported languages
-// Add any other languages you want to support, e.g., ['de', 'es', 'fr']
-define('LANGUAGES', ['en']);
-
-$locale = get_locale();
-define("LOCALE_LANG", $locale);
-define("LOCALE_TIME", $locale);
-
 # SECURITY
-define('APP_SECRET_KEY', '[Generate secret key, used for encryption functions]');
-define('BOT_BLOCKER', false); # Enable bot blocker if you have too many requests
-
-
+define('APP_SECRET_KEY', '469ax!Hkdm_-@z3'); // Change this to a random string for better security
 define('APP_COOKIE_DOMAIN', ''); // Set to your domain to share cookies across subdomains, e.g., '.yourdomain.com'. Leave empty for default behavior.
 
-# PATHS
-define('ROOT_PATH', dirname(__FILE__) . "/");
-define('CORE_PATH', dirname(__FILE__) . "/core/");
-define('APP_PATH', dirname(__FILE__) . "/app/");
-define('LANDING_PATH', dirname(__FILE__) . "/landing/");
-define('ADMIN_PATH', dirname(__FILE__) . "/admin/");
-define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
-# Same sp-config.php file for localhost and production
-# Detect if we are running on localhost or on a server
+# URLS
+# Same sp-config.php file for localhost and production, detect if we are running on localhost or on a server
 if (isLocalhost()) { # Localhost
 
 	define('LANDING_URL', 'http://localhost/stripe-pad/');
@@ -103,6 +84,7 @@ if (isLocalhost()) { # Localhost
 	define('APP_DB_USER', '');
 	define('APP_DB_PASSWORD', '');
 }
+
 
 # EMAIL SMTP
 define('ADMIN_EMAIL', 'webmaster@stripepad.com');
@@ -135,9 +117,13 @@ define('GOOGLE_REDIRECT_URI', '');
 # OPENAI
 define('OPENAI_CHATGPT_APIKEY', ''); // platform.openai.com
 
-
-
-
+# PATHS
+define('ROOT_PATH', dirname(__FILE__) . "/");
+define('CORE_PATH', dirname(__FILE__) . "/core/");
+define('APP_PATH', dirname(__FILE__) . "/app/");
+define('LANDING_PATH', dirname(__FILE__) . "/landing/");
+define('ADMIN_PATH', dirname(__FILE__) . "/admin/");
+define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
 
 # Helper functions
@@ -162,32 +148,5 @@ function isLocalhost()
 	return in_array($serverAddr, $localhostIPs) || in_array($remoteAddr, $localhostIPs);
 }
 
-/**
- * Method get_locale (Get Current Language from the environment)
- *
- * @return void
- */
-function get_locale()
-{
-	if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-		// If the user has set a language via ?lang=, use that; otherwise, use the browser's language preference.
-		// If neither is set, default to English ('en').
-		// Get language from ?lang= OR browser (default: 'en')
-
-		$accept = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ??  LANGUAGES[0];
-		$lang_from_browser = substr($accept, 0, 2);
-		$lang_from_query = isset($_GET['lang']) ? htmlspecialchars($_GET['lang'], ENT_QUOTES, 'UTF-8') : null;
-		$user_lang = strtolower($lang_from_query ?? $lang_from_browser);
-	} else {
-		$user_lang = LANGUAGES[0]; // Default to English if no language is set
-	}
-
-	// Use only supported languages, fallback to English
-	$lang = in_array($user_lang, LANGUAGES) ? $user_lang :  LANGUAGES[0];
-	// Convert to locale format (e.g., "es_ES.utf8", "en_EN.utf8")
-	$locale = strtoupper($lang) . '_' . strtoupper($lang) . '.utf8';
-
-	return $locale;
-}
 # Stripe Pad Version
 include_once dirname(__FILE__) . "/core/sp-version.php";
