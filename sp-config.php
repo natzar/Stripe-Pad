@@ -61,28 +61,13 @@ if (isLocalhost()) { # Localhost
 	define('ADMIN_URL', 'http://localhost/stripe-pad/admin/');
 	define('API_URL', 'http://localhost/stripe-pad/api/');
 	define('APP_CDN', LANDING_URL . 'cdn/');
-
-	# MYSQL ONLY - Adjust your mysql database details here
-	define('APP_TABLE_PREFIX', '');
-	define('APP_DB_HOST', '');
-	define('APP_DB', '');
-	define('APP_DB_USER', '');
-	define('APP_DB_PASSWORD', '');
 } else {    # Server / Production
-
 
 	define('LANDING_URL', 'https://demo.stripepad.com/');
 	define('APP_URL', 'https://demo.stripepad.com/app/');
 	define('ADMIN_URL', 'https://demo.stripepad.com/admin/');
 	define('API_URL', 'https://demo.stripepad.com/api/');
 	define('APP_CDN', 'https://demo.stripepad.com/cdn/');
-
-	# MYSQL ONLY - Adjust your mysql database details here
-	define('APP_TABLE_PREFIX', '');
-	define('APP_DB_HOST', '');
-	define('APP_DB', '');
-	define('APP_DB_USER', '');
-	define('APP_DB_PASSWORD', '');
 }
 
 
@@ -125,6 +110,12 @@ define('LANDING_PATH', dirname(__FILE__) . "/landing/");
 define('ADMIN_PATH', dirname(__FILE__) . "/admin/");
 define('APP_UPLOAD_PATH', dirname(__FILE__) . '/uploads/');
 
+# MYSQL ONLY - Adjust your mysql database details here
+define('APP_TABLE_PREFIX', '');
+define('APP_DB_HOST', '');
+define('APP_DB', '');
+define('APP_DB_USER', '');
+define('APP_DB_PASSWORD', '');
 
 # Helper functions
 function isLocalhost()

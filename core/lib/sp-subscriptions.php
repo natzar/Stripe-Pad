@@ -45,11 +45,11 @@ class subscriptionsModel extends ModelBase
    * @param  mixed $usersId
    * @return void
    */
-  public function getByUsersId($usersId)
+  public function getByAccountsId($accountsId)
   {
 
-    $q  = $this->db->prepare("SELECT * FROM subscriptions JOIN products on (subscriptions.productsId = products.productsId) where usersId = :cid order by subscriptions.created DESC");
-    $q->bindParam(":cid", $usersId);
+    $q  = $this->db->prepare("SELECT * FROM subscriptions JOIN products on (subscriptions.productsId = products.productsId) where accountsId = :cid order by subscriptions.created DESC");
+    $q->bindParam(":cid", $accountsId);
     $q->execute();
     return $q->fetchAll();
   }

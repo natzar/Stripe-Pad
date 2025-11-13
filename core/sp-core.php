@@ -242,7 +242,7 @@ class StripePadController
         $invoices = new invoicesModel();
         $data = array(
             "user" => $users->getById($_SESSION['user']['usersId']),
-            "invoices" => $invoices->getByUsersId($_SESSION['user']['usersId']),
+            "invoices" => $invoices->getByAccountsId($_SESSION['account']['accountsId']),
             "SEO_TITLE" => "Preferencias",
             "SEO_DESCRIPTION" => _("Manage your preferences and settings"),
             "breadcrumb" => array(array("label" => "Preferencias", "url" => "profile")),
@@ -262,10 +262,11 @@ class StripePadController
         $subscriptions = new subscriptionsModel();
 
         $usersId = $_SESSION['user']['usersId'];
+        $accountsId = $_SESSION['account']['accountsId'];
         $data = array(
             "user" => $users->getById($usersId),
-            "invoices" => $invoices->getByUsersId($usersId),
-            "subscriptions" => $subscriptions->getByUsersId($usersId),
+            "invoices" => $invoices->getByAccountsId($accountsId),
+            "subscriptions" => $subscriptions->getByAccountsId($accountsId),
             "SEO_TITLE" => _("Account & Billing"),
             "SEO_DESCRIPTION" => _("Manage memberships, invoices, and payment preferences."),
             "breadcrumb" => array(array("label" => _("Account Settings"), "url" => "account")),
@@ -470,7 +471,7 @@ class StripePadController
     {
 
 
-        if (empty($_SESSION['user']['stripe_customer_id'])) {
+        if (empty($_SESSION['account']['stripe_customer_id'])) {
 
             $_SESSION['errors'][] = "NOT_ENABLED, NO PURCHASE YET;";
             header("location: " . APP_URL . "/dashboard");
@@ -491,6 +492,17 @@ class StripePadController
                 header("location: " . APP_URL . "/dashboard");
             }
         }
+    }
+
+    public function invoice_pdf()
+    {
+
+        $invoices = new invoicesModel();
+        $invoice = $invoices->getById($this->params['m']);
+        if (empty($invoice) or $invoice['accountsId'] != $_SESSION['account']['accountsId']) {
+            die("Invoice not found");
+        }
+        header("location: " . $invoices->pdf($this->params['m']));
     }
 
     /**
@@ -638,13 +650,13 @@ class StripePadController
     // App.php
     public function settings()
     {
-        $this->view->show('user/settings.php', []);
+        $this->view->show('settings.php', []);
     }
 
     // Method to display the maintenance page
     public function maintenance()
     {
-        $this->view->show('common/maintenance.php', []);
+        $this->view->show('maintenance.php', []);
     }
 
     // Check if maintenance mode is active by checking the file existence

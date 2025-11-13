@@ -39,28 +39,11 @@
         <h2 class="text-lg font-semibold text-gray-900"><?= _('Billing Portal') ?></h2>
         <p class="text-sm text-gray-500"><?= _('Update payment methods, download invoices or cancel your plan directly from Stripe.') ?></p>
       </div>
-      <a href="/account" target="_blank" class="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-indigo-500">
+      <a href="<?= APP_URL  ?>stripe_portal" target="_blank" class="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-indigo-500">
         <?= _('Open Stripe Portal') ?>
       </a>
     </div>
-    <?php if (!empty($invoices)): ?>
-      <ul class="mt-6 divide-y divide-gray-100">
-        <?php foreach (array_slice($invoices, 0, 3) as $invoice): ?>
-          <li class="flex items-center justify-between py-4">
-            <div>
-              <p class="text-sm font-medium text-gray-900">#<?= $invoice['invoicesId'] ?></p>
-              <p class="text-xs text-gray-500"><?= $invoice['cart'] ?></p>
-            </div>
-            <div class="text-right">
-              <p class="text-sm font-semibold text-gray-900"><?= number_format($invoice['total'], 2) ?>&euro;</p>
-              <p class="text-xs text-gray-500"><?= date('M d, Y', strtotime($invoice['created'])) ?></p>
-            </div>
-          </li>
-        <?php endforeach; ?>
-      </ul>
-    <?php else: ?>
-      <p class="mt-6 text-sm text-gray-500"><?= _('No invoices have been generated yet.') ?></p>
-    <?php endif; ?>
+
   </div>
 
   <div class="rounded-2xl bg-white shadow p-6">
@@ -125,11 +108,9 @@
                 <td class="px-4 py-2"><?= date('M d, Y', strtotime($invoice['created'])) ?></td>
                 <td class="px-4 py-2"><?= number_format($invoice['total'], 2) ?>&euro;</td>
                 <td class="px-4 py-2">
-                  <?php if (!empty($invoice['pdf_path'])): ?>
-                    <a target="_blank" href="https://app.phpninja.net/uploads/users/<?= $invoice['pdf_path'] ?>" class="text-indigo-600 hover:text-indigo-500 font-semibold"><?= _('PDF') ?></a>
-                  <?php else: ?>
-                    <span class="text-gray-400">—</span>
-                  <?php endif; ?>
+
+                  <a target="_blank" href="<? APP_URL ?>invoice_pdf/<?= $invoice['invoicesId'] ?>" class="text-indigo-600 hover:text-indigo-500 font-semibold"><?= _('PDF') ?></a>
+
                 </td>
               </tr>
             <?php endforeach; ?>

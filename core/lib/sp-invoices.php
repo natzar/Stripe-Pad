@@ -53,22 +53,22 @@ class invoicesModel extends ModelBase
 	 */
 	public function getById($id)
 	{
-		$consulta = $this->db->prepare("SELECT *, invoices.created as created, invoices.iva as iva FROM invoices JOIN customers on (invoices.customersId = customers.customersId) where invoicesId=:id ");
+		$consulta = $this->db->prepare("SELECT *, invoices.created as created, invoices.iva as iva FROM invoices JOIN accounts on (invoices.accountsId = accounts.accountsId) where invoicesId=:id ");
 		$consulta->bindParam(":id", $id);
 		$consulta->execute();
 		return $consulta->fetch();
 	}
 
 	/**
-	 * getByUsersId
+	 * getByAccountsId
 	 *
 	 * @param  int $id
 	 * @return void
 	 */
-	public function getByUsersId($id)
+	public function getByAccountsId($id)
 	{
 
-		$consulta = $this->db->prepare("SELECT * FROM invoices where usersId=:id ");
+		$consulta = $this->db->prepare("SELECT * FROM invoices where accountsId=:id ");
 		$consulta->bindParam(":id", $id);
 		$consulta->execute();
 		return $consulta->fetchAll();
@@ -148,7 +148,7 @@ class invoicesModel extends ModelBase
 
 
 		ob_start();
-		include ROOT_PATH . "app/pdfs/invoice.php";
+		include ROOT_PATH . "pdfs/invoice.php";
 		$html = ob_get_clean();
 
 		// instantiate and use the dompdf class
@@ -165,11 +165,14 @@ class invoicesModel extends ModelBase
 
 		$output = $dompdf->output();
 
+		if (!is_dir(APP_UPLOAD_PATH . "invoices/")) {
+			mkdir(APP_UPLOAD_PATH . "invoices/", 0777, true);
+		}
 
 
 		if (file_put_contents(APP_UPLOAD_PATH . "invoices/" . $filename, $output)) {
 
-			return	 APP_UPLOAD_PATH . "invoices/" . $filename;
+			return	 LANDING_URL . "uploads/invoices/" . $filename;
 		}
 		return "Error";
 	}
